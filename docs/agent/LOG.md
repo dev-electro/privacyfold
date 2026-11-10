@@ -2,6 +2,15 @@
 
 ---
 
+## 2026-11-10 — ads system decided (DEC-007 = DocSet port) + Sveltia setup spec
+
+**Tasks:** PF-024 superseded→PF-031; new PF-031.
+**Did:** read the DocSet ad implementation (AdSlot/adBudget/GoogleAdSense/ToolRunner/sticky+processing components, ads.txt) and distilled to `docs/plans/docset-ads-implementation.md`. User decision recorded as DEC-007: PrivacyFold uses the DocSet ad system including tool pages, amending DEC-005's toolPages:false. Wrote `docs/plans/sveltia-cms-setup.md` (admin files, edit flow for content/tools, token vs OAuth login, starter config.yml for the 8 collections, single-`<slug>.md` recommendation for PF-003).
+**Proved by:** docs present in tree; commit below.
+**Next:** PF-031 ports the ad system after the Astro shell; CMS single-file schema decision rides PF-003.
+
+---
+
 ## 2026-11-10 — founder blueprint adopted (DEC-004/005/006), board extended to PF-030
 
 **Tasks:** PF-002/PF-003 notes re-scoped; new PF-021…PF-030; PF-013 superseded by DEC-005 sequence.
