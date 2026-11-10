@@ -36,11 +36,18 @@
 ## Architecture (stable facts)
 
 - Runtime contract for agents: `input[type=file][data-pf="input"]`, `[data-pf="run"]`, `[data-pf="download"]`, `window.__PRIVACYFOLD_READY__`, `window.__PRIVACYFOLD_RESULT__` (DoS from `docs/privacyfold-agent-surface.md` §6).
-- Content model decided in DEC-001 migration: Astro Content Collections with a **schema is the single source of truth**; `llms.txt`, `_index.json`, `.well-known/mcp.json` and JSON-LD are **generated** from it, never hand-edited.
-- No server, no Workers, no DB. Cloudflare Pages static only.
+Architecture (blueprint adopted: `docs/plans/content-seo-ads-foundation-2026-11-10.md`, DEC-004/005/006):
+
+- One Astro site, one repo; `content/` (Markdown/YAML 8 collections) beside `src/`; Zod schemas are the contract — a bad field fails the build naming the file.
+- "One tool record drives everything": page, JSON-LD, sitemap, llms.txt, `/tools.json`, MCP manifest, social cards, ad eligibility all generated from one `<slug>.yaml`. `llms.txt`/`_index.json`/`.well-known/mcp.json` become build endpoints — hand-editing them is now a policy violation (DEC-004).
+- Ads: content pages only at launch (DEC-005); AdSlot gates in build; certified CMP before EEA/UK/CH personalized ads; `ads.txt` from day one; auto ads never.
+- Provenance rules: every factual record carries `source_url` + `verified`; `status` and `index` are independent fields; translations carry `translation_of` + `reviewed_by`.
 
 ## Open questions (do not silently decide)
 
 1. Are the 8 unimplemented tools built with real WASM, or removed from all surfaces until then? → owner: Gaurav
-2. AdSense: integrate with consent, or park monetisation? → owner: Gaurav
+2. ~~AdSense: integrate with consent, or park monetisation?~~ → answered by DEC-005 (content pages only; onboarding sequence PF-013)
 3. Which 25 locales ship in phase 1? → owner: Gaurav
+4. Model-training crawlers (GPTBot, ClaudeBot, Google-Extended, Applebot-Extended, CCBot): allow or block? → owner: Gaurav (PF-027; plan §8/§16)
+5. Sveltia OAuth client (small Cloudflare Worker) vs long-lived token — decide when a second editor joins. → DEC-004 note
+6. `ads.toolPages` revisit / Option C sealed iframe (`tool.privacyfold.com`) once traffic justifies. → DEC-005

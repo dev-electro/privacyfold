@@ -2,6 +2,16 @@
 
 ---
 
+## 2026-11-10 — founder blueprint adopted (DEC-004/005/006), board extended to PF-030
+
+**Tasks:** PF-002/PF-003 notes re-scoped; new PF-021…PF-030; PF-013 superseded by DEC-005 sequence.
+**Did:** imported the founder doc "Content, SEO and Ads Foundation" verbatim as `docs/plans/content-seo-ads-foundation-2026-11-10.md`; recorded DEC-004 (Astro collections + Sveltia + one-record-drives-everything), DEC-005 (ads on content pages only, AdSlot gates, CMP), DEC-006 (no rating markup, honest AEO policy). STATE architecture + open questions updated (training-crawler decision now OPEN with owner).
+**Proved by:** git diff of docs/agent/*; plan file present at `docs/plans/` (byte-copy of the pasted source).
+**Next:** PF-002 PF-003 remain the critical path; PF-025 (generated registries) resolves the drift blocker together with PF-010.
+**Note:** the plan's §12 CI checks list was referenced but not included in the pasted copy — PF-026 enumerates the checks from the doc's own references; confirm the original list when it surfaces.
+
+---
+
 ## 2026-11-10 — audit + memory system + framework decision
 
 **Tasks:** PF-001 (partial), PF-002 (decided, DEC-001), PF-003..PF-006 scoped in TASKS.md.

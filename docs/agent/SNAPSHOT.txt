@@ -1,4 +1,4 @@
-# generated 2026-11-10T13:53:35.114Z by scripts/agent-status.mjs
+# generated 2026-11-10T14:34:23.767Z by scripts/agent-status.mjs
 1. BUILD
   [warn]    no .agent-build-status — run `npm run build` in privacyfold-nextjs and record it
 
@@ -38,6 +38,6 @@
   [warn]    Google Fonts CDN referenced — third-party request on a privacy product
 
 7. GIT
-  branch main · commits 1 · uncommitted paths 7
+  branch main · commits 3 · uncommitted paths 6
 
 VERDICT: NOT DEPLOYABLE — 5 blocker(s)

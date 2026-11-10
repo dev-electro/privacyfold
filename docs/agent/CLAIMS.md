@@ -22,6 +22,9 @@ Status: `true` · `partial` · `false` · `future`
 | "40 tools" / "42 tools" / "72 tools" | layout.tsx / MCP server / llms.txt & _index | **false ×3** (canonical is `count(content/tools)`) | generate; PF-010 |
 | Signed registry (Ed25519, `_index.json.sig`, pinned key) | agent surface doc, mcp-server, `.sig` file | **false** | literal hex strings; no verify code (PF-009) |
 | "CC-BY-4.0 licensed registry" | _index.json, llms.txt, mcp-server | **partial** | no LICENSE file exists (PF-018) |
-| Ad slots are live AdSense units | site.json `adsense.enabled:true`, AdSenseUnit | **false** | fake static card, no adsbygoogle, `connect-src 'self'` blocks ads anyway (PF-013) |
+| Ad slots are live AdSense units | site.json `adsense.enabled:true`, AdSenseUnit | **false** | fake static card, no adsbygoogle, `connect-src 'self'` blocks ads anyway (PF-013) → policy now: content pages only, gated (DEC-005 / PF-024) |
+| "No rating/review markup" until real reviews | JSON-LD builder | **future** | DEC-006: WebApplication ships without ratings; aggregateRating only when genuine visible reviews exist |
+| "Nothing is uploaded" in social posts/guides matches reality | posts, guide pages | **true (tool pages)** | DEC-005 keeps ad scripts off pages that handle files; social copy must mirror CLAIMS statuses (PF-028) |
+| `llms.txt` improves Google AI citations | public/llms.txt | **unproven** | plan §8: cheap, generated from collections, no editorial time spent; do not claim it helps rankings |
 | Determinism tiers D / M / B | runtime receipts, _index.json | **partial** | D is honest where compute is real; M tools have no models (see fake rows); label honestly |
 | Preset requirements (mm/px/kb per portal) | 87 preset pages + JSON | **unverified** | each carries `source_url`+`last_verified`; QA pass = PF-017 |
