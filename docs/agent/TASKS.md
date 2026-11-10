@@ -40,7 +40,8 @@ Order matters: P0 → P1 → P2. The launch gate is PF-020.
 
 | ID | Task | Status | Notes |
 |---|---|---|---|
-| PF-021 | Sveltia CMS at `/admin`: `admin/index.html` + `config.yml`, token login, editorial-workflow PRs, `/admin/` blocked in robots; CMS↔Zod drift check in CI | todo | DEC-004 §4; OAuth client decision deferred until a 2nd editor joins (open question) |
+| PF-021 | Sveltia CMS at `/admin`: `admin/index.html` + `config.yml`, token login, editorial-workflow PRs, `/admin/` blocked in robots; CMS↔Zod drift check in CI | doing:files scaffolded at `public/admin/` (DEC-004, DEC-008, `docs/ops/admin-auth.md`); waiting on owner — deploy auth Worker + GitHub OAuth app + CF Access per `docs/ops/admin-auth.md` steps 1–5 | Auth model fixed by DEC-008; `base_url` placeholder needs the real Worker URL |
+| PF-032 | Self-host Sveltia bundle (`public/admin/cms.js` + SRI), CSP scoped to /admin, CMS↔Zod drift check script, `robots.txt` disallow `/admin` | todo | drops the last third-party script on the CMS route; part of PF-021 |
 | PF-022 | 8 flagship tool pages written to the quality bar (ten blocks, ≥600 words original text, answer block reused in meta/llms/JSON-LD) | todo | DEC-004 §5; quality bar precedes scale; feeds AdSense onboarding (PF-013) |
 | PF-023 | Trust + depth content before AdSense: about/privacy/contact/terms (PF-007) + ≥20 guides & glossary entries | todo | plan §10 onboarding sequence; glossary = DefinedTerm JSON-LD |
 | PF-024 | `AdSlot.astro` with build-time gates per DEC-005 (600/800-word rule, 1-per-400-words, max 3, positions A/B/C/sidebar, reserved heights, no tool pages) | superseded→PF-031 | DEC-005 gates remain for content pages; tool-page ads now governed by DEC-007 |

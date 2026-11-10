@@ -2,6 +2,15 @@
 
 ---
 
+## 2026-11-10 — admin auth implemented (DEC-008), CMS scaffold shipped
+
+**Tasks:** PF-021 doing; new PF-032.
+**Did:** wrote `public/admin/index.html` + `public/admin/config.yml` (Tools/Presets/Guides/Pages/Site-settings collections incl. the ads-slots block for DEC-007), and `docs/ops/admin-auth.md` (auth chain, threat model, exact setup). DEC-008 recorded: GitHub OAuth via the official sveltia-cms-auth Worker (client secret server-side) + Cloudflare Access on `/admin`; raw-PAT daily path rejected; editorial workflow + branch protection are the containment.
+**Proved by:** files in tree; sveltia/sveltia-cms-auth README flow verified via web check (2026-11-10).
+**Next (owner):** deploy the auth Worker + GitHub OAuth app + CF Access (`docs/ops/admin-auth.md` steps 1–5), then replace the `base_url` placeholder.
+
+---
+
 ## 2026-11-10 — ads system decided (DEC-007 = DocSet port) + Sveltia setup spec
 
 **Tasks:** PF-024 superseded→PF-031; new PF-031.

@@ -62,3 +62,11 @@ Spec + source map: `docs/plans/docset-ads-implementation.md` (distilled from `~/
 Governance kept from the plan: manual units only (never auto ads), no ad inside/near the tool-result-download zone, certified CMP before EEA/UK/CH personalised ads, unit formats matched per moment.
 Honesty consequence accepted by the owner: with ads on tool pages, the page itself makes ad requests to Google — the claim a visitor must read on tool pages is exactly "your file is never uploaded; this page contains ads". `ToolSeoArticle`, the status bar, and the privacy page must state it; CSP needs an explicit `pagead2.googlesyndication.com` allowlist entry rather than a pretend `'self'`.
 Evidence: reading of `AdSlot.jsx`, `adBudget.js`, `GoogleAdSense.jsx`, `ToolRunner.jsx`, `ProcessingAdModal.jsx`, `StickyFooterAd.jsx`, `DesktopSidebarAd.jsx`, `public/ads.txt` in Docset v1 (2026-11-10).
+
+---
+
+DEC-008 | 2026-11-10 | Admin CMS authentication: GitHub OAuth via sveltia-cms-auth Worker + Cloudflare Access gate; never a raw PAT
+Decision: `/admin` (Sveltia at `public/admin/`, moves with the Astro app) authenticates through the official `sveltia-cms-auth` Cloudflare Worker — GITHUB_CLIENT_SECRET lives only in the Worker; config.yml carries `base_url` + `auth_endpoint`. Cloudflare Access (Zero Trust, self-hosted app on `/admin*`, email one-time-PIN first) gates the route in front of any CMS code. Editorial workflow already produces branch+PR, so a stolen token cannot bypass review; branch protection on `main` is required for the model to hold.
+Why: the founder plan's token-login default puts a repo-write token in localStorage with no expiry; the Worker removes the client secret from the client entirely, and Access adds a bouncer before the login page loads. Threat model and residual risk documented: `docs/ops/admin-auth.md`.
+Rejected: raw PAT as daily path (sufficient for a first experiment, unacceptable as the standing control); self-hosted bespoke OAuth server (violates no-Workers-for-visitors spirit for marginal gain — this Worker only runs when an editor signs in).
+Evidence: sveltia/sveltia-cms-auth official setup (checked 2026-11-10); `docs/ops/admin-auth.md`; `public/admin/{index.html,config.yml}` scaffold + DEC-004.
