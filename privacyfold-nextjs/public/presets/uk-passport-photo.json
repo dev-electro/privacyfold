@@ -1,0 +1,19 @@
+{
+  "id": "uk-passport-photo",
+  "presetSlug": "uk-passport-photo",
+  "tool": "passport_photo",
+  "toolSlug": "passport-photo",
+  "version": "2026-11-08.1",
+  "status": "active",
+  "title": "uk-passport-photo",
+  "jurisdiction": "Global",
+  "authority_name": "Official Portal",
+  "source_url": "https://www.gov.uk/photos-for-passports",
+  "last_verified": "2026-11-08",
+  "stale_after_days": 90,
+  "supersedes": "2026-06-14.2",
+  "license": "CC-BY-4.0",
+  "constraints": {
+    "strip_exif": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "gdpr-request-eu",
+  "title": "EU GDPR Articles 15 & 17 Subject Access & Erasure Request",
+  "tool": "privacy_letter",
+  "jurisdiction": "EU / EEA / UK",
+  "statutory_deadline_days": 30,
+  "articles": [
+    "Article 12(3)",
+    "Article 15 (Access)",
+    "Article 17 (Erasure)",
+    "Article 21 (Objection)"
+  ]
+}

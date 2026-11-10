@@ -1,0 +1,31 @@
+{
+  "id": "hipaa-safe-harbor-18-identifiers",
+  "presetSlug": "hipaa-safe-harbor-18-identifiers",
+  "tool": "ai_airlock",
+  "toolSlug": "ai-airlock",
+  "version": "2026.11.1",
+  "status": "active",
+  "title": "HIPAA Safe Harbor 18-Identifier Clinical Text Scrubber",
+  "jurisdiction": "HHS HIPAA",
+  "authority_name": "HHS HIPAA",
+  "source_url": "https://www.hhs.gov/hipaa/for-professionals/privacy/special-topics/de-identification/index.html",
+  "last_verified": "2026-11-01",
+  "stale_after_days": 90,
+  "supersedes": null,
+  "license": "CC-BY-4.0",
+  "dimensions_px": {
+    "width": 0,
+    "height": 0
+  },
+  "max_size_kb": 5000,
+  "dpi": 0,
+  "background": "none",
+  "constraints": {
+    "width_px": 0,
+    "height_px": 0,
+    "max_size_kb": 5000,
+    "dpi": 0,
+    "background_hex": "none",
+    "strip_exif": true
+  }
+}

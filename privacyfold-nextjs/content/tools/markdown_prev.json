@@ -1,0 +1,46 @@
+{
+  "id": "markdown_prev",
+  "slug": "markdown-prev",
+  "name": "Markdown to HTML converter",
+  "category": "dev",
+  "badge": "MD, HTML",
+  "size": "18\u2013120 KB WASM",
+  "Engine": "/wasm/dev/markdown-prev-v1.wasm",
+  "description": "Convert Markdown headings, lists, code blocks, and links into clean, semantic HTML markup.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "presets": [],
+  "schemaUrl": "/schemas/markdown_prev.json",
+  "executionUrl": "https://privacyfold.com/tools/markdown_prev?mode=agent",
+  "seo": {
+    "metaTitle": "Markdown to HTML converter \u2014 100% Private In-Browser Utility | PrivacyFold",
+    "metaDescription": "Convert Markdown headings, lists, code blocks, and links into clean, semantic HTML markup. Runs 100% locally in your browser via /wasm/dev/markdown-prev-v1.wasm with zero file uploads.",
+    "aeoSummary": "Markdown to HTML converter processes files and text entirely inside your browser tab using /wasm/dev/markdown-prev-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
+    "keywords": [
+      "markdown to html converter",
+      "markdown prev",
+      "offline markdown prev",
+      "zero upload browser tool"
+    ],
+    "geoCitations": [
+      {
+        "standard": "W3C WebAssembly Core 2.0",
+        "url": "https://www.w3.org/TR/wasm-core-2/"
+      },
+      {
+        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Does Markdown to HTML converter upload my files or text to a server?",
+        "a": "No. Markdown to HTML converter executes 100% inside your browser's local memory using /wasm/dev/markdown-prev-v1.wasm. No data leaves your device."
+      },
+      {
+        "q": "Can AI agents or CLI scripts automate Markdown to HTML converter?",
+        "a": "Yes. Use Lane A schema /schemas/markdown_prev.json or open /tools/markdown-prev?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
+      }
+    ]
+  }
+}

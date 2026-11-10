@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://privacyfold.com/schemas/signature_clean.json",
+  "title": "Signature cleaner",
+  "description": "Lift a signature off paper onto a clear background.",
+  "x-privacyfold-tool-id": "signature_clean",
+  "x-privacyfold-category": "photo",
+  "x-privacyfold-engine": "/wasm/photo/signature-clean-v1.wasm",
+  "x-privacyfold-determinism-tier": "D",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/signature_clean?mode=agent&source=mcp#payload",
+  "type": "object",
+  "properties": {
+    "preset": {
+      "type": "string",
+      "enum": [
+        "in-pan-nsdl-signature-140x60"
+      ]
+    },
+    "input": {
+      "type": "string",
+      "description": "Input text, data URI, or local File handle via data-pf='input'"
+    },
+    "options": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "input"
+  ]
+}

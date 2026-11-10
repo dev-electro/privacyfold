@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://privacyfold.com/schemas/meeting_notes.json",
+  "title": "Meeting notes formatter & focus timer",
+  "description": "Transform unstructured meeting scratchpads into a clean Markdown summary separating Key Decisions, Action Items (`[ ] Owner`), and Pomodoro focus blocks.",
+  "x-privacyfold-tool-id": "meeting_notes",
+  "x-privacyfold-category": "forms",
+  "x-privacyfold-engine": "/wasm/forms/meeting-notes-v1.wasm",
+  "x-privacyfold-determinism-tier": "D",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/meeting_notes?mode=agent&source=mcp#payload",
+  "type": "object",
+  "properties": {
+    "preset": {
+      "type": "string",
+      "enum": [
+        "default"
+      ]
+    },
+    "input": {
+      "type": "string",
+      "description": "Input text, data URI, or local File handle via data-pf='input'"
+    },
+    "options": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "input"
+  ]
+}

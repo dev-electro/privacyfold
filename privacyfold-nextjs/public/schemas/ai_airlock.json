@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://privacyfold.com/schemas/ai_airlock.json",
+  "title": "AI Airlock (PII redactor & token restorer)",
+  "description": "Detect personal data (names, emails, SSN/NINO, IBAN, credit cards, phones, API keys) on your device, replace them with tokens ([PERSON_1], [EMAIL_1]) before pasting into ChatGPT/Claude, and restore real values locally afterwards.",
+  "x-privacyfold-tool-id": "ai_airlock",
+  "x-privacyfold-category": "crypto",
+  "x-privacyfold-engine": "rampart-minilm-l6",
+  "x-privacyfold-determinism-tier": "M",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/ai_airlock?mode=agent&source=mcp#payload",
+  "type": "object",
+  "properties": {
+    "preset": {
+      "type": "string",
+      "enum": [
+        "hipaa-safe-harbor-18-identifiers"
+      ]
+    },
+    "input": {
+      "type": "string",
+      "description": "Input text, data URI, or local File handle via data-pf='input'"
+    },
+    "options": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "input"
+  ]
+}

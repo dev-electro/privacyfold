@@ -1,0 +1,31 @@
+{
+  "id": "nz-real-me-passport-photo",
+  "presetSlug": "nz-real-me-passport-photo",
+  "tool": "passport_photo",
+  "toolSlug": "passport-photo",
+  "version": "2026.11.1",
+  "status": "active",
+  "title": "New Zealand Passport Online Photo (3:4 Ratio, 500KB\u201310MB)",
+  "jurisdiction": "DIA New Zealand",
+  "authority_name": "DIA New Zealand",
+  "source_url": "https://www.passports.govt.nz/passport-photos/how-to-take-a-passport-photo/",
+  "last_verified": "2026-11-01",
+  "stale_after_days": 90,
+  "supersedes": null,
+  "license": "CC-BY-4.0",
+  "dimensions_px": {
+    "width": 900,
+    "height": 1200
+  },
+  "max_size_kb": 5000,
+  "dpi": 300,
+  "background": "#F4F4F4",
+  "constraints": {
+    "width_px": 900,
+    "height_px": 1200,
+    "max_size_kb": 5000,
+    "dpi": 300,
+    "background_hex": "#F4F4F4",
+    "strip_exif": true
+  }
+}

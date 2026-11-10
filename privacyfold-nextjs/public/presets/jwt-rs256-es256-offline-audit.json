@@ -1,0 +1,31 @@
+{
+  "id": "jwt-rs256-es256-offline-audit",
+  "presetSlug": "jwt-rs256-es256-offline-audit",
+  "tool": "jwt_decode",
+  "toolSlug": "jwt-decode",
+  "version": "2026.11.1",
+  "status": "active",
+  "title": "JWT RS256/ES256 Offline Claims & Expiration Audit",
+  "jurisdiction": "RFC 7519",
+  "authority_name": "RFC 7519",
+  "source_url": "https://datatracker.ietf.org/doc/html/rfc7519",
+  "last_verified": "2026-11-01",
+  "stale_after_days": 90,
+  "supersedes": null,
+  "license": "CC-BY-4.0",
+  "dimensions_px": {
+    "width": 0,
+    "height": 0
+  },
+  "max_size_kb": 500,
+  "dpi": 0,
+  "background": "none",
+  "constraints": {
+    "width_px": 0,
+    "height_px": 0,
+    "max_size_kb": 500,
+    "dpi": 0,
+    "background_hex": "none",
+    "strip_exif": true
+  }
+}

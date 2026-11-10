@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://privacyfold.com/schemas/pdf_compress.json",
+  "title": "PDF compressor (Portal presets)",
+  "description": "Compress PDF documents to meet strict government and email portal limits (USCIS I-130 <2 MB, UK Visa VFS <2 MB, HMRC SA100 <5 MB, Schengen VFS <5 MB, Court E-Filing <5 MB, Gmail <25 MB).",
+  "x-privacyfold-tool-id": "pdf_compress",
+  "x-privacyfold-category": "pdf",
+  "x-privacyfold-engine": "/wasm/pdf/pdf-compress-v1.wasm",
+  "x-privacyfold-determinism-tier": "D",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/pdf_compress?mode=agent&source=mcp#payload",
+  "type": "object",
+  "properties": {
+    "preset": {
+      "type": "string",
+      "enum": [
+        "us-ca-dmv-real-id-docs",
+        "uscis-portal-pdf-under-12mb",
+        "ca-ircc-portal-pdf-under-4mb",
+        "uk-tls-vfs-visa-pdf-under-5mb",
+        "au-immiaccount-pdf-under-5mb",
+        "email-attachment-pdf-under-10mb",
+        "whatsapp-pdf-document-optimiser"
+      ]
+    },
+    "input": {
+      "type": "string",
+      "description": "Input text, data URI, or local File handle via data-pf='input'"
+    },
+    "options": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "input"
+  ]
+}

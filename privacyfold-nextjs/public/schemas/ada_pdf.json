@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://privacyfold.com/schemas/ada_pdf.json",
+  "title": "ADA & WCAG PDF accessibility checker",
+  "description": "Check document structure against US ADA Title II/III, Section 508, and PDF/UA (ISO 14289) accessibility rules: document title, language tag, heading nesting, and image alt attributes.",
+  "x-privacyfold-tool-id": "ada_pdf",
+  "x-privacyfold-category": "pdf",
+  "x-privacyfold-engine": "/wasm/pdf/ada-check-v1.wasm",
+  "x-privacyfold-determinism-tier": "D",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/ada_pdf?mode=agent&source=mcp#payload",
+  "type": "object",
+  "properties": {
+    "preset": {
+      "type": "string",
+      "enum": [
+        "ada-section-508-pdf-ua-audit"
+      ]
+    },
+    "input": {
+      "type": "string",
+      "description": "Input text, data URI, or local File handle via data-pf='input'"
+    },
+    "options": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "input"
+  ]
+}

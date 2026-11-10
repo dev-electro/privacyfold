@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://privacyfold.com/schemas/w9_prep.json",
+  "title": "W-9 form helper",
+  "description": "Prepare a clean IRS Form W-9 summary worksheet locally in your browser with formatted TIN/EIN and certification block.",
+  "x-privacyfold-tool-id": "w9_prep",
+  "x-privacyfold-category": "forms",
+  "x-privacyfold-engine": "/wasm/forms/w9-prep-v1.wasm",
+  "x-privacyfold-determinism-tier": "D",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/w9_prep?mode=agent&source=mcp#payload",
+  "type": "object",
+  "properties": {
+    "preset": {
+      "type": "string",
+      "enum": [
+        "us-irs-w9-tin-match"
+      ]
+    },
+    "input": {
+      "type": "string",
+      "description": "Input text, data URI, or local File handle via data-pf='input'"
+    },
+    "options": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "input"
+  ]
+}

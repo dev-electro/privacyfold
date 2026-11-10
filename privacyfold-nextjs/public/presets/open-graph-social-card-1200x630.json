@@ -1,0 +1,31 @@
+{
+  "id": "open-graph-social-card-1200x630",
+  "presetSlug": "open-graph-social-card-1200x630",
+  "tool": "social_resizer",
+  "toolSlug": "social-resizer",
+  "version": "2026.11.1",
+  "status": "active",
+  "title": "Open Graph (og:image) Social Share Card (1200\u00d7630px)",
+  "jurisdiction": "Open Graph Protocol",
+  "authority_name": "Open Graph Protocol",
+  "source_url": "https://ogp.me/",
+  "last_verified": "2026-11-01",
+  "stale_after_days": 90,
+  "supersedes": null,
+  "license": "CC-BY-4.0",
+  "dimensions_px": {
+    "width": 1200,
+    "height": 630
+  },
+  "max_size_kb": 800,
+  "dpi": 150,
+  "background": "#FFFFFF",
+  "constraints": {
+    "width_px": 1200,
+    "height_px": 630,
+    "max_size_kb": 800,
+    "dpi": 150,
+    "background_hex": "#FFFFFF",
+    "strip_exif": true
+  }
+}

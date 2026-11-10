@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://privacyfold.com/schemas/pdf_merge.json",
+  "title": "Merge PDF",
+  "description": "Combine multiple document sections or pages into a clean, metadata-free PDF file right in your browser.",
+  "x-privacyfold-tool-id": "pdf_merge",
+  "x-privacyfold-category": "pdf",
+  "x-privacyfold-engine": "/wasm/pdf/pdf-merge-v1.wasm",
+  "x-privacyfold-determinism-tier": "D",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/pdf_merge?mode=agent&source=mcp#payload",
+  "type": "object",
+  "properties": {
+    "preset": {
+      "type": "string",
+      "enum": [
+        "default"
+      ]
+    },
+    "input": {
+      "type": "string",
+      "description": "Input text, data URI, or local File handle via data-pf='input'"
+    },
+    "options": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "input"
+  ]
+}

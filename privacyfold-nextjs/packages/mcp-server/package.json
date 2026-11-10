@@ -1,0 +1,12 @@
+{
+  "name": "@privacyfold/mcp",
+  "version": "1.0.0",
+  "description": "Official Model Context Protocol (MCP) stdio server for all 40 PrivacyFold tools.",
+  "type": "module",
+  "bin": {
+    "privacyfold-mcp": "./index.mjs"
+  },
+  "scripts": {
+    "start": "node index.mjs"
+  }
+}

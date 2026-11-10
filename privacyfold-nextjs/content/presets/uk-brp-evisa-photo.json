@@ -1,0 +1,31 @@
+{
+  "id": "uk-brp-evisa-photo",
+  "presetSlug": "uk-brp-evisa-photo",
+  "tool": "passport_photo",
+  "toolSlug": "passport-photo",
+  "version": "2026.11.1",
+  "status": "active",
+  "title": "UKVI eVisa & Biometric Residence Permit Photo",
+  "jurisdiction": "UK Home Office",
+  "authority_name": "UK Home Office",
+  "source_url": "https://www.gov.uk/guidance/online-immigration-status-evisa",
+  "last_verified": "2026-11-01",
+  "stale_after_days": 90,
+  "supersedes": null,
+  "license": "CC-BY-4.0",
+  "dimensions_px": {
+    "width": 600,
+    "height": 750
+  },
+  "max_size_kb": 10000,
+  "dpi": 300,
+  "background": "#F5F5F5",
+  "constraints": {
+    "width_px": 600,
+    "height_px": 750,
+    "max_size_kb": 10000,
+    "dpi": 300,
+    "background_hex": "#F5F5F5",
+    "strip_exif": true
+  }
+}

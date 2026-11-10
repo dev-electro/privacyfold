@@ -1,0 +1,31 @@
+{
+  "id": "ca-ircc-portal-pdf-under-4mb",
+  "presetSlug": "ca-ircc-portal-pdf-under-4mb",
+  "tool": "pdf_compress",
+  "toolSlug": "pdf-compress",
+  "version": "2026.11.1",
+  "status": "active",
+  "title": "Canada IRCC Visa Document Bundle Under 4MB",
+  "jurisdiction": "IRCC Canada",
+  "authority_name": "IRCC Canada",
+  "source_url": "https://www.canada.ca/en/immigration-refugees-citizenship.html",
+  "last_verified": "2026-11-01",
+  "stale_after_days": 90,
+  "supersedes": null,
+  "license": "CC-BY-4.0",
+  "dimensions_px": {
+    "width": 0,
+    "height": 0
+  },
+  "max_size_kb": 3900,
+  "dpi": 150,
+  "background": "#FFFFFF",
+  "constraints": {
+    "width_px": 0,
+    "height_px": 0,
+    "max_size_kb": 3900,
+    "dpi": 150,
+    "background_hex": "#FFFFFF",
+    "strip_exif": true
+  }
+}

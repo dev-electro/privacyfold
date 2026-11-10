@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://privacyfold.com/schemas/base64.json",
+  "title": "Base64 encoder and decoder",
+  "description": "Convert text to Base64 and back. Handles any language and emoji.",
+  "x-privacyfold-tool-id": "base64",
+  "x-privacyfold-category": "dev",
+  "x-privacyfold-engine": "/wasm/dev/base64-v1.wasm",
+  "x-privacyfold-determinism-tier": "D",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/base64?mode=agent&source=mcp#payload",
+  "type": "object",
+  "properties": {
+    "preset": {
+      "type": "string",
+      "enum": [
+        "kubernetes-secret-base64-codec"
+      ]
+    },
+    "input": {
+      "type": "string",
+      "description": "Input text, data URI, or local File handle via data-pf='input'"
+    },
+    "options": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "input"
+  ]
+}

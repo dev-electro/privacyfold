@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://privacyfold.com/schemas/timestamp_conv.json",
+  "title": "Epoch / Unix timestamp & timezone converter",
+  "description": "Convert Unix timestamps (seconds, milliseconds, or nanoseconds) to human-readable ISO-8601, RFC-2822, and major global timezones (US, UK, EU, India, Japan).",
+  "x-privacyfold-tool-id": "timestamp_conv",
+  "x-privacyfold-category": "dev",
+  "x-privacyfold-engine": "/wasm/dev/timestamp-conv-v1.wasm",
+  "x-privacyfold-determinism-tier": "D",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/timestamp_conv?mode=agent&source=mcp#payload",
+  "type": "object",
+  "properties": {
+    "preset": {
+      "type": "string",
+      "enum": [
+        "default"
+      ]
+    },
+    "input": {
+      "type": "string",
+      "description": "Input text, data URI, or local File handle via data-pf='input'"
+    },
+    "options": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "input"
+  ]
+}

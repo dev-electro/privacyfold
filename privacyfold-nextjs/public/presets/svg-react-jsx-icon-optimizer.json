@@ -1,0 +1,31 @@
+{
+  "id": "svg-react-jsx-icon-optimizer",
+  "presetSlug": "svg-react-jsx-icon-optimizer",
+  "tool": "svg_optimize",
+  "toolSlug": "svg-optimize",
+  "version": "2026.11.1",
+  "status": "active",
+  "title": "SVG Path Precision & XSS Script Sanitizer for Icons",
+  "jurisdiction": "W3C SVG WG",
+  "authority_name": "W3C SVG WG",
+  "source_url": "https://www.w3.org/TR/SVG2/",
+  "last_verified": "2026-11-01",
+  "stale_after_days": 90,
+  "supersedes": null,
+  "license": "CC-BY-4.0",
+  "dimensions_px": {
+    "width": 0,
+    "height": 0
+  },
+  "max_size_kb": 2000,
+  "dpi": 0,
+  "background": "none",
+  "constraints": {
+    "width_px": 0,
+    "height_px": 0,
+    "max_size_kb": 2000,
+    "dpi": 0,
+    "background_hex": "none",
+    "strip_exif": true
+  }
+}

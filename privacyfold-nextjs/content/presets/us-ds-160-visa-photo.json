@@ -1,0 +1,31 @@
+{
+  "id": "us-ds-160-visa-photo",
+  "presetSlug": "us-ds-160-visa-photo",
+  "tool": "passport_photo",
+  "toolSlug": "passport-photo",
+  "version": "2026.11.1",
+  "status": "active",
+  "title": "US DS-160 Nonimmigrant Visa Photo (600\u00d7600px, \u2264240KB)",
+  "jurisdiction": "US State Dept",
+  "authority_name": "US State Dept",
+  "source_url": "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/photos.html",
+  "last_verified": "2026-11-01",
+  "stale_after_days": 90,
+  "supersedes": null,
+  "license": "CC-BY-4.0",
+  "dimensions_px": {
+    "width": 600,
+    "height": 600
+  },
+  "max_size_kb": 240,
+  "dpi": 300,
+  "background": "#FFFFFF",
+  "constraints": {
+    "width_px": 600,
+    "height_px": 600,
+    "max_size_kb": 240,
+    "dpi": 300,
+    "background_hex": "#FFFFFF",
+    "strip_exif": true
+  }
+}

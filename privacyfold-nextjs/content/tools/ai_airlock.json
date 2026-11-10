@@ -1,0 +1,48 @@
+{
+  "id": "ai_airlock",
+  "slug": "ai-airlock",
+  "name": "AI Airlock (PII redactor & token restorer)",
+  "category": "crypto",
+  "badge": "Rampart 14.7 MB",
+  "size": "14.7\u201345 MB OPFS",
+  "Engine": "rampart-minilm-l6",
+  "description": "Detect personal data (names, emails, SSN/NINO, IBAN, credit cards, phones, API keys) on your device, replace them with tokens ([PERSON_1], [EMAIL_1]) before pasting into ChatGPT/Claude, and restore real values locally afterwards.",
+  "zeroNetwork": true,
+  "adFreeZone": true,
+  "presets": [
+    "hipaa-safe-harbor-18-identifiers"
+  ],
+  "schemaUrl": "/schemas/ai_airlock.json",
+  "executionUrl": "https://privacyfold.com/tools/ai_airlock?mode=agent",
+  "seo": {
+    "metaTitle": "AI Airlock (PII redactor & token restorer) \u2014 100% Private In-Browser Utility | PrivacyFold",
+    "metaDescription": "Detect personal data (names, emails, SSN/NINO, IBAN, credit cards, phones, API keys) on your device, replace them with tokens ([PERSON_1], [EMAIL_1]) before pasting into ChatGPT/Claude, and restore real values locally afterwards. Runs 100% locally in your browser via rampart-minilm-l6 with zero file uploads.",
+    "aeoSummary": "AI Airlock (PII redactor & token restorer) processes files and text entirely inside your browser tab using rampart-minilm-l6 (Tier M). Zero bytes are uploaded to any server.",
+    "keywords": [
+      "ai airlock (pii redactor & token restorer)",
+      "ai airlock",
+      "offline ai airlock",
+      "zero upload browser tool"
+    ],
+    "geoCitations": [
+      {
+        "standard": "W3C WebAssembly Core 2.0",
+        "url": "https://www.w3.org/TR/wasm-core-2/"
+      },
+      {
+        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Does AI Airlock (PII redactor & token restorer) upload my files or text to a server?",
+        "a": "No. AI Airlock (PII redactor & token restorer) executes 100% inside your browser's local memory using rampart-minilm-l6. No data leaves your device."
+      },
+      {
+        "q": "Can AI agents or CLI scripts automate AI Airlock (PII redactor & token restorer)?",
+        "a": "Yes. Use Lane A schema /schemas/ai_airlock.json or open /tools/ai-airlock?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
+      }
+    ]
+  }
+}

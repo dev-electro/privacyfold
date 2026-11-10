@@ -1,0 +1,62 @@
+{
+  "id": "social_resizer",
+  "slug": "social-resizer",
+  "name": "Social media, e-commerce & app icon resizer",
+  "category": "image",
+  "badge": "83 Presets",
+  "size": "18\u2013120 KB WASM",
+  "Engine": "/wasm/image/image-resize-v1.wasm",
+  "description": "One-click image resizer pre-loaded with official platform dimensions from `presets/social-media-sizes.json`, `ecommerce-sizes.json`, and `developer-icons.json` (Amazon 1000\u00d71000, Shopify 2048\u00d72048, LinkedIn 400\u00d7400 & 1584\u00d7396 Banner, Instagram 1080\u00d71080, YouTube 1280\u00d7720, OG Image 1200\u00d7630, iOS/Android App Icon 512\u00d7512).",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "presets": [
+    "amazon-main-image-2000x2000",
+    "shopify-product-2048x2048",
+    "etsy-listing-2000x1600",
+    "ebay-1600x1600-clean-bg",
+    "walmart-marketplace-2000x2000",
+    "poshmark-square-1200x1200",
+    "google-merchant-center-product",
+    "app-store-screenshot-6-7",
+    "linkedin-banner-1584x396",
+    "youtube-thumbnail-1280x720-2mb",
+    "instagram-carousel-1080x1350",
+    "instagram-reels-tiktok-1080x1920",
+    "x-twitter-header-1500x500",
+    "open-graph-social-card-1200x630",
+    "discord-server-emoji-128x128"
+  ],
+  "schemaUrl": "/schemas/social_resizer.json",
+  "executionUrl": "https://privacyfold.com/tools/social_resizer?mode=agent",
+  "seo": {
+    "metaTitle": "Social media, e-commerce & app icon resizer \u2014 100% Private In-Browser Utility | PrivacyFold",
+    "metaDescription": "One-click image resizer pre-loaded with official platform dimensions from `presets/social-media-sizes.json`, `ecommerce-sizes.json`, and `developer-icons.json` (Amazon 1000\u00d71000, Shopify 2048\u00d72048, LinkedIn 400\u00d7400 & 1584\u00d7396 Banner, Instagram 1080\u00d71080, YouTube 1280\u00d7720, OG Image 1200\u00d7630, iOS/Android App Icon 512\u00d7512). Runs 100% locally in your browser via /wasm/image/image-resize-v1.wasm with zero file uploads.",
+    "aeoSummary": "Social media, e-commerce & app icon resizer processes files and text entirely inside your browser tab using /wasm/image/image-resize-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
+    "keywords": [
+      "social media, e-commerce & app icon resizer",
+      "social resizer",
+      "offline social resizer",
+      "zero upload browser tool"
+    ],
+    "geoCitations": [
+      {
+        "standard": "W3C WebAssembly Core 2.0",
+        "url": "https://www.w3.org/TR/wasm-core-2/"
+      },
+      {
+        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Does Social media, e-commerce & app icon resizer upload my files or text to a server?",
+        "a": "No. Social media, e-commerce & app icon resizer executes 100% inside your browser's local memory using /wasm/image/image-resize-v1.wasm. No data leaves your device."
+      },
+      {
+        "q": "Can AI agents or CLI scripts automate Social media, e-commerce & app icon resizer?",
+        "a": "Yes. Use Lane A schema /schemas/social_resizer.json or open /tools/social-resizer?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
+      }
+    ]
+  }
+}

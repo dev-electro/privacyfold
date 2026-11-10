@@ -1,0 +1,49 @@
+{
+  "id": "privacy_letter",
+  "slug": "privacy-letter",
+  "name": "GDPR, CCPA & privacy policy generator",
+  "category": "crypto",
+  "badge": "GDPR, CCPA",
+  "size": "18\u2013120 KB WASM",
+  "Engine": "/wasm/generators/privacy-letter-v1.wasm",
+  "description": "Generate legally structured GDPR Data Subject Access/Erasure Requests (EN/DE/FR), California CCPA Do-Not-Sell Opt-Out letters, Privacy Policies, or GDPR Art. 33 72-Hour Breach Notifications from `templates/gdpr-request-eu.json` and `ccpa-optout-ca.json`.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "presets": [
+    "gdpr-art-17-erasure-letter",
+    "ccpa-cpra-do-not-sell-request"
+  ],
+  "schemaUrl": "/schemas/privacy_letter.json",
+  "executionUrl": "https://privacyfold.com/tools/privacy_letter?mode=agent",
+  "seo": {
+    "metaTitle": "GDPR, CCPA & privacy policy generator \u2014 100% Private In-Browser Utility | PrivacyFold",
+    "metaDescription": "Generate legally structured GDPR Data Subject Access/Erasure Requests (EN/DE/FR), California CCPA Do-Not-Sell Opt-Out letters, Privacy Policies, or GDPR Art. 33 72-Hour Breach Notifications from `templates/gdpr-request-eu.json` and `ccpa-optout-ca.json`. Runs 100% locally in your browser via /wasm/generators/privacy-letter-v1.wasm with zero file uploads.",
+    "aeoSummary": "GDPR, CCPA & privacy policy generator processes files and text entirely inside your browser tab using /wasm/generators/privacy-letter-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
+    "keywords": [
+      "gdpr, ccpa & privacy policy generator",
+      "privacy letter",
+      "offline privacy letter",
+      "zero upload browser tool"
+    ],
+    "geoCitations": [
+      {
+        "standard": "W3C WebAssembly Core 2.0",
+        "url": "https://www.w3.org/TR/wasm-core-2/"
+      },
+      {
+        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Does GDPR, CCPA & privacy policy generator upload my files or text to a server?",
+        "a": "No. GDPR, CCPA & privacy policy generator executes 100% inside your browser's local memory using /wasm/generators/privacy-letter-v1.wasm. No data leaves your device."
+      },
+      {
+        "q": "Can AI agents or CLI scripts automate GDPR, CCPA & privacy policy generator?",
+        "a": "Yes. Use Lane A schema /schemas/privacy_letter.json or open /tools/privacy-letter?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://privacyfold.com/schemas/voice_transcribe.json",
+  "title": "Speech-to-text & audio transcriber",
+  "description": "Transcribe English voice recordings 5\u00d7 faster than real-time with Moonshine-tiny (~28 MB MIT ONNX) or Whisper-tiny, with Silero VAD silence trimming and SRT/VTT subtitle export.",
+  "x-privacyfold-tool-id": "voice_transcribe",
+  "x-privacyfold-category": "image",
+  "x-privacyfold-engine": "moonshine-tiny-en",
+  "x-privacyfold-determinism-tier": "M",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/voice_transcribe?mode=agent&source=mcp#payload",
+  "type": "object",
+  "properties": {
+    "preset": {
+      "type": "string",
+      "enum": [
+        "default"
+      ]
+    },
+    "input": {
+      "type": "string",
+      "description": "Input text, data URI, or local File handle via data-pf='input'"
+    },
+    "options": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "input"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "email-attachment-pdf-under-10mb",
+  "presetSlug": "email-attachment-pdf-under-10mb",
+  "tool": "pdf_compress",
+  "toolSlug": "pdf-compress",
+  "version": "2026.11.1",
+  "status": "active",
+  "title": "Gmail / Outlook Safe Email Attachment PDF (<10MB)",
+  "jurisdiction": "Email Standards",
+  "authority_name": "Email Standards",
+  "source_url": "https://support.google.com/mail/answer/6584",
+  "last_verified": "2026-11-01",
+  "stale_after_days": 90,
+  "supersedes": null,
+  "license": "CC-BY-4.0",
+  "dimensions_px": {
+    "width": 0,
+    "height": 0
+  },
+  "max_size_kb": 9500,
+  "dpi": 150,
+  "background": "#FFFFFF",
+  "constraints": {
+    "width_px": 0,
+    "height_px": 0,
+    "max_size_kb": 9500,
+    "dpi": 150,
+    "background_hex": "#FFFFFF",
+    "strip_exif": true
+  }
+}

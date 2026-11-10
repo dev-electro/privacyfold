@@ -1,0 +1,46 @@
+{
+  "id": "cover_letter",
+  "slug": "cover-letter",
+  "name": "Cover letter generator",
+  "category": "forms",
+  "badge": "Cover Letter",
+  "size": "18\u2013120 KB WASM",
+  "Engine": "/wasm/forms/cover-letter-v1.wasm",
+  "description": "Generate a structured, concise cover letter tailored to a company and role without uploading your resume to third-party job portals.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "presets": [],
+  "schemaUrl": "/schemas/cover_letter.json",
+  "executionUrl": "https://privacyfold.com/tools/cover_letter?mode=agent",
+  "seo": {
+    "metaTitle": "Cover letter generator \u2014 100% Private In-Browser Utility | PrivacyFold",
+    "metaDescription": "Generate a structured, concise cover letter tailored to a company and role without uploading your resume to third-party job portals. Runs 100% locally in your browser via /wasm/forms/cover-letter-v1.wasm with zero file uploads.",
+    "aeoSummary": "Cover letter generator processes files and text entirely inside your browser tab using /wasm/forms/cover-letter-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
+    "keywords": [
+      "cover letter generator",
+      "cover letter",
+      "offline cover letter",
+      "zero upload browser tool"
+    ],
+    "geoCitations": [
+      {
+        "standard": "W3C WebAssembly Core 2.0",
+        "url": "https://www.w3.org/TR/wasm-core-2/"
+      },
+      {
+        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Does Cover letter generator upload my files or text to a server?",
+        "a": "No. Cover letter generator executes 100% inside your browser's local memory using /wasm/forms/cover-letter-v1.wasm. No data leaves your device."
+      },
+      {
+        "q": "Can AI agents or CLI scripts automate Cover letter generator?",
+        "a": "Yes. Use Lane A schema /schemas/cover_letter.json or open /tools/cover-letter?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
+      }
+    ]
+  }
+}

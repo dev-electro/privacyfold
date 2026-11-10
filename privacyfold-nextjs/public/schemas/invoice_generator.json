@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://privacyfold.com/schemas/invoice_generator.json",
+  "title": "Private invoice generator",
+  "description": "Generate itemized freelance or SMB invoices from `templates/invoice-us.json` with automatic line-item totals and tax calculation\u2014zero cloud accounting accounts required.",
+  "x-privacyfold-tool-id": "invoice_generator",
+  "x-privacyfold-category": "forms",
+  "x-privacyfold-engine": "/templates/invoice-us.json",
+  "x-privacyfold-determinism-tier": "D",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/invoice_generator?mode=agent&source=mcp#payload",
+  "type": "object",
+  "properties": {
+    "preset": {
+      "type": "string",
+      "enum": [
+        "default"
+      ]
+    },
+    "input": {
+      "type": "string",
+      "description": "Input text, data URI, or local File handle via data-pf='input'"
+    },
+    "options": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "input"
+  ]
+}

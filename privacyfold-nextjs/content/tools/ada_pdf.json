@@ -1,0 +1,48 @@
+{
+  "id": "ada_pdf",
+  "slug": "ada-pdf",
+  "name": "ADA & WCAG PDF accessibility checker",
+  "category": "pdf",
+  "badge": "ADA, Section 508",
+  "size": "18\u2013120 KB WASM",
+  "Engine": "/wasm/pdf/ada-check-v1.wasm",
+  "description": "Check document structure against US ADA Title II/III, Section 508, and PDF/UA (ISO 14289) accessibility rules: document title, language tag, heading nesting, and image alt attributes.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "presets": [
+    "ada-section-508-pdf-ua-audit"
+  ],
+  "schemaUrl": "/schemas/ada_pdf.json",
+  "executionUrl": "https://privacyfold.com/tools/ada_pdf?mode=agent",
+  "seo": {
+    "metaTitle": "ADA & WCAG PDF accessibility checker \u2014 100% Private In-Browser Utility | PrivacyFold",
+    "metaDescription": "Check document structure against US ADA Title II/III, Section 508, and PDF/UA (ISO 14289) accessibility rules: document title, language tag, heading nesting, and image alt attributes. Runs 100% locally in your browser via /wasm/pdf/ada-check-v1.wasm with zero file uploads.",
+    "aeoSummary": "ADA & WCAG PDF accessibility checker processes files and text entirely inside your browser tab using /wasm/pdf/ada-check-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
+    "keywords": [
+      "ada & wcag pdf accessibility checker",
+      "ada pdf",
+      "offline ada pdf",
+      "zero upload browser tool"
+    ],
+    "geoCitations": [
+      {
+        "standard": "W3C WebAssembly Core 2.0",
+        "url": "https://www.w3.org/TR/wasm-core-2/"
+      },
+      {
+        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Does ADA & WCAG PDF accessibility checker upload my files or text to a server?",
+        "a": "No. ADA & WCAG PDF accessibility checker executes 100% inside your browser's local memory using /wasm/pdf/ada-check-v1.wasm. No data leaves your device."
+      },
+      {
+        "q": "Can AI agents or CLI scripts automate ADA & WCAG PDF accessibility checker?",
+        "a": "Yes. Use Lane A schema /schemas/ada_pdf.json or open /tools/ada-pdf?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
+      }
+    ]
+  }
+}

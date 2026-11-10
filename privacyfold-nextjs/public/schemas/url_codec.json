@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://privacyfold.com/schemas/url_codec.json",
+  "title": "URL encoder, decoder & parser",
+  "description": "Decode or encode URL strings and break down query parameters, host, path, and protocol.",
+  "x-privacyfold-tool-id": "url_codec",
+  "x-privacyfold-category": "dev",
+  "x-privacyfold-engine": "/wasm/dev/url-codec-v1.wasm",
+  "x-privacyfold-determinism-tier": "D",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/url_codec?mode=agent&source=mcp#payload",
+  "type": "object",
+  "properties": {
+    "preset": {
+      "type": "string",
+      "enum": [
+        "default"
+      ]
+    },
+    "input": {
+      "type": "string",
+      "description": "Input text, data URI, or local File handle via data-pf='input'"
+    },
+    "options": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "input"
+  ]
+}

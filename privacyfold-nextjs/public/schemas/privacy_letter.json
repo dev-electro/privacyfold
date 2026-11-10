@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://privacyfold.com/schemas/privacy_letter.json",
+  "title": "GDPR, CCPA & privacy policy generator",
+  "description": "Generate legally structured GDPR Data Subject Access/Erasure Requests (EN/DE/FR), California CCPA Do-Not-Sell Opt-Out letters, Privacy Policies, or GDPR Art. 33 72-Hour Breach Notifications from `templates/gdpr-request-eu.json` and `ccpa-optout-ca.json`.",
+  "x-privacyfold-tool-id": "privacy_letter",
+  "x-privacyfold-category": "crypto",
+  "x-privacyfold-engine": "/wasm/generators/privacy-letter-v1.wasm",
+  "x-privacyfold-determinism-tier": "D",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/privacy_letter?mode=agent&source=mcp#payload",
+  "type": "object",
+  "properties": {
+    "preset": {
+      "type": "string",
+      "enum": [
+        "gdpr-art-17-erasure-letter",
+        "ccpa-cpra-do-not-sell-request"
+      ]
+    },
+    "input": {
+      "type": "string",
+      "description": "Input text, data URI, or local File handle via data-pf='input'"
+    },
+    "options": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "input"
+  ]
+}

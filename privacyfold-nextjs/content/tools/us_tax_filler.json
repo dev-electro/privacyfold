@@ -1,0 +1,48 @@
+{
+  "id": "us_tax_filler",
+  "slug": "us-tax-filler",
+  "name": "US tax form filler (W-2, 1099-NEC, 1040-EZ)",
+  "category": "forms",
+  "badge": "W-2, 1099, 1040",
+  "size": "18\u2013120 KB WASM",
+  "Engine": "/wasm/forms/us-tax-filler-v1.wasm",
+  "description": "Compute and format IRS Form W-2 wage boxes, Form 1099-NEC nonemployee compensation, and Form 1040 standard deduction estimates without uploading financial data to tax-prep servers.",
+  "zeroNetwork": true,
+  "adFreeZone": true,
+  "presets": [
+    "us-irs-1040-schedule-c-prep"
+  ],
+  "schemaUrl": "/schemas/us_tax_filler.json",
+  "executionUrl": "https://privacyfold.com/tools/us_tax_filler?mode=agent",
+  "seo": {
+    "metaTitle": "US tax form filler (W-2, 1099-NEC, 1040-EZ) \u2014 100% Private In-Browser Utility | PrivacyFold",
+    "metaDescription": "Compute and format IRS Form W-2 wage boxes, Form 1099-NEC nonemployee compensation, and Form 1040 standard deduction estimates without uploading financial data to tax-prep servers. Runs 100% locally in your browser via /wasm/forms/us-tax-filler-v1.wasm with zero file uploads.",
+    "aeoSummary": "US tax form filler (W-2, 1099-NEC, 1040-EZ) processes files and text entirely inside your browser tab using /wasm/forms/us-tax-filler-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
+    "keywords": [
+      "us tax form filler (w-2, 1099-nec, 1040-ez)",
+      "us tax filler",
+      "offline us tax filler",
+      "zero upload browser tool"
+    ],
+    "geoCitations": [
+      {
+        "standard": "W3C WebAssembly Core 2.0",
+        "url": "https://www.w3.org/TR/wasm-core-2/"
+      },
+      {
+        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Does US tax form filler (W-2, 1099-NEC, 1040-EZ) upload my files or text to a server?",
+        "a": "No. US tax form filler (W-2, 1099-NEC, 1040-EZ) executes 100% inside your browser's local memory using /wasm/forms/us-tax-filler-v1.wasm. No data leaves your device."
+      },
+      {
+        "q": "Can AI agents or CLI scripts automate US tax form filler (W-2, 1099-NEC, 1040-EZ)?",
+        "a": "Yes. Use Lane A schema /schemas/us_tax_filler.json or open /tools/us-tax-filler?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
+      }
+    ]
+  }
+}

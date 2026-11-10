@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://privacyfold.com/schemas/unit_converter.json",
+  "title": "Unit converter (Imperial \u2194 Metric)",
+  "description": "Convert between US Imperial and Metric units (inches \u2194 mm/cm, lbs \u2194 kg, \u00b0F \u2194 \u00b0C, miles \u2194 km, and print millimeters \u2194 pixels at 300/600 DPI).",
+  "x-privacyfold-tool-id": "unit_converter",
+  "x-privacyfold-category": "dev",
+  "x-privacyfold-engine": "/wasm/dev/unit-converter-v1.wasm",
+  "x-privacyfold-determinism-tier": "D",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/unit_converter?mode=agent&source=mcp#payload",
+  "type": "object",
+  "properties": {
+    "preset": {
+      "type": "string",
+      "enum": [
+        "default"
+      ]
+    },
+    "input": {
+      "type": "string",
+      "description": "Input text, data URI, or local File handle via data-pf='input'"
+    },
+    "options": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "input"
+  ]
+}

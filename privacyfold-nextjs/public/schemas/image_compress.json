@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://privacyfold.com/schemas/image_compress.json",
+  "title": "Image compressor",
+  "description": "Make photos and images smaller without uploading them. Choose a quality and size, and see the new file size before you download.",
+  "x-privacyfold-tool-id": "image_compress",
+  "x-privacyfold-category": "image",
+  "x-privacyfold-engine": "/wasm/image/image-compress-v1.wasm",
+  "x-privacyfold-determinism-tier": "D",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/image_compress?mode=agent&source=mcp#payload",
+  "type": "object",
+  "properties": {
+    "preset": {
+      "type": "string",
+      "enum": [
+        "uk-visa-vfs-docs",
+        "web-ready-webp"
+      ]
+    },
+    "input": {
+      "type": "string",
+      "description": "Input text, data URI, or local File handle via data-pf='input'"
+    },
+    "options": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "input"
+  ]
+}

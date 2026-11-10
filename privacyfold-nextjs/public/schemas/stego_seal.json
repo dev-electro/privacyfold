@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://privacyfold.com/schemas/stego_seal.json",
+  "title": "Watermark & document stamp",
+  "description": "Add a visible status stamp (such as Confidential, Approved or Draft) to an image or document page, plus an optional embedded recipient ID.",
+  "x-privacyfold-tool-id": "stego_seal",
+  "x-privacyfold-category": "crypto",
+  "x-privacyfold-engine": "/wasm/crypto/stego-seal-v1.wasm",
+  "x-privacyfold-determinism-tier": "D",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/stego_seal?mode=agent&source=mcp#payload",
+  "type": "object",
+  "properties": {
+    "preset": {
+      "type": "string",
+      "enum": [
+        "default"
+      ]
+    },
+    "input": {
+      "type": "string",
+      "description": "Input text, data URI, or local File handle via data-pf='input'"
+    },
+    "options": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "input"
+  ]
+}

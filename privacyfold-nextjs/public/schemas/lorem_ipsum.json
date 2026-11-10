@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://privacyfold.com/schemas/lorem_ipsum.json",
+  "title": "Lorem Ipsum & placeholder text generator",
+  "description": "Generate classic Latin Lorem Ipsum or privacy-themed design system placeholder paragraphs for wireframes and layouts.",
+  "x-privacyfold-tool-id": "lorem_ipsum",
+  "x-privacyfold-category": "dev",
+  "x-privacyfold-engine": "/wasm/generators/lorem-ipsum-v1.wasm",
+  "x-privacyfold-determinism-tier": "D",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/lorem_ipsum?mode=agent&source=mcp#payload",
+  "type": "object",
+  "properties": {
+    "preset": {
+      "type": "string",
+      "enum": [
+        "default"
+      ]
+    },
+    "input": {
+      "type": "string",
+      "description": "Input text, data URI, or local File handle via data-pf='input'"
+    },
+    "options": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "input"
+  ]
+}

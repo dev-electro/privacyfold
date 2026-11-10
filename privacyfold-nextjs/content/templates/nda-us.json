@@ -1,0 +1,19 @@
+{
+  "id": "nda-us",
+  "title": "US Mutual Non-Disclosure Agreement (Standard Delaware / California)",
+  "tool": "nda_generator",
+  "jurisdiction": "US",
+  "governing_law_options": [
+    "Delaware",
+    "California",
+    "New York",
+    "Texas"
+  ],
+  "clauses": [
+    "Definition of Confidential Information",
+    "Standard Exclusions",
+    "3-Year Term",
+    "Injunctive Relief",
+    "Return or Destruction of Materials"
+  ]
+}

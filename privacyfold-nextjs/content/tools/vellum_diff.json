@@ -1,0 +1,46 @@
+{
+  "id": "vellum_diff",
+  "slug": "vellum-diff",
+  "name": "Document & image compare",
+  "category": "pdf",
+  "badge": "PNG, JPG, Page",
+  "size": "18\u2013120 KB WASM",
+  "Engine": "/wasm/pdf/vellum-diff-v1.wasm",
+  "description": "Overlay two versions of a document, contract or image to spot differences. Changed text, numbers or pixels are highlighted in red.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "presets": [],
+  "schemaUrl": "/schemas/vellum_diff.json",
+  "executionUrl": "https://privacyfold.com/tools/vellum_diff?mode=agent",
+  "seo": {
+    "metaTitle": "Document & image compare \u2014 100% Private In-Browser Utility | PrivacyFold",
+    "metaDescription": "Overlay two versions of a document, contract or image to spot differences. Changed text, numbers or pixels are highlighted in red. Runs 100% locally in your browser via /wasm/pdf/vellum-diff-v1.wasm with zero file uploads.",
+    "aeoSummary": "Document & image compare processes files and text entirely inside your browser tab using /wasm/pdf/vellum-diff-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
+    "keywords": [
+      "document & image compare",
+      "vellum diff",
+      "offline vellum diff",
+      "zero upload browser tool"
+    ],
+    "geoCitations": [
+      {
+        "standard": "W3C WebAssembly Core 2.0",
+        "url": "https://www.w3.org/TR/wasm-core-2/"
+      },
+      {
+        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Does Document & image compare upload my files or text to a server?",
+        "a": "No. Document & image compare executes 100% inside your browser's local memory using /wasm/pdf/vellum-diff-v1.wasm. No data leaves your device."
+      },
+      {
+        "q": "Can AI agents or CLI scripts automate Document & image compare?",
+        "a": "Yes. Use Lane A schema /schemas/vellum_diff.json or open /tools/vellum-diff?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
+      }
+    ]
+  }
+}

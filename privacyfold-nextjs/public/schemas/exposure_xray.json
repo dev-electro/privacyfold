@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://privacyfold.com/schemas/exposure_xray.json",
+  "title": "Exposure X-ray & redaction self-test",
+  "description": "Drop any photo, PDF, or text snippet to see what it gives away: GPS pins, camera serials, timestamps, author history, and hidden PDF text layers\u2014plus a Redaction Self-Test proving 0 hidden words are recoverable.",
+  "x-privacyfold-tool-id": "exposure_xray",
+  "x-privacyfold-category": "crypto",
+  "x-privacyfold-engine": "/wasm/crypto/exposure-xray-v1.wasm",
+  "x-privacyfold-determinism-tier": "D",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/exposure_xray?mode=agent&source=mcp#payload",
+  "type": "object",
+  "properties": {
+    "preset": {
+      "type": "string",
+      "enum": [
+        "default"
+      ]
+    },
+    "input": {
+      "type": "string",
+      "description": "Input text, data URI, or local File handle via data-pf='input'"
+    },
+    "options": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "input"
+  ]
+}

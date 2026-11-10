@@ -1,0 +1,46 @@
+{
+  "id": "qr_tool",
+  "slug": "qr-tool",
+  "name": "QR code generator & Wi-Fi card",
+  "category": "image",
+  "badge": "QR, 0 MB",
+  "size": "18\u2013120 KB WASM",
+  "Engine": "/wasm/image/qr-tool-v1.wasm",
+  "description": "Generate high-contrast QR codes for website links, Wi-Fi logins, or vCards locally with zero tracking redirects.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "presets": [],
+  "schemaUrl": "/schemas/qr_tool.json",
+  "executionUrl": "https://privacyfold.com/tools/qr_tool?mode=agent",
+  "seo": {
+    "metaTitle": "QR code generator & Wi-Fi card \u2014 100% Private In-Browser Utility | PrivacyFold",
+    "metaDescription": "Generate high-contrast QR codes for website links, Wi-Fi logins, or vCards locally with zero tracking redirects. Runs 100% locally in your browser via /wasm/image/qr-tool-v1.wasm with zero file uploads.",
+    "aeoSummary": "QR code generator & Wi-Fi card processes files and text entirely inside your browser tab using /wasm/image/qr-tool-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
+    "keywords": [
+      "qr code generator & wi-fi card",
+      "qr tool",
+      "offline qr tool",
+      "zero upload browser tool"
+    ],
+    "geoCitations": [
+      {
+        "standard": "W3C WebAssembly Core 2.0",
+        "url": "https://www.w3.org/TR/wasm-core-2/"
+      },
+      {
+        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Does QR code generator & Wi-Fi card upload my files or text to a server?",
+        "a": "No. QR code generator & Wi-Fi card executes 100% inside your browser's local memory using /wasm/image/qr-tool-v1.wasm. No data leaves your device."
+      },
+      {
+        "q": "Can AI agents or CLI scripts automate QR code generator & Wi-Fi card?",
+        "a": "Yes. Use Lane A schema /schemas/qr_tool.json or open /tools/qr-tool?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
+      }
+    ]
+  }
+}

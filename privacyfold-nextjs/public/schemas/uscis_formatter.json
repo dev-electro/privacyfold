@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://privacyfold.com/schemas/uscis_formatter.json",
+  "title": "USCIS immigration packet formatter (I-130, I-485, I-765, N-400)",
+  "description": "Generate a properly structured USCIS petition cover letter, numbered exhibit table of contents, and myUSCIS portal file-size verification checklist for I-130, I-485, I-765, or N-400 filings.",
+  "x-privacyfold-tool-id": "uscis_formatter",
+  "x-privacyfold-category": "forms",
+  "x-privacyfold-engine": "/wasm/forms/uscis-formatter-v1.wasm",
+  "x-privacyfold-determinism-tier": "D",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/uscis_formatter?mode=agent&source=mcp#payload",
+  "type": "object",
+  "properties": {
+    "preset": {
+      "type": "string",
+      "enum": [
+        "uscis-i485-evidence-binder"
+      ]
+    },
+    "input": {
+      "type": "string",
+      "description": "Input text, data URI, or local File handle via data-pf='input'"
+    },
+    "options": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "input"
+  ]
+}

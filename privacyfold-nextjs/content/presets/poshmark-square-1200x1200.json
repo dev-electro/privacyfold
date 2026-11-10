@@ -1,0 +1,31 @@
+{
+  "id": "poshmark-square-1200x1200",
+  "presetSlug": "poshmark-square-1200x1200",
+  "tool": "social_resizer",
+  "toolSlug": "social-resizer",
+  "version": "2026.11.1",
+  "status": "active",
+  "title": "Poshmark & Depop Square Product Cover (1200\u00d71200px)",
+  "jurisdiction": "Poshmark",
+  "authority_name": "Poshmark",
+  "source_url": "https://poshmark.com/",
+  "last_verified": "2026-11-01",
+  "stale_after_days": 90,
+  "supersedes": null,
+  "license": "CC-BY-4.0",
+  "dimensions_px": {
+    "width": 1200,
+    "height": 1200
+  },
+  "max_size_kb": 1500,
+  "dpi": 150,
+  "background": "#FFFFFF",
+  "constraints": {
+    "width_px": 1200,
+    "height_px": 1200,
+    "max_size_kb": 1500,
+    "dpi": 150,
+    "background_hex": "#FFFFFF",
+    "strip_exif": true
+  }
+}

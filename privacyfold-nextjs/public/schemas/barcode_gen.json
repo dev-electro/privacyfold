@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://privacyfold.com/schemas/barcode_gen.json",
+  "title": "Barcode generator (Code 128, EAN-13, UPC-A)",
+  "description": "Generate crisp, vector SVG barcodes (Code 128, EAN-13, UPC-A) locally in your browser with zero tracking pixels.",
+  "x-privacyfold-tool-id": "barcode_gen",
+  "x-privacyfold-category": "dev",
+  "x-privacyfold-engine": "/wasm/utility/qr-generate-v1.wasm",
+  "x-privacyfold-determinism-tier": "D",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/barcode_gen?mode=agent&source=mcp#payload",
+  "type": "object",
+  "properties": {
+    "preset": {
+      "type": "string",
+      "enum": [
+        "gs1-ean13-retail-barcode"
+      ]
+    },
+    "input": {
+      "type": "string",
+      "description": "Input text, data URI, or local File handle via data-pf='input'"
+    },
+    "options": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "input"
+  ]
+}

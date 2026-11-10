@@ -1,0 +1,31 @@
+{
+  "id": "nl-pasfoto-matrix-2020",
+  "presetSlug": "nl-pasfoto-matrix-2020",
+  "tool": "passport_photo",
+  "toolSlug": "passport-photo",
+  "version": "2026.11.1",
+  "status": "active",
+  "title": "Netherlands Rijksoverheid Pasfoto Matrix (35\u00d745mm)",
+  "jurisdiction": "Rijksoverheid NL",
+  "authority_name": "Rijksoverheid NL",
+  "source_url": "https://www.rijksoverheid.nl/onderwerpen/paspoort-en-identiteitskaart/eisen-aan-de-pasfoto-voor-paspoort-of-id-kaart",
+  "last_verified": "2026-11-01",
+  "stale_after_days": 90,
+  "supersedes": null,
+  "license": "CC-BY-4.0",
+  "dimensions_px": {
+    "width": 413,
+    "height": 531
+  },
+  "max_size_kb": 500,
+  "dpi": 300,
+  "background": "#EDEDED",
+  "constraints": {
+    "width_px": 413,
+    "height_px": 531,
+    "max_size_kb": 500,
+    "dpi": 300,
+    "background_hex": "#EDEDED",
+    "strip_exif": true
+  }
+}

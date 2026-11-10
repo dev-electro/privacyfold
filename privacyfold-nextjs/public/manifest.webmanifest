@@ -1,0 +1,8 @@
+{
+  "name": "PrivacyFold \u2014 100% Client-Side File & Privacy Tools",
+  "short_name": "PrivacyFold",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F5F2E9",
+  "theme_color": "#FF5A1F"
+}

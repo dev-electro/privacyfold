@@ -1,0 +1,31 @@
+{
+  "id": "google-merchant-center-product",
+  "presetSlug": "google-merchant-center-product",
+  "tool": "social_resizer",
+  "toolSlug": "social-resizer",
+  "version": "2026.11.1",
+  "status": "active",
+  "title": "Google Merchant Center Shopping Feed Image (1500\u00d71500px)",
+  "jurisdiction": "Google Merchant Center",
+  "authority_name": "Google Merchant Center",
+  "source_url": "https://support.google.com/merchants/answer/6324350",
+  "last_verified": "2026-11-01",
+  "stale_after_days": 90,
+  "supersedes": null,
+  "license": "CC-BY-4.0",
+  "dimensions_px": {
+    "width": 1500,
+    "height": 1500
+  },
+  "max_size_kb": 2000,
+  "dpi": 150,
+  "background": "#FFFFFF",
+  "constraints": {
+    "width_px": 1500,
+    "height_px": 1500,
+    "max_size_kb": 2000,
+    "dpi": 150,
+    "background_hex": "#FFFFFF",
+    "strip_exif": true
+  }
+}

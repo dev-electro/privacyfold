@@ -1,0 +1,83 @@
+{
+  "id": "passport_photo",
+  "slug": "passport-photo",
+  "name": "Passport & ID photo",
+  "category": "photo",
+  "badge": "JPG, PNG",
+  "size": "18\u2013120 KB WASM",
+  "Engine": "/wasm/photo/passport-photo-v1.wasm",
+  "description": "Crop and resize a photo to official passport, visa and ID sizes. Pick a country, line your face up with the guide, then download a print-ready image.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "presets": [
+    "uk-passport-photo",
+    "us-passport-std",
+    "us-ds-160-visa-photo",
+    "us-dv-lottery-photo",
+    "us-global-entry-photo",
+    "uscis-n400-naturalization-photo",
+    "uscis-i765-ead-photo",
+    "uscis-i130-petition-photo",
+    "uscis-i131-travel-document-photo",
+    "us-ny-dmv-license-renewal-photo",
+    "us-firearms-atf-efrom-photo",
+    "uk-brp-evisa-photo",
+    "uk-dvla-driving-licence-photo",
+    "uk-blue-badge-photo",
+    "uk-tfl-oyster-photocard",
+    "uk-citb-cscs-card-photo",
+    "uk-sia-security-licence-photo",
+    "de-biometric-passport-35x45",
+    "fr-ants-ephotos-35x45",
+    "nl-pasfoto-matrix-2020",
+    "es-dni-pasaporte-32x26",
+    "it-passaporto-cie-35x45",
+    "ie-passport-online-photo",
+    "ch-swiss-pass-35x45",
+    "eu-schengen-visa-photo-icao",
+    "ca-ircc-pr-card-50x70",
+    "ca-ircc-express-entry-visa",
+    "au-immiaccount-visa-photo",
+    "nz-real-me-passport-photo",
+    "jp-my-number-card-photo",
+    "sg-ica-passport-400x514",
+    "ae-icp-golden-visa-photo",
+    "sa-absher-iqama-photo",
+    "in-oci-card-photo",
+    "in-upsc-ssc-photo-20kb",
+    "cn-chinese-visa-33x48"
+  ],
+  "schemaUrl": "/schemas/passport_photo.json",
+  "executionUrl": "https://privacyfold.com/tools/passport_photo?mode=agent",
+  "seo": {
+    "metaTitle": "Passport & ID photo \u2014 100% Private In-Browser Utility | PrivacyFold",
+    "metaDescription": "Crop and resize a photo to official passport, visa and ID sizes. Pick a country, line your face up with the guide, then download a print-ready image. Runs 100% locally in your browser via /wasm/photo/passport-photo-v1.wasm with zero file uploads.",
+    "aeoSummary": "Passport & ID photo processes files and text entirely inside your browser tab using /wasm/photo/passport-photo-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
+    "keywords": [
+      "passport & id photo",
+      "passport photo",
+      "offline passport photo",
+      "zero upload browser tool"
+    ],
+    "geoCitations": [
+      {
+        "standard": "W3C WebAssembly Core 2.0",
+        "url": "https://www.w3.org/TR/wasm-core-2/"
+      },
+      {
+        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Does Passport & ID photo upload my files or text to a server?",
+        "a": "No. Passport & ID photo executes 100% inside your browser's local memory using /wasm/photo/passport-photo-v1.wasm. No data leaves your device."
+      },
+      {
+        "q": "Can AI agents or CLI scripts automate Passport & ID photo?",
+        "a": "Yes. Use Lane A schema /schemas/passport_photo.json or open /tools/passport-photo?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
+      }
+    ]
+  }
+}

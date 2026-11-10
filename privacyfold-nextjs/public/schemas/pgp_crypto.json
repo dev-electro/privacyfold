@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://privacyfold.com/schemas/pgp_crypto.json",
+  "title": "PGP / ECDSA armored message signer",
+  "description": "Sign cleartext messages using NIST P-256 / P-384 elliptic-curve keys in WebCrypto and output an ASCII-armored verification block.",
+  "x-privacyfold-tool-id": "pgp_crypto",
+  "x-privacyfold-category": "crypto",
+  "x-privacyfold-engine": "/wasm/crypto/pgp-crypto-v1.wasm",
+  "x-privacyfold-determinism-tier": "D",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/pgp_crypto?mode=agent&source=mcp#payload",
+  "type": "object",
+  "properties": {
+    "preset": {
+      "type": "string",
+      "enum": [
+        "default"
+      ]
+    },
+    "input": {
+      "type": "string",
+      "description": "Input text, data URI, or local File handle via data-pf='input'"
+    },
+    "options": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "input"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "uk-tls-vfs-visa-pdf-under-5mb",
+  "presetSlug": "uk-tls-vfs-visa-pdf-under-5mb",
+  "tool": "pdf_compress",
+  "toolSlug": "pdf-compress",
+  "version": "2026.11.1",
+  "status": "active",
+  "title": "UK TLScontact / VFS Global Supporting PDF Under 5MB",
+  "jurisdiction": "UKVI / VFS",
+  "authority_name": "UKVI / VFS",
+  "source_url": "https://www.gov.uk/browse/visas-immigration",
+  "last_verified": "2026-11-01",
+  "stale_after_days": 90,
+  "supersedes": null,
+  "license": "CC-BY-4.0",
+  "dimensions_px": {
+    "width": 0,
+    "height": 0
+  },
+  "max_size_kb": 4800,
+  "dpi": 150,
+  "background": "#FFFFFF",
+  "constraints": {
+    "width_px": 0,
+    "height_px": 0,
+    "max_size_kb": 4800,
+    "dpi": 150,
+    "background_hex": "#FFFFFF",
+    "strip_exif": true
+  }
+}

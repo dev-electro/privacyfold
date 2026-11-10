@@ -1,0 +1,31 @@
+{
+  "id": "spf-dkim-dmarc-phishing-trace",
+  "presetSlug": "spf-dkim-dmarc-phishing-trace",
+  "tool": "email_header",
+  "toolSlug": "email-header",
+  "version": "2026.11.1",
+  "status": "active",
+  "title": "Email Header SPF / DKIM / DMARC & Relay Hop Forensics",
+  "jurisdiction": "RFC 5322",
+  "authority_name": "RFC 5322",
+  "source_url": "https://datatracker.ietf.org/doc/html/rfc5322",
+  "last_verified": "2026-11-01",
+  "stale_after_days": 90,
+  "supersedes": null,
+  "license": "CC-BY-4.0",
+  "dimensions_px": {
+    "width": 0,
+    "height": 0
+  },
+  "max_size_kb": 1000,
+  "dpi": 0,
+  "background": "none",
+  "constraints": {
+    "width_px": 0,
+    "height_px": 0,
+    "max_size_kb": 1000,
+    "dpi": 0,
+    "background_hex": "none",
+    "strip_exif": true
+  }
+}

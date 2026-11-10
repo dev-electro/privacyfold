@@ -1,0 +1,30 @@
+{
+  "latest_shard": "2026-11",
+  "registry_version": "1.4.0",
+  "recent": [
+    {
+      "id": "chg-2026-11-0007",
+      "date": "2026-11-08",
+      "type": "requirement_changed",
+      "preset_id": "us-passport-std",
+      "field": "max_file_kb",
+      "old": 240,
+      "new": 250,
+      "effective": "2026-12-01",
+      "source_url": "https://travel.state.gov/content/travel/en/passports/how-apply/photos.html",
+      "note": "Portal limit updated."
+    },
+    {
+      "id": "chg-2026-11-0008",
+      "date": "2026-11-09",
+      "type": "feature_launched",
+      "preset_id": null,
+      "field": "on_device_ai_layer",
+      "old": null,
+      "new": "window.ai (0 MB) + BEN v2 (MIT) + Rampart PII Airlock (14.7 MB)",
+      "effective": "2026-11-09",
+      "source_url": "https://privacyfold.com/webgpu/",
+      "note": "Launched sub-50 MB WebGPU/WASM AI stack and 0 MB built-in AI router."
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "uscis-portal-pdf-under-12mb",
+  "presetSlug": "uscis-portal-pdf-under-12mb",
+  "tool": "pdf_compress",
+  "toolSlug": "pdf-compress",
+  "version": "2026.11.1",
+  "status": "active",
+  "title": "USCIS myUSCIS Online Filing PDF Optimizer (\u226412MB)",
+  "jurisdiction": "USCIS",
+  "authority_name": "USCIS",
+  "source_url": "https://www.uscis.gov/file-online/tips-for-filing-forms-online",
+  "last_verified": "2026-11-01",
+  "stale_after_days": 90,
+  "supersedes": null,
+  "license": "CC-BY-4.0",
+  "dimensions_px": {
+    "width": 0,
+    "height": 0
+  },
+  "max_size_kb": 11800,
+  "dpi": 150,
+  "background": "#FFFFFF",
+  "constraints": {
+    "width_px": 0,
+    "height_px": 0,
+    "max_size_kb": 11800,
+    "dpi": 150,
+    "background_hex": "#FFFFFF",
+    "strip_exif": true
+  }
+}

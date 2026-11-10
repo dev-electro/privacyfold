@@ -1,0 +1,31 @@
+{
+  "id": "aws-eventbridge-cron-validator",
+  "presetSlug": "aws-eventbridge-cron-validator",
+  "tool": "cron_parser",
+  "toolSlug": "cron-parser",
+  "version": "2026.11.1",
+  "status": "active",
+  "title": "Cloud Serverless Cron & Rate Expression Tester",
+  "jurisdiction": "POSIX Cron",
+  "authority_name": "POSIX Cron",
+  "source_url": "https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html",
+  "last_verified": "2026-11-01",
+  "stale_after_days": 90,
+  "supersedes": null,
+  "license": "CC-BY-4.0",
+  "dimensions_px": {
+    "width": 0,
+    "height": 0
+  },
+  "max_size_kb": 100,
+  "dpi": 0,
+  "background": "none",
+  "constraints": {
+    "width_px": 0,
+    "height_px": 0,
+    "max_size_kb": 100,
+    "dpi": 0,
+    "background_hex": "none",
+    "strip_exif": true
+  }
+}

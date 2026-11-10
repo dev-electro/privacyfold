@@ -1,0 +1,46 @@
+{
+  "id": "stego_seal",
+  "slug": "stego-seal",
+  "name": "Watermark & document stamp",
+  "category": "crypto",
+  "badge": "PNG, Stamp",
+  "size": "18\u2013120 KB WASM",
+  "Engine": "/wasm/crypto/stego-seal-v1.wasm",
+  "description": "Add a visible status stamp (such as Confidential, Approved or Draft) to an image or document page, plus an optional embedded recipient ID.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "presets": [],
+  "schemaUrl": "/schemas/stego_seal.json",
+  "executionUrl": "https://privacyfold.com/tools/stego_seal?mode=agent",
+  "seo": {
+    "metaTitle": "Watermark & document stamp \u2014 100% Private In-Browser Utility | PrivacyFold",
+    "metaDescription": "Add a visible status stamp (such as Confidential, Approved or Draft) to an image or document page, plus an optional embedded recipient ID. Runs 100% locally in your browser via /wasm/crypto/stego-seal-v1.wasm with zero file uploads.",
+    "aeoSummary": "Watermark & document stamp processes files and text entirely inside your browser tab using /wasm/crypto/stego-seal-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
+    "keywords": [
+      "watermark & document stamp",
+      "stego seal",
+      "offline stego seal",
+      "zero upload browser tool"
+    ],
+    "geoCitations": [
+      {
+        "standard": "W3C WebAssembly Core 2.0",
+        "url": "https://www.w3.org/TR/wasm-core-2/"
+      },
+      {
+        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Does Watermark & document stamp upload my files or text to a server?",
+        "a": "No. Watermark & document stamp executes 100% inside your browser's local memory using /wasm/crypto/stego-seal-v1.wasm. No data leaves your device."
+      },
+      {
+        "q": "Can AI agents or CLI scripts automate Watermark & document stamp?",
+        "a": "Yes. Use Lane A schema /schemas/stego_seal.json or open /tools/stego-seal?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
+      }
+    ]
+  }
+}

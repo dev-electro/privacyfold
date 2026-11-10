@@ -1,0 +1,31 @@
+{
+  "id": "uk-dvla-driving-licence-photo",
+  "presetSlug": "uk-dvla-driving-licence-photo",
+  "tool": "passport_photo",
+  "toolSlug": "passport-photo",
+  "version": "2026.11.1",
+  "status": "active",
+  "title": "UK DVLA Photocard Driving Licence Photo (35\u00d745mm)",
+  "jurisdiction": "UK DVLA",
+  "authority_name": "UK DVLA",
+  "source_url": "https://www.gov.uk/renew-driving-licence",
+  "last_verified": "2026-11-01",
+  "stale_after_days": 90,
+  "supersedes": null,
+  "license": "CC-BY-4.0",
+  "dimensions_px": {
+    "width": 413,
+    "height": 531
+  },
+  "max_size_kb": 5000,
+  "dpi": 300,
+  "background": "#F5F5F5",
+  "constraints": {
+    "width_px": 413,
+    "height_px": 531,
+    "max_size_kb": 5000,
+    "dpi": 300,
+    "background_hex": "#F5F5F5",
+    "strip_exif": true
+  }
+}

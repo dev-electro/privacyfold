@@ -1,0 +1,17 @@
+{
+  "id": "invoice-us",
+  "title": "US Commercial Invoice & ACH Wire Template",
+  "tool": "invoice_generator",
+  "jurisdiction": "US",
+  "currency": "USD",
+  "fields": [
+    "invoice_number",
+    "issue_date",
+    "due_date",
+    "vendor_name",
+    "client_name",
+    "line_items",
+    "tax_rate",
+    "ach_routing"
+  ]
+}

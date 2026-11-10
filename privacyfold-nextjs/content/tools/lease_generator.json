@@ -1,0 +1,46 @@
+{
+  "id": "lease_generator",
+  "slug": "lease-generator",
+  "name": "Residential lease & rental agreement generator",
+  "category": "forms",
+  "badge": "Lease, Rental",
+  "size": "18\u2013120 KB WASM",
+  "Engine": "/wasm/forms/lease-generator-v1.wasm",
+  "description": "Draft a residential lease or room rental agreement with landlord, tenant, premises address, monthly rent, security deposit, and notice period completely offline.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "presets": [],
+  "schemaUrl": "/schemas/lease_generator.json",
+  "executionUrl": "https://privacyfold.com/tools/lease_generator?mode=agent",
+  "seo": {
+    "metaTitle": "Residential lease & rental agreement generator \u2014 100% Private In-Browser Utility | PrivacyFold",
+    "metaDescription": "Draft a residential lease or room rental agreement with landlord, tenant, premises address, monthly rent, security deposit, and notice period completely offline. Runs 100% locally in your browser via /wasm/forms/lease-generator-v1.wasm with zero file uploads.",
+    "aeoSummary": "Residential lease & rental agreement generator processes files and text entirely inside your browser tab using /wasm/forms/lease-generator-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
+    "keywords": [
+      "residential lease & rental agreement generator",
+      "lease generator",
+      "offline lease generator",
+      "zero upload browser tool"
+    ],
+    "geoCitations": [
+      {
+        "standard": "W3C WebAssembly Core 2.0",
+        "url": "https://www.w3.org/TR/wasm-core-2/"
+      },
+      {
+        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Does Residential lease & rental agreement generator upload my files or text to a server?",
+        "a": "No. Residential lease & rental agreement generator executes 100% inside your browser's local memory using /wasm/forms/lease-generator-v1.wasm. No data leaves your device."
+      },
+      {
+        "q": "Can AI agents or CLI scripts automate Residential lease & rental agreement generator?",
+        "a": "Yes. Use Lane A schema /schemas/lease_generator.json or open /tools/lease-generator?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
+      }
+    ]
+  }
+}

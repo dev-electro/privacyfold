@@ -1,0 +1,31 @@
+{
+  "id": "in-upsc-ssc-photo-20kb",
+  "presetSlug": "in-upsc-ssc-photo-20kb",
+  "tool": "passport_photo",
+  "toolSlug": "passport-photo",
+  "version": "2026.11.1",
+  "status": "active",
+  "title": "India UPSC / SSC Exam Portal Photo (350\u00d7350px, 20KB\u2013300KB)",
+  "jurisdiction": "UPSC India",
+  "authority_name": "UPSC India",
+  "source_url": "https://upsconline.nic.in/",
+  "last_verified": "2026-11-01",
+  "stale_after_days": 90,
+  "supersedes": null,
+  "license": "CC-BY-4.0",
+  "dimensions_px": {
+    "width": 350,
+    "height": 350
+  },
+  "max_size_kb": 250,
+  "dpi": 300,
+  "background": "#FFFFFF",
+  "constraints": {
+    "width_px": 350,
+    "height_px": 350,
+    "max_size_kb": 250,
+    "dpi": 300,
+    "background_hex": "#FFFFFF",
+    "strip_exif": true
+  }
+}

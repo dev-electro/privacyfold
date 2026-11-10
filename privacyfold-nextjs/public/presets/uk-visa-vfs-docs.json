@@ -1,0 +1,19 @@
+{
+  "id": "uk-visa-vfs-docs",
+  "presetSlug": "uk-visa-vfs-docs",
+  "tool": "image_compress",
+  "toolSlug": "image-compress",
+  "version": "2026-11-08.1",
+  "status": "active",
+  "title": "uk-visa-vfs-docs",
+  "jurisdiction": "Global",
+  "authority_name": "Official Portal",
+  "source_url": "https://www.gov.uk/uk-visa-appointment",
+  "last_verified": "2026-11-08",
+  "stale_after_days": 90,
+  "supersedes": null,
+  "license": "CC-BY-4.0",
+  "constraints": {
+    "strip_exif": true
+  }
+}

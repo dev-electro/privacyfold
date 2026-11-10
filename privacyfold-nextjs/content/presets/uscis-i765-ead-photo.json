@@ -1,0 +1,31 @@
+{
+  "id": "uscis-i765-ead-photo",
+  "presetSlug": "uscis-i765-ead-photo",
+  "tool": "passport_photo",
+  "toolSlug": "passport-photo",
+  "version": "2026.11.1",
+  "status": "active",
+  "title": "USCIS I-765 Employment Authorization (EAD) Photo",
+  "jurisdiction": "USCIS",
+  "authority_name": "USCIS",
+  "source_url": "https://www.uscis.gov/i-765",
+  "last_verified": "2026-11-01",
+  "stale_after_days": 90,
+  "supersedes": null,
+  "license": "CC-BY-4.0",
+  "dimensions_px": {
+    "width": 600,
+    "height": 600
+  },
+  "max_size_kb": 240,
+  "dpi": 300,
+  "background": "#FFFFFF",
+  "constraints": {
+    "width_px": 600,
+    "height_px": 600,
+    "max_size_kb": 240,
+    "dpi": 300,
+    "background_hex": "#FFFFFF",
+    "strip_exif": true
+  }
+}

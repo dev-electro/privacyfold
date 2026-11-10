@@ -1,0 +1,31 @@
+{
+  "id": "sa-absher-iqama-photo",
+  "presetSlug": "sa-absher-iqama-photo",
+  "tool": "passport_photo",
+  "toolSlug": "passport-photo",
+  "version": "2026.11.1",
+  "status": "active",
+  "title": "Saudi Arabia Absher & Muqeem Visa Photo (200\u00d7200px, \u226418KB)",
+  "jurisdiction": "Absher KSA",
+  "authority_name": "Absher KSA",
+  "source_url": "https://www.absher.sa/",
+  "last_verified": "2026-11-01",
+  "stale_after_days": 90,
+  "supersedes": null,
+  "license": "CC-BY-4.0",
+  "dimensions_px": {
+    "width": 200,
+    "height": 200
+  },
+  "max_size_kb": 18,
+  "dpi": 300,
+  "background": "#FFFFFF",
+  "constraints": {
+    "width_px": 200,
+    "height_px": 200,
+    "max_size_kb": 18,
+    "dpi": 300,
+    "background_hex": "#FFFFFF",
+    "strip_exif": true
+  }
+}

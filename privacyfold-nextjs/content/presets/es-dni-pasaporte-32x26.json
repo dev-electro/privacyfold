@@ -1,0 +1,31 @@
+{
+  "id": "es-dni-pasaporte-32x26",
+  "presetSlug": "es-dni-pasaporte-32x26",
+  "tool": "passport_photo",
+  "toolSlug": "passport-photo",
+  "version": "2026.11.1",
+  "status": "active",
+  "title": "Spain DNI & Pasaporte Photo (32\u00d726mm)",
+  "jurisdiction": "Policia Nacional ES",
+  "authority_name": "Policia Nacional ES",
+  "source_url": "https://www.dnielectronico.es/",
+  "last_verified": "2026-11-01",
+  "stale_after_days": 90,
+  "supersedes": null,
+  "license": "CC-BY-4.0",
+  "dimensions_px": {
+    "width": 307,
+    "height": 378
+  },
+  "max_size_kb": 500,
+  "dpi": 300,
+  "background": "#FFFFFF",
+  "constraints": {
+    "width_px": 307,
+    "height_px": 378,
+    "max_size_kb": 500,
+    "dpi": 300,
+    "background_hex": "#FFFFFF",
+    "strip_exif": true
+  }
+}

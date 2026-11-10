@@ -1,0 +1,13 @@
+{
+  "id": "resume-ats",
+  "title": "Single-Column ATS-Parseable Resume Layout",
+  "tool": "resume_builder",
+  "jurisdiction": "Global",
+  "sections": [
+    "Contact Header",
+    "Executive Summary",
+    "Core Competencies",
+    "Professional Experience",
+    "Education & Certifications"
+  ]
+}

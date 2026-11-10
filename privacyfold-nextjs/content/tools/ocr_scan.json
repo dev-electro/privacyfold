@@ -1,0 +1,48 @@
+{
+  "id": "ocr_scan",
+  "slug": "ocr-scan",
+  "name": "Fill from scan & local OCR",
+  "category": "pdf",
+  "badge": "PP-OCR / Tesseract",
+  "size": "14.7\u201345 MB OPFS",
+  "Engine": "tesseract-ppocr-v6",
+  "description": "Extract text from scanned IDs, invoices, or payslips locally in your browser and map fields to W-9 or SA100 boxes with human confirmation.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "presets": [
+    "us-tsa-precheck-doc"
+  ],
+  "schemaUrl": "/schemas/ocr_scan.json",
+  "executionUrl": "https://privacyfold.com/tools/ocr_scan?mode=agent",
+  "seo": {
+    "metaTitle": "Fill from scan & local OCR \u2014 100% Private In-Browser Utility | PrivacyFold",
+    "metaDescription": "Extract text from scanned IDs, invoices, or payslips locally in your browser and map fields to W-9 or SA100 boxes with human confirmation. Runs 100% locally in your browser via tesseract-ppocr-v6 with zero file uploads.",
+    "aeoSummary": "Fill from scan & local OCR processes files and text entirely inside your browser tab using tesseract-ppocr-v6 (Tier M). Zero bytes are uploaded to any server.",
+    "keywords": [
+      "fill from scan & local ocr",
+      "ocr scan",
+      "offline ocr scan",
+      "zero upload browser tool"
+    ],
+    "geoCitations": [
+      {
+        "standard": "W3C WebAssembly Core 2.0",
+        "url": "https://www.w3.org/TR/wasm-core-2/"
+      },
+      {
+        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Does Fill from scan & local OCR upload my files or text to a server?",
+        "a": "No. Fill from scan & local OCR executes 100% inside your browser's local memory using tesseract-ppocr-v6. No data leaves your device."
+      },
+      {
+        "q": "Can AI agents or CLI scripts automate Fill from scan & local OCR?",
+        "a": "Yes. Use Lane A schema /schemas/ocr_scan.json or open /tools/ocr-scan?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
+      }
+    ]
+  }
+}

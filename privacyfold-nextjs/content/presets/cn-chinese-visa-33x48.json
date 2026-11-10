@@ -1,0 +1,31 @@
+{
+  "id": "cn-chinese-visa-33x48",
+  "presetSlug": "cn-chinese-visa-33x48",
+  "tool": "passport_photo",
+  "toolSlug": "passport-photo",
+  "version": "2026.11.1",
+  "status": "active",
+  "title": "China COVA Visa Application Photo (33\u00d748mm, 40KB\u2013120KB)",
+  "jurisdiction": "COVA MFA China",
+  "authority_name": "COVA MFA China",
+  "source_url": "https://cova.mfa.gov.cn/",
+  "last_verified": "2026-11-01",
+  "stale_after_days": 90,
+  "supersedes": null,
+  "license": "CC-BY-4.0",
+  "dimensions_px": {
+    "width": 390,
+    "height": 567
+  },
+  "max_size_kb": 115,
+  "dpi": 300,
+  "background": "#FFFFFF",
+  "constraints": {
+    "width_px": 390,
+    "height_px": 567,
+    "max_size_kb": 115,
+    "dpi": 300,
+    "background_hex": "#FFFFFF",
+    "strip_exif": true
+  }
+}

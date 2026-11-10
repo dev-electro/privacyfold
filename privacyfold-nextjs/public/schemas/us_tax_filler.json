@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://privacyfold.com/schemas/us_tax_filler.json",
+  "title": "US tax form filler (W-2, 1099-NEC, 1040-EZ)",
+  "description": "Compute and format IRS Form W-2 wage boxes, Form 1099-NEC nonemployee compensation, and Form 1040 standard deduction estimates without uploading financial data to tax-prep servers.",
+  "x-privacyfold-tool-id": "us_tax_filler",
+  "x-privacyfold-category": "forms",
+  "x-privacyfold-engine": "/wasm/forms/us-tax-filler-v1.wasm",
+  "x-privacyfold-determinism-tier": "D",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/us_tax_filler?mode=agent&source=mcp#payload",
+  "type": "object",
+  "properties": {
+    "preset": {
+      "type": "string",
+      "enum": [
+        "us-irs-1040-schedule-c-prep"
+      ]
+    },
+    "input": {
+      "type": "string",
+      "description": "Input text, data URI, or local File handle via data-pf='input'"
+    },
+    "options": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "input"
+  ]
+}

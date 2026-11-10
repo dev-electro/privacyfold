@@ -1,0 +1,12 @@
+{
+  "id": "ccpa-optout-ca",
+  "title": "California CCPA / CPRA \u00a7\u00a7 1798.105 & 1798.120 Deletion & Opt-Out Notice",
+  "tool": "privacy_letter",
+  "jurisdiction": "US-CA",
+  "statutory_deadline_days": 45,
+  "sections": [
+    "Cal. Civ. Code \u00a7 1798.100",
+    "Cal. Civ. Code \u00a7 1798.105",
+    "Cal. Civ. Code \u00a7 1798.120"
+  ]
+}

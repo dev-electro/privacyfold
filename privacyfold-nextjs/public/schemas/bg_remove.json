@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://privacyfold.com/schemas/bg_remove.json",
+  "title": "AI background remover",
+  "description": "Isolate portraits, signatures, or products onto a transparent PNG or studio backdrop locally using BEN v2 / MODNet via ONNX Runtime WebGPU (~120ms per photo).",
+  "x-privacyfold-tool-id": "bg_remove",
+  "x-privacyfold-category": "photo",
+  "x-privacyfold-engine": "modnet-ben-v2-fp16",
+  "x-privacyfold-determinism-tier": "M",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/bg_remove?mode=agent&source=mcp#payload",
+  "type": "object",
+  "properties": {
+    "preset": {
+      "type": "string",
+      "enum": [
+        "linkedin-headshot-800x800"
+      ]
+    },
+    "input": {
+      "type": "string",
+      "description": "Input text, data URI, or local File handle via data-pf='input'"
+    },
+    "options": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "input"
+  ]
+}

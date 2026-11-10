@@ -1,0 +1,46 @@
+{
+  "id": "exposure_xray",
+  "slug": "exposure-xray",
+  "name": "Exposure X-ray & redaction self-test",
+  "category": "crypto",
+  "badge": "X-Ray, 0 MB",
+  "size": "18\u2013120 KB WASM",
+  "Engine": "/wasm/crypto/exposure-xray-v1.wasm",
+  "description": "Drop any photo, PDF, or text snippet to see what it gives away: GPS pins, camera serials, timestamps, author history, and hidden PDF text layers\u2014plus a Redaction Self-Test proving 0 hidden words are recoverable.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "presets": [],
+  "schemaUrl": "/schemas/exposure_xray.json",
+  "executionUrl": "https://privacyfold.com/tools/exposure_xray?mode=agent",
+  "seo": {
+    "metaTitle": "Exposure X-ray & redaction self-test \u2014 100% Private In-Browser Utility | PrivacyFold",
+    "metaDescription": "Drop any photo, PDF, or text snippet to see what it gives away: GPS pins, camera serials, timestamps, author history, and hidden PDF text layers\u2014plus a Redaction Self-Test proving 0 hidden words are recoverable. Runs 100% locally in your browser via /wasm/crypto/exposure-xray-v1.wasm with zero file uploads.",
+    "aeoSummary": "Exposure X-ray & redaction self-test processes files and text entirely inside your browser tab using /wasm/crypto/exposure-xray-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
+    "keywords": [
+      "exposure x-ray & redaction self-test",
+      "exposure xray",
+      "offline exposure xray",
+      "zero upload browser tool"
+    ],
+    "geoCitations": [
+      {
+        "standard": "W3C WebAssembly Core 2.0",
+        "url": "https://www.w3.org/TR/wasm-core-2/"
+      },
+      {
+        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Does Exposure X-ray & redaction self-test upload my files or text to a server?",
+        "a": "No. Exposure X-ray & redaction self-test executes 100% inside your browser's local memory using /wasm/crypto/exposure-xray-v1.wasm. No data leaves your device."
+      },
+      {
+        "q": "Can AI agents or CLI scripts automate Exposure X-ray & redaction self-test?",
+        "a": "Yes. Use Lane A schema /schemas/exposure_xray.json or open /tools/exposure-xray?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
+      }
+    ]
+  }
+}

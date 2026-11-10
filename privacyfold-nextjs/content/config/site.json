@@ -1,0 +1,28 @@
+{
+  "siteName": "PrivacyFold",
+  "domain": "https://privacyfold.com",
+  "tagline": "File tools that never see your files.",
+  "description": "40 client-side image, PDF, form, developer, and cryptography tools running 100% in your browser via WebAssembly, WebGPU, and WebCrypto with zero uploads.",
+  "cspHeader": "default-src 'self'; connect-src 'self'; object-src 'none'; frame-ancestors 'none'",
+  "adsense": {
+    "enabled": true,
+    "nonPersonalizedDefault": true,
+    "slots": {
+      "toolLeaderboard": {
+        "id": "pf-tool-leaderboard-01",
+        "minHeight": 110,
+        "format": "leaderboard"
+      },
+      "toolSidebar": {
+        "id": "pf-sidebar-rect-02",
+        "minHeight": 260,
+        "format": "rectangle"
+      },
+      "blogInArticle": {
+        "id": "pf-blog-in-article-03",
+        "minHeight": 110,
+        "format": "in-article"
+      }
+    }
+  }
+}

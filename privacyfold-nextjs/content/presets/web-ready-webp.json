@@ -1,0 +1,19 @@
+{
+  "id": "web-ready-webp",
+  "presetSlug": "web-ready-webp",
+  "tool": "image_compress",
+  "toolSlug": "image-compress",
+  "version": "2026-11-08.1",
+  "status": "active",
+  "title": "web-ready-webp",
+  "jurisdiction": "Global",
+  "authority_name": "Official Portal",
+  "source_url": "https://web.dev/articles/serve-images-webp",
+  "last_verified": "2026-11-08",
+  "stale_after_days": 90,
+  "supersedes": null,
+  "license": "CC-BY-4.0",
+  "constraints": {
+    "strip_exif": true
+  }
+}

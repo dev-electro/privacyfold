@@ -1,0 +1,31 @@
+{
+  "id": "walmart-marketplace-2000x2000",
+  "presetSlug": "walmart-marketplace-2000x2000",
+  "tool": "social_resizer",
+  "toolSlug": "social-resizer",
+  "version": "2026.11.1",
+  "status": "active",
+  "title": "Walmart Marketplace Main Image (2000\u00d72000px #FFFFFF)",
+  "jurisdiction": "Walmart Marketplace",
+  "authority_name": "Walmart Marketplace",
+  "source_url": "https://marketplace.walmart.com/",
+  "last_verified": "2026-11-01",
+  "stale_after_days": 90,
+  "supersedes": null,
+  "license": "CC-BY-4.0",
+  "dimensions_px": {
+    "width": 2000,
+    "height": 2000
+  },
+  "max_size_kb": 2000,
+  "dpi": 300,
+  "background": "#FFFFFF",
+  "constraints": {
+    "width_px": 2000,
+    "height_px": 2000,
+    "max_size_kb": 2000,
+    "dpi": 300,
+    "background_hex": "#FFFFFF",
+    "strip_exif": true
+  }
+}

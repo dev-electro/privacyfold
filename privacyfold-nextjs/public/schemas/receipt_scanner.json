@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://privacyfold.com/schemas/receipt_scanner.json",
+  "title": "Receipt & business card organizer",
+  "description": "Parse pasted receipt lines or business card text into structured expense rows (Date, Vendor, Category, Amount, Tax) or vCard contacts locally.",
+  "x-privacyfold-tool-id": "receipt_scanner",
+  "x-privacyfold-category": "forms",
+  "x-privacyfold-engine": "/wasm/forms/receipt-scanner-v1.wasm",
+  "x-privacyfold-determinism-tier": "D",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/receipt_scanner?mode=agent&source=mcp#payload",
+  "type": "object",
+  "properties": {
+    "preset": {
+      "type": "string",
+      "enum": [
+        "default"
+      ]
+    },
+    "input": {
+      "type": "string",
+      "description": "Input text, data URI, or local File handle via data-pf='input'"
+    },
+    "options": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "input"
+  ]
+}

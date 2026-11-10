@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://privacyfold.com/schemas/spot_rejection.json",
+  "title": "Preset validator & compliance check",
+  "description": "Verify whether an image or document looks consistent with published portal requirements (US State Dept, UK HMPO, EU Schengen, VFS Global) without modifying the file.",
+  "x-privacyfold-tool-id": "spot_rejection",
+  "x-privacyfold-category": "photo",
+  "x-privacyfold-engine": "/wasm/photo/spot-rejection-v1.wasm",
+  "x-privacyfold-determinism-tier": "D",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/spot_rejection?mode=agent&source=mcp#payload",
+  "type": "object",
+  "properties": {
+    "preset": {
+      "type": "string",
+      "enum": [
+        "default"
+      ]
+    },
+    "input": {
+      "type": "string",
+      "description": "Input text, data URI, or local File handle via data-pf='input'"
+    },
+    "options": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "input"
+  ]
+}

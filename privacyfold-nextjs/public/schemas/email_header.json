@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://privacyfold.com/schemas/email_header.json",
+  "title": "Email header & SPF/DKIM/DMARC analyzer",
+  "description": "Paste raw email headers (`Received`, `Authentication-Results`, `Return-Path`) to trace server hops and verify SPF, DKIM, and DMARC status without uploading confidential emails to MXToolbox.",
+  "x-privacyfold-tool-id": "email_header",
+  "x-privacyfold-category": "crypto",
+  "x-privacyfold-engine": "/wasm/crypto/email-header-v1.wasm",
+  "x-privacyfold-determinism-tier": "D",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/email_header?mode=agent&source=mcp#payload",
+  "type": "object",
+  "properties": {
+    "preset": {
+      "type": "string",
+      "enum": [
+        "spf-dkim-dmarc-phishing-trace"
+      ]
+    },
+    "input": {
+      "type": "string",
+      "description": "Input text, data URI, or local File handle via data-pf='input'"
+    },
+    "options": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "input"
+  ]
+}

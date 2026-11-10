@@ -1,0 +1,21 @@
+{
+  "version": "1.0.0",
+  "modules": {
+    "mozjpeg_enc.wasm": {
+      "path": "/wasm/mozjpeg_enc.wasm",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "webp_enc.wasm": {
+      "path": "/wasm/webp_enc.wasm",
+      "sha256": "8f434346648f6b96df89dda901c5176b10a6d83961dd3c1ac88b59b2dc327aa4"
+    },
+    "tesseract-core-simd.wasm": {
+      "path": "/wasm/tesseract-core-simd.wasm",
+      "sha256": "2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae"
+    },
+    "sql-wasm.wasm": {
+      "path": "/wasm/sql-wasm.wasm",
+      "sha256": "496c2a8c28b4f78d8e6f18f2b22e8c1e76340c025d8f347892173e91625e6f84"
+    }
+  }
+}

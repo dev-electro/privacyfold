@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://privacyfold.com/schemas/resume_builder.json",
+  "title": "ATS-optimized resume & CV builder",
+  "description": "Build a clean, single-column ATS-compatible resume from `templates/resume-ats.json` that parses cleanly in Workday, Greenhouse, and Lever without storing your career history on resume websites.",
+  "x-privacyfold-tool-id": "resume_builder",
+  "x-privacyfold-category": "forms",
+  "x-privacyfold-engine": "/templates/resume-ats.json",
+  "x-privacyfold-determinism-tier": "D",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/resume_builder?mode=agent&source=mcp#payload",
+  "type": "object",
+  "properties": {
+    "preset": {
+      "type": "string",
+      "enum": [
+        "default"
+      ]
+    },
+    "input": {
+      "type": "string",
+      "description": "Input text, data URI, or local File handle via data-pf='input'"
+    },
+    "options": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "input"
+  ]
+}

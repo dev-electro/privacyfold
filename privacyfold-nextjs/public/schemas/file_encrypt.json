@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://privacyfold.com/schemas/file_encrypt.json",
+  "title": "Password-protect text",
+  "description": "Encrypt sensitive notes, keys or JSON with a password using standard AES-256 encryption. Save as a standalone HTML file that can be unlocked offline in any browser.",
+  "x-privacyfold-tool-id": "file_encrypt",
+  "x-privacyfold-category": "crypto",
+  "x-privacyfold-engine": "/wasm/crypto/file-encrypt-v1.wasm",
+  "x-privacyfold-determinism-tier": "D",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/file_encrypt?mode=agent&source=mcp#payload",
+  "type": "object",
+  "properties": {
+    "preset": {
+      "type": "string",
+      "enum": [
+        "default"
+      ]
+    },
+    "input": {
+      "type": "string",
+      "description": "Input text, data URI, or local File handle via data-pf='input'"
+    },
+    "options": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "input"
+  ]
+}

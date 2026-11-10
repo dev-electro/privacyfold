@@ -1,0 +1,31 @@
+{
+  "id": "uscis-i131-travel-document-photo",
+  "presetSlug": "uscis-i131-travel-document-photo",
+  "tool": "passport_photo",
+  "toolSlug": "passport-photo",
+  "version": "2026.11.1",
+  "status": "active",
+  "title": "USCIS I-131 Advance Parole / Travel Document Photo",
+  "jurisdiction": "USCIS",
+  "authority_name": "USCIS",
+  "source_url": "https://www.uscis.gov/i-131",
+  "last_verified": "2026-11-01",
+  "stale_after_days": 90,
+  "supersedes": null,
+  "license": "CC-BY-4.0",
+  "dimensions_px": {
+    "width": 600,
+    "height": 600
+  },
+  "max_size_kb": 240,
+  "dpi": 300,
+  "background": "#FFFFFF",
+  "constraints": {
+    "width_px": 600,
+    "height_px": 600,
+    "max_size_kb": 240,
+    "dpi": 300,
+    "background_hex": "#FFFFFF",
+    "strip_exif": true
+  }
+}

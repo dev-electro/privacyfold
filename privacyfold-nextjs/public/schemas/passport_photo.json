@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://privacyfold.com/schemas/passport_photo.json",
+  "title": "Passport & ID photo",
+  "description": "Crop and resize a photo to official passport, visa and ID sizes. Pick a country, line your face up with the guide, then download a print-ready image.",
+  "x-privacyfold-tool-id": "passport_photo",
+  "x-privacyfold-category": "photo",
+  "x-privacyfold-engine": "/wasm/photo/passport-photo-v1.wasm",
+  "x-privacyfold-determinism-tier": "D",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/passport_photo?mode=agent&source=mcp#payload",
+  "type": "object",
+  "properties": {
+    "preset": {
+      "type": "string",
+      "enum": [
+        "uk-passport-photo",
+        "us-passport-std",
+        "us-ds-160-visa-photo",
+        "us-dv-lottery-photo",
+        "us-global-entry-photo",
+        "uscis-n400-naturalization-photo",
+        "uscis-i765-ead-photo",
+        "uscis-i130-petition-photo",
+        "uscis-i131-travel-document-photo",
+        "us-ny-dmv-license-renewal-photo",
+        "us-firearms-atf-efrom-photo",
+        "uk-brp-evisa-photo",
+        "uk-dvla-driving-licence-photo",
+        "uk-blue-badge-photo",
+        "uk-tfl-oyster-photocard",
+        "uk-citb-cscs-card-photo",
+        "uk-sia-security-licence-photo",
+        "de-biometric-passport-35x45",
+        "fr-ants-ephotos-35x45",
+        "nl-pasfoto-matrix-2020",
+        "es-dni-pasaporte-32x26",
+        "it-passaporto-cie-35x45",
+        "ie-passport-online-photo",
+        "ch-swiss-pass-35x45",
+        "eu-schengen-visa-photo-icao",
+        "ca-ircc-pr-card-50x70",
+        "ca-ircc-express-entry-visa",
+        "au-immiaccount-visa-photo",
+        "nz-real-me-passport-photo",
+        "jp-my-number-card-photo",
+        "sg-ica-passport-400x514",
+        "ae-icp-golden-visa-photo",
+        "sa-absher-iqama-photo",
+        "in-oci-card-photo",
+        "in-upsc-ssc-photo-20kb",
+        "cn-chinese-visa-33x48"
+      ]
+    },
+    "input": {
+      "type": "string",
+      "description": "Input text, data URI, or local File handle via data-pf='input'"
+    },
+    "options": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "input"
+  ]
+}

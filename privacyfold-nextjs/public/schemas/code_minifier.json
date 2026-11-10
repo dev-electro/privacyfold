@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://privacyfold.com/schemas/code_minifier.json",
+  "title": "HTML / CSS / JS minifier & entity codec",
+  "description": "Minify CSS, HTML, or JavaScript snippets by stripping comments and collapsing whitespace, or encode/decode HTML entities (`&amp;`, `&lt;`, `&gt;`).",
+  "x-privacyfold-tool-id": "code_minifier",
+  "x-privacyfold-category": "dev",
+  "x-privacyfold-engine": "/wasm/dev/code-minifier-v1.wasm",
+  "x-privacyfold-determinism-tier": "D",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/code_minifier?mode=agent&source=mcp#payload",
+  "type": "object",
+  "properties": {
+    "preset": {
+      "type": "string",
+      "enum": [
+        "default"
+      ]
+    },
+    "input": {
+      "type": "string",
+      "description": "Input text, data URI, or local File handle via data-pf='input'"
+    },
+    "options": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "input"
+  ]
+}

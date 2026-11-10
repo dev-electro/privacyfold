@@ -1,0 +1,31 @@
+{
+  "id": "discord-server-emoji-128x128",
+  "presetSlug": "discord-server-emoji-128x128",
+  "tool": "social_resizer",
+  "toolSlug": "social-resizer",
+  "version": "2026.11.1",
+  "status": "active",
+  "title": "Discord Custom Emoji & Sticker Under 256KB (128\u00d7128px)",
+  "jurisdiction": "Discord Support",
+  "authority_name": "Discord Support",
+  "source_url": "https://support.discord.com/",
+  "last_verified": "2026-11-01",
+  "stale_after_days": 90,
+  "supersedes": null,
+  "license": "CC-BY-4.0",
+  "dimensions_px": {
+    "width": 128,
+    "height": 128
+  },
+  "max_size_kb": 250,
+  "dpi": 150,
+  "background": "transparent",
+  "constraints": {
+    "width_px": 128,
+    "height_px": 128,
+    "max_size_kb": 250,
+    "dpi": 150,
+    "background_hex": "transparent",
+    "strip_exif": true
+  }
+}

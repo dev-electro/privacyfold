@@ -1,0 +1,31 @@
+{
+  "id": "wcag-2-2-aaa-contrast-audit",
+  "presetSlug": "wcag-2-2-aaa-contrast-audit",
+  "tool": "color_contrast",
+  "toolSlug": "color-contrast",
+  "version": "2026.11.1",
+  "status": "active",
+  "title": "WCAG 2.2 AA & AAA + APCA Lc Contrast Compliance Audit",
+  "jurisdiction": "W3C WAI",
+  "authority_name": "W3C WAI",
+  "source_url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+  "last_verified": "2026-11-01",
+  "stale_after_days": 90,
+  "supersedes": null,
+  "license": "CC-BY-4.0",
+  "dimensions_px": {
+    "width": 0,
+    "height": 0
+  },
+  "max_size_kb": 100,
+  "dpi": 0,
+  "background": "none",
+  "constraints": {
+    "width_px": 0,
+    "height_px": 0,
+    "max_size_kb": 100,
+    "dpi": 0,
+    "background_hex": "none",
+    "strip_exif": true
+  }
+}

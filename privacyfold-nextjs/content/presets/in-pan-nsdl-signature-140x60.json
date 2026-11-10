@@ -1,0 +1,31 @@
+{
+  "id": "in-pan-nsdl-signature-140x60",
+  "presetSlug": "in-pan-nsdl-signature-140x60",
+  "tool": "signature_clean",
+  "toolSlug": "signature-clean",
+  "version": "2026.11.1",
+  "status": "active",
+  "title": "India NSDL / UTIITSL PAN Card Signature (140\u00d760px, \u226412KB)",
+  "jurisdiction": "NSDL Tin-NSDL",
+  "authority_name": "NSDL Tin-NSDL",
+  "source_url": "https://www.protean-tinpan.com/",
+  "last_verified": "2026-11-01",
+  "stale_after_days": 90,
+  "supersedes": null,
+  "license": "CC-BY-4.0",
+  "dimensions_px": {
+    "width": 140,
+    "height": 60
+  },
+  "max_size_kb": 12,
+  "dpi": 200,
+  "background": "#FFFFFF",
+  "constraints": {
+    "width_px": 140,
+    "height_px": 60,
+    "max_size_kb": 12,
+    "dpi": 200,
+    "background_hex": "#FFFFFF",
+    "strip_exif": true
+  }
+}

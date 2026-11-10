@@ -1,0 +1,31 @@
+{
+  "id": "uk-citb-cscs-card-photo",
+  "presetSlug": "uk-citb-cscs-card-photo",
+  "tool": "passport_photo",
+  "toolSlug": "passport-photo",
+  "version": "2026.11.1",
+  "status": "active",
+  "title": "UK CSCS Construction Skills Card Photo",
+  "jurisdiction": "CSCS UK",
+  "authority_name": "CSCS UK",
+  "source_url": "https://www.cscs.uk.com/",
+  "last_verified": "2026-11-01",
+  "stale_after_days": 90,
+  "supersedes": null,
+  "license": "CC-BY-4.0",
+  "dimensions_px": {
+    "width": 413,
+    "height": 531
+  },
+  "max_size_kb": 2000,
+  "dpi": 300,
+  "background": "#FFFFFF",
+  "constraints": {
+    "width_px": 413,
+    "height_px": 531,
+    "max_size_kb": 2000,
+    "dpi": 300,
+    "background_hex": "#FFFFFF",
+    "strip_exif": true
+  }
+}

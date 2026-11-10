@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://privacyfold.com/schemas/sqlite_viewer.json",
+  "title": "Local SQL & table query runner",
+  "description": "Run relational SQL projections and filters over local CSV or JSON datasets in browser memory.",
+  "x-privacyfold-tool-id": "sqlite_viewer",
+  "x-privacyfold-category": "dev",
+  "x-privacyfold-engine": "/wasm/dev/sqlite-viewer-v1.wasm",
+  "x-privacyfold-determinism-tier": "D",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/sqlite_viewer?mode=agent&source=mcp#payload",
+  "type": "object",
+  "properties": {
+    "preset": {
+      "type": "string",
+      "enum": [
+        "default"
+      ]
+    },
+    "input": {
+      "type": "string",
+      "description": "Input text, data URI, or local File handle via data-pf='input'"
+    },
+    "options": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "input"
+  ]
+}

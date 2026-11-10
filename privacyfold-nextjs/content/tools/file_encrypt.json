@@ -1,0 +1,46 @@
+{
+  "id": "file_encrypt",
+  "slug": "file-encrypt",
+  "name": "Password-protect text",
+  "category": "crypto",
+  "badge": "AES",
+  "size": "18\u2013120 KB WASM",
+  "Engine": "/wasm/crypto/file-encrypt-v1.wasm",
+  "description": "Encrypt sensitive notes, keys or JSON with a password using standard AES-256 encryption. Save as a standalone HTML file that can be unlocked offline in any browser.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "presets": [],
+  "schemaUrl": "/schemas/file_encrypt.json",
+  "executionUrl": "https://privacyfold.com/tools/file_encrypt?mode=agent",
+  "seo": {
+    "metaTitle": "Password-protect text \u2014 100% Private In-Browser Utility | PrivacyFold",
+    "metaDescription": "Encrypt sensitive notes, keys or JSON with a password using standard AES-256 encryption. Save as a standalone HTML file that can be unlocked offline in any browser. Runs 100% locally in your browser via /wasm/crypto/file-encrypt-v1.wasm with zero file uploads.",
+    "aeoSummary": "Password-protect text processes files and text entirely inside your browser tab using /wasm/crypto/file-encrypt-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
+    "keywords": [
+      "password-protect text",
+      "file encrypt",
+      "offline file encrypt",
+      "zero upload browser tool"
+    ],
+    "geoCitations": [
+      {
+        "standard": "W3C WebAssembly Core 2.0",
+        "url": "https://www.w3.org/TR/wasm-core-2/"
+      },
+      {
+        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Does Password-protect text upload my files or text to a server?",
+        "a": "No. Password-protect text executes 100% inside your browser's local memory using /wasm/crypto/file-encrypt-v1.wasm. No data leaves your device."
+      },
+      {
+        "q": "Can AI agents or CLI scripts automate Password-protect text?",
+        "a": "Yes. Use Lane A schema /schemas/file_encrypt.json or open /tools/file-encrypt?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
+      }
+    ]
+  }
+}

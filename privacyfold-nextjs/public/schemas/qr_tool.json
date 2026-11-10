@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://privacyfold.com/schemas/qr_tool.json",
+  "title": "QR code generator & Wi-Fi card",
+  "description": "Generate high-contrast QR codes for website links, Wi-Fi logins, or vCards locally with zero tracking redirects.",
+  "x-privacyfold-tool-id": "qr_tool",
+  "x-privacyfold-category": "image",
+  "x-privacyfold-engine": "/wasm/image/qr-tool-v1.wasm",
+  "x-privacyfold-determinism-tier": "D",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/qr_tool?mode=agent&source=mcp#payload",
+  "type": "object",
+  "properties": {
+    "preset": {
+      "type": "string",
+      "enum": [
+        "default"
+      ]
+    },
+    "input": {
+      "type": "string",
+      "description": "Input text, data URI, or local File handle via data-pf='input'"
+    },
+    "options": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "input"
+  ]
+}

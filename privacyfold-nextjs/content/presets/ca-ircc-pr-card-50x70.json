@@ -1,0 +1,31 @@
+{
+  "id": "ca-ircc-pr-card-50x70",
+  "presetSlug": "ca-ircc-pr-card-50x70",
+  "tool": "passport_photo",
+  "toolSlug": "passport-photo",
+  "version": "2026.11.1",
+  "status": "active",
+  "title": "Canada IRCC Permanent Resident Card Photo (50\u00d770mm)",
+  "jurisdiction": "IRCC Canada",
+  "authority_name": "IRCC Canada",
+  "source_url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-card/apply-renew-replace/photo.html",
+  "last_verified": "2026-11-01",
+  "stale_after_days": 90,
+  "supersedes": null,
+  "license": "CC-BY-4.0",
+  "dimensions_px": {
+    "width": 591,
+    "height": 827
+  },
+  "max_size_kb": 4000,
+  "dpi": 300,
+  "background": "#FFFFFF",
+  "constraints": {
+    "width_px": 591,
+    "height_px": 827,
+    "max_size_kb": 4000,
+    "dpi": 300,
+    "background_hex": "#FFFFFF",
+    "strip_exif": true
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "x-twitter-header-1500x500",
+  "presetSlug": "x-twitter-header-1500x500",
+  "tool": "social_resizer",
+  "toolSlug": "social-resizer",
+  "version": "2026.11.1",
+  "status": "active",
+  "title": "X (Twitter) Profile Header Banner (1500\u00d7500px, EXIF Stripped)",
+  "jurisdiction": "X Help Center",
+  "authority_name": "X Help Center",
+  "source_url": "https://help.x.com/en/managing-your-account/common-issues-when-uploading-profile-photo",
+  "last_verified": "2026-11-01",
+  "stale_after_days": 90,
+  "supersedes": null,
+  "license": "CC-BY-4.0",
+  "dimensions_px": {
+    "width": 1500,
+    "height": 500
+  },
+  "max_size_kb": 1500,
+  "dpi": 150,
+  "background": "#000000",
+  "constraints": {
+    "width_px": 1500,
+    "height_px": 500,
+    "max_size_kb": 1500,
+    "dpi": 150,
+    "background_hex": "#000000",
+    "strip_exif": true
+  }
+}

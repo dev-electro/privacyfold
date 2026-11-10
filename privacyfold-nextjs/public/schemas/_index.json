@@ -1,0 +1,845 @@
+{
+  "$schema": "https://privacyfold.com/schemas/index-v1.json",
+  "version": "2026.11.1",
+  "generated_at": "2026-11-15T00:00:00Z",
+  "license": "CC-BY-4.0",
+  "tool_count": 72,
+  "preset_count": 87,
+  "tools": [
+    {
+      "id": "passport_photo",
+      "title": "Passport & ID photo",
+      "category": "photo",
+      "engine": "/wasm/photo/passport-photo-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/passport_photo.json",
+      "sha256": "9efafff02d1f0db4bf3cdf4106a070b75285a30af0b84a961fc462cc7b7e36e9",
+      "presets": [
+        "uk-passport-photo",
+        "us-passport-std",
+        "us-ds-160-visa-photo",
+        "us-dv-lottery-photo",
+        "us-global-entry-photo",
+        "uscis-n400-naturalization-photo",
+        "uscis-i765-ead-photo",
+        "uscis-i130-petition-photo",
+        "uscis-i131-travel-document-photo",
+        "us-ny-dmv-license-renewal-photo",
+        "us-firearms-atf-efrom-photo",
+        "uk-brp-evisa-photo",
+        "uk-dvla-driving-licence-photo",
+        "uk-blue-badge-photo",
+        "uk-tfl-oyster-photocard",
+        "uk-citb-cscs-card-photo",
+        "uk-sia-security-licence-photo",
+        "de-biometric-passport-35x45",
+        "fr-ants-ephotos-35x45",
+        "nl-pasfoto-matrix-2020",
+        "es-dni-pasaporte-32x26",
+        "it-passaporto-cie-35x45",
+        "ie-passport-online-photo",
+        "ch-swiss-pass-35x45",
+        "eu-schengen-visa-photo-icao",
+        "ca-ircc-pr-card-50x70",
+        "ca-ircc-express-entry-visa",
+        "au-immiaccount-visa-photo",
+        "nz-real-me-passport-photo",
+        "jp-my-number-card-photo",
+        "sg-ica-passport-400x514",
+        "ae-icp-golden-visa-photo",
+        "sa-absher-iqama-photo",
+        "in-oci-card-photo",
+        "in-upsc-ssc-photo-20kb",
+        "cn-chinese-visa-33x48"
+      ]
+    },
+    {
+      "id": "image_compress",
+      "title": "Image compressor",
+      "category": "image",
+      "engine": "/wasm/image/image-compress-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/image_compress.json",
+      "sha256": "84caaa21fdf576fe0ae93ae2fe7f7aa32cce21897399839ada7ea6c8ae6e4f37",
+      "presets": [
+        "uk-visa-vfs-docs",
+        "web-ready-webp"
+      ]
+    },
+    {
+      "id": "exif_strip",
+      "title": "Photo metadata remover",
+      "category": "image",
+      "engine": "/wasm/image/exif-strip-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/exif_strip.json",
+      "sha256": "7e8ecb63fbc93186ade2dbe39b6fa4890906dfe65c121405b31ce890915c6894",
+      "presets": []
+    },
+    {
+      "id": "clean_paste",
+      "title": "Link & text cleaner",
+      "category": "crypto",
+      "engine": "/wasm/crypto/clean-paste-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/clean_paste.json",
+      "sha256": "5b4747eb453c0a650366f6f5cf4dfdf1159954f4e32d4036e77b603246048d78",
+      "presets": []
+    },
+    {
+      "id": "stego_seal",
+      "title": "Watermark & document stamp",
+      "category": "crypto",
+      "engine": "/wasm/crypto/stego-seal-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/stego_seal.json",
+      "sha256": "bcc744217d8bdf9947d2ce2636ee782ebd588f3dfd78f32a952a1807675b7905",
+      "presets": []
+    },
+    {
+      "id": "vellum_diff",
+      "title": "Document & image compare",
+      "category": "pdf",
+      "engine": "/wasm/pdf/vellum-diff-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/vellum_diff.json",
+      "sha256": "9c408911df04bb122b588d0c8318be3cdf6d3013e152b01be85134aca5d01b40",
+      "presets": []
+    },
+    {
+      "id": "json_format",
+      "title": "JSON formatter",
+      "category": "dev",
+      "engine": "/wasm/dev/json-format-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/json_format.json",
+      "sha256": "b911a094532f0ce2b9541270c01358be49150d160b3793da51e442812ec1fff6",
+      "presets": [
+        "stripe-webhook-json-formatter"
+      ]
+    },
+    {
+      "id": "jwt_decode",
+      "title": "JWT decoder",
+      "category": "dev",
+      "engine": "/wasm/dev/jwt-decode-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/jwt_decode.json",
+      "sha256": "596b536d20412aabef2759ac4c047e7cc2a5ad0de8b75712ec0a958366cd896e",
+      "presets": [
+        "jwt-rs256-es256-offline-audit"
+      ]
+    },
+    {
+      "id": "base64",
+      "title": "Base64 encoder and decoder",
+      "category": "dev",
+      "engine": "/wasm/dev/base64-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/base64.json",
+      "sha256": "c350c676adec81589871fff0c7703666ddc79191174b919c3dafa0a91e3e1c07",
+      "presets": [
+        "kubernetes-secret-base64-codec"
+      ]
+    },
+    {
+      "id": "hash_gen",
+      "title": "Hash generator",
+      "category": "crypto",
+      "engine": "/wasm/crypto/hash-gen-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/hash_gen.json",
+      "sha256": "1bba5a5e7b370dc2997fa570e89fb899ca85412aef2500b3d267c12054be31ef",
+      "presets": []
+    },
+    {
+      "id": "uuid_gen",
+      "title": "UUID generator",
+      "category": "dev",
+      "engine": "/wasm/dev/uuid-gen-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/uuid_gen.json",
+      "sha256": "801bc92a5f023d095806ce01a1e3356ed416976be0c55f5d69e7be0015c23962",
+      "presets": []
+    },
+    {
+      "id": "pdf_merge",
+      "title": "Merge PDF",
+      "category": "pdf",
+      "engine": "/wasm/pdf/pdf-merge-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/pdf_merge.json",
+      "sha256": "34fcf10e68e9cbe04cdc3da9bd992ba00ab4894e16922fe6ed9d53185d251b20",
+      "presets": []
+    },
+    {
+      "id": "pdf_split",
+      "title": "Split PDF",
+      "category": "pdf",
+      "engine": "/wasm/pdf/pdf-split-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/pdf_split.json",
+      "sha256": "032576e4532681de30b595e00162321dad61e85565c355161de4ab50ac5f693c",
+      "presets": []
+    },
+    {
+      "id": "pdf_redact",
+      "title": "Document & image redactor",
+      "category": "pdf",
+      "engine": "/wasm/pdf/pdf-redact-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/pdf_redact.json",
+      "sha256": "193da987228328bc80df235d45d05b04acaeadebafcf1a1ccbbcaa3b435d8aca",
+      "presets": [
+        "foia-redaction-true-byte-scrub"
+      ]
+    },
+    {
+      "id": "w9_prep",
+      "title": "W-9 form helper",
+      "category": "forms",
+      "engine": "/wasm/forms/w9-prep-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/w9_prep.json",
+      "sha256": "8406894d2264e2e3f0f422fe2a1cccc96e219b9daa3aa839d922a0c9c80f59b8",
+      "presets": [
+        "us-irs-w9-tin-match"
+      ]
+    },
+    {
+      "id": "sa100_prep",
+      "title": "SA100 helper",
+      "category": "forms",
+      "engine": "/wasm/forms/sa100-prep-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/sa100_prep.json",
+      "sha256": "18eeb68c8d3d3a59821180f147ec02f2a5e535817b54521339781765769c608a",
+      "presets": [
+        "uk-hmrc-sa100-self-assessment"
+      ]
+    },
+    {
+      "id": "heic_to_jpg",
+      "title": "Image format converter & resizer",
+      "category": "image",
+      "engine": "/wasm/image/heic-to-jpg-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/heic_to_jpg.json",
+      "sha256": "221fb10dc60971c0eb2534a12627ca274be88714d5a253ce2b0747d3b132fd9d",
+      "presets": []
+    },
+    {
+      "id": "signature_clean",
+      "title": "Signature cleaner",
+      "category": "photo",
+      "engine": "/wasm/photo/signature-clean-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/signature_clean.json",
+      "sha256": "f999db39b705efee6e680d6cf6a609098a196e2b0cc814790a118ba964350cda",
+      "presets": [
+        "in-pan-nsdl-signature-140x60"
+      ]
+    },
+    {
+      "id": "file_encrypt",
+      "title": "Password-protect text",
+      "category": "crypto",
+      "engine": "/wasm/crypto/file-encrypt-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/file_encrypt.json",
+      "sha256": "900ca51a036da4f1089268593ef9b3cb5780d5f03f018cee4355149ff3637c2d",
+      "presets": []
+    },
+    {
+      "id": "password_gen",
+      "title": "Password & passphrase generator",
+      "category": "crypto",
+      "engine": "/wasm/crypto/password-gen-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/password_gen.json",
+      "sha256": "da44af04e38d883cb54078269c5b63d7422ac8653e33d9acd5f13df2c2ebace9",
+      "presets": []
+    },
+    {
+      "id": "cron_parser",
+      "title": "Cron expression explainer",
+      "category": "dev",
+      "engine": "/wasm/dev/cron-parser-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/cron_parser.json",
+      "sha256": "19fa3d91396081e5bc78df099c203f5d93324cb8bb86c92deb945cc83824db6a",
+      "presets": [
+        "github-actions-cron-schedule",
+        "aws-eventbridge-cron-validator"
+      ]
+    },
+    {
+      "id": "svg_optimize",
+      "title": "SVG optimizer & cleaner",
+      "category": "image",
+      "engine": "/wasm/image/svg-optimize-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/svg_optimize.json",
+      "sha256": "98095d84b5c63f39776392b674673c806f4aa204306e2020acbfc8f19be2189a",
+      "presets": [
+        "svg-react-jsx-icon-optimizer"
+      ]
+    },
+    {
+      "id": "color_contrast",
+      "title": "Color palette & contrast checker",
+      "category": "image",
+      "engine": "/wasm/image/color-contrast-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/color_contrast.json",
+      "sha256": "43399cb47a6442fb666fbaa92364125e0ca927444401d374eed64879d847f9bb",
+      "presets": [
+        "wcag-2-2-aaa-contrast-audit"
+      ]
+    },
+    {
+      "id": "regex_tester",
+      "title": "Regex tester & explainer",
+      "category": "dev",
+      "engine": "/wasm/dev/regex-tester-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/regex_tester.json",
+      "sha256": "5599f5048d245d50ce603cb7d330d6d0a6d2af04ff68dd55496392da6ca38732",
+      "presets": []
+    },
+    {
+      "id": "url_codec",
+      "title": "URL encoder, decoder & parser",
+      "category": "dev",
+      "engine": "/wasm/dev/url-codec-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/url_codec.json",
+      "sha256": "d17bc5efa22cd8e73c6c3c2de764eaf13d31114ab574276076b566d74231c93a",
+      "presets": []
+    },
+    {
+      "id": "text_diff",
+      "title": "Text & code diff checker",
+      "category": "dev",
+      "engine": "/wasm/dev/text-diff-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/text_diff.json",
+      "sha256": "fbe49435af33292c7d45ad23d903b1ddc3e61068ffbc6debca6b48bd231a0cc0",
+      "presets": []
+    },
+    {
+      "id": "csv_json",
+      "title": "CSV \u2194 JSON converter",
+      "category": "dev",
+      "engine": "/wasm/dev/csv-json-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/csv_json.json",
+      "sha256": "5b66f094245f9a8b8851e591cfe223480921944a2135b3e886ee469caeb64538",
+      "presets": []
+    },
+    {
+      "id": "markdown_prev",
+      "title": "Markdown to HTML converter",
+      "category": "dev",
+      "engine": "/wasm/dev/markdown-prev-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/markdown_prev.json",
+      "sha256": "8e00ec5cb80e432fe6abd7d58d62465c862185da46f6c9e09c2736f876a4c4d4",
+      "presets": []
+    },
+    {
+      "id": "ua_parser",
+      "title": "User-Agent & browser inspector",
+      "category": "dev",
+      "engine": "/wasm/dev/ua-parser-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/ua_parser.json",
+      "sha256": "9d2cd22db6bb1eb78344bb6afb3fa3f3185ba051ace5f14ea0969bc1655d78e6",
+      "presets": []
+    },
+    {
+      "id": "pdf_to_word",
+      "title": "PDF to Word converter",
+      "category": "pdf",
+      "engine": "/wasm/pdf/pdf-to-word-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/pdf_to_word.json",
+      "sha256": "764b5d1c4134c04f729dca983626eb57a39451ad8d4e347eea18a6de9522a3ba",
+      "presets": []
+    },
+    {
+      "id": "word_to_pdf",
+      "title": "Word to PDF converter",
+      "category": "pdf",
+      "engine": "/wasm/pdf/word-to-pdf-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/word_to_pdf.json",
+      "sha256": "b039edc86cee7d6342285dcd4c351df1a0105fa9feb003e198f31a27ab813587",
+      "presets": []
+    },
+    {
+      "id": "image_to_pdf",
+      "title": "Image to PDF converter",
+      "category": "pdf",
+      "engine": "/wasm/pdf/image-to-pdf-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/image_to_pdf.json",
+      "sha256": "3735ffb633ca7169404f37c4f01684c625dff8d5ef569b29492ba231a3ee69a3",
+      "presets": []
+    },
+    {
+      "id": "pdf_to_image",
+      "title": "PDF page to image converter",
+      "category": "pdf",
+      "engine": "/wasm/pdf/pdf-to-image-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/pdf_to_image.json",
+      "sha256": "34d836733546f494262efa5749689ef266685132e1f14e747a0ea51b8f201a17",
+      "presets": []
+    },
+    {
+      "id": "pdf_compress",
+      "title": "PDF compressor (Portal presets)",
+      "category": "pdf",
+      "engine": "/wasm/pdf/pdf-compress-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/pdf_compress.json",
+      "sha256": "c349566ddf89ed935421bbf0d87b5090bc882f3717127e38b54b4f4861442561",
+      "presets": [
+        "us-ca-dmv-real-id-docs",
+        "uscis-portal-pdf-under-12mb",
+        "ca-ircc-portal-pdf-under-4mb",
+        "uk-tls-vfs-visa-pdf-under-5mb",
+        "au-immiaccount-pdf-under-5mb",
+        "email-attachment-pdf-under-10mb",
+        "whatsapp-pdf-document-optimiser"
+      ]
+    },
+    {
+      "id": "pdf_flatten",
+      "title": "PDF flattener & form locker",
+      "category": "pdf",
+      "engine": "/wasm/pdf/pdf-flatten-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/pdf_flatten.json",
+      "sha256": "a08cf6a4d383f5fa1f8589cc9f76bbd98feed496a273307fe1480c477e978f9e",
+      "presets": [
+        "us-pacer-federal-court-pdf",
+        "sec-edgar-filing-pdf-prep"
+      ]
+    },
+    {
+      "id": "pdf_metadata",
+      "title": "PDF metadata stripper",
+      "category": "pdf",
+      "engine": "/wasm/pdf/pdf-metadata-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/pdf_metadata.json",
+      "sha256": "120033af89614591d114988538fc7e9c4ec1d4010e71a7cb70b39dd0828f9471",
+      "presets": [
+        "arxiv-latex-pdf-anonymizer"
+      ]
+    },
+    {
+      "id": "ada_pdf",
+      "title": "ADA & WCAG PDF accessibility checker",
+      "category": "pdf",
+      "engine": "/wasm/pdf/ada-check-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/ada_pdf.json",
+      "sha256": "a94a94113ae8df292489cf6f9fbd24849b70c2601279775dd75821ccb7689697",
+      "presets": [
+        "ada-section-508-pdf-ua-audit"
+      ]
+    },
+    {
+      "id": "eidas_sign",
+      "title": "eIDAS & local document signer",
+      "category": "pdf",
+      "engine": "/wasm/pdf/eidas-sign-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/eidas_sign.json",
+      "sha256": "35a538534971f3346f9b32c77e9bb435b91daa9a1724c57e181bb726bc123117",
+      "presets": [
+        "eu-eidas-pades-b-signature"
+      ]
+    },
+    {
+      "id": "us_tax_filler",
+      "title": "US tax form filler (W-2, 1099-NEC, 1040-EZ)",
+      "category": "forms",
+      "engine": "/wasm/forms/us-tax-filler-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/us_tax_filler.json",
+      "sha256": "8b1c3977dbea80aeccaef7ea7d20798e64d39e7c1a5083133c8d48e439284ab5",
+      "presets": [
+        "us-irs-1040-schedule-c-prep"
+      ]
+    },
+    {
+      "id": "uscis_formatter",
+      "title": "USCIS immigration packet formatter (I-130, I-485, I-765, N-400)",
+      "category": "forms",
+      "engine": "/wasm/forms/uscis-formatter-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/uscis_formatter.json",
+      "sha256": "475b67c578fb872339f6fd20a778c23853bda35f6408c93939dd05404f5e0ae2",
+      "presets": [
+        "uscis-i485-evidence-binder"
+      ]
+    },
+    {
+      "id": "apostille_prep",
+      "title": "EU & Hague Apostille document prep",
+      "category": "forms",
+      "engine": "/wasm/forms/apostille-prep-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/apostille_prep.json",
+      "sha256": "f8d1b7eb3fb710ae5457a68b572286408dd47da3c63370fcf9f567fce3272a03",
+      "presets": [
+        "hague-apostille-convention-1961"
+      ]
+    },
+    {
+      "id": "lease_generator",
+      "title": "Residential lease & rental agreement generator",
+      "category": "forms",
+      "engine": "/wasm/forms/lease-generator-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/lease_generator.json",
+      "sha256": "eb6067acb5726fe2d193abce928873879856f3dfc6993ccdf87045f951d6e604",
+      "presets": []
+    },
+    {
+      "id": "nda_generator",
+      "title": "Mutual NDA & contract generator",
+      "category": "forms",
+      "engine": "/templates/nda-us.json",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/nda_generator.json",
+      "sha256": "1de8633b2d0130ecf539a5aa605fb025a4485ad4f999e1ca99aa329c513c9c27",
+      "presets": []
+    },
+    {
+      "id": "invoice_generator",
+      "title": "Private invoice generator",
+      "category": "forms",
+      "engine": "/templates/invoice-us.json",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/invoice_generator.json",
+      "sha256": "eab99a789d3dfd1fd6f3616cb3ecf0993ffc7dfa71f42e610824a7c7fc63a67b",
+      "presets": []
+    },
+    {
+      "id": "resume_builder",
+      "title": "ATS-optimized resume & CV builder",
+      "category": "forms",
+      "engine": "/templates/resume-ats.json",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/resume_builder.json",
+      "sha256": "beb422064d823d7d883dee030879a5626c7b4ad62c8d5c993c41ba88fdb7ea3e",
+      "presets": []
+    },
+    {
+      "id": "cover_letter",
+      "title": "Cover letter generator",
+      "category": "forms",
+      "engine": "/wasm/forms/cover-letter-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/cover_letter.json",
+      "sha256": "b6021c261598f0684c5281531e3a0f56574f70a26faf7ae3e139b19baa890771",
+      "presets": []
+    },
+    {
+      "id": "receipt_scanner",
+      "title": "Receipt & business card organizer",
+      "category": "forms",
+      "engine": "/wasm/forms/receipt-scanner-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/receipt_scanner.json",
+      "sha256": "fed1e331c1cae5ff7c33ee120f580bd2313beecd45703490dedfa5d514f71bac",
+      "presets": []
+    },
+    {
+      "id": "meeting_notes",
+      "title": "Meeting notes formatter & focus timer",
+      "category": "forms",
+      "engine": "/wasm/forms/meeting-notes-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/meeting_notes.json",
+      "sha256": "d23f1b514f56dd05beeace76b1119d101b015b2ff180032ae48f85353338ceac",
+      "presets": []
+    },
+    {
+      "id": "social_resizer",
+      "title": "Social media, e-commerce & app icon resizer",
+      "category": "image",
+      "engine": "/wasm/image/image-resize-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/social_resizer.json",
+      "sha256": "4c763fbff0297e4da0408af562d02521ede673e8a64ecfeec86cdee276c90e60",
+      "presets": [
+        "amazon-main-image-2000x2000",
+        "shopify-product-2048x2048",
+        "etsy-listing-2000x1600",
+        "ebay-1600x1600-clean-bg",
+        "walmart-marketplace-2000x2000",
+        "poshmark-square-1200x1200",
+        "google-merchant-center-product",
+        "app-store-screenshot-6-7",
+        "linkedin-banner-1584x396",
+        "youtube-thumbnail-1280x720-2mb",
+        "instagram-carousel-1080x1350",
+        "instagram-reels-tiktok-1080x1920",
+        "x-twitter-header-1500x500",
+        "open-graph-social-card-1200x630",
+        "discord-server-emoji-128x128"
+      ]
+    },
+    {
+      "id": "screenshot_annotate",
+      "title": "Screenshot annotator & callout marker",
+      "category": "image",
+      "engine": "/wasm/image/screenshot-annotate-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/screenshot_annotate.json",
+      "sha256": "5f0652d562bc40d5d3e12e62ba67b45c0f68419c88054175e14fc162f43a70b5",
+      "presets": []
+    },
+    {
+      "id": "barcode_gen",
+      "title": "Barcode generator (Code 128, EAN-13, UPC-A)",
+      "category": "dev",
+      "engine": "/wasm/utility/qr-generate-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/barcode_gen.json",
+      "sha256": "3bcb3d51e720583a4d2c12ddb7fcbb3b2b43f836f9a4492554bdf40b49f4f326",
+      "presets": [
+        "gs1-ean13-retail-barcode"
+      ]
+    },
+    {
+      "id": "timestamp_conv",
+      "title": "Epoch / Unix timestamp & timezone converter",
+      "category": "dev",
+      "engine": "/wasm/dev/timestamp-conv-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/timestamp_conv.json",
+      "sha256": "69fed350854eb4584633f754791e82ad09cc464d17a9515c4d2f97f79258e186",
+      "presets": []
+    },
+    {
+      "id": "unit_converter",
+      "title": "Unit converter (Imperial \u2194 Metric)",
+      "category": "dev",
+      "engine": "/wasm/dev/unit-converter-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/unit_converter.json",
+      "sha256": "c4f0aed936ae45b6810a90f266ed9b691345b458b092c40ddfd00eeb9f7f4627",
+      "presets": []
+    },
+    {
+      "id": "lorem_ipsum",
+      "title": "Lorem Ipsum & placeholder text generator",
+      "category": "dev",
+      "engine": "/wasm/generators/lorem-ipsum-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/lorem_ipsum.json",
+      "sha256": "a11c73fbab6a8b9db5ceb34d174aaeeea4df5656f6b64bbdd88d398eba26a0e0",
+      "presets": []
+    },
+    {
+      "id": "code_minifier",
+      "title": "HTML / CSS / JS minifier & entity codec",
+      "category": "dev",
+      "engine": "/wasm/dev/code-minifier-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/code_minifier.json",
+      "sha256": "ec6ab0d9877d9946cc25860d52d26598a067a83b0dc05957fdee562ad87fe234",
+      "presets": []
+    },
+    {
+      "id": "schema_validator",
+      "title": "Schema.org JSON-LD validator & robots.txt generator",
+      "category": "dev",
+      "engine": "/wasm/dev/schema-validator-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/schema_validator.json",
+      "sha256": "50eaec81c2bb256e48ba2c03c915a26ed03c633705d34f54e9b76ec96314f826",
+      "presets": [
+        "openapi-3-1-json-schema-check"
+      ]
+    },
+    {
+      "id": "api_builder",
+      "title": "API request converter (cURL \u2194 fetch \u2194 axios)",
+      "category": "dev",
+      "engine": "/wasm/dev/api-builder-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/api_builder.json",
+      "sha256": "1c27997bb192edff69b5215a8a7fa9331b9d5f20b525b09fdc08354de0906ad1",
+      "presets": []
+    },
+    {
+      "id": "privacy_letter",
+      "title": "GDPR, CCPA & privacy policy generator",
+      "category": "crypto",
+      "engine": "/wasm/generators/privacy-letter-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/privacy_letter.json",
+      "sha256": "83fada4444dbb4bf3a2aa5f0051ded1c5aa43e2ee68db5d80cd98233183d2088",
+      "presets": [
+        "gdpr-art-17-erasure-letter",
+        "ccpa-cpra-do-not-sell-request"
+      ]
+    },
+    {
+      "id": "email_header",
+      "title": "Email header & SPF/DKIM/DMARC analyzer",
+      "category": "crypto",
+      "engine": "/wasm/crypto/email-header-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/email_header.json",
+      "sha256": "bb85d0e3d78d0a0da73119b8e81bdfce9e1e3edb8c4b856f2d24723feec6f517",
+      "presets": [
+        "spf-dkim-dmarc-phishing-trace"
+      ]
+    },
+    {
+      "id": "bg_remove",
+      "title": "AI background remover",
+      "category": "photo",
+      "engine": "modnet-ben-v2-fp16",
+      "determinism_tier": "M",
+      "schema_url": "https://privacyfold.com/schemas/bg_remove.json",
+      "sha256": "fcca453acc26baa961c4b178e37355a7149e00a5d36c79d0127f3496095e2507",
+      "presets": [
+        "linkedin-headshot-800x800"
+      ]
+    },
+    {
+      "id": "magic_eraser",
+      "title": "Object & watermark remover (Inpainting)",
+      "category": "image",
+      "engine": "lama-fp16-pruned",
+      "determinism_tier": "M",
+      "schema_url": "https://privacyfold.com/schemas/magic_eraser.json",
+      "sha256": "a3550e1aae665ed97bec8ff03cf47dd6fe7ee5da954dd2700cacdc65bc7b7be5",
+      "presets": []
+    },
+    {
+      "id": "image_upscaler",
+      "title": "AI image upscaler & restorer",
+      "category": "image",
+      "engine": "omnisr-nano-fp16",
+      "determinism_tier": "M",
+      "schema_url": "https://privacyfold.com/schemas/image_upscaler.json",
+      "sha256": "3aba2e0968980ecc4276636781eb8dcd0c1841a458abd2c730b1e3f346e53849",
+      "presets": []
+    },
+    {
+      "id": "ai_airlock",
+      "title": "AI Airlock (PII redactor & token restorer)",
+      "category": "crypto",
+      "engine": "rampart-minilm-l6",
+      "determinism_tier": "M",
+      "schema_url": "https://privacyfold.com/schemas/ai_airlock.json",
+      "sha256": "c471dcfd5835125c47b84f57522985a7693b3c91e93ef72acea130dea9b29665",
+      "presets": [
+        "hipaa-safe-harbor-18-identifiers"
+      ]
+    },
+    {
+      "id": "exposure_xray",
+      "title": "Exposure X-ray & redaction self-test",
+      "category": "crypto",
+      "engine": "/wasm/crypto/exposure-xray-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/exposure_xray.json",
+      "sha256": "7f2855cc68811c0c50735fe553cd6bfb0c277ae642094aa3f5d9adc353cb85a1",
+      "presets": []
+    },
+    {
+      "id": "ocr_scan",
+      "title": "Fill from scan & local OCR",
+      "category": "pdf",
+      "engine": "tesseract-ppocr-v6",
+      "determinism_tier": "M",
+      "schema_url": "https://privacyfold.com/schemas/ocr_scan.json",
+      "sha256": "d437a1bd872e83a0b0b80fd6c8ed5434f8afc83e50537dc8140bbca6ca55a373",
+      "presets": [
+        "us-tsa-precheck-doc"
+      ]
+    },
+    {
+      "id": "chat_pdf",
+      "title": "Chat with PDF & document Q&A",
+      "category": "pdf",
+      "engine": "bge-micro-v2-q8",
+      "determinism_tier": "M",
+      "schema_url": "https://privacyfold.com/schemas/chat_pdf.json",
+      "sha256": "3d471fe5a72c2d919b49777e82013f73a44196a8570a79f34e4018117b170f28",
+      "presets": []
+    },
+    {
+      "id": "ai_writer",
+      "title": "Zero-download AI writer & rewriter (0 MB)",
+      "category": "dev",
+      "engine": "window.ai-smollm2-135m",
+      "determinism_tier": "B",
+      "schema_url": "https://privacyfold.com/schemas/ai_writer.json",
+      "sha256": "19513aaa081d1be88aeee1be53e5bc31e47e06b851e95069a54cade54518a17b",
+      "presets": []
+    },
+    {
+      "id": "voice_transcribe",
+      "title": "Speech-to-text & audio transcriber",
+      "category": "image",
+      "engine": "moonshine-tiny-en",
+      "determinism_tier": "M",
+      "schema_url": "https://privacyfold.com/schemas/voice_transcribe.json",
+      "sha256": "8f227f51ced0e4b1abaf4b81634072a5f3e36589f556a638ba7712ebcf070af6",
+      "presets": []
+    },
+    {
+      "id": "spot_rejection",
+      "title": "Preset validator & compliance check",
+      "category": "photo",
+      "engine": "/wasm/photo/spot-rejection-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/spot_rejection.json",
+      "sha256": "fbb91686c97b4ca8ee66a4139b0e76e4dcee9f8aac68db5166571d2f7d351940",
+      "presets": []
+    },
+    {
+      "id": "qr_tool",
+      "title": "QR code generator & Wi-Fi card",
+      "category": "image",
+      "engine": "/wasm/image/qr-tool-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/qr_tool.json",
+      "sha256": "3638e8227c2982550290fc60079ab6b1f2129ccef0f16198b20284cabd9e7077",
+      "presets": []
+    },
+    {
+      "id": "pgp_crypto",
+      "title": "PGP / ECDSA armored message signer",
+      "category": "crypto",
+      "engine": "/wasm/crypto/pgp-crypto-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/pgp_crypto.json",
+      "sha256": "22cd23bb35d6b57aac00693b4c64f4c5c28ab2e92051e47414f3ea080e856a73",
+      "presets": []
+    },
+    {
+      "id": "sqlite_viewer",
+      "title": "Local SQL & table query runner",
+      "category": "dev",
+      "engine": "/wasm/dev/sqlite-viewer-v1.wasm",
+      "determinism_tier": "D",
+      "schema_url": "https://privacyfold.com/schemas/sqlite_viewer.json",
+      "sha256": "b10d7e9d1e7baa854cfb2c81f73cc62113b615c1af7225050451de6bc02cdfff",
+      "presets": []
+    }
+  ]
+}

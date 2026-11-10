@@ -1,0 +1,48 @@
+{
+  "id": "base64",
+  "slug": "base64",
+  "name": "Base64 encoder and decoder",
+  "category": "dev",
+  "badge": "Base64",
+  "size": "18\u2013120 KB WASM",
+  "Engine": "/wasm/dev/base64-v1.wasm",
+  "description": "Convert text to Base64 and back. Handles any language and emoji.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "presets": [
+    "kubernetes-secret-base64-codec"
+  ],
+  "schemaUrl": "/schemas/base64.json",
+  "executionUrl": "https://privacyfold.com/tools/base64?mode=agent",
+  "seo": {
+    "metaTitle": "Base64 encoder and decoder \u2014 100% Private In-Browser Utility | PrivacyFold",
+    "metaDescription": "Convert text to Base64 and back. Handles any language and emoji. Runs 100% locally in your browser via /wasm/dev/base64-v1.wasm with zero file uploads.",
+    "aeoSummary": "Base64 encoder and decoder processes files and text entirely inside your browser tab using /wasm/dev/base64-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
+    "keywords": [
+      "base64 encoder and decoder",
+      "base64",
+      "offline base64",
+      "zero upload browser tool"
+    ],
+    "geoCitations": [
+      {
+        "standard": "W3C WebAssembly Core 2.0",
+        "url": "https://www.w3.org/TR/wasm-core-2/"
+      },
+      {
+        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Does Base64 encoder and decoder upload my files or text to a server?",
+        "a": "No. Base64 encoder and decoder executes 100% inside your browser's local memory using /wasm/dev/base64-v1.wasm. No data leaves your device."
+      },
+      {
+        "q": "Can AI agents or CLI scripts automate Base64 encoder and decoder?",
+        "a": "Yes. Use Lane A schema /schemas/base64.json or open /tools/base64?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "etsy-listing-2000x1600",
+  "presetSlug": "etsy-listing-2000x1600",
+  "tool": "social_resizer",
+  "toolSlug": "social-resizer",
+  "version": "2026.11.1",
+  "status": "active",
+  "title": "Etsy 5:4 First Listing Thumbnail Image (2000\u00d71600px)",
+  "jurisdiction": "Etsy Seller Handbook",
+  "authority_name": "Etsy Seller Handbook",
+  "source_url": "https://help.etsy.com/hc/en-us/articles/115015663347",
+  "last_verified": "2026-11-01",
+  "stale_after_days": 90,
+  "supersedes": null,
+  "license": "CC-BY-4.0",
+  "dimensions_px": {
+    "width": 2000,
+    "height": 1600
+  },
+  "max_size_kb": 2000,
+  "dpi": 150,
+  "background": "#FFFFFF",
+  "constraints": {
+    "width_px": 2000,
+    "height_px": 1600,
+    "max_size_kb": 2000,
+    "dpi": 150,
+    "background_hex": "#FFFFFF",
+    "strip_exif": true
+  }
+}

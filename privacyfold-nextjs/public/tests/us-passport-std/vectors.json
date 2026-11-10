@@ -1,0 +1,29 @@
+{
+  "preset": "us-passport-std",
+  "version": "2026-11-08.1",
+  "cases": [
+    {
+      "input": "synthetic-600x600.png (generated synthetic portrait, no real person)",
+      "expected": {
+        "advisory_checks": [
+          {
+            "name": "dimensions",
+            "result": "pass",
+            "detail": "600x600 px (51x51 mm at 300 DPI)"
+          },
+          {
+            "name": "file_size",
+            "result": "pass",
+            "detail": "142 KB (limit 240 KB)"
+          },
+          {
+            "name": "background_uniform",
+            "result": "pass",
+            "detail": "Corner luminance 255/255"
+          }
+        ],
+        "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "linkedin-banner-1584x396",
+  "presetSlug": "linkedin-banner-1584x396",
+  "tool": "social_resizer",
+  "toolSlug": "social-resizer",
+  "version": "2026.11.1",
+  "status": "active",
+  "title": "LinkedIn Personal Profile Cover Banner (1584\u00d7396px)",
+  "jurisdiction": "LinkedIn Help",
+  "authority_name": "LinkedIn Help",
+  "source_url": "https://www.linkedin.com/help/linkedin/answer/a568217",
+  "last_verified": "2026-11-01",
+  "stale_after_days": 90,
+  "supersedes": null,
+  "license": "CC-BY-4.0",
+  "dimensions_px": {
+    "width": 1584,
+    "height": 396
+  },
+  "max_size_kb": 2000,
+  "dpi": 150,
+  "background": "#FFFFFF",
+  "constraints": {
+    "width_px": 1584,
+    "height_px": 396,
+    "max_size_kb": 2000,
+    "dpi": 150,
+    "background_hex": "#FFFFFF",
+    "strip_exif": true
+  }
+}

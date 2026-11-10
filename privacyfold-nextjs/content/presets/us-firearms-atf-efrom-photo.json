@@ -1,0 +1,31 @@
+{
+  "id": "us-firearms-atf-efrom-photo",
+  "presetSlug": "us-firearms-atf-efrom-photo",
+  "tool": "passport_photo",
+  "toolSlug": "passport-photo",
+  "version": "2026.11.1",
+  "status": "active",
+  "title": "ATF eForm 1 / eForm 4 Responsible Person Photo (\u22643MB)",
+  "jurisdiction": "US ATF",
+  "authority_name": "US ATF",
+  "source_url": "https://eforms.atf.gov/",
+  "last_verified": "2026-11-01",
+  "stale_after_days": 90,
+  "supersedes": null,
+  "license": "CC-BY-4.0",
+  "dimensions_px": {
+    "width": 600,
+    "height": 600
+  },
+  "max_size_kb": 3000,
+  "dpi": 300,
+  "background": "#FFFFFF",
+  "constraints": {
+    "width_px": 600,
+    "height_px": 600,
+    "max_size_kb": 3000,
+    "dpi": 300,
+    "background_hex": "#FFFFFF",
+    "strip_exif": true
+  }
+}
