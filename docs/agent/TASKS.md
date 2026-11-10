@@ -12,7 +12,7 @@ Order matters: P0 → P1 → P2. The launch gate is PF-020.
 
 | ID | Task | Status | Notes |
 |---|---|---|---|
-| PF-001 | Commit working tree; add `package-lock.json`; push `origin/main` | doing | biggest risk: 388 files exist only here |
+| PF-001 | Commit working tree; add `package-lock.json`; push `origin/main` | done:391 files committed as `839360b`, pushed and confirmed via `git ls-remote` (2026-11-10) | biggest risk closed: work now versioned |
 | PF-002 | Astro 7 migration: scaffold app, port 4 route types + `ToolSeoArticle` → `.astro`, keep `app-runtime.js` untouched | todo | DEC-001; ~1–2 d |
 | PF-003 | Content model: single schema (`tool.schema.json`) for 72 JSONs; add `fam/task/glyph/desc/accepts/tag/std`, `seo.steps`; validate in CI | todo | unblocks build; required in every stack |
 | PF-004 | Mark 8 unimplemented tools `live:false` + hide from llms/.well-known/_index/JSON-LD/sitemap | todo | honesty filter is generated, not hand-edited |
