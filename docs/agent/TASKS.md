@@ -15,9 +15,9 @@ Order matters: P0 → P1 → P2. The launch gate is PF-020.
 | PF-001 | Commit working tree; add `package-lock.json`; push `origin/main` | done:391 files committed as `839360b`, pushed and confirmed via `git ls-remote` (2026-11-10) | biggest risk closed: work now versioned |
 | PF-002 | Astro 7 migration: scaffold app, port 4 route types + `ToolSeoArticle` → `.astro`, keep `app-runtime.js` untouched > now shaped by the founder blueprint | todo | DEC-001 + DEC-004; repo layout, pages/, islands/, layouts per `docs/plans/content-seo-ads-foundation-2026-11-10.md` §2; ~1–2 d |
 | PF-003 | Content model: single schema (`tool.schema.json`) for 72 JSONs; add `fam/task/glyph/desc/accepts/tag/std`, `seo.steps`; validate in CI | todo | now = convert `content/tools/*.json` → the 8 YAML/MD collections + Zod `content.config.ts` (DEC-004 §3); add `answer` block, `status`, `index`, `social`, `reviewed/reviewer` fields |
-| PF-004 | Mark 8 unimplemented tools `live:false` + hide from llms/.well-known/_index/JSON-LD/sitemap | todo | honesty filter is generated, not hand-edited |
+| PF-004 | Non-live tools invisible to llms/.well-known/_index/JSON-LD/sitemap until `status: live` + engine hosted | todo | mode flipped by DEC-009: not "strip" but "stage-real" — registry generation (PF-025) auto-enforces; engines land per the wave table in `docs/plans/engines-and-models.md` §3 |
 | PF-005 | Remove fabricating output: `pdf_compress`, `ocr_scan` (and `voice_transcribe` fallback sentence) → real parse or honest error | todo | consumer-protection level serious |
-| PF-006 | Strip `/wasm/*` engine claims everywhere until binaries exist | todo | 13 referenced paths, 0 files |
+| PF-006 | ~~Strip `/wasm/*` engine claims everywhere until binaries exist~~ | superseded→PF-033 | DEC-009 owner directive: real self-hosted binaries instead of stripping; honesty restored by hosting, staged per wave table |
 | PF-007 | Privacy policy, terms, contact page, cookie/consent notice | todo | AdSense + GDPR minimum |
 | PF-008 | Self-host fonts; drop `fonts.googleapis.com` from CSP + layout | todo | one-hour credibility win |
 | PF-009 | Signature story: implement real Ed25519 sign+verify or delete `.sig`/`PINNED_*`/`signature_verified` | todo | agent supply-chain trust |
@@ -52,6 +52,10 @@ Order matters: P0 → P1 → P2. The launch gate is PF-020.
 | PF-028 | Social layer: `social:` frontmatter block, share row (plain links only, no third-party scripts), weekly social-queue.md draft action, "Photo secrets" series | todo | P2; posts must match CLAIMS.md statuses |
 | PF-029 | i18n: path prefixes (`/hi/tools/exif-strip/`), `translation_of` + `reviewed_by` fields, hreflang graph incl. x-default, 20k-file budget math before scaling presets | todo | plan §3/§6; unblocks PF-019 |
 | PF-030 | Cloudflare Pages project + branch previews + protect `main` (CI + 1 approval, block direct pushes) + GitHub Actions CI workflow | todo | plan §2/§4; part of the PF-020 launch gate |
+
+| PF-033 | Engine registry (DEC-009/010): `content/engine/` is now the 9th registered collection in `admin/config.yml` + Zod schema; Wave-1 binaries deployed under `/wasm/**` with sha256-SRI + immutable cache headers; `connect-src 'self'` stays truthful | todo | unblocks honest SEO copy, hero counts and CLAIMS true-flips; §3 of `docs/plans/engines-and-models.md` is the wave schedule |
+| PF-034 | Engine loader + receipts: `ToolShell` island turns the `src/lib/ai/opfs-loader.ts` stub into a cache-first OPFS loader; SRI-verify on load; per-path COOP/COEP scoped in `_headers` for `/tools/*` + `/models/*` only; `window.__PRIVACYFOLD_RESULT__` carries engine id+sha256+version | todo | Transformers.js runtime per DEC-010; wllama deferred |
+| PF-035 | Sveltia JS-api sugar (DEC-012): slug transform from name, params list validation, entry→branch-preview pointer, hook warns when a preset lacks `source_url`; never auto-stamp `verified`/`status` | todo | after CMS live (PF-021); CMS-agnostic rule intact |
 
 ## P2 — growth foundation
 

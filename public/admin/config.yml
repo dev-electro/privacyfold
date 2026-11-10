@@ -122,6 +122,69 @@ collections:
       - { label: Reviewed, name: reviewed, widget: date }
       - { label: Body, name: body, widget: markdown }
 
+
+  - name: glossary
+    label: Glossary
+    folder: content/glossary
+    create: true
+    extension: md
+    slug: '{{term}}'
+    summary: '{{term}}'
+    fields:
+      - { label: Term, name: term, widget: string }
+      - { label: Definition (one sentence), name: definition, widget: text }
+      - { label: Aliases, name: aliases, widget: list, required: false }
+      - { label: Related tools, name: related_tools, widget: list, required: false }
+      - { label: Reviewed, name: reviewed, widget: date }
+
+  - name: compare
+    label: Comparisons
+    folder: content/compare
+    create: true
+    extension: md
+    slug: '{{slug}}'
+    summary: '{{title}}'
+    fields:
+      - { label: Slug, name: slug, widget: string }
+      - { label: Title, name: title, widget: string }
+      - { label: Audience, name: audience, widget: string, hint: what the searcher is comparing, e.g. privacyfold vs online compressors }
+      - { label: Reviewed, name: reviewed, widget: date }
+      - { label: Body, name: body, widget: markdown }
+
+  - name: authors
+    label: Authors
+    folder: content/authors
+    create: true
+    extension: yaml
+    slug: '{{name}}'
+    identifier_field: name
+    fields:
+      - { label: Name, name: name, widget: string }
+      - { label: Role, name: role, widget: string }
+      - { label: Bio, name: bio, widget: text }
+      - { label: Links, name: links, widget: list, required: false, fields: [ { label: Label, name: label, widget: string }, { label: URL, name: url, widget: string } ] }
+
+  - name: engines
+    label: Compute engines
+    folder: content/engine
+    create: true
+    extension: yaml
+    slug: '{{id}}'
+    identifier_field: id
+    summary: '{{id}} · {{type}} · {{family}} · {{version}}'
+    sortable_fields: [family, type, id, size_kb]
+    fields:
+      - { label: Engine id, name: id, widget: string, hint: canonical engine name, e.g. mozjpeg_enc, moonshine-tiny-en }
+      - { label: Type, name: type, widget: select, options: [wasm, onnx, js, host] }
+      - { label: Family, name: family, widget: select, options: [image, pdf, forms, dev, crypto, photo, ai] }
+      - { label: Asset path, name: path, widget: string, hint: self-hosted path under /wasm/, /models/ or /js/lib/ }
+      - { label: SHA-256, name: sha256, widget: string, hint: SRI verification hash — published in receipts }
+      - { label: Version, name: version, widget: string }
+      - { label: Source repository, name: source_repository, widget: string, required: false }
+      - { label: License, name: license, widget: string, default: MIT }
+      - { label: Size KB, name: size_kb, widget: number, required: false }
+      - { label: Powers tools, name: tasks, widget: list, hint: tool slugs; drives count-of-live generation }
+      - { label: Status, name: status, widget: select, options: [planned, hosted, live], default: planned, hint: planned=not-on-server-yet; hosted=binary-deployed; live=verified-by-probe }
   - name: settings
     label: Site settings
     files:

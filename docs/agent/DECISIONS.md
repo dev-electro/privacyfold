@@ -70,3 +70,29 @@ Decision: `/admin` (Sveltia at `public/admin/`, moves with the Astro app) authen
 Why: the founder plan's token-login default puts a repo-write token in localStorage with no expiry; the Worker removes the client secret from the client entirely, and Access adds a bouncer before the login page loads. Threat model and residual risk documented: `docs/ops/admin-auth.md`.
 Rejected: raw PAT as daily path (sufficient for a first experiment, unacceptable as the standing control); self-hosted bespoke OAuth server (violates no-Workers-for-visitors spirit for marginal gain — this Worker only runs when an editor signs in).
 Evidence: sveltia/sveltia-cms-auth official setup (checked 2026-11-10); `docs/ops/admin-auth.md`; `public/admin/{index.html,config.yml}` scaffold + DEC-004.
+
+---
+
+DEC-009 | 2026-11-10 | WASM: real binaries, self-hosted (owner directive) — supersedes the "strip claims" default stance
+Decision: Build PrivacyFold's compute on REAL self-hosted engines. WASM binaries + ONNX model packs are first-class content: a new `engine` collection (`content/engine/<name>.yaml`) registers every engine (id, type wasm/onnx/js, path, sha256-SRI, version, source repo, license, size_kb, tasks). All assets live on our origins (`/wasm/**`, `/models/**`, `/js/lib/**`) with immutable caching, so `connect-src 'self'` stays truthful and no runtime fetch ever leaves our domain.
+Staged delivery in `docs/plans/engines-and-models.md` §3: Wave 1 hosts proven binaries that already exist (@jsquash mozjpeg/webp/avif/png, sql-wasm, tesseract-simd, pdfium, libheif) → Wave 2 self-hosts ONNX model packs (Moonshine-tiny, bge-micro, GLiNER, matting SmolLM2-135M) → Wave 3 compiles only what lacks a proven binary. Waves 1–3 cover every catalogued tool's advertised engine with no speculative compiler work.
+Why: the audit's worst class of finding (advertised engines that don't exist) is closed by delivery, not by deletion; owner wants max tools with honest capability.
+Consequences: `PF-006` (strip claims) is superseded by PF-033 (engine registry + binaries); PF-004's "hide the 8 dead tools" becomes "hide until their engine ships, then flip status: live" — registry-generation logic (PF-025) enforces it automatically.
+Owner: Gaurav (directive). Evidence: docs/plans/engines-and-models.md §1–4.
+
+DEC-010 | 2026-11-10 | On-device AI runtime: Transformers.js primary; window.ai Tier-B; wllama deferred (owner directive: host small models)
+Decision: `@huggingface/transformers` (ONNX Runtime Web — WebGPU with automatic WASM fallback) is the runtime for every AI tool: ASR (Moonshine/Whisper), embeddings/RAG (bge-micro), PII NER (GLiNER), matting (SelfieSegmenter/BEN-slim), writer fallback (SmolLM2-135M quantised). `window.ai` is the opportunistic 0-MB Tier-B path for writer/summariser on Chromium desktop. wllama (GGUF/llama.cpp) is deferred — no catalogued tool needs GGUF chat; it would sitewide-require COOP/COEP, which our per-path scoping avoids.
+Model sourcing: self-hosted mirrors of the ONNX packs under `/models/**` with sha256 receipts recorded per engine record; download sizes fixed per measured evidence (Moonshine-tiny 27–55 MB, bge-micro ~22 MB, GLiNER ~15 MB class).
+Why: task coverage (only Transformers.js covers embeddings+ASR+NER+vision in one runtime), graceful WASM fallback = no browser is locked out, self-hosting keeps the CSP privacy story intact. Chat-LLM decode throughput comparisons (LlamaWeb/WebLLM/wllama) favour wllama but are irrelevant to our tool set.
+Evidence: docs/plans/engines-and-models.md §1 (localmodel.run HF-API-measured sizes; localmode.dev device/dtype guide; pinggy.io runtime write-up; LlamaWeb arXiv paper) — checked 2026-11-10.
+
+DEC-011 | 2026-11-10 | Tool-count policy: maximise catalogue; public copy reads only the generated live count (owner directive: max tools)
+Decision: Target state = every catalogued tool live (catalogue grows via `status: draft` intakes). Public surfaces (hero, meta, llms.txt, `_index.json`, `.well-known/mcp.json`, ads copy) print ONE count — generated from content: `live = tools where status: live AND engine exists in content/engine`; `catalogued = all tool records`. Layout copy becomes "N live tools (M in catalogue)" and always lags reality, never outruns it. Manual counts in `layout.tsx`/`site.json`/`packages/mcp-server` are removed (PF-025/PF-010).
+Why: honours both owner directives (max tools + honesty): inventory can scale past 100 without marketing outpacing shipped engines.
+Evidence: docs/plans/engines-and-models.md §4.
+
+DEC-012 | 2026-11-10 | Sveltia JS API: adopt selectively as editor-UX sugar; never as a data gate
+Decision: From Sveltia's `api.js` examples (demo "API Examples" collection): use custom field types / editor components / string transformations / event hooks where they prevent editor mistakes; do NOT move any content rule into CMS JS. Preview styles/templates: use plain external preview URLs (Cloudflare Pages branch previews), not in-CMS iframes, for v1.
+Adopt now: slug auto-generation from `name` (string transformation); `params` validated as a list widget (existing config); preview pointer linking an entry to its branch-preview URL; event hooks limited to formative warnings (e.g. preset missing `source_url`), never to auto-stamping `last_verified`/`status` — stamps stay human, because an auto-stamped "verified" date would be a fabricated provenance claim (the exact audit-disease class).
+Why: CMS-agnostic fallback is part of DEC-004 (swap Sveltia → Decap/Keystatic with zero data change); CI + Zod remain the contract. The CMS JS API is conveniences on top, not the source of truth.
+Evidence: Sveltia demo API examples (checked 2026-11-10 via demo.sveltia.cms.app).

@@ -2,6 +2,15 @@
 
 ---
 
+## 2026-11-10 — compute plan finalised (DEC-009/010/011), CMS full taxonomy registered, Sveltia API policy (DEC-012)
+
+**Tasks:** PF-006 superseded→PF-033; new PF-033/034/035; PF-004 re-scoped (stage-real, not strip).
+**Did:** owner directives landed: (1) real self-hosted WASM — engine registry `content/engine/` as the 9th collection; wave table drafted (Wave 1 @jsquash/sql.js/tesseract/pdfium/libheif → Wave 2 ONNX packs → Wave 3 compile-the-gap). (2) runtime compared with dated evidence (localmodel.run HF-measured sizes, localmode.dev, pinggy.io, LlamaWeb paper) → **Transformers.js primary; window.ai Tier-B; wllama deferred** (nothing needs GGUF; per-path COOP/COEP beats sitewide). (3) max-tools: live-count read from generated registry; catalogue grows via draft intake. (4) CMS made additive: 9 collections in config.yml (glossary/compare/authors/engines added), reserved namespaces for future ones; DEC-012 adopts Sveltia JS-API selectively (slug transform, preview pointer, warning hooks) and bans auto-stamping verified dates.
+**Proved by:** `docs/plans/engines-and-models.md` (arbitration record), config.yml = 9 collections (grep), DECISIONS.md DEC-009..012, TASKS rows, STATE architecture + open-questions updated.
+**Next:** critical path unchanged — PF-002 Astro scaffold, PF-003 schema migration; PF-033 lands engines in parallel.
+
+---
+
 ## 2026-11-10 — admin auth implemented (DEC-008), CMS scaffold shipped
 
 **Tasks:** PF-021 doing; new PF-032.

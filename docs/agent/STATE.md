@@ -36,18 +36,21 @@
 ## Architecture (stable facts)
 
 - Runtime contract for agents: `input[type=file][data-pf="input"]`, `[data-pf="run"]`, `[data-pf="download"]`, `window.__PRIVACYFOLD_READY__`, `window.__PRIVACYFOLD_RESULT__` (DoS from `docs/privacyfold-agent-surface.md` §6).
-Architecture (blueprint adopted: `docs/plans/content-seo-ads-foundation-2026-11-10.md`, DEC-004/005/006):
+## Architecture (blueprint adopted: `docs/plans/content-seo-ads-foundation-2026-11-10.md`, DEC-004/005/006 + owner directives DEC-009/010/011)
 
-- One Astro site, one repo; `content/` (Markdown/YAML 8 collections) beside `src/`; Zod schemas are the contract — a bad field fails the build naming the file.
-- "One tool record drives everything": page, JSON-LD, sitemap, llms.txt, `/tools.json`, MCP manifest, social cards, ad eligibility all generated from one `<slug>.yaml`. `llms.txt`/`_index.json`/`.well-known/mcp.json` become build endpoints — hand-editing them is now a policy violation (DEC-004).
-- Ads: content pages only at launch (DEC-005); AdSlot gates in build; certified CMP before EEA/UK/CH personalized ads; `ads.txt` from day one; auto ads never.
-- Provenance rules: every factual record carries `source_url` + `verified`; `status` and `index` are independent fields; translations carry `translation_of` + `reviewed_by`.
+- One Astro site, one repo; `content/` (Markdown/YAML collections) beside `src/`; Zod schemas are the contract — a bad field fails the build naming the file.
+- **9 collections registered** in `admin/config.yml`: tools, presets, guides, glossary, compare, authors, pages, **engine** (compute assets), site settings. Adding collection #10+ is additive: one Zod schema object + one config block (registry pattern, DEC-004 note 4); reserved namespaces (media/, channels/, receipts/, translate/) documented in `docs/plans/engines-and-models.md` §5.
+- "One tool record drives everything": page, JSON-LD, sitemap, llms.txt, `/tools.json`, MCP manifest, social cards, ad eligibility all generated from one `<slug>.md`. `llms.txt`/`_index.json`/`.well-known/mcp.json` are build endpoints — hand-editing them is a policy violation (DEC-004).
+- Ads: DocSet-style moments system on tool pages (DEC-007); content-page gates per DEC-005; certified CMP before EEA/UK/CH personalised ads; `ads.txt` day one; auto ads never.
+- Provenance rules: every factual record carries `source_url` + `verified`; `status` and `index` are independent; translations carry `translation_of` + `reviewed_by`.
+- Compute: real self-hosted WASM binaries + ONNX model packs under `/wasm/**` + `/models/**` (DEC-009); Transformers.js primary runtime, `window.ai` Tier-B, wllama deferred (DEC-010); engine registry records sha256-SRI per asset; receipts carry engine identity (PF-033/34).
+- Counts: catalogue maximised; public copy reads the generated live count only (DEC-011).
 
 ## Open questions (do not silently decide)
 
-1. Are the 8 unimplemented tools built with real WASM, or removed from all surfaces until then? → owner: Gaurav
-2. ~~AdSense: integrate with consent, or park monetisation?~~ → answered by DEC-005 (content pages only; onboarding sequence PF-013)
+1. ~~Are the 8 unimplemented tools built with real WASM, or removed from all surfaces until then?~~ → answered: DEC-009 real binaries, staged (wave table in `docs/plans/engines-and-models.md` §3); hidden from registries until each engine ships (PF-033/025)
+2. ~~AdSense: integrate with consent, or park monetisation?~~ → answered by DEC-005/DEC-007 (DocSet moments system; content-page gates; onboarding sequence PF-013)
 3. Which 25 locales ship in phase 1? → owner: Gaurav
 4. Model-training crawlers (GPTBot, ClaudeBot, Google-Extended, Applebot-Extended, CCBot): allow or block? → owner: Gaurav (PF-027; plan §8/§16)
-5. Sveltia OAuth client (small Cloudflare Worker) vs long-lived token — decide when a second editor joins. → DEC-004 note
-6. `ads.toolPages` revisit / Option C sealed iframe (`tool.privacyfold.com`) once traffic justifies. → DEC-005
+5. Sveltia OAuth client (sveltia-cms-auth Worker) vs long-lived token → answered: DEC-008 (Worker + CF Access); owner runs `docs/ops/admin-auth.md` steps 1–5
+6. `ads.toolPages` revisit / Option C sealed iframe (`tool.privacyfold.com`) once traffic justifies. → DEC-005 note
