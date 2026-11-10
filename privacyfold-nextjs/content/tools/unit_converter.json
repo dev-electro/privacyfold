@@ -1,23 +1,23 @@
 {
   "id": "unit_converter",
   "slug": "unit-converter",
-  "name": "Unit converter (Imperial \u2194 Metric)",
+  "name": "Unit converter (Imperial ↔ Metric)",
   "category": "dev",
   "badge": "Imperial, Metric",
-  "size": "18\u2013120 KB WASM",
+  "size": "18–120 KB WASM",
   "Engine": "/wasm/dev/unit-converter-v1.wasm",
-  "description": "Convert between US Imperial and Metric units (inches \u2194 mm/cm, lbs \u2194 kg, \u00b0F \u2194 \u00b0C, miles \u2194 km, and print millimeters \u2194 pixels at 300/600 DPI).",
+  "description": "Convert between US Imperial and Metric units (inches ↔ mm/cm, lbs ↔ kg, °F ↔ °C, miles ↔ km, and print millimeters ↔ pixels at 300/600 DPI).",
   "zeroNetwork": true,
   "adFreeZone": false,
   "presets": [],
   "schemaUrl": "/schemas/unit_converter.json",
   "executionUrl": "https://privacyfold.com/tools/unit_converter?mode=agent",
   "seo": {
-    "metaTitle": "Unit converter (Imperial \u2194 Metric) \u2014 100% Private In-Browser Utility | PrivacyFold",
-    "metaDescription": "Convert between US Imperial and Metric units (inches \u2194 mm/cm, lbs \u2194 kg, \u00b0F \u2194 \u00b0C, miles \u2194 km, and print millimeters \u2194 pixels at 300/600 DPI). Runs 100% locally in your browser via /wasm/dev/unit-converter-v1.wasm with zero file uploads.",
-    "aeoSummary": "Unit converter (Imperial \u2194 Metric) processes files and text entirely inside your browser tab using /wasm/dev/unit-converter-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
+    "metaTitle": "Unit converter (Imperial ↔ Metric) — 100% Private In-Browser Utility | PrivacyFold",
+    "metaDescription": "Convert between US Imperial and Metric units (inches ↔ mm/cm, lbs ↔ kg, °F ↔ °C, miles ↔ km, and print millimeters ↔ pixels at 300/600 DPI). Runs 100% locally in your browser via /wasm/dev/unit-converter-v1.wasm with zero file uploads.",
+    "aeoSummary": "Unit converter (Imperial ↔ Metric) processes files and text entirely inside your browser tab using /wasm/dev/unit-converter-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
-      "unit converter (imperial \u2194 metric)",
+      "unit converter (imperial ↔ metric)",
       "unit converter",
       "offline unit converter",
       "zero upload browser tool"
@@ -28,19 +28,36 @@
         "url": "https://www.w3.org/TR/wasm-core-2/"
       },
       {
-        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "standard": "IETF RFC 3986 §3.5 Fragment Privacy",
         "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
       }
     ],
     "faqs": [
       {
-        "q": "Does Unit converter (Imperial \u2194 Metric) upload my files or text to a server?",
-        "a": "No. Unit converter (Imperial \u2194 Metric) executes 100% inside your browser's local memory using /wasm/dev/unit-converter-v1.wasm. No data leaves your device."
+        "question": "Does Unit converter (Imperial ↔ Metric) upload my files or text to a server?",
+        "answer": "No. Unit converter (Imperial ↔ Metric) executes 100% inside your browser's local memory using /wasm/dev/unit-converter-v1.wasm. No data leaves your device.",
+        "q": "Does Unit converter (Imperial ↔ Metric) upload my files or text to a server?",
+        "a": "No. Unit converter (Imperial ↔ Metric) executes 100% inside your browser's local memory using /wasm/dev/unit-converter-v1.wasm. No data leaves your device."
       },
       {
-        "q": "Can AI agents or CLI scripts automate Unit converter (Imperial \u2194 Metric)?",
+        "question": "Can AI agents or CLI scripts automate Unit converter (Imperial ↔ Metric)?",
+        "answer": "Yes. Use Lane A schema /schemas/unit_converter.json or open /tools/unit-converter?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__.",
+        "q": "Can AI agents or CLI scripts automate Unit converter (Imperial ↔ Metric)?",
         "a": "Yes. Use Lane A schema /schemas/unit_converter.json or open /tools/unit-converter?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
       }
+    ],
+    "steps": [
+      "Paste or load your text data directly into the input editor.",
+      "Apply transformations, formatting, or validation rules in real time.",
+      "Copy the output or save the result with zero data transmitted over the network."
     ]
-  }
+  },
+  "fam": "dev",
+  "task": "Convert length, weight, temperature, data size & print DPI dimensions",
+  "glyph": "UNT",
+  "desc": "Convert between US Imperial and Metric units (inches ↔ mm/cm, lbs ↔ kg, °F ↔ °C, miles ↔ km, and print millimeters ↔ pixels at 300/600 DPI).",
+  "accepts": "text",
+  "tag": "Imperial, Metric",
+  "std": "W3C WebAssembly Core 2.0",
+  "wasmModule": "/wasm/dev/unit-converter-v1.wasm"
 }

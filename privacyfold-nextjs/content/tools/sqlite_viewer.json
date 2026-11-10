@@ -4,7 +4,7 @@
   "name": "Local SQL & table query runner",
   "category": "dev",
   "badge": "sql.js WASM",
-  "size": "18\u2013120 KB WASM",
+  "size": "18–120 KB WASM",
   "Engine": "/wasm/dev/sqlite-viewer-v1.wasm",
   "description": "Run relational SQL projections and filters over local CSV or JSON datasets in browser memory.",
   "zeroNetwork": true,
@@ -13,7 +13,7 @@
   "schemaUrl": "/schemas/sqlite_viewer.json",
   "executionUrl": "https://privacyfold.com/tools/sqlite_viewer?mode=agent",
   "seo": {
-    "metaTitle": "Local SQL & table query runner \u2014 100% Private In-Browser Utility | PrivacyFold",
+    "metaTitle": "Local SQL & table query runner — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Run relational SQL projections and filters over local CSV or JSON datasets in browser memory. Runs 100% locally in your browser via /wasm/dev/sqlite-viewer-v1.wasm with zero file uploads.",
     "aeoSummary": "Local SQL & table query runner processes files and text entirely inside your browser tab using /wasm/dev/sqlite-viewer-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
@@ -28,19 +28,36 @@
         "url": "https://www.w3.org/TR/wasm-core-2/"
       },
       {
-        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "standard": "IETF RFC 3986 §3.5 Fragment Privacy",
         "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
       }
     ],
     "faqs": [
       {
+        "question": "Does Local SQL & table query runner upload my files or text to a server?",
+        "answer": "No. Local SQL & table query runner executes 100% inside your browser's local memory using /wasm/dev/sqlite-viewer-v1.wasm. No data leaves your device.",
         "q": "Does Local SQL & table query runner upload my files or text to a server?",
         "a": "No. Local SQL & table query runner executes 100% inside your browser's local memory using /wasm/dev/sqlite-viewer-v1.wasm. No data leaves your device."
       },
       {
+        "question": "Can AI agents or CLI scripts automate Local SQL & table query runner?",
+        "answer": "Yes. Use Lane A schema /schemas/sqlite_viewer.json or open /tools/sqlite-viewer?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__.",
         "q": "Can AI agents or CLI scripts automate Local SQL & table query runner?",
         "a": "Yes. Use Lane A schema /schemas/sqlite_viewer.json or open /tools/sqlite-viewer?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
       }
+    ],
+    "steps": [
+      "Paste or load your text data directly into the input editor.",
+      "Apply transformations, formatting, or validation rules in real time.",
+      "Copy the output or save the result with zero data transmitted over the network."
     ]
-  }
+  },
+  "fam": "dev",
+  "task": "Query CSV/JSON tables with SQL SELECT & WHERE",
+  "glyph": "SQL",
+  "desc": "Run relational SQL projections and filters over local CSV or JSON datasets in browser memory.",
+  "accepts": "text",
+  "tag": "sql.js WASM",
+  "std": "W3C WebAssembly Core 2.0",
+  "wasmModule": "/wasm/dev/sqlite-viewer-v1.wasm"
 }

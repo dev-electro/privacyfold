@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     template: '%s | PrivacyFold',
   },
   description:
-    '40 client-side image, PDF, form, developer, and cryptography tools running 100% locally in your browser via WebAssembly, WebGPU & WebCrypto. Zero server uploads.',
+    '72 client-side image, PDF, form, developer, and cryptography tools running 100% locally in your browser via WebAssembly, WebGPU & WebCrypto. Zero server uploads.',
   alternates: { canonical: 'https://privacyfold.com' },
 };
 
@@ -16,10 +16,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap"
-        />
+        <link rel="stylesheet" href="/fonts/fonts.css" />
         <link rel="manifest" href="/manifest.webmanifest" />
       </head>
       <body>{children}</body>

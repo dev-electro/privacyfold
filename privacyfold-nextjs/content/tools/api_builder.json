@@ -1,10 +1,10 @@
 {
   "id": "api_builder",
   "slug": "api-builder",
-  "name": "API request converter (cURL \u2194 fetch \u2194 axios)",
+  "name": "API request converter (cURL ↔ fetch ↔ axios)",
   "category": "dev",
   "badge": "cURL, fetch",
-  "size": "18\u2013120 KB WASM",
+  "size": "18–120 KB WASM",
   "Engine": "/wasm/dev/api-builder-v1.wasm",
   "description": "Convert `curl` CLI requests (including headers, bearer tokens, and JSON bodies) into clean JavaScript `fetch()` or `axios` snippets without pasting private API keys into online converters.",
   "zeroNetwork": true,
@@ -13,11 +13,11 @@
   "schemaUrl": "/schemas/api_builder.json",
   "executionUrl": "https://privacyfold.com/tools/api_builder?mode=agent",
   "seo": {
-    "metaTitle": "API request converter (cURL \u2194 fetch \u2194 axios) \u2014 100% Private In-Browser Utility | PrivacyFold",
+    "metaTitle": "API request converter (cURL ↔ fetch ↔ axios) — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Convert `curl` CLI requests (including headers, bearer tokens, and JSON bodies) into clean JavaScript `fetch()` or `axios` snippets without pasting private API keys into online converters. Runs 100% locally in your browser via /wasm/dev/api-builder-v1.wasm with zero file uploads.",
-    "aeoSummary": "API request converter (cURL \u2194 fetch \u2194 axios) processes files and text entirely inside your browser tab using /wasm/dev/api-builder-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
+    "aeoSummary": "API request converter (cURL ↔ fetch ↔ axios) processes files and text entirely inside your browser tab using /wasm/dev/api-builder-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
-      "api request converter (curl \u2194 fetch \u2194 axios)",
+      "api request converter (curl ↔ fetch ↔ axios)",
       "api builder",
       "offline api builder",
       "zero upload browser tool"
@@ -28,19 +28,36 @@
         "url": "https://www.w3.org/TR/wasm-core-2/"
       },
       {
-        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "standard": "IETF RFC 3986 §3.5 Fragment Privacy",
         "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
       }
     ],
     "faqs": [
       {
-        "q": "Does API request converter (cURL \u2194 fetch \u2194 axios) upload my files or text to a server?",
-        "a": "No. API request converter (cURL \u2194 fetch \u2194 axios) executes 100% inside your browser's local memory using /wasm/dev/api-builder-v1.wasm. No data leaves your device."
+        "question": "Does API request converter (cURL ↔ fetch ↔ axios) upload my files or text to a server?",
+        "answer": "No. API request converter (cURL ↔ fetch ↔ axios) executes 100% inside your browser's local memory using /wasm/dev/api-builder-v1.wasm. No data leaves your device.",
+        "q": "Does API request converter (cURL ↔ fetch ↔ axios) upload my files or text to a server?",
+        "a": "No. API request converter (cURL ↔ fetch ↔ axios) executes 100% inside your browser's local memory using /wasm/dev/api-builder-v1.wasm. No data leaves your device."
       },
       {
-        "q": "Can AI agents or CLI scripts automate API request converter (cURL \u2194 fetch \u2194 axios)?",
+        "question": "Can AI agents or CLI scripts automate API request converter (cURL ↔ fetch ↔ axios)?",
+        "answer": "Yes. Use Lane A schema /schemas/api_builder.json or open /tools/api-builder?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__.",
+        "q": "Can AI agents or CLI scripts automate API request converter (cURL ↔ fetch ↔ axios)?",
         "a": "Yes. Use Lane A schema /schemas/api_builder.json or open /tools/api-builder?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
       }
+    ],
+    "steps": [
+      "Paste or load your text data directly into the input editor.",
+      "Apply transformations, formatting, or validation rules in real time.",
+      "Copy the output or save the result with zero data transmitted over the network."
     ]
-  }
+  },
+  "fam": "dev",
+  "task": "Convert cURL commands into JavaScript fetch() or Axios code locally",
+  "glyph": "API",
+  "desc": "Convert `curl` CLI requests (including headers, bearer tokens, and JSON bodies) into clean JavaScript `fetch()` or `axios` snippets without pasting private API keys into online converters.",
+  "accepts": "text",
+  "tag": "cURL, fetch",
+  "std": "W3C WebAssembly Core 2.0",
+  "wasmModule": "/wasm/dev/api-builder-v1.wasm"
 }

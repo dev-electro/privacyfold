@@ -4,7 +4,7 @@
   "name": "Chat with PDF & document Q&A",
   "category": "pdf",
   "badge": "bge-micro 22 MB",
-  "size": "14.7\u201345 MB OPFS",
+  "size": "14.7–45 MB OPFS",
   "Engine": "bge-micro-v2-q8",
   "description": "Chunk document text in a Web Worker, compute local cosine-similarity embeddings (bge-micro ~22 MB + pdfjs-dist), and answer questions or summarize key points with 0 server uploads.",
   "zeroNetwork": true,
@@ -13,7 +13,7 @@
   "schemaUrl": "/schemas/chat_pdf.json",
   "executionUrl": "https://privacyfold.com/tools/chat_pdf?mode=agent",
   "seo": {
-    "metaTitle": "Chat with PDF & document Q&A \u2014 100% Private In-Browser Utility | PrivacyFold",
+    "metaTitle": "Chat with PDF & document Q&A — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Chunk document text in a Web Worker, compute local cosine-similarity embeddings (bge-micro ~22 MB + pdfjs-dist), and answer questions or summarize key points with 0 server uploads. Runs 100% locally in your browser via bge-micro-v2-q8 with zero file uploads.",
     "aeoSummary": "Chat with PDF & document Q&A processes files and text entirely inside your browser tab using bge-micro-v2-q8 (Tier M). Zero bytes are uploaded to any server.",
     "keywords": [
@@ -28,19 +28,36 @@
         "url": "https://www.w3.org/TR/wasm-core-2/"
       },
       {
-        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "standard": "IETF RFC 3986 §3.5 Fragment Privacy",
         "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
       }
     ],
     "faqs": [
       {
+        "question": "Does Chat with PDF & document Q&A upload my files or text to a server?",
+        "answer": "No. Chat with PDF & document Q&A executes 100% inside your browser's local memory using bge-micro-v2-q8. No data leaves your device.",
         "q": "Does Chat with PDF & document Q&A upload my files or text to a server?",
         "a": "No. Chat with PDF & document Q&A executes 100% inside your browser's local memory using bge-micro-v2-q8. No data leaves your device."
       },
       {
+        "question": "Can AI agents or CLI scripts automate Chat with PDF & document Q&A?",
+        "answer": "Yes. Use Lane A schema /schemas/chat_pdf.json or open /tools/chat-pdf?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__.",
         "q": "Can AI agents or CLI scripts automate Chat with PDF & document Q&A?",
         "a": "Yes. Use Lane A schema /schemas/chat_pdf.json or open /tools/chat-pdf?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
       }
+    ],
+    "steps": [
+      "Paste or load your text data directly into the input editor.",
+      "Apply transformations, formatting, or validation rules in real time.",
+      "Copy the output or save the result with zero data transmitted over the network."
     ]
-  }
+  },
+  "fam": "pdf",
+  "task": "Query & summarize PDF documents using local vector embeddings",
+  "glyph": "RAG",
+  "desc": "Chunk document text in a Web Worker, compute local cosine-similarity embeddings (bge-micro ~22 MB + pdfjs-dist), and answer questions or summarize key points with 0 server uploads.",
+  "accepts": "text",
+  "tag": "bge-micro 22 MB",
+  "std": "W3C WebAssembly Core 2.0",
+  "wasmModule": "bge-micro-v2-q8"
 }

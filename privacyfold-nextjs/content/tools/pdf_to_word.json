@@ -3,8 +3,8 @@
   "slug": "pdf-to-word",
   "name": "PDF to Word converter",
   "category": "pdf",
-  "badge": "PDF \u2192 DOC",
-  "size": "18\u2013120 KB WASM",
+  "badge": "PDF → DOC",
+  "size": "18–120 KB WASM",
   "Engine": "/wasm/pdf/pdf-to-word-v1.wasm",
   "description": "Convert PDF document pages and paragraphs into an editable Word-compatible document locally in your browser using pdf.js text extraction and RTF/DOCX structuring.",
   "zeroNetwork": true,
@@ -13,7 +13,7 @@
   "schemaUrl": "/schemas/pdf_to_word.json",
   "executionUrl": "https://privacyfold.com/tools/pdf_to_word?mode=agent",
   "seo": {
-    "metaTitle": "PDF to Word converter \u2014 100% Private In-Browser Utility | PrivacyFold",
+    "metaTitle": "PDF to Word converter — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Convert PDF document pages and paragraphs into an editable Word-compatible document locally in your browser using pdf.js text extraction and RTF/DOCX structuring. Runs 100% locally in your browser via /wasm/pdf/pdf-to-word-v1.wasm with zero file uploads.",
     "aeoSummary": "PDF to Word converter processes files and text entirely inside your browser tab using /wasm/pdf/pdf-to-word-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
@@ -28,19 +28,36 @@
         "url": "https://www.w3.org/TR/wasm-core-2/"
       },
       {
-        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "standard": "IETF RFC 3986 §3.5 Fragment Privacy",
         "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
       }
     ],
     "faqs": [
       {
+        "question": "Does PDF to Word converter upload my files or text to a server?",
+        "answer": "No. PDF to Word converter executes 100% inside your browser's local memory using /wasm/pdf/pdf-to-word-v1.wasm. No data leaves your device.",
         "q": "Does PDF to Word converter upload my files or text to a server?",
         "a": "No. PDF to Word converter executes 100% inside your browser's local memory using /wasm/pdf/pdf-to-word-v1.wasm. No data leaves your device."
       },
       {
+        "question": "Can AI agents or CLI scripts automate PDF to Word converter?",
+        "answer": "Yes. Use Lane A schema /schemas/pdf_to_word.json or open /tools/pdf-to-word?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__.",
         "q": "Can AI agents or CLI scripts automate PDF to Word converter?",
         "a": "Yes. Use Lane A schema /schemas/pdf_to_word.json or open /tools/pdf-to-word?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
       }
+    ],
+    "steps": [
+      "Paste or load your text data directly into the input editor.",
+      "Apply transformations, formatting, or validation rules in real time.",
+      "Copy the output or save the result with zero data transmitted over the network."
     ]
-  }
+  },
+  "fam": "pdf",
+  "task": "Convert PDF text & layout into an editable Word (.doc / RTF) file",
+  "glyph": "DOC",
+  "desc": "Convert PDF document pages and paragraphs into an editable Word-compatible document locally in your browser using pdf.js text extraction and RTF/DOCX structuring.",
+  "accepts": "text",
+  "tag": "PDF → DOC",
+  "std": "W3C WebAssembly Core 2.0",
+  "wasmModule": "/wasm/pdf/pdf-to-word-v1.wasm"
 }

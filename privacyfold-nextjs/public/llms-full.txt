@@ -3,7 +3,6 @@
 
 ## Agent Surface (Two-Lane Zero-Worker Architecture)
 - Schema Index: https://privacyfold.com/schemas/_index.json
-- Detached Signature: https://privacyfold.com/schemas/_index.json.sig
 - Changelog: https://privacyfold.com/changelog.json
 - MCP Server Package: `npx @privacyfold/mcp`
 - URL Fragment Contract: `https://privacyfold.com/tools/{tool_id}?mode=agent&preset={preset_id}&source=mcp#payload` (Sensitive payloads MUST be placed in `#fragment`, never in the query string.)

@@ -4,7 +4,7 @@
   "name": "SVG optimizer & cleaner",
   "category": "image",
   "badge": "SVG",
-  "size": "18\u2013120 KB WASM",
+  "size": "18–120 KB WASM",
   "Engine": "/wasm/image/svg-optimize-v1.wasm",
   "description": "Clean and minify SVG vector code by removing XML comments, editor metadata, empty groups, and redundant whitespace.",
   "zeroNetwork": true,
@@ -15,7 +15,7 @@
   "schemaUrl": "/schemas/svg_optimize.json",
   "executionUrl": "https://privacyfold.com/tools/svg_optimize?mode=agent",
   "seo": {
-    "metaTitle": "SVG optimizer & cleaner \u2014 100% Private In-Browser Utility | PrivacyFold",
+    "metaTitle": "SVG optimizer & cleaner — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Clean and minify SVG vector code by removing XML comments, editor metadata, empty groups, and redundant whitespace. Runs 100% locally in your browser via /wasm/image/svg-optimize-v1.wasm with zero file uploads.",
     "aeoSummary": "SVG optimizer & cleaner processes files and text entirely inside your browser tab using /wasm/image/svg-optimize-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
@@ -30,19 +30,36 @@
         "url": "https://www.w3.org/TR/wasm-core-2/"
       },
       {
-        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "standard": "IETF RFC 3986 §3.5 Fragment Privacy",
         "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
       }
     ],
     "faqs": [
       {
+        "question": "Does SVG optimizer & cleaner upload my files or text to a server?",
+        "answer": "No. SVG optimizer & cleaner executes 100% inside your browser's local memory using /wasm/image/svg-optimize-v1.wasm. No data leaves your device.",
         "q": "Does SVG optimizer & cleaner upload my files or text to a server?",
         "a": "No. SVG optimizer & cleaner executes 100% inside your browser's local memory using /wasm/image/svg-optimize-v1.wasm. No data leaves your device."
       },
       {
+        "question": "Can AI agents or CLI scripts automate SVG optimizer & cleaner?",
+        "answer": "Yes. Use Lane A schema /schemas/svg_optimize.json or open /tools/svg-optimize?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__.",
         "q": "Can AI agents or CLI scripts automate SVG optimizer & cleaner?",
         "a": "Yes. Use Lane A schema /schemas/svg_optimize.json or open /tools/svg-optimize?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
       }
+    ],
+    "steps": [
+      "Paste or load your text data directly into the input editor.",
+      "Apply transformations, formatting, or validation rules in real time.",
+      "Copy the output or save the result with zero data transmitted over the network."
     ]
-  }
+  },
+  "fam": "image",
+  "task": "Minify SVG code and strip editor metadata",
+  "glyph": "SVG",
+  "desc": "Clean and minify SVG vector code by removing XML comments, editor metadata, empty groups, and redundant whitespace.",
+  "accepts": "text",
+  "tag": "SVG",
+  "std": "W3C WebAssembly Core 2.0",
+  "wasmModule": "/wasm/image/svg-optimize-v1.wasm"
 }

@@ -4,7 +4,7 @@
   "name": "Epoch / Unix timestamp & timezone converter",
   "category": "dev",
   "badge": "Unix, ISO",
-  "size": "18\u2013120 KB WASM",
+  "size": "18–120 KB WASM",
   "Engine": "/wasm/dev/timestamp-conv-v1.wasm",
   "description": "Convert Unix timestamps (seconds, milliseconds, or nanoseconds) to human-readable ISO-8601, RFC-2822, and major global timezones (US, UK, EU, India, Japan).",
   "zeroNetwork": true,
@@ -13,7 +13,7 @@
   "schemaUrl": "/schemas/timestamp_conv.json",
   "executionUrl": "https://privacyfold.com/tools/timestamp_conv?mode=agent",
   "seo": {
-    "metaTitle": "Epoch / Unix timestamp & timezone converter \u2014 100% Private In-Browser Utility | PrivacyFold",
+    "metaTitle": "Epoch / Unix timestamp & timezone converter — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Convert Unix timestamps (seconds, milliseconds, or nanoseconds) to human-readable ISO-8601, RFC-2822, and major global timezones (US, UK, EU, India, Japan). Runs 100% locally in your browser via /wasm/dev/timestamp-conv-v1.wasm with zero file uploads.",
     "aeoSummary": "Epoch / Unix timestamp & timezone converter processes files and text entirely inside your browser tab using /wasm/dev/timestamp-conv-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
@@ -28,19 +28,36 @@
         "url": "https://www.w3.org/TR/wasm-core-2/"
       },
       {
-        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "standard": "IETF RFC 3986 §3.5 Fragment Privacy",
         "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
       }
     ],
     "faqs": [
       {
+        "question": "Does Epoch / Unix timestamp & timezone converter upload my files or text to a server?",
+        "answer": "No. Epoch / Unix timestamp & timezone converter executes 100% inside your browser's local memory using /wasm/dev/timestamp-conv-v1.wasm. No data leaves your device.",
         "q": "Does Epoch / Unix timestamp & timezone converter upload my files or text to a server?",
         "a": "No. Epoch / Unix timestamp & timezone converter executes 100% inside your browser's local memory using /wasm/dev/timestamp-conv-v1.wasm. No data leaves your device."
       },
       {
+        "question": "Can AI agents or CLI scripts automate Epoch / Unix timestamp & timezone converter?",
+        "answer": "Yes. Use Lane A schema /schemas/timestamp_conv.json or open /tools/timestamp-conv?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__.",
         "q": "Can AI agents or CLI scripts automate Epoch / Unix timestamp & timezone converter?",
         "a": "Yes. Use Lane A schema /schemas/timestamp_conv.json or open /tools/timestamp-conv?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
       }
+    ],
+    "steps": [
+      "Paste or load your text data directly into the input editor.",
+      "Apply transformations, formatting, or validation rules in real time.",
+      "Copy the output or save the result with zero data transmitted over the network."
     ]
-  }
+  },
+  "fam": "dev",
+  "task": "Convert Unix epoch seconds/ms to ISO-8601, UTC & global timezones",
+  "glyph": "EPO",
+  "desc": "Convert Unix timestamps (seconds, milliseconds, or nanoseconds) to human-readable ISO-8601, RFC-2822, and major global timezones (US, UK, EU, India, Japan).",
+  "accepts": "text",
+  "tag": "Unix, ISO",
+  "std": "W3C WebAssembly Core 2.0",
+  "wasmModule": "/wasm/dev/timestamp-conv-v1.wasm"
 }

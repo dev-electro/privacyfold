@@ -4,7 +4,7 @@
   "name": "Link & text cleaner",
   "category": "crypto",
   "badge": "URL, Text",
-  "size": "18\u2013120 KB WASM",
+  "size": "18–120 KB WASM",
   "Engine": "/wasm/crypto/clean-paste-v1.wasm",
   "description": "Paste text or links to remove tracking parameters (such as utm, fbclid and gclid), strip invisible characters, and optionally mask email addresses or secret keys.",
   "zeroNetwork": true,
@@ -13,7 +13,7 @@
   "schemaUrl": "/schemas/clean_paste.json",
   "executionUrl": "https://privacyfold.com/tools/clean_paste?mode=agent",
   "seo": {
-    "metaTitle": "Link & text cleaner \u2014 100% Private In-Browser Utility | PrivacyFold",
+    "metaTitle": "Link & text cleaner — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Paste text or links to remove tracking parameters (such as utm, fbclid and gclid), strip invisible characters, and optionally mask email addresses or secret keys. Runs 100% locally in your browser via /wasm/crypto/clean-paste-v1.wasm with zero file uploads.",
     "aeoSummary": "Link & text cleaner processes files and text entirely inside your browser tab using /wasm/crypto/clean-paste-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
@@ -28,19 +28,36 @@
         "url": "https://www.w3.org/TR/wasm-core-2/"
       },
       {
-        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "standard": "IETF RFC 3986 §3.5 Fragment Privacy",
         "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
       }
     ],
     "faqs": [
       {
+        "question": "Does Link & text cleaner upload my files or text to a server?",
+        "answer": "No. Link & text cleaner executes 100% inside your browser's local memory using /wasm/crypto/clean-paste-v1.wasm. No data leaves your device.",
         "q": "Does Link & text cleaner upload my files or text to a server?",
         "a": "No. Link & text cleaner executes 100% inside your browser's local memory using /wasm/crypto/clean-paste-v1.wasm. No data leaves your device."
       },
       {
+        "question": "Can AI agents or CLI scripts automate Link & text cleaner?",
+        "answer": "Yes. Use Lane A schema /schemas/clean_paste.json or open /tools/clean-paste?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__.",
         "q": "Can AI agents or CLI scripts automate Link & text cleaner?",
         "a": "Yes. Use Lane A schema /schemas/clean_paste.json or open /tools/clean-paste?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
       }
+    ],
+    "steps": [
+      "Paste or load your text data directly into the input editor.",
+      "Apply transformations, formatting, or validation rules in real time.",
+      "Copy the output or save the result with zero data transmitted over the network."
     ]
-  }
+  },
+  "fam": "crypto",
+  "task": "Remove tracking links and hidden characters",
+  "glyph": "CL",
+  "desc": "Paste text or links to remove tracking parameters (such as utm, fbclid and gclid), strip invisible characters, and optionally mask email addresses or secret keys.",
+  "accepts": "text",
+  "tag": "URL, Text",
+  "std": "W3C WebAssembly Core 2.0",
+  "wasmModule": "/wasm/crypto/clean-paste-v1.wasm"
 }

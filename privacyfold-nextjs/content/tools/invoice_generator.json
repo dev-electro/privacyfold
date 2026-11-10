@@ -4,17 +4,17 @@
   "name": "Private invoice generator",
   "category": "forms",
   "badge": "Invoice, Billing",
-  "size": "18\u2013120 KB WASM",
+  "size": "18–120 KB WASM",
   "Engine": "/templates/invoice-us.json",
-  "description": "Generate itemized freelance or SMB invoices from `templates/invoice-us.json` with automatic line-item totals and tax calculation\u2014zero cloud accounting accounts required.",
+  "description": "Generate itemized freelance or SMB invoices from `templates/invoice-us.json` with automatic line-item totals and tax calculation—zero cloud accounting accounts required.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "presets": [],
   "schemaUrl": "/schemas/invoice_generator.json",
   "executionUrl": "https://privacyfold.com/tools/invoice_generator?mode=agent",
   "seo": {
-    "metaTitle": "Private invoice generator \u2014 100% Private In-Browser Utility | PrivacyFold",
-    "metaDescription": "Generate itemized freelance or SMB invoices from `templates/invoice-us.json` with automatic line-item totals and tax calculation\u2014zero cloud accounting accounts required. Runs 100% locally in your browser via /templates/invoice-us.json with zero file uploads.",
+    "metaTitle": "Private invoice generator — 100% Private In-Browser Utility | PrivacyFold",
+    "metaDescription": "Generate itemized freelance or SMB invoices from `templates/invoice-us.json` with automatic line-item totals and tax calculation—zero cloud accounting accounts required. Runs 100% locally in your browser via /templates/invoice-us.json with zero file uploads.",
     "aeoSummary": "Private invoice generator processes files and text entirely inside your browser tab using /templates/invoice-us.json (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
       "private invoice generator",
@@ -28,19 +28,36 @@
         "url": "https://www.w3.org/TR/wasm-core-2/"
       },
       {
-        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "standard": "IETF RFC 3986 §3.5 Fragment Privacy",
         "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
       }
     ],
     "faqs": [
       {
+        "question": "Does Private invoice generator upload my files or text to a server?",
+        "answer": "No. Private invoice generator executes 100% inside your browser's local memory using /templates/invoice-us.json. No data leaves your device.",
         "q": "Does Private invoice generator upload my files or text to a server?",
         "a": "No. Private invoice generator executes 100% inside your browser's local memory using /templates/invoice-us.json. No data leaves your device."
       },
       {
+        "question": "Can AI agents or CLI scripts automate Private invoice generator?",
+        "answer": "Yes. Use Lane A schema /schemas/invoice_generator.json or open /tools/invoice-generator?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__.",
         "q": "Can AI agents or CLI scripts automate Private invoice generator?",
         "a": "Yes. Use Lane A schema /schemas/invoice_generator.json or open /tools/invoice-generator?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
       }
+    ],
+    "steps": [
+      "Paste or load your text data directly into the input editor.",
+      "Apply transformations, formatting, or validation rules in real time.",
+      "Copy the output or save the result with zero data transmitted over the network."
     ]
-  }
+  },
+  "fam": "forms",
+  "task": "Create itemized client invoices with tax & discount calculations locally",
+  "glyph": "INV",
+  "desc": "Generate itemized freelance or SMB invoices from `templates/invoice-us.json` with automatic line-item totals and tax calculation—zero cloud accounting accounts required.",
+  "accepts": "text",
+  "tag": "Invoice, Billing",
+  "std": "W3C WebAssembly Core 2.0",
+  "wasmModule": "/templates/invoice-us.json"
 }

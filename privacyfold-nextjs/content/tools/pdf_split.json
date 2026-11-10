@@ -4,7 +4,7 @@
   "name": "Split PDF",
   "category": "pdf",
   "badge": "PDF",
-  "size": "18\u2013120 KB WASM",
+  "size": "18–120 KB WASM",
   "Engine": "/wasm/pdf/pdf-split-v1.wasm",
   "description": "Extract specific pages or page ranges from a document into a separate clean PDF file.",
   "zeroNetwork": true,
@@ -13,7 +13,7 @@
   "schemaUrl": "/schemas/pdf_split.json",
   "executionUrl": "https://privacyfold.com/tools/pdf_split?mode=agent",
   "seo": {
-    "metaTitle": "Split PDF \u2014 100% Private In-Browser Utility | PrivacyFold",
+    "metaTitle": "Split PDF — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Extract specific pages or page ranges from a document into a separate clean PDF file. Runs 100% locally in your browser via /wasm/pdf/pdf-split-v1.wasm with zero file uploads.",
     "aeoSummary": "Split PDF processes files and text entirely inside your browser tab using /wasm/pdf/pdf-split-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
@@ -28,19 +28,36 @@
         "url": "https://www.w3.org/TR/wasm-core-2/"
       },
       {
-        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "standard": "IETF RFC 3986 §3.5 Fragment Privacy",
         "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
       }
     ],
     "faqs": [
       {
+        "question": "Does Split PDF upload my files or text to a server?",
+        "answer": "No. Split PDF executes 100% inside your browser's local memory using /wasm/pdf/pdf-split-v1.wasm. No data leaves your device.",
         "q": "Does Split PDF upload my files or text to a server?",
         "a": "No. Split PDF executes 100% inside your browser's local memory using /wasm/pdf/pdf-split-v1.wasm. No data leaves your device."
       },
       {
+        "question": "Can AI agents or CLI scripts automate Split PDF?",
+        "answer": "Yes. Use Lane A schema /schemas/pdf_split.json or open /tools/pdf-split?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__.",
         "q": "Can AI agents or CLI scripts automate Split PDF?",
         "a": "Yes. Use Lane A schema /schemas/pdf_split.json or open /tools/pdf-split?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
       }
+    ],
+    "steps": [
+      "Select or drag and drop your PDF document into the tool.",
+      "Choose your portal preset or processing rules to apply.",
+      "Export the modified document instantly with all processing retained in browser RAM."
     ]
-  }
+  },
+  "fam": "pdf",
+  "task": "Split a PDF",
+  "glyph": "SP",
+  "desc": "Pull page ranges out of a PDF into new files.",
+  "accepts": "pdf",
+  "tag": "PDF",
+  "std": "W3C WebAssembly Core 2.0",
+  "wasmModule": "/wasm/pdf/pdf-split-v1.wasm"
 }

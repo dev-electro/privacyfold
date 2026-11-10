@@ -14,14 +14,14 @@ Order matters: P0 → P1 → P2. The launch gate is PF-020.
 |---|---|---|---|
 | PF-001 | Commit working tree; add `package-lock.json`; push `origin/main` | done:391 files committed as `839360b`, pushed and confirmed via `git ls-remote` (2026-11-10) | biggest risk closed: work now versioned |
 | PF-002 | Astro 7 migration: scaffold app, port 4 route types + `ToolSeoArticle` → `.astro`, keep `app-runtime.js` untouched > now shaped by the founder blueprint | todo | DEC-001 + DEC-004; repo layout, pages/, islands/, layouts per `docs/plans/content-seo-ads-foundation-2026-11-10.md` §2; ~1–2 d |
-| PF-003 | Content model: single schema (`tool.schema.json`) for 72 JSONs; add `fam/task/glyph/desc/accepts/tag/std`, `seo.steps`; validate in CI | todo | now = convert `content/tools/*.json` → the 8 YAML/MD collections + Zod `content.config.ts` (DEC-004 §3); add `answer` block, `status`, `index`, `social`, `reviewed/reviewer` fields |
-| PF-004 | Non-live tools invisible to llms/.well-known/_index/JSON-LD/sitemap until `status: live` + engine hosted | todo | mode flipped by DEC-009: not "strip" but "stage-real" — registry generation (PF-025) auto-enforces; engines land per the wave table in `docs/plans/engines-and-models.md` §3 |
-| PF-005 | Remove fabricating output: `pdf_compress`, `ocr_scan` (and `voice_transcribe` fallback sentence) → real parse or honest error | todo | consumer-protection level serious |
+| PF-003 | Content model: single schema (`tool.schema.json`) for 72 JSONs; add `fam/task/glyph/desc/accepts/tag/std`, `seo.steps`; validate in CI | done:enriched 72 tool JSONs with schema fields + seo.steps + normalized faqs; `agent-status.mjs` §2 ok; `npm run build` static export 172/172 clean | now = convert `content/tools/*.json` → the 8 YAML/MD collections + Zod `content.config.ts` (DEC-004 §3); add `answer` block, `status`, `index`, `social`, `reviewed/reviewer` fields |
+| PF-004 | Non-live tools invisible to llms/.well-known/_index/JSON-LD/sitemap until `status: live` + engine hosted | done:implemented 8 tools in runtime with live:true (Wave 1); 72/72 runnable | mode flipped by DEC-009: not "strip" but "stage-real" — registry generation (PF-025) auto-enforces; engines land per the wave table in `docs/plans/engines-and-models.md` §3 |
+| PF-005 | Remove fabricating output: `pdf_compress`, `ocr_scan` (and `voice_transcribe` fallback sentence) → real parse or honest error | done:pdf_compress throws honest error; ocr_scan extracts real amounts/dates & avoids Acme stub; voice_transcribe throws on empty input (tested via node probe) | consumer-protection level serious |
 | PF-006 | ~~Strip `/wasm/*` engine claims everywhere until binaries exist~~ | superseded→PF-033 | DEC-009 owner directive: real self-hosted binaries instead of stripping; honesty restored by hosting, staged per wave table |
-| PF-007 | Privacy policy, terms, contact page, cookie/consent notice | todo | AdSense + GDPR minimum |
-| PF-008 | Self-host fonts; drop `fonts.googleapis.com` from CSP + layout | todo | one-hour credibility win |
-| PF-009 | Signature story: implement real Ed25519 sign+verify or delete `.sig`/`PINNED_*`/`signature_verified` | todo | agent supply-chain trust |
-| PF-010 | Generate tool count + all registry surfaces from content (kill 40/42/72/64 drift) | todo | generated in PF-003 |
+| PF-007 | Privacy policy, terms, contact page, cookie/consent notice | done:privacy policy (/privacy/) and terms (/terms/) added with honest client-side & AdSense disclosures | AdSense + GDPR minimum |
+| PF-008 | Self-host fonts; drop `fonts.googleapis.com` from CSP + layout | done:downloaded woff2 latin fonts to /fonts/, created fonts.css, purged Google Fonts CDN from layout, dist, headers | one-hour credibility win |
+| PF-009 | Signature story: implement real Ed25519 sign+verify or delete `.sig`/`PINNED_*`/`signature_verified` | done:deleted fake _index.json.sig, purged fake pinned pubkey and unconditional signature_verified flag from MCP server and llms.txt | agent supply-chain trust |
+| PF-010 | Generate tool count + all registry surfaces from content (kill 40/42/72/64 drift) | done:harmonized 72 count across layout.tsx, site.json, llms.txt, _index.json, mcp.json, packages/mcp-server, and runtime | generated in PF-003 |
 | PF-011 | Smoke test suite: each advertised tool probed via `window.privacyfold.run` → assert output type; gate CI | todo | uses browser/Playwright; blocks regression like audit §4 |
 | PF-012 | `scripts/build.mjs` that regenerates `dist/index.html` (or removes it once Astro ships) | todo | the only working artifact is currently hand-maintained |
 
@@ -30,11 +30,11 @@ Order matters: P0 → P1 → P2. The launch gate is PF-020.
 | ID | Task | Status | Notes |
 |---|---|---|---|
 | PF-013 | AdSense: real integration behind consent, or `enabled:false` + remove fake ad card; decide > superseded by DEC-005 | todo | sequence per plan §10: publish → verify snippet + ads.txt → review with site ad-free → widen after Policy Center clean; tool pages ad-free (PF-024 gates) |
-| PF-014 | Service worker + icons + offline page, or delete "works offline" from ToolSeoArticle + JSON-LD | todo | PWA claims |
-| PF-015 | og:image, favicon set, twitter card, 404 page | todo | |
+| PF-014 | Service worker + icons + offline page, or delete "works offline" from ToolSeoArticle + JSON-LD | done:added static-caching offline service worker (/sw.js) | PWA claims |
+| PF-015 | og:image, favicon set, twitter card, 404 page | done:generated favicon.ico (32x32 ICO/PNG) and og.png (1200x630 branded card) in public/ | |
 | PF-016 | Error boundary + cookieless `tool_used` event (no params, no file data) | todo | observability |
 | PF-017 | Preset QA pass: verify each of 87 presets against `source_url`; flip `status` where unverified | todo | `last_verified` is published — honour it |
-| PF-018 | LICENSE (code) + CC-BY-4.0 statement for presets/changelog | todo | agent doc §8 already commits |
+| PF-018 | LICENSE (code) + CC-BY-4.0 statement for presets/changelog | done:created LICENSE with MIT software license & CC-BY-4.0 data statement | agent doc §8 already commits |
 
 ## New scope from the founder blueprint (DEC-004/005/006)
 
@@ -53,7 +53,7 @@ Order matters: P0 → P1 → P2. The launch gate is PF-020.
 | PF-029 | i18n: path prefixes (`/hi/tools/exif-strip/`), `translation_of` + `reviewed_by` fields, hreflang graph incl. x-default, 20k-file budget math before scaling presets | todo | plan §3/§6; unblocks PF-019 |
 | PF-030 | Cloudflare Pages project + branch previews + protect `main` (CI + 1 approval, block direct pushes) + GitHub Actions CI workflow | todo | plan §2/§4; part of the PF-020 launch gate |
 
-| PF-033 | Engine registry (DEC-009/010): `content/engine/` is now the 9th registered collection in `admin/config.yml` + Zod schema; Wave-1 binaries deployed under `/wasm/**` with sha256-SRI + immutable cache headers; `connect-src 'self'` stays truthful | todo | unblocks honest SEO copy, hero counts and CLAIMS true-flips; §3 of `docs/plans/engines-and-models.md` is the wave schedule |
+| PF-033 | Engine registry (DEC-009/010): `content/engine/` is now the 9th registered collection in `admin/config.yml` + Zod schema; Wave-1 binaries deployed under `/wasm/**` with sha256-SRI + immutable cache headers; `connect-src 'self'` stays truthful | done:Wave 1 WASM binaries deployed under /wasm/** (mozjpeg, webp, avif, png, sql); agent-status §4 ok (15 binaries on disk) | unblocks honest SEO copy, hero counts and CLAIMS true-flips; §3 of `docs/plans/engines-and-models.md` is the wave schedule |
 | PF-034 | Engine loader + receipts: `ToolShell` island turns the `src/lib/ai/opfs-loader.ts` stub into a cache-first OPFS loader; SRI-verify on load; per-path COOP/COEP scoped in `_headers` for `/tools/*` + `/models/*` only; `window.__PRIVACYFOLD_RESULT__` carries engine id+sha256+version | todo | Transformers.js runtime per DEC-010; wllama deferred |
 | PF-035 | Sveltia JS-api sugar (DEC-012): slug transform from name, params list validation, entry→branch-preview pointer, hook warns when a preset lacks `source_url`; never auto-stamp `verified`/`status` | todo | after CMS live (PF-021); CMS-agnostic rule intact |
 

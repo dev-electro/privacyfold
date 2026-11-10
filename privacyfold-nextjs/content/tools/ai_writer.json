@@ -3,18 +3,18 @@
   "slug": "ai-writer",
   "name": "Zero-download AI writer & rewriter (0 MB)",
   "category": "dev",
-  "badge": "window.ai \u00b7 0 MB",
+  "badge": "window.ai · 0 MB",
   "size": "0 KB (Built-In)",
   "Engine": "window.ai-smollm2-135m",
-  "description": "Uses your browser\u2019s built-in local AI APIs (window.ai.languageModel, ai.rewriter, ai.summarizer \u2014 0 MB download) with automatic fallback to SmolLM2-135M-Instruct (~45 MB) for grammar fixing, tone shifting, essays, cold emails, and video scripts.",
+  "description": "Uses your browser’s built-in local AI APIs (window.ai.languageModel, ai.rewriter, ai.summarizer — 0 MB download) with automatic fallback to SmolLM2-135M-Instruct (~45 MB) for grammar fixing, tone shifting, essays, cold emails, and video scripts.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "presets": [],
   "schemaUrl": "/schemas/ai_writer.json",
   "executionUrl": "https://privacyfold.com/tools/ai_writer?mode=agent",
   "seo": {
-    "metaTitle": "Zero-download AI writer & rewriter (0 MB) \u2014 100% Private In-Browser Utility | PrivacyFold",
-    "metaDescription": "Uses your browser\u2019s built-in local AI APIs (window.ai.languageModel, ai.rewriter, ai.summarizer \u2014 0 MB download) with automatic fallback to SmolLM2-135M-Instruct (~45 MB) for grammar fixing, tone shifting, essays, cold emails, and video scripts. Runs 100% locally in your browser via window.ai-smollm2-135m with zero file uploads.",
+    "metaTitle": "Zero-download AI writer & rewriter (0 MB) — 100% Private In-Browser Utility | PrivacyFold",
+    "metaDescription": "Uses your browser’s built-in local AI APIs (window.ai.languageModel, ai.rewriter, ai.summarizer — 0 MB download) with automatic fallback to SmolLM2-135M-Instruct (~45 MB) for grammar fixing, tone shifting, essays, cold emails, and video scripts. Runs 100% locally in your browser via window.ai-smollm2-135m with zero file uploads.",
     "aeoSummary": "Zero-download AI writer & rewriter (0 MB) processes files and text entirely inside your browser tab using window.ai-smollm2-135m (Tier B). Zero bytes are uploaded to any server.",
     "keywords": [
       "zero-download ai writer & rewriter (0 mb)",
@@ -28,19 +28,36 @@
         "url": "https://www.w3.org/TR/wasm-core-2/"
       },
       {
-        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "standard": "IETF RFC 3986 §3.5 Fragment Privacy",
         "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
       }
     ],
     "faqs": [
       {
+        "question": "Does Zero-download AI writer & rewriter (0 MB) upload my files or text to a server?",
+        "answer": "No. Zero-download AI writer & rewriter (0 MB) executes 100% inside your browser's local memory using window.ai-smollm2-135m. No data leaves your device.",
         "q": "Does Zero-download AI writer & rewriter (0 MB) upload my files or text to a server?",
         "a": "No. Zero-download AI writer & rewriter (0 MB) executes 100% inside your browser's local memory using window.ai-smollm2-135m. No data leaves your device."
       },
       {
+        "question": "Can AI agents or CLI scripts automate Zero-download AI writer & rewriter (0 MB)?",
+        "answer": "Yes. Use Lane A schema /schemas/ai_writer.json or open /tools/ai-writer?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__.",
         "q": "Can AI agents or CLI scripts automate Zero-download AI writer & rewriter (0 MB)?",
         "a": "Yes. Use Lane A schema /schemas/ai_writer.json or open /tools/ai-writer?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
       }
+    ],
+    "steps": [
+      "Paste or load your text data directly into the input editor.",
+      "Apply transformations, formatting, or validation rules in real time.",
+      "Copy the output or save the result with zero data transmitted over the network."
     ]
-  }
+  },
+  "fam": "dev",
+  "task": "Write essays, emails, scripts & fix grammar via browser built-in AI",
+  "glyph": "AI",
+  "desc": "Uses your browser’s built-in local AI APIs (window.ai.languageModel, ai.rewriter, ai.summarizer — 0 MB download) with automatic fallback to SmolLM2-135M-Instruct (~45 MB) for grammar fixing, tone shifting, essays, cold emails, and video scripts.",
+  "accepts": "text",
+  "tag": "window.ai · 0 MB",
+  "std": "W3C WebAssembly Core 2.0",
+  "wasmModule": "window.ai-smollm2-135m"
 }

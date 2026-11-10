@@ -4,7 +4,7 @@
   "name": "PDF flattener & form locker",
   "category": "pdf",
   "badge": "PDF/A, Lock",
-  "size": "18\u2013120 KB WASM",
+  "size": "18–120 KB WASM",
   "Engine": "/wasm/pdf/pdf-flatten-v1.wasm",
   "description": "Flatten interactive AcroForm fields, checkboxes, and signature appearances into static page content for IRS 1099, USCIS, and notary submissions.",
   "zeroNetwork": true,
@@ -16,7 +16,7 @@
   "schemaUrl": "/schemas/pdf_flatten.json",
   "executionUrl": "https://privacyfold.com/tools/pdf_flatten?mode=agent",
   "seo": {
-    "metaTitle": "PDF flattener & form locker \u2014 100% Private In-Browser Utility | PrivacyFold",
+    "metaTitle": "PDF flattener & form locker — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Flatten interactive AcroForm fields, checkboxes, and signature appearances into static page content for IRS 1099, USCIS, and notary submissions. Runs 100% locally in your browser via /wasm/pdf/pdf-flatten-v1.wasm with zero file uploads.",
     "aeoSummary": "PDF flattener & form locker processes files and text entirely inside your browser tab using /wasm/pdf/pdf-flatten-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
@@ -31,19 +31,36 @@
         "url": "https://www.w3.org/TR/wasm-core-2/"
       },
       {
-        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "standard": "IETF RFC 3986 §3.5 Fragment Privacy",
         "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
       }
     ],
     "faqs": [
       {
+        "question": "Does PDF flattener & form locker upload my files or text to a server?",
+        "answer": "No. PDF flattener & form locker executes 100% inside your browser's local memory using /wasm/pdf/pdf-flatten-v1.wasm. No data leaves your device.",
         "q": "Does PDF flattener & form locker upload my files or text to a server?",
         "a": "No. PDF flattener & form locker executes 100% inside your browser's local memory using /wasm/pdf/pdf-flatten-v1.wasm. No data leaves your device."
       },
       {
+        "question": "Can AI agents or CLI scripts automate PDF flattener & form locker?",
+        "answer": "Yes. Use Lane A schema /schemas/pdf_flatten.json or open /tools/pdf-flatten?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__.",
         "q": "Can AI agents or CLI scripts automate PDF flattener & form locker?",
         "a": "Yes. Use Lane A schema /schemas/pdf_flatten.json or open /tools/pdf-flatten?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
       }
+    ],
+    "steps": [
+      "Paste or load your text data directly into the input editor.",
+      "Apply transformations, formatting, or validation rules in real time.",
+      "Copy the output or save the result with zero data transmitted over the network."
     ]
-  }
+  },
+  "fam": "pdf",
+  "task": "Flatten interactive form fields so they cannot be edited",
+  "glyph": "FLT",
+  "desc": "Flatten interactive AcroForm fields, checkboxes, and signature appearances into static page content for IRS 1099, USCIS, and notary submissions.",
+  "accepts": "text",
+  "tag": "PDF/A, Lock",
+  "std": "W3C WebAssembly Core 2.0",
+  "wasmModule": "/wasm/pdf/pdf-flatten-v1.wasm"
 }

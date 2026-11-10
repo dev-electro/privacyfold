@@ -4,7 +4,7 @@
   "name": "Screenshot annotator & callout marker",
   "category": "image",
   "badge": "PNG, Markup",
-  "size": "18\u2013120 KB WASM",
+  "size": "18–120 KB WASM",
   "Engine": "/wasm/image/screenshot-annotate-v1.wasm",
   "description": "Add clean, high-contrast callout borders, step badges, and header captions to bug reports and documentation screenshots without uploading internal UI screens.",
   "zeroNetwork": true,
@@ -13,7 +13,7 @@
   "schemaUrl": "/schemas/screenshot_annotate.json",
   "executionUrl": "https://privacyfold.com/tools/screenshot_annotate?mode=agent",
   "seo": {
-    "metaTitle": "Screenshot annotator & callout marker \u2014 100% Private In-Browser Utility | PrivacyFold",
+    "metaTitle": "Screenshot annotator & callout marker — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Add clean, high-contrast callout borders, step badges, and header captions to bug reports and documentation screenshots without uploading internal UI screens. Runs 100% locally in your browser via /wasm/image/screenshot-annotate-v1.wasm with zero file uploads.",
     "aeoSummary": "Screenshot annotator & callout marker processes files and text entirely inside your browser tab using /wasm/image/screenshot-annotate-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
@@ -28,19 +28,36 @@
         "url": "https://www.w3.org/TR/wasm-core-2/"
       },
       {
-        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "standard": "IETF RFC 3986 §3.5 Fragment Privacy",
         "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
       }
     ],
     "faqs": [
       {
+        "question": "Does Screenshot annotator & callout marker upload my files or text to a server?",
+        "answer": "No. Screenshot annotator & callout marker executes 100% inside your browser's local memory using /wasm/image/screenshot-annotate-v1.wasm. No data leaves your device.",
         "q": "Does Screenshot annotator & callout marker upload my files or text to a server?",
         "a": "No. Screenshot annotator & callout marker executes 100% inside your browser's local memory using /wasm/image/screenshot-annotate-v1.wasm. No data leaves your device."
       },
       {
+        "question": "Can AI agents or CLI scripts automate Screenshot annotator & callout marker?",
+        "answer": "Yes. Use Lane A schema /schemas/screenshot_annotate.json or open /tools/screenshot-annotate?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__.",
         "q": "Can AI agents or CLI scripts automate Screenshot annotator & callout marker?",
         "a": "Yes. Use Lane A schema /schemas/screenshot_annotate.json or open /tools/screenshot-annotate?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
       }
+    ],
+    "steps": [
+      "Select or drop your image into the browser workspace.",
+      "Configure processing parameters and preview the updated image in real time.",
+      "Download your final processed image directly to your device with 0 server uploads."
     ]
-  }
+  },
+  "fam": "image",
+  "task": "Add numbered callout badges, highlight boxes & status banners to screenshots",
+  "glyph": "ANN",
+  "desc": "Add clean, high-contrast callout borders, step badges, and header captions to bug reports and documentation screenshots without uploading internal UI screens.",
+  "accepts": "image",
+  "tag": "PNG, Markup",
+  "std": "W3C WebAssembly Core 2.0",
+  "wasmModule": "/wasm/image/screenshot-annotate-v1.wasm"
 }

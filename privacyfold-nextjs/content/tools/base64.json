@@ -4,7 +4,7 @@
   "name": "Base64 encoder and decoder",
   "category": "dev",
   "badge": "Base64",
-  "size": "18\u2013120 KB WASM",
+  "size": "18–120 KB WASM",
   "Engine": "/wasm/dev/base64-v1.wasm",
   "description": "Convert text to Base64 and back. Handles any language and emoji.",
   "zeroNetwork": true,
@@ -15,7 +15,7 @@
   "schemaUrl": "/schemas/base64.json",
   "executionUrl": "https://privacyfold.com/tools/base64?mode=agent",
   "seo": {
-    "metaTitle": "Base64 encoder and decoder \u2014 100% Private In-Browser Utility | PrivacyFold",
+    "metaTitle": "Base64 encoder and decoder — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Convert text to Base64 and back. Handles any language and emoji. Runs 100% locally in your browser via /wasm/dev/base64-v1.wasm with zero file uploads.",
     "aeoSummary": "Base64 encoder and decoder processes files and text entirely inside your browser tab using /wasm/dev/base64-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
@@ -30,19 +30,36 @@
         "url": "https://www.w3.org/TR/wasm-core-2/"
       },
       {
-        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "standard": "IETF RFC 3986 §3.5 Fragment Privacy",
         "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
       }
     ],
     "faqs": [
       {
+        "question": "Does Base64 encoder and decoder upload my files or text to a server?",
+        "answer": "No. Base64 encoder and decoder executes 100% inside your browser's local memory using /wasm/dev/base64-v1.wasm. No data leaves your device.",
         "q": "Does Base64 encoder and decoder upload my files or text to a server?",
         "a": "No. Base64 encoder and decoder executes 100% inside your browser's local memory using /wasm/dev/base64-v1.wasm. No data leaves your device."
       },
       {
+        "question": "Can AI agents or CLI scripts automate Base64 encoder and decoder?",
+        "answer": "Yes. Use Lane A schema /schemas/base64.json or open /tools/base64?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__.",
         "q": "Can AI agents or CLI scripts automate Base64 encoder and decoder?",
         "a": "Yes. Use Lane A schema /schemas/base64.json or open /tools/base64?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
       }
+    ],
+    "steps": [
+      "Paste or load your text data directly into the input editor.",
+      "Apply transformations, formatting, or validation rules in real time.",
+      "Copy the output or save the result with zero data transmitted over the network."
     ]
-  }
+  },
+  "fam": "dev",
+  "task": "Encode or decode Base64",
+  "glyph": "64",
+  "desc": "Convert text to Base64 and back. Handles any language and emoji.",
+  "accepts": "text",
+  "tag": "Base64",
+  "std": "W3C WebAssembly Core 2.0",
+  "wasmModule": "/wasm/dev/base64-v1.wasm"
 }

@@ -4,7 +4,7 @@
   "name": "SA100 helper",
   "category": "forms",
   "badge": "HMRC",
-  "size": "18\u2013120 KB WASM",
+  "size": "18–120 KB WASM",
   "Engine": "/wasm/forms/sa100-prep-v1.wasm",
   "description": "Line up UK HMRC Self Assessment (SA100) income, expenses, and Personal Allowance figures before you file online.",
   "zeroNetwork": true,
@@ -15,7 +15,7 @@
   "schemaUrl": "/schemas/sa100_prep.json",
   "executionUrl": "https://privacyfold.com/tools/sa100_prep?mode=agent",
   "seo": {
-    "metaTitle": "SA100 helper \u2014 100% Private In-Browser Utility | PrivacyFold",
+    "metaTitle": "SA100 helper — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Line up UK HMRC Self Assessment (SA100) income, expenses, and Personal Allowance figures before you file online. Runs 100% locally in your browser via /wasm/forms/sa100-prep-v1.wasm with zero file uploads.",
     "aeoSummary": "SA100 helper processes files and text entirely inside your browser tab using /wasm/forms/sa100-prep-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
@@ -30,19 +30,36 @@
         "url": "https://www.w3.org/TR/wasm-core-2/"
       },
       {
-        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "standard": "IETF RFC 3986 §3.5 Fragment Privacy",
         "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
       }
     ],
     "faqs": [
       {
+        "question": "Does SA100 helper upload my files or text to a server?",
+        "answer": "No. SA100 helper executes 100% inside your browser's local memory using /wasm/forms/sa100-prep-v1.wasm. No data leaves your device.",
         "q": "Does SA100 helper upload my files or text to a server?",
         "a": "No. SA100 helper executes 100% inside your browser's local memory using /wasm/forms/sa100-prep-v1.wasm. No data leaves your device."
       },
       {
+        "question": "Can AI agents or CLI scripts automate SA100 helper?",
+        "answer": "Yes. Use Lane A schema /schemas/sa100_prep.json or open /tools/sa100-prep?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__.",
         "q": "Can AI agents or CLI scripts automate SA100 helper?",
         "a": "Yes. Use Lane A schema /schemas/sa100_prep.json or open /tools/sa100-prep?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
       }
+    ],
+    "steps": [
+      "Configure the desired generator parameters and options.",
+      "Generate output securely using in-browser WebCrypto and local algorithms.",
+      "Copy or download the generated result with zero server contact."
     ]
-  }
+  },
+  "fam": "forms",
+  "task": "Prepare SA100 boxes",
+  "glyph": "SA",
+  "desc": "Line up Self Assessment figures before you file.",
+  "accepts": "none",
+  "tag": "HMRC",
+  "std": "W3C WebAssembly Core 2.0",
+  "wasmModule": "/wasm/forms/sa100-prep-v1.wasm"
 }

@@ -4,7 +4,7 @@
   "name": "Barcode generator (Code 128, EAN-13, UPC-A)",
   "category": "dev",
   "badge": "SVG, Code128",
-  "size": "18\u2013120 KB WASM",
+  "size": "18–120 KB WASM",
   "Engine": "/wasm/utility/qr-generate-v1.wasm",
   "description": "Generate crisp, vector SVG barcodes (Code 128, EAN-13, UPC-A) locally in your browser with zero tracking pixels.",
   "zeroNetwork": true,
@@ -15,7 +15,7 @@
   "schemaUrl": "/schemas/barcode_gen.json",
   "executionUrl": "https://privacyfold.com/tools/barcode_gen?mode=agent",
   "seo": {
-    "metaTitle": "Barcode generator (Code 128, EAN-13, UPC-A) \u2014 100% Private In-Browser Utility | PrivacyFold",
+    "metaTitle": "Barcode generator (Code 128, EAN-13, UPC-A) — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Generate crisp, vector SVG barcodes (Code 128, EAN-13, UPC-A) locally in your browser with zero tracking pixels. Runs 100% locally in your browser via /wasm/utility/qr-generate-v1.wasm with zero file uploads.",
     "aeoSummary": "Barcode generator (Code 128, EAN-13, UPC-A) processes files and text entirely inside your browser tab using /wasm/utility/qr-generate-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
@@ -30,19 +30,36 @@
         "url": "https://www.w3.org/TR/wasm-core-2/"
       },
       {
-        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "standard": "IETF RFC 3986 §3.5 Fragment Privacy",
         "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
       }
     ],
     "faqs": [
       {
+        "question": "Does Barcode generator (Code 128, EAN-13, UPC-A) upload my files or text to a server?",
+        "answer": "No. Barcode generator (Code 128, EAN-13, UPC-A) executes 100% inside your browser's local memory using /wasm/utility/qr-generate-v1.wasm. No data leaves your device.",
         "q": "Does Barcode generator (Code 128, EAN-13, UPC-A) upload my files or text to a server?",
         "a": "No. Barcode generator (Code 128, EAN-13, UPC-A) executes 100% inside your browser's local memory using /wasm/utility/qr-generate-v1.wasm. No data leaves your device."
       },
       {
+        "question": "Can AI agents or CLI scripts automate Barcode generator (Code 128, EAN-13, UPC-A)?",
+        "answer": "Yes. Use Lane A schema /schemas/barcode_gen.json or open /tools/barcode-gen?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__.",
         "q": "Can AI agents or CLI scripts automate Barcode generator (Code 128, EAN-13, UPC-A)?",
         "a": "Yes. Use Lane A schema /schemas/barcode_gen.json or open /tools/barcode-gen?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
       }
+    ],
+    "steps": [
+      "Paste or load your text data directly into the input editor.",
+      "Apply transformations, formatting, or validation rules in real time.",
+      "Copy the output or save the result with zero data transmitted over the network."
     ]
-  }
+  },
+  "fam": "dev",
+  "task": "Generate clean SVG barcodes for inventory, retail & labels",
+  "glyph": "BAR",
+  "desc": "Generate crisp, vector SVG barcodes (Code 128, EAN-13, UPC-A) locally in your browser with zero tracking pixels.",
+  "accepts": "text",
+  "tag": "SVG, Code128",
+  "std": "W3C WebAssembly Core 2.0",
+  "wasmModule": "/wasm/utility/qr-generate-v1.wasm"
 }

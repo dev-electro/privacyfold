@@ -4,7 +4,7 @@
   "name": "PDF compressor (Portal presets)",
   "category": "pdf",
   "badge": "PDF, <2MB",
-  "size": "18\u2013120 KB WASM",
+  "size": "18–120 KB WASM",
   "Engine": "/wasm/pdf/pdf-compress-v1.wasm",
   "description": "Compress PDF documents to meet strict government and email portal limits (USCIS I-130 <2 MB, UK Visa VFS <2 MB, HMRC SA100 <5 MB, Schengen VFS <5 MB, Court E-Filing <5 MB, Gmail <25 MB).",
   "zeroNetwork": true,
@@ -21,7 +21,7 @@
   "schemaUrl": "/schemas/pdf_compress.json",
   "executionUrl": "https://privacyfold.com/tools/pdf_compress?mode=agent",
   "seo": {
-    "metaTitle": "PDF compressor (Portal presets) \u2014 100% Private In-Browser Utility | PrivacyFold",
+    "metaTitle": "PDF compressor (Portal presets) — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Compress PDF documents to meet strict government and email portal limits (USCIS I-130 <2 MB, UK Visa VFS <2 MB, HMRC SA100 <5 MB, Schengen VFS <5 MB, Court E-Filing <5 MB, Gmail <25 MB). Runs 100% locally in your browser via /wasm/pdf/pdf-compress-v1.wasm with zero file uploads.",
     "aeoSummary": "PDF compressor (Portal presets) processes files and text entirely inside your browser tab using /wasm/pdf/pdf-compress-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
@@ -36,19 +36,36 @@
         "url": "https://www.w3.org/TR/wasm-core-2/"
       },
       {
-        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "standard": "IETF RFC 3986 §3.5 Fragment Privacy",
         "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
       }
     ],
     "faqs": [
       {
+        "question": "Does PDF compressor (Portal presets) upload my files or text to a server?",
+        "answer": "No. PDF compressor (Portal presets) executes 100% inside your browser's local memory using /wasm/pdf/pdf-compress-v1.wasm. No data leaves your device.",
         "q": "Does PDF compressor (Portal presets) upload my files or text to a server?",
         "a": "No. PDF compressor (Portal presets) executes 100% inside your browser's local memory using /wasm/pdf/pdf-compress-v1.wasm. No data leaves your device."
       },
       {
+        "question": "Can AI agents or CLI scripts automate PDF compressor (Portal presets)?",
+        "answer": "Yes. Use Lane A schema /schemas/pdf_compress.json or open /tools/pdf-compress?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__.",
         "q": "Can AI agents or CLI scripts automate PDF compressor (Portal presets)?",
         "a": "Yes. Use Lane A schema /schemas/pdf_compress.json or open /tools/pdf-compress?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
       }
+    ],
+    "steps": [
+      "Paste or load your text data directly into the input editor.",
+      "Apply transformations, formatting, or validation rules in real time.",
+      "Copy the output or save the result with zero data transmitted over the network."
     ]
-  }
+  },
+  "fam": "pdf",
+  "task": "Reduce PDF size for USCIS, UK Visa VFS, HMRC, or Email limits",
+  "glyph": "CMP",
+  "desc": "Compress PDF documents to meet strict government and email portal limits (USCIS I-130 <2 MB, UK Visa VFS <2 MB, HMRC SA100 <5 MB, Schengen VFS <5 MB, Court E-Filing <5 MB, Gmail <25 MB).",
+  "accepts": "text",
+  "tag": "PDF, <2MB",
+  "std": "W3C WebAssembly Core 2.0",
+  "wasmModule": "/wasm/pdf/pdf-compress-v1.wasm"
 }

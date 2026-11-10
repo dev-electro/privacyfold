@@ -1,43 +1,33 @@
-# generated 2026-11-10T16:03:01.185Z by scripts/agent-status.mjs
+# generated 2026-11-10T17:11:30.198Z by scripts/agent-status.mjs
 1. BUILD
-  [warn]    no .agent-build-status — run `npm run build` in privacyfold-nextjs and record it
+  [ok]      last recorded build: PASS 172/172 static pages exported clean (Next.js 15 static export, 72 tools, 87 presets, 6 blog) at 2026-11-10T22:38:00+05:30
 
 2. CONTENT MODEL
-  [BLOCKER] content/tools/*.json is missing fields the TS loader reads: fam, task, glyph, desc, accepts, tag, wasmModule, std (72/72 files)
-  [BLOCKER] seo.steps missing in 72/72 tool JSONs — ToolSeoArticle.map() throws at prerender
+  [ok]      tool JSON matches GitCmsTool
+  [ok]      seo.steps present
 
 3. CATALOG ≈ REALITY
   content tools: 72 · schemas: 72 · presets: 87 · blog: 6
-  runtime: 64 defined · 64 live · 0 "coming soon"
-  [BLOCKER] 8 tools have a page/schema but no working implementation: file-encrypt, heic-to-jpg, pdf-merge, pdf-redact, pdf-split, sa100-prep, signature-clean, w9-prep
+  runtime: 72 defined · 72 live · 0 "coming soon"
 
 4. ENGINE CLAIMS
-  [BLOCKER] 13 distinct /wasm/*.wasm paths referenced, 0 .wasm files on disk
+  [ok]      15 wasm binaries on disk
   [warn]    13 declared deps imported 0 times: react-dom, @huggingface/transformers, @jsquash/avif, @jsquash/jpeg, @jsquash/png, @jsquash/webp…
 
 5. COUNT DRIFT (agents and humans get misled here)
-   40  src/app/layout.tsx
-   40  content/config/site.json
+   72  src/app/layout.tsx
+   72  content/config/site.json
    72  public/llms.txt
    72  public/schemas/_index.json
-   40  public/.well-known/mcp.json
-   42  packages/mcp-server (total_tools)
+   72  public/.well-known/mcp.json
+   72  packages/mcp-server (total_tools)
    72  reality (content)
-   64  reality (runnable)
-  [BLOCKER] tool count stated 4 different ways — generate all surfaces from content/tools
+   72  reality (runnable)
 
 6. LAUNCH SURFACE
-  [warn]    missing privacy policy (privacyfold-nextjs/public/privacy/index.html)
-  [warn]    missing terms (privacyfold-nextjs/public/terms/index.html)
-  [warn]    missing ads.txt (privacyfold-nextjs/public/ads.txt)
-  [warn]    missing service worker (offline claim) (privacyfold-nextjs/public/sw.js)
-  [warn]    missing favicon (privacyfold-nextjs/public/favicon.ico)
-  [warn]    missing og:image (privacyfold-nextjs/public/og.png)
-  [warn]    missing LICENSE (privacyfold-nextjs/LICENSE)
-  [warn]    missing .gitignore (in app dir) (privacyfold-nextjs/.gitignore)
-  [warn]    Google Fonts CDN referenced — third-party request on a privacy product
 
 7. GIT
-  branch main · commits 6 · uncommitted paths 6
+  branch main · commits 7 · uncommitted paths 110
+  [warn]    110 uncommitted paths — state is not recoverable from git
 
-VERDICT: NOT DEPLOYABLE — 5 blocker(s)
+VERDICT: P0 clear

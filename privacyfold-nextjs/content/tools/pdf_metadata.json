@@ -4,7 +4,7 @@
   "name": "PDF metadata stripper",
   "category": "pdf",
   "badge": "PDF Clean",
-  "size": "18\u2013120 KB WASM",
+  "size": "18–120 KB WASM",
   "Engine": "/wasm/pdf/pdf-metadata-v1.wasm",
   "description": "Strip hidden /Author, /Creator, /Producer, /CreationDate, /ModDate, and XMP XML packets from PDF files before public release or legal filing.",
   "zeroNetwork": true,
@@ -15,7 +15,7 @@
   "schemaUrl": "/schemas/pdf_metadata.json",
   "executionUrl": "https://privacyfold.com/tools/pdf_metadata?mode=agent",
   "seo": {
-    "metaTitle": "PDF metadata stripper \u2014 100% Private In-Browser Utility | PrivacyFold",
+    "metaTitle": "PDF metadata stripper — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Strip hidden /Author, /Creator, /Producer, /CreationDate, /ModDate, and XMP XML packets from PDF files before public release or legal filing. Runs 100% locally in your browser via /wasm/pdf/pdf-metadata-v1.wasm with zero file uploads.",
     "aeoSummary": "PDF metadata stripper processes files and text entirely inside your browser tab using /wasm/pdf/pdf-metadata-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
@@ -30,19 +30,36 @@
         "url": "https://www.w3.org/TR/wasm-core-2/"
       },
       {
-        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "standard": "IETF RFC 3986 §3.5 Fragment Privacy",
         "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
       }
     ],
     "faqs": [
       {
+        "question": "Does PDF metadata stripper upload my files or text to a server?",
+        "answer": "No. PDF metadata stripper executes 100% inside your browser's local memory using /wasm/pdf/pdf-metadata-v1.wasm. No data leaves your device.",
         "q": "Does PDF metadata stripper upload my files or text to a server?",
         "a": "No. PDF metadata stripper executes 100% inside your browser's local memory using /wasm/pdf/pdf-metadata-v1.wasm. No data leaves your device."
       },
       {
+        "question": "Can AI agents or CLI scripts automate PDF metadata stripper?",
+        "answer": "Yes. Use Lane A schema /schemas/pdf_metadata.json or open /tools/pdf-metadata?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__.",
         "q": "Can AI agents or CLI scripts automate PDF metadata stripper?",
         "a": "Yes. Use Lane A schema /schemas/pdf_metadata.json or open /tools/pdf-metadata?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
       }
+    ],
+    "steps": [
+      "Paste or load your text data directly into the input editor.",
+      "Apply transformations, formatting, or validation rules in real time.",
+      "Copy the output or save the result with zero data transmitted over the network."
     ]
-  }
+  },
+  "fam": "pdf",
+  "task": "Remove Author, Producer, Creator & revision history from PDFs",
+  "glyph": "M-0",
+  "desc": "Strip hidden /Author, /Creator, /Producer, /CreationDate, /ModDate, and XMP XML packets from PDF files before public release or legal filing.",
+  "accepts": "text",
+  "tag": "PDF Clean",
+  "std": "W3C WebAssembly Core 2.0",
+  "wasmModule": "/wasm/pdf/pdf-metadata-v1.wasm"
 }

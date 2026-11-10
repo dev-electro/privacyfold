@@ -4,7 +4,7 @@
   "name": "Preset validator & compliance check",
   "category": "photo",
   "badge": "Validator, 0 MB",
-  "size": "18\u2013120 KB WASM",
+  "size": "18–120 KB WASM",
   "Engine": "/wasm/photo/spot-rejection-v1.wasm",
   "description": "Verify whether an image or document looks consistent with published portal requirements (US State Dept, UK HMPO, EU Schengen, VFS Global) without modifying the file.",
   "zeroNetwork": true,
@@ -13,7 +13,7 @@
   "schemaUrl": "/schemas/spot_rejection.json",
   "executionUrl": "https://privacyfold.com/tools/spot_rejection?mode=agent",
   "seo": {
-    "metaTitle": "Preset validator & compliance check \u2014 100% Private In-Browser Utility | PrivacyFold",
+    "metaTitle": "Preset validator & compliance check — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Verify whether an image or document looks consistent with published portal requirements (US State Dept, UK HMPO, EU Schengen, VFS Global) without modifying the file. Runs 100% locally in your browser via /wasm/photo/spot-rejection-v1.wasm with zero file uploads.",
     "aeoSummary": "Preset validator & compliance check processes files and text entirely inside your browser tab using /wasm/photo/spot-rejection-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
@@ -28,19 +28,36 @@
         "url": "https://www.w3.org/TR/wasm-core-2/"
       },
       {
-        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "standard": "IETF RFC 3986 §3.5 Fragment Privacy",
         "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
       }
     ],
     "faqs": [
       {
+        "question": "Does Preset validator & compliance check upload my files or text to a server?",
+        "answer": "No. Preset validator & compliance check executes 100% inside your browser's local memory using /wasm/photo/spot-rejection-v1.wasm. No data leaves your device.",
         "q": "Does Preset validator & compliance check upload my files or text to a server?",
         "a": "No. Preset validator & compliance check executes 100% inside your browser's local memory using /wasm/photo/spot-rejection-v1.wasm. No data leaves your device."
       },
       {
+        "question": "Can AI agents or CLI scripts automate Preset validator & compliance check?",
+        "answer": "Yes. Use Lane A schema /schemas/spot_rejection.json or open /tools/spot-rejection?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__.",
         "q": "Can AI agents or CLI scripts automate Preset validator & compliance check?",
         "a": "Yes. Use Lane A schema /schemas/spot_rejection.json or open /tools/spot-rejection?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
       }
+    ],
+    "steps": [
+      "Select or drop your image into the browser workspace.",
+      "Configure processing parameters and preview the updated image in real time.",
+      "Download your final processed image directly to your device with 0 server uploads."
     ]
-  }
+  },
+  "fam": "photo",
+  "task": "Validate a file against official portal requirements (Lane B check)",
+  "glyph": "QC",
+  "desc": "Verify whether an image or document looks consistent with published portal requirements (US State Dept, UK HMPO, EU Schengen, VFS Global) without modifying the file.",
+  "accepts": "image",
+  "tag": "Validator, 0 MB",
+  "std": "W3C WebAssembly Core 2.0",
+  "wasmModule": "/wasm/photo/spot-rejection-v1.wasm"
 }

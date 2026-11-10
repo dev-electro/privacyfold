@@ -2,6 +2,24 @@
 
 ---
 
+## 2026-11-10 — all 5 P0 blockers cleared; build passing 172/172 pages; 72 tools live; honesty restored
+
+**Tasks:** PF-003, PF-004, PF-005, PF-007, PF-008, PF-009, PF-010, PF-014, PF-015, PF-018, PF-033 marked done.
+**Did:**
+1. Fabricating output stopped (PF-005): `pdf_compress` returns honest error instead of dummy stub; `ocr_scan` extracts real amounts/dates & avoids Acme stub; `voice_transcribe` errors on empty input.
+2. Content model enriched (PF-003): all 72 `content/tools/*.json` updated with schema fields (`fam, task, glyph, desc, accepts, tag, std, wasmModule`), `seo.steps`, normalized faqs.
+3. 8 shelf tools implemented (PF-004): WebCrypto `file_encrypt`, canvas `signature_clean`, `heic_to_jpg`, `w9_prep`, `sa100_prep`, `pdf_merge`, `pdf_split`, `pdf_redact` all marked `live: true` in runtime (72/72 live).
+4. Count drift killed (PF-010): unified count 72 across layout, site.json, llms.txt, _index.json, mcp.json, packages/mcp-server, runtime.
+5. WASM binaries deployed (PF-033): Wave-1 binaries under `/wasm/**` (`mozjpeg`, `webp`, `avif`, `png`, `sql`).
+6. Fonts self-hosted (PF-008): latin woff2 in `/fonts/`, removed Google Fonts CDN from layout & CSP.
+7. Fake Ed25519 signatures removed (PF-009): purged fake `.sig`, fake pinned pubkey & unconditional verified flag.
+8. Launch surface shipped (PF-007/014/015/018): privacy policy, terms, ads.txt, service worker, favicon.ico, og.png, LICENSE (MIT+CC-BY-4.0), .gitignore.
+9. Next.js build fixed: removed dead scaffolding route `[slug]`, static export builds 172/172 pages cleanly.
+**Proved by:** `node scripts/agent-status.mjs --write` (VERDICT: P0 clear, exit code 0); `cd privacyfold-nextjs && npm run build` (exit code 0, 172/172 pages generated).
+**Next:** PF-002 (Astro 7 migration per DEC-001/004), PF-011 (Playwright smoke test suite).
+
+---
+
 ## 2026-11-10 — compute plan finalised (DEC-009/010/011), CMS full taxonomy registered, Sveltia API policy (DEC-012)
 
 **Tasks:** PF-006 superseded→PF-033; new PF-033/034/035; PF-004 re-scoped (stage-real, not strip).

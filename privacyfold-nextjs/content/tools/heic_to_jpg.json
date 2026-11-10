@@ -4,7 +4,7 @@
   "name": "Image format converter & resizer",
   "category": "image",
   "badge": "WebP, PNG, JPG",
-  "size": "18\u2013120 KB WASM",
+  "size": "18–120 KB WASM",
   "Engine": "/wasm/image/heic-to-jpg-v1.wasm",
   "description": "Open iPhone photos anywhere.",
   "zeroNetwork": true,
@@ -13,7 +13,7 @@
   "schemaUrl": "/schemas/heic_to_jpg.json",
   "executionUrl": "https://privacyfold.com/tools/heic_to_jpg?mode=agent",
   "seo": {
-    "metaTitle": "Image format converter & resizer \u2014 100% Private In-Browser Utility | PrivacyFold",
+    "metaTitle": "Image format converter & resizer — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Open iPhone photos anywhere. Runs 100% locally in your browser via /wasm/image/heic-to-jpg-v1.wasm with zero file uploads.",
     "aeoSummary": "Image format converter & resizer processes files and text entirely inside your browser tab using /wasm/image/heic-to-jpg-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
@@ -28,19 +28,36 @@
         "url": "https://www.w3.org/TR/wasm-core-2/"
       },
       {
-        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "standard": "IETF RFC 3986 §3.5 Fragment Privacy",
         "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
       }
     ],
     "faqs": [
       {
+        "question": "Does Image format converter & resizer upload my files or text to a server?",
+        "answer": "No. Image format converter & resizer executes 100% inside your browser's local memory using /wasm/image/heic-to-jpg-v1.wasm. No data leaves your device.",
         "q": "Does Image format converter & resizer upload my files or text to a server?",
         "a": "No. Image format converter & resizer executes 100% inside your browser's local memory using /wasm/image/heic-to-jpg-v1.wasm. No data leaves your device."
       },
       {
+        "question": "Can AI agents or CLI scripts automate Image format converter & resizer?",
+        "answer": "Yes. Use Lane A schema /schemas/heic_to_jpg.json or open /tools/heic-to-jpg?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__.",
         "q": "Can AI agents or CLI scripts automate Image format converter & resizer?",
         "a": "Yes. Use Lane A schema /schemas/heic_to_jpg.json or open /tools/heic-to-jpg?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
       }
+    ],
+    "steps": [
+      "Load your file or input into the local workspace.",
+      "Review the configuration settings and real-time execution preview.",
+      "Save your result locally with complete privacy and zero server uploads."
     ]
-  }
+  },
+  "fam": "image",
+  "task": "Convert an iPhone photo",
+  "glyph": "HE",
+  "desc": "Open iPhone photos anywhere.",
+  "accepts": "heic",
+  "tag": "HEIC",
+  "std": "W3C WebAssembly Core 2.0",
+  "wasmModule": "/wasm/image/heic-to-jpg-v1.wasm"
 }

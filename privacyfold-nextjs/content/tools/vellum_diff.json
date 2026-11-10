@@ -4,7 +4,7 @@
   "name": "Document & image compare",
   "category": "pdf",
   "badge": "PNG, JPG, Page",
-  "size": "18\u2013120 KB WASM",
+  "size": "18–120 KB WASM",
   "Engine": "/wasm/pdf/vellum-diff-v1.wasm",
   "description": "Overlay two versions of a document, contract or image to spot differences. Changed text, numbers or pixels are highlighted in red.",
   "zeroNetwork": true,
@@ -13,7 +13,7 @@
   "schemaUrl": "/schemas/vellum_diff.json",
   "executionUrl": "https://privacyfold.com/tools/vellum_diff?mode=agent",
   "seo": {
-    "metaTitle": "Document & image compare \u2014 100% Private In-Browser Utility | PrivacyFold",
+    "metaTitle": "Document & image compare — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Overlay two versions of a document, contract or image to spot differences. Changed text, numbers or pixels are highlighted in red. Runs 100% locally in your browser via /wasm/pdf/vellum-diff-v1.wasm with zero file uploads.",
     "aeoSummary": "Document & image compare processes files and text entirely inside your browser tab using /wasm/pdf/vellum-diff-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
@@ -28,19 +28,36 @@
         "url": "https://www.w3.org/TR/wasm-core-2/"
       },
       {
-        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "standard": "IETF RFC 3986 §3.5 Fragment Privacy",
         "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
       }
     ],
     "faqs": [
       {
+        "question": "Does Document & image compare upload my files or text to a server?",
+        "answer": "No. Document & image compare executes 100% inside your browser's local memory using /wasm/pdf/vellum-diff-v1.wasm. No data leaves your device.",
         "q": "Does Document & image compare upload my files or text to a server?",
         "a": "No. Document & image compare executes 100% inside your browser's local memory using /wasm/pdf/vellum-diff-v1.wasm. No data leaves your device."
       },
       {
+        "question": "Can AI agents or CLI scripts automate Document & image compare?",
+        "answer": "Yes. Use Lane A schema /schemas/vellum_diff.json or open /tools/vellum-diff?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__.",
         "q": "Can AI agents or CLI scripts automate Document & image compare?",
         "a": "Yes. Use Lane A schema /schemas/vellum_diff.json or open /tools/vellum-diff?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
       }
+    ],
+    "steps": [
+      "Select or drop your image into the browser workspace.",
+      "Configure processing parameters and preview the updated image in real time.",
+      "Download your final processed image directly to your device with 0 server uploads."
     ]
-  }
+  },
+  "fam": "pdf",
+  "task": "Compare two pages or images for changes",
+  "glyph": "DF",
+  "desc": "Overlay two versions of a document, contract or image to spot differences. Changed text, numbers or pixels are highlighted in red.",
+  "accepts": "image",
+  "tag": "PNG, JPG, Page",
+  "std": "W3C WebAssembly Core 2.0",
+  "wasmModule": "/wasm/pdf/vellum-diff-v1.wasm"
 }

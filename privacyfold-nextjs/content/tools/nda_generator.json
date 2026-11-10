@@ -4,7 +4,7 @@
   "name": "Mutual NDA & contract generator",
   "category": "forms",
   "badge": "NDA, Contract",
-  "size": "18\u2013120 KB WASM",
+  "size": "18–120 KB WASM",
   "Engine": "/templates/nda-us.json",
   "description": "Create a clean Mutual or Unilateral Non-Disclosure Agreement (NDA) from our local JSON template (`templates/nda-us.json`) without exposing party names to legal SaaS platforms.",
   "zeroNetwork": true,
@@ -13,7 +13,7 @@
   "schemaUrl": "/schemas/nda_generator.json",
   "executionUrl": "https://privacyfold.com/tools/nda_generator?mode=agent",
   "seo": {
-    "metaTitle": "Mutual NDA & contract generator \u2014 100% Private In-Browser Utility | PrivacyFold",
+    "metaTitle": "Mutual NDA & contract generator — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Create a clean Mutual or Unilateral Non-Disclosure Agreement (NDA) from our local JSON template (`templates/nda-us.json`) without exposing party names to legal SaaS platforms. Runs 100% locally in your browser via /templates/nda-us.json with zero file uploads.",
     "aeoSummary": "Mutual NDA & contract generator processes files and text entirely inside your browser tab using /templates/nda-us.json (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
@@ -28,19 +28,36 @@
         "url": "https://www.w3.org/TR/wasm-core-2/"
       },
       {
-        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "standard": "IETF RFC 3986 §3.5 Fragment Privacy",
         "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
       }
     ],
     "faqs": [
       {
+        "question": "Does Mutual NDA & contract generator upload my files or text to a server?",
+        "answer": "No. Mutual NDA & contract generator executes 100% inside your browser's local memory using /templates/nda-us.json. No data leaves your device.",
         "q": "Does Mutual NDA & contract generator upload my files or text to a server?",
         "a": "No. Mutual NDA & contract generator executes 100% inside your browser's local memory using /templates/nda-us.json. No data leaves your device."
       },
       {
+        "question": "Can AI agents or CLI scripts automate Mutual NDA & contract generator?",
+        "answer": "Yes. Use Lane A schema /schemas/nda_generator.json or open /tools/nda-generator?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__.",
         "q": "Can AI agents or CLI scripts automate Mutual NDA & contract generator?",
         "a": "Yes. Use Lane A schema /schemas/nda_generator.json or open /tools/nda-generator?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
       }
+    ],
+    "steps": [
+      "Configure the desired generator parameters and options.",
+      "Generate output securely using in-browser WebCrypto and local algorithms.",
+      "Copy or download the generated result with zero server contact."
     ]
-  }
+  },
+  "fam": "forms",
+  "task": "Generate a mutual or one-way Non-Disclosure Agreement locally",
+  "glyph": "NDA",
+  "desc": "Create a clean Mutual or Unilateral Non-Disclosure Agreement (NDA) from our local JSON template (`templates/nda-us.json`) without exposing party names to legal SaaS platforms.",
+  "accepts": "none",
+  "tag": "NDA, Contract",
+  "std": "W3C WebAssembly Core 2.0",
+  "wasmModule": "/templates/nda-us.json"
 }

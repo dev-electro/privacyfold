@@ -11,7 +11,6 @@ import path from 'node:path';
 import readline from 'node:readline';
 
 const REGISTRY_VERSION = '1.4.0';
-const PINNED_ED25519_PUBKEY = 'MCowBQYDK2VwAyEA8f9a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1=';
 
 const PRESETS = [
   {
@@ -109,7 +108,7 @@ const MCP_TOOLS = [
   },
   {
     name: 'list-tools',
-    description: 'Lane A: List all 42 deterministic and on-device AI tools in the PrivacyFold registry.',
+    description: 'Lane A: List all 72 deterministic and on-device AI tools in the PrivacyFold registry.',
     inputSchema: { type: 'object', properties: {} }
   }
 ];
@@ -162,8 +161,6 @@ function handleCall(name, args = {}) {
     return {
       registry_version: REGISTRY_VERSION,
       latest_shard: '2026-11',
-      signature_verified: true,
-      pinned_ed25519_key: PINNED_ED25519_PUBKEY,
       changes: CHANGELOG_2026_11
     };
   }
@@ -172,7 +169,7 @@ function handleCall(name, args = {}) {
       registry_version: REGISTRY_VERSION,
       schema_index_url: 'https://privacyfold.com/schemas/_index.json',
       llms_txt_url: 'https://privacyfold.com/llms.txt',
-      total_tools: 42
+      total_tools: 72
     };
   }
   throw new Error(`Unknown MCP tool: ${name}`);
