@@ -35,6 +35,7 @@ const tools = listJson(`${contentBase}/tools`).map((f) => JSON.parse(read(`${con
 const presets = listJson(`${contentBase}/presets`).map((f) => JSON.parse(read(`${contentBase}/presets/${f}`)));
 const blogs = exists(`${contentBase}/blog`) ? fs.readdirSync(r(`${contentBase}/blog`)).filter((f) => f.endsWith('.md')) : [];
 const glossaries = exists(`${contentBase}/glossary`) ? fs.readdirSync(r(`${contentBase}/glossary`)).filter((f) => f.endsWith('.md')) : [];
+const comparisons = exists(`${contentBase}/compare`) ? fs.readdirSync(r(`${contentBase}/compare`)).filter((f) => f.endsWith('.md')) : [];
 const engines = exists(`${contentBase}/engine`) ? fs.readdirSync(r(`${contentBase}/engine`)).filter((f) => f.endsWith('.yaml')) : [];
 const schemas = listJson(`${publicBase}/schemas`).filter((f) => f !== '_index.json');
 
@@ -70,7 +71,7 @@ else ok('seo.steps present');
 /* ---------- 3. catalog honesty ---------- */
 out('');
 out('3. CATALOG ≈ REALITY');
-out(`  content tools: ${tools.length} · schemas: ${schemas.length} · presets: ${presets.length} · blog: ${blogs.length}${glossaries.length ? ` · glossary: ${glossaries.length}` : ''}${engines.length ? ` · engines: ${engines.length}` : ''}`);
+out(`  content tools: ${tools.length} · schemas: ${schemas.length} · presets: ${presets.length} · blog: ${blogs.length}${glossaries.length ? ` · glossary: ${glossaries.length}` : ''}${comparisons.length ? ` · compare: ${comparisons.length}` : ''}${engines.length ? ` · engines: ${engines.length}` : ''}`);
 out(`  runtime: ${toolObjs.length} defined · ${liveIds.length} live · ${soonIds.length} "coming soon"`);
 const advertisedOnly = [...contentSlugs].filter((s) => !liveSlugs.has(s));
 if (advertisedOnly.length) blocker(`${advertisedOnly.length} tools have a page/schema but no working implementation: ${advertisedOnly.join(', ')}`);

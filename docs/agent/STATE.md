@@ -7,9 +7,9 @@
 | Fact | Value | Verified |
 |---|---|---|
 | Working artifact | `dist/index.html` (22 KB HTML + vanilla runtime, self-contained) | `astro build` 2026-11-11 |
-| Framework today | Astro 7 + Tailwind v4 static export — **builds cleanly** (311/311 static pages exported) | `npm run build` exit 0 (2026-11-11) |
+| Framework today | Astro 7 + Tailwind v4 static export — **builds cleanly** (314/314 static pages exported) | `npm run build` exit 0 (2026-11-11) |
 | Framework decided | Astro 7 + Tailwind v4 on CF Pages (DEC-001) — **MIGRATED & LIVE** | DEC-001 / PF-002 |
-| Content | 72 tools / 87 presets / 6 blog / 15 glossary / 9 engine / 128 i18n / 5 templates | agent-status |
+| Content | 72 tools / 87 presets / 6 blog / 15 glossary / 2 compare / 1 authors / 4 pages / 9 engine / 128 i18n / 5 templates | agent-status |
 | Tools actually runnable | **72** live in runtime; **0** unimplemented | smoke-test.mjs (72/72 pass) |
 | Launch gate (PF-020) | **READY** — all P0 blockers cleared; 72 smoke tests green; Astro SSG clean | 2026-11-11 test suite |
 
@@ -36,6 +36,7 @@
 | PF-007 Consent Management | Built `ConsentBanner.astro` (zero-telemetry, paper aesthetic, default non-personalized ads, global reopen) |
 | PF-028 Social Distribution | Created `ShareRow.astro` (zero trackers), added `social` blocks to 8 flagship tools, generated `social-queue.md` |
 | PF-019/025/029 i18n Suite | All 8 flagship tools localized across 16 top international languages (128 records, 128 OG cards, 311 total pages, /sitemaps/i18n.xml, symmetric hreflangs) |
+| PF-023 Comparison Collection | Added `content/compare/` (2 architectural deep dives), `content/authors/`, and `content/pages/` (4 markdown trust pages); wired /compare/ routes and /sitemaps/compare.xml |
 
 ## Resolved previously (2026-11-10)
 

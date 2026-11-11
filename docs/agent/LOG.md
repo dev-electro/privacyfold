@@ -2,6 +2,19 @@
 
 ---
 
+## 2026-11-11 — PF-023: Compare Collection, Author Profile & CMS Markdown Trust Pages
+
+**Tasks:** Scaffolded architectural comparison collection, author profile with Person JSON-LD, and markdown trust pages.
+**Did:**
+1. Created `content/compare/privacyfold-vs-cloud-compressors.md` and `content/compare/client-side-vs-server-side-file-tools.md` with in-depth technical analysis.
+2. Created `content/authors/gaurav.yaml` and `content/pages/{about,privacy,terms,contact}.md` for Sveltia CMS Git editing.
+3. Registered `compare`, `authors`, and `pages` collections in `src/content.config.ts`, added routes `/compare/` and `/compare/[slug]`, and wired `/sitemaps/compare.xml`.
+4. Extended CI validation in `scripts/validate-git-cms.mjs`, `scripts/check-content.mjs`, and `scripts/agent-status.mjs`.
+**Proved by:** `npm test && npm run build && node scripts/build.mjs --check` (314 pages exported cleanly, 0 broken links).
+**Next:** All tasks in `TASKS.md` done except PF-021 awaiting owner Cloudflare Worker OAuth deployment.
+
+---
+
 ## 2026-11-11 — PF-019/PF-029: Tactile UI Language Switcher & Multi-Lingual Internal Navigation
 
 **Tasks:** Adding visible language selector pill strip and locale-aware related tool navigation.

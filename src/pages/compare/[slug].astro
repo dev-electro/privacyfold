@@ -1,0 +1,94 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getAllComparisonsFromGit } from '../../lib/cms';
+import AdSlot from '../../components/AdSlot.astro';
+import ShareRow from '../../components/ShareRow.astro';
+
+export async function getStaticPaths() {
+  const comparisons = getAllComparisonsFromGit();
+  return comparisons.map((comp) => ({
+    params: { slug: comp.slug },
+    props: { comp },
+  }));
+}
+
+const { comp } = Astro.props;
+const canonicalUrl = `https://privacyfold.com/compare/${comp.slug}/`;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: comp.title,
+  description: comp.summary,
+  datePublished: comp.reviewed,
+  dateModified: comp.reviewed,
+  author: {
+    '@type': 'Person',
+    name: 'Gaurav Suthar',
+    url: 'https://privacyfold.com/about/',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'PrivacyFold',
+    url: 'https://privacyfold.com',
+  },
+  mainEntityOfPage: canonicalUrl,
+};
+---
+
+<Base
+  title={comp.title}
+  description={comp.summary}
+  canonicalUrl={canonicalUrl}
+  article={true}
+  pageType="blog"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <main class="wrap pg" style="padding-top: 40px; padding-bottom: 80px; max-width: 860px;">
+    <article class="blog-art">
+      <div class="kick" style="font-family: var(--font-mono); font-size: 13px; color: var(--ink-2); margin-bottom: 12px; text-transform: uppercase;">
+        ARCHITECTURAL ANALYSIS · REVIEWED {comp.reviewed}
+      </div>
+
+      <h1 style="font-size: 32px; font-weight: 800; line-height: 1.25; margin-bottom: 16px;">
+        {comp.title}
+      </h1>
+
+      {comp.audience && (
+        <div style="margin-bottom: 24px; padding: 10px 14px; background: #fdfbf7; border-left: 3px solid var(--accent, #ff5a1f); font-size: 13.5px; color: var(--ink-2);">
+          <strong>Target Audience:</strong> {comp.audience}
+        </div>
+      )}
+
+      <ShareRow
+        url={canonicalUrl}
+        title={comp.title}
+        summary={comp.summary}
+      />
+
+      <AdSlot slotKey="blog-mid" format="banner" pageType="blog" />
+
+      <div class="prose" style="font-size: 16px; line-height: 1.7; color: var(--p-ink-2); margin-top: 28px;">
+        <Fragment set:html={comp.body.replace(/\n\n/g, '<br/><br/>')} />
+      </div>
+
+      <div class="byline-box" style="margin-top: 48px; padding: 20px 24px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;">
+        <div style="font-size: 14px; color: #1e293b; font-weight: 600;">
+          Written and verified by: Gaurav Suthar (Founder &amp; Lead Architect)
+        </div>
+        <p style="font-size: 13px; color: #64748b; margin: 6px 0 0 0; line-height: 1.5;">
+          Technical comparison verified against live browser implementations, IETF standards, and W3C WebAssembly specifications.
+        </p>
+      </div>
+
+      <div style="margin-top: 32px;">
+        <a href="/compare/" class="btn ghost sm" style="text-decoration: none;">
+          ← Back to All Comparisons
+        </a>
+      </div>
+    </article>
+  </main>
+</Base>

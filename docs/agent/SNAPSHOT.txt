@@ -1,13 +1,13 @@
-# generated 2026-11-11T18:16:17.002Z by scripts/agent-status.mjs
+# generated 2026-11-11T18:30:58.256Z by scripts/agent-status.mjs
 1. BUILD
-  [ok]      last recorded build: PASS 311/311 static pages exported clean (Astro 7 static export, 72 tools, 87 presets, 128 i18n tools, 6 blog, 15 glossary, 4 trust, 7 sitemaps, 206 OG cards) at 2026-11-11T23:29:32+05:30
+  [ok]      last recorded build: PASS 314/314 static pages exported clean (Astro 7 static export, 72 tools, 87 presets, 128 i18n tools, 6 blog, 15 glossary, 2 compare, 1 authors, 4 trust, 8 sitemaps, 206 OG cards) at 2026-11-11T23:58:25+05:30
 
 2. CONTENT MODEL
   [ok]      tool JSON matches GitCmsTool
   [ok]      seo.steps present
 
 3. CATALOG ≈ REALITY
-  content tools: 72 · schemas: 72 · presets: 87 · blog: 6 · glossary: 15 · engines: 9
+  content tools: 72 · schemas: 72 · presets: 87 · blog: 6 · glossary: 15 · compare: 2 · engines: 9
   runtime: 72 defined · 72 live · 0 "coming soon"
 
 4. ENGINE CLAIMS
@@ -26,6 +26,6 @@
 6. LAUNCH SURFACE
 
 7. GIT
-  branch main · commits 33 · uncommitted paths 5
+  branch main · commits 34 · uncommitted paths 15
 
 VERDICT: P0 clear

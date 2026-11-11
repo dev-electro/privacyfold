@@ -94,10 +94,47 @@ const engineCollection = defineCollection({
   }).passthrough(),
 });
 
+const authorsCollection = defineCollection({
+  loader: glob({ pattern: '**/*.yaml', base: './content/authors' }),
+  schema: z.object({
+    name: z.string(),
+    displayName: z.string().optional(),
+    role: z.string(),
+    bio: z.string(),
+    links: z.array(z.object({
+      label: z.string(),
+      url: z.string(),
+    })).optional(),
+  }).passthrough(),
+});
+
+const compareCollection = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './content/compare' }),
+  schema: z.object({
+    slug: z.string(),
+    title: z.string(),
+    audience: z.string().optional(),
+    reviewed: z.string().optional(),
+    summary: z.string().optional(),
+  }).passthrough(),
+});
+
+const pagesCollection = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './content/pages' }),
+  schema: z.object({
+    slug: z.string(),
+    title: z.string(),
+    reviewed: z.string().optional(),
+  }).passthrough(),
+});
+
 export const collections = {
   tools: toolsCollection,
   presets: presetsCollection,
   blog: blogCollection,
   glossary: glossaryCollection,
   engine: engineCollection,
+  authors: authorsCollection,
+  compare: compareCollection,
+  pages: pagesCollection,
 };

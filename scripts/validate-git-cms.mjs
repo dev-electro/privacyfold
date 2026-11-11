@@ -14,6 +14,9 @@ const presetsDir = path.join(root, 'content/presets');
 const blogsDir = path.join(root, 'content/blog');
 const glossaryDir = path.join(root, 'content/glossary');
 const enginesDir = path.join(root, 'content/engine');
+const compareDir = path.join(root, 'content/compare');
+const authorsDir = path.join(root, 'content/authors');
+const pagesDir = path.join(root, 'content/pages');
 const publicDir = path.join(root, 'public');
 
 const toolFiles = fs.readdirSync(toolsDir).filter((f) => f.endsWith('.json'));
@@ -21,6 +24,9 @@ const presetFiles = fs.readdirSync(presetsDir).filter((f) => f.endsWith('.json')
 const blogFiles = fs.readdirSync(blogsDir).filter((f) => f.endsWith('.md'));
 const glossaryFiles = fs.existsSync(glossaryDir) ? fs.readdirSync(glossaryDir).filter((f) => f.endsWith('.md')) : [];
 const engineFiles = fs.existsSync(enginesDir) ? fs.readdirSync(enginesDir).filter((f) => f.endsWith('.yaml')) : [];
+const compareFiles = fs.existsSync(compareDir) ? fs.readdirSync(compareDir).filter((f) => f.endsWith('.md')) : [];
+const authorFiles = fs.existsSync(authorsDir) ? fs.readdirSync(authorsDir).filter((f) => f.endsWith('.yaml')) : [];
+const pageFiles = fs.existsSync(pagesDir) ? fs.readdirSync(pagesDir).filter((f) => f.endsWith('.md')) : [];
 
 let errors = 0;
 const tools = [];
@@ -68,6 +74,30 @@ for (const file of engineFiles) {
   }
 }
 
+for (const file of compareFiles) {
+  const raw = fs.readFileSync(path.join(compareDir, file), 'utf8');
+  if (!raw.startsWith('---') || !raw.includes('title:') || !raw.includes('slug:')) {
+    console.error(`ERROR in content/compare/${file}: Missing YAML frontmatter or title/slug`);
+    errors++;
+  }
+}
+
+for (const file of authorFiles) {
+  const raw = fs.readFileSync(path.join(authorsDir, file), 'utf8');
+  if (!raw.includes('name:') || !raw.includes('role:')) {
+    console.error(`ERROR in content/authors/${file}: Missing required author fields`);
+    errors++;
+  }
+}
+
+for (const file of pageFiles) {
+  const raw = fs.readFileSync(path.join(pagesDir, file), 'utf8');
+  if (!raw.startsWith('---') || !raw.includes('title:')) {
+    console.error(`ERROR in content/pages/${file}: Missing YAML frontmatter or title`);
+    errors++;
+  }
+}
+
 if (errors > 0) {
   console.error(`Git-CMS Validation failed with ${errors} error(s).`);
   process.exit(1);
@@ -107,4 +137,4 @@ const cleanPresets = presets.map((p) => ({
 }));
 fs.writeFileSync(path.join(publicDir, 'presets.json'), JSON.stringify(cleanPresets, null, 2) + '\n');
 
-console.log(`✓ Git-CMS Validated & Compiled: ${tools.length} tools, ${presetFiles.length} presets, ${blogFiles.length} blog guides, ${glossaryFiles.length} glossary terms, ${engineFiles.length} engine assets.`);
+console.log(`✓ Git-CMS Validated & Compiled: ${tools.length} tools, ${presetFiles.length} presets, ${blogFiles.length} blog guides, ${glossaryFiles.length} glossary terms, ${engineFiles.length} engine assets, ${compareFiles.length} comparisons, ${authorFiles.length} authors, ${pageFiles.length} trust pages.`);

@@ -246,6 +246,56 @@ export function getGlossaryTermFromGit(slug: string): GitCmsGlossaryTerm | undef
   return getAllGlossaryTermsFromGit().find((g) => g.slug === slug);
 }
 
+export interface GitCmsComparison {
+  slug: string;
+  title: string;
+  audience?: string;
+  reviewed?: string;
+  summary?: string;
+  body: string;
+}
+
+export function getAllComparisonsFromGit(): GitCmsComparison[] {
+  const dir = path.join(CONTENT_ROOT, 'compare');
+  if (!fs.existsSync(dir)) return [];
+  const files = fs.readdirSync(dir).filter((f) => f.endsWith('.md'));
+  return files.map((file) => {
+    const raw = fs.readFileSync(path.join(dir, file), 'utf8');
+    const slug = file.replace(/\.md$/, '');
+    const meta: Record<string, string> = {};
+    const lines = raw.split('\n');
+    let body = raw;
+
+    if (lines[0]?.trim() === '---') {
+      const end = lines.indexOf('---', 1);
+      if (end !== -1) {
+        for (let i = 1; i < end; i++) {
+          const colon = lines[i].indexOf(':');
+          if (colon !== -1) {
+            const k = lines[i].slice(0, colon).trim();
+            const v = lines[i].slice(colon + 1).trim().replace(/^['"]|['"]$/g, '');
+            meta[k] = v;
+          }
+        }
+        body = lines.slice(end + 1).join('\n').trim();
+      }
+    }
+
+    return {
+      slug: meta.slug || slug,
+      title: meta.title || slug,
+      audience: meta.audience || '',
+      reviewed: meta.reviewed || '2026-11-11',
+      summary: meta.summary || '',
+      body,
+    };
+  });
+}
+
+export function getComparisonFromGit(slug: string): GitCmsComparison | undefined {
+  return getAllComparisonsFromGit().find((c) => c.slug === slug);
+}
+
 export function getAvailableLocales(): string[] {
   const i18nDir = path.join(CONTENT_ROOT, 'i18n');
   if (!fs.existsSync(i18nDir)) return [];

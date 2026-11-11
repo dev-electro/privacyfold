@@ -166,6 +166,21 @@ if (!fs.existsSync(glossaryDir)) {
   console.log(`  [OK] ${glossaryFiles.length} technical glossary records verified in content/glossary/`);
 }
 
+// 4b. Check Comparison Records (DEC-004)
+console.log(`\nChecking content/compare/ records...`);
+const compareDir = path.join(root, 'content/compare');
+if (fs.existsSync(compareDir)) {
+  const compareFiles = fs.readdirSync(compareDir).filter((f) => f.endsWith('.md'));
+  for (const cf of compareFiles) {
+    const raw = fs.readFileSync(path.join(compareDir, cf), 'utf8');
+    if (!raw.includes('slug:') || !raw.includes('title:')) {
+      console.error(`[FAIL] ${cf}: Missing required comparison fields`);
+      errors++;
+    }
+  }
+  console.log(`  [OK] ${compareFiles.length} comparison records verified in content/compare/`);
+}
+
 // 5. Image Size Budget (< 300 KB)
 console.log(`\nChecking static image asset size budget (< 300 KB)...`);
 const checkDirImages = (dirPath) => {
