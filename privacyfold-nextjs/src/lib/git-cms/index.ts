@@ -15,6 +15,32 @@ export interface ToolSeoBlock {
   faqs: Array<{ question: string; answer: string }>;
 }
 
+export interface SettingExplanation {
+  name: string;
+  description: string;
+  safeDefault: string;
+  example: string;
+}
+
+export interface WhatToExpect {
+  results: string;
+  limits: string;
+  benchmarks: string;
+}
+
+export interface PrivacyProof {
+  howItWorks: string;
+  verificationSteps: string[];
+  openSourceNotice: string;
+}
+
+export interface ToolByline {
+  author: string;
+  reviewer: string;
+  reviewedDate: string;
+  sources: Array<{ name: string; url: string }>;
+}
+
 export interface GitCmsTool {
   id: string;
   slug: string;
@@ -28,6 +54,10 @@ export interface GitCmsTool {
   std: string;
   wasmModule: string;
   seo: ToolSeoBlock;
+  settingsExplained?: SettingExplanation[];
+  whatToExpect?: WhatToExpect;
+  privacyProof?: PrivacyProof;
+  byline?: ToolByline;
 }
 
 export interface GitCmsPreset {

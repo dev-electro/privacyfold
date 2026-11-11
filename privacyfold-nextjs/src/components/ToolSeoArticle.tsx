@@ -34,6 +34,49 @@ export function ToolSeoArticle({ tool, presetTitle, presetDesc }: { tool: GitCms
             ))}
           </ol>
 
+          {tool.settingsExplained && tool.settingsExplained.length > 0 && (
+            <>
+              <h3>Settings Explained &amp; Safe Configurations</h3>
+              <div className="settings-list" style={{ display: 'grid', gap: '14px', margin: '16px 0 24px 0' }}>
+                {tool.settingsExplained.map((s, idx) => (
+                  <div key={idx} style={{ background: '#f9fafb', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '14px 16px' }}>
+                    <div style={{ fontWeight: 600, color: '#111827', fontSize: '15px' }}>{s.name}</div>
+                    <p style={{ margin: '6px 0 8px 0', fontSize: '14px', color: '#4b5563', lineHeight: '1.5' }}>{s.description}</p>
+                    <div style={{ fontSize: '13px', color: '#6b7280' }}>
+                      <span>Safe Default: <code>{s.safeDefault}</code></span> · <span>Example: <em>{s.example}</em></span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
+
+          {tool.whatToExpect && (
+            <>
+              <h3>What to Expect &amp; Performance Benchmarks</h3>
+              <p style={{ fontSize: '14.5px', color: '#374151', lineHeight: '1.6' }}>{tool.whatToExpect.results}</p>
+              <div style={{ background: '#f8fafc', borderLeft: '4px solid #3b82f6', padding: '12px 16px', margin: '14px 0', fontSize: '13.5px', color: '#1e293b' }}>
+                <div><strong>Execution Latency:</strong> {tool.whatToExpect.benchmarks}</div>
+                <div style={{ marginTop: '4px' }}><strong>Supported Limits:</strong> {tool.whatToExpect.limits}</div>
+              </div>
+            </>
+          )}
+
+          {tool.privacyProof && (
+            <>
+              <h3>Privacy Verification &amp; Technical Guarantee</h3>
+              <p style={{ fontSize: '14.5px', color: '#374151', lineHeight: '1.6' }}>{tool.privacyProof.howItWorks}</p>
+              <ol style={{ fontSize: '14px', color: '#4b5563', lineHeight: '1.6' }}>
+                {tool.privacyProof.verificationSteps.map((step, idx) => (
+                  <li key={idx} style={{ marginBottom: '6px' }}>{step}</li>
+                ))}
+              </ol>
+              <p style={{ fontSize: '13px', color: '#6b7280', fontStyle: 'italic', marginTop: '10px' }}>
+                {tool.privacyProof.openSourceNotice}
+              </p>
+            </>
+          )}
+
           <h3>Architecture &amp; Standards Comparison</h3>
           <table className="spec-tbl">
             <thead>
@@ -84,6 +127,27 @@ export function ToolSeoArticle({ tool, presetTitle, presetDesc }: { tool: GitCms
               </details>
             ))}
           </div>
+
+          {tool.byline && (
+            <footer style={{ marginTop: '24px', paddingTop: '16px', borderTop: '1px solid #e5e7eb', fontSize: '13px', color: '#6b7280' }}>
+              <div>
+                Authored by <strong>{tool.byline.author}</strong> · Technical Review by <strong>{tool.byline.reviewer}</strong> · Audited: <time>{tool.byline.reviewedDate}</time>
+              </div>
+              {tool.byline.sources && tool.byline.sources.length > 0 && (
+                <div style={{ marginTop: '8px' }}>
+                  Authoritative Standards &amp; References:{' '}
+                  {tool.byline.sources.map((src, i) => (
+                    <span key={i}>
+                      {i > 0 && ' · '}
+                      <a href={src.url} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--ink)', textDecoration: 'underline' }}>
+                        {src.name}
+                      </a>
+                    </span>
+                  ))}
+                </div>
+              )}
+            </footer>
+          )}
         </section>
       </div>
 
