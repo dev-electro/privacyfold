@@ -5,10 +5,10 @@ backend:
   repo: dev-electro/privacyfold
   branch: main
   # OAuth goes through our own sveltia-cms-auth Worker (DEC-008) — the client secret
-  # never lives in this repo or the browser. REPLACE the placeholder after step 1 of
-  # docs/ops/admin-auth.md and add a Cloudflare Access policy on /admin/*.
-  base_url: https://sveltia-cms-auth.<SUBDOMAIN>.workers.dev
-  auth_endpoint: auth
+  # never lives in this repo or the browser. Uncomment and add real Worker URL after step 1 of
+  # docs/ops/admin-auth.md. Without base_url, Sveltia CMS supports direct GitHub PAT login.
+  # base_url: https://sveltia-cms-auth.<SUBDOMAIN>.workers.dev
+  # auth_endpoint: auth
   workflow: editorial # Save = new branch + pull request; merge to main publishes
 
 locale: en
@@ -50,7 +50,7 @@ collections:
       - { label: Related tools, name: related, widget: list, required: false }
       - { label: Status, name: status, widget: select, options: [draft, beta, live], default: draft }
       - { label: Allow indexing, name: index, widget: boolean, default: true }
-      - { label: Reviewed, name: reviewed, widget: date, format: YYYY-MM-DD }
+      - { label: Reviewed, name: reviewed, widget: datetime, type: date, date_format: YYYY-MM-DD, time_format: false }
       - { label: Reviewer, name: reviewer, widget: string, default: gaurav }
       - label: Social
         name: social
@@ -79,7 +79,7 @@ collections:
       - { label: Source URL, name: source_url, widget: string }
       - { label: Version, name: version, widget: string, hint: date-based, e.g. 2026-11-08.1 }
       - { label: Status, name: status, widget: select, options: [active, under_review, deprecated], default: active }
-      - { label: Last verified, name: last_verified, widget: date }
+      - { label: Last verified, name: last_verified, widget: datetime, type: date, date_format: YYYY-MM-DD, time_format: false }
       - { label: Stale after days, name: stale_after_days, widget: number, default: 90 }
       - { label: Supersedes, name: supersedes, widget: string, required: false }
       - label: Constraints
@@ -104,7 +104,7 @@ collections:
       - { label: Title, name: title, widget: string }
       - { label: Answer block, name: answer, widget: text }
       - { label: Author, name: author, widget: string, default: gaurav }
-      - { label: Reviewed, name: reviewed, widget: date }
+      - { label: Reviewed, name: reviewed, widget: datetime, type: date, date_format: YYYY-MM-DD, time_format: false }
       - { label: Sources, name: sources, widget: list, required: false, fields: [ { label: Name, name: name, widget: string }, { label: URL, name: url, widget: string } ] }
       - { label: Status, name: status, widget: select, options: [draft, live], default: draft }
       - { label: Related tool, name: related_tool, widget: string, required: false }
@@ -119,7 +119,7 @@ collections:
     fields:
       - { label: Slug, name: slug, widget: string }
       - { label: Title, name: title, widget: string }
-      - { label: Reviewed, name: reviewed, widget: date }
+      - { label: Reviewed, name: reviewed, widget: datetime, type: date, date_format: YYYY-MM-DD, time_format: false }
       - { label: Body, name: body, widget: markdown }
 
 
@@ -135,7 +135,7 @@ collections:
       - { label: Definition (one sentence), name: definition, widget: text }
       - { label: Aliases, name: aliases, widget: list, required: false }
       - { label: Related tools, name: related_tools, widget: list, required: false }
-      - { label: Reviewed, name: reviewed, widget: date }
+      - { label: Reviewed, name: reviewed, widget: datetime, type: date, date_format: YYYY-MM-DD, time_format: false }
 
   - name: compare
     label: Comparisons
@@ -148,7 +148,7 @@ collections:
       - { label: Slug, name: slug, widget: string }
       - { label: Title, name: title, widget: string }
       - { label: Audience, name: audience, widget: string, hint: what the searcher is comparing, e.g. privacyfold vs online compressors }
-      - { label: Reviewed, name: reviewed, widget: date }
+      - { label: Reviewed, name: reviewed, widget: datetime, type: date, date_format: YYYY-MM-DD, time_format: false }
       - { label: Body, name: body, widget: markdown }
 
   - name: authors
