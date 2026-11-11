@@ -26,20 +26,20 @@ jobs:
       - name: 2. Agent Truth & Blocker Check
         run: node scripts/agent-status.mjs
 
-      - name: 3. Verify Dist Runtime Sync
-        run: node scripts/build.mjs --check
-
-      - name: 4. Tool Runtime Smoke Tests (72 Tools)
+      - name: 3. Tool Runtime Smoke Tests (72 Tools)
         run: node scripts/smoke-test.mjs
 
-      - name: 5. Sveltia CMS & Drift Check
+      - name: 4. Sveltia CMS & Drift Check
         run: node scripts/check-cms-drift.mjs
 
-      - name: 6. Content & Quality Checks
+      - name: 5. Content & Quality Checks
         run: node scripts/check-content.mjs
 
-      - name: 7. Astro 7 Static Export Build
+      - name: 6. Astro 7 Static Export Build
         run: npm run build
+
+      - name: 7. Verify Dist Runtime Sync
+        run: node scripts/build.mjs --check
 
       - name: 8. Verify Dist Output
         run: |

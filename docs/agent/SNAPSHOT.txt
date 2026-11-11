@@ -1,4 +1,4 @@
-# generated 2026-11-11T12:56:59.389Z by scripts/agent-status.mjs
+# generated 2026-11-11T16:51:09.231Z by scripts/agent-status.mjs
 1. BUILD
   [ok]      last recorded build: PASS 215/215 static pages exported clean (Astro 7 static export, 72 tools, 87 presets, 32 i18n tools, 6 blog, 15 glossary, 4 trust, 7 sitemaps, 110 OG cards) at 2026-11-11T18:25:20+05:30
 
@@ -26,7 +26,6 @@
 6. LAUNCH SURFACE
 
 7. GIT
-  branch main · commits 27 · uncommitted paths 70
-  [warn]    70 uncommitted paths — state is not recoverable from git
+  branch main · commits 29 · uncommitted paths 3
 
 VERDICT: P0 clear

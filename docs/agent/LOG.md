@@ -2,6 +2,17 @@
 
 ---
 
+## 2026-11-11 — PF-012/PF-030: Resilient CI Build Verification & Pipeline Ordering
+
+**Tasks:** Hardening CI pipeline and `build.mjs` check for clean fresh checkouts.
+**Did:**
+1. Updated `scripts/build.mjs` to dynamically trigger `npm run build` when `dist/` is absent, preventing false negative check failures on clean checkouts.
+2. Reordered `.github/workflows/ci.yml` execution sequence so `build.mjs --check` validates `dist/index.html` immediately after `npm run build`.
+**Proved by:** `node scripts/build.mjs --check && npm test` (exit 0 across all checks).
+**Next:** All tasks in `TASKS.md` complete except PF-021 awaiting owner auth Worker deploy.
+
+---
+
 ## 2026-11-11 — PF-019/PF-025/PF-026: Complete 8-Flagship i18n Suite, 32 Localized OG Cards, and COOP/COEP Headers
 
 **Tasks:** Multi-lingual scaling for all 8 flagship tools, localized OG cards, and CI content check suite.
