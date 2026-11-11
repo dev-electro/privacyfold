@@ -1,0 +1,130 @@
+---
+import { ADS_CONFIG } from '../config/ads';
+
+interface Props {
+  slotKey?: string;
+  format?: 'auto' | 'banner' | 'in-article' | 'sidebar' | 'rectangle';
+  pageType?: 'tool' | 'template' | 'blog' | 'glossary';
+  className?: string;
+}
+
+const {
+  slotKey = 'tool-mid',
+  format = 'in-article',
+  pageType = 'tool',
+  className = '',
+} = Astro.props;
+
+const slotConfig = ADS_CONFIG.slots[slotKey] || {
+  id: `slot-${slotKey}`,
+  name: slotKey,
+  format,
+  minHeightPx: format === 'banner' ? 90 : format === 'sidebar' ? 600 : 120,
+};
+
+const minHeight = `${slotConfig.minHeightPx}px`;
+const isEnabled = ADS_CONFIG.enabled;
+const uniqueId = `pf-ad-${slotKey.replace(/[^a-zA-Z0-9_-]/g, '-')}-${Math.random().toString(36).slice(2, 7)}`;
+---
+
+<div
+  id={uniqueId}
+  class={`pf-ad-wrapper ${className}`}
+  data-slot-key={slotKey}
+  data-page-type={pageType}
+  data-format={format}
+  style={`min-height: ${minHeight}; margin: 28px auto; text-align: center; position: relative; overflow: hidden;`}
+>
+  {isEnabled ? (
+    <div class="pf-ad-unit" style={`min-height: ${minHeight};`}>
+      <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-2, #5b5a4e); font-family: var(--font-mono, monospace); margin-bottom: 6px;">
+        Advertisement
+      </div>
+      <ins
+        class="adsbygoogle"
+        style="display: block;"
+        data-ad-client={ADS_CONFIG.publisherId}
+        data-ad-slot={slotConfig.id}
+        data-ad-format={format === 'auto' ? 'auto' : undefined}
+        data-full-width-responsive="true"
+      ></ins>
+    </div>
+  ) : (
+    <div
+      class="pf-ad-placeholder"
+      style={`min-height: ${minHeight}; display: none;`}
+      aria-hidden="true"
+    ></div>
+  )}
+</div>
+
+{isEnabled && (
+  <script is:inline define:vars={{ uniqueId, slotKey, pageType }}>
+    (() => {
+      // Per-page budget caps (DEC-007 / DocSet ad budget architecture)
+      const MAX_BUDGET = {
+        tool: 4,
+        template: 3,
+        blog: 3,
+        glossary: 2,
+      };
+
+      window.__pfAdSeats = window.__pfAdSeats || 0;
+      const limit = MAX_BUDGET[pageType] || 4;
+
+      const wrapper = document.getElementById(uniqueId);
+      if (!wrapper) return;
+
+      if (window.__pfAdSeats >= limit) {
+        // Over budget: collapse slot gracefully with zero CLS
+        wrapper.style.display = 'none';
+        return;
+      }
+      window.__pfAdSeats++;
+
+      // Lazy load when approaching viewport
+      const ins = wrapper.querySelector('.adsbygoogle');
+      if (!ins) return;
+
+      const observer = new IntersectionObserver(
+        (entries, obs) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              try {
+                (window.adsbygoogle = window.adsbygoogle || []).push({});
+              } catch (e) {}
+              obs.disconnect();
+              break;
+            }
+          }
+        },
+        { rootMargin: '200px' }
+      );
+
+      observer.observe(wrapper);
+
+      // Unfilled collapse & telemetry observer (MutationObserver on data-ad-status)
+      const mutObs = new MutationObserver(() => {
+        const status = ins.getAttribute('data-ad-status');
+        if (status === 'unfilled') {
+          wrapper.style.display = 'none';
+          window.dispatchEvent(
+            new CustomEvent('privacyfold:ad_status', {
+              detail: { slot: slotKey, status: 'unfilled', pageType },
+            })
+          );
+          mutObs.disconnect();
+        } else if (status === 'filled') {
+          window.dispatchEvent(
+            new CustomEvent('privacyfold:ad_status', {
+              detail: { slot: slotKey, status: 'filled', pageType },
+            })
+          );
+          mutObs.disconnect();
+        }
+      });
+
+      mutObs.observe(ins, { attributes: true, attributeFilter: ['data-ad-status'] });
+    })();
+  </script>
+)}

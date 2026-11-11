@@ -1,7 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { getAllBlogsFromGit } from '../../lib/cms';
-import AdSenseUnit from '../../components/AdSenseUnit.astro';
+import AdSlot from '../../components/AdSlot.astro';
 
 export async function getStaticPaths() {
   const posts = getAllBlogsFromGit();
@@ -31,6 +31,7 @@ const articleLd = {
   description={post.summary}
   canonicalUrl={canonicalUrl}
   article={true}
+  pageType="blog"
 >
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(articleLd)} />
@@ -57,7 +58,7 @@ const articleLd = {
       </div>
 
       <div style="margin: 36px 0;">
-        <AdSenseUnit slotId={`pf-blog-${post.slug}`} format="in-article" />
+        <AdSlot slotKey="blog-in-article" format="in-article" pageType="blog" />
       </div>
 
       {post.relatedTool && (

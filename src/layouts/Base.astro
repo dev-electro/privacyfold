@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import GoogleAdSense from '../components/GoogleAdSense.astro';
 
 interface Props {
   title?: string;
@@ -7,6 +8,7 @@ interface Props {
   canonicalUrl?: string;
   ogImage?: string;
   article?: boolean;
+  pageType?: 'tool' | 'template' | 'blog' | 'glossary' | 'home';
 }
 
 const {
@@ -15,6 +17,7 @@ const {
   canonicalUrl = 'https://privacyfold.com/',
   ogImage = 'https://privacyfold.com/og.png',
   article = false,
+  pageType = 'home',
 } = Astro.props;
 
 const siteTitle = title.includes('PrivacyFold') ? title : `${title} | PrivacyFold`;
@@ -46,6 +49,9 @@ const siteTitle = title.includes('PrivacyFold') ? title : `${title} | PrivacyFol
     <link rel="stylesheet" href="/fonts/fonts.css" />
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="icon" href="/favicon.ico" />
+
+    <!-- Google AdSense (DocSet Architecture, Single Point of Integration) -->
+    <GoogleAdSense pageType={pageType} />
 
     <slot name="head" />
   </head>

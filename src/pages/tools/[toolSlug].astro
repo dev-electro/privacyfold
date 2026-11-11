@@ -23,6 +23,7 @@ const jsonLd = generateToolJsonLdGraph(tool, canonicalUrl);
   title={tool.seo.metaTitle}
   description={tool.seo.metaDescription}
   canonicalUrl={canonicalUrl}
+  pageType="tool"
 >
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

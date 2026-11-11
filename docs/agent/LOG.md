@@ -2,6 +2,21 @@
 
 ---
 
+## 2026-11-11 — PF-031: Port DocSet Ad System (DEC-007, zero-CLS, adBudget, GoogleAdSense)
+
+**Tasks:** PF-031 and PF-013 marked done.
+**Did:**
+1. Created `src/config/ads.ts`: Publisher config (`ca-pub-2707121635941418`), `enabled: false` (ad-free launch sequence per plan §10), per-page budget limits (4 tool / 3 template / 3 blog / 2 glossary), and slot configurations.
+2. Created `src/components/GoogleAdSense.astro`: DNS preconnects for `pagead2.googlesyndication.com`, `googleads.g.doubleclick.net`, `tpc.googlesyndication.com`; single script loader in root layout; sets `window.__adsenseLoaded` for blocker detection.
+3. Created `src/components/AdSlot.astro`: Zero-CLS reserved min-heights, per-page seat reservation with budget caps, IntersectionObserver lazy load (200px margin), MutationObserver unfilled collapse with `privacyfold:ad_status` custom event telemetry, and clean ad-free placeholder mode.
+4. Integrated into layouts & routes: Wired `GoogleAdSense` in `src/layouts/Base.astro`; replaced legacy units with `AdSlot` in `ToolSeoArticle.astro`, blog, and glossary routes; passed `pageType` to enforce budget boundaries.
+5. Added honest copy to `ToolSeoArticle.astro` and verified `public/privacy/index.html`: "Your file is processed 100% locally in your browser memory and is never uploaded. This page contains advertisements served by Google AdSense."
+6. Updated `public/_headers`: Configured Content-Security-Policy to allowlist AdSense scripts, frames, images, and connections.
+**Proved by:** `npm test` (agent-status, smoke-test 72/72, check-cms-drift, check-content 0 errors) and `npm run build` (183/183 static pages exported in 2.57s).
+**Next:** Check remaining tasks in `docs/agent/TASKS.md` (PF-028 social layer, PF-029 i18n).
+
+---
+
 ## 2026-11-11 — PF-035: Sveltia CMS Editor Sugar (DEC-012)
 
 **Tasks:** PF-035 marked done.

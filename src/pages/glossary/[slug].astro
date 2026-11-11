@@ -1,7 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { getAllGlossaryTermsFromGit, getToolFromGit } from '../../lib/cms';
-import AdSenseUnit from '../../components/AdSenseUnit.astro';
+import AdSlot from '../../components/AdSlot.astro';
 
 export async function getStaticPaths() {
   const terms = getAllGlossaryTermsFromGit();
@@ -34,6 +34,7 @@ const relatedTools = (term.related_tools || [])
   description={term.definition}
   canonicalUrl={canonicalUrl}
   article={true}
+  pageType="glossary"
 >
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(definedTermLd)} />
@@ -71,7 +72,7 @@ const relatedTools = (term.related_tools || [])
       </div>
 
       <div style="margin: 36px 0;">
-        <AdSenseUnit slotId={`pf-glossary-${term.slug}`} format="in-article" />
+        <AdSlot slotKey="glossary-in-article" format="in-article" pageType="glossary" />
       </div>
 
       {relatedTools.length > 0 && (

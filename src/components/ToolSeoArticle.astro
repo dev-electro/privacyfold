@@ -1,7 +1,7 @@
 ---
 import type { GitCmsTool } from '../lib/cms';
 import { getAllToolsFromGit, FAMILIES } from '../lib/cms';
-import AdSenseUnit from './AdSenseUnit.astro';
+import AdSlot from './AdSlot.astro';
 
 interface Props {
   tool: GitCmsTool;
@@ -16,7 +16,7 @@ const related = getAllToolsFromGit().filter((t) => t.fam === tool.fam && t.id !=
 
 <div class="seo-wrap">
   <div class="seo-main">
-    <AdSenseUnit slotId={`pf-${tool.slug}-top`} format="leaderboard" />
+    <AdSlot slotKey="tool-top" format="banner" pageType="tool" />
 
     <article class="seo-card">
       <div class="kick">TECHNICAL SPECIFICATION &amp; USER GUIDE · {famName.toUpperCase()}</div>
@@ -25,6 +25,11 @@ const related = getAllToolsFromGit().filter((t) => t.fam === tool.fam && t.id !=
       <div class="aeo-box">
         <span class="aeo-k">Direct Answer Summary (Optimized for Search &amp; AI Citations)</span>
         <p>{tool.seo.aeoSummary}</p>
+      </div>
+
+      <div class="notice-privacy-ads" style="margin: 16px 0 24px 0; padding: 12px 16px; background: #fdfbf7; border: 1px solid var(--line, #dad5c5); border-left: 4px solid var(--accent, #ff5a1f); border-radius: 4px; font-size: 13.5px; color: var(--ink-2, #5b5a4e); line-height: 1.5;">
+        <strong style="color: var(--ink, #17160f);">Technical Privacy Guarantee:</strong>
+        Your file is processed 100% locally in your browser memory and is never uploaded. This page contains advertisements served by Google AdSense to sustain free operation without accounts or subscriptions.
       </div>
 
       <p>{presetDesc || tool.desc}</p>
@@ -150,7 +155,7 @@ const related = getAllToolsFromGit().filter((t) => t.fam === tool.fam && t.id !=
       )}
     </article>
 
-    <AdSenseUnit slotId={`pf-${tool.slug}-bottom`} format="in-article" />
+    <AdSlot slotKey="tool-bottom" format="in-article" pageType="tool" />
   </div>
 
   <aside class="seo-side">
@@ -181,6 +186,6 @@ const related = getAllToolsFromGit().filter((t) => t.fam === tool.fam && t.id !=
       </a>
     </div>
 
-    <AdSenseUnit slotId={`pf-${tool.slug}-sidebar`} format="rectangle" />
+    <AdSlot slotKey="tool-sidebar" format="sidebar" pageType="tool" />
   </aside>
 </div>

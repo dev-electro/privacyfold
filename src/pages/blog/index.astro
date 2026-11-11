@@ -1,7 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { getAllBlogsFromGit } from '../../lib/cms';
-import AdSenseUnit from '../../components/AdSenseUnit.astro';
+import AdSlot from '../../components/AdSlot.astro';
 
 const posts = getAllBlogsFromGit();
 ---
@@ -10,6 +10,7 @@ const posts = getAllBlogsFromGit();
   title="Guides, Biometric Standards & Privacy Architecture Blog"
   description="Deep-dive guides on client-side WebAssembly, WebGPU AI models, passport photo standards, EXIF metadata removal, and zero-knowledge cryptography."
   canonicalUrl="https://privacyfold.com/blog/"
+  pageType="blog"
 >
   <main class="wrap pg" style="padding-top: 40px; padding-bottom: 80px;">
     <div class="pg-h">
@@ -20,7 +21,7 @@ const posts = getAllBlogsFromGit();
       </p>
     </div>
 
-    <AdSenseUnit slotId="pf-blog-index-top" format="leaderboard" />
+    <AdSlot slotKey="blog-top" format="banner" pageType="blog" />
 
     <div class="blog-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; margin-top: 32px;">
       {posts.map((post) => (

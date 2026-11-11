@@ -1,7 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { getAllGlossaryTermsFromGit } from '../../lib/cms';
-import AdSenseUnit from '../../components/AdSenseUnit.astro';
+import AdSlot from '../../components/AdSlot.astro';
 
 const terms = getAllGlossaryTermsFromGit().sort((a, b) => a.term.localeCompare(b.term));
 ---
@@ -10,6 +10,7 @@ const terms = getAllGlossaryTermsFromGit().sort((a, b) => a.term.localeCompare(b
   title="Technical Glossary & Standards Directory"
   description="Technical definitions, standards, and cryptographic specifications for client-side WebAssembly, WebCrypto, biometric passport criteria, and zero-knowledge privacy architecture."
   canonicalUrl="https://privacyfold.com/glossary/"
+  pageType="glossary"
 >
   <main class="wrap pg" style="padding-top: 40px; padding-bottom: 80px;">
     <div class="pg-h">
@@ -20,7 +21,7 @@ const terms = getAllGlossaryTermsFromGit().sort((a, b) => a.term.localeCompare(b
       </p>
     </div>
 
-    <AdSenseUnit slotId="pf-glossary-index-top" format="leaderboard" />
+    <AdSlot slotKey="glossary-top" format="banner" pageType="glossary" />
 
     <div class="glossary-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; margin-top: 32px;">
       {terms.map((item) => (

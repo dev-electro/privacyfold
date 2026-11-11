@@ -1,0 +1,25 @@
+---
+import { ADS_CONFIG } from '../config/ads';
+
+interface Props {
+  pageType?: 'tool' | 'template' | 'blog' | 'glossary' | 'home';
+}
+
+const { pageType = 'tool' } = Astro.props;
+---
+
+{ADS_CONFIG.enabled && (
+  <Fragment>
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin />
+    <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin />
+    <link rel="preconnect" href="https://tpc.googlesyndication.com" crossorigin />
+    <script
+      is:inline
+      async
+      src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADS_CONFIG.publisherId}`}
+      crossorigin="anonymous"
+      onload="window.__adsenseLoaded=true"
+      onerror="window.__adsenseLoaded=false"
+    ></script>
+  </Fragment>
+)}
