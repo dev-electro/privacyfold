@@ -122,5 +122,12 @@
         "url": "https://www.iso.org/standard/51502.html"
       }
     ]
+  },
+  "social": {
+    "hook": "Merge confidential legal and financial PDFs without cloud servers reading them.",
+    "proof": "Stitches PDF cross-reference tables and page trees directly in client RAM.",
+    "hashtags": ["pdf", "contracts", "privacy", "security"],
+    "clip": "pdf-merge-demo.mp4",
+    "channels": ["x", "linkedin", "reddit"]
   }
 }

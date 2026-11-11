@@ -40,6 +40,14 @@ export interface ToolByline {
   sources: Array<{ name: string; url: string }>;
 }
 
+export interface ToolSocial {
+  hook?: string;
+  proof?: string;
+  hashtags?: string[];
+  clip?: string;
+  channels?: string[];
+}
+
 export interface GitCmsTool {
   id: string;
   slug: string;
@@ -57,6 +65,7 @@ export interface GitCmsTool {
   whatToExpect?: WhatToExpect;
   privacyProof?: PrivacyProof;
   byline?: ToolByline;
+  social?: ToolSocial;
 }
 
 export interface GitCmsPreset {

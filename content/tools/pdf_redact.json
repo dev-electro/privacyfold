@@ -121,5 +121,12 @@
         "url": "https://www.law.cornell.edu/rules/frcp/rule_5.2"
       }
     ]
+  },
+  "social": {
+    "hook": "Drawing black boxes over text in a PDF does NOT redact it. Here is why.",
+    "proof": "Surgically scrubs underlying PDF content stream bytes so text cannot be highlighted or extracted.",
+    "hashtags": ["pdf", "infosec", "legaltech", "privacy"],
+    "clip": "pdf-redact-demo.mp4",
+    "channels": ["x", "linkedin", "reddit"]
   }
 }

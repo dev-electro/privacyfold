@@ -122,5 +122,12 @@
         "url": "https://datatracker.ietf.org/doc/html/rfc3986"
       }
     ]
+  },
+  "social": {
+    "hook": "Stop leaking tracker tokens and zero-width characters when you copy-paste text.",
+    "proof": "Strips UTM campaign tags, affiliate tokens, and hidden steganographic watermarks in 1 ms.",
+    "hashtags": ["privacy", "security", "developer", "adtech"],
+    "clip": "clean-paste-demo.mp4",
+    "channels": ["x", "linkedin", "reddit"]
   }
 }

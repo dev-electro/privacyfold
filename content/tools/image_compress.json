@@ -125,5 +125,12 @@
         "url": "https://developers.google.com/speed/webp"
       }
     ]
+  },
+  "social": {
+    "hook": "Shrink large photos by up to 80% without cloud servers stealing your image data.",
+    "proof": "Pure client-side WebAssembly MozJPEG and WebP running in your browser memory.",
+    "hashtags": ["webperf", "design", "privacy", "wasm"],
+    "clip": "image-compress-demo.mp4",
+    "channels": ["x", "linkedin", "reddit"]
   }
 }

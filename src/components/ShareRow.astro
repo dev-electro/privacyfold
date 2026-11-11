@@ -1,0 +1,95 @@
+---
+interface Props {
+  url: string;
+  title: string;
+  summary?: string;
+  hook?: string;
+}
+
+const { url, title, summary = '', hook = '' } = Astro.props;
+
+const shareText = encodeURIComponent(hook || title);
+const encodedUrl = encodeURIComponent(url);
+const encodedSummary = encodeURIComponent(summary ? `${summary}\n\n${url}` : url);
+
+const shareLinks = [
+  {
+    name: 'X',
+    icon: '𝕏',
+    href: `https://twitter.com/intent/tweet?text=${shareText}&url=${encodedUrl}`,
+  },
+  {
+    name: 'WhatsApp',
+    icon: 'WhatsApp',
+    href: `https://wa.me/?text=${shareText}%20${encodedUrl}`,
+  },
+  {
+    name: 'LinkedIn',
+    icon: 'LinkedIn',
+    href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
+  },
+  {
+    name: 'Reddit',
+    icon: 'Reddit',
+    href: `https://reddit.com/submit?url=${encodedUrl}&title=${shareText}`,
+  },
+  {
+    name: 'Email',
+    icon: 'Email',
+    href: `mailto:?subject=${shareText}&body=${encodedSummary}`,
+  },
+];
+---
+
+<div class="pf-share-row" style="margin: 20px 0; padding: 12px 16px; background: var(--paper, #fdfcf8); border: 1px solid var(--line, #dad5c5); border-radius: 6px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+  <div style="font-family: var(--font-mono, monospace); font-size: 12px; color: var(--ink-2, #5b5a4e); text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; gap: 6px;">
+    <span>Share Privately:</span>
+    <span style="font-size: 11px; opacity: 0.7;">(0 trackers · plain links)</span>
+  </div>
+
+  <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+    <button
+      type="button"
+      class="pf-copy-btn"
+      data-share-url={url}
+      style="padding: 4px 10px; font-family: var(--font-mono, monospace); font-size: 12px; font-weight: 500; background: var(--surface, #ffffff); border: 1px solid var(--line, #dad5c5); border-radius: 4px; color: var(--ink, #17160f); cursor: pointer;"
+    >
+      Copy link
+    </button>
+
+    {shareLinks.map((link) => (
+      <a
+        href={link.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        style="padding: 4px 8px; font-family: var(--font-mono, monospace); font-size: 12px; background: var(--surface, #ffffff); border: 1px solid var(--line, #dad5c5); border-radius: 4px; color: var(--ink, #17160f); text-decoration: none;"
+      >
+        {link.name}
+      </a>
+    ))}
+  </div>
+</div>
+
+<script is:inline>
+  (() => {
+    document.querySelectorAll('.pf-copy-btn').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const urlToCopy = btn.getAttribute('data-share-url') || window.location.href;
+        try {
+          await navigator.clipboard.writeText(urlToCopy);
+          const original = btn.textContent;
+          btn.textContent = 'Copied!';
+          btn.style.color = '#15803d';
+          btn.style.borderColor = '#86efac';
+          setTimeout(() => {
+            btn.textContent = original;
+            btn.style.color = '';
+            btn.style.borderColor = '';
+          }, 2000);
+        } catch (e) {
+          prompt('Copy link:', urlToCopy);
+        }
+      });
+    });
+  })();
+</script>

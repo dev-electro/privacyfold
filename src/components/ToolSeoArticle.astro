@@ -2,6 +2,7 @@
 import type { GitCmsTool } from '../lib/cms';
 import { getAllToolsFromGit, FAMILIES } from '../lib/cms';
 import AdSlot from './AdSlot.astro';
+import ShareRow from './ShareRow.astro';
 
 interface Props {
   tool: GitCmsTool;
@@ -31,6 +32,13 @@ const related = getAllToolsFromGit().filter((t) => t.fam === tool.fam && t.id !=
         <strong style="color: var(--ink, #17160f);">Technical Privacy Guarantee:</strong>
         Your file is processed 100% locally in your browser memory and is never uploaded. This page contains advertisements served by Google AdSense to sustain free operation without accounts or subscriptions.
       </div>
+
+      <ShareRow
+        url={`https://privacyfold.com/tools/${tool.slug}/`}
+        title={presetTitle || tool.name}
+        summary={tool.seo.aeoSummary}
+        hook={tool.social?.hook}
+      />
 
       <p>{presetDesc || tool.desc}</p>
 

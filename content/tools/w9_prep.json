@@ -124,5 +124,12 @@
         "url": "https://www.irs.gov/forms-pubs/about-form-w-9"
       }
     ]
+  },
+  "social": {
+    "hook": "Filling tax forms on random online PDF editors exposes your SSN and EIN.",
+    "proof": "Prepares and fills your IRS Form W-9 100% locally in your browser memory.",
+    "hashtags": ["taxes", "freelance", "compliance", "privacy"],
+    "clip": "w9-prep-demo.mp4",
+    "channels": ["x", "linkedin", "reddit"]
   }
 }

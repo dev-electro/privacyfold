@@ -123,5 +123,12 @@
         "url": "https://www.w3.org/TR/WebCryptoAPI/"
       }
     ]
+  },
+  "social": {
+    "hook": "Send private files as self-decrypting HTML envelopes that need no special software.",
+    "proof": "Military-grade AES-256-GCM + PBKDF2 WebCrypto in browser RAM. Zero server storage.",
+    "hashtags": ["cryptography", "security", "privacy", "webcrypto"],
+    "clip": "file-encrypt-demo.mp4",
+    "channels": ["x", "linkedin", "reddit"]
   }
 }

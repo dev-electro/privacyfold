@@ -2,6 +2,19 @@
 
 ---
 
+## 2026-11-11 — PF-028: Social distribution layer & zero-tracker ShareRow
+
+**Tasks:** PF-028 marked done.
+**Did:**
+1. Built `src/components/ShareRow.astro`: Plain link sharing (Copy link with native clipboard API, 𝕏, WhatsApp, LinkedIn, Reddit, Email) ensuring zero external tracking scripts and total privacy guarantee.
+2. Added `social` frontmatter blocks with hook, proof, hashtags, clip reference, and channels across 8 flagship tools (`exif_strip`, `passport_photo`, `image_compress`, `pdf_redact`, `file_encrypt`, `clean_paste`, `w9_prep`, `pdf_merge`).
+3. Created `scripts/generate-social-queue.mjs` and generated `docs/social-queue.md` featuring multi-channel drafted posts for the repeatable "Photo & Document Secrets" series.
+4. Integrated `ShareRow` into `ToolSeoArticle.astro`, blog articles, and glossary pages.
+**Proved by:** `npm test && npm run build` (183/183 pages exported clean in 3.2s, 0 errors, 72/72 smoke tests pass).
+**Next:** PF-029 (i18n preparation & URL structure).
+
+---
+
 ## 2026-11-11 — PF-031: Port DocSet Ad System (DEC-007, zero-CLS, adBudget, GoogleAdSense)
 
 **Tasks:** PF-031 and PF-013 marked done.

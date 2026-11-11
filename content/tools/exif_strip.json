@@ -123,5 +123,12 @@
         "url": "https://www.w3.org/TR/FileAPI/"
       }
     ]
+  },
+  "social": {
+    "hook": "Your photos know where you live. Here is how to strip GPS data in 1 click.",
+    "proof": "One tap removes 6 hidden metadata markers completely in your browser memory.",
+    "hashtags": ["privacy", "photography", "infosec", "cybersecurity"],
+    "clip": "exif-strip-demo.mp4",
+    "channels": ["x", "linkedin", "reddit"]
   }
 }

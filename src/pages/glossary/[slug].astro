@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import { getAllGlossaryTermsFromGit, getToolFromGit } from '../../lib/cms';
 import AdSlot from '../../components/AdSlot.astro';
+import ShareRow from '../../components/ShareRow.astro';
 
 export async function getStaticPaths() {
   const terms = getAllGlossaryTermsFromGit();
@@ -55,6 +56,12 @@ const relatedTools = (term.related_tools || [])
         </span>
         <p style="margin: 0; font-size: 15.5px; color: #14532d; line-height: 1.5;">{term.definition}</p>
       </div>
+
+      <ShareRow
+        url={canonicalUrl}
+        title={term.term}
+        summary={term.definition}
+      />
 
       {term.aliases && term.aliases.length > 0 && (
         <div style="margin-bottom: 24px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">

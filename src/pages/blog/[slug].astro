@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import { getAllBlogsFromGit } from '../../lib/cms';
 import AdSlot from '../../components/AdSlot.astro';
+import ShareRow from '../../components/ShareRow.astro';
 
 export async function getStaticPaths() {
   const posts = getAllBlogsFromGit();
@@ -52,6 +53,12 @@ const articleLd = {
         </span>
         <p style="margin: 0; font-size: 15px; color: #1e293b; line-height: 1.5;">{post.summary}</p>
       </div>
+
+      <ShareRow
+        url={canonicalUrl}
+        title={post.title}
+        summary={post.summary}
+      />
 
       <div style="font-family: var(--font-body); font-size: 16px; line-height: 1.75; color: var(--ink); white-space: pre-wrap;">
         {post.body}

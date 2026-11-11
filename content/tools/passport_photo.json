@@ -160,5 +160,12 @@
         "url": "https://travel.state.gov/content/travel/en/passports/how-apply/photos.html"
       }
     ]
+  },
+  "social": {
+    "hook": "Stop paying $15 for drugstore passport photos that get rejected.",
+    "proof": "Crop and calibrate official 2x2 inch and 35x45mm ICAO standards with zero upload.",
+    "hashtags": ["passport", "travel", "biometrics", "privacy"],
+    "clip": "passport-photo-demo.mp4",
+    "channels": ["x", "linkedin", "reddit", "whatsapp"]
   }
 }
