@@ -6,11 +6,12 @@
 
 | Fact | Value | Verified |
 |---|---|---|
-| Working artifact | `privacyfold-nextjs/dist/index.html` (438,854 B, self-contained) | loaded on localhost 2026-11-10 |
-| Framework today | Next 15 static export — **builds cleanly** (172/172 static pages exported) | `npm run build` exit 0 (2026-11-10) |
+| Working artifact | `privacyfold-nextjs/dist/index.html` (525,662 B, self-contained) | `build.mjs --check` 2026-11-11 |
+| Framework today | Next 15 static export — **builds cleanly** (172/172 static pages exported) | `npm run build` exit 0 (2026-11-11) |
 | Framework decided | Astro 7 + Tailwind v4 on CF Pages (DEC-001); migration planned | DEC-001 |
 | Content | 72 tools / 87 presets / 6 blog / 5 templates (Git JSON enriched) | agent-status |
-| Tools actually runnable | **72** live in runtime; **0** unimplemented | regex scan of app-runtime |
+| Tools actually runnable | **72** live in runtime; **0** unimplemented | smoke-test.mjs (72/72 pass) |
+| Launch gate (PF-020) | **READY** — all P0 blockers cleared; 72 smoke tests green; 172 SSG clean | 2026-11-11 test suite |
 
 ## What works (verified 2026-11-10)
 

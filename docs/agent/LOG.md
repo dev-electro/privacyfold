@@ -2,6 +2,24 @@
 
 ---
 
+## 2026-11-11 — Launch gate clear (PF-020): smoke tests, dist builder, error boundaries, preset QA, self-hosted CMS, CI checks
+
+**Tasks:** PF-011, PF-012, PF-016, PF-017, PF-020, PF-025, PF-026, PF-027, PF-030, PF-032, PF-034 marked done.
+**Did:**
+1. Tool smoke test suite (PF-011): `scripts/smoke-test.mjs` exercises all 72 tools via `window.privacyfold.run`; verifies honest errors, no fabrications, and telemetry/result contracts.
+2. Dist builder & sync (PF-012): `scripts/build.mjs` compiles `dist/index.html` deterministically from `app-runtime.js` with `--check` verification in CI.
+3. Observability & error boundary (PF-016): Added React `error.tsx` & `global-error.tsx`, runtime unhandled error listeners, and cookieless `tool_used` custom event dispatch (strictly zero params, zero file data).
+4. Preset QA pass (PF-017): Verified 87/87 presets against official government/standard `source_url`s, fixed 4 slug titles, generated rich descriptions, updated `PRESET_RECORDS` in `app-runtime.js` (87/87 active).
+5. Self-hosted Sveltia CMS bundle (PF-032): Downloaded `public/admin/cms.js` (2.45 MB), pinned with SRI SHA-384, added scoped `/admin*` CSP to `_headers`, confirmed `robots.txt` disallows `/admin/`, created `scripts/check-cms-drift.mjs`.
+6. Content & CI quality audit (PF-026): `scripts/check-content.mjs` validates schema.org JSON-LD for all 72 tools, preset staleness, image size budgets (<300KB), and headers.
+7. Engine loader & receipts (PF-034): Enhanced `opfs-loader.ts` with cache-first OPFS loading, SRI hash verification on load, and deterministic engine receipts on `window.__PRIVACYFOLD_RESULT__`.
+8. Crawlers, CI workflow & build endpoints (PF-025, PF-027, PF-030): Purpose-based `robots.txt`, auto-compiled `/tools.json` and `/presets.json`, and `.github/workflows/ci.yml`.
+9. Launch gate verified (PF-020): All pre-launch checks passing clean.
+**Proved by:** `node scripts/agent-status.mjs && node scripts/build.mjs --check && node scripts/smoke-test.mjs && node scripts/check-cms-drift.mjs && node scripts/check-content.mjs` (all exit code 0); `cd privacyfold-nextjs && npm run build` (172/172 SSG clean).
+**Next:** PF-002 (Astro 7 migration), PF-021 (admin auth Worker deployment by owner), PF-022 (flagship tool guides).
+
+---
+
 ## 2026-11-10 — all 5 P0 blockers cleared; build passing 172/172 pages; 72 tools live; honesty restored
 
 **Tasks:** PF-003, PF-004, PF-005, PF-007, PF-008, PF-009, PF-010, PF-014, PF-015, PF-018, PF-033 marked done.

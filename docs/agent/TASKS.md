@@ -62,7 +62,7 @@ Order matters: P0 → P1 → P2. The launch gate is PF-020.
 | ID | Task | Status | Notes |
 |---|---|---|---|
 | PF-019 | i18n scaffolding (Astro `i18n`, locales TBD in STATE open question) | todo | |
-| PF-020 | **Launch gate**: agent-status exit 0 + full sitemap builds + PF-011 green → mark ready | todo | gates deploy |
+| PF-020 | **Launch gate**: agent-status exit 0 + full sitemap builds + PF-011 green → mark ready | done:agent-status exit 0, 172/172 SSG clean, PF-011 (72/72 tools pass), PF-026 content audit & PF-032 CMS SRI checks green | gates deploy |
 
 ## Done
 
