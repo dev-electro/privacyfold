@@ -73,9 +73,16 @@ const isRtl = ['ar', 'he'].includes(lang);
 
     <script is:inline>
       if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js').catch(() => {});
-        });
+        if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+          window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js').catch(() => {});
+          });
+        } else {
+          // Dev / local environment: automatically unregister any stale service workers
+          navigator.serviceWorker.getRegistrations().then((registrations) => {
+            for (const reg of registrations) reg.unregister();
+          });
+        }
       }
     </script>
   </body>

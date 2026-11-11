@@ -2,6 +2,23 @@
 
 ---
 
+## 2026-11-12 — Fix Stale PWA Service Worker Caching & Double Menu Collision
+
+**Tasks:** Root cause and fix "double type of menu" glitch where stale offline PWA service worker served legacy HTML colliding with new CSS.
+**Did:**
+1. Diagnosed root cause: `public/sw.js` had cache-first HTML interception on `localhost`, serving pre-megamenu HTML (`.links` row) which loaded newly styled elements simultaneously.
+2. Updated `public/sw.js`:
+   - Auto-unregisters and wipes all caches when accessed from `localhost` / `127.0.0.1`.
+   - Changed HTML caching strategy to network-first for production.
+   - Bumped cache version to `privacyfold-v2.0.0` to flush all client caches.
+3. Updated `src/layouts/Base.astro` to bypass Service Worker registration in local dev and actively unregister existing workers on localhost.
+4. Hardened `src/styles/global.css`: applied `display: none !important` to legacy `.links` and `.atelier-bar` to prevent any cached markup from ever rendering.
+5. Rebuilt static export and restarted preview server (PID 19683).
+**Proved by:** `npm test && npm run build && curl -I http://localhost:4321/` (330 pages exported clean, HTTP 200).
+**Next:** All tasks in `TASKS.md` done except PF-021 awaiting owner Cloudflare Worker OAuth deployment.
+
+---
+
 ## 2026-11-12 — Header Cleanliness: Remove Redundant Top Bar Above Navigation
 
 **Tasks:** Purged redundant `.atelier-bar` above `<header>` to give PrivacyFold a clean, single, modern sticky header.

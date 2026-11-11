@@ -282,16 +282,17 @@ h1,h2,h3,h4,p{margin:0}
 .mega-drop-title{font:600 13.5px/1.2 var(--font-body);color:var(--ink)}
 .mega-drop-sub{font:400 11px/1.3 var(--font-mono);color:var(--ink-2);margin-top:2px}
 
-/* Legacy .links fallback */
-.links{display:none}
+/* Legacy .links & .atelier-bar force hidden */
+.links, .atelier-bar{display:none !important}
 
 .nav-r{margin-left:auto;display:flex;gap:8px;align-items:center;position:relative;flex-shrink:0}
+.mob-menu-btn{display:none !important}
 .nbtn{min-height:40px;min-width:40px;padding:0 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;font:500 14px var(--font-body)}
 .nbtn:hover{border-color:var(--ink)}
 .nbtn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .kbdk{font:500 11px var(--font-mono);border:1px solid var(--line);border-radius:5px;padding:2px 6px;color:var(--ink-2)}
 .badge{min-width:20px;height:20px;border-radius:99px;background:var(--accent);color:var(--accent-ink);display:inline-grid;place-items:center;font:600 11px/1 var(--font-mono);padding:0 6px}
-@media(max-width:960px){.nav-menu{display:none}.mob-menu-btn{display:inline-flex}}
+@media(max-width:960px){.nav-menu{display:none !important}.mob-menu-btn{display:inline-flex !important}}
 @media(max-width:560px){.nbtn .lbl{display:none}.kbdk{display:none}.nav-r{gap:4px}.nbtn{min-width:38px;min-height:38px;padding:0 6px}.nav .wrap{gap:4px}.brand{font-size:18px;gap:6px}}
 @media(max-width:380px){#soundBtn{display:none}}
 
