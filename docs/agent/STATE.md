@@ -25,7 +25,18 @@
 - Tool counts unified to 72 across all 8 surfaces.
 - P0 blockers: **0** (`agent-status.mjs` exits 0 with "VERDICT: P0 clear").
 
-## Resolved in this session (2026-11-10)
+## Resolved in this session (2026-11-11)
+
+| Issue | Resolution |
+|---|---|
+| PF-002 Astro 7 Migration | Migrated root to Astro 7 + Tailwind v4; purged `privacyfold-nextjs/` (183 static pages build in 2.5s) |
+| PF-023 Trust & Depth Content | Added 15 technical glossary entries (`DefinedTerm` JSON-LD), about, contact, privacy, and terms |
+| PF-035 Sveltia CMS Sugar | Added `public/admin/admin.js` with slug auto-generator and formative `preSave` quality warning hooks |
+| PF-031 DocSet Ad System | Ported `AdSlot.astro`, `GoogleAdSense.astro`, zero-CLS heights, budget caps, CSP, and honest copy |
+| PF-028 Social Distribution | Created `ShareRow.astro` (zero trackers), added `social` blocks to 8 flagship tools, generated `social-queue.md` |
+| PF-029 i18n Architecture | Proved 20k CF Pages file budget across 25 locales, specified hreflang graph (`x-default` + locale) |
+
+## Resolved previously (2026-11-10)
 
 | Issue | Resolution |
 |---|---|
