@@ -2,6 +2,18 @@
 
 ---
 
+## 2026-11-11 — PF-029: i18n architecture, hreflang graph, and Cloudflare 20k-file budget math
+
+**Tasks:** PF-029 marked done.
+**Did:**
+1. Authored `docs/architecture/i18n-budget-and-structure.md`: Proved Cloudflare Pages 20k deployment file budget math across 25 locales (Phase 1 consumes 4,820 files = 24.1% of budget, leaving 15,180 files headroom); specified path prefixes (`/[lang]/tools/[slug]/`), provenance schema (`translation_of`, `reviewed_by`), and symmetric hreflang graph rules.
+2. Updated `src/layouts/Base.astro` with `alternateLinks` prop rendering canonical `x-default` and locale alternates in `<head>`.
+3. Enriched `src/pages/tools/[toolSlug].astro` with automatic hreflang links (`x-default` and `en`).
+**Proved by:** `npm test && npm run build` (183 pages built in 2.44s, verified `<link rel="alternate" hreflang="x-default" ...>` in `dist/tools/exif-strip/index.html`).
+**Next:** Verify remaining tasks board.
+
+---
+
 ## 2026-11-11 — PF-028: Social distribution layer & zero-tracker ShareRow
 
 **Tasks:** PF-028 marked done.

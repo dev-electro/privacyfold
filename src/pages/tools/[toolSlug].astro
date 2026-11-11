@@ -17,6 +17,10 @@ const { tool } = Astro.props;
 const famName = FAMILIES[tool.fam]?.name || 'Utility';
 const canonicalUrl = `https://privacyfold.com/tools/${tool.slug}/`;
 const jsonLd = generateToolJsonLdGraph(tool, canonicalUrl);
+const alternateLinks = [
+  { hreflang: 'x-default', href: canonicalUrl },
+  { hreflang: 'en', href: canonicalUrl },
+];
 ---
 
 <Base
@@ -24,6 +28,7 @@ const jsonLd = generateToolJsonLdGraph(tool, canonicalUrl);
   description={tool.seo.metaDescription}
   canonicalUrl={canonicalUrl}
   pageType="tool"
+  alternateLinks={alternateLinks}
 >
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
