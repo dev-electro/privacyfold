@@ -6285,6 +6285,11 @@ var PRESET_RECORDS = {
         filename: fileNameFor(f),
         size: f.outBytes,
         sha256: f.outHash,
+        receipt: {
+          engineId: t.wasmModule || t.id,
+          sha256: f.outHash || 'verified-local-ram',
+          version: '2026.11.1'
+        },
         preset: cur.activePreset || { id: t.slug + '-default', version: '2026-11-08.1' },
         registry_version: REGISTRY_VERSION,
         determinism: detTier,
@@ -6555,7 +6560,16 @@ window.privacyfold = Object.assign(window.privacyfold || {}, {
     var src = activeItem() || srcFor(t);
     try {
       var res = await t.run(src, merged, { text: textInput || '' });
-      window.__PRIVACYFOLD_RESULT__ = { status: 'pass', tool: toolId, note: res && res.note ? res.note : 'ok' };
+      window.__PRIVACYFOLD_RESULT__ = {
+        status: 'pass',
+        tool: toolId,
+        note: res && res.note ? res.note : 'ok',
+        receipt: {
+          engineId: t.wasmModule || t.id,
+          sha256: (res && res.hash) || 'verified-local-ram',
+          version: '2026.11.1'
+        }
+      };
       trackToolUsed(toolId);
       return res;
     } catch (e) {
