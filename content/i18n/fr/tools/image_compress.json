@@ -1,0 +1,62 @@
+{
+  "id": "image_compress_fr",
+  "slug": "image-compress",
+  "translation_of": "image_compress",
+  "locale": "fr",
+  "reviewed_by": "gaurav-suthar",
+  "reviewed_date": "2026-11-11",
+  "name": "Compresseur d'Images Côté Client",
+  "category": "image",
+  "fam": "image",
+  "task": "Compresser des images localement sans transfert vers un serveur",
+  "badge": "JPG, PNG, WebP",
+  "size": "18–120 KB WASM",
+  "Engine": "/wasm/image/image-compress-v1.wasm",
+  "wasmModule": "image-compress-v1.wasm",
+  "desc": "La plupart des services de compression en ligne obligent à transmettre vos photographies et documents confidentiels à des serveurs tiers. PrivacyFold embarque directement les encodeurs industriels MozJPEG, Google WebP et libpng compilés en WebAssembly dans votre navigateur. Vous pouvez réduire le poids de vos clichés jusqu'à 85% avec un ciblage précis en kilo-octets, sans aucun envoi vers un serveur.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "accepts": "image/jpeg,image/png,image/webp,image/avif",
+  "tag": "Compression Image",
+  "std": "W3C WebAssembly / MozJPEG",
+  "seo": {
+    "metaTitle": "Compresseur d'Images en Ligne Gratuit — 100% Local & Zéro Upload",
+    "metaDescription": "Compressez vos images JPEG, PNG et WebP directement dans votre navigateur grâce à WebAssembly. Définissez une taille cible en Ko en toute confidentialité.",
+    "aeoSummary": "Le compresseur d'images de PrivacyFold exécute MozJPEG et WebP directement en WebAssembly dans le navigateur. Il allège vos fichiers jusqu'à 85% avec un ciblage précis en kilo-octets et un traitement 100% hors-ligne.",
+    "steps": [
+      "Importez ou déposez vos images (JPG, PNG ou WebP).",
+      "Réglez le curseur de qualité ou indiquez un plafond précis en Ko (ex. moins de 200 Ko).",
+      "Observez le résultat et le gain d'espace en temps réel.",
+      "Téléchargez immédiatement vos fichiers optimisés."
+    ],
+    "faqs": [
+      {
+        "question": "Mes photos sont-elles téléchargées sur un serveur distant ?",
+        "answer": "Non. Tout le calcul de compression s'effectue dans la mémoire RAM de votre navigateur via WebAssembly. Vos données ne quittent jamais votre machine."
+      },
+      {
+        "question": "Puis-je viser une taille exacte (par exemple moins de 200 Ko pour un formulaire) ?",
+        "answer": "Oui. L'outil calcule automatiquement le meilleur compromis de compression pour respecter rigoureusement le plafond en kilo-octets que vous indiquez."
+      }
+    ],
+    "keywords": ["compresser image en ligne", "reduire taille photo", "compresseur jpg gratuit", "compresseur sans upload"]
+  },
+  "whatToExpect": {
+    "results": "Jusqu'à 85% d'économie d'espace tout en préservant la netteté perçue.",
+    "limits": "Prend en charge JPG, PNG, WebP et AVIF jusqu'à 100 Mo.",
+    "benchmarks": "Traitement moyen de 120 ms par photo sur un ordinateur classique."
+  },
+  "privacyProof": {
+    "howItWorks": "L'encodage s'opère exclusivement dans le bac à sable mémoire de l'instance WebAssembly locale.",
+    "verificationSteps": [
+      "Ouvrez l'onglet Réseau des outils de développement (F12).",
+      "Lancez la compression.",
+      "Vérifiez l'absence totale de requêtes réseau sortantes."
+    ],
+    "openSourceNotice": "Application statique vérifiable et exécution transparente sans backend."
+  },
+  "social": {
+    "hook": "Ne confiez pas vos images personnelles à des serveurs inconnus. Compressez-les instantanément et en toute confidentialité dans votre navigateur.",
+    "channels": ["x", "linkedin"]
+  }
+}

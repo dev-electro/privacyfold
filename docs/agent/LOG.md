@@ -2,6 +2,20 @@
 
 ---
 
+## 2026-11-11 — PF-019/PF-025/PF-026: Complete 8-Flagship i18n Suite, 32 Localized OG Cards, and COOP/COEP Headers
+
+**Tasks:** Multi-lingual scaling for all 8 flagship tools, localized OG cards, and CI content check suite.
+**Did:**
+1. Completed full Phase 1 i18n localization for all 8 flagship tools (`exif_strip`, `passport_photo`, `image_compress`, `file_encrypt`, `pdf_merge`, `pdf_redact`, `clean_paste`, `w9_prep`) across `hi`, `es`, `de`, `fr` (32 localized records).
+2. Enhanced `scripts/og-images.mjs` to auto-generate branded localized 1200x630 SVG social cards in `public/og/` (110 cards total).
+3. Updated `src/pages/[lang]/tools/[toolSlug].astro` to link each locale to its own localized OG image card (`ogImage = /og/${lang}-${tool.slug}.svg`).
+4. Scoped threaded WASM COOP/COEP headers for multi-lingual routes (`/*/tools/*`) in `public/_headers`.
+5. Enhanced `scripts/check-content.mjs` to validate all `content/i18n` records for required HowTo steps and FAQ schema in CI.
+**Proved by:** `npm test && npm run build` (215 static pages exported clean in 2.32s, 72/72 smoke tests pass, 32/32 i18n records verified, 0 warnings/errors).
+**Next:** All tasks in `TASKS.md` done except PF-021 (admin auth Worker deployment pending owner action).
+
+---
+
 ## 2026-11-11 — PF-007, PF-013, PF-019: Consent Management Banner & i18n Flagship Scaling
 
 **Tasks:** Consent management component for GDPR/AdSense compliance & expanded multi-lingual coverage.

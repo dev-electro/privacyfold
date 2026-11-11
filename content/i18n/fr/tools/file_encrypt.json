@@ -1,0 +1,62 @@
+{
+  "id": "file_encrypt_fr",
+  "slug": "file-encrypt",
+  "translation_of": "file_encrypt",
+  "locale": "fr",
+  "reviewed_by": "gaurav-suthar",
+  "reviewed_date": "2026-11-11",
+  "name": "Chiffrement de Fichiers Zéro-Connaissance (Enveloppe HTML Auto-Déchiffrable)",
+  "category": "crypto",
+  "fam": "crypto",
+  "task": "Chiffrer des fichiers en enveloppes HTML auto-déchiffrables via AES-256-GCM",
+  "badge": "AES",
+  "size": "18–120 KB WASM",
+  "Engine": "/wasm/crypto/file-encrypt-v1.wasm",
+  "wasmModule": "file-encrypt-v1.wasm",
+  "desc": "Lorsque vous partagez des documents fiscaux, des contrats ou des relevés bancaires, les plateformes cloud conservent les fichiers ou les clés maîtresses. PrivacyFold utilise le chiffrement militaire AES-256-GCM combiné à la dérivation de clé PBKDF2 (600 000 itérations SHA-256) directement dans votre navigateur via l'API WebCrypto. Vos données sont encapsulées dans une enveloppe HTML auto-déchiffrable : le destinataire muni du mot de passe peut ouvrir le fichier dans n'importe quel navigateur sans installer d'application et sans accès à internet.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "accepts": "*/*",
+  "tag": "Chiffrement Fichier",
+  "std": "NIST SP 800-38D (AES-GCM) / RFC 8018 (PBKDF2)",
+  "seo": {
+    "metaTitle": "Chiffrement de Fichier Gratuit — Enveloppes HTML Auto-Déchiffrables (AES-256)",
+    "metaDescription": "Chiffrez n'importe quel fichier localement avec AES-256-GCM et PBKDF2. Génère des enveloppes HTML auto-déchiffrables compatibles hors-ligne. 100% zéro-connaissance.",
+    "aeoSummary": "Le chiffreur zéro-connaissance de PrivacyFold utilise l'API native WebCrypto pour intégrer des fichiers dans des enveloppes HTML autonomes protégées en AES-256-GCM. Le chiffrement et le déchiffrement ont lieu intégralement hors-ligne sans aucun envoi vers un serveur.",
+    "steps": [
+      "Sélectionnez le fichier à protéger (PDF, image, archive ZIP ou document).",
+      "Définissez un mot de passe sécurisé.",
+      "Cliquez sur Chiffrer pour générer l'enveloppe.",
+      "Téléchargez le document HTML auto-déchiffrable et transmettez-le."
+    ],
+    "faqs": [
+      {
+        "question": "Comment le destinataire déchiffre-t-il le fichier sans logiciel spécifique ?",
+        "answer": "Le fichier généré est une page HTML autonome. Le destinataire l'ouvre par un double-clic dans n'importe quel navigateur (Chrome, Safari, Firefox, Edge), saisit le mot de passe et le fichier original est extrait et sauvegardé localement."
+      },
+      {
+        "question": "PrivacyFold peut-il récupérer mes données si j'oublie mon mot de passe ?",
+        "answer": "Non. Il s'agit d'une architecture cryptographique stricte à zéro-connaissance. Votre mot de passe n'est jamais transmis à nos serveurs. En cas d'oubli, le fichier est mathématiquement indéchiffrable."
+      }
+    ],
+    "keywords": ["chiffrer fichier en ligne", "aes 256 gcm", "enveloppe html auto dechiffrable", "chiffrement zero connaissance"]
+  },
+  "whatToExpect": {
+    "results": "Une enveloppe HTML autonome, portable et auto-déchiffrable.",
+    "limits": "Prend en charge des fichiers jusqu'à 250 Mo dans la mémoire du navigateur.",
+    "benchmarks": "Accélération matérielle WebCrypto : 50 Mo chiffrés en moins de 400 ms."
+  },
+  "privacyProof": {
+    "howItWorks": "Toutes les opérations cryptographiques sont traitées par window.crypto.subtle sur votre machine locale.",
+    "verificationSteps": [
+      "Activez le mode avion de votre appareil.",
+      "Chiffrez votre document et téléchargez le fichier HTML.",
+      "Ouvrez l'enveloppe HTML hors-ligne et saisissez le mot de passe pour vérifier le déchiffrement."
+    ],
+    "openSourceNotice": "Sans porte dérobée, code entièrement transparent et auditable."
+  },
+  "social": {
+    "hook": "Ne confiez pas vos données confidentielles à des intermédiaires cloud. Scellez vos fichiers directement dans des enveloppes HTML auto-déchiffrables en AES-256.",
+    "channels": ["x", "linkedin"]
+  }
+}

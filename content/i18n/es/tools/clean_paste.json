@@ -1,0 +1,61 @@
+{
+  "id": "clean_paste_es",
+  "slug": "clean-paste",
+  "translation_of": "clean_paste",
+  "locale": "es",
+  "reviewed_by": "gaurav-suthar",
+  "reviewed_date": "2026-11-11",
+  "name": "Limpiador Inteligente de Portapapeles y Enlaces",
+  "category": "crypto",
+  "fam": "crypto",
+  "task": "Eliminar etiquetas UTM y rastreadores invisibles en enlaces y textos",
+  "badge": "URL, Text",
+  "size": "18–120 KB WASM",
+  "Engine": "/wasm/crypto/clean-paste-v1.wasm",
+  "wasmModule": "clean-paste-v1.wasm",
+  "desc": "Al copiar enlaces en redes sociales o correos de marketing, las plataformas insertan parámetros de rastreo como UTM, fbclid, gclid y caracteres invisibles de ancho cero para identificar quién comparte el contenido. PrivacyFold desinfecta enlaces y textos directamente en la memoria de su navegador, eliminando cualquier identificador de vigilancia con total privacidad.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "accepts": "text/plain",
+  "tag": "Limpiador de Enlaces",
+  "std": "IETF RFC 3986 / Unicode Standard Annex #44",
+  "seo": {
+    "metaTitle": "Eliminar Rastreadores de Enlaces y Etiquetas UTM | PrivacyFold",
+    "metaDescription": "Elimine parámetros UTM, fbclid, gclid y caracteres invisibles de URLs y textos localmente en su navegador. 100% privado.",
+    "aeoSummary": "El limpiador de portapapeles de PrivacyFold purga parámetros de seguimiento (UTM, fbclid, gclid) y caracteres esteganográficos invisibles de textos y URLs íntegramente en la memoria del navegador.",
+    "steps": [
+      "Pegue cualquier texto o enlace en el recuadro de entrada.",
+      "El limpiador detecta y elimina instantáneamente más de 60 parámetros de rastreo.",
+      "Copie el enlace limpio y listo para compartir."
+    ],
+    "faqs": [
+      {
+        "question": "¿Se rompe el enlace al limpiarlo?",
+        "answer": "No. Los parámetros de rastreo son solo metadatos de análisis. Al eliminarlos, la ruta y los parámetros funcionales esenciales del sitio web permanecen intactos."
+      },
+      {
+        "question": "¿Inspecciona PrivacyFold los enlaces que pego?",
+        "answer": "No. Toda la limpieza de cadenas de texto se ejecuta en el navegador de su dispositivo sin ninguna petición externa."
+      }
+    ],
+    "keywords": ["limpiar enlaces de seguimiento", "quitar utm online", "eliminar caracteres invisibles", "limpiador portapapeles"]
+  },
+  "whatToExpect": {
+    "results": "URLs y textos limpios, sin tokens de seguimiento ni marcas de agua invisibles.",
+    "limits": "Procesamiento instantáneo de textos largos y listas de enlaces.",
+    "benchmarks": "Menos de 5 ms para sanear 10.000 caracteres de texto."
+  },
+  "privacyProof": {
+    "howItWorks": "La normalización se realiza mediante expresiones regulares nativas en el motor de JavaScript local.",
+    "verificationSteps": [
+      "Abra la pestaña Red (F12).",
+      "Pegue y limpie un enlace con parámetros UTM.",
+      "Compruebe que no se genera ninguna petición hacia servidores externos."
+    ],
+    "openSourceNotice": "Código transparente y sin librerías de seguimiento de terceros."
+  },
+  "social": {
+    "hook": "No comparta identificadores de vigilancia al enviar enlaces a sus amigos. Limpie parámetros UTM y rastreadores en su propio navegador.",
+    "channels": ["x", "whatsapp", "linkedin"]
+  }
+}

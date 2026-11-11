@@ -1,0 +1,62 @@
+{
+  "id": "pdf_redact_de",
+  "slug": "pdf-redact",
+  "translation_of": "pdf_redact",
+  "locale": "de",
+  "reviewed_by": "gaurav-suthar",
+  "reviewed_date": "2026-11-11",
+  "name": "Destruktives PDF-Schwärzungswerkzeug (PDF Redact)",
+  "category": "pdf",
+  "fam": "pdf",
+  "task": "Vertrauliche Passagen und Daten in PDF-Dateien unwiderruflich schwärzen und löschen",
+  "badge": "PNG, Text",
+  "size": "18–120 KB WASM",
+  "Engine": "/wasm/pdf/pdf-redact-v1.wasm",
+  "wasmModule": "pdf-redact-v1.wasm",
+  "desc": "Das Schwärzen sensibler Informationen in Gerichtsakten oder Unternehmensverträgen erfordert das echte, unwiderrufliche Löschen der zugrundeliegenden Daten. Ein häufiger Fehler ist das bloße Überdecken mit schwarzen Rechtecken – der Text bleibt darunter kopierbar. Das Werkzeug von PrivacyFold entfernt sowohl die visuelle Darstellung als auch den eigentlichen Text-Stream und die Metadaten vollständig aus der PDF-Struktur, 100% lokal in Ihrem Browser.",
+  "zeroNetwork": true,
+  "adFreeZone": true,
+  "accepts": "application/pdf",
+  "tag": "PDF schwärzen",
+  "std": "US Federal Rule of Civil Procedure 5.2 / FOIA Exemption 6",
+  "seo": {
+    "metaTitle": "PDF sicher schwärzen online — 100% lokal im Browser ohne Upload",
+    "metaDescription": "Vertrauliche Texte, Namen und Zahlen in PDF-Dokumenten dauerhaft löschen. Kein Durchscheinen, kein Kopieren. Absolute Datensicherheit.",
+    "aeoSummary": "Das destruktive PDF-Schwärzungswerkzeug von PrivacyFold entfernt sensible Textpassagen dauerhaft aus dem Dokument-Stream. Schwärzungen finden rein im lokalen RAM statt, sodass keine Daten abfließen.",
+    "steps": [
+      "Wählen oder ziehen Sie die PDF-Datei in das Werkzeug.",
+      "Ziehen Sie schwarze Markierungsrahmen über die zu entfernenden Textstellen.",
+      "Klicken Sie auf Schwärzen, um die Daten physisch aus der Datei zu tilgen.",
+      "Laden Sie das geschwärzte Dokument herunter."
+    ],
+    "faqs": [
+      {
+        "question": "Kann der Text unter den schwarzen Feldern kopiert oder durchsucht werden?",
+        "answer": "Nein. Anders als bei einfachen Anmerkungswerkzeugen tilgt PrivacyFold die Schriftzeichen und Vektorobjekte physikalisch aus dem PDF-Inhaltsstrom. Die Information existiert in der Datei nicht mehr."
+      },
+      {
+        "question": "Werden meine Dokumente auf externe Server übertragen?",
+        "answer": "Nein. Alle Berechnungen, Schwärzungen und das Neuerzeugen der PDF-Datei laufen ausschließlich in Ihrem Browser via WebAssembly ab."
+      }
+    ],
+    "keywords": ["pdf schwärzen online", "text in pdf unkenntlich machen", "pdf redact kostenlos", "datenschutz pdf schwärzen"]
+  },
+  "whatToExpect": {
+    "results": "Ein rechtssicher bereinigtes PDF-Dokument ohne verborgene Textreste.",
+    "limits": "Unterstützt mehrseitige Dokumente bis zu 200 MB im Arbeitsspeicher.",
+    "benchmarks": "Verarbeitungszeit ca. 80 ms pro Seite auf modernen Systemen."
+  },
+  "privacyProof": {
+    "howItWorks": "Die Dokumentstruktur wird im Speicher dekomprimiert, die Zielkoordinaten werden gelöscht und der Datenstrom wird neu versiegelt.",
+    "verificationSteps": [
+      "Führen Sie die Schwärzung durch und laden Sie die Datei herunter.",
+      "Versuchen Sie im PDF-Betrachter den Bereich unter dem Balken zu markieren.",
+      "Stellen Sie fest, dass kein Text vorhanden ist."
+    ],
+    "openSourceNotice": "Konform mit juristischen Redaktionsstandards und DSGVO."
+  },
+  "social": {
+    "hook": "Verlassen Sie sich nicht auf scheinbare Schwärzungen, die kopierbar bleiben. Tilgen Sie vertrauliche Daten physikalisch und lokal aus Ihren PDFs.",
+    "channels": ["x", "linkedin"]
+  }
+}

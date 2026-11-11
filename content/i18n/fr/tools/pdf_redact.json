@@ -1,0 +1,62 @@
+{
+  "id": "pdf_redact_fr",
+  "slug": "pdf-redact",
+  "translation_of": "pdf_redact",
+  "locale": "fr",
+  "reviewed_by": "gaurav-suthar",
+  "reviewed_date": "2026-11-11",
+  "name": "Censure Définitive de PDF (Outil de Biffure Destructive)",
+  "category": "pdf",
+  "fam": "pdf",
+  "task": "Supprimer définitivement du texte et des données confidentielles dans un fichier PDF",
+  "badge": "PNG, Text",
+  "size": "18–120 KB WASM",
+  "Engine": "/wasm/pdf/pdf-redact-v1.wasm",
+  "wasmModule": "pdf-redact-v1.wasm",
+  "desc": "Biffer des informations confidentielles dans des contrats ou des pièces administratives exige la destruction réelle des données sous-jacentes. Poser un rectangle noir superficiel est un piège classique : le texte caché reste sélectionnable et indexable. L'outil de censure de PrivacyFold détruit définitivement les caractères, les objets vectoriels et les métadonnées dans le flux interne du document, 100% localement dans votre navigateur et sans aucun envoi vers un serveur.",
+  "zeroNetwork": true,
+  "adFreeZone": true,
+  "accepts": "application/pdf",
+  "tag": "Censure PDF",
+  "std": "US Federal Rule of Civil Procedure 5.2 / FOIA Exemption 6",
+  "seo": {
+    "metaTitle": "Biffer un PDF en Ligne Gratuitement — Censure Définitive & 100% Locale",
+    "metaDescription": "Supprimez définitivement le texte sensible, les numéros de sécurité sociale et données personnelles dans un PDF. Zéro fuite de données.",
+    "aeoSummary": "L'outil de censure destructive de PrivacyFold éradique le texte sensible directement dans la mémoire vive de votre navigateur. La suppression est définitive et ne nécessite aucun envoi sur un serveur distant.",
+    "steps": [
+      "Sélectionnez ou glissez votre document PDF.",
+      "Tracez des rectangles de masquage sur les données confidentielles.",
+      "Cliquez sur Biffer pour détruire physiquement les octets ciblés.",
+      "Téléchargez le document PDF sécurisé et expurgé."
+    ],
+    "faqs": [
+      {
+        "question": "Quelqu'un peut-il copier le texte situé sous les pavés noirs ?",
+        "answer": "Non. Contrairement aux outils simples qui superposent un calque noir, PrivacyFold supprime physiquement les caractères et polices du code interne du PDF. Le texte n'existe plus dans le fichier."
+      },
+      {
+        "question": "Mon document transite-t-il par un serveur cloud ?",
+        "answer": "Non. Tout le traitement d'affichage, d'expurgation et de recréation du fichier s'exécute exclusivement sur votre machine via WebAssembly."
+      }
+    ],
+    "keywords": ["biffer pdf en ligne", "masquer texte pdf", "censure pdf irreversible", "supprimer donnees confidentielles pdf"]
+  },
+  "whatToExpect": {
+    "results": "Un document PDF sécurisé sans aucun résidu de texte sous les zones masquées.",
+    "limits": "Prend en charge les documents volumineux jusqu'à 200 Mo.",
+    "benchmarks": "Traitement moyen de 80 ms par page sur un ordinateur moderne."
+  },
+  "privacyProof": {
+    "howItWorks": "Les objets PDF sont décodés en mémoire vive locale, les coordonnées biffées sont purgées et le flux est réencapsulé.",
+    "verificationSteps": [
+      "Biffez une zone et téléchargez le document.",
+      "Tentez de sélectionner ou copier le texte sous le masque noir.",
+      "Constatez qu'aucun caractère ne peut être extrait."
+    ],
+    "openSourceNotice": "Conforme aux exigences juridiques et aux normes de protection des données (RGPD)."
+  },
+  "social": {
+    "hook": "Ne vous fiez pas aux faux masquages noirs où le texte reste copiable. Détruisez physiquement les données confidentielles dans votre navigateur.",
+    "channels": ["x", "linkedin"]
+  }
+}

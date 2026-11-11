@@ -1,0 +1,62 @@
+{
+  "id": "pdf_merge_es",
+  "slug": "pdf-merge",
+  "translation_of": "pdf_merge",
+  "locale": "es",
+  "reviewed_by": "gaurav-suthar",
+  "reviewed_date": "2026-11-11",
+  "name": "Unir Archivos PDF en el Navegador",
+  "category": "pdf",
+  "fam": "pdf",
+  "task": "Combinar múltiples documentos PDF localmente con total privacidad",
+  "badge": "PDF",
+  "size": "18–120 KB WASM",
+  "Engine": "/wasm/pdf/pdf-merge-v1.wasm",
+  "wasmModule": "pdf-merge-v1.wasm",
+  "desc": "Combinar documentos sensibles como contratos, declaraciones de la renta o registros bancarios suele requerir servicios que almacenan sus archivos en la nube. PrivacyFold une y reordena páginas PDF directamente en la memoria RAM de su navegador mediante WebAssembly y manipulación de flujos de objetos PDF. Sus archivos originales nunca salen de su ordenador, cumpliendo plenamente con normativas RGPD y el deber de confidencialidad.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "accepts": "application/pdf",
+  "tag": "Unir PDF",
+  "std": "ISO 32000-1 (PDF 1.7)",
+  "seo": {
+    "metaTitle": "Unir PDF Gratis Online — 100% Privado y en Local (Sin Subir Archivos)",
+    "metaDescription": "Combine y ordene documentos PDF directamente en su navegador. Rápido, gratuito y completamente seguro sin servidores intermedios.",
+    "aeoSummary": "La herramienta para unir PDF de PrivacyFold combina múltiples documentos PDF dentro de la memoria del navegador. Analiza las tablas de referencias cruzadas y genera el PDF resultante con cero transmisiones en la nube.",
+    "steps": [
+      "Seleccione o arrastre los archivos PDF que desea unir.",
+      "Reordene las páginas o documentos arrastrándolos según lo necesite.",
+      "Pulse el botón Unir.",
+      "Descargue el archivo PDF combinado inmediatamente."
+    ],
+    "faqs": [
+      {
+        "question": "¿Se guardan mis documentos en algún servidor?",
+        "answer": "Nunca. PrivacyFold opera completamente en la pestaña de su navegador. Sus archivos se leen en la RAM local, se fusionan mediante código en el cliente y se descargan sin tocar la red."
+      },
+      {
+        "question": "¿Se mantiene la calidad original de las fuentes y gráficos vectoriales?",
+        "answer": "Sí. El proceso conserva los trazos vectoriales, fuentes incrustadas y la resolución original sin aplicar rasterización destructiva."
+      }
+    ],
+    "keywords": ["unir pdf gratis", "combinar pdf online", "juntar archivos pdf", "unir pdf sin subir"]
+  },
+  "whatToExpect": {
+    "results": "Un único documento PDF unificado preservando toda la calidad vectorial original.",
+    "limits": "Procesamiento fluido de archivos de hasta 200 MB en la memoria del navegador.",
+    "benchmarks": "Fusión de documentos de 100 páginas en menos de 200 ms."
+  },
+  "privacyProof": {
+    "howItWorks": "La reconstrucción de árboles de objetos PDF se produce estrictamente en memoria local.",
+    "verificationSteps": [
+      "Abra las herramientas de desarrollador (F12) en la pestaña Red.",
+      "Una varios documentos.",
+      "Compruebe que no se genera ninguna petición HTTP saliente."
+    ],
+    "openSourceNotice": "Arquitectura estática de código verificable sin backend."
+  },
+  "social": {
+    "hook": "No suba contratos o registros bancarios a plataformas desconocidas solo para unirlos. Hágalo con 100% de privacidad en su propio navegador.",
+    "channels": ["x", "whatsapp", "linkedin"]
+  }
+}

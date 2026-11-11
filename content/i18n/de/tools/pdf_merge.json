@@ -1,0 +1,62 @@
+{
+  "id": "pdf_merge_de",
+  "slug": "pdf-merge",
+  "translation_of": "pdf_merge",
+  "locale": "de",
+  "reviewed_by": "gaurav-suthar",
+  "reviewed_date": "2026-11-11",
+  "name": "Lokaler PDF-Zusammenführer (PDF Merge)",
+  "category": "pdf",
+  "fam": "pdf",
+  "task": "Mehrere PDF-Dokumente lokal und datenschutzkonform zusammenfügen",
+  "badge": "PDF",
+  "size": "18–120 KB WASM",
+  "Engine": "/wasm/pdf/pdf-merge-v1.wasm",
+  "wasmModule": "pdf-merge-v1.wasm",
+  "desc": "Beim Zusammenfügen sensibler Dokumente wie Verträgen, Steuerbescheiden oder Kontoauszügen speichern viele herkömmliche Webdienste Ihre Dateien in der Cloud. PrivacyFold fügt PDF-Dateien direkt im Arbeitsspeicher Ihres Browsers zusammen – ohne Dateitransfer über das Internet. Ihre Originaldokumente verbleiben auf Ihrem Rechner und genügen strikten DSGVO- und Berufsgeheimnis-Vorgaben.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "accepts": "application/pdf",
+  "tag": "PDF zusammenfügen",
+  "std": "ISO 32000-1 (PDF 1.7)",
+  "seo": {
+    "metaTitle": "PDF zusammenfügen kostenlos & privat — Ohne Upload im Browser",
+    "metaDescription": "Verbinden Sie mehrere PDF-Dateien lokal im Browser. Schnell, kostenlos und ohne Übertragung auf fremde Server.",
+    "aeoSummary": "Der private PDF-Zusammenführer von PrivacyFold verbindet PDF-Dokumente direkt im Arbeitsspeicher des Browsers. Querverweistabellen und Objektbäume werden ohne Cloud-Uploads lokal neu strukturiert.",
+    "steps": [
+      "Wählen oder ziehen Sie die zusammenzuführenden PDF-Dateien in den Browser.",
+      "Bringen Sie die Dokumente per Drag-and-Drop in die gewünschte Reihenfolge.",
+      "Klicken Sie auf Zusammenfügen.",
+      "Laden Sie die fertige Gesamt-PDF sofort auf Ihren Computer herunter."
+    ],
+    "faqs": [
+      {
+        "question": "Werden meine PDF-Dateien auf einem Server gespeichert?",
+        "answer": "Nein. PrivacyFold läuft ausschließlich lokal in Ihrem Browserfenster. Dateien werden im Arbeitsspeicher verarbeitet und direkt heruntergeladen."
+      },
+      {
+        "question": "Bleibt die Druckqualität und Vektorauflösung erhalten?",
+        "answer": "Ja. Das Zusammenführen erfolgt ohne verlustbehaftete Rasterisierung; Vektorgrafiken und eingebettete Schriften bleiben originalgetreu erhalten."
+      }
+    ],
+    "keywords": ["pdf zusammenfügen kostenlos", "pdf dateien verbinden", "pdf merge offline", "pdf seiten kombinieren"]
+  },
+  "whatToExpect": {
+    "results": "Ein einheitliches PDF-Dokument mit voller Erhaltung der ursprünglichen Vektorgrafiken.",
+    "limits": "Reibungslose Verarbeitung von Gesamtdokumenten bis zu 200 MB im RAM.",
+    "benchmarks": "Zusammenführung von 100 Seiten in unter 200 ms."
+  },
+  "privacyProof": {
+    "howItWorks": "Die Neuverknüpfung der PDF-Objektbäume findet rein lokal im Arbeitsspeicher statt.",
+    "verificationSteps": [
+      "Öffnen Sie die Entwicklertools (F12) und prüfen Sie die Netzwerkanfragen.",
+      "Fügen Sie Ihre PDFs zusammen.",
+      "Vergewissern Sie sich, dass keine Dateiinhalte übertragen werden."
+    ],
+    "openSourceNotice": "DSGVO-konforme Architektur ohne Drittserver."
+  },
+  "social": {
+    "hook": "Laden Sie vertrauliche Verträge und Steuererklärungen zum Zusammenfügen nicht in fremde Clouds. Nutzen Sie 100% lokalen PDF-Merge.",
+    "channels": ["x", "linkedin"]
+  }
+}

@@ -21,9 +21,7 @@ let warnings = 0;
 console.log('Running CI Content Checks (PF-026)...\n');
 
 // 1. Check Tools & JSON-LD
-const toolsDir = fs.existsSync(path.join(root, 'content/tools'))
-  ? path.join(root, 'content/tools')
-  : path.join(root, 'privacyfold-nextjs/content/tools');
+const toolsDir = path.join(root, 'content/tools');
 const toolFiles = fs.readdirSync(toolsDir).filter((f) => f.endsWith('.json'));
 
 console.log(`Checking 72 tools JSON-LD & content fields...`);
@@ -56,10 +54,43 @@ for (const file of toolFiles) {
 }
 console.log(`  [OK] 72/72 tools have valid metadata, HowTo steps, and FAQ schema.`);
 
+// 1b. Check i18n Localized Records (PF-019/PF-029)
+console.log(`\nChecking content/i18n localized tool records...`);
+const i18nDir = path.join(root, 'content/i18n');
+let i18nCount = 0;
+if (fs.existsSync(i18nDir)) {
+  const locales = fs.readdirSync(i18nDir, { withFileTypes: true }).filter((d) => d.isDirectory()).map((d) => d.name);
+  for (const loc of locales) {
+    const locToolsDir = path.join(i18nDir, loc, 'tools');
+    if (fs.existsSync(locToolsDir)) {
+      const locFiles = fs.readdirSync(locToolsDir).filter((f) => f.endsWith('.json'));
+      for (const lf of locFiles) {
+        i18nCount++;
+        const lt = JSON.parse(fs.readFileSync(path.join(locToolsDir, lf), 'utf8'));
+        if (!lt.name || lt.name.length < 2) {
+          console.error(`[FAIL] i18n/${loc}/${lf}: Missing or invalid localized name`);
+          errors++;
+        }
+        if (!lt.translation_of) {
+          console.error(`[FAIL] i18n/${loc}/${lf}: Missing translation_of canonical tool ID`);
+          errors++;
+        }
+        if (!lt.seo?.steps || lt.seo.steps.length < 2) {
+          console.error(`[FAIL] i18n/${loc}/${lf}: Insufficient HowTo steps`);
+          errors++;
+        }
+        if (!lt.seo?.faqs || lt.seo.faqs.length < 1) {
+          console.error(`[FAIL] i18n/${loc}/${lf}: Missing localized FAQ items`);
+          errors++;
+        }
+      }
+    }
+  }
+}
+console.log(`  [OK] ${i18nCount} localized records verified across locales.`);
+
 // 2. Check Presets Staleness & Completeness
-const presetsDir = fs.existsSync(path.join(root, 'content/presets'))
-  ? path.join(root, 'content/presets')
-  : path.join(root, 'privacyfold-nextjs/content/presets');
+const presetsDir = path.join(root, 'content/presets');
 const presetFiles = fs.readdirSync(presetsDir).filter((f) => f.endsWith('.json'));
 
 console.log(`\nChecking 87 presets for staleness & metadata...`);
@@ -101,9 +132,7 @@ console.log(`  [OK] 87/87 presets verified (${warnings} stale warnings).`);
 
 // 3. Check Engine Records (DEC-009/010)
 console.log(`\nChecking content/engine/ registry records...`);
-const engineDir = fs.existsSync(path.join(root, 'content/engine'))
-  ? path.join(root, 'content/engine')
-  : path.join(root, 'privacyfold-nextjs/content/engine');
+const engineDir = path.join(root, 'content/engine');
 if (!fs.existsSync(engineDir)) {
   console.error(`[FAIL] content/engine directory does not exist`);
   errors++;
@@ -156,7 +185,6 @@ const checkDirImages = (dirPath) => {
   }
 };
 checkDirImages(path.join(root, 'public'));
-checkDirImages(path.join(root, 'privacyfold-nextjs/public'));
 console.log(`  [OK] All image assets are within the 300 KB size budget.`);
 
 // 4. Header & Robot Scopes

@@ -25,6 +25,10 @@
   Cross-Origin-Opener-Policy: same-origin
   Cross-Origin-Embedder-Policy: credentialless
 
+/*/tools/*
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Embedder-Policy: credentialless
+
 /wasm/*
   Cache-Control: public, max-age=31536000, immutable
   Access-Control-Allow-Origin: *

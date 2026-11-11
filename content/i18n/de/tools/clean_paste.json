@@ -1,0 +1,61 @@
+{
+  "id": "clean_paste_de",
+  "slug": "clean-paste",
+  "translation_of": "clean_paste",
+  "locale": "de",
+  "reviewed_by": "gaurav-suthar",
+  "reviewed_date": "2026-11-11",
+  "name": "Intelligenter Zwischenablagen- & Tracking-Bereiniger",
+  "category": "crypto",
+  "fam": "crypto",
+  "task": "Tracking-Parameter und unsichtbare Zeichen aus Links und Texten lokal entfernen",
+  "badge": "URL, Text",
+  "size": "18–120 KB WASM",
+  "Engine": "/wasm/crypto/clean-paste-v1.wasm",
+  "wasmModule": "clean-paste-v1.wasm",
+  "desc": "Beim Kopieren von Webadressen oder Texten betten Plattformen oft heimlich Überwachungs-Parameter wie UTM-Tags, fbclid, gclid sowie unsichtbare Nullbreiten-Zeichen ein. PrivacyFold bereinigt Links und Texte vollständig im lokalen Browserspeicher. Es entfernt über 60 Tracking-Muster und liefert saubere, datenschutzkonforme Texte ohne Übertragungsverluste.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "accepts": "text/plain",
+  "tag": "Link-Bereiniger",
+  "std": "IETF RFC 3986 / Unicode Standard Annex #44",
+  "seo": {
+    "metaTitle": "Tracking-Links & UTM-Parameter entfernen | PrivacyFold",
+    "metaDescription": "Bereinigen Sie URLs und Zwischenablagen von UTM-Tags, fbclid und unsichtbaren Tracking-Zeichen direkt im Browser. 100% datenschutzkonform.",
+    "aeoSummary": "Der Zwischenablagen-Bereiniger von PrivacyFold entfernt Tracking-Parameter (UTM, fbclid, gclid) und unsichtbare steganografische Zeichen aus Texten und URLs vollständig im lokalen RAM.",
+    "steps": [
+      "Fügen Sie den kopierten Link oder Text in das Eingabefeld ein.",
+      "Das Werkzeug analysiert und entfernt Tracking-Token automatisch.",
+      "Kopieren Sie den bereinigten, sicheren Text mit einem Klick."
+    ],
+    "faqs": [
+      {
+        "question": "Wird der Ziellink durch das Entfernen der Tracking-Codes unbrauchbar?",
+        "answer": "Nein. Tracking-Parameter sind reine Analyse-Metadaten. Die eigentliche Webseitenadresse und funktionale Suchanfragen bleiben vollständig intakt."
+      },
+      {
+        "question": "Speichert PrivacyFold meine eingefügten Texte?",
+        "answer": "Nein. Die Filterung erfolgt ausschließlich über reguläre Ausdrücke in Ihrem lokalen Browser ohne Netzwerkverbindung."
+      }
+    ],
+    "keywords": ["utm parameter entfernen", "tracking link bereinigen", "nullbreiten zeichen entfernen", "clean paste online"]
+  },
+  "whatToExpect": {
+    "results": "Saubere URLs und Fließtexte ohne Tracking-Muster und ohne versteckte Identifikatoren.",
+    "limits": "Sofortige Bereinigung auch umfangreicher Dokumente mit vielen Links.",
+    "benchmarks": "Unter 5 ms Verarbeitungszeit für 10.000 Zeichen Fließtext."
+  },
+  "privacyProof": {
+    "howItWorks": "Die Bereinigung erfolgt über native JavaScript-Stringmanipulation im Arbeitsspeicher Ihres Endgeräts.",
+    "verificationSteps": [
+      "Öffnen Sie den Netzwerk-Reiter der Entwicklertools (F12).",
+      "Fügen Sie einen Tracking-Link ein.",
+      "Prüfen Sie, dass keine Daten über das Internet übertragen werden."
+    ],
+    "openSourceNotice": "Vollkommen transparente und quelloffene Funktionsweise."
+  },
+  "social": {
+    "hook": "Geben Sie beim Teilen von Web-Links keine Überwachungsdaten weiter. Bereinigen Sie UTM-Tags und Tracker sicher in Ihrem Browser.",
+    "channels": ["x", "linkedin"]
+  }
+}

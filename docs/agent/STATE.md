@@ -7,9 +7,9 @@
 | Fact | Value | Verified |
 |---|---|---|
 | Working artifact | `dist/index.html` (22 KB HTML + vanilla runtime, self-contained) | `astro build` 2026-11-11 |
-| Framework today | Astro 7 + Tailwind v4 static export — **builds cleanly in 2.6s** (191/191 static pages exported) | `npm run build` exit 0 (2026-11-11) |
+| Framework today | Astro 7 + Tailwind v4 static export — **builds cleanly in 2.3s** (215/215 static pages exported) | `npm run build` exit 0 (2026-11-11) |
 | Framework decided | Astro 7 + Tailwind v4 on CF Pages (DEC-001) — **MIGRATED & LIVE** | DEC-001 / PF-002 |
-| Content | 72 tools / 87 presets / 6 blog / 15 glossary / 9 engine / 5 templates (Git JSON/MD/YAML enriched) | agent-status |
+| Content | 72 tools / 87 presets / 6 blog / 15 glossary / 9 engine / 32 i18n / 5 templates | agent-status |
 | Tools actually runnable | **72** live in runtime; **0** unimplemented | smoke-test.mjs (72/72 pass) |
 | Launch gate (PF-020) | **READY** — all P0 blockers cleared; 72 smoke tests green; Astro SSG clean | 2026-11-11 test suite |
 
@@ -29,13 +29,13 @@
 
 | Issue | Resolution |
 |---|---|
-| PF-002 Astro 7 Migration | Migrated root to Astro 7 + Tailwind v4; purged `privacyfold-nextjs/` (191 static pages build in 2.6s) |
+| PF-002 Astro 7 Migration | Migrated root to Astro 7 + Tailwind v4; purged `privacyfold-nextjs/` (215 static pages build in 2.3s) |
 | PF-023 Trust & Depth Content | Added 15 technical glossary entries (`DefinedTerm` JSON-LD), about, contact, privacy, and terms |
 | PF-035 Sveltia CMS Sugar | Added `public/admin/admin.js` with slug auto-generator and formative `preSave` quality warning hooks |
 | PF-031 DocSet Ad System | Ported `AdSlot.astro`, `GoogleAdSense.astro`, zero-CLS heights, budget caps, CSP, and honest copy |
 | PF-007 Consent Management | Built `ConsentBanner.astro` (zero-telemetry, paper aesthetic, default non-personalized ads, global reopen) |
 | PF-028 Social Distribution | Created `ShareRow.astro` (zero trackers), added `social` blocks to 8 flagship tools, generated `social-queue.md` |
-| PF-029/019 i18n Live Routes | Proved 20k CF Pages budget, live `/[lang]/tools/[slug]` routes for 4 locales (hi, es, de, fr) across 2 flagships, symmetric hreflangs |
+| PF-019/025/029 i18n Suite | All 8 flagship tools localized into hi, es, de, fr (32 records, 32 OG cards, /sitemaps/i18n.xml, symmetric hreflangs) |
 
 ## Resolved previously (2026-11-10)
 

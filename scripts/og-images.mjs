@@ -150,5 +150,33 @@ for (const file of blogFiles) {
   blogCount++;
 }
 
-console.log(`✓ Open Graph social cards ready: ${toolCount} tools, ${blogCount} blog guides in public/og/`);
+// Generate for localized tools (PF-019/PF-029)
+let i18nCount = 0;
+const i18nDir = path.join(root, 'content/i18n');
+if (fs.existsSync(i18nDir)) {
+  const locales = fs.readdirSync(i18nDir, { withFileTypes: true }).filter((d) => d.isDirectory()).map((d) => d.name);
+  for (const loc of locales) {
+    const locToolsDir = path.join(i18nDir, loc, 'tools');
+    if (fs.existsSync(locToolsDir)) {
+      const locFiles = fs.readdirSync(locToolsDir).filter((f) => f.endsWith('.json'));
+      for (const lf of locFiles) {
+        const t = JSON.parse(fs.readFileSync(path.join(locToolsDir, lf), 'utf8'));
+        const outPath = path.join(ogOutputDir, `${loc}-${t.slug}.svg`);
+        if (!fs.existsSync(outPath)) {
+          const svg = generateSvgCard({
+            title: t.name,
+            subtitle: t.task || t.desc,
+            tag: `${loc.toUpperCase()} · ${t.tag || 'TOOL'}`,
+            category: t.fam || 'tool',
+            glyph: t.glyph,
+          });
+          fs.writeFileSync(outPath, svg, 'utf8');
+        }
+        i18nCount++;
+      }
+    }
+  }
+}
+
+console.log(`✓ Open Graph social cards ready: ${toolCount} tools, ${blogCount} blog guides, ${i18nCount} i18n cards in public/og/`);
 

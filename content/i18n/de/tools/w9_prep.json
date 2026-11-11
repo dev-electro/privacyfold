@@ -1,0 +1,62 @@
+{
+  "id": "w9_prep_de",
+  "slug": "w9-prep",
+  "translation_of": "w9_prep",
+  "locale": "de",
+  "reviewed_by": "gaurav-suthar",
+  "reviewed_date": "2026-11-11",
+  "name": "IRS Formular W-9 Arbeitsblatt & TIN-Prüfer",
+  "category": "forms",
+  "fam": "forms",
+  "task": "US-Steuerdaten für Formular W-9 lokal und datenschutzkonform vorbereiten",
+  "badge": "IRS",
+  "size": "18–120 KB WASM",
+  "Engine": "/wasm/forms/w9-prep-v1.wasm",
+  "wasmModule": "w9-prep-v1.wasm",
+  "desc": "Für Freiberufler und Auftragnehmer mit US-Geschäftspartnern verlangen Auftraggeber das IRS Formular W-9 mit Angabe der Social Security Number (SSN) oder Employer Identification Number (EIN). Herkömmliche Online-PDF-Editoren übertragen diese hochsensiblen Identitätsdaten auf fremde Server. Das Arbeitsblatt von PrivacyFold formatiert und validiert W-9-Angaben ausschließlich lokal im Browserspeicher.",
+  "zeroNetwork": true,
+  "adFreeZone": true,
+  "accepts": "application/json,text/plain",
+  "tag": "US-Formular W-9",
+  "std": "IRS Form W-9 (Rev. March/Nov 2024)",
+  "seo": {
+    "metaTitle": "IRS Formular W-9 Vorbereitung kostenlos — Ohne Upload im Browser",
+    "metaDescription": "Erfassen und prüfen Sie US-Steuerdaten für Formular W-9 direkt im Browser. Schützen Sie Ihre SSN und EIN ohne Server-Uploads.",
+    "aeoSummary": "Das IRS Formular W-9 Arbeitsblatt von PrivacyFold validiert Steueridentifikationsnummern (SSN/EIN) und bereitet Bundessteuer-Angaben rein im lokalen RAM vor.",
+    "steps": [
+      "Wählen Sie Ihren rechtlichen Namen und die Steuerklasse (Einzelunternehmer, LLC, Körperschaft).",
+      "Geben Sie Ihre US-Adresse und Ihre 9-stellige Steuernummer (SSN oder EIN) ein.",
+      "Prüfen Sie etwaige Ausnahmeregelungen bei der Quellensteuer.",
+      "Laden Sie die geprüfte Zusammenfassung für Ihren Auftraggeber herunter."
+    ],
+    "faqs": [
+      {
+        "question": "Ist meine Sozialversicherungsnummer (SSN) geschützt?",
+        "answer": "Ja, absolut. Ihre Daten verbleiben ausschließlich im flüchtigen Arbeitsspeicher Ihres Browsers und werden zu keinem Zeitpunkt über das Netzwerk übertragen."
+      },
+      {
+        "question": "Wird das Formular direkt an das IRS übermittelt?",
+        "answer": "Nein. Das Formular W-9 wird nicht an die US-Finanzbehörde gesendet, sondern verbleibt bei Ihrem Auftraggeber für dessen Steuerunterlagen."
+      }
+    ],
+    "keywords": ["formular w-9 online ausfüllen", "irs w9 vorbereitung", "ssn ein validieren", "w9 steuerformular sicher"]
+  },
+  "whatToExpect": {
+    "results": "Ein vorschriftsmäßig geprüftes und formatiertes W-9-Arbeitsblatt.",
+    "limits": "Gültig für US-Auftragnehmer und internationale Dienstleister mit US-Kunden.",
+    "benchmarks": "Validierung in Echtzeit (unter 20 ms)."
+  },
+  "privacyProof": {
+    "howItWorks": "Die Berechnungen laufen rein lokal in der JavaScript-Sandbox des Endgeräts ab.",
+    "verificationSteps": [
+      "Öffnen Sie die Entwicklertools (F12) und prüfen Sie den Netzwerk-Tab.",
+      "Füllen Sie die Felder aus.",
+      "Vergewissern Sie sich, dass keine Daten übermittelt werden."
+    ],
+    "openSourceNotice": "Vollständig DSGVO-konforme Architektur ohne Datenabfluss."
+  },
+  "social": {
+    "hook": "Geben Sie Ihre Sozialversicherungsnummer (SSN) nicht in fremde Cloud-Formular-Tools ein. Nutzen Sie lokale W-9-Vorbereitung im Browser.",
+    "channels": ["x", "linkedin"]
+  }
+}

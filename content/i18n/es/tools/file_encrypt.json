@@ -1,0 +1,62 @@
+{
+  "id": "file_encrypt_es",
+  "slug": "file-encrypt",
+  "translation_of": "file_encrypt",
+  "locale": "es",
+  "reviewed_by": "gaurav-suthar",
+  "reviewed_date": "2026-11-11",
+  "name": "Cifrador de Archivos de Conocimiento Cero (Sobre HTML Autodescifrable)",
+  "category": "crypto",
+  "fam": "crypto",
+  "task": "Cifrar archivos con AES-256-GCM en sobres HTML autodescifrables",
+  "badge": "AES",
+  "size": "18–120 KB WASM",
+  "Engine": "/wasm/crypto/file-encrypt-v1.wasm",
+  "wasmModule": "file-encrypt-v1.wasm",
+  "desc": "Al compartir documentos financieros, declaraciones de impuestos o contratos confidenciales, los servicios tradicionales de almacenamiento en la nube guardan sus archivos sin cifrar o conservan las claves maestras. El cifrador de PrivacyFold utiliza cifrado militar AES-256-GCM con derivación de claves PBKDF2 (600.000 iteraciones SHA-256) directamente en el navegador a través de la API WebCrypto. Su archivo se empaqueta en un sobre HTML autodescifrable que cualquier persona con la contraseña puede abrir en cualquier navegador sin instalar aplicaciones ni requerir conexión a internet.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "accepts": "*/*",
+  "tag": "Cifrado de Archivos",
+  "std": "NIST SP 800-38D (AES-GCM) / RFC 8018 (PBKDF2)",
+  "seo": {
+    "metaTitle": "Cifrador de Archivos Gratuito — Sobres HTML Autodescifrables (AES-256)",
+    "metaDescription": "Cifre cualquier archivo localmente con AES-256-GCM y PBKDF2. Genera sobres HTML autodescifrables compatibles con cualquier navegador sin internet.",
+    "aeoSummary": "El cifrador de conocimiento cero de PrivacyFold utiliza la API WebCrypto para empaquetar archivos en documentos HTML autodescifrables protegidos con AES-256-GCM. El cifrado y descifrado se realizan completamente fuera de línea sin transmitir contraseñas a ningún servidor.",
+    "steps": [
+      "Seleccione cualquier archivo confidencial (PDF, imagen, zip o documento).",
+      "Introduzca una contraseña segura.",
+      "Haga clic en Cifrar para generar el paquete.",
+      "Descargue el sobre HTML autodescifrable y envíelo a su destinatario."
+    ],
+    "faqs": [
+      {
+        "question": "¿Cómo descifra el destinatario el archivo si no tiene PrivacyFold instalado?",
+        "answer": "El archivo generado es un documento HTML estándar. El destinatario solo debe hacer doble clic en él en cualquier navegador (Chrome, Safari, Edge, Firefox), ingresar la contraseña y el navegador descifrará y guardará el archivo original automáticamente."
+      },
+      {
+        "question": "¿Puede PrivacyFold recuperar mi archivo si olvido la contraseña?",
+        "answer": "No. Se trata de una arquitectura estricta de conocimiento cero. Su contraseña nunca se envía a ningún servidor. Si la pierde, los datos cifrados son matemáticamente irrecuperables."
+      }
+    ],
+    "keywords": ["cifrar archivos gratis", "cifrado aes 256 online", "proteger archivo con clave", "sobre html autodescifrable"]
+  },
+  "whatToExpect": {
+    "results": "Un sobre HTML independiente, portátil y autodescifrable.",
+    "limits": "Admite archivos de hasta 250 MB dentro del navegador.",
+    "benchmarks": "Cifrado acelerado por hardware: 50 MB procesados en menos de 400 ms."
+  },
+  "privacyProof": {
+    "howItWorks": "Todo el cálculo criptográfico se ejecuta mediante window.crypto.subtle directamente en su máquina local.",
+    "verificationSteps": [
+      "Active el Modo Avión en su dispositivo.",
+      "Cifre el archivo y descargue el sobre HTML.",
+      "Abra el archivo HTML sin conexión e ingrese su contraseña para verificar el descifrado."
+    ],
+    "openSourceNotice": "Sin puertas traseras, código criptográfico totalmente transparente y auditable."
+  },
+  "social": {
+    "hook": "No confíe sus documentos sensibles a plataformas en la nube. Cífrelos en sobres HTML autodescifrables con AES-256 sin intermediarios.",
+    "channels": ["x", "whatsapp", "linkedin"]
+  }
+}

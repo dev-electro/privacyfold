@@ -1,0 +1,62 @@
+{
+  "id": "pdf_redact_es",
+  "slug": "pdf-redact",
+  "translation_of": "pdf_redact",
+  "locale": "es",
+  "reviewed_by": "gaurav-suthar",
+  "reviewed_date": "2026-11-11",
+  "name": "Redactor Destructivo de PDF (Censura Permanente)",
+  "category": "pdf",
+  "fam": "pdf",
+  "task": "Eliminar de forma irreversible texto y datos sensibles en documentos PDF",
+  "badge": "PNG, Text",
+  "size": "18–120 KB WASM",
+  "Engine": "/wasm/pdf/pdf-redact-v1.wasm",
+  "wasmModule": "pdf-redact-v1.wasm",
+  "desc": "Censurar información confidencial en expedientes judiciales, solicitudes de transparencia o contratos mercantiles requiere la eliminación física de los datos subyacentes. Colocar un rectángulo negro superficial sobre el texto permite que cualquiera lo copie o lo busque. El redactor destructivo de PrivacyFold elimina tanto los elementos visuales como el flujo de texto y metadatos del código interno del PDF directamente en su navegador, con cero transmisiones a servidores.",
+  "zeroNetwork": true,
+  "adFreeZone": true,
+  "accepts": "application/pdf",
+  "tag": "Censurar PDF",
+  "std": "US Federal Rule of Civil Procedure 5.2 / FOIA Exemption 6",
+  "seo": {
+    "metaTitle": "Censurar PDF Online Gratis — Eliminación Destructiva y 100% Local",
+    "metaDescription": "Elimine de forma definitiva texto, DNI y datos confidenciales en archivos PDF. Evita fugas por copiar y pegar. Cero subida de datos.",
+    "aeoSummary": "El redactor destructivo de PDF de PrivacyFold elimina de forma permanente el texto y metadatos confidenciales directamente en la memoria RAM local, garantizando que los datos censurados desaparezcan completamente del archivo.",
+    "steps": [
+      "Seleccione o arrastre su documento PDF.",
+      "Dibuje los rectángulos de censura sobre los nombres, números o texto confidencial.",
+      "Pulse Censurar para aplicar la purga permanente de bytes.",
+      "Descargue el archivo PDF protegido y verificado."
+    ],
+    "faqs": [
+      {
+        "question": "¿Puede alguien copiar el texto que está debajo de los cuadros negros?",
+        "answer": "No. A diferencia de visores que solo superponen una caja negra visual, PrivacyFold elimina físicamente los glifos de texto y cadenas de caracteres del flujo del documento. El texto deja de existir en el archivo."
+      },
+      {
+        "question": "¿Se envía el archivo a algún servidor en la nube?",
+        "answer": "No. Toda la renderización, marcado y reconstrucción del PDF se ejecuta íntegramente en el navegador de su equipo."
+      }
+    ],
+    "keywords": ["censurar pdf online", "tachar texto pdf gratis", "eliminar datos sensibles pdf", "redactar pdf seguro"]
+  },
+  "whatToExpect": {
+    "results": "Documento PDF saneado con eliminación irreversible del texto confidencial.",
+    "limits": "Admite documentos de múltiples páginas de hasta 200 MB.",
+    "benchmarks": "Tiempo de procesamiento de 80 ms por página mediante WebAssembly."
+  },
+  "privacyProof": {
+    "howItWorks": "Los objetos internos del PDF se reconstruyen descartando los fragmentos seleccionados.",
+    "verificationSteps": [
+      "Aplique la censura y descargue el archivo resultante.",
+      "Abra el archivo e intente seleccionar o copiar sobre la zona negra.",
+      "Compruebe que no existe texto seleccionable debajo."
+    ],
+    "openSourceNotice": "Válido para presentación judicial y cumplimiento estricto de privacidad."
+  },
+  "social": {
+    "hook": "No use cajas negras falsas que permitan copiar el texto subyacente. Elimine datos confidenciales de sus PDF con censura destructiva 100% local.",
+    "channels": ["x", "whatsapp", "linkedin"]
+  }
+}

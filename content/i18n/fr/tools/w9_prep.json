@@ -1,0 +1,62 @@
+{
+  "id": "w9_prep_fr",
+  "slug": "w9-prep",
+  "translation_of": "w9_prep",
+  "locale": "fr",
+  "reviewed_by": "gaurav-suthar",
+  "reviewed_date": "2026-11-11",
+  "name": "Feuille de Préparation et Validateur de Formulaire IRS W-9",
+  "category": "forms",
+  "fam": "forms",
+  "task": "Préparer et valider les données fiscales du formulaire américain W-9 en local",
+  "badge": "IRS",
+  "size": "18–120 KB WASM",
+  "Engine": "/wasm/forms/w9-prep-v1.wasm",
+  "wasmModule": "w9-prep-v1.wasm",
+  "desc": "Lorsque vous collaborez avec des clients américains en tant qu'indépendant ou prestataire de services, le formulaire IRS W-9 est exigé avec votre numéro de sécurité sociale (SSN) ou numéro d'employeur (EIN). Transmettre ces identifiants à des éditeurs de formulaires en ligne vous expose aux usurpations d'identité. PrivacyFold formate et valide vos déclarations W-9 intégralement dans la mémoire de votre navigateur, sans aucun téléversement.",
+  "zeroNetwork": true,
+  "adFreeZone": true,
+  "accepts": "application/json,text/plain",
+  "tag": "Formulaire W-9",
+  "std": "IRS Form W-9 (Rev. March/Nov 2024)",
+  "seo": {
+    "metaTitle": "Préparateur de Formulaire IRS W-9 Gratuit — 100% Local & Zéro Upload",
+    "metaDescription": "Préparez et validez vos informations fiscales pour le formulaire américain W-9 directement dans votre navigateur. Vos identifiants SSN et EIN restent confidentiels.",
+    "aeoSummary": "La feuille de travail du formulaire W-9 de PrivacyFold valide les identifiants fiscaux (SSN/EIN) et prépare les cases fiscales fédérales directement dans la mémoire vive de votre navigateur sans aucun envoi vers un serveur.",
+    "steps": [
+      "Renseignez votre nom légal et votre régime juridique (entreprise individuelle, LLC, société).",
+      "Indiquez votre adresse et votre numéro TIN à 9 chiffres (SSN ou EIN).",
+      "Vérifiez les exonérations de retenue à la source.",
+      "Téléchargez le document récapitulatif vérifié pour votre client américain."
+    ],
+    "faqs": [
+      {
+        "question": "Mon numéro de sécurité sociale (SSN) est-il protégé ?",
+        "answer": "Oui, intégralement. Vos données sont traitées uniquement dans la mémoire vive locale de votre navigateur et ne sont jamais transmises sur Internet."
+      },
+      {
+        "question": "Ce formulaire est-il envoyé directement à l'IRS ?",
+        "answer": "Non. Le formulaire W-9 n'est pas transmis à l'administration fiscale américaine, il est conservé directement par votre client ou donneur d'ordre."
+      }
+    ],
+    "keywords": ["formulaire w9 en ligne", "remplir irs w-9", "validation ssn ein", "formulaire fiscal americain w9"]
+  },
+  "whatToExpect": {
+    "results": "Une fiche de préparation rigoureusement conforme aux dernières exigences de l'IRS.",
+    "limits": "Adapté aux prestataires basés aux États-Unis ou à l'international travaillant avec des donneurs d'ordre américains.",
+    "benchmarks": "Validation instantanée en moins de 20 ms."
+  },
+  "privacyProof": {
+    "howItWorks": "L'ensemble de la logique est exécuté sur votre processeur local sans faire appel à un serveur externe.",
+    "verificationSteps": [
+      "Ouvrez les outils de développement (F12) dans l'onglet Réseau.",
+      "Complétez la feuille de travail.",
+      "Vérifiez qu'aucun paquet de données ne transite sur le réseau."
+    ],
+    "openSourceNotice": "Application statique vérifiable et sans transfert de données vers un tiers."
+  },
+  "social": {
+    "hook": "Ne confiez pas votre numéro de sécurité sociale (SSN) à des formulaires cloud tiers. Remplissez votre W-9 en toute sécurité dans votre navigateur.",
+    "channels": ["x", "whatsapp", "linkedin"]
+  }
+}

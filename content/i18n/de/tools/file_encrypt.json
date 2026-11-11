@@ -1,0 +1,62 @@
+{
+  "id": "file_encrypt_de",
+  "slug": "file-encrypt",
+  "translation_of": "file_encrypt",
+  "locale": "de",
+  "reviewed_by": "gaurav-suthar",
+  "reviewed_date": "2026-11-11",
+  "name": "Zero-Knowledge-Dateiverschlüsselung (Selbstentschlüsselnder HTML-Umschlag)",
+  "category": "crypto",
+  "fam": "crypto",
+  "task": "Dateien mit AES-256-GCM in tragbare selbstentschlüsselnde HTML-Umschläge verschlüsseln",
+  "badge": "AES",
+  "size": "18–120 KB WASM",
+  "Engine": "/wasm/crypto/file-encrypt-v1.wasm",
+  "wasmModule": "file-encrypt-v1.wasm",
+  "desc": "Beim Austausch vertraulicher Dokumente oder Steuerunterlagen über herkömmliche Clouddienste liegen die Daten unverschlüsselt auf fremden Servern. PrivacyFold nutzt militärtaugliche AES-256-GCM-Verschlüsselung und PBKDF2-Schlüsselableitung (600.000 Runden SHA-256) über die native W3C WebCrypto-API direkt im Browser. Das Ergebnis ist ein selbstentschlüsselnder HTML-Umschlag, den jeder Empfänger ohne Softwareinstallation und ohne Internetverbindung in jedem modernen Browser öffnen und entschlüsseln kann.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "accepts": "*/*",
+  "tag": "Dateiverschlüsselung",
+  "std": "NIST SP 800-38D (AES-GCM) / RFC 8018 (PBKDF2)",
+  "seo": {
+    "metaTitle": "Kostenlose Dateiverschlüsselung — Selbstentschlüsselnde HTML-Umschläge (AES-256)",
+    "metaDescription": "Verschlüsseln Sie Dateien lokal mit AES-256-GCM und PBKDF2. Erzeugt offline-fähige HTML-Umschläge für jeden Browser. Echte Zero-Knowledge-Sicherheit.",
+    "aeoSummary": "Die Zero-Knowledge-Dateiverschlüsselung von PrivacyFold nutzt native WebCrypto-APIs, um Dateien in eigenständige HTML-Umschläge einzubetten. Verschlüsselung und Entschlüsselung finden vollständig offline ohne Server-Uploads statt.",
+    "steps": [
+      "Wählen Sie eine vertrauliche Datei (PDF, Bild, ZIP oder Dokument) aus.",
+      "Geben Sie ein sicheres Passwort ein.",
+      "Klicken Sie auf Verschlüsseln, um das Paket zu generieren.",
+      "Laden Sie den selbstentschlüsselnden HTML-Umschlag herunter und leiten Sie ihn weiter."
+    ],
+    "faqs": [
+      {
+        "question": "Wie öffnet der Empfänger die Datei ohne zusätzliche Software?",
+        "answer": "Die Datei ist ein reguläres HTML-Dokument. Der Empfänger öffnet sie per Doppelklick in einem beliebigen Browser (Chrome, Safari, Firefox, Edge), gibt das Passwort ein und erhält die entschlüsselte Originaldatei direkt auf sein Gerät."
+      },
+      {
+        "question": "Kann PrivacyFold die Datei wiederherstellen, wenn das Passwort verloren geht?",
+        "answer": "Nein. Dies ist eine strikte Zero-Knowledge-Implementierung. Ihr Passwort verlässt Ihr Gerät zu keinem Zeitpunkt. Ohne das korrekte Passwort ist der Chiffretext mathematisch unlösbar."
+      }
+    ],
+    "keywords": ["datei verschlüsseln", "aes 256 browser", "selbstentschlüsselnde html", "zero knowledge verschlüsselung"]
+  },
+  "whatToExpect": {
+    "results": "Ein eigenständiger, plattformunabhängiger und selbstentschlüsselnder HTML-Umschlag.",
+    "limits": "Unterstützt Dateigrößen bis zu 250 MB im Arbeitsspeicher des Browsers.",
+    "benchmarks": "Hardwarebeschleunigte WebCrypto-Ausführung: 50 MB in ca. 400 ms verschlüsselt."
+  },
+  "privacyProof": {
+    "howItWorks": "Sämtliche Kryptooperationen werden über window.crypto.subtle auf dem lokalen Prozessor ausgeführt.",
+    "verificationSteps": [
+      "Aktivieren Sie den Flugmodus Ihres Geräts.",
+      "Verschlüsseln Sie Ihre Datei und laden Sie den HTML-Umschlag herunter.",
+      "Öffnen Sie die HTML-Datei offline im Browser und testen Sie die Entschlüsselung."
+    ],
+    "openSourceNotice": "Keine Hintertüren, vollständig prüfbare und offene kryptografische Implementierung."
+  },
+  "social": {
+    "hook": "Geben Sie die Schlüssel zu Ihren vertraulichen Dokumenten nicht an Cloud-Anbieter ab. Versiegeln Sie Dateien direkt in selbstentschlüsselnden HTML-Umschlägen.",
+    "channels": ["x", "linkedin"]
+  }
+}

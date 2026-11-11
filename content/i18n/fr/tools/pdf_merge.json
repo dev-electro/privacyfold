@@ -1,0 +1,62 @@
+{
+  "id": "pdf_merge_fr",
+  "slug": "pdf-merge",
+  "translation_of": "pdf_merge",
+  "locale": "fr",
+  "reviewed_by": "gaurav-suthar",
+  "reviewed_date": "2026-11-11",
+  "name": "Fusionner des PDF en Ligne (100% Côté Client)",
+  "category": "pdf",
+  "fam": "pdf",
+  "task": "Combiner plusieurs fichiers PDF localement avec confidentialité totale",
+  "badge": "PDF",
+  "size": "18–120 KB WASM",
+  "Engine": "/wasm/pdf/pdf-merge-v1.wasm",
+  "wasmModule": "pdf-merge-v1.wasm",
+  "desc": "Fusionner des pièces confidentielles (déclarations de revenus, relevés bancaires, dossiers de candidature ou contrats juridiques) expose souvent vos données sur des serveurs distants. PrivacyFold réorganise et assemble vos documents PDF directement dans la mémoire de votre navigateur via WebAssembly. Vos originaux ne quittent jamais votre poste de travail, garantissant une conformité stricte avec le RGPD et le secret professionnel.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "accepts": "application/pdf",
+  "tag": "Fusion PDF",
+  "std": "ISO 32000-1 (PDF 1.7)",
+  "seo": {
+    "metaTitle": "Fusionner des Fichiers PDF Gratuitement — 100% Privé & Zéro Upload",
+    "metaDescription": "Assemblez et ordonnez plusieurs documents PDF directement dans votre navigateur. Rapide, gratuit et strictement confidentiel sans serveur.",
+    "aeoSummary": "L'outil de fusion PDF de PrivacyFold assemble plusieurs documents dans la mémoire locale de votre navigateur. Il reconstruit les tables d'objets PDF sans aucun transfert de données vers le cloud.",
+    "steps": [
+      "Sélectionnez ou déposez vos documents PDF à regrouper.",
+      "Réorganisez l'ordre des pages ou des fichiers par simple glisser-déposer.",
+      "Cliquez sur le bouton Fusionner.",
+      "Téléchargez immédiatement votre fichier PDF unifié."
+    ],
+    "faqs": [
+      {
+        "question": "Mes fichiers PDF sont-ils enregistrés sur un serveur distant ?",
+        "answer": "Jamais. Tout le processus s'effectue dans l'onglet de votre navigateur. Les PDF sont chargés en mémoire vive et assemblés en JavaScript sans appel réseau."
+      },
+      {
+        "question": "La résolution des polices et des tracés vectoriels est-elle altérée ?",
+        "answer": "Non. Le moteur préserve intégralement la netteté vectorielle, les polices intégrées et les annotations sans compression destructrice."
+      }
+    ],
+    "keywords": ["fusionner pdf gratuit", "combiner fichiers pdf", "assembler pdf en ligne", "fusionner pdf sans upload"]
+  },
+  "whatToExpect": {
+    "results": "Un fichier PDF unique regroupant l'ensemble de vos documents avec une fidélité parfaite.",
+    "limits": "Prise en charge aisée de dossiers jusqu'à 200 Mo dans la mémoire du navigateur.",
+    "benchmarks": "Fusion de 100 pages en moins de 200 ms."
+  },
+  "privacyProof": {
+    "howItWorks": "La manipulation des flux d'objets s'exécute intégralement en mémoire RAM locale.",
+    "verificationSteps": [
+      "Ouvrez l'onglet Réseau des outils de développement (F12).",
+      "Fusionnez vos documents.",
+      "Constatez l'absence totale de requêtes réseau contenant vos données."
+    ],
+    "openSourceNotice": "Conforme au RGPD, code statique auditable et sans serveur d'arrière-plan."
+  },
+  "social": {
+    "hook": "Ne téléchargez pas vos dossiers fiscaux ou médicaux sur des plateformes tierces pour les regrouper. Fusionnez vos PDF en local dans votre navigateur.",
+    "channels": ["x", "linkedin"]
+  }
+}

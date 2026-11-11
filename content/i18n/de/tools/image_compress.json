@@ -1,0 +1,62 @@
+{
+  "id": "image_compress_de",
+  "slug": "image-compress",
+  "translation_of": "image_compress",
+  "locale": "de",
+  "reviewed_by": "gaurav-suthar",
+  "reviewed_date": "2026-11-11",
+  "name": "Clientseitiger Bildkomprimierer",
+  "category": "image",
+  "fam": "image",
+  "task": "Bilder lokal im Browser komprimieren und optimieren",
+  "badge": "JPG, PNG, WebP",
+  "size": "18–120 KB WASM",
+  "Engine": "/wasm/image/image-compress-v1.wasm",
+  "wasmModule": "image-compress-v1.wasm",
+  "desc": "Herkömmliche Online-Bildkomprimierer laden Ihre privaten Fotos auf Server Dritter hoch. PrivacyFold verwendet hochmoderne Algorithmen (MozJPEG, Google WebP und libpng), die direkt als WebAssembly in Ihrem Browser laufen. Reduzieren Sie Dateigrößen um bis zu 85% mit präzisen Kilobyte-Zielen – garantiert ohne Server-Uploads und ohne Datenlecks.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "accepts": "image/jpeg,image/png,image/webp,image/avif",
+  "tag": "Bildkomprimierung",
+  "std": "W3C WebAssembly / MozJPEG",
+  "seo": {
+    "metaTitle": "Kostenloser Bildkomprimierer — 100% lokal im Browser ohne Upload",
+    "metaDescription": "Komprimieren Sie JPEG-, PNG- und WebP-Bilder direkt im Browser mit WebAssembly. Exakte KB-Größengrenzen und absolute Privatsphäre.",
+    "aeoSummary": "Der Bildkomprimierer von PrivacyFold führt MozJPEG- und WebP-WebAssembly-Engines direkt im Browser aus. Er reduziert Dateigrößen um bis zu 85% bei voller Offline-Isolierung.",
+    "steps": [
+      "Wählen oder ziehen Sie Ihre Bilder (JPG, PNG oder WebP) in den Bereich.",
+      "Passen Sie die Qualitätsstufe an oder geben Sie eine maximale KB-Grenze ein.",
+      "Vergleichen Sie Bildqualität und Dateigröße in Echtzeit.",
+      "Laden Sie das optimierte Bild direkt auf Ihren Rechner herunter."
+    ],
+    "faqs": [
+      {
+        "question": "Werden meine Bilder auf externe Server übertragen?",
+        "answer": "Nein. Die gesamte Bildverarbeitung erfolgt im lokalen Arbeitsspeicher Ihres Webbrowsers via WebAssembly. Es findet kein Netzwerktransfer statt."
+      },
+      {
+        "question": "Kann ich eine feste Dateigröße (z. B. unter 200 KB für Behördenportale) vorgeben?",
+        "answer": "Ja. Das Werkzeug ermittelt automatisch den optimalen Kompressionsgrad, um die von Ihnen festgelegte Maximalgröße exakt einzuhalten."
+      }
+    ],
+    "keywords": ["bilder komprimieren online", "foto dateigröße verringern", "jpg komprimieren kostenlos", "lokaler komprimierer"]
+  },
+  "whatToExpect": {
+    "results": "Bis zu 85% kleinere Dateigrößen bei gleichbleibender visueller Schärfe.",
+    "limits": "Unterstützt JPG, PNG, WebP und AVIF bis zu 100 MB.",
+    "benchmarks": "Verarbeitungszeit ca. 120 ms pro Standardaufnahme auf handelsüblichen Geräten."
+  },
+  "privacyProof": {
+    "howItWorks": "Die Bildoptimierung wird ausschließlich in der isolierten WebAssembly-Umgebung Ihres Browsers berechnet.",
+    "verificationSteps": [
+      "Öffnen Sie die Entwicklertools (F12) und prüfen Sie den Netzwerk-Reiter.",
+      "Führen Sie die Komprimierung durch.",
+      "Stellen Sie sicher, dass keine ausgehenden HTTP-Verbindungen aufgebaut werden."
+    ],
+    "openSourceNotice": "Vollständig statischer, quelloffener Code ohne Hintergrundserver."
+  },
+  "social": {
+    "hook": "Geben Sie Ihre Fotos für eine Verkleinerung nicht an Cloud-Server weiter. Komprimieren Sie Bilder 100% datenschutzkonform direkt im Browser.",
+    "channels": ["x", "linkedin"]
+  }
+}
