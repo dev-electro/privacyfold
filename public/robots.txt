@@ -1,0 +1,61 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /admin/
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /admin/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /admin/
+
+User-agent: Claude-User
+Allow: /
+Disallow: /admin/
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /admin/
+
+User-agent: GPTBot
+Allow: /tools/
+Allow: /blog/
+Allow: /llms.txt
+Disallow: /admin/
+
+User-agent: ClaudeBot
+Allow: /tools/
+Allow: /blog/
+Allow: /llms.txt
+Disallow: /admin/
+
+User-agent: Google-Extended
+Allow: /tools/
+Allow: /blog/
+Allow: /llms.txt
+Disallow: /admin/
+
+User-agent: Applebot-Extended
+Allow: /tools/
+Allow: /blog/
+Allow: /llms.txt
+Disallow: /admin/
+
+User-agent: CCBot
+Allow: /tools/
+Allow: /blog/
+Allow: /llms.txt
+Disallow: /admin/
+
+Content-Signal: search=yes, ai-train=no
+
+Sitemap: https://privacyfold.com/sitemap.xml

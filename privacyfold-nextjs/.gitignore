@@ -10,7 +10,8 @@ node_modules/
 .next/
 out/
 build/
-dist/
+dist/*
+!dist/index.html
 
 # Misc
 .DS_Store

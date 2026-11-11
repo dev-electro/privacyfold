@@ -3491,20 +3491,29 @@ var DEVICE_PROFILE = {
      plain:function(a){return 'Extracts text and maps candidate values to '+a.target.toUpperCase()+' fields. Never auto-submits; user confirms every value.';},
      run:async function(src,a,ctx){
       var raw=(ctx.text||'').trim();
-      var dates=raw.match(/\b\d{1,2}\s+[A-Za-z]{3,9}\s+\d{4}|\b\d{4}-\d{2}-\d{2}\b/g)||['2026-11-10'];
-      var amounts=raw.match(/[$£€₹]\s?\d[\d,.]*/g)||['$6,050.00'];
+      if(!raw) throw new Error('No document text provided for OCR parsing.');
+      var dates=raw.match(/\b\d{1,2}\s+[A-Za-z]{3,9}\s+\d{4}|\b\d{4}-\d{2}-\d{2}\b/g);
+      var amounts=raw.match(/(?:[$£€₹]|(?:USD|EUR|GBP|INR|CAD|AUD)\s*)\d[\d,.]*/gi);
+      var nameMatch=raw.match(/(?:legal\s+name|name|to|bill\s+to|payee|recipient):\s*([A-Za-z0-9\s.,&'-]{2,50})/i);
+      var name=nameMatch?nameMatch[1].trim():'[Not detected — enter manually]';
+      var dateStr=dates&&dates.length?dates[0]:'[Not detected — enter manually]';
+      var amountStr=amounts&&amounts.length?amounts[amounts.length-1]:'[Not detected — enter manually]';
       var out='FILL FROM SCAN · HUMAN CONFIRMATION VIEW (needsReview: ["extracted-fields"])\n'
         +'----------------------------------------------------\n';
       if(a.target==='w9'){
-        out+='[Source Crop #1] Legal Name (Line 1):    Acme Global Ltd.\n'
-            +'[Source Crop #2] Document Date:          '+dates[0]+'\n'
-            +'[Source Crop #3] Reported Gross Amount:  '+amounts[amounts.length-1]+'\n';
+        out+='[Extracted Field] Legal Name (Line 1):    '+name+'\n'
+            +'[Extracted Field] Document Date:          '+dateStr+'\n'
+            +'[Extracted Field] Reported Gross Amount:  '+amountStr+'\n';
       }else if(a.target==='sa100'){
-        out+='[Source Crop #1] Turnover (SA103S Box 9): '+amounts[amounts.length-1]+'\n'
-            +'[Source Crop #2] Tax Period Date:         '+dates[0]+'\n';
+        out+='[Extracted Field] Turnover (SA103S Box 9): '+amountStr+'\n'
+            +'[Extracted Field] Tax Period Date:         '+dateStr+'\n';
+      }else if(a.target==='invoice'){
+        out+='[Extracted Field] Payee / Entity:          '+name+'\n'
+            +'[Extracted Field] Invoice Date:            '+dateStr+'\n'
+            +'[Extracted Field] Total Amount:             '+amountStr+'\n';
       }else{
-        out+='Detected Dates:   '+dates.join(', ')+'\n'
-            +'Detected Amounts: '+amounts.join(', ')+'\n';
+        out+='Detected Dates:   '+(dates?dates.join(', '):'None')+'\n'
+            +'Detected Amounts: '+(amounts?amounts.join(', '):'None')+'\n';
       }
       out+='----------------------------------------------------\nRAW OCR TEXT:\n'+raw;
       return {text:out,note:'Mapped to '+a.target.toUpperCase()+' (Review required)'};
@@ -3584,7 +3593,7 @@ var DEVICE_PROFILE = {
      groups:[['Moonshine-tiny ASR (28 MB MIT) & VAD',['out','vad','wpm']]],
      plain:function(a){return 'Formats speech transcription into '+a.out.toUpperCase()+' cues ('+a.wpm+' words/cue)'+(a.vad?' with silence trimming':'')+'.';},
      run:async function(src,a,ctx){
-      var words=(ctx.text||'Welcome to PrivacyFold. Moonshine-tiny transcribes speech five times faster than real time inside your browser tab without uploading audio.').trim().split(/\s+/);
+      var raw=(ctx.text||'').trim(); if(!raw&&!src) throw new Error('No audio input or text provided for transcription.'); var words=(raw||'').split(/\s+/).filter(Boolean); if(!words.length) throw new Error('No words detected to transcribe or format.');
       if(a.out==='txt')return {text:words.join(' '),note:words.length+' words transcribed'};
       var step=a.wpm,blocks=[],sec=0;
       function fmtT(s,sep){var m=Math.floor(s/60),rem=s%60;return '00:'+('0'+m).slice(-2)+':'+('0'+Math.floor(rem)).slice(-2)+sep+'000'}
@@ -3746,11 +3755,8 @@ var DEVICE_PROFILE = {
      groups:[['Portal Preset (privacyfold-longtail-preset-strategy.md)',['preset','gray']]],
      plain:function(a){return 'Applies preset '+a.preset+' compression stream optimization'+(a.gray?' with grayscale downsampling':'')+'.';},
      run:async function(src,a,ctx){
-      var raw=(ctx.text||'PDF Document Stream').trim();
-      var stream='BT /F1 11 Tf 50 740 Td (Compressed for preset: '+a.preset+' | Grayscale: '+a.gray+') Tj 0 -20 Td ('+raw.replace(/[()\\]/g,' ').slice(0,120)+') Tj ET';
-      var out='%PDF-1.4\n%Compressed-Preset: '+a.preset+'\n1 0 obj<</Type/Catalog/Pages 2 0 R>>endobj\n2 0 obj<</Type/Pages/Count 1/Kids[3 0 R]>>endobj\n3 0 obj<</Type/Page/Parent 2 0 R/MediaBox[0 0 612 792]/Contents 4 0 R>>endobj\n4 0 obj<</Length '+stream.length+'>>stream\n'+stream+'\nendstream\nendobj\ntrailer<</Root 1 0 R>>\n%%EOF';
-      return {text:out,note:'Preset '+a.preset+' applied ('+fmtBytes(out.length)+')'};
-     }},
+       throw new Error('PDF compression engine is not loaded. Real in-browser PDF recompression requires the WebAssembly engine.');
+      }},
     {id:'pdf_flatten',fam:'pdf',glyph:'FLT',name:'PDF flattener & form locker',task:'Flatten interactive form fields so they cannot be edited',tag:'PDF/A, Lock',accepts:'text',live:true,kind:'live',ext:'pdf',det:'D',wasmPath:'/wasm/pdf/pdf-flatten-v1.wasm',
      desc:'Flatten interactive AcroForm fields, checkboxes, and signature appearances into static page content for IRS 1099, USCIS, and notary submissions.',
      params:[
@@ -3990,10 +3996,10 @@ var DEVICE_PROFILE = {
      groups:[['Cover Letter Details',['company','role','signer']]],
      plain:function(a){return 'Structures a 3-paragraph cover letter for '+a.role+' at '+a.company+'.';},
      run:async function(src,a,ctx){
-      varachievement=(ctx.text||'Led the migration of 50+ document and image tools to client-side WebAssembly and WebGPU, cutting cloud compute costs to $0 while serving 500K+ monthly runs.').trim();
+      var achievement = (ctx.text||'Led the migration of 50+ document and image tools to client-side WebAssembly and WebGPU, cutting cloud compute costs to $0 while serving 500K+ monthly runs.').trim();
       var out='Dear '+a.company+' Hiring Team,\n\n'
         +'I am writing to apply for the '+a.role+' position at '+a.company+'. I admire your focus on craft, speed, and local-first software architecture.\n\n'
-        +'In my recent work: '+varachievement+'\n\n'
+        +'In my recent work: '+achievement+'\n\n'
         +'I would welcome the opportunity to discuss how this experience can contribute to '+a.company+'’s engineering roadmap.\n\n'
         +'Sincerely,\n'+a.signer;
       return {text:out,note:'Ready for '+a.company};

@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate-and-build:
+    name: Validate Truth, Smoke Test & Static Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+          cache-dependency-path: privacyfold-nextjs/package-lock.json
+
+      - name: 1. Agent Truth & Blocker Check
+        run: node scripts/agent-status.mjs
+
+      - name: 2. Verify Dist Runtime Sync
+        run: node scripts/build.mjs --check
+
+      - name: 3. Tool Runtime Smoke Tests (72 Tools)
+        run: node scripts/smoke-test.mjs
+
+      - name: 4. Install Dependencies
+        working-directory: privacyfold-nextjs
+        run: npm ci
+
+      - name: 5. Next.js Static Export Build
+        working-directory: privacyfold-nextjs
+        run: npm run build
+
+      - name: 6. Verify Artifacts
+        run: |
+          test -f privacyfold-nextjs/out/index.html
+          test -f privacyfold-nextjs/out/sitemap.xml
+          test -f privacyfold-nextjs/out/robots.txt
+          echo "All static artifacts verified successfully!"
