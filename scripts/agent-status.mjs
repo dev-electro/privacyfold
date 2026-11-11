@@ -87,7 +87,8 @@ const wasmRefs = (runtime.match(/\/wasm\/[a-z0-9/._-]+\.wasm/gi) || []).length;
 if (wasmRefs && !wasmFiles.length) blocker(`${wasmRefs} distinct /wasm/*.wasm paths referenced, 0 .wasm files on disk`);
 else if (wasmFiles.length) ok(`${wasmFiles.length} wasm binaries on disk`);
 const pkg = JSON.parse(read('package.json') || read('privacyfold-nextjs/package.json'));
-const src = ['src', 'scripts', 'packages'].flatMap((d) => walkFiles(path.join(root, d))).map((f) => fs.readFileSync(f, 'utf8')).join('\n');
+const rootConfigs = ['astro.config.mjs'].filter((f) => fs.existsSync(path.join(root, f))).map((f) => fs.readFileSync(path.join(root, f), 'utf8'));
+const src = ['src', 'scripts', 'packages'].flatMap((d) => walkFiles(path.join(root, d))).map((f) => fs.readFileSync(f, 'utf8')).concat(rootConfigs).join('\n');
 const unused = Object.keys(pkg.dependencies || {}).filter((d) => !src.includes(d));
 if (unused.length) warn(`${unused.length} declared deps imported 0 times: ${unused.slice(0, 6).join(', ')}${unused.length > 6 ? '…' : ''}`);
 

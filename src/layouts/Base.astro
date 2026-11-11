@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import GoogleAdSense from '../components/GoogleAdSense.astro';
+import ConsentBanner from '../components/ConsentBanner.astro';
 
 interface Props {
   title?: string;
@@ -64,6 +65,8 @@ const siteTitle = title.includes('PrivacyFold') ? title : `${title} | PrivacyFol
   </head>
   <body>
     <slot />
+
+    <ConsentBanner />
 
     <script is:inline>
       if ('serviceWorker' in navigator) {

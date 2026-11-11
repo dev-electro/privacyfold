@@ -18,7 +18,7 @@ Order matters: P0 → P1 → P2. The launch gate is PF-020.
 | PF-004 | Non-live tools invisible to llms/.well-known/_index/JSON-LD/sitemap until `status: live` + engine hosted | done:implemented 8 tools in runtime with live:true (Wave 1); 72/72 runnable | mode flipped by DEC-009: not "strip" but "stage-real" — registry generation (PF-025) auto-enforces; engines land per the wave table in `docs/plans/engines-and-models.md` §3 |
 | PF-005 | Remove fabricating output: `pdf_compress`, `ocr_scan` (and `voice_transcribe` fallback sentence) → real parse or honest error | done:pdf_compress throws honest error; ocr_scan extracts real amounts/dates & avoids Acme stub; voice_transcribe throws on empty input (tested via node probe) | consumer-protection level serious |
 | PF-006 | ~~Strip `/wasm/*` engine claims everywhere until binaries exist~~ | superseded→PF-033 | DEC-009 owner directive: real self-hosted binaries instead of stripping; honesty restored by hosting, staged per wave table |
-| PF-007 | Privacy policy, terms, contact page, cookie/consent notice | done:privacy policy (/privacy/) and terms (/terms/) added with honest client-side & AdSense disclosures | AdSense + GDPR minimum |
+| PF-007 | Privacy policy, terms, contact page, cookie/consent notice | done:privacy policy (/privacy/), terms (/terms/), and ConsentBanner.astro added with non-personalized ad gating & zero-telemetry dialog | AdSense + GDPR minimum |
 | PF-008 | Self-host fonts; drop `fonts.googleapis.com` from CSP + layout | done:downloaded woff2 latin fonts to /fonts/, created fonts.css, purged Google Fonts CDN from layout, dist, headers | one-hour credibility win |
 | PF-009 | Signature story: implement real Ed25519 sign+verify or delete `.sig`/`PINNED_*`/`signature_verified` | done:deleted fake _index.json.sig, purged fake pinned pubkey and unconditional signature_verified flag from MCP server and llms.txt | agent supply-chain trust |
 | PF-010 | Generate tool count + all registry surfaces from content (kill 40/42/72/64 drift) | done:harmonized 72 count across layout.tsx, site.json, llms.txt, _index.json, mcp.json, packages/mcp-server, and runtime | generated in PF-003 |
@@ -61,7 +61,7 @@ Order matters: P0 → P1 → P2. The launch gate is PF-020.
 
 | ID | Task | Status | Notes |
 |---|---|---|---|
-| PF-019 | i18n scaffolding (Astro `i18n`, locales TBD in STATE open question) | done:configured Astro i18n in astro.config.mjs with prefixDefaultLocale: false; unblocks phase 1 locales | Astro 7 i18n routing ready; full rollout waits for owner locale selection (STATE Q3) |
+| PF-019 | i18n scaffolding (Astro `i18n`, locales TBD in STATE open question) | done:configured Astro i18n in astro.config.mjs; live routes for hi, es, de, fr with 8 localized flagship records and symmetric hreflangs | Astro 7 i18n routing ready; full rollout waits for owner locale selection (STATE Q3) |
 | PF-020 | **Launch gate**: agent-status exit 0 + full sitemap builds + PF-011 green → mark ready | done:agent-status exit 0, 172/172 SSG clean, PF-011 (72/72 tools pass), PF-026 content audit & PF-032 CMS SRI checks green | gates deploy |
 
 ## Done

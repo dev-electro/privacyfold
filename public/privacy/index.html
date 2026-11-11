@@ -54,8 +54,9 @@
     <ul>
       <li><strong>Honest Disclosure:</strong> Pages that display advertisements load script assets from Google (such as <code>pagead2.googlesyndication.com</code>). These scripts may collect standard browser telemetry and cookies in accordance with Google's Privacy Policy.</li>
       <li><strong>No File Data Access:</strong> Google AdSense scripts never access, read, or receive the contents of the files, images, or documents you process on PrivacyFold. All file processing happens in isolated client-side memory.</li>
-      <li><strong>Consent Management:</strong> For visitors in the European Economic Area (EEA), United Kingdom (UK), and Switzerland, a certified Consent Management Platform (CMP) is used to gather required consent before any personalized advertising cookies are placed.</li>
+      <li><strong>Consent Management:</strong> For visitors in the European Economic Area (EEA), United Kingdom (UK), and Switzerland, consent choices are gathered before any personalized advertising cookies are placed. You may adjust your choices at any time below.</li>
     </ul>
+    <p><button type="button" onclick="if(window.__pfOpenConsent){window.__pfOpenConsent()}else if(window.opener&amp;&amp;window.opener.__pfOpenConsent){window.opener.__pfOpenConsent()}else{location.href='/#consent'}" style="background:var(--accent);color:#fff;border:none;padding:8px 16px;border-radius:4px;font-family:var(--font-mono);font-size:13px;cursor:pointer;font-weight:600;">Manage Cookie &amp; Ad Preferences</button></p>
 
     <h2>3. Local Storage</h2>
     <p>PrivacyFold uses your browser's <code>localStorage</code> solely to remember local preferences, such as your dark/light theme setting and desk paper texture preferences. No personal identifiers or file records are stored in local storage.</p>

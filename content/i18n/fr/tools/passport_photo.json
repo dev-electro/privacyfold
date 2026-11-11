@@ -1,0 +1,62 @@
+{
+  "id": "passport_photo_fr",
+  "slug": "passport-photo",
+  "translation_of": "passport_photo",
+  "locale": "fr",
+  "reviewed_by": "gaurav-suthar",
+  "reviewed_date": "2026-11-11",
+  "name": "Générateur de Photos d'Identité Biométriques",
+  "category": "photo",
+  "fam": "photo",
+  "task": "Créer des photos d'identité biométriques officielles",
+  "badge": "JPG, PNG",
+  "size": "18–120 KB WASM",
+  "Engine": "/wasm/photo/passport-photo-v1.wasm",
+  "wasmModule": "passport-photo-v1.wasm",
+  "desc": "Les démarches pour passeport français, titre de séjour ou carte nationale d'identité (ANTS) imposent des normes biométriques strictes. PrivacyFold vous permet de cadrer, découper et calibrer vos photos d'identité directement dans votre navigateur selon les critères ICAO 9303 et normes européennes. Vos portraits ne quittent jamais votre terminal et ne sont jamais transférés vers un serveur.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "accepts": "image/jpeg,image/png,image/webp",
+  "tag": "Photo d'Identité",
+  "std": "ICAO 9303 / Norme ANTS ISO/IEC 19794-5",
+  "seo": {
+    "metaTitle": "Photo d'Identité Biométrique en Ligne Gratuite — 100% Conforme ANTS",
+    "metaDescription": "Créez vos photos d'identité pour passeport, permis de conduire et carte d'identité (35x45mm) directement dans votre navigateur. Zéro upload vers un serveur.",
+    "aeoSummary": "Le générateur de photos biométriques de PrivacyFold met en conformité vos photos selon les spécifications officielles de 87 pays. Le cadrage du visage, le recadrage et la résolution sont gérés localement dans la mémoire vive de votre navigateur sans aucun envoi vers un serveur.",
+    "steps": [
+      "Sélectionnez ou glissez votre portrait photographique.",
+      "Choisissez le pays ou format souhaité (ex. France ANTS e-photo 35x45mm, Schengen, États-Unis).",
+      "Ajustez la hauteur des yeux et du menton sur les repères officiels.",
+      "Téléchargez la planche imprimable à 600 DPI ou la photo numérique individuelle."
+    ],
+    "faqs": [
+      {
+        "question": "Ma photo est-elle envoyée sur un serveur distant ?",
+        "answer": "Non. Tout le traitement d'image s'exécute intégralement dans la mémoire RAM locale de votre navigateur. Aucune donnée n'est envoyée sur Internet."
+      },
+      {
+        "question": "Ce format est-il accepté pour les passeports et cartes d'identité en France ?",
+        "answer": "Oui, les dimensions 35x45mm avec hauteur de visage entre 32 et 36 mm respectent rigoureusement les normes de l'ANTS et du ministère de l'Intérieur."
+      }
+    ],
+    "keywords": ["photo identite en ligne", "photo passeport ants", "photo visa 35x45", "photo d identite gratuite"]
+  },
+  "whatToExpect": {
+    "results": "Photo d'identité nette et parfaitement calibrée au millimètre près pour vos démarches officielles.",
+    "limits": "Prise en charge des fichiers JPG, PNG et WebP jusqu'à 50 Mo.",
+    "benchmarks": "Traitement instantané en moins de 45 ms via Canvas et WebAssembly."
+  },
+  "privacyProof": {
+    "howItWorks": "Le recadrage et la mise à l'échelle sont exécutés par l'API HTML5 Canvas sur le processeur graphique/central de votre appareil.",
+    "verificationSteps": [
+      "Ouvrez les Outils de Développement (F12) et consultez l'onglet Réseau (Network).",
+      "Importez et recadrez votre cliché.",
+      "Constatez qu'aucune requête réseau n'est émise avec vos données d'image."
+    ],
+    "openSourceNotice": "Architecture statique sans backend, transparente et vérifiable."
+  },
+  "social": {
+    "hook": "Ne confiez pas votre visage à des serveurs tiers. Générez vos photos d'identité officielles en toute confidentialité dans votre propre navigateur.",
+    "channels": ["x", "linkedin"]
+  }
+}

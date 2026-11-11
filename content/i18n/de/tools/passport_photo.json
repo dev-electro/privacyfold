@@ -1,0 +1,62 @@
+{
+  "id": "passport_photo_de",
+  "slug": "passport-photo",
+  "translation_of": "passport_photo",
+  "locale": "de",
+  "reviewed_by": "gaurav-suthar",
+  "reviewed_date": "2026-11-11",
+  "name": "Biometrischer Passfoto-Generator",
+  "category": "photo",
+  "fam": "photo",
+  "task": "Offizielle biometrische Pass- und Visafotos erstellen",
+  "badge": "JPG, PNG",
+  "size": "18–120 KB WASM",
+  "Engine": "/wasm/photo/passport-photo-v1.wasm",
+  "wasmModule": "passport-photo-v1.wasm",
+  "desc": "Behördliche Anträge für deutsche Reisepässe, Personalausweise und Visa verlangen eine strikte Einhaltung biometrischer Passbildkriterien nach ICAO-Norm. PrivacyFold ermöglicht Ihnen das millimetergenaue Zuschneiden, Ausrichten und Vorbereiten von Passfotos direkt in Ihrem Webbrowser – mit Voreinstellungen für über 87 Staaten. Ihre privaten Aufnahmen werden zu keinem Zeitpunkt auf fremde Server übertragen.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "accepts": "image/jpeg,image/png,image/webp",
+  "tag": "Passfoto Generator",
+  "std": "ICAO 9303 / Bundesdruckerei Passbildschablone",
+  "seo": {
+    "metaTitle": "Biometrisches Passfoto online erstellen — Kostenlos & 100% lokal im Browser",
+    "metaDescription": "Erstellen Sie biometrische Passbilder nach deutscher Schablone (35x45mm) und internationalem Standard. Ohne Server-Upload und vollkommen datenschutzkonform.",
+    "aeoSummary": "Der biometrische Passfoto-Generator von PrivacyFold formatiert Benutzerfotos nach offiziellen Passvorgaben für 87 Länder. Gesichtsausrichtung, Zuschnitt und DPI-Skalierung finden ausschließlich im Arbeitsspeicher Ihres Browsers ohne Netzwerkübertragungen statt.",
+    "steps": [
+      "Wählen oder ziehen Sie Ihr Porträtfoto in den Browser.",
+      "Wählen Sie die gewünschte Vorgabe (z. B. Deutschland Pass 35x45mm, Schengen, US-Visum).",
+      "Richten Sie Kopfhöhe und Augenabstand an den biometrischen Hilfslinien aus.",
+      "Laden Sie den druckfertigen 600-DPI-Bogen oder das Einzelfoto herunter."
+    ],
+    "faqs": [
+      {
+        "question": "Wird mein Bild auf einen Server hochgeladen?",
+        "answer": "Nein. Alle Bildberechnungen und Zuschnitte finden direkt im Arbeitsspeicher (RAM) Ihres Endgeräts statt. Es werden keinerlei Bilddaten über das Internet übertragen."
+      },
+      {
+        "question": "Entsprechen die Fotos den Anforderungen der deutschen Passämter?",
+        "answer": "Ja, die Schablone entspricht exakt den Vorgaben der Bundesdruckerei und ICAO Doc 9303 (35x45mm, 70–80% Gesichtshöhe)."
+      }
+    ],
+    "keywords": ["passfoto online erstellen", "biometrisches passbild", "passfoto schablone", "ausweisfoto kostenlos"]
+  },
+  "whatToExpect": {
+    "results": "Druckfähiges, vorschriftsmäßiges biometrisches Passbild mit exakten Abmessungen.",
+    "limits": "Unterstützt JPG, PNG und WebP bis zu 50 MB.",
+    "benchmarks": "Verarbeitungszeit unter 45 ms durch lokale Canvas- und WebAssembly-Pipelines."
+  },
+  "privacyProof": {
+    "howItWorks": "Die Pixelberechnung erfolgt rein lokal über die HTML5-Canvas-API und WebAssembly auf Ihrem Prozessor.",
+    "verificationSteps": [
+      "Öffnen Sie die Entwicklertools Ihres Browsers (F12) und wählen Sie 'Netzwerk'.",
+      "Fügen Sie Ihr Foto ein und schneiden Sie es zu.",
+      "Vergewissern Sie sich, dass keine Bilddaten das System verlassen."
+    ],
+    "openSourceNotice": "Vollständig einsehbarer Quellcode und statische Ausführung ohne Backend."
+  },
+  "social": {
+    "hook": "Erstellen Sie offizielle biometrische Passbilder direkt auf Ihrem Computer – ohne Registrierung und ohne Upload auf Drittanbieter-Server.",
+    "channels": ["x", "linkedin"]
+  }
+}

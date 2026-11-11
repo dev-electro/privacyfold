@@ -13,6 +13,17 @@ const { pageType = 'tool' } = Astro.props;
     <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin />
     <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossorigin />
     <link rel="preconnect" href="https://tpc.googlesyndication.com" crossorigin />
+    <script is:inline>
+      window.adsbygoogle = window.adsbygoogle || [];
+      try {
+        var pfConsent = localStorage.getItem('pf_consent');
+        if (pfConsent !== 'all') {
+          window.adsbygoogle.requestNonPersonalizedAds = 1;
+        }
+      } catch (e) {
+        window.adsbygoogle.requestNonPersonalizedAds = 1;
+      }
+    </script>
     <script
       is:inline
       async

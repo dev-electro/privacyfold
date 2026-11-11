@@ -1,0 +1,307 @@
+---
+/**
+ * ConsentBanner.astro — Zero-Telemetry Client-Side Consent Manager (DEC-005, DEC-007)
+ * Implements GDPR / ePrivacy / Google AdSense non-personalized ad gating.
+ * - AdSense defaults to non-personalized unless user clicks "Accept All".
+ * - Choice saved in localStorage('pf_consent').
+ * - Tactile paper-stock design matching reference-ui.html.
+ * - Global window.__pfOpenConsent() allows reopening anytime from footer/privacy page.
+ */
+---
+
+<div
+  id="pf-consent-dialog"
+  class="pf-consent-dialog"
+  role="dialog"
+  aria-modal="false"
+  aria-label="Privacy and Advertising Preferences"
+  style="display: none;"
+>
+  <div class="pf-consent-card">
+    <div class="pf-consent-head">
+      <div class="pf-consent-tag">
+        <svg class="pf-consent-ico" viewBox="0 0 30 30" aria-hidden="true">
+          <path d="M4 3h16l7 7v17H4z" fill="#FF5A1F" stroke="#17160F" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M20 3v7h7z" fill="#B7330A" stroke="#17160F" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M4 27L27 10v17z" fill="rgba(0,0,0,.16)"/>
+        </svg>
+        <span>PRIVACY &amp; AD CHOICES</span>
+      </div>
+      <button type="button" id="pf-consent-close-btn" class="pf-consent-x" aria-label="Close preferences dialog">&times;</button>
+    </div>
+
+    <div class="pf-consent-content">
+      <h3 class="pf-consent-title">Zero File Uploads. Honest Monetization.</h3>
+      <p class="pf-consent-desc">
+        Your files are processed 100% locally in your browser memory and never uploaded to any server. To maintain PrivacyFold free and independent without user accounts, we display ads via Google AdSense. Choose whether you permit personalized advertising or prefer non-personalized ads.
+      </p>
+    </div>
+
+    <div class="pf-consent-foot">
+      <div class="pf-consent-links">
+        <a href="/privacy/" class="pf-consent-privacy-link">Privacy Policy</a>
+        <span class="pf-consent-sep">·</span>
+        <a href="/terms/" class="pf-consent-privacy-link">Terms</a>
+      </div>
+      <div class="pf-consent-actions">
+        <button type="button" id="pf-consent-btn-essential" class="pf-c-btn pf-c-btn-secondary">
+          Non-Personalized Only
+        </button>
+        <button type="button" id="pf-consent-btn-all" class="pf-c-btn pf-c-btn-primary">
+          Accept All
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .pf-consent-dialog {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 99999;
+    max-width: 440px;
+    width: calc(100vw - 32px);
+    animation: pfFadeUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes pfFadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .pf-consent-card {
+    background: var(--surface, #fdfcf8);
+    color: var(--ink, #17160f);
+    border: 2px solid var(--line, #dad5c5);
+    border-radius: 12px;
+    padding: 18px 20px 16px;
+    box-shadow: 0 4px 6px -1px rgba(23, 22, 15, 0.08), 0 20px 40px -15px rgba(23, 22, 15, 0.25);
+    font-family: var(--font-body, -apple-system, BlinkMacSystemFont, sans-serif);
+    position: relative;
+  }
+
+  .pf-consent-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  .pf-consent-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: var(--font-mono, monospace);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--accent, #ff5a1f);
+  }
+
+  .pf-consent-ico {
+    width: 16px;
+    height: 16px;
+  }
+
+  .pf-consent-x {
+    background: none;
+    border: 0;
+    font-size: 22px;
+    line-height: 1;
+    color: var(--ink-2, #5b5a4e);
+    cursor: pointer;
+    padding: 0 4px;
+    border-radius: 4px;
+  }
+  .pf-consent-x:hover {
+    color: var(--ink, #17160f);
+  }
+
+  .pf-consent-title {
+    margin: 0 0 6px 0;
+    font-family: var(--font-display, inherit);
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--ink, #17160f);
+  }
+
+  .pf-consent-desc {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-2, #5b5a4e);
+  }
+
+  .pf-consent-foot {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--line, #dad5c5);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .pf-consent-links {
+    font-size: 12px;
+    color: var(--ink-2, #5b5a4e);
+  }
+
+  .pf-consent-privacy-link {
+    color: var(--ink-2, #5b5a4e);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .pf-consent-privacy-link:hover {
+    color: var(--accent, #ff5a1f);
+  }
+
+  .pf-consent-sep {
+    margin: 0 4px;
+    opacity: 0.6;
+  }
+
+  .pf-consent-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .pf-c-btn {
+    font-family: var(--font-mono, monospace);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.1s ease, background 0.15s ease;
+  }
+  .pf-c-btn:active {
+    transform: scale(0.97);
+  }
+
+  .pf-c-btn-secondary {
+    background: var(--surface-2, #ede9dc);
+    color: var(--ink, #17160f);
+    border: 1px solid var(--line, #dad5c5);
+  }
+  .pf-c-btn-secondary:hover {
+    border-color: var(--ink-2, #5b5a4e);
+  }
+
+  .pf-c-btn-primary {
+    background: var(--accent, #ff5a1f);
+    color: #ffffff;
+    border: 1px solid #e04826;
+  }
+  .pf-c-btn-primary:hover {
+    background: #e04826;
+  }
+
+  @media (max-width: 480px) {
+    .pf-consent-dialog {
+      bottom: 12px;
+      right: 12px;
+      left: 12px;
+      max-width: none;
+      width: auto;
+    }
+    .pf-consent-foot {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .pf-consent-actions {
+      justify-content: stretch;
+    }
+    .pf-consent-actions .pf-c-btn {
+      flex: 1;
+      text-align: center;
+    }
+  }
+</style>
+
+<script is:inline>
+  (() => {
+    const STORAGE_KEY = 'pf_consent';
+    const banner = document.getElementById('pf-consent-dialog');
+    const btnEssential = document.getElementById('pf-consent-btn-essential');
+    const btnAll = document.getElementById('pf-consent-btn-all');
+    const btnClose = document.getElementById('pf-consent-close-btn');
+
+    function applyConsent(choice) {
+      try {
+        localStorage.setItem(STORAGE_KEY, choice);
+        localStorage.setItem('pf_consent_ts', Date.now().toString());
+      } catch (e) {}
+
+      window.adsbygoogle = window.adsbygoogle || [];
+      if (choice === 'all') {
+        window.adsbygoogle.requestNonPersonalizedAds = 0;
+      } else {
+        window.adsbygoogle.requestNonPersonalizedAds = 1;
+      }
+
+      window.dispatchEvent(new CustomEvent('privacyfold:consent', { detail: { choice } }));
+
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+
+    if (btnEssential) {
+      btnEssential.addEventListener('click', () => applyConsent('essential'));
+    }
+
+    if (btnAll) {
+      btnAll.addEventListener('click', () => applyConsent('all'));
+    }
+
+    if (btnClose) {
+      btnClose.addEventListener('click', () => {
+        // Dismissing defaults to essential / non-personalized
+        applyConsent('essential');
+      });
+    }
+
+    // Expose global method to re-open preferences dialog from footer or privacy page
+    window.__pfOpenConsent = function() {
+      if (banner) {
+        banner.style.display = 'block';
+      }
+    };
+
+    // Attach to any element with data-pf-consent-open attribute
+    document.addEventListener('click', (e) => {
+      const target = e.target.closest('[data-pf-consent-open]');
+      if (target) {
+        e.preventDefault();
+        window.__pfOpenConsent();
+      }
+    });
+
+    // Initial check: if no consent recorded yet, show after brief subtle delay
+    try {
+      const existing = localStorage.getItem(STORAGE_KEY);
+      if (!existing && banner) {
+        setTimeout(() => {
+          banner.style.display = 'block';
+        }, 800);
+      }
+    } catch (e) {
+      if (banner) {
+        banner.style.display = 'block';
+      }
+    }
+  })();
+</script>

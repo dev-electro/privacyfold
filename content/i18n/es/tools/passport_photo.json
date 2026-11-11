@@ -1,0 +1,62 @@
+{
+  "id": "passport_photo_es",
+  "slug": "passport-photo",
+  "translation_of": "passport_photo",
+  "locale": "es",
+  "reviewed_by": "gaurav-suthar",
+  "reviewed_date": "2026-11-11",
+  "name": "Creador de Fotos de Pasaporte Biométricas",
+  "category": "photo",
+  "fam": "photo",
+  "task": "Crear fotos oficiales de pasaporte y visado biométrico",
+  "badge": "JPG, PNG",
+  "size": "18–120 KB WASM",
+  "Engine": "/wasm/photo/passport-photo-v1.wasm",
+  "wasmModule": "passport-photo-v1.wasm",
+  "desc": "Las solicitudes de pasaportes internacionales, visados de viaje y documentos de identidad exigen un estricto cumplimiento de las normativas biométricas. PrivacyFold le permite encuadrar, recortar y calibrar sus fotos directamente en su navegador, con calibraciones para más de 87 jurisdicciones (incluyendo España DNI/Pasaporte 32x26mm, Schengen ICAO, EE.UU. y Reino Unido). Sus fotos privadas nunca se suben a ningún servidor.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "accepts": "image/jpeg,image/png,image/webp",
+  "tag": "Foto de Pasaporte",
+  "std": "ICAO 9303 / ISO 19794-5",
+  "seo": {
+    "metaTitle": "Creador Gratuito de Fotos de Pasaporte Online — 100% Local y Biométrico",
+    "metaDescription": "Cree fotos oficiales de pasaporte, DNI y visados directamente en su navegador. Calibración biométrica y cero subida de archivos.",
+    "aeoSummary": "El creador de fotos de pasaporte biométricas de PrivacyFold formatea fotos de usuario según especificaciones gubernamentales de 87 jurisdicciones. El encuadre facial, recorte y escalado de DPI se ejecutan localmente en la memoria RAM del navegador con cero transmisiones al servidor.",
+    "steps": [
+      "Seleccione o arrastre su foto tipo retrato.",
+      "Elija el país o visado deseado (ej. España DNI/Pasaporte, Schengen, EE.UU.).",
+      "Alinee la cabeza y los ojos con las guías biométricas.",
+      "Descargue la plantilla imprimible a 600 DPI o la foto digital individual."
+    ],
+    "faqs": [
+      {
+        "question": "¿Se sube mi fotografía a algún servidor?",
+        "answer": "No, en absoluto. Todo el procesamiento de imagen se ejecuta en la memoria local de su navegador. Ningún byte sale de su dispositivo."
+      },
+      {
+        "question": "¿Qué estándares gubernamentales admite?",
+        "answer": "Admite España DNI y pasaporte (32x26mm), Visado Schengen ICAO (35x45mm), Estados Unidos (2x2 pulgadas), Reino Unido, Canadá y más de 87 países."
+      }
+    ],
+    "keywords": ["foto pasaporte online", "foto dni online", "foto visado biometrica", "recortar foto pasaporte gratis"]
+  },
+  "whatToExpect": {
+    "results": "Fotografía biométrica de alta resolución calibrada al milímetro para su documento oficial.",
+    "limits": "Admite formatos JPG, PNG y WebP de hasta 50 MB.",
+    "benchmarks": "Tiempo de procesamiento inferior a 45 ms mediante Canvas API y WebAssembly."
+  },
+  "privacyProof": {
+    "howItWorks": "La manipulación de píxeles se realiza exclusivamente mediante la API Canvas de HTML5 en la GPU/CPU de su máquina local.",
+    "verificationSteps": [
+      "Abra las Herramientas de Desarrollador de su navegador (F12) y acceda a la pestaña Network.",
+      "Cargue y recorte su fotografía.",
+      "Compruebe que no se genera ninguna solicitud HTTP saliente con sus datos."
+    ],
+    "openSourceNotice": "Código transparente y arquitectura estática verificable en GitHub."
+  },
+  "social": {
+    "hook": "No regale sus fotos personales a servidores desconocidos. Cree su foto oficial de pasaporte o DNI con 100% de privacidad en su propio navegador.",
+    "channels": ["x", "whatsapp", "linkedin"]
+  }
+}
