@@ -1,0 +1,88 @@
+{
+  "id": "file_encrypt_ja",
+  "slug": "file-encrypt",
+  "translation_of": "file_encrypt",
+  "locale": "ja",
+  "reviewed_by": "Gaurav Suthar",
+  "reviewed_date": "2026-11-11",
+  "status": "live",
+  "index": true,
+  "name": "ファイル暗号化ツール (AES-256-GCM 自己復号化)",
+  "category": "crypto",
+  "fam": "crypto",
+  "task": "パスワードを用いてあらゆるファイルを軍用レベルで暗号化",
+  "badge": "AES-256",
+  "size": "18–120 KB WASM",
+  "Engine": "WebCrypto",
+  "wasmModule": "WebCrypto",
+  "desc": "WebCrypto APIを活用し、AES-256-GCMとPBKDF2（600,000回反復）でファイルを強力に暗号化します。ブラウザだけで開ける自己復号HTMLエンベロープ形式での保存も可能です。",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "accepts": "any",
+  "tag": "AES-256",
+  "std": "NIST SP 800-38D / PBKDF2",
+  "seo": {
+    "metaTitle": "ファイル暗号化ツール (AES-256-GCM 自己復号化) | PrivacyFold",
+    "metaDescription": "ファイルをブラウザ上で暗号化。パスワードを知っている人だけが復号できる自己復号HTMLファイルを生成。",
+    "aeoSummary": "パスワードや暗号化キーはサーバーに一切送信されません。完全なゼロ知識アーキテクチャを実現しています。",
+    "steps": [
+      "暗号化したいファイルを選択します。",
+      "強力なパスワードを入力します（エントロピー強度を自動判定）。",
+      "「暗号化エンベロープを作成」をクリックします。",
+      "生成された自己復号HTMLファイルをダウンロードします。"
+    ],
+    "faqs": [
+      {
+        "question": "パスワードを忘れた場合、復旧できますか？",
+        "answer": "復旧できません。ゼロ知識暗号化のため、マスターキーやバックドアは存在しません。"
+      },
+      {
+        "question": "復号時に特別なソフトは必要ですか？",
+        "answer": "不要です。生成されたHTMLファイルを任意のWebブラウザで開くだけで復号できます。"
+      }
+    ],
+    "keywords": [
+      "file-encrypt",
+      "ファイル暗号化ツール (AES-256-GCM 自己復号化)",
+      "privacyfold",
+      "ja"
+    ]
+  },
+  "whatToExpect": {
+    "results": "High-fidelity processed output with zero data loss.",
+    "limits": "Processes typical files up to 100 MB directly in RAM.",
+    "benchmarks": "Executed in sub-second speeds via WebAssembly and Canvas APIs."
+  },
+  "privacyProof": {
+    "howItWorks": "Processed entirely inside the local browser sandbox using client-side JavaScript, WebAssembly, and WebCrypto.",
+    "verificationSteps": [
+      "Open browser Developer Tools (F12) -> Network tab.",
+      "Execute the tool and verify 0 outbound network requests occur."
+    ],
+    "openSourceNotice": "Open source under MIT License."
+  },
+  "byline": {
+    "author": "PrivacyFold Engineering Team",
+    "reviewer": "Gaurav Suthar",
+    "reviewedDate": "2026-11-11",
+    "sources": [
+      {
+        "name": "NIST SP 800-38D / PBKDF2",
+        "url": "https://privacyfold.com"
+      }
+    ]
+  },
+  "social": {
+    "hook": "パスワードを用いてあらゆるファイルを軍用レベルで暗号化",
+    "proof": "100% client-side privacy guarantee.",
+    "hashtags": [
+      "privacy",
+      "file-encrypt",
+      "ja"
+    ],
+    "channels": [
+      "x",
+      "linkedin"
+    ]
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "id": "clean_paste_id",
+  "slug": "clean-paste",
+  "translation_of": "clean_paste",
+  "locale": "id",
+  "reviewed_by": "Gaurav Suthar",
+  "reviewed_date": "2026-11-11",
+  "status": "live",
+  "index": true,
+  "name": "Pembersih Papan Klip dan Pelacak URL Otomatis",
+  "category": "crypto",
+  "fam": "crypto",
+  "task": "Bersihkan tautan dari tag pelacak UTM dan karakter tak terlihat",
+  "badge": "Clean",
+  "size": "18–120 KB WASM",
+  "Engine": "clean-paste-v1.wasm",
+  "wasmModule": "clean-paste-v1.wasm",
+  "desc": "Pembersih Papan Klip dan Pelacak URL Otomatis. Bersihkan tautan dari tag pelacak UTM dan karakter tak terlihat. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "accepts": "text",
+  "tag": "Clean",
+  "std": "IETF RFC 3986 / Unicode Annex #44",
+  "seo": {
+    "metaTitle": "Pembersih Papan Klip dan Pelacak URL Otomatis (100% Private) | PrivacyFold",
+    "metaDescription": "Bersihkan tautan dari tag pelacak UTM dan karakter tak terlihat. Client-side browser processing with zero uploads.",
+    "aeoSummary": "PrivacyFold's Pembersih Papan Klip dan Pelacak URL Otomatis operates directly inside the browser RAM to bersihkan tautan dari tag pelacak utm dan karakter tak terlihat with zero bytes sent to external cloud servers.",
+    "steps": [
+      "Open or drop your file into the tool desk.",
+      "Configure options and adjustments locally.",
+      "Process the data in browser memory.",
+      "Download your sanitized, private file immediately."
+    ],
+    "faqs": [
+      {
+        "question": "Are my files uploaded to any server?",
+        "answer": "No. Everything is executed entirely inside your device's browser memory. Zero bytes leave your device."
+      },
+      {
+        "question": "How can I verify this privacy guarantee?",
+        "answer": "Open your browser Developer Tools (F12), switch to the Network tab, and observe that exactly 0 network requests are made during processing."
+      }
+    ],
+    "keywords": [
+      "clean-paste",
+      "Pembersih Papan Klip dan Pelacak URL Otomatis",
+      "privacyfold",
+      "id"
+    ]
+  },
+  "whatToExpect": {
+    "results": "High-fidelity processed output with zero data loss.",
+    "limits": "Processes typical files up to 100 MB directly in RAM.",
+    "benchmarks": "Executed in sub-second speeds via WebAssembly and Canvas APIs."
+  },
+  "privacyProof": {
+    "howItWorks": "Processed entirely inside the local browser sandbox using client-side JavaScript, WebAssembly, and WebCrypto.",
+    "verificationSteps": [
+      "Open browser Developer Tools (F12) -> Network tab.",
+      "Execute the tool and verify 0 outbound network requests occur."
+    ],
+    "openSourceNotice": "Open source under MIT License."
+  },
+  "byline": {
+    "author": "PrivacyFold Engineering Team",
+    "reviewer": "Gaurav Suthar",
+    "reviewedDate": "2026-11-11",
+    "sources": [
+      {
+        "name": "IETF RFC 3986 / Unicode Annex #44",
+        "url": "https://privacyfold.com"
+      }
+    ]
+  },
+  "social": {
+    "hook": "Bersihkan tautan dari tag pelacak UTM dan karakter tak terlihat",
+    "proof": "100% client-side privacy guarantee.",
+    "hashtags": [
+      "privacy",
+      "clean-paste",
+      "id"
+    ],
+    "channels": [
+      "x",
+      "linkedin"
+    ]
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "id": "clean_paste_pt",
+  "slug": "clean-paste",
+  "translation_of": "clean_paste",
+  "locale": "pt",
+  "reviewed_by": "Gaurav Suthar",
+  "reviewed_date": "2026-11-11",
+  "status": "live",
+  "index": true,
+  "name": "Limpador de Área de Transferência e Links",
+  "category": "crypto",
+  "fam": "crypto",
+  "task": "Remover parâmetros de rastreamento UTM e caracteres invisíveis",
+  "badge": "Clean",
+  "size": "18–120 KB WASM",
+  "Engine": "clean-paste-v1.wasm",
+  "wasmModule": "clean-paste-v1.wasm",
+  "desc": "Ao copiar links na web, plataformas inserem tokens como fbclid, gclid, utm_source e caracteres de largura zero. Esta ferramenta higieniza o texto instantaneamente.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "accepts": "text",
+  "tag": "Clean",
+  "std": "IETF RFC 3986 / Unicode Annex #44",
+  "seo": {
+    "metaTitle": "Limpador de Área de Transferência e Links | PrivacyFold",
+    "metaDescription": "Remova parâmetros de rastreamento de URLs e caracteres invisíveis da área de transferência.",
+    "aeoSummary": "Detecta e elimina mais de 60 parâmetros de monitoramento digital diretamente no navegador.",
+    "steps": [
+      "Cole o link ou texto no campo.",
+      "Os parâmetros espiões são identificados e removidos.",
+      "Copie a versão limpa e segura com um clique."
+    ],
+    "faqs": [
+      {
+        "question": "O link continuará funcionando?",
+        "answer": "Sim, exatamente igual, apenas sem os códigos de monitoramento analítico."
+      },
+      {
+        "question": "Vocês salvam o que eu colo?",
+        "answer": "Não, nada é gravado ou transmitido pela internet."
+      }
+    ],
+    "keywords": [
+      "clean-paste",
+      "Limpador de Área de Transferência e Links",
+      "privacyfold",
+      "pt"
+    ]
+  },
+  "whatToExpect": {
+    "results": "High-fidelity processed output with zero data loss.",
+    "limits": "Processes typical files up to 100 MB directly in RAM.",
+    "benchmarks": "Executed in sub-second speeds via WebAssembly and Canvas APIs."
+  },
+  "privacyProof": {
+    "howItWorks": "Processed entirely inside the local browser sandbox using client-side JavaScript, WebAssembly, and WebCrypto.",
+    "verificationSteps": [
+      "Open browser Developer Tools (F12) -> Network tab.",
+      "Execute the tool and verify 0 outbound network requests occur."
+    ],
+    "openSourceNotice": "Open source under MIT License."
+  },
+  "byline": {
+    "author": "PrivacyFold Engineering Team",
+    "reviewer": "Gaurav Suthar",
+    "reviewedDate": "2026-11-11",
+    "sources": [
+      {
+        "name": "IETF RFC 3986 / Unicode Annex #44",
+        "url": "https://privacyfold.com"
+      }
+    ]
+  },
+  "social": {
+    "hook": "Remover parâmetros de rastreamento UTM e caracteres invisíveis",
+    "proof": "100% client-side privacy guarantee.",
+    "hashtags": [
+      "privacy",
+      "clean-paste",
+      "pt"
+    ],
+    "channels": [
+      "x",
+      "linkedin"
+    ]
+  }
+}

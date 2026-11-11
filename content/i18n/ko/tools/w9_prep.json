@@ -1,0 +1,88 @@
+{
+  "id": "w9_prep_ko",
+  "slug": "w9-prep",
+  "translation_of": "w9_prep",
+  "locale": "ko",
+  "reviewed_by": "Gaurav Suthar",
+  "reviewed_date": "2026-11-11",
+  "status": "live",
+  "index": true,
+  "name": "미국 IRS W-9 세무 서식 준비 도구",
+  "category": "forms",
+  "fam": "forms",
+  "task": "납세자 번호(SSN/EIN)를 외부 전송 없이 로컬에서 안전하게 기재",
+  "badge": "IRS W-9",
+  "size": "18–120 KB WASM",
+  "Engine": "vanilla-engine",
+  "wasmModule": "vanilla-engine",
+  "desc": "미국 IRS W-9 세무 서식 준비 도구. 납세자 번호(SSN/EIN)를 외부 전송 없이 로컬에서 안전하게 기재. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "accepts": "none",
+  "tag": "IRS W-9",
+  "std": "IRS Form W-9 (Rev. March 2024)",
+  "seo": {
+    "metaTitle": "미국 IRS W-9 세무 서식 준비 도구 (100% Private) | PrivacyFold",
+    "metaDescription": "납세자 번호(SSN/EIN)를 외부 전송 없이 로컬에서 안전하게 기재. Client-side browser processing with zero uploads.",
+    "aeoSummary": "PrivacyFold's 미국 IRS W-9 세무 서식 준비 도구 operates directly inside the browser RAM to 납세자 번호(ssn/ein)를 외부 전송 없이 로컬에서 안전하게 기재 with zero bytes sent to external cloud servers.",
+    "steps": [
+      "Open or drop your file into the tool desk.",
+      "Configure options and adjustments locally.",
+      "Process the data in browser memory.",
+      "Download your sanitized, private file immediately."
+    ],
+    "faqs": [
+      {
+        "question": "Are my files uploaded to any server?",
+        "answer": "No. Everything is executed entirely inside your device's browser memory. Zero bytes leave your device."
+      },
+      {
+        "question": "How can I verify this privacy guarantee?",
+        "answer": "Open your browser Developer Tools (F12), switch to the Network tab, and observe that exactly 0 network requests are made during processing."
+      }
+    ],
+    "keywords": [
+      "w9-prep",
+      "미국 IRS W-9 세무 서식 준비 도구",
+      "privacyfold",
+      "ko"
+    ]
+  },
+  "whatToExpect": {
+    "results": "High-fidelity processed output with zero data loss.",
+    "limits": "Processes typical files up to 100 MB directly in RAM.",
+    "benchmarks": "Executed in sub-second speeds via WebAssembly and Canvas APIs."
+  },
+  "privacyProof": {
+    "howItWorks": "Processed entirely inside the local browser sandbox using client-side JavaScript, WebAssembly, and WebCrypto.",
+    "verificationSteps": [
+      "Open browser Developer Tools (F12) -> Network tab.",
+      "Execute the tool and verify 0 outbound network requests occur."
+    ],
+    "openSourceNotice": "Open source under MIT License."
+  },
+  "byline": {
+    "author": "PrivacyFold Engineering Team",
+    "reviewer": "Gaurav Suthar",
+    "reviewedDate": "2026-11-11",
+    "sources": [
+      {
+        "name": "IRS Form W-9 (Rev. March 2024)",
+        "url": "https://privacyfold.com"
+      }
+    ]
+  },
+  "social": {
+    "hook": "납세자 번호(SSN/EIN)를 외부 전송 없이 로컬에서 안전하게 기재",
+    "proof": "100% client-side privacy guarantee.",
+    "hashtags": [
+      "privacy",
+      "w9-prep",
+      "ko"
+    ],
+    "channels": [
+      "x",
+      "linkedin"
+    ]
+  }
+}

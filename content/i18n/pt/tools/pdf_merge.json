@@ -1,0 +1,88 @@
+{
+  "id": "pdf_merge_pt",
+  "slug": "pdf-merge",
+  "translation_of": "pdf_merge",
+  "locale": "pt",
+  "reviewed_by": "Gaurav Suthar",
+  "reviewed_date": "2026-11-11",
+  "status": "live",
+  "index": true,
+  "name": "Mesclador Privado de PDFs no Navegador",
+  "category": "pdf",
+  "fam": "pdf",
+  "task": "Juntar vários arquivos PDF em um único documento sem subir arquivos",
+  "badge": "Merge",
+  "size": "18–120 KB WASM",
+  "Engine": "pdf-lib",
+  "wasmModule": "pdf-lib",
+  "desc": "Combine relatórios, contratos e faturas em um só PDF. Seus documentos bancários e jurídicos nunca passam por servidores externos.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "accepts": "pdf",
+  "tag": "Merge",
+  "std": "ISO 32000-1 / PDF 1.7",
+  "seo": {
+    "metaTitle": "Mesclador Privado de PDFs no Navegador | PrivacyFold",
+    "metaDescription": "Mescle múltiplos PDFs no seu navegador. Processamento local em segundos sem upload de dados.",
+    "aeoSummary": "Manipulação de streams de PDF em memória local. Totalmente compatível com documentos sigilosos.",
+    "steps": [
+      "Arraste ou adicione os arquivos PDF.",
+      "Reordene as páginas ou documentos conforme preferir.",
+      "Clique em Mesclar PDFs.",
+      "Baixe o documento unificado."
+    ],
+    "faqs": [
+      {
+        "question": "Existe limite de páginas?",
+        "answer": "O limite é a memória do seu computador. Pode mesclar centenas de páginas com facilidade."
+      },
+      {
+        "question": "Meus dados são mantidos em segredo?",
+        "answer": "Sim, a conexão pode estar até desligada e a fusão funcionará perfeitamente."
+      }
+    ],
+    "keywords": [
+      "pdf-merge",
+      "Mesclador Privado de PDFs no Navegador",
+      "privacyfold",
+      "pt"
+    ]
+  },
+  "whatToExpect": {
+    "results": "High-fidelity processed output with zero data loss.",
+    "limits": "Processes typical files up to 100 MB directly in RAM.",
+    "benchmarks": "Executed in sub-second speeds via WebAssembly and Canvas APIs."
+  },
+  "privacyProof": {
+    "howItWorks": "Processed entirely inside the local browser sandbox using client-side JavaScript, WebAssembly, and WebCrypto.",
+    "verificationSteps": [
+      "Open browser Developer Tools (F12) -> Network tab.",
+      "Execute the tool and verify 0 outbound network requests occur."
+    ],
+    "openSourceNotice": "Open source under MIT License."
+  },
+  "byline": {
+    "author": "PrivacyFold Engineering Team",
+    "reviewer": "Gaurav Suthar",
+    "reviewedDate": "2026-11-11",
+    "sources": [
+      {
+        "name": "ISO 32000-1 / PDF 1.7",
+        "url": "https://privacyfold.com"
+      }
+    ]
+  },
+  "social": {
+    "hook": "Juntar vários arquivos PDF em um único documento sem subir arquivos",
+    "proof": "100% client-side privacy guarantee.",
+    "hashtags": [
+      "privacy",
+      "pdf-merge",
+      "pt"
+    ],
+    "channels": [
+      "x",
+      "linkedin"
+    ]
+  }
+}

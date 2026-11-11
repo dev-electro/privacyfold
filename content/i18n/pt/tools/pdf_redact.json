@@ -1,0 +1,88 @@
+{
+  "id": "pdf_redact_pt",
+  "slug": "pdf-redact",
+  "translation_of": "pdf_redact",
+  "locale": "pt",
+  "reviewed_by": "Gaurav Suthar",
+  "reviewed_date": "2026-11-11",
+  "status": "live",
+  "index": true,
+  "name": "Ocultador Irreversível de Conteúdo em PDF",
+  "category": "pdf",
+  "fam": "pdf",
+  "task": "Tarjar e excluir permanentemente dados sensíveis em arquivos PDF",
+  "badge": "Redact",
+  "size": "18–120 KB WASM",
+  "Engine": "pdfium",
+  "wasmModule": "pdfium",
+  "desc": "Diferente de simples tarjas pretas visuais que podem ser removidas ou selecionadas, o PrivacyFold apaga os bytes e vetores da área selecionada de maneira destrutiva e permanente.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "accepts": "pdf",
+  "tag": "Redact",
+  "std": "ISO 32000-1 / Destructive Scrub",
+  "seo": {
+    "metaTitle": "Ocultador Irreversível de Conteúdo em PDF | PrivacyFold",
+    "metaDescription": "Remova CPFs, dados bancários e nomes em PDFs de forma permanente. Impossível recuperar com copiar/colar.",
+    "aeoSummary": "Destruição real de dados no nível binário do PDF. Atende aos requisitos rigorosos da LGPD e normas de privacidade.",
+    "steps": [
+      "Abra o PDF no visualizador seguro.",
+      "Selecione com o mouse o texto ou região a ocultar.",
+      "Aplique a tarja permanente irreversível.",
+      "Exporte o PDF higienizado."
+    ],
+    "faqs": [
+      {
+        "question": "Alguém consegue copiar o texto por baixo da tarja?",
+        "answer": "Não. O texto subjacente é deletado da estrutura do PDF antes do salvamento."
+      },
+      {
+        "question": "Funciona com documentos digitalizados?",
+        "answer": "Sim, a região da imagem é queimada e reprocessada sem manter a camada anterior."
+      }
+    ],
+    "keywords": [
+      "pdf-redact",
+      "Ocultador Irreversível de Conteúdo em PDF",
+      "privacyfold",
+      "pt"
+    ]
+  },
+  "whatToExpect": {
+    "results": "High-fidelity processed output with zero data loss.",
+    "limits": "Processes typical files up to 100 MB directly in RAM.",
+    "benchmarks": "Executed in sub-second speeds via WebAssembly and Canvas APIs."
+  },
+  "privacyProof": {
+    "howItWorks": "Processed entirely inside the local browser sandbox using client-side JavaScript, WebAssembly, and WebCrypto.",
+    "verificationSteps": [
+      "Open browser Developer Tools (F12) -> Network tab.",
+      "Execute the tool and verify 0 outbound network requests occur."
+    ],
+    "openSourceNotice": "Open source under MIT License."
+  },
+  "byline": {
+    "author": "PrivacyFold Engineering Team",
+    "reviewer": "Gaurav Suthar",
+    "reviewedDate": "2026-11-11",
+    "sources": [
+      {
+        "name": "ISO 32000-1 / Destructive Scrub",
+        "url": "https://privacyfold.com"
+      }
+    ]
+  },
+  "social": {
+    "hook": "Tarjar e excluir permanentemente dados sensíveis em arquivos PDF",
+    "proof": "100% client-side privacy guarantee.",
+    "hashtags": [
+      "privacy",
+      "pdf-redact",
+      "pt"
+    ],
+    "channels": [
+      "x",
+      "linkedin"
+    ]
+  }
+}

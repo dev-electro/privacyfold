@@ -1,0 +1,88 @@
+{
+  "id": "file_encrypt_ko",
+  "slug": "file-encrypt",
+  "translation_of": "file_encrypt",
+  "locale": "ko",
+  "reviewed_by": "Gaurav Suthar",
+  "reviewed_date": "2026-11-11",
+  "status": "live",
+  "index": true,
+  "name": "제로 지식 AES-256-GCM 파일 암호화 도구",
+  "category": "crypto",
+  "fam": "crypto",
+  "task": "비밀번호를 사용하여 자체 복호화 가능한 HTML 봉투로 파일 보호",
+  "badge": "AES-256",
+  "size": "18–120 KB WASM",
+  "Engine": "WebCrypto",
+  "wasmModule": "WebCrypto",
+  "desc": "제로 지식 AES-256-GCM 파일 암호화 도구. 비밀번호를 사용하여 자체 복호화 가능한 HTML 봉투로 파일 보호. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "accepts": "any",
+  "tag": "AES-256",
+  "std": "NIST SP 800-38D / PBKDF2",
+  "seo": {
+    "metaTitle": "제로 지식 AES-256-GCM 파일 암호화 도구 (100% Private) | PrivacyFold",
+    "metaDescription": "비밀번호를 사용하여 자체 복호화 가능한 HTML 봉투로 파일 보호. Client-side browser processing with zero uploads.",
+    "aeoSummary": "PrivacyFold's 제로 지식 AES-256-GCM 파일 암호화 도구 operates directly inside the browser RAM to 비밀번호를 사용하여 자체 복호화 가능한 html 봉투로 파일 보호 with zero bytes sent to external cloud servers.",
+    "steps": [
+      "Open or drop your file into the tool desk.",
+      "Configure options and adjustments locally.",
+      "Process the data in browser memory.",
+      "Download your sanitized, private file immediately."
+    ],
+    "faqs": [
+      {
+        "question": "Are my files uploaded to any server?",
+        "answer": "No. Everything is executed entirely inside your device's browser memory. Zero bytes leave your device."
+      },
+      {
+        "question": "How can I verify this privacy guarantee?",
+        "answer": "Open your browser Developer Tools (F12), switch to the Network tab, and observe that exactly 0 network requests are made during processing."
+      }
+    ],
+    "keywords": [
+      "file-encrypt",
+      "제로 지식 AES-256-GCM 파일 암호화 도구",
+      "privacyfold",
+      "ko"
+    ]
+  },
+  "whatToExpect": {
+    "results": "High-fidelity processed output with zero data loss.",
+    "limits": "Processes typical files up to 100 MB directly in RAM.",
+    "benchmarks": "Executed in sub-second speeds via WebAssembly and Canvas APIs."
+  },
+  "privacyProof": {
+    "howItWorks": "Processed entirely inside the local browser sandbox using client-side JavaScript, WebAssembly, and WebCrypto.",
+    "verificationSteps": [
+      "Open browser Developer Tools (F12) -> Network tab.",
+      "Execute the tool and verify 0 outbound network requests occur."
+    ],
+    "openSourceNotice": "Open source under MIT License."
+  },
+  "byline": {
+    "author": "PrivacyFold Engineering Team",
+    "reviewer": "Gaurav Suthar",
+    "reviewedDate": "2026-11-11",
+    "sources": [
+      {
+        "name": "NIST SP 800-38D / PBKDF2",
+        "url": "https://privacyfold.com"
+      }
+    ]
+  },
+  "social": {
+    "hook": "비밀번호를 사용하여 자체 복호화 가능한 HTML 봉투로 파일 보호",
+    "proof": "100% client-side privacy guarantee.",
+    "hashtags": [
+      "privacy",
+      "file-encrypt",
+      "ko"
+    ],
+    "channels": [
+      "x",
+      "linkedin"
+    ]
+  }
+}

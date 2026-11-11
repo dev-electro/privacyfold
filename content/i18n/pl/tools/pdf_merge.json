@@ -1,0 +1,88 @@
+{
+  "id": "pdf_merge_pl",
+  "slug": "pdf-merge",
+  "translation_of": "pdf_merge",
+  "locale": "pl",
+  "reviewed_by": "Gaurav Suthar",
+  "reviewed_date": "2026-11-11",
+  "status": "live",
+  "index": true,
+  "name": "Prywatne łączenie plików PDF w przeglądarce",
+  "category": "pdf",
+  "fam": "pdf",
+  "task": "Połącz wiele dokumentów PDF w jeden bez wysyłania do sieci",
+  "badge": "Merge",
+  "size": "18–120 KB WASM",
+  "Engine": "pdf-lib",
+  "wasmModule": "pdf-lib",
+  "desc": "Prywatne łączenie plików PDF w przeglądarce. Połącz wiele dokumentów PDF w jeden bez wysyłania do sieci. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "accepts": "pdf",
+  "tag": "Merge",
+  "std": "ISO 32000-1 / PDF 1.7",
+  "seo": {
+    "metaTitle": "Prywatne łączenie plików PDF w przeglądarce (100% Private) | PrivacyFold",
+    "metaDescription": "Połącz wiele dokumentów PDF w jeden bez wysyłania do sieci. Client-side browser processing with zero uploads.",
+    "aeoSummary": "PrivacyFold's Prywatne łączenie plików PDF w przeglądarce operates directly inside the browser RAM to połącz wiele dokumentów pdf w jeden bez wysyłania do sieci with zero bytes sent to external cloud servers.",
+    "steps": [
+      "Open or drop your file into the tool desk.",
+      "Configure options and adjustments locally.",
+      "Process the data in browser memory.",
+      "Download your sanitized, private file immediately."
+    ],
+    "faqs": [
+      {
+        "question": "Are my files uploaded to any server?",
+        "answer": "No. Everything is executed entirely inside your device's browser memory. Zero bytes leave your device."
+      },
+      {
+        "question": "How can I verify this privacy guarantee?",
+        "answer": "Open your browser Developer Tools (F12), switch to the Network tab, and observe that exactly 0 network requests are made during processing."
+      }
+    ],
+    "keywords": [
+      "pdf-merge",
+      "Prywatne łączenie plików PDF w przeglądarce",
+      "privacyfold",
+      "pl"
+    ]
+  },
+  "whatToExpect": {
+    "results": "High-fidelity processed output with zero data loss.",
+    "limits": "Processes typical files up to 100 MB directly in RAM.",
+    "benchmarks": "Executed in sub-second speeds via WebAssembly and Canvas APIs."
+  },
+  "privacyProof": {
+    "howItWorks": "Processed entirely inside the local browser sandbox using client-side JavaScript, WebAssembly, and WebCrypto.",
+    "verificationSteps": [
+      "Open browser Developer Tools (F12) -> Network tab.",
+      "Execute the tool and verify 0 outbound network requests occur."
+    ],
+    "openSourceNotice": "Open source under MIT License."
+  },
+  "byline": {
+    "author": "PrivacyFold Engineering Team",
+    "reviewer": "Gaurav Suthar",
+    "reviewedDate": "2026-11-11",
+    "sources": [
+      {
+        "name": "ISO 32000-1 / PDF 1.7",
+        "url": "https://privacyfold.com"
+      }
+    ]
+  },
+  "social": {
+    "hook": "Połącz wiele dokumentów PDF w jeden bez wysyłania do sieci",
+    "proof": "100% client-side privacy guarantee.",
+    "hashtags": [
+      "privacy",
+      "pdf-merge",
+      "pl"
+    ],
+    "channels": [
+      "x",
+      "linkedin"
+    ]
+  }
+}

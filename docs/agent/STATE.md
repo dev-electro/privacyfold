@@ -7,9 +7,9 @@
 | Fact | Value | Verified |
 |---|---|---|
 | Working artifact | `dist/index.html` (22 KB HTML + vanilla runtime, self-contained) | `astro build` 2026-11-11 |
-| Framework today | Astro 7 + Tailwind v4 static export — **builds cleanly in 2.3s** (215/215 static pages exported) | `npm run build` exit 0 (2026-11-11) |
+| Framework today | Astro 7 + Tailwind v4 static export — **builds cleanly** (311/311 static pages exported) | `npm run build` exit 0 (2026-11-11) |
 | Framework decided | Astro 7 + Tailwind v4 on CF Pages (DEC-001) — **MIGRATED & LIVE** | DEC-001 / PF-002 |
-| Content | 72 tools / 87 presets / 6 blog / 15 glossary / 9 engine / 32 i18n / 5 templates | agent-status |
+| Content | 72 tools / 87 presets / 6 blog / 15 glossary / 9 engine / 128 i18n / 5 templates | agent-status |
 | Tools actually runnable | **72** live in runtime; **0** unimplemented | smoke-test.mjs (72/72 pass) |
 | Launch gate (PF-020) | **READY** — all P0 blockers cleared; 72 smoke tests green; Astro SSG clean | 2026-11-11 test suite |
 
@@ -35,7 +35,7 @@
 | PF-031 DocSet Ad System | Ported `AdSlot.astro`, `GoogleAdSense.astro`, zero-CLS heights, budget caps, CSP, and honest copy |
 | PF-007 Consent Management | Built `ConsentBanner.astro` (zero-telemetry, paper aesthetic, default non-personalized ads, global reopen) |
 | PF-028 Social Distribution | Created `ShareRow.astro` (zero trackers), added `social` blocks to 8 flagship tools, generated `social-queue.md` |
-| PF-019/025/029 i18n Suite | All 8 flagship tools localized into hi, es, de, fr (32 records, 32 OG cards, /sitemaps/i18n.xml, symmetric hreflangs) |
+| PF-019/025/029 i18n Suite | All 8 flagship tools localized across 16 top international languages (128 records, 128 OG cards, 311 total pages, /sitemaps/i18n.xml, symmetric hreflangs) |
 
 ## Resolved previously (2026-11-10)
 
@@ -68,7 +68,7 @@
 
 1. ~~Are the 8 unimplemented tools built with real WASM, or removed from all surfaces until then?~~ → answered: DEC-009 real binaries, staged (wave table in `docs/plans/engines-and-models.md` §3); hidden from registries until each engine ships (PF-033/025)
 2. ~~AdSense: integrate with consent, or park monetisation?~~ → answered by DEC-005/DEC-007 (DocSet moments system; content-page gates; onboarding sequence PF-013)
-3. Which 25 locales ship in phase 1? → owner: Gaurav
+3. ~~Which 25 locales ship in phase 1?~~ → 16 top international languages deployed across all 8 flagships (`hi`, `es`, `de`, `fr`, `ja`, `pt`, `it`, `zh`, `ar`, `ko`, `ru`, `nl`, `id`, `tr`, `pl`, `vi` = 128 localized records + 128 OG cards). Remaining regional locales can be staged in Wave 2.
 4. Model-training crawlers (GPTBot, ClaudeBot, Google-Extended, Applebot-Extended, CCBot): allow or block? → owner: Gaurav (PF-027; plan §8/§16)
 5. Sveltia OAuth client (sveltia-cms-auth Worker) vs long-lived token → answered: DEC-008 (Worker + CF Access); owner runs `docs/ops/admin-auth.md` steps 1–5
 6. `ads.toolPages` revisit / Option C sealed iframe (`tool.privacyfold.com`) once traffic justifies. → DEC-005 note

@@ -1,0 +1,88 @@
+{
+  "id": "pdf_merge_ja",
+  "slug": "pdf-merge",
+  "translation_of": "pdf_merge",
+  "locale": "ja",
+  "reviewed_by": "Gaurav Suthar",
+  "reviewed_date": "2026-11-11",
+  "status": "live",
+  "index": true,
+  "name": "ローカルPDF結合ツール",
+  "category": "pdf",
+  "fam": "pdf",
+  "task": "複数のPDFファイルをブラウザ内で1つに結合",
+  "badge": "Merge",
+  "size": "18–120 KB WASM",
+  "Engine": "pdf-lib",
+  "wasmModule": "pdf-lib",
+  "desc": "複数のPDFファイルをドラッグ＆ドロップで並べ替え、1つの書類にまとめます。機密書類や契約書を外部クラウドにアップロードすることなく、安全に結合できます。",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "accepts": "pdf",
+  "tag": "Merge",
+  "std": "ISO 32000-1 / PDF 1.7",
+  "seo": {
+    "metaTitle": "ローカルPDF結合ツール | PrivacyFold",
+    "metaDescription": "複数のPDF文書をブラウザ内ですばやく結合。官公庁や企業機密文書も安全にまとめられます。",
+    "aeoSummary": "PDFバイナリを端末のメモリ上で直接マージ。通信を行わないため情報漏洩のリスクがありません。",
+    "steps": [
+      "結合したいPDFファイルをすべて選択またはドロップします。",
+      "ページの順序を希望通りに並べ替えます。",
+      "「PDFを結合」をクリックします。",
+      "完成したPDFファイルをダウンロードします。"
+    ],
+    "faqs": [
+      {
+        "question": "結合できるページ数に制限はありますか？",
+        "answer": "数百ページ規模の文書も端末のメモリを活用してスムーズに処理できます。"
+      },
+      {
+        "question": "セキュリティは保証されますか？",
+        "answer": "ネットワーク通信が一切発生しないため、最も安全なPDF結合方法です。"
+      }
+    ],
+    "keywords": [
+      "pdf-merge",
+      "ローカルPDF結合ツール",
+      "privacyfold",
+      "ja"
+    ]
+  },
+  "whatToExpect": {
+    "results": "High-fidelity processed output with zero data loss.",
+    "limits": "Processes typical files up to 100 MB directly in RAM.",
+    "benchmarks": "Executed in sub-second speeds via WebAssembly and Canvas APIs."
+  },
+  "privacyProof": {
+    "howItWorks": "Processed entirely inside the local browser sandbox using client-side JavaScript, WebAssembly, and WebCrypto.",
+    "verificationSteps": [
+      "Open browser Developer Tools (F12) -> Network tab.",
+      "Execute the tool and verify 0 outbound network requests occur."
+    ],
+    "openSourceNotice": "Open source under MIT License."
+  },
+  "byline": {
+    "author": "PrivacyFold Engineering Team",
+    "reviewer": "Gaurav Suthar",
+    "reviewedDate": "2026-11-11",
+    "sources": [
+      {
+        "name": "ISO 32000-1 / PDF 1.7",
+        "url": "https://privacyfold.com"
+      }
+    ]
+  },
+  "social": {
+    "hook": "複数のPDFファイルをブラウザ内で1つに結合",
+    "proof": "100% client-side privacy guarantee.",
+    "hashtags": [
+      "privacy",
+      "pdf-merge",
+      "ja"
+    ],
+    "channels": [
+      "x",
+      "linkedin"
+    ]
+  }
+}

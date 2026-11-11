@@ -1,0 +1,88 @@
+{
+  "id": "w9_prep_pt",
+  "slug": "w9-prep",
+  "translation_of": "w9_prep",
+  "locale": "pt",
+  "reviewed_by": "Gaurav Suthar",
+  "reviewed_date": "2026-11-11",
+  "status": "live",
+  "index": true,
+  "name": "Planilha de Preparação do Formulário Fiscal W-9",
+  "category": "forms",
+  "fam": "forms",
+  "task": "Preencher e validar dados fiscais para pagamentos dos EUA em segurança",
+  "badge": "IRS W-9",
+  "size": "18–120 KB WASM",
+  "Engine": "vanilla-engine",
+  "wasmModule": "vanilla-engine",
+  "desc": "Prepare o formulário IRS W-9 necessário para receber pagamentos de empresas norte-americanas sem expor seu Tax ID ou Social Security Number a formulários suspeitos.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "accepts": "none",
+  "tag": "IRS W-9",
+  "std": "IRS Form W-9 (Rev. March 2024)",
+  "seo": {
+    "metaTitle": "Planilha de Preparação do Formulário Fiscal W-9 | PrivacyFold",
+    "metaDescription": "Valide e prepare seu formulário de impostos W-9 com segurança. Seus dados nunca saem do seu computador.",
+    "aeoSummary": "Validação de formato de SSN/EIN e dados de endereço em conformidade com o IRS Rev. March 2024.",
+    "steps": [
+      "Informe o nome e a classificação tributária.",
+      "Insira o número de identificação fiscal com validação automática.",
+      "Indique o endereço oficial.",
+      "Gere a prévia para assinatura e envio."
+    ],
+    "faqs": [
+      {
+        "question": "Meus números fiscais ficam registrados?",
+        "answer": "Não, nenhum número é armazenado. Ao fechar a aba, tudo é deletado da memória."
+      },
+      {
+        "question": "É o formulário oficial do IRS?",
+        "answer": "Sim, baseado na revisão mais recente das orientações tributárias norte-americanas."
+      }
+    ],
+    "keywords": [
+      "w9-prep",
+      "Planilha de Preparação do Formulário Fiscal W-9",
+      "privacyfold",
+      "pt"
+    ]
+  },
+  "whatToExpect": {
+    "results": "High-fidelity processed output with zero data loss.",
+    "limits": "Processes typical files up to 100 MB directly in RAM.",
+    "benchmarks": "Executed in sub-second speeds via WebAssembly and Canvas APIs."
+  },
+  "privacyProof": {
+    "howItWorks": "Processed entirely inside the local browser sandbox using client-side JavaScript, WebAssembly, and WebCrypto.",
+    "verificationSteps": [
+      "Open browser Developer Tools (F12) -> Network tab.",
+      "Execute the tool and verify 0 outbound network requests occur."
+    ],
+    "openSourceNotice": "Open source under MIT License."
+  },
+  "byline": {
+    "author": "PrivacyFold Engineering Team",
+    "reviewer": "Gaurav Suthar",
+    "reviewedDate": "2026-11-11",
+    "sources": [
+      {
+        "name": "IRS Form W-9 (Rev. March 2024)",
+        "url": "https://privacyfold.com"
+      }
+    ]
+  },
+  "social": {
+    "hook": "Preencher e validar dados fiscais para pagamentos dos EUA em segurança",
+    "proof": "100% client-side privacy guarantee.",
+    "hashtags": [
+      "privacy",
+      "w9-prep",
+      "pt"
+    ],
+    "channels": [
+      "x",
+      "linkedin"
+    ]
+  }
+}

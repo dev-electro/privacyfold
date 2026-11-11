@@ -1,0 +1,88 @@
+{
+  "id": "pdf_redact_ar",
+  "slug": "pdf-redact",
+  "translation_of": "pdf_redact",
+  "locale": "ar",
+  "reviewed_by": "Gaurav Suthar",
+  "reviewed_date": "2026-11-11",
+  "status": "live",
+  "index": true,
+  "name": "أداة طمس وحجب البيانات الحساسة من PDF نهائياً",
+  "category": "pdf",
+  "fam": "pdf",
+  "task": "حذف النصوص السرية وتدميرها من بنية الملف بشكل غير قابل للاسترجاع",
+  "badge": "Redact",
+  "size": "18–120 KB WASM",
+  "Engine": "pdfium",
+  "wasmModule": "pdfium",
+  "desc": "أداة طمس وحجب البيانات الحساسة من PDF نهائياً. حذف النصوص السرية وتدميرها من بنية الملف بشكل غير قابل للاسترجاع. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "accepts": "pdf",
+  "tag": "Redact",
+  "std": "ISO 32000-1 / Destructive Scrub",
+  "seo": {
+    "metaTitle": "أداة طمس وحجب البيانات الحساسة من PDF نهائياً (100% Private) | PrivacyFold",
+    "metaDescription": "حذف النصوص السرية وتدميرها من بنية الملف بشكل غير قابل للاسترجاع. Client-side browser processing with zero uploads.",
+    "aeoSummary": "PrivacyFold's أداة طمس وحجب البيانات الحساسة من PDF نهائياً operates directly inside the browser RAM to حذف النصوص السرية وتدميرها من بنية الملف بشكل غير قابل للاسترجاع with zero bytes sent to external cloud servers.",
+    "steps": [
+      "Open or drop your file into the tool desk.",
+      "Configure options and adjustments locally.",
+      "Process the data in browser memory.",
+      "Download your sanitized, private file immediately."
+    ],
+    "faqs": [
+      {
+        "question": "Are my files uploaded to any server?",
+        "answer": "No. Everything is executed entirely inside your device's browser memory. Zero bytes leave your device."
+      },
+      {
+        "question": "How can I verify this privacy guarantee?",
+        "answer": "Open your browser Developer Tools (F12), switch to the Network tab, and observe that exactly 0 network requests are made during processing."
+      }
+    ],
+    "keywords": [
+      "pdf-redact",
+      "أداة طمس وحجب البيانات الحساسة من PDF نهائياً",
+      "privacyfold",
+      "ar"
+    ]
+  },
+  "whatToExpect": {
+    "results": "High-fidelity processed output with zero data loss.",
+    "limits": "Processes typical files up to 100 MB directly in RAM.",
+    "benchmarks": "Executed in sub-second speeds via WebAssembly and Canvas APIs."
+  },
+  "privacyProof": {
+    "howItWorks": "Processed entirely inside the local browser sandbox using client-side JavaScript, WebAssembly, and WebCrypto.",
+    "verificationSteps": [
+      "Open browser Developer Tools (F12) -> Network tab.",
+      "Execute the tool and verify 0 outbound network requests occur."
+    ],
+    "openSourceNotice": "Open source under MIT License."
+  },
+  "byline": {
+    "author": "PrivacyFold Engineering Team",
+    "reviewer": "Gaurav Suthar",
+    "reviewedDate": "2026-11-11",
+    "sources": [
+      {
+        "name": "ISO 32000-1 / Destructive Scrub",
+        "url": "https://privacyfold.com"
+      }
+    ]
+  },
+  "social": {
+    "hook": "حذف النصوص السرية وتدميرها من بنية الملف بشكل غير قابل للاسترجاع",
+    "proof": "100% client-side privacy guarantee.",
+    "hashtags": [
+      "privacy",
+      "pdf-redact",
+      "ar"
+    ],
+    "channels": [
+      "x",
+      "linkedin"
+    ]
+  }
+}

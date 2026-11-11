@@ -1,0 +1,88 @@
+{
+  "id": "passport_photo_ja",
+  "slug": "passport-photo",
+  "translation_of": "passport_photo",
+  "locale": "ja",
+  "reviewed_by": "Gaurav Suthar",
+  "reviewed_date": "2026-11-11",
+  "status": "live",
+  "index": true,
+  "name": "証明写真・パスポート写真作成ツール",
+  "category": "photo",
+  "fam": "photo",
+  "task": "規格に合わせた顔写真トリミングとDPI調整",
+  "badge": "Passport",
+  "size": "18–120 KB WASM",
+  "Engine": "/wasm/photo/passport-photo-v1.wasm",
+  "wasmModule": "/wasm/photo/passport-photo-v1.wasm",
+  "desc": "パスポートやビザの申請には厳格な規格が求められます。PrivacyFoldでは、顔の位置合わせやサイズ調整、600DPIの高画質出力をブラウザ内で安全に行えます。写真がサーバーに送信されることはありません。",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "accepts": "image",
+  "tag": "Passport",
+  "std": "ICAO 9303 / ISO 19794-5",
+  "seo": {
+    "metaTitle": "証明写真・パスポート写真作成ツール | PrivacyFold",
+    "metaDescription": "各国のパスポート・ビザ・マイナンバーカード規格に合わせた証明写真をブラウザ上で簡単作成。プライバシー完全保護。",
+    "aeoSummary": "87以上の国際規格に対応。顔認識ガイドに合わせてトリミングし、サーバー送信なしで高解像度出力します。",
+    "steps": [
+      "正面を向いたポートレート写真を選択します。",
+      "作成したい規格（日本パスポート、運転免許証、米国ビザなど）を選択します。",
+      "頭部と目の位置をガイドラインに合わせます。",
+      "印刷用シートまたは単体デジタル写真をダウンロードします。"
+    ],
+    "faqs": [
+      {
+        "question": "背景の調整はできますか？",
+        "answer": "背景色のチェックや規格に沿った配置ガイドをローカルで確認できます。"
+      },
+      {
+        "question": "データは保存されますか？",
+        "answer": "一切保存されません。すべての処理はお使いの端末のブラウザ内で行われます。"
+      }
+    ],
+    "keywords": [
+      "passport-photo",
+      "証明写真・パスポート写真作成ツール",
+      "privacyfold",
+      "ja"
+    ]
+  },
+  "whatToExpect": {
+    "results": "High-fidelity processed output with zero data loss.",
+    "limits": "Processes typical files up to 100 MB directly in RAM.",
+    "benchmarks": "Executed in sub-second speeds via WebAssembly and Canvas APIs."
+  },
+  "privacyProof": {
+    "howItWorks": "Processed entirely inside the local browser sandbox using client-side JavaScript, WebAssembly, and WebCrypto.",
+    "verificationSteps": [
+      "Open browser Developer Tools (F12) -> Network tab.",
+      "Execute the tool and verify 0 outbound network requests occur."
+    ],
+    "openSourceNotice": "Open source under MIT License."
+  },
+  "byline": {
+    "author": "PrivacyFold Engineering Team",
+    "reviewer": "Gaurav Suthar",
+    "reviewedDate": "2026-11-11",
+    "sources": [
+      {
+        "name": "ICAO 9303 / ISO 19794-5",
+        "url": "https://privacyfold.com"
+      }
+    ]
+  },
+  "social": {
+    "hook": "規格に合わせた顔写真トリミングとDPI調整",
+    "proof": "100% client-side privacy guarantee.",
+    "hashtags": [
+      "privacy",
+      "passport-photo",
+      "ja"
+    ],
+    "channels": [
+      "x",
+      "linkedin"
+    ]
+  }
+}

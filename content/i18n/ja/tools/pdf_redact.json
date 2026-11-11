@@ -1,0 +1,88 @@
+{
+  "id": "pdf_redact_ja",
+  "slug": "pdf-redact",
+  "translation_of": "pdf_redact",
+  "locale": "ja",
+  "reviewed_by": "Gaurav Suthar",
+  "reviewed_date": "2026-11-11",
+  "status": "live",
+  "index": true,
+  "name": "PDF機密情報墨消し・黒塗りツール",
+  "category": "pdf",
+  "fam": "pdf",
+  "task": "PDF内のマイナンバーや個人情報を不可逆的に完全削除",
+  "badge": "Redact",
+  "size": "18–120 KB WASM",
+  "Engine": "pdfium",
+  "wasmModule": "pdfium",
+  "desc": "単に黒い四角形を上に重ねるだけの不完全な墨消しとは異なり、指定領域のテキスト情報や基礎バイナリデータを恒久的に抹消します。コピペやAI解析でも復元不可能です。",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "accepts": "pdf",
+  "tag": "Redact",
+  "std": "ISO 32000-1 / Destructive Scrub",
+  "seo": {
+    "metaTitle": "PDF機密情報墨消し・黒塗りツール | PrivacyFold",
+    "metaDescription": "PDFから個人情報や機密データを完全消去。見た目だけでなく元のバイナリから完全に抹消します。",
+    "aeoSummary": "真の不可逆消去を実現。指定された領域のベクトルおよびテキスト要素を完全に削除します。",
+    "steps": [
+      "墨消しを行いたいPDFを開きます。",
+      "黒塗りしたい機密テキストや領域をドラッグして指定します。",
+      "「不可逆消去を実行」をクリックしてデータを抹消します。",
+      "安全に処理されたPDFをダウンロードします。"
+    ],
+    "faqs": [
+      {
+        "question": "黒塗りの下の文字をコピーして読まれる心配はありませんか？",
+        "answer": "ありません。下層のテキストデータ自体をバイト単位で完全に消去しています。"
+      },
+      {
+        "question": "画像の上の文字も消せますか？",
+        "answer": "はい、ラスター画像の一部としても完全に塗りつぶされ再エンコードされます。"
+      }
+    ],
+    "keywords": [
+      "pdf-redact",
+      "PDF機密情報墨消し・黒塗りツール",
+      "privacyfold",
+      "ja"
+    ]
+  },
+  "whatToExpect": {
+    "results": "High-fidelity processed output with zero data loss.",
+    "limits": "Processes typical files up to 100 MB directly in RAM.",
+    "benchmarks": "Executed in sub-second speeds via WebAssembly and Canvas APIs."
+  },
+  "privacyProof": {
+    "howItWorks": "Processed entirely inside the local browser sandbox using client-side JavaScript, WebAssembly, and WebCrypto.",
+    "verificationSteps": [
+      "Open browser Developer Tools (F12) -> Network tab.",
+      "Execute the tool and verify 0 outbound network requests occur."
+    ],
+    "openSourceNotice": "Open source under MIT License."
+  },
+  "byline": {
+    "author": "PrivacyFold Engineering Team",
+    "reviewer": "Gaurav Suthar",
+    "reviewedDate": "2026-11-11",
+    "sources": [
+      {
+        "name": "ISO 32000-1 / Destructive Scrub",
+        "url": "https://privacyfold.com"
+      }
+    ]
+  },
+  "social": {
+    "hook": "PDF内のマイナンバーや個人情報を不可逆的に完全削除",
+    "proof": "100% client-side privacy guarantee.",
+    "hashtags": [
+      "privacy",
+      "pdf-redact",
+      "ja"
+    ],
+    "channels": [
+      "x",
+      "linkedin"
+    ]
+  }
+}

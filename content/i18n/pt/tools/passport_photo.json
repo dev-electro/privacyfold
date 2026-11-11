@@ -1,0 +1,88 @@
+{
+  "id": "passport_photo_pt",
+  "slug": "passport-photo",
+  "translation_of": "passport_photo",
+  "locale": "pt",
+  "reviewed_by": "Gaurav Suthar",
+  "reviewed_date": "2026-11-11",
+  "status": "live",
+  "index": true,
+  "name": "Criador de Fotos para Passaporte e Visto Biométrico",
+  "category": "photo",
+  "fam": "photo",
+  "task": "Enquadrar e dimensionar fotos segundo normas biométricas oficiais",
+  "badge": "Passport",
+  "size": "18–120 KB WASM",
+  "Engine": "/wasm/photo/passport-photo-v1.wasm",
+  "wasmModule": "/wasm/photo/passport-photo-v1.wasm",
+  "desc": "Crie fotos biométricas para passaportes, carteiras de identidade e vistos (incluindo Brasil, Portugal, União Europeia e EUA). Ajuste de DPI e enquadramento facial executados 100% no navegador.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "accepts": "image",
+  "tag": "Passport",
+  "std": "ICAO 9303 / ISO 19794-5",
+  "seo": {
+    "metaTitle": "Criador de Fotos para Passaporte e Visto Biométrico | PrivacyFold",
+    "metaDescription": "Crie fotos oficiais para passaportes e vistos com calibragem biométrica no navegador. Sem upload.",
+    "aeoSummary": "Suporte a mais de 87 jurisdições. Calibragem facial milimétrica e exportação em 600 DPI para impressão em alta definição.",
+    "steps": [
+      "Envie uma foto com boa iluminação.",
+      "Escolha o país ou documento desejado.",
+      "Alinhe o rosto com a grade biométrica.",
+      "Baixe o arquivo individual ou a folha para impressão."
+    ],
+    "faqs": [
+      {
+        "question": "Funciona para passaporte brasileiro e cartão de cidadão português?",
+        "answer": "Sim, inclui os parâmetros exatos exigidos pela Polícia Federal do Brasil e órgãos de Portugal."
+      },
+      {
+        "question": "Minha foto fica salva?",
+        "answer": "Não, todo o processamento ocorre na memória RAM do seu próprio dispositivo."
+      }
+    ],
+    "keywords": [
+      "passport-photo",
+      "Criador de Fotos para Passaporte e Visto Biométrico",
+      "privacyfold",
+      "pt"
+    ]
+  },
+  "whatToExpect": {
+    "results": "High-fidelity processed output with zero data loss.",
+    "limits": "Processes typical files up to 100 MB directly in RAM.",
+    "benchmarks": "Executed in sub-second speeds via WebAssembly and Canvas APIs."
+  },
+  "privacyProof": {
+    "howItWorks": "Processed entirely inside the local browser sandbox using client-side JavaScript, WebAssembly, and WebCrypto.",
+    "verificationSteps": [
+      "Open browser Developer Tools (F12) -> Network tab.",
+      "Execute the tool and verify 0 outbound network requests occur."
+    ],
+    "openSourceNotice": "Open source under MIT License."
+  },
+  "byline": {
+    "author": "PrivacyFold Engineering Team",
+    "reviewer": "Gaurav Suthar",
+    "reviewedDate": "2026-11-11",
+    "sources": [
+      {
+        "name": "ICAO 9303 / ISO 19794-5",
+        "url": "https://privacyfold.com"
+      }
+    ]
+  },
+  "social": {
+    "hook": "Enquadrar e dimensionar fotos segundo normas biométricas oficiais",
+    "proof": "100% client-side privacy guarantee.",
+    "hashtags": [
+      "privacy",
+      "passport-photo",
+      "pt"
+    ],
+    "channels": [
+      "x",
+      "linkedin"
+    ]
+  }
+}

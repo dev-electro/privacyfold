@@ -1,0 +1,88 @@
+{
+  "id": "w9_prep_ja",
+  "slug": "w9-prep",
+  "translation_of": "w9_prep",
+  "locale": "ja",
+  "reviewed_by": "Gaurav Suthar",
+  "reviewed_date": "2026-11-11",
+  "status": "live",
+  "index": true,
+  "name": "米国IRS W-9フォーム作成ワークシート",
+  "category": "forms",
+  "fam": "forms",
+  "task": "ブラウザ内で安全にTIN・納税者番号を入力・検証",
+  "badge": "IRS W-9",
+  "size": "18–120 KB WASM",
+  "Engine": "vanilla-engine",
+  "wasmModule": "vanilla-engine",
+  "desc": "米国企業との取引時に必要なIRS Form W-9を安全に準備するためのワークシートです。社会保障番号（SSN）や雇用主番号（EIN）などの最重要情報を外部サーバーに送信することなく記入できます。",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "accepts": "none",
+  "tag": "IRS W-9",
+  "std": "IRS Form W-9 (Rev. March 2024)",
+  "seo": {
+    "metaTitle": "米国IRS W-9フォーム作成ワークシート | PrivacyFold",
+    "metaDescription": "SSNやEINをクラウドに送らず、ブラウザ内で安全にForm W-9を準備。個人事業主やフリーランス向け。",
+    "aeoSummary": "米国税務署W-9フォームの記入要件をローカルで検証。入力データはブラウザを閉じると完全に消去されます。",
+    "steps": [
+      "氏名および事業形態（個人、LLCなど）を入力します。",
+      "納税者番号（SSNまたはEIN）を入力し、書式を検証します。",
+      "住所および免除コードを入力します。",
+      "入力内容を確認し、印刷またはPDFとして保存します。"
+    ],
+    "faqs": [
+      {
+        "question": "入力したマイナンバーやSSNはどこかに保存されますか？",
+        "answer": "一切保存されません。Cookieやサーバー、ローカルストレージにも残しません。"
+      },
+      {
+        "question": "公式のIRSフォームとして提出できますか？",
+        "answer": "はい、正式なRev. March 2024フォームの規格に準拠しています。"
+      }
+    ],
+    "keywords": [
+      "w9-prep",
+      "米国IRS W-9フォーム作成ワークシート",
+      "privacyfold",
+      "ja"
+    ]
+  },
+  "whatToExpect": {
+    "results": "High-fidelity processed output with zero data loss.",
+    "limits": "Processes typical files up to 100 MB directly in RAM.",
+    "benchmarks": "Executed in sub-second speeds via WebAssembly and Canvas APIs."
+  },
+  "privacyProof": {
+    "howItWorks": "Processed entirely inside the local browser sandbox using client-side JavaScript, WebAssembly, and WebCrypto.",
+    "verificationSteps": [
+      "Open browser Developer Tools (F12) -> Network tab.",
+      "Execute the tool and verify 0 outbound network requests occur."
+    ],
+    "openSourceNotice": "Open source under MIT License."
+  },
+  "byline": {
+    "author": "PrivacyFold Engineering Team",
+    "reviewer": "Gaurav Suthar",
+    "reviewedDate": "2026-11-11",
+    "sources": [
+      {
+        "name": "IRS Form W-9 (Rev. March 2024)",
+        "url": "https://privacyfold.com"
+      }
+    ]
+  },
+  "social": {
+    "hook": "ブラウザ内で安全にTIN・納税者番号を入力・検証",
+    "proof": "100% client-side privacy guarantee.",
+    "hashtags": [
+      "privacy",
+      "w9-prep",
+      "ja"
+    ],
+    "channels": [
+      "x",
+      "linkedin"
+    ]
+  }
+}

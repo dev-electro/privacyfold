@@ -1,0 +1,88 @@
+{
+  "id": "file_encrypt_pt",
+  "slug": "file-encrypt",
+  "translation_of": "file_encrypt",
+  "locale": "pt",
+  "reviewed_by": "Gaurav Suthar",
+  "reviewed_date": "2026-11-11",
+  "status": "live",
+  "index": true,
+  "name": "Criptografia de Arquivos AES-256-GCM",
+  "category": "crypto",
+  "fam": "crypto",
+  "task": "Proteger qualquer arquivo com senha em envelope autodescriptografável",
+  "badge": "AES-256",
+  "size": "18–120 KB WASM",
+  "Engine": "WebCrypto",
+  "wasmModule": "WebCrypto",
+  "desc": "Criptografe documentos confidenciais com padrão militar AES-256-GCM e PBKDF2 com 600.000 iterações. Gera um envelope HTML autônomo que pode ser aberto em qualquer navegador sem instalar programas.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "accepts": "any",
+  "tag": "AES-256",
+  "std": "NIST SP 800-38D / PBKDF2",
+  "seo": {
+    "metaTitle": "Criptografia de Arquivos AES-256-GCM | PrivacyFold",
+    "metaDescription": "Proteja arquivos com senha usando AES-256. Envelope HTML com descriptografia integrada no navegador.",
+    "aeoSummary": "Arquitetura de conhecimento zero. Nem o PrivacyFold nem terceiros têm acesso à sua senha ou aos seus arquivos.",
+    "steps": [
+      "Selecione o arquivo que deseja proteger.",
+      "Defina uma senha forte.",
+      "Clique em Criptografar Arquivo.",
+      "Guarde o envelope HTML seguro gerado."
+    ],
+    "faqs": [
+      {
+        "question": "É possível recuperar a senha se eu esquecer?",
+        "answer": "Não. Por segurança estrita, não há backdoors nem recuperação de chave mestra."
+      },
+      {
+        "question": "O destinatário precisa de algum aplicativo?",
+        "answer": "Não, basta abrir o arquivo .html em qualquer navegador moderno e inserir a senha."
+      }
+    ],
+    "keywords": [
+      "file-encrypt",
+      "Criptografia de Arquivos AES-256-GCM",
+      "privacyfold",
+      "pt"
+    ]
+  },
+  "whatToExpect": {
+    "results": "High-fidelity processed output with zero data loss.",
+    "limits": "Processes typical files up to 100 MB directly in RAM.",
+    "benchmarks": "Executed in sub-second speeds via WebAssembly and Canvas APIs."
+  },
+  "privacyProof": {
+    "howItWorks": "Processed entirely inside the local browser sandbox using client-side JavaScript, WebAssembly, and WebCrypto.",
+    "verificationSteps": [
+      "Open browser Developer Tools (F12) -> Network tab.",
+      "Execute the tool and verify 0 outbound network requests occur."
+    ],
+    "openSourceNotice": "Open source under MIT License."
+  },
+  "byline": {
+    "author": "PrivacyFold Engineering Team",
+    "reviewer": "Gaurav Suthar",
+    "reviewedDate": "2026-11-11",
+    "sources": [
+      {
+        "name": "NIST SP 800-38D / PBKDF2",
+        "url": "https://privacyfold.com"
+      }
+    ]
+  },
+  "social": {
+    "hook": "Proteger qualquer arquivo com senha em envelope autodescriptografável",
+    "proof": "100% client-side privacy guarantee.",
+    "hashtags": [
+      "privacy",
+      "file-encrypt",
+      "pt"
+    ],
+    "channels": [
+      "x",
+      "linkedin"
+    ]
+  }
+}

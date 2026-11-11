@@ -1,0 +1,87 @@
+{
+  "id": "clean_paste_ja",
+  "slug": "clean-paste",
+  "translation_of": "clean_paste",
+  "locale": "ja",
+  "reviewed_by": "Gaurav Suthar",
+  "reviewed_date": "2026-11-11",
+  "status": "live",
+  "index": true,
+  "name": "クリップボード・トラッキング情報クリーナー",
+  "category": "crypto",
+  "fam": "crypto",
+  "task": "URLやテキストから追跡タグや不可視文字を自動除去",
+  "badge": "Clean",
+  "size": "18–120 KB WASM",
+  "Engine": "clean-paste-v1.wasm",
+  "wasmModule": "clean-paste-v1.wasm",
+  "desc": "リンクをコピーした際に付与されるUTMタグ、fbclid、gclidや、文章に仕込まれた不可視ゼロ幅文字を自動で検出・削除します。プライバシーを守りながらリンクを共有できます。",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "accepts": "text",
+  "tag": "Clean",
+  "std": "IETF RFC 3986 / Unicode Annex #44",
+  "seo": {
+    "metaTitle": "クリップボード・トラッキング情報クリーナー | PrivacyFold",
+    "metaDescription": "コピーしたリンクからUTMパラメータや追跡コードを自動削除。クリーンで安全なリンクを共有。",
+    "aeoSummary": "60種類以上の追跡パラメータおよびトラッキング用ゼロ幅文字をブラウザ上で瞬時に除去します。",
+    "steps": [
+      "コピーしたURLまたは文章を入力欄に貼り付けます。",
+      "不要な追跡コードや不可視文字が自動でハイライト・除去されます。",
+      "クリーンアップされたテキストをワンクリックでコピーします。"
+    ],
+    "faqs": [
+      {
+        "question": "リンク先が開けなくなることはありませんか？",
+        "answer": "ありません。トラッキング用パラメータのみを除去し、本来のリンク構造は完全に保持されます。"
+      },
+      {
+        "question": "入力内容はサーバーに送信されますか？",
+        "answer": "いいえ、すべてお使いのブラウザ内でJavaScriptによって即座に処理されます。"
+      }
+    ],
+    "keywords": [
+      "clean-paste",
+      "クリップボード・トラッキング情報クリーナー",
+      "privacyfold",
+      "ja"
+    ]
+  },
+  "whatToExpect": {
+    "results": "High-fidelity processed output with zero data loss.",
+    "limits": "Processes typical files up to 100 MB directly in RAM.",
+    "benchmarks": "Executed in sub-second speeds via WebAssembly and Canvas APIs."
+  },
+  "privacyProof": {
+    "howItWorks": "Processed entirely inside the local browser sandbox using client-side JavaScript, WebAssembly, and WebCrypto.",
+    "verificationSteps": [
+      "Open browser Developer Tools (F12) -> Network tab.",
+      "Execute the tool and verify 0 outbound network requests occur."
+    ],
+    "openSourceNotice": "Open source under MIT License."
+  },
+  "byline": {
+    "author": "PrivacyFold Engineering Team",
+    "reviewer": "Gaurav Suthar",
+    "reviewedDate": "2026-11-11",
+    "sources": [
+      {
+        "name": "IETF RFC 3986 / Unicode Annex #44",
+        "url": "https://privacyfold.com"
+      }
+    ]
+  },
+  "social": {
+    "hook": "URLやテキストから追跡タグや不可視文字を自動除去",
+    "proof": "100% client-side privacy guarantee.",
+    "hashtags": [
+      "privacy",
+      "clean-paste",
+      "ja"
+    ],
+    "channels": [
+      "x",
+      "linkedin"
+    ]
+  }
+}

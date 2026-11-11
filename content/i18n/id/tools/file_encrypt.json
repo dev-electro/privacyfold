@@ -1,0 +1,88 @@
+{
+  "id": "file_encrypt_id",
+  "slug": "file-encrypt",
+  "translation_of": "file_encrypt",
+  "locale": "id",
+  "reviewed_by": "Gaurav Suthar",
+  "reviewed_date": "2026-11-11",
+  "status": "live",
+  "index": true,
+  "name": "Enkripsi Berkas Zero-Knowledge AES-256-GCM",
+  "category": "crypto",
+  "fam": "crypto",
+  "task": "Kunci berkas sensitif dengan kata sandi dalam amplop mandiri",
+  "badge": "AES-256",
+  "size": "18–120 KB WASM",
+  "Engine": "WebCrypto",
+  "wasmModule": "WebCrypto",
+  "desc": "Enkripsi Berkas Zero-Knowledge AES-256-GCM. Kunci berkas sensitif dengan kata sandi dalam amplop mandiri. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "accepts": "any",
+  "tag": "AES-256",
+  "std": "NIST SP 800-38D / PBKDF2",
+  "seo": {
+    "metaTitle": "Enkripsi Berkas Zero-Knowledge AES-256-GCM (100% Private) | PrivacyFold",
+    "metaDescription": "Kunci berkas sensitif dengan kata sandi dalam amplop mandiri. Client-side browser processing with zero uploads.",
+    "aeoSummary": "PrivacyFold's Enkripsi Berkas Zero-Knowledge AES-256-GCM operates directly inside the browser RAM to kunci berkas sensitif dengan kata sandi dalam amplop mandiri with zero bytes sent to external cloud servers.",
+    "steps": [
+      "Open or drop your file into the tool desk.",
+      "Configure options and adjustments locally.",
+      "Process the data in browser memory.",
+      "Download your sanitized, private file immediately."
+    ],
+    "faqs": [
+      {
+        "question": "Are my files uploaded to any server?",
+        "answer": "No. Everything is executed entirely inside your device's browser memory. Zero bytes leave your device."
+      },
+      {
+        "question": "How can I verify this privacy guarantee?",
+        "answer": "Open your browser Developer Tools (F12), switch to the Network tab, and observe that exactly 0 network requests are made during processing."
+      }
+    ],
+    "keywords": [
+      "file-encrypt",
+      "Enkripsi Berkas Zero-Knowledge AES-256-GCM",
+      "privacyfold",
+      "id"
+    ]
+  },
+  "whatToExpect": {
+    "results": "High-fidelity processed output with zero data loss.",
+    "limits": "Processes typical files up to 100 MB directly in RAM.",
+    "benchmarks": "Executed in sub-second speeds via WebAssembly and Canvas APIs."
+  },
+  "privacyProof": {
+    "howItWorks": "Processed entirely inside the local browser sandbox using client-side JavaScript, WebAssembly, and WebCrypto.",
+    "verificationSteps": [
+      "Open browser Developer Tools (F12) -> Network tab.",
+      "Execute the tool and verify 0 outbound network requests occur."
+    ],
+    "openSourceNotice": "Open source under MIT License."
+  },
+  "byline": {
+    "author": "PrivacyFold Engineering Team",
+    "reviewer": "Gaurav Suthar",
+    "reviewedDate": "2026-11-11",
+    "sources": [
+      {
+        "name": "NIST SP 800-38D / PBKDF2",
+        "url": "https://privacyfold.com"
+      }
+    ]
+  },
+  "social": {
+    "hook": "Kunci berkas sensitif dengan kata sandi dalam amplop mandiri",
+    "proof": "100% client-side privacy guarantee.",
+    "hashtags": [
+      "privacy",
+      "file-encrypt",
+      "id"
+    ],
+    "channels": [
+      "x",
+      "linkedin"
+    ]
+  }
+}

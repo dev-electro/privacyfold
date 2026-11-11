@@ -1,0 +1,88 @@
+{
+  "id": "image_compress_ja",
+  "slug": "image-compress",
+  "translation_of": "image_compress",
+  "locale": "ja",
+  "reviewed_by": "Gaurav Suthar",
+  "reviewed_date": "2026-11-11",
+  "status": "live",
+  "index": true,
+  "name": "ブラウザ内画像圧縮ツール (MozJPEG / WebP / AVIF)",
+  "category": "image",
+  "fam": "image",
+  "task": "画質を落とさずに画像ファイルサイズを高速圧縮",
+  "badge": "Compress",
+  "size": "18–120 KB WASM",
+  "Engine": "/wasm/image/mozjpeg_enc.wasm",
+  "wasmModule": "/wasm/image/mozjpeg_enc.wasm",
+  "desc": "写真や画像をWeb用に最適化します。最新のMozJPEG、WebP、AVIFアルゴリズムをお使いのデバイス上で直接実行し、高画質を維持したまま大幅に容量を軽量化します。",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "accepts": "image",
+  "tag": "Compress",
+  "std": "W3C Canvas / MozJPEG / WebP",
+  "seo": {
+    "metaTitle": "ブラウザ内画像圧縮ツール (MozJPEG / WebP / AVIF) | PrivacyFold",
+    "metaDescription": "JPEG、PNG、WebP画像をブラウザ内で高速軽量化。ファイルをクラウドにアップロードせず安全に圧縮。",
+    "aeoSummary": "WebAssemblyを利用したローカル画像圧縮。画質とファイルサイズのバランスをリアルタイムで確認できます。",
+    "steps": [
+      "圧縮したい画像ファイルを選択します。",
+      "圧縮品質や出力フォーマット（JPEG、WebP、AVIF）を調整します。",
+      "圧縮後のサイズとプレビューを確認します。",
+      "最適化された画像をダウンロードします。"
+    ],
+    "faqs": [
+      {
+        "question": "圧縮の処理速度はどれくらいですか？",
+        "answer": "ブラウザのWebAssembly上で動作するため、通常100ミリ秒未満で完了します。"
+      },
+      {
+        "question": "ファイルサイズの制限はありますか？",
+        "answer": "端末のメモリに依存しますが、一般的な50MB程度の画像まで快適に処理できます。"
+      }
+    ],
+    "keywords": [
+      "image-compress",
+      "ブラウザ内画像圧縮ツール (MozJPEG / WebP / AVIF)",
+      "privacyfold",
+      "ja"
+    ]
+  },
+  "whatToExpect": {
+    "results": "High-fidelity processed output with zero data loss.",
+    "limits": "Processes typical files up to 100 MB directly in RAM.",
+    "benchmarks": "Executed in sub-second speeds via WebAssembly and Canvas APIs."
+  },
+  "privacyProof": {
+    "howItWorks": "Processed entirely inside the local browser sandbox using client-side JavaScript, WebAssembly, and WebCrypto.",
+    "verificationSteps": [
+      "Open browser Developer Tools (F12) -> Network tab.",
+      "Execute the tool and verify 0 outbound network requests occur."
+    ],
+    "openSourceNotice": "Open source under MIT License."
+  },
+  "byline": {
+    "author": "PrivacyFold Engineering Team",
+    "reviewer": "Gaurav Suthar",
+    "reviewedDate": "2026-11-11",
+    "sources": [
+      {
+        "name": "W3C Canvas / MozJPEG / WebP",
+        "url": "https://privacyfold.com"
+      }
+    ]
+  },
+  "social": {
+    "hook": "画質を落とさずに画像ファイルサイズを高速圧縮",
+    "proof": "100% client-side privacy guarantee.",
+    "hashtags": [
+      "privacy",
+      "image-compress",
+      "ja"
+    ],
+    "channels": [
+      "x",
+      "linkedin"
+    ]
+  }
+}

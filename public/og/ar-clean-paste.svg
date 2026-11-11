@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Paper Background Texture -->
+  <rect width="1200" height="630" fill="#F5F2E9"/>
+  
+  <!-- Subtle Blueprint Grid Lines -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#E6E0D2" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grid)" />
+
+  <!-- Inner Surface Card -->
+  <rect x="48" y="48" width="1104" height="534" rx="16" fill="#FDFCF8" stroke="#DAD5C5" stroke-width="2"/>
+
+  <!-- Top Atelier Bar -->
+  <g transform="translate(88, 88)">
+    <!-- Origami Crane Logo -->
+    <path d="M0 0h24l10.5 10.5v25.5H0z" fill="#FF5A1F" stroke="#17160F" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M24 0v10.5h10.5z" fill="#B7330A" stroke="#17160F" stroke-width="2.5" stroke-linejoin="round"/>
+    <text x="46" y="26" font-family="'Helvetica Neue', Arial, sans-serif" font-size="24" font-weight="800" fill="#17160F" letter-spacing="-0.5">PrivacyFold</text>
+    <rect x="200" y="4" width="130" height="28" rx="4" fill="#F3F0E6" stroke="#DAD5C5"/>
+    <text x="265" y="23" font-family="ui-monospace, monospace" font-size="12" font-weight="600" fill="#5B5A4E" text-anchor="middle" letter-spacing="1">CRYPTO</text>
+  </g>
+
+  <!-- Technical Privacy Seal Pill (Top Right) -->
+  <g transform="translate(840, 88)">
+    <rect x="0" y="0" width="272" height="36" rx="6" fill="#E8F5E9" stroke="#A5D6A7"/>
+    <circle cx="20" cy="18" r="5" fill="#2E7D32"/>
+    <text x="36" y="23" font-family="ui-monospace, monospace" font-size="12" font-weight="700" fill="#1B5E20" letter-spacing="0.5">ZERO SERVER UPLOADS</text>
+  </g>
+
+  <!-- Tool Category / Tag Badge -->
+  <g transform="translate(88, 190)">
+    <rect x="0" y="0" width="160" height="32" rx="4" fill="#FF5A1F" opacity="0.1"/>
+    <rect x="0" y="0" width="160" height="32" rx="4" stroke="#FF5A1F" stroke-width="1.5"/>
+    <text x="80" y="21" font-family="ui-monospace, monospace" font-size="13" font-weight="700" fill="#FF5A1F" text-anchor="middle" letter-spacing="0.5">AR · Clean</text>
+  </g>
+
+  <!-- Main Headline Title -->
+  <text x="88" y="285" font-family="'Helvetica Neue', Arial, sans-serif" font-size="54" font-weight="800" fill="#17160F" letter-spacing="-1">
+    منظف روابط التتبع وحافظة النصوص ال...
+  </text>
+
+  <!-- Subtitle Description -->
+  <foreignObject x="88" y="325" width="1024" height="120">
+    <p xmlns="http://www.w3.org/1999/xhtml" style="font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 24px; line-height: 1.45; color: #5B5A4E; margin: 0;">
+      إزالة معلمات UTM ورموز التعقب الخفية من الروابط
+    </p>
+  </foreignObject>
+
+  <!-- Bottom Divider Line -->
+  <line x1="88" y1="480" x2="1112" y2="480" stroke="#DAD5C5" stroke-width="1.5"/>
+
+  <!-- Footer Guarantees -->
+  <g transform="translate(88, 515)">
+    <text x="0" y="16" font-family="ui-monospace, monospace" font-size="14" font-weight="600" fill="#17160F">
+      100% In-Browser Execution · WebAssembly &amp; WebCrypto · No Logins
+    </text>
+    <text x="1024" y="16" font-family="ui-monospace, monospace" font-size="14" font-weight="600" fill="#FF5A1F" text-anchor="end">
+      privacyfold.com
+    </text>
+  </g>
+</svg>

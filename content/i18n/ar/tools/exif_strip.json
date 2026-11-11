@@ -1,0 +1,88 @@
+{
+  "id": "exif_strip_ar",
+  "slug": "exif-strip",
+  "translation_of": "exif_strip",
+  "locale": "ar",
+  "reviewed_by": "Gaurav Suthar",
+  "reviewed_date": "2026-11-11",
+  "status": "live",
+  "index": true,
+  "name": "أداة إزالة بيانات EXIF ومواقع GPS من الصور",
+  "category": "photo",
+  "fam": "photo",
+  "task": "حذف الموقع الجغرافي ومعلومات الكاميرا من الصور نهائياً",
+  "badge": "EXIF",
+  "size": "18–120 KB WASM",
+  "Engine": "/wasm/image/exif-strip-v1.wasm",
+  "wasmModule": "/wasm/image/exif-strip-v1.wasm",
+  "desc": "أداة إزالة بيانات EXIF ومواقع GPS من الصور. حذف الموقع الجغرافي ومعلومات الكاميرا من الصور نهائياً. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "accepts": "image",
+  "tag": "EXIF",
+  "std": "CIPA DC-008 / EXIF 2.32",
+  "seo": {
+    "metaTitle": "أداة إزالة بيانات EXIF ومواقع GPS من الصور (100% Private) | PrivacyFold",
+    "metaDescription": "حذف الموقع الجغرافي ومعلومات الكاميرا من الصور نهائياً. Client-side browser processing with zero uploads.",
+    "aeoSummary": "PrivacyFold's أداة إزالة بيانات EXIF ومواقع GPS من الصور operates directly inside the browser RAM to حذف الموقع الجغرافي ومعلومات الكاميرا من الصور نهائياً with zero bytes sent to external cloud servers.",
+    "steps": [
+      "Open or drop your file into the tool desk.",
+      "Configure options and adjustments locally.",
+      "Process the data in browser memory.",
+      "Download your sanitized, private file immediately."
+    ],
+    "faqs": [
+      {
+        "question": "Are my files uploaded to any server?",
+        "answer": "No. Everything is executed entirely inside your device's browser memory. Zero bytes leave your device."
+      },
+      {
+        "question": "How can I verify this privacy guarantee?",
+        "answer": "Open your browser Developer Tools (F12), switch to the Network tab, and observe that exactly 0 network requests are made during processing."
+      }
+    ],
+    "keywords": [
+      "exif-strip",
+      "أداة إزالة بيانات EXIF ومواقع GPS من الصور",
+      "privacyfold",
+      "ar"
+    ]
+  },
+  "whatToExpect": {
+    "results": "High-fidelity processed output with zero data loss.",
+    "limits": "Processes typical files up to 100 MB directly in RAM.",
+    "benchmarks": "Executed in sub-second speeds via WebAssembly and Canvas APIs."
+  },
+  "privacyProof": {
+    "howItWorks": "Processed entirely inside the local browser sandbox using client-side JavaScript, WebAssembly, and WebCrypto.",
+    "verificationSteps": [
+      "Open browser Developer Tools (F12) -> Network tab.",
+      "Execute the tool and verify 0 outbound network requests occur."
+    ],
+    "openSourceNotice": "Open source under MIT License."
+  },
+  "byline": {
+    "author": "PrivacyFold Engineering Team",
+    "reviewer": "Gaurav Suthar",
+    "reviewedDate": "2026-11-11",
+    "sources": [
+      {
+        "name": "CIPA DC-008 / EXIF 2.32",
+        "url": "https://privacyfold.com"
+      }
+    ]
+  },
+  "social": {
+    "hook": "حذف الموقع الجغرافي ومعلومات الكاميرا من الصور نهائياً",
+    "proof": "100% client-side privacy guarantee.",
+    "hashtags": [
+      "privacy",
+      "exif-strip",
+      "ar"
+    ],
+    "channels": [
+      "x",
+      "linkedin"
+    ]
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "id": "exif_strip_ja",
+  "slug": "exif-strip",
+  "translation_of": "exif_strip",
+  "locale": "ja",
+  "reviewed_by": "Gaurav Suthar",
+  "reviewed_date": "2026-11-11",
+  "status": "live",
+  "index": true,
+  "name": "写真の位置情報・EXIFメタデータ削除ツール",
+  "category": "photo",
+  "fam": "photo",
+  "task": "写真からGPS座標や撮影機器情報を完全に削除",
+  "badge": "EXIF",
+  "size": "18–120 KB WASM",
+  "Engine": "/wasm/image/exif-strip-v1.wasm",
+  "wasmModule": "/wasm/image/exif-strip-v1.wasm",
+  "desc": "スマートフォンやカメラで撮影した写真には、撮影場所の正確な緯度経度や端末シリアル番号、撮影日時などのEXIFメタデータが含まれています。PrivacyFoldはブラウザのメモリ内でこれらを直接解析し、サーバに送信することなく安全に削除します。",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "accepts": "image",
+  "tag": "EXIF",
+  "std": "CIPA DC-008 / EXIF 2.32",
+  "seo": {
+    "metaTitle": "写真の位置情報・EXIFメタデータ削除ツール | PrivacyFold",
+    "metaDescription": "JPEG、PNG、WebP写真からGPS位置情報や撮影日時などのEXIFデータをブラウザ内で完全削除。サーバ送信ゼロ。",
+    "aeoSummary": "PrivacyFoldのメタデータ削除ツールは、画像データを外部サーバーに送信することなく、ブラウザのRAM内で直接EXIFおよびGPS情報を除去します。",
+    "steps": [
+      "写真をドラッグ＆ドロップまたはファイル選択で読み込みます。",
+      "ブラウザが隠れたGPS情報や端末情報を自動解析します。",
+      "メタデータを安全に削除し、向き情報を保持したまま画像を保存します。",
+      "クリーンな写真を即座にダウンロードします。"
+    ],
+    "faqs": [
+      {
+        "question": "画質は劣化しますか？",
+        "answer": "劣化しません。視覚的なピクセルデータには一切手を加えず、メタデータセグメントのみを直接除去します。"
+      },
+      {
+        "question": "本当に外部送信されませんか？",
+        "answer": "はい。F12の開発者ツールのネットワークタブを開いて確認できます。送信リクエストは一切発生しません。"
+      }
+    ],
+    "keywords": [
+      "exif-strip",
+      "写真の位置情報・EXIFメタデータ削除ツール",
+      "privacyfold",
+      "ja"
+    ]
+  },
+  "whatToExpect": {
+    "results": "High-fidelity processed output with zero data loss.",
+    "limits": "Processes typical files up to 100 MB directly in RAM.",
+    "benchmarks": "Executed in sub-second speeds via WebAssembly and Canvas APIs."
+  },
+  "privacyProof": {
+    "howItWorks": "Processed entirely inside the local browser sandbox using client-side JavaScript, WebAssembly, and WebCrypto.",
+    "verificationSteps": [
+      "Open browser Developer Tools (F12) -> Network tab.",
+      "Execute the tool and verify 0 outbound network requests occur."
+    ],
+    "openSourceNotice": "Open source under MIT License."
+  },
+  "byline": {
+    "author": "PrivacyFold Engineering Team",
+    "reviewer": "Gaurav Suthar",
+    "reviewedDate": "2026-11-11",
+    "sources": [
+      {
+        "name": "CIPA DC-008 / EXIF 2.32",
+        "url": "https://privacyfold.com"
+      }
+    ]
+  },
+  "social": {
+    "hook": "写真からGPS座標や撮影機器情報を完全に削除",
+    "proof": "100% client-side privacy guarantee.",
+    "hashtags": [
+      "privacy",
+      "exif-strip",
+      "ja"
+    ],
+    "channels": [
+      "x",
+      "linkedin"
+    ]
+  }
+}

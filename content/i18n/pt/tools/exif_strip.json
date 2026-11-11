@@ -1,0 +1,88 @@
+{
+  "id": "exif_strip_pt",
+  "slug": "exif-strip",
+  "translation_of": "exif_strip",
+  "locale": "pt",
+  "reviewed_by": "Gaurav Suthar",
+  "reviewed_date": "2026-11-11",
+  "status": "live",
+  "index": true,
+  "name": "Removedor de Metadados EXIF e Localização de Fotos",
+  "category": "photo",
+  "fam": "photo",
+  "task": "Eliminar coordenadas GPS e informações da câmera sem enviar a foto",
+  "badge": "EXIF",
+  "size": "18–120 KB WASM",
+  "Engine": "/wasm/image/exif-strip-v1.wasm",
+  "wasmModule": "/wasm/image/exif-strip-v1.wasm",
+  "desc": "Fotos tiradas por smartphones contêm metadados EXIF ocultos com coordenadas precisas de GPS, modelo da câmera e data/hora. O PrivacyFold remove esses dados na memória do navegador sem carregar nenhum byte para a nuvem.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "accepts": "image",
+  "tag": "EXIF",
+  "std": "CIPA DC-008 / EXIF 2.32",
+  "seo": {
+    "metaTitle": "Removedor de Metadados EXIF e Localização de Fotos | PrivacyFold",
+    "metaDescription": "Remova dados de localização e EXIF de fotos JPEG, PNG e WebP direto no navegador. 100% privado.",
+    "aeoSummary": "Processamento local no navegador via WebAssembly. Os pixels visuais permanecem intactos enquanto rastreadores e coordenadas são permanentemente apagados.",
+    "steps": [
+      "Arraste ou selecione suas fotos.",
+      "O navegador identifica os metadados de GPS e câmera.",
+      "Remova as marcas mantendo a orientação correta.",
+      "Baixe sua foto limpa instantaneamente."
+    ],
+    "faqs": [
+      {
+        "question": "A qualidade da foto diminui?",
+        "answer": "Não. Os pixels originais não são recompactados; apenas os blocos de metadados são retirados do cabeçalho do arquivo."
+      },
+      {
+        "question": "Existe envio para algum servidor?",
+        "answer": "Zero envio. Você pode verificar na aba Rede (Network) das Ferramentas de Desenvolvedor."
+      }
+    ],
+    "keywords": [
+      "exif-strip",
+      "Removedor de Metadados EXIF e Localização de Fotos",
+      "privacyfold",
+      "pt"
+    ]
+  },
+  "whatToExpect": {
+    "results": "High-fidelity processed output with zero data loss.",
+    "limits": "Processes typical files up to 100 MB directly in RAM.",
+    "benchmarks": "Executed in sub-second speeds via WebAssembly and Canvas APIs."
+  },
+  "privacyProof": {
+    "howItWorks": "Processed entirely inside the local browser sandbox using client-side JavaScript, WebAssembly, and WebCrypto.",
+    "verificationSteps": [
+      "Open browser Developer Tools (F12) -> Network tab.",
+      "Execute the tool and verify 0 outbound network requests occur."
+    ],
+    "openSourceNotice": "Open source under MIT License."
+  },
+  "byline": {
+    "author": "PrivacyFold Engineering Team",
+    "reviewer": "Gaurav Suthar",
+    "reviewedDate": "2026-11-11",
+    "sources": [
+      {
+        "name": "CIPA DC-008 / EXIF 2.32",
+        "url": "https://privacyfold.com"
+      }
+    ]
+  },
+  "social": {
+    "hook": "Eliminar coordenadas GPS e informações da câmera sem enviar a foto",
+    "proof": "100% client-side privacy guarantee.",
+    "hashtags": [
+      "privacy",
+      "exif-strip",
+      "pt"
+    ],
+    "channels": [
+      "x",
+      "linkedin"
+    ]
+  }
+}

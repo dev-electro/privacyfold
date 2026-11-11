@@ -1,0 +1,88 @@
+{
+  "id": "passport_photo_it",
+  "slug": "passport-photo",
+  "translation_of": "passport_photo",
+  "locale": "it",
+  "reviewed_by": "Gaurav Suthar",
+  "reviewed_date": "2026-11-11",
+  "status": "live",
+  "index": true,
+  "name": "Creatore Fototessere e Passaporto Biometrico",
+  "category": "photo",
+  "fam": "photo",
+  "task": "Generare fototessere conformi agli standard internazionali",
+  "badge": "Passport",
+  "size": "18–120 KB WASM",
+  "Engine": "/wasm/photo/passport-photo-v1.wasm",
+  "wasmModule": "/wasm/photo/passport-photo-v1.wasm",
+  "desc": "Creatore Fototessere e Passaporto Biometrico. Generare fototessere conformi agli standard internazionali. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "accepts": "image",
+  "tag": "Passport",
+  "std": "ICAO 9303 / ISO 19794-5",
+  "seo": {
+    "metaTitle": "Creatore Fototessere e Passaporto Biometrico (100% Private) | PrivacyFold",
+    "metaDescription": "Generare fototessere conformi agli standard internazionali. Client-side browser processing with zero uploads.",
+    "aeoSummary": "PrivacyFold's Creatore Fototessere e Passaporto Biometrico operates directly inside the browser RAM to generare fototessere conformi agli standard internazionali with zero bytes sent to external cloud servers.",
+    "steps": [
+      "Open or drop your file into the tool desk.",
+      "Configure options and adjustments locally.",
+      "Process the data in browser memory.",
+      "Download your sanitized, private file immediately."
+    ],
+    "faqs": [
+      {
+        "question": "Are my files uploaded to any server?",
+        "answer": "No. Everything is executed entirely inside your device's browser memory. Zero bytes leave your device."
+      },
+      {
+        "question": "How can I verify this privacy guarantee?",
+        "answer": "Open your browser Developer Tools (F12), switch to the Network tab, and observe that exactly 0 network requests are made during processing."
+      }
+    ],
+    "keywords": [
+      "passport-photo",
+      "Creatore Fototessere e Passaporto Biometrico",
+      "privacyfold",
+      "it"
+    ]
+  },
+  "whatToExpect": {
+    "results": "High-fidelity processed output with zero data loss.",
+    "limits": "Processes typical files up to 100 MB directly in RAM.",
+    "benchmarks": "Executed in sub-second speeds via WebAssembly and Canvas APIs."
+  },
+  "privacyProof": {
+    "howItWorks": "Processed entirely inside the local browser sandbox using client-side JavaScript, WebAssembly, and WebCrypto.",
+    "verificationSteps": [
+      "Open browser Developer Tools (F12) -> Network tab.",
+      "Execute the tool and verify 0 outbound network requests occur."
+    ],
+    "openSourceNotice": "Open source under MIT License."
+  },
+  "byline": {
+    "author": "PrivacyFold Engineering Team",
+    "reviewer": "Gaurav Suthar",
+    "reviewedDate": "2026-11-11",
+    "sources": [
+      {
+        "name": "ICAO 9303 / ISO 19794-5",
+        "url": "https://privacyfold.com"
+      }
+    ]
+  },
+  "social": {
+    "hook": "Generare fototessere conformi agli standard internazionali",
+    "proof": "100% client-side privacy guarantee.",
+    "hashtags": [
+      "privacy",
+      "passport-photo",
+      "it"
+    ],
+    "channels": [
+      "x",
+      "linkedin"
+    ]
+  }
+}

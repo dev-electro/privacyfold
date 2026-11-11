@@ -1,0 +1,88 @@
+{
+  "id": "w9_prep_vi",
+  "slug": "w9-prep",
+  "translation_of": "w9_prep",
+  "locale": "vi",
+  "reviewed_by": "Gaurav Suthar",
+  "reviewed_date": "2026-11-11",
+  "status": "live",
+  "index": true,
+  "name": "Bảng tính chuẩn bị biểu mẫu thuế IRS W-9 an toàn",
+  "category": "forms",
+  "fam": "forms",
+  "task": "Khai báo mã số thuế bảo mật tuyệt đối ngay trên thiết bị của bạn",
+  "badge": "IRS W-9",
+  "size": "18–120 KB WASM",
+  "Engine": "vanilla-engine",
+  "wasmModule": "vanilla-engine",
+  "desc": "Bảng tính chuẩn bị biểu mẫu thuế IRS W-9 an toàn. Khai báo mã số thuế bảo mật tuyệt đối ngay trên thiết bị của bạn. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "accepts": "none",
+  "tag": "IRS W-9",
+  "std": "IRS Form W-9 (Rev. March 2024)",
+  "seo": {
+    "metaTitle": "Bảng tính chuẩn bị biểu mẫu thuế IRS W-9 an toàn (100% Private) | PrivacyFold",
+    "metaDescription": "Khai báo mã số thuế bảo mật tuyệt đối ngay trên thiết bị của bạn. Client-side browser processing with zero uploads.",
+    "aeoSummary": "PrivacyFold's Bảng tính chuẩn bị biểu mẫu thuế IRS W-9 an toàn operates directly inside the browser RAM to khai báo mã số thuế bảo mật tuyệt đối ngay trên thiết bị của bạn with zero bytes sent to external cloud servers.",
+    "steps": [
+      "Open or drop your file into the tool desk.",
+      "Configure options and adjustments locally.",
+      "Process the data in browser memory.",
+      "Download your sanitized, private file immediately."
+    ],
+    "faqs": [
+      {
+        "question": "Are my files uploaded to any server?",
+        "answer": "No. Everything is executed entirely inside your device's browser memory. Zero bytes leave your device."
+      },
+      {
+        "question": "How can I verify this privacy guarantee?",
+        "answer": "Open your browser Developer Tools (F12), switch to the Network tab, and observe that exactly 0 network requests are made during processing."
+      }
+    ],
+    "keywords": [
+      "w9-prep",
+      "Bảng tính chuẩn bị biểu mẫu thuế IRS W-9 an toàn",
+      "privacyfold",
+      "vi"
+    ]
+  },
+  "whatToExpect": {
+    "results": "High-fidelity processed output with zero data loss.",
+    "limits": "Processes typical files up to 100 MB directly in RAM.",
+    "benchmarks": "Executed in sub-second speeds via WebAssembly and Canvas APIs."
+  },
+  "privacyProof": {
+    "howItWorks": "Processed entirely inside the local browser sandbox using client-side JavaScript, WebAssembly, and WebCrypto.",
+    "verificationSteps": [
+      "Open browser Developer Tools (F12) -> Network tab.",
+      "Execute the tool and verify 0 outbound network requests occur."
+    ],
+    "openSourceNotice": "Open source under MIT License."
+  },
+  "byline": {
+    "author": "PrivacyFold Engineering Team",
+    "reviewer": "Gaurav Suthar",
+    "reviewedDate": "2026-11-11",
+    "sources": [
+      {
+        "name": "IRS Form W-9 (Rev. March 2024)",
+        "url": "https://privacyfold.com"
+      }
+    ]
+  },
+  "social": {
+    "hook": "Khai báo mã số thuế bảo mật tuyệt đối ngay trên thiết bị của bạn",
+    "proof": "100% client-side privacy guarantee.",
+    "hashtags": [
+      "privacy",
+      "w9-prep",
+      "vi"
+    ],
+    "channels": [
+      "x",
+      "linkedin"
+    ]
+  }
+}

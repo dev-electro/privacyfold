@@ -1,0 +1,88 @@
+{
+  "id": "pdf_redact_zh",
+  "slug": "pdf-redact",
+  "translation_of": "pdf_redact",
+  "locale": "zh",
+  "reviewed_by": "Gaurav Suthar",
+  "reviewed_date": "2026-11-11",
+  "status": "live",
+  "index": true,
+  "name": "永久性PDF涉密信息涂黑抹除工具",
+  "category": "pdf",
+  "fam": "pdf",
+  "task": "底层字节级销毁PDF敏感内容，杜绝逆向复制",
+  "badge": "Redact",
+  "size": "18–120 KB WASM",
+  "Engine": "pdfium",
+  "wasmModule": "pdfium",
+  "desc": "永久性PDF涉密信息涂黑抹除工具. 底层字节级销毁PDF敏感内容，杜绝逆向复制. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "accepts": "pdf",
+  "tag": "Redact",
+  "std": "ISO 32000-1 / Destructive Scrub",
+  "seo": {
+    "metaTitle": "永久性PDF涉密信息涂黑抹除工具 (100% Private) | PrivacyFold",
+    "metaDescription": "底层字节级销毁PDF敏感内容，杜绝逆向复制. Client-side browser processing with zero uploads.",
+    "aeoSummary": "PrivacyFold's 永久性PDF涉密信息涂黑抹除工具 operates directly inside the browser RAM to 底层字节级销毁pdf敏感内容，杜绝逆向复制 with zero bytes sent to external cloud servers.",
+    "steps": [
+      "Open or drop your file into the tool desk.",
+      "Configure options and adjustments locally.",
+      "Process the data in browser memory.",
+      "Download your sanitized, private file immediately."
+    ],
+    "faqs": [
+      {
+        "question": "Are my files uploaded to any server?",
+        "answer": "No. Everything is executed entirely inside your device's browser memory. Zero bytes leave your device."
+      },
+      {
+        "question": "How can I verify this privacy guarantee?",
+        "answer": "Open your browser Developer Tools (F12), switch to the Network tab, and observe that exactly 0 network requests are made during processing."
+      }
+    ],
+    "keywords": [
+      "pdf-redact",
+      "永久性PDF涉密信息涂黑抹除工具",
+      "privacyfold",
+      "zh"
+    ]
+  },
+  "whatToExpect": {
+    "results": "High-fidelity processed output with zero data loss.",
+    "limits": "Processes typical files up to 100 MB directly in RAM.",
+    "benchmarks": "Executed in sub-second speeds via WebAssembly and Canvas APIs."
+  },
+  "privacyProof": {
+    "howItWorks": "Processed entirely inside the local browser sandbox using client-side JavaScript, WebAssembly, and WebCrypto.",
+    "verificationSteps": [
+      "Open browser Developer Tools (F12) -> Network tab.",
+      "Execute the tool and verify 0 outbound network requests occur."
+    ],
+    "openSourceNotice": "Open source under MIT License."
+  },
+  "byline": {
+    "author": "PrivacyFold Engineering Team",
+    "reviewer": "Gaurav Suthar",
+    "reviewedDate": "2026-11-11",
+    "sources": [
+      {
+        "name": "ISO 32000-1 / Destructive Scrub",
+        "url": "https://privacyfold.com"
+      }
+    ]
+  },
+  "social": {
+    "hook": "底层字节级销毁PDF敏感内容，杜绝逆向复制",
+    "proof": "100% client-side privacy guarantee.",
+    "hashtags": [
+      "privacy",
+      "pdf-redact",
+      "zh"
+    ],
+    "channels": [
+      "x",
+      "linkedin"
+    ]
+  }
+}
