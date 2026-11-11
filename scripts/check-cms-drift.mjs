@@ -103,3 +103,4 @@ if (errors > 0) {
   console.log('All CMS checks passed! Sveltia is self-hosted with SRI and zero third-party scripts.');
   process.exit(0);
 }
+

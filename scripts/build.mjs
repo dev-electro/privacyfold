@@ -60,3 +60,4 @@ if (isCheck) {
 
 fs.writeFileSync(distPath, newDist, 'utf8');
 console.log(`✓ Rebuilt privacyfold-nextjs/dist/index.html (${newDist.length.toLocaleString()} bytes)`);
+

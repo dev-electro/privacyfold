@@ -95,7 +95,25 @@ for (const file of presetFiles) {
 }
 console.log(`  [OK] 87/87 presets verified (${warnings} stale warnings).`);
 
-// 3. Image Size Budget (< 300 KB)
+// 3. Check Engine Records (DEC-009/010)
+console.log(`\nChecking content/engine/ registry records...`);
+const engineDir = path.join(root, 'privacyfold-nextjs/content/engine');
+if (!fs.existsSync(engineDir)) {
+  console.error(`[FAIL] content/engine directory does not exist`);
+  errors++;
+} else {
+  const engineFiles = fs.readdirSync(engineDir).filter((f) => f.endsWith('.yaml'));
+  for (const ef of engineFiles) {
+    const raw = fs.readFileSync(path.join(engineDir, ef), 'utf8');
+    if (!raw.includes('id:') || !raw.includes('sha256:') || !raw.includes('type:')) {
+      console.error(`[FAIL] ${ef}: Missing required engine fields`);
+      errors++;
+    }
+  }
+  console.log(`  [OK] ${engineFiles.length} engine records verified in content/engine/`);
+}
+
+// 4. Image Size Budget (< 300 KB)
 console.log(`\nChecking static image asset size budget (< 300 KB)...`);
 const checkDirImages = (dirPath) => {
   if (!fs.existsSync(dirPath)) return;
@@ -138,3 +156,4 @@ if (errors > 0) {
   console.log(`All CI Content checks passed cleanly! (${errors} errors, ${warnings} warnings)`);
   process.exit(0);
 }
+

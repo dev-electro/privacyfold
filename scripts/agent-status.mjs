@@ -32,6 +32,7 @@ const listJson = (dir) => (exists(dir) ? fs.readdirSync(r(dir)).filter((f) => f.
 const tools = listJson('privacyfold-nextjs/content/tools').map((f) => JSON.parse(read(`privacyfold-nextjs/content/tools/${f}`)));
 const presets = listJson('privacyfold-nextjs/content/presets').map((f) => JSON.parse(read(`privacyfold-nextjs/content/presets/${f}`)));
 const blogs = exists('privacyfold-nextjs/content/blog') ? fs.readdirSync(r('privacyfold-nextjs/content/blog')).filter((f) => f.endsWith('.md')) : [];
+const engines = exists('privacyfold-nextjs/content/engine') ? fs.readdirSync(r('privacyfold-nextjs/content/engine')).filter((f) => f.endsWith('.yaml')) : [];
 const schemas = listJson('privacyfold-nextjs/public/schemas').filter((f) => f !== '_index.json');
 
 /* ---------- runtime truth ---------- */
@@ -66,7 +67,7 @@ else ok('seo.steps present');
 /* ---------- 3. catalog honesty ---------- */
 out('');
 out('3. CATALOG ≈ REALITY');
-out(`  content tools: ${tools.length} · schemas: ${schemas.length} · presets: ${presets.length} · blog: ${blogs.length}`);
+out(`  content tools: ${tools.length} · schemas: ${schemas.length} · presets: ${presets.length} · blog: ${blogs.length}${engines.length ? ` · engines: ${engines.length}` : ''}`);
 out(`  runtime: ${toolObjs.length} defined · ${liveIds.length} live · ${soonIds.length} "coming soon"`);
 const advertisedOnly = [...contentSlugs].filter((s) => !liveSlugs.has(s));
 if (advertisedOnly.length) blocker(`${advertisedOnly.length} tools have a page/schema but no working implementation: ${advertisedOnly.join(', ')}`);

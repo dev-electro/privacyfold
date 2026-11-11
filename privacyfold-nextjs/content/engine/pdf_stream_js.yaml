@@ -1,0 +1,15 @@
+id: pdf_stream_js
+type: js
+family: pdf
+path: /app-runtime.js#pdf-streams
+sha256: privacyfold-client-pdf-stream
+version: 2026.11
+source_repository: https://github.com/dev-electro/privacyfold
+license: MIT
+size_kb: 45
+tasks:
+  - pdf_merge
+  - pdf_split
+  - pdf_redact
+  - pdf_flatten
+status: live

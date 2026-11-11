@@ -1,0 +1,15 @@
+id: webcrypto
+type: host
+family: crypto
+path: window.crypto.subtle
+sha256: browser-native-w3c-webcrypto
+version: 2026.11
+source_repository: https://www.w3.org/TR/WebCryptoAPI/
+license: W3C
+size_kb: 0
+tasks:
+  - file_encrypt
+  - hash_gen
+  - pgp_crypto
+  - uuid_gen
+status: live
