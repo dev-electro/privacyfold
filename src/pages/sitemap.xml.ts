@@ -9,6 +9,7 @@ export const GET: APIRoute = async () => {
     { loc: 'https://privacyfold.com/sitemaps/blog.xml', lastmod: today },
     { loc: 'https://privacyfold.com/sitemaps/glossary.xml', lastmod: today },
     { loc: 'https://privacyfold.com/sitemaps/pages.xml', lastmod: today },
+    { loc: 'https://privacyfold.com/sitemaps/i18n.xml', lastmod: today },
   ];
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>

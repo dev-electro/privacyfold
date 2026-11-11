@@ -97,6 +97,13 @@ export interface GitCmsGlossaryTerm {
   body: string;
 }
 
+export interface LocalizedTool extends GitCmsTool {
+  locale: string;
+  translation_of: string;
+  reviewed_by: string;
+  last_reviewed: string;
+}
+
 const CONTENT_ROOT = path.join(process.cwd(), 'content');
 
 export const FAMILIES: Record<GitCmsTool['fam'], { name: string; color: string }> = {
@@ -238,3 +245,46 @@ export function getAllGlossaryTermsFromGit(): GitCmsGlossaryTerm[] {
 export function getGlossaryTermFromGit(slug: string): GitCmsGlossaryTerm | undefined {
   return getAllGlossaryTermsFromGit().find((g) => g.slug === slug);
 }
+
+export function getAvailableLocales(): string[] {
+  const i18nDir = path.join(CONTENT_ROOT, 'i18n');
+  if (!fs.existsSync(i18nDir)) return [];
+  return fs
+    .readdirSync(i18nDir, { withFileTypes: true })
+    .filter((d) => d.isDirectory())
+    .map((d) => d.name);
+}
+
+export function getAllLocalizedToolsFromGit(): LocalizedTool[] {
+  const i18nDir = path.join(CONTENT_ROOT, 'i18n');
+  if (!fs.existsSync(i18nDir)) return [];
+  const locales = getAvailableLocales();
+  const list: LocalizedTool[] = [];
+
+  for (const loc of locales) {
+    const locToolsDir = path.join(i18nDir, loc, 'tools');
+    if (fs.existsSync(locToolsDir)) {
+      const files = fs.readdirSync(locToolsDir).filter((f) => f.endsWith('.json'));
+      for (const file of files) {
+        const raw = fs.readFileSync(path.join(locToolsDir, file), 'utf8');
+        const data = JSON.parse(raw);
+        data.locale = loc;
+        list.push(data as LocalizedTool);
+      }
+    }
+  }
+  return list;
+}
+
+export function getToolTranslations(toolId: string): Array<{ locale: string; slug: string }> {
+  const list: Array<{ locale: string; slug: string }> = [];
+  const canonicalId = toolId.replace(/_[a-z]{2}$/, '');
+  const localized = getAllLocalizedToolsFromGit().filter(
+    (t) => t.translation_of === canonicalId || t.id === canonicalId
+  );
+  for (const t of localized) {
+    list.push({ locale: t.locale, slug: t.slug });
+  }
+  return list;
+}
+

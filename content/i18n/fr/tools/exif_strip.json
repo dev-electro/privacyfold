@@ -1,0 +1,87 @@
+{
+  "id": "exif_strip_fr",
+  "slug": "exif-strip",
+  "translation_of": "exif_strip",
+  "locale": "fr",
+  "reviewed_by": "Gaurav Suthar",
+  "last_reviewed": "2026-11-10",
+  "status": "live",
+  "index": true,
+  "name": "Suppresseur de métadonnées EXIF et localisation GPS",
+  "category": "image",
+  "badge": "JPG, PNG",
+  "size": "18–120 KB WASM",
+  "Engine": "/wasm/image/exif-strip-v1.wasm",
+  "fam": "photo",
+  "task": "Supprimez les coordonnées GPS et métadonnées EXIF des photos",
+  "glyph": "EXIF",
+  "desc": "Les photos prises par smartphone ou appareil photo numérique contiennent des métadonnées EXIF incluant vos coordonnées GPS précises, votre modèle d'appareil et des horodatages. PrivacyFold supprime ces données directement dans la mémoire de votre navigateur, sans aucun téléversement vers des serveurs distants.",
+  "accepts": "image",
+  "tag": "JPG, PNG, WebP",
+  "std": "CIPA DC-008 EXIF 2.32",
+  "wasmModule": "/wasm/image/exif-strip-v1.wasm",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "presets": [],
+  "schemaUrl": "/schemas/exif_strip.json",
+  "executionUrl": "https://privacyfold.com/fr/tools/exif-strip/?mode=agent",
+  "seo": {
+    "metaTitle": "Supprimer les métadonnées EXIF et GPS des photos (100% Privé) | PrivacyFold",
+    "metaDescription": "Supprimez les coordonnées GPS et métadonnées EXIF de vos photos JPEG, PNG et WebP directement dans votre navigateur. Zéro téléversement.",
+    "aeoSummary": "PrivacyFold nettoie les métadonnées EXIF, GPS et XMP des fichiers JPEG, PNG et WebP localement dans la mémoire vive de votre navigateur sans aucun envoi réseau. La qualité visuelle reste inchangée.",
+    "steps": [
+      "Sélectionnez ou déposez vos photos JPEG, PNG ou WebP.",
+      "L'analyseur local identifie les balises GPS et informations de l'appareil.",
+      "Supprimez les métadonnées tout en préservant l'orientation de l'image.",
+      "Téléchargez instantanément votre photo propre et sécurisée."
+    ],
+    "faqs": [
+      {
+        "question": "Quelles métadonnées sont supprimées ?",
+        "answer": "Coordonnées GPS, modèle d'appareil, numéros de série, dates, vitesses d'obturation et miniatures intégrées."
+      },
+      {
+        "question": "La qualité de l'image est-elle modifiée ?",
+        "answer": "Non. Pour les JPEG, seuls les segments APP1 non visuels sont retirés. Les pixels de l'image restent 100% intacts."
+      }
+    ]
+  },
+  "settingsExplained": [
+    {
+      "name": "Conserver l'orientation",
+      "description": "Préserve l'angle de rotation d'origine tout en éliminant les marqueurs GPS.",
+      "safeDefault": "Activé",
+      "example": "Garde les photos verticales dans leur bon sens."
+    }
+  ],
+  "whatToExpect": {
+    "results": "Réduction de 15 Ko à 80 Ko par photo grâce au retrait des métadonnées invisibles. Fidélité visuelle intacte.",
+    "limits": "Prend en charge les fichiers jusqu'à 100 Mo.",
+    "benchmarks": "1.2 ms d'exécution pour une photo de 12 mégapixels."
+  },
+  "privacyProof": {
+    "howItWorks": "Traitement dans un ArrayBuffer local via l'API HTML5 File sans connexion serveur.",
+    "verificationSteps": [
+      "Ouvrez les Outils de développement (F12) -> onglet Réseau (Network).",
+      "Traitez votre photo et confirmez que 0 requête réseau n'est émise."
+    ],
+    "openSourceNotice": "Code source ouvert sous licence MIT et conforme aux standards W3C."
+  },
+  "byline": {
+    "author": "Équipe d'ingénierie PrivacyFold",
+    "reviewer": "Gaurav Suthar",
+    "reviewedDate": "2026-11-10",
+    "sources": [
+      {
+        "name": "CIPA DC-008 EXIF Standard Specification",
+        "url": "https://www.cipa.jp/std/documents/e/DC-008-2012_E.pdf"
+      }
+    ]
+  },
+  "social": {
+    "hook": "Vos photos révèlent où vous habitez. Supprimez le GPS en 1 clic.",
+    "proof": "Nettoie 6 marqueurs de métadonnées dans la RAM du navigateur.",
+    "hashtags": ["confidentialite", "securite", "photo"],
+    "channels": ["x", "linkedin"]
+  }
+}

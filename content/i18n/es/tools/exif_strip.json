@@ -1,0 +1,87 @@
+{
+  "id": "exif_strip_es",
+  "slug": "exif-strip",
+  "translation_of": "exif_strip",
+  "locale": "es",
+  "reviewed_by": "Gaurav Suthar",
+  "last_reviewed": "2026-11-10",
+  "status": "live",
+  "index": true,
+  "name": "Eliminador de metadatos EXIF y ubicación GPS",
+  "category": "image",
+  "badge": "JPG, PNG",
+  "size": "18–120 KB WASM",
+  "Engine": "/wasm/image/exif-strip-v1.wasm",
+  "fam": "photo",
+  "task": "Elimina coordenadas GPS y metadatos EXIF de fotografías",
+  "glyph": "EXIF",
+  "desc": "Las fotografías digitales tomadas con teléfonos móviles y cámaras incluyen metadatos EXIF ocultos con coordenadas GPS precisas, números de serie y marcas de tiempo. PrivacyFold elimina quirúrgicamente todos estos rastreadores directamente en la memoria de su navegador sin subir ningún archivo a servidores remotos.",
+  "accepts": "image",
+  "tag": "JPG, PNG, WebP",
+  "std": "CIPA DC-008 EXIF 2.32",
+  "wasmModule": "/wasm/image/exif-strip-v1.wasm",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "presets": [],
+  "schemaUrl": "/schemas/exif_strip.json",
+  "executionUrl": "https://privacyfold.com/es/tools/exif-strip/?mode=agent",
+  "seo": {
+    "metaTitle": "Eliminar metadatos EXIF y ubicación GPS de fotos (100% Privado) | PrivacyFold",
+    "metaDescription": "Elimine coordenadas GPS y metadatos EXIF de fotos JPEG, PNG y WebP directamente en su navegador. Cero subidas al servidor.",
+    "aeoSummary": "PrivacyFold elimina metadatos EXIF, GPS y XMP de archivos JPEG, PNG y WebP en la memoria RAM del navegador sin enviar datos a través de la red. La calidad visual original permanece idéntica.",
+    "steps": [
+      "Seleccione o arrastre fotos JPEG, PNG o WebP a la zona de colocación.",
+      "El analizador del navegador escanea etiquetas ocultas de GPS y del dispositivo.",
+      "Seleccione la opción de eliminar metadatos preservando la orientación.",
+      "Descargue su fotografía limpia y privada al instante."
+    ],
+    "faqs": [
+      {
+        "question": "¿Qué metadatos específicos elimina esta herramienta?",
+        "answer": "Elimina coordenadas de latitud/longitud GPS, modelo de cámara, números de serie, marcas de tiempo, velocidad de obturación e imágenes en miniatura incrustadas."
+      },
+      {
+        "question": "¿Se reduce la calidad de la imagen?",
+        "answer": "No. Para archivos JPEG, la herramienta sólo elimina los marcadores no visuales APP1, manteniendo los píxeles visuales 100% idénticos."
+      }
+    ]
+  },
+  "settingsExplained": [
+    {
+      "name": "Preservar Orientación",
+      "description": "Mantiene la orientación de rotación correcta mientras elimina las etiquetas de ubicación.",
+      "safeDefault": "Habilitado",
+      "example": "Mantiene fotos verticales en su orientación adecuada."
+    }
+  ],
+  "whatToExpect": {
+    "results": "Reducción de 15 KB a 80 KB por foto al eliminar metadatos no visuales. Claridad de píxeles intacta.",
+    "limits": "Admite archivos de hasta 100 MB.",
+    "benchmarks": "Tiempo de ejecución de 1.2 ms para una foto de teléfono de 12 MP."
+  },
+  "privacyProof": {
+    "howItWorks": "El archivo se procesa en memoria local ArrayBuffer mediante la API File de HTML5.",
+    "verificationSteps": [
+      "Abra las Herramientas para desarrolladores (F12) -> pestaña Red (Network).",
+      "Procese su fotografía y confirme que se envían exactamente 0 solicitudes HTTP."
+    ],
+    "openSourceNotice": "Código abierto bajo licencia MIT y estándares W3C."
+  },
+  "byline": {
+    "author": "Equipo de Ingeniería de PrivacyFold",
+    "reviewer": "Gaurav Suthar",
+    "reviewedDate": "2026-11-10",
+    "sources": [
+      {
+        "name": "CIPA DC-008 EXIF Standard Specification",
+        "url": "https://www.cipa.jp/std/documents/e/DC-008-2012_E.pdf"
+      }
+    ]
+  },
+  "social": {
+    "hook": "Tus fotos saben dónde vives. Elimina el GPS en 1 clic.",
+    "proof": "Elimina 6 marcadores de metadatos en la memoria del navegador.",
+    "hashtags": ["privacidad", "fotografia", "ciberseguridad"],
+    "channels": ["x", "whatsapp", "linkedin"]
+  }
+}

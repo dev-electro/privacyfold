@@ -151,3 +151,4 @@ for (const file of blogFiles) {
 }
 
 console.log(`✓ Open Graph social cards ready: ${toolCount} tools, ${blogCount} blog guides in public/og/`);
+

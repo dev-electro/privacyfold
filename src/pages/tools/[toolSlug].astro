@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import ToolDesk from '../../components/ToolDesk.astro';
 import ToolSeoArticle from '../../components/ToolSeoArticle.astro';
-import { getAllToolsFromGit, FAMILIES } from '../../lib/cms';
+import { getAllToolsFromGit, getToolTranslations, FAMILIES } from '../../lib/cms';
 import { generateToolJsonLdGraph } from '../../lib/schema-generator';
 
 export async function getStaticPaths() {
@@ -17,9 +17,14 @@ const { tool } = Astro.props;
 const famName = FAMILIES[tool.fam]?.name || 'Utility';
 const canonicalUrl = `https://privacyfold.com/tools/${tool.slug}/`;
 const jsonLd = generateToolJsonLdGraph(tool, canonicalUrl);
+const translations = getToolTranslations(tool.id);
 const alternateLinks = [
   { hreflang: 'x-default', href: canonicalUrl },
   { hreflang: 'en', href: canonicalUrl },
+  ...translations.map((tr) => ({
+    hreflang: tr.locale,
+    href: `https://privacyfold.com/${tr.locale}/tools/${tr.slug}/`,
+  })),
 ];
 ---
 

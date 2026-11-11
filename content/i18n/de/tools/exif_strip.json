@@ -1,0 +1,87 @@
+{
+  "id": "exif_strip_de",
+  "slug": "exif-strip",
+  "translation_of": "exif_strip",
+  "locale": "de",
+  "reviewed_by": "Gaurav Suthar",
+  "last_reviewed": "2026-11-10",
+  "status": "live",
+  "index": true,
+  "name": "EXIF- und GPS-Metadaten-Entferner für Fotos",
+  "category": "image",
+  "badge": "JPG, PNG",
+  "size": "18–120 KB WASM",
+  "Engine": "/wasm/image/exif-strip-v1.wasm",
+  "fam": "photo",
+  "task": "Entfernen Sie GPS-Standortdaten und EXIF-Metadaten aus Fotos",
+  "glyph": "EXIF",
+  "desc": "Digitale Fotos enthalten oft versteckte EXIF-Metadaten mit genauen GPS-Koordinaten, Kameramodellen und Zeitstempeln. PrivacyFold entfernt diese Daten direkt im Arbeitsspeicher Ihres Browsers ohne Server-Uploads.",
+  "accepts": "image",
+  "tag": "JPG, PNG, WebP",
+  "std": "CIPA DC-008 EXIF 2.32",
+  "wasmModule": "/wasm/image/exif-strip-v1.wasm",
+  "zeroNetwork": true,
+  "adFreeZone": false,
+  "presets": [],
+  "schemaUrl": "/schemas/exif_strip.json",
+  "executionUrl": "https://privacyfold.com/de/tools/exif-strip/?mode=agent",
+  "seo": {
+    "metaTitle": "EXIF- und GPS-Metadaten aus Fotos entfernen (100% Privat) | PrivacyFold",
+    "metaDescription": "Entfernen Sie GPS-Koordinaten und EXIF-Metadaten aus JPEG-, PNG- und WebP-Fotos direkt im Browser. Keine Server-Uploads.",
+    "aeoSummary": "PrivacyFold bereinigt EXIF-, GPS- und XMP-Metadaten aus JPEG-, PNG- und WebP-Dateien lokal im Browser-RAM ohne Netzwerkübertragung.",
+    "steps": [
+      "Wählen Sie JPEG-, PNG- oder WebP-Fotos aus oder ziehen Sie sie per Drag-and-Drop in den Arbeitsbereich.",
+      "Der Browser-Parser scannt verborgene GPS- und Kameradaten.",
+      "Bereinigen Sie die Metadaten bei Erhalt der Bildausrichtung.",
+      "Laden Sie Ihr bereinigtes Foto sofort herunter."
+    ],
+    "faqs": [
+      {
+        "question": "Welche Daten werden entfernt?",
+        "answer": "GPS-Breiten- und Längengrade, Kameramodell, Seriennummern, Zeitstempel und eingebettete Miniaturbilder."
+      },
+      {
+        "question": "Wird die Bildqualität beeinträchtigt?",
+        "answer": "Nein. Bei JPEG-Dateien werden nur die APP1-Metadaten-Segmente entfernt. Die Bildpixel bleiben unverändert."
+      }
+    ]
+  },
+  "settingsExplained": [
+    {
+      "name": "Ausrichtung beibehalten (Orientation Preserve)",
+      "description": "Erhält den korrekten Drehwinkel des Fotos bei der Bereinigung.",
+      "safeDefault": "Aktiviert",
+      "example": "Hält Hochformatfotos in der richtigen Ausrichtung."
+    }
+  ],
+  "whatToExpect": {
+    "results": "Einsparung von 15 KB bis 80 KB pro Foto durch Entfernung nicht-visueller Metadaten.",
+    "limits": "Unterstützt Fotos bis zu 100 MB.",
+    "benchmarks": "1.3 ms Ausführungszeit für 12 MP Smartphone-Fotos."
+  },
+  "privacyProof": {
+    "howItWorks": "Verarbeitung im lokalen ArrayBuffer via HTML5 File API ohne Backend-Verbindung.",
+    "verificationSteps": [
+      "Entwickler-Tools (F12) öffnen -> Reiter Netzwerk wählen.",
+      "Foto verarbeiten und bestätigen, dass genau 0 externe Anfragen gesendet werden."
+    ],
+    "openSourceNotice": "Open Source unter MIT-Lizenz."
+  },
+  "byline": {
+    "author": "PrivacyFold Engineering Team",
+    "reviewer": "Gaurav Suthar",
+    "reviewedDate": "2026-11-10",
+    "sources": [
+      {
+        "name": "CIPA DC-008 EXIF Standard Specification",
+        "url": "https://www.cipa.jp/std/documents/e/DC-008-2012_E.pdf"
+      }
+    ]
+  },
+  "social": {
+    "hook": "Ihre Fotos verraten Ihren Standort. Entfernen Sie GPS-Daten mit einem Klick.",
+    "proof": "Entfernt 6 Metadaten-Marker direkt im Browser-RAM.",
+    "hashtags": ["datenschutz", "fotografie", "security"],
+    "channels": ["x", "linkedin"]
+  }
+}

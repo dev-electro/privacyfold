@@ -2,6 +2,23 @@
 
 ---
 
+## 2026-11-11 — PF-019/PF-029: Phase 1 i18n live routes (hi, es, de, fr), symmetric hreflang graph, and i18n sitemap
+
+**Tasks:** PF-019 and PF-029 enhanced to live operational state.
+**Did:**
+1. Created `src/pages/[lang]/tools/[toolSlug].astro` dynamic multi-lingual route rendering localized tools with ToolDesk, ToolSeoArticle, and schema.org JSON-LD graphs.
+2. Deployed Phase 1 localized tool records in `content/i18n/`:
+   - `content/i18n/hi/tools/exif_strip.json` (Hindi)
+   - `content/i18n/es/tools/exif_strip.json` (Spanish)
+   - `content/i18n/de/tools/exif_strip.json` (German)
+   - `content/i18n/fr/tools/exif_strip.json` (French)
+3. Implemented symmetric hreflang graph: `getToolTranslations()` in `src/lib/cms.ts` populates matching `<link rel="alternate">` tags linking English (`x-default` & `en`), Hindi, Spanish, German, and French bidirectionally without orphan pages.
+4. Created `src/pages/sitemaps/i18n.xml.ts` and wired into the root `sitemapindex` at `/sitemap.xml`.
+**Proved by:** `npm test && npm run build` (193 static assets/pages compiled in 2.73s, verified symmetric hreflang in `dist/tools/exif-strip/index.html` and `dist/hi/tools/exif-strip/index.html`).
+**Next:** Complete test suite and audit pass.
+
+---
+
 ## 2026-11-11 — PF-025 & PF-019: Per-collection sitemaps with Git dates, OG image generator, and Astro i18n
 
 **Tasks:** PF-025 and PF-019 marked done.

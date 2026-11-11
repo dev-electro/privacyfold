@@ -39,3 +39,4 @@ export function getGitLastMod(relativeFilePath: string): string {
   const normalized = relativeFilePath.replace(/^\.\//, '');
   return map.get(normalized) || new Date().toISOString().split('T')[0];
 }
+
