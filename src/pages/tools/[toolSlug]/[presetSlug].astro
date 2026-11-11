@@ -1,0 +1,35 @@
+---
+import Base from '../../../layouts/Base.astro';
+import ToolDesk from '../../../components/ToolDesk.astro';
+import ToolSeoArticle from '../../../components/ToolSeoArticle.astro';
+import { getAllPresetsFromGit, getToolFromGit } from '../../../lib/cms';
+
+export async function getStaticPaths() {
+  const presets = getAllPresetsFromGit();
+  return presets.map((preset) => {
+    const tool = getToolFromGit(preset.toolSlug);
+    return {
+      params: { toolSlug: preset.toolSlug, presetSlug: preset.presetSlug },
+      props: { preset, tool },
+    };
+  });
+}
+
+const { preset, tool } = Astro.props;
+const canonicalUrl = `https://privacyfold.com/tools/${preset.toolSlug}/${preset.presetSlug}/`;
+const title = `${preset.title} — Free Client-Side Tool (Zero Upload)`;
+---
+
+<Base
+  title={title}
+  description={preset.desc}
+  canonicalUrl={canonicalUrl}
+>
+  <ToolDesk initialToolSlug={preset.toolSlug} />
+
+  {tool && (
+    <div class="wrap" style="padding-bottom: 64px;">
+      <ToolSeoArticle tool={tool} presetTitle={preset.title} presetDesc={preset.desc} />
+    </div>
+  )}
+</Base>

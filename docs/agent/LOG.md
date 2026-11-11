@@ -2,6 +2,22 @@
 
 ---
 
+## 2026-11-11 — PF-002: Complete Astro 7 + Tailwind v4 Migration & Next.js purged
+
+**Tasks:** PF-002 marked done.
+**Did:**
+1. Root Astro 7 scaffolding: Configured `astro.config.mjs` (static output), `@tailwindcss/vite` + Tailwind v4 in `src/styles/global.css`, `tsconfig.json`, and root `package.json`.
+2. Content & Public consolidation: Consolidated `content/` (72 tools, 87 presets, 6 blog, 9 engine, 5 templates), `public/` (Sveltia CMS in `/admin/`, 15 WASM binaries in `/wasm/`, self-hosted woff2 fonts in `/fonts/`, legal pages, manifests, and `app-runtime.js`), and `packages/mcp-server` directly at repository root.
+3. Content Collections & Schema validation: Configured `src/content.config.ts` (Astro Content Layer with glob loaders and Zod schemas) and typed CMS loader `src/lib/cms.ts`.
+4. Layouts and components: Built `src/layouts/Base.astro`, `src/components/ToolDesk.astro` (mounting full atelier desk UI and vanilla `app-runtime.js`), `src/components/ToolSeoArticle.astro` (10 technical blocks + schema.org JSON-LD), and `src/components/AdSenseUnit.astro`.
+5. Pages & Endpoints: Implemented `/index.astro` (Desk), `/tools/[toolSlug].astro` (all 72 tools), `/tools/[toolSlug]/[presetSlug].astro` (all 87 presets), `/blog/index.astro`, `/blog/[slug].astro`, and `/sitemap.xml.ts`.
+6. Purged Next.js: Removed `privacyfold-nextjs/` completely from Git and disk.
+7. CI & Scripts aligned: Updated `.github/workflows/ci.yml`, `scripts/agent-status.mjs`, `scripts/smoke-test.mjs`, `scripts/check-content.mjs`, `scripts/check-cms-drift.mjs`, and `scripts/build.mjs`.
+**Proved by:** `npm test` (agent-status P0 clear, smoke-test 72/72 passed, check-cms-drift clean, check-content 0 errors) and `npm run build` (167 static pages compiled in 2.65s).
+**Next:** PF-035 (Sveltia JS-API sugar), PF-031 (port DocSet ad system).
+
+---
+
 ## 2026-11-11 — Launch gate clear (PF-020): smoke tests, dist builder, error boundaries, preset QA, self-hosted CMS, CI checks
 
 **Tasks:** PF-011, PF-012, PF-016, PF-017, PF-020, PF-025, PF-026, PF-027, PF-030, PF-032, PF-034 marked done.

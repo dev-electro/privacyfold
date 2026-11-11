@@ -68,8 +68,7 @@ if (!fs.existsSync(configPath)) {
 
 // 4. Verify robots.txt disallows /admin/
 const robotsPaths = [
-  path.join(root, 'public/robots.txt'),
-  path.join(root, 'privacyfold-nextjs/public/robots.txt')
+  path.join(root, 'public/robots.txt')
 ];
 for (const rp of robotsPaths) {
   if (fs.existsSync(rp)) {

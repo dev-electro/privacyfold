@@ -1,0 +1,186 @@
+---
+import type { GitCmsTool } from '../lib/cms';
+import { getAllToolsFromGit, FAMILIES } from '../lib/cms';
+import AdSenseUnit from './AdSenseUnit.astro';
+
+interface Props {
+  tool: GitCmsTool;
+  presetTitle?: string;
+  presetDesc?: string;
+}
+
+const { tool, presetTitle, presetDesc } = Astro.props;
+const famName = FAMILIES[tool.fam]?.name || 'Utility';
+const related = getAllToolsFromGit().filter((t) => t.fam === tool.fam && t.id !== tool.id).slice(0, 4);
+---
+
+<div class="seo-wrap">
+  <div class="seo-main">
+    <AdSenseUnit slotId={`pf-${tool.slug}-top`} format="leaderboard" />
+
+    <article class="seo-card">
+      <div class="kick">TECHNICAL SPECIFICATION &amp; USER GUIDE · {famName.toUpperCase()}</div>
+      <h2>{presetTitle || `How ${tool.name} Works Locally in Your Browser`}</h2>
+
+      <div class="aeo-box">
+        <span class="aeo-k">Direct Answer Summary (Optimized for Search &amp; AI Citations)</span>
+        <p>{tool.seo.aeoSummary}</p>
+      </div>
+
+      <p>{presetDesc || tool.desc}</p>
+
+      <h3>Step-by-Step Instructions</h3>
+      <ol>
+        {tool.seo.steps.map((step) => (
+          <li>{step}</li>
+        ))}
+      </ol>
+
+      {tool.settingsExplained && tool.settingsExplained.length > 0 && (
+        <>
+          <h3>Settings Explained &amp; Safe Configurations</h3>
+          <div class="settings-list" style="display: grid; gap: 14px; margin: 16px 0 24px 0;">
+            {tool.settingsExplained.map((s) => (
+              <div style="background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px; padding: 14px 16px;">
+                <div style="font-weight: 600; color: #111827; font-size: 15px;">{s.name}</div>
+                <p style="margin: 6px 0 8px 0; font-size: 14px; color: #4b5563; line-height: 1.5;">{s.description}</p>
+                <div style="font-size: 13px; color: #6b7280;">
+                  <span>Safe Default: <code>{s.safeDefault}</code></span> · <span>Example: <em>{s.example}</em></span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </>
+      )}
+
+      {tool.whatToExpect && (
+        <>
+          <h3>What to Expect &amp; Performance Benchmarks</h3>
+          <p style="font-size: 14.5px; color: #374151; line-height: 1.6;">{tool.whatToExpect.results}</p>
+          <div style="background: #f8fafc; border-left: 4px solid #3b82f6; padding: 12px 16px; margin: 14px 0; font-size: 13.5px; color: #1e293b;">
+            <div><strong>Execution Latency:</strong> {tool.whatToExpect.benchmarks}</div>
+            <div style="margin-top: 4px;"><strong>Supported Limits:</strong> {tool.whatToExpect.limits}</div>
+          </div>
+        </>
+      )}
+
+      {tool.privacyProof && (
+        <>
+          <h3>Privacy Verification &amp; Technical Guarantee</h3>
+          <p style="font-size: 14.5px; color: #374151; line-height: 1.6;">{tool.privacyProof.howItWorks}</p>
+          <ol style="font-size: 14px; color: #4b5563; line-height: 1.6;">
+            {tool.privacyProof.verificationSteps.map((step) => (
+              <li style="margin-bottom: 6px;">{step}</li>
+            ))}
+          </ol>
+          <p style="font-size: 13px; color: #6b7280; font-style: italic; margin-top: 10px;">
+            {tool.privacyProof.openSourceNotice}
+          </p>
+        </>
+      )}
+
+      <h3>Architecture &amp; Standards Comparison</h3>
+      <table class="spec-tbl">
+        <thead>
+          <tr>
+            <th>Attribute</th>
+            <th>PrivacyFold Local Engine</th>
+            <th>Traditional Online Converters</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Execution Runtime</strong></td>
+            <td>{tool.wasmModule} (In-Browser RAM)</td>
+            <td>Remote Cloud Server Buckets</td>
+          </tr>
+          <tr>
+            <td><strong>Standard Compliance</strong></td>
+            <td>{tool.std}</td>
+            <td>Opaque Server Scripts</td>
+          </tr>
+          <tr>
+            <td><strong>Network Footprint</strong></td>
+            <td><strong>0 KB uploaded</strong> (Client-Side Only)</td>
+            <td>Full File Upload Over Internet</td>
+          </tr>
+          <tr>
+            <td><strong>Offline Support</strong></td>
+            <td>100% Functional via Service Worker PWA</td>
+            <td>Fails Without Active Server Connection</td>
+          </tr>
+          <tr>
+            <td><strong>Agent Integration</strong></td>
+            <td>Deterministic JSON-RPC / MCP Tool Schema</td>
+            <td>Ad-Hoc REST Upload Form</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Frequently Asked Questions</h3>
+      <div class="faq-list">
+        {tool.seo.faqs.map((faq) => (
+          <details class="faq-item">
+            <summary class="faq-q">{faq.question}</summary>
+            <p class="faq-a">{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+
+      {tool.byline && (
+        <div class="byline-box" style="margin-top: 32px; padding: 16px 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;">
+          <div style="font-size: 13px; color: #64748b; font-family: var(--font-mono);">
+            <span>Written by: <strong>{tool.byline.author}</strong></span> · 
+            <span>Verified by: <strong>{tool.byline.reviewer}</strong> ({tool.byline.reviewedDate})</span>
+          </div>
+          {tool.byline.sources && tool.byline.sources.length > 0 && (
+            <div style="margin-top: 8px; font-size: 12.5px; color: #64748b;">
+              <span>Official Specifications &amp; Standards: </span>
+              {tool.byline.sources.map((s, idx) => (
+                <span>
+                  {idx > 0 && ' · '}
+                  <a href={s.url} target="_blank" rel="noopener noreferrer" style="color: #2563eb; text-decoration: underline;">
+                    {s.name}
+                  </a>
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+    </article>
+
+    <AdSenseUnit slotId={`pf-${tool.slug}-bottom`} format="in-article" />
+  </div>
+
+  <aside class="seo-side">
+    <div class="side-card">
+      <div class="side-t">Related {famName} Tools</div>
+      <div class="side-list">
+        {related.map((rel) => (
+          <a href={`/tools/${rel.slug}/`} class="side-link">
+            <span class="mono" style="font-size: 11px; opacity: 0.7;">
+              {rel.glyph}
+            </span>
+            <div style="flex: 1; min-width: 0;">
+              <div class="side-link-t">{rel.name}</div>
+              <div class="side-link-d">{rel.tag}</div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <div class="side-card" style="margin-top: 16px;">
+      <div class="side-t">Standards &amp; Citations</div>
+      <p style="font-size: 13px; color: var(--ink-2); line-height: 1.5; margin-bottom: 8px;">
+        Evaluated against <code>{tool.std}</code>. Built strictly for local zero-upload environments.
+      </p>
+      <a href="/about/" class="side-more" style="color: var(--focus);">
+        Read verification guidelines →
+      </a>
+    </div>
+
+    <AdSenseUnit slotId={`pf-${tool.slug}-sidebar`} format="rectangle" />
+  </aside>
+</div>

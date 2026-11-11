@@ -1,0 +1,76 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getAllBlogsFromGit } from '../../lib/cms';
+import AdSenseUnit from '../../components/AdSenseUnit.astro';
+
+export async function getStaticPaths() {
+  const posts = getAllBlogsFromGit();
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const canonicalUrl = `https://privacyfold.com/blog/${post.slug}/`;
+
+const articleLd = {
+  '@context': 'https://schema.org',
+  '@type': 'TechArticle',
+  headline: post.title,
+  description: post.summary,
+  datePublished: post.publishedAt,
+  author: { '@type': 'Organization', name: 'PrivacyFold Engineering' },
+  publisher: { '@type': 'Organization', name: 'PrivacyFold', url: 'https://privacyfold.com' },
+  mainEntityOfPage: canonicalUrl,
+};
+---
+
+<Base
+  title={post.title}
+  description={post.summary}
+  canonicalUrl={canonicalUrl}
+  article={true}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(articleLd)} />
+  </Fragment>
+
+  <main class="wrap pg" style="padding-top: 40px; padding-bottom: 80px; max-width: 860px;">
+    <article class="blog-art">
+      <div class="kick" style="font-family: var(--font-mono); font-size: 13px; color: var(--ink-2); margin-bottom: 12px; text-transform: uppercase;">
+        {post.category} · {post.readTime} · {post.publishedAt}
+      </div>
+      <h1 style="font-size: 32px; font-weight: 800; line-height: 1.25; margin-bottom: 20px;">
+        {post.title}
+      </h1>
+
+      <div class="aeo-box" style="background: #eff6ff; border-left: 4px solid #3b82f6; padding: 16px 20px; border-radius: 6px; margin-bottom: 28px;">
+        <span class="aeo-k" style="display: block; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; color: #1e40af; font-weight: 700; margin-bottom: 6px;">
+          Key Takeaway
+        </span>
+        <p style="margin: 0; font-size: 15px; color: #1e293b; line-height: 1.5;">{post.summary}</p>
+      </div>
+
+      <div style="font-family: var(--font-body); font-size: 16px; line-height: 1.75; color: var(--ink); white-space: pre-wrap;">
+        {post.body}
+      </div>
+
+      <div style="margin: 36px 0;">
+        <AdSenseUnit slotId={`pf-blog-${post.slug}`} format="in-article" />
+      </div>
+
+      {post.relatedTool && (
+        <div style="margin-top: 40px; padding: 20px; background: var(--paper); border: 2px solid var(--line); border-radius: 8px;">
+          <h3 style="margin: 0 0 8px 0; font-size: 16px;">Try the Tool Privately</h3>
+          <p style="margin: 0 0 12px 0; font-size: 14px; color: var(--ink-2);">
+            Run the client-side tool explained in this guide with zero server uploads.
+          </p>
+          <a href={`/tools/${post.relatedTool.replace(/_/g, '-')}/`} class="btn" style="text-decoration: none; display: inline-flex; align-items: center;">
+            Open Tool →
+          </a>
+        </div>
+      )}
+    </article>
+  </main>
+</Base>

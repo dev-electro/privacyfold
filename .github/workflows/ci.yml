@@ -8,7 +8,7 @@ on:
 
 jobs:
   validate-and-build:
-    name: Validate Truth, Smoke Test & Static Build
+    name: Validate Truth, Smoke Test & Astro Build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -19,34 +19,33 @@ jobs:
         with:
           node-version: 22
           cache: 'npm'
-          cache-dependency-path: privacyfold-nextjs/package-lock.json
 
-      - name: 1. Agent Truth & Blocker Check
-        run: node scripts/agent-status.mjs
-
-      - name: 2. Verify Dist Runtime Sync
-        run: node scripts/build.mjs --check
-
-      - name: 3. Tool Runtime Smoke Tests (72 Tools)
-        run: node scripts/smoke-test.mjs
-
-      - name: 4. Sveltia CMS & Drift Check
-        run: node scripts/check-cms-drift.mjs
-
-      - name: 5. Content & Quality Checks
-        run: node scripts/check-content.mjs
-
-      - name: 6. Install Dependencies
-        working-directory: privacyfold-nextjs
+      - name: 1. Install Dependencies
         run: npm ci
 
-      - name: 7. Next.js Static Export Build
-        working-directory: privacyfold-nextjs
+      - name: 2. Agent Truth & Blocker Check
+        run: node scripts/agent-status.mjs
+
+      - name: 3. Verify Dist Runtime Sync
+        run: node scripts/build.mjs --check
+
+      - name: 4. Tool Runtime Smoke Tests (72 Tools)
+        run: node scripts/smoke-test.mjs
+
+      - name: 5. Sveltia CMS & Drift Check
+        run: node scripts/check-cms-drift.mjs
+
+      - name: 6. Content & Quality Checks
+        run: node scripts/check-content.mjs
+
+      - name: 7. Astro 7 Static Export Build
         run: npm run build
 
-      - name: 8. Verify Artifacts
+      - name: 8. Verify Dist Output
         run: |
-          test -f privacyfold-nextjs/out/index.html
-          test -f privacyfold-nextjs/out/sitemap.xml
-          test -f privacyfold-nextjs/out/robots.txt
-          echo "All static artifacts verified successfully!"
+          test -f dist/index.html
+          test -f dist/sitemap.xml
+          test -f dist/robots.txt
+          test -f dist/tools/exif-strip/index.html
+          test -f dist/admin/index.html
+          echo "All static Astro artifacts verified successfully!"

@@ -28,15 +28,17 @@ const warn = (s) => out(`  [warn]    ${s}`);
 const ok = (s) => out(`  [ok]      ${s}`);
 
 /* ---------- content inventory ---------- */
+const contentBase = exists('content/tools') ? 'content' : 'privacyfold-nextjs/content';
+const publicBase = exists('public/schemas') ? 'public' : 'privacyfold-nextjs/public';
 const listJson = (dir) => (exists(dir) ? fs.readdirSync(r(dir)).filter((f) => f.endsWith('.json')) : []);
-const tools = listJson('privacyfold-nextjs/content/tools').map((f) => JSON.parse(read(`privacyfold-nextjs/content/tools/${f}`)));
-const presets = listJson('privacyfold-nextjs/content/presets').map((f) => JSON.parse(read(`privacyfold-nextjs/content/presets/${f}`)));
-const blogs = exists('privacyfold-nextjs/content/blog') ? fs.readdirSync(r('privacyfold-nextjs/content/blog')).filter((f) => f.endsWith('.md')) : [];
-const engines = exists('privacyfold-nextjs/content/engine') ? fs.readdirSync(r('privacyfold-nextjs/content/engine')).filter((f) => f.endsWith('.yaml')) : [];
-const schemas = listJson('privacyfold-nextjs/public/schemas').filter((f) => f !== '_index.json');
+const tools = listJson(`${contentBase}/tools`).map((f) => JSON.parse(read(`${contentBase}/tools/${f}`)));
+const presets = listJson(`${contentBase}/presets`).map((f) => JSON.parse(read(`${contentBase}/presets/${f}`)));
+const blogs = exists(`${contentBase}/blog`) ? fs.readdirSync(r(`${contentBase}/blog`)).filter((f) => f.endsWith('.md')) : [];
+const engines = exists(`${contentBase}/engine`) ? fs.readdirSync(r(`${contentBase}/engine`)).filter((f) => f.endsWith('.yaml')) : [];
+const schemas = listJson(`${publicBase}/schemas`).filter((f) => f !== '_index.json');
 
 /* ---------- runtime truth ---------- */
-const runtime = read('privacyfold-nextjs/public/app-runtime.js');
+const runtime = read('public/app-runtime.js') || read('privacyfold-nextjs/public/app-runtime.js');
 const toolObjs = [...runtime.matchAll(/\{id:'([a-z0-9_]+)',fam:'(\w+)'/g)].map((m) => m[1]);
 const liveIds = [...runtime.matchAll(/\{id:'([a-z0-9_]+)',fam:'\w+'[^\n]*?live:true/g)].map((m) => m[1]);
 const soonIds = [...runtime.matchAll(/\{id:'([a-z0-9_]+)',fam:'\w+'[^\n]*?live:false/g)].map((m) => m[1]);
@@ -49,9 +51,9 @@ out('1. BUILD');
 const buildMarker = read('.agent-build-status').trim();
 if (buildMarker.startsWith('PASS')) ok(`last recorded build: ${buildMarker}`);
 else if (buildMarker.startsWith('FAIL')) blocker(`last recorded build: ${buildMarker}`);
-else warn('no .agent-build-status — run `npm run build` in privacyfold-nextjs and record it');
-if (!exists('privacyfold-nextjs/node_modules')) warn('node_modules absent — `npm ci` needed');
-if (!exists('privacyfold-nextjs/package-lock.json')) blocker('no package-lock.json — installs are not reproducible');
+else warn('no .agent-build-status — run `npm run build` and record it');
+if (!exists('node_modules') && !exists('privacyfold-nextjs/node_modules')) warn('node_modules absent — `npm ci` needed');
+if (!exists('package-lock.json') && !exists('privacyfold-nextjs/package-lock.json')) blocker('no package-lock.json — installs are not reproducible');
 
 /* ---------- 2. content <-> code schema ---------- */
 out('');
@@ -78,26 +80,33 @@ if (orphanLive.length) warn(`runnable but undocumented (no SEO page): ${orphanLi
 out('');
 out('4. ENGINE CLAIMS');
 const wasmFiles = [];
-const walk = (d) => { if (!fs.existsSync(d)) return; for (const e of fs.readdirSync(d, { withFileTypes: true })) { const p = path.join(d, e.name); if (e.isDirectory()) { if (!/node_modules|\.git|\.next/.test(e.name)) walk(p); } else if (e.name.endsWith('.wasm')) wasmFiles.push(p); } };
+const walk = (d) => { if (!fs.existsSync(d)) return; for (const e of fs.readdirSync(d, { withFileTypes: true })) { const p = path.join(d, e.name); if (e.isDirectory()) { if (!/node_modules|\.git|\.next|dist/.test(e.name)) walk(p); } else if (e.name.endsWith('.wasm')) wasmFiles.push(p); } };
 walk(root);
 const wasmRefs = (runtime.match(/\/wasm\/[a-z0-9/._-]+\.wasm/gi) || []).length;
 if (wasmRefs && !wasmFiles.length) blocker(`${wasmRefs} distinct /wasm/*.wasm paths referenced, 0 .wasm files on disk`);
 else if (wasmFiles.length) ok(`${wasmFiles.length} wasm binaries on disk`);
-const pkg = JSON.parse(read('privacyfold-nextjs/package.json'));
-const src = ['src', 'scripts', 'packages'].flatMap((d) => walkFiles(path.join(root, 'privacyfold-nextjs', d))).map((f) => fs.readFileSync(f, 'utf8')).join('\n');
+const pkg = JSON.parse(read('package.json') || read('privacyfold-nextjs/package.json'));
+const src = ['src', 'scripts', 'packages'].flatMap((d) => walkFiles(path.join(root, d))).map((f) => fs.readFileSync(f, 'utf8')).join('\n');
 const unused = Object.keys(pkg.dependencies || {}).filter((d) => !src.includes(d));
 if (unused.length) warn(`${unused.length} declared deps imported 0 times: ${unused.slice(0, 6).join(', ')}${unused.length > 6 ? '…' : ''}`);
 
 /* ---------- 5. canonical counts ---------- */
 out('');
 out('5. COUNT DRIFT (agents and humans get misled here)');
+const layoutContent = read('src/layouts/Base.astro') || read('privacyfold-nextjs/src/app/layout.tsx');
+const siteConfig = read('content/config/site.json') || read('privacyfold-nextjs/content/config/site.json');
+const llmsContent = read('public/llms.txt') || read('privacyfold-nextjs/public/llms.txt');
+const schemaIndex = read('public/schemas/_index.json') || read('privacyfold-nextjs/public/schemas/_index.json');
+const mcpContent = read('public/.well-known/mcp.json') || read('privacyfold-nextjs/public/.well-known/mcp.json');
+const mcpServer = read('packages/mcp-server/index.mjs') || read('privacyfold-nextjs/packages/mcp-server/index.mjs');
+
 const counts = {
-  'src/app/layout.tsx': (read('privacyfold-nextjs/src/app/layout.tsx').match(/(\d+)\s+client-side/) || [])[1],
-  'content/config/site.json': (JSON.parse(read('privacyfold-nextjs/content/config/site.json')).description.match(/(\d+)\s+client-side/) || [])[1],
-  'public/llms.txt': (read('privacyfold-nextjs/public/llms.txt').match(/Tools Catalog \((\d+) Tools\)/) || [])[1],
-  'public/schemas/_index.json': String(JSON.parse(read('privacyfold-nextjs/public/schemas/_index.json')).tool_count ?? '?'),
-  'public/.well-known/mcp.json': String((JSON.parse(read('privacyfold-nextjs/public/.well-known/mcp.json')).tools || []).length),
-  'packages/mcp-server (total_tools)': (read('privacyfold-nextjs/packages/mcp-server/index.mjs').match(/total_tools:\s*(\d+)/) || [])[1],
+  'src/layouts/Base.astro': (layoutContent.match(/(\d+)\s+client-side/) || [])[1],
+  'content/config/site.json': (JSON.parse(siteConfig).description.match(/(\d+)\s+client-side/) || [])[1],
+  'public/llms.txt': (llmsContent.match(/Tools Catalog \((\d+) Tools\)/) || [])[1],
+  'public/schemas/_index.json': String(JSON.parse(schemaIndex).tool_count ?? '?'),
+  'public/.well-known/mcp.json': String((JSON.parse(mcpContent).tools || []).length),
+  'packages/mcp-server (total_tools)': (mcpServer.match(/total_tools:\s*(\d+)/) || [])[1],
   'reality (content)': String(tools.length),
   'reality (runnable)': String(liveIds.length),
 };
@@ -109,18 +118,17 @@ if (distinct.size > 1) blocker(`tool count stated ${distinct.size} different way
 out('');
 out('6. LAUNCH SURFACE');
 const mustHave = {
-  'privacyfold-nextjs/public/privacy/index.html': 'privacy policy',
-  'privacyfold-nextjs/public/terms/index.html': 'terms',
-  'privacyfold-nextjs/public/ads.txt': 'ads.txt',
-  'privacyfold-nextjs/public/sw.js': 'service worker (offline claim)',
-  'privacyfold-nextjs/public/favicon.ico': 'favicon',
-  'privacyfold-nextjs/public/og.png': 'og:image',
-  'privacyfold-nextjs/LICENSE': 'LICENSE',
-  'privacyfold-nextjs/.gitignore': '.gitignore (in app dir)',
+  'public/privacy/index.html': 'privacy policy',
+  'public/terms/index.html': 'terms',
+  'public/ads.txt': 'ads.txt',
+  'public/sw.js': 'service worker (offline claim)',
+  'public/favicon.ico': 'favicon',
+  'public/og.png': 'og:image',
+  'LICENSE': 'LICENSE',
+  '.gitignore': '.gitignore (at repo root)',
 };
 for (const [p, label] of Object.entries(mustHave)) if (!exists(p)) warn(`missing ${label} (${p})`);
-if (!exists('.gitignore')) blocker('.gitignore missing at repo root');
-const fonts = read('privacyfold-nextjs/public/index.html') + read('privacyfold-nextjs/src/app/layout.tsx');
+const fonts = read('public/index.html') + read('src/layouts/Base.astro');
 if (/fonts\.googleapis\.com/.test(fonts)) warn('Google Fonts CDN referenced — third-party request on a privacy product');
 
 /* ---------- 7. git ---------- */

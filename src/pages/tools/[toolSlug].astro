@@ -1,0 +1,36 @@
+---
+import Base from '../../layouts/Base.astro';
+import ToolDesk from '../../components/ToolDesk.astro';
+import ToolSeoArticle from '../../components/ToolSeoArticle.astro';
+import { getAllToolsFromGit, FAMILIES } from '../../lib/cms';
+import { generateToolJsonLdGraph } from '../../lib/schema-generator';
+
+export async function getStaticPaths() {
+  const tools = getAllToolsFromGit();
+  return tools.map((tool) => ({
+    params: { toolSlug: tool.slug },
+    props: { tool },
+  }));
+}
+
+const { tool } = Astro.props;
+const famName = FAMILIES[tool.fam]?.name || 'Utility';
+const canonicalUrl = `https://privacyfold.com/tools/${tool.slug}/`;
+const jsonLd = generateToolJsonLdGraph(tool, canonicalUrl);
+---
+
+<Base
+  title={tool.seo.metaTitle}
+  description={tool.seo.metaDescription}
+  canonicalUrl={canonicalUrl}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <ToolDesk initialToolSlug={tool.slug} />
+
+  <div class="wrap" style="padding-bottom: 64px;">
+    <ToolSeoArticle tool={tool} />
+  </div>
+</Base>

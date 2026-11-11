@@ -21,7 +21,9 @@ let warnings = 0;
 console.log('Running CI Content Checks (PF-026)...\n');
 
 // 1. Check Tools & JSON-LD
-const toolsDir = path.join(root, 'privacyfold-nextjs/content/tools');
+const toolsDir = fs.existsSync(path.join(root, 'content/tools'))
+  ? path.join(root, 'content/tools')
+  : path.join(root, 'privacyfold-nextjs/content/tools');
 const toolFiles = fs.readdirSync(toolsDir).filter((f) => f.endsWith('.json'));
 
 console.log(`Checking 72 tools JSON-LD & content fields...`);
@@ -55,7 +57,9 @@ for (const file of toolFiles) {
 console.log(`  [OK] 72/72 tools have valid metadata, HowTo steps, and FAQ schema.`);
 
 // 2. Check Presets Staleness & Completeness
-const presetsDir = path.join(root, 'privacyfold-nextjs/content/presets');
+const presetsDir = fs.existsSync(path.join(root, 'content/presets'))
+  ? path.join(root, 'content/presets')
+  : path.join(root, 'privacyfold-nextjs/content/presets');
 const presetFiles = fs.readdirSync(presetsDir).filter((f) => f.endsWith('.json'));
 
 console.log(`\nChecking 87 presets for staleness & metadata...`);
@@ -97,7 +101,9 @@ console.log(`  [OK] 87/87 presets verified (${warnings} stale warnings).`);
 
 // 3. Check Engine Records (DEC-009/010)
 console.log(`\nChecking content/engine/ registry records...`);
-const engineDir = path.join(root, 'privacyfold-nextjs/content/engine');
+const engineDir = fs.existsSync(path.join(root, 'content/engine'))
+  ? path.join(root, 'content/engine')
+  : path.join(root, 'privacyfold-nextjs/content/engine');
 if (!fs.existsSync(engineDir)) {
   console.error(`[FAIL] content/engine directory does not exist`);
   errors++;

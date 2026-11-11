@@ -15,7 +15,10 @@ import path from 'node:path';
 import { webcrypto } from 'node:crypto';
 
 const root = path.resolve(import.meta.dirname, '..');
-const runtimeCode = fs.readFileSync(path.join(root, 'privacyfold-nextjs/public/app-runtime.js'), 'utf8');
+const runtimePath = fs.existsSync(path.join(root, 'public/app-runtime.js'))
+  ? path.join(root, 'public/app-runtime.js')
+  : path.join(root, 'privacyfold-nextjs/public/app-runtime.js');
+const runtimeCode = fs.readFileSync(runtimePath, 'utf8');
 
 // Set up headless browser mock environment
 global.window = global;

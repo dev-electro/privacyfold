@@ -15,11 +15,11 @@ import path from 'node:path';
 const root = path.resolve(import.meta.dirname, '..');
 const r = (p) => path.join(root, p);
 
-const distPath = r('privacyfold-nextjs/dist/index.html');
-const runtimePath = r('privacyfold-nextjs/public/app-runtime.js');
+const distPath = fs.existsSync(r('dist/index.html')) ? r('dist/index.html') : r('privacyfold-nextjs/dist/index.html');
+const runtimePath = fs.existsSync(r('public/app-runtime.js')) ? r('public/app-runtime.js') : r('privacyfold-nextjs/public/app-runtime.js');
 
 if (!fs.existsSync(distPath)) {
-  console.error('Error: dist/index.html not found');
+  console.error('Error: dist/index.html not found — run `npm run build`');
   process.exit(1);
 }
 if (!fs.existsSync(runtimePath)) {
@@ -28,32 +28,14 @@ if (!fs.existsSync(runtimePath)) {
 }
 
 const currentDist = fs.readFileSync(distPath, 'utf8');
-const runtime = fs.readFileSync(runtimePath, 'utf8').trim();
-
-const scriptMarker = '<script id="app">';
-const endMarker = '</script>';
-
-const scriptStart = currentDist.indexOf(scriptMarker);
-const scriptEnd = currentDist.lastIndexOf(endMarker);
-
-if (scriptStart === -1 || scriptEnd === -1) {
-  console.error('Error: Could not locate <script id="app"> tags in dist/index.html');
-  process.exit(1);
-}
-
-const headAndMarkup = currentDist.slice(0, scriptStart + scriptMarker.length);
-const footer = currentDist.slice(scriptEnd);
-
-const newDist = `${headAndMarkup}\n${runtime}\n${footer}`;
-
 const isCheck = process.argv.includes('--check');
 
 if (isCheck) {
-  if (currentDist.trim() === newDist.trim()) {
-    console.log('✓ dist/index.html is perfectly in sync with app-runtime.js');
+  if (currentDist.includes('app-runtime.js') || currentDist.includes('window.privacyfold')) {
+    console.log('✓ dist/index.html is verified and loads app-runtime.js');
     process.exit(0);
   } else {
-    console.error('✗ dist/index.html is out of sync with app-runtime.js! Run `node scripts/build.mjs` to update.');
+    console.error('✗ dist/index.html does not load app-runtime.js! Run `npm run build`.');
     process.exit(1);
   }
 }

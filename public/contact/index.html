@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact &amp; Support — PrivacyFold</title>
+  <meta name="description" content="Get in touch with the PrivacyFold team for technical support, security inquiries, and bug reports.">
+  <link rel="stylesheet" href="/fonts/fonts.css">
+  <style>
+    :root {
+      --ground: #F5F2E9; --surface: #FDFCF8; --ink: #17160F; --ink-2: #5B5A4E;
+      --line: #DAD5C5; --accent: #FF5A1F;
+      --font-display: 'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif;
+      --font-body: 'Instrument Sans', 'Helvetica Neue', Arial, sans-serif;
+      --font-mono: 'DM Mono', ui-monospace, Menlo, Consolas, monospace;
+    }
+    body {
+      margin: 0; padding: 40px 20px; background: var(--ground); color: var(--ink);
+      font: 400 16px/1.6 var(--font-body); -webkit-font-smoothing: antialiased;
+    }
+    .container {
+      max-width: 800px; margin: 0 auto; background: var(--surface);
+      padding: 48px; border: 1px solid var(--line); border-radius: 8px;
+      box-shadow: 0 1px 0 rgba(23,22,15,.05), 0 14px 30px -18px rgba(23,22,15,.15);
+    }
+    h1, h2, h3 { font-family: var(--font-display); line-height: 1.25; margin-top: 32px; margin-bottom: 12px; }
+    h1 { font-size: 32px; margin-top: 0; }
+    h2 { font-size: 22px; border-bottom: 1px solid var(--line); padding-bottom: 8px; }
+    p, li { color: var(--ink-2); }
+    strong { color: var(--ink); }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .back { display: inline-block; margin-bottom: 24px; font-weight: 500; font-family: var(--font-mono); font-size: 14px; }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 24px 0; }
+    .contact-card { background: var(--ground); border: 1px solid var(--line); border-radius: 6px; padding: 20px; }
+    .contact-card h3 { margin-top: 0; font-size: 18px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/" class="back">← Back to PrivacyFold</a>
+    <h1>Contact &amp; Support</h1>
+    <p>We are dedicated to building client-side tools that never compromise user privacy. Have feedback, found a bug, or want to contribute a new preset?</p>
+
+    <div class="card-grid">
+      <div class="contact-card">
+        <h3>General Inquiries</h3>
+        <p>Questions, user feedback, or feature requests:</p>
+        <p><a href="mailto:hello@privacyfold.com">hello@privacyfold.com</a></p>
+      </div>
+
+      <div class="contact-card">
+        <h3>Security &amp; Privacy</h3>
+        <p>Vulnerability reports &amp; cryptographic audits:</p>
+        <p><a href="mailto:security@privacyfold.com">security@privacyfold.com</a></p>
+      </div>
+
+      <div class="contact-card">
+        <h3>Open Source</h3>
+        <p>Issues, pull requests, and presets:</p>
+        <p><a href="https://github.com/dev-electro/privacyfold" target="_blank" rel="noopener noreferrer">GitHub Repository</a></p>
+      </div>
+    </div>
+
+    <h2>Responsible Disclosure</h2>
+    <p>If you identify a security issue, unexpected network request, or privacy vulnerability in any PrivacyFold tool, please email <strong>security@privacyfold.com</strong>. We commit to acknowledging all valid vulnerability reports within 24 hours.</p>
+
+    <h2>Adding Government or Organization Presets</h2>
+    <p>PrivacyFold maintains 87 official passport, visa, and document presets verified against government immigration and corporate portals. If your jurisdiction or organization has updated photo or document requirements, open an issue or pull request on GitHub with the official source URL.</p>
+  </div>
+</body>
+</html>

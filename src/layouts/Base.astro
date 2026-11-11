@@ -1,0 +1,63 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalUrl?: string;
+  ogImage?: string;
+  article?: boolean;
+}
+
+const {
+  title = 'PrivacyFold — File Tools That Never See Your Files (100% Client-Side)',
+  description = '72 client-side image, PDF, form, developer, and cryptography tools running 100% locally in your browser via WebAssembly, WebGPU & WebCrypto. Zero server uploads.',
+  canonicalUrl = 'https://privacyfold.com/',
+  ogImage = 'https://privacyfold.com/og.png',
+  article = false,
+} = Astro.props;
+
+const siteTitle = title.includes('PrivacyFold') ? title : `${title} | PrivacyFold`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{siteTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph & Social Cards -->
+    <meta property="og:site_name" content="PrivacyFold" />
+    <meta property="og:title" content={siteTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:type" content={article ? 'article' : 'website'} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={siteTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Self-Hosted Typography & Icons -->
+    <link rel="stylesheet" href="/fonts/fonts.css" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href="/favicon.ico" />
+
+    <slot name="head" />
+  </head>
+  <body>
+    <slot />
+
+    <script is:inline>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch(() => {});
+        });
+      }
+    </script>
+  </body>
+</html>

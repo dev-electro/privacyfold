@@ -1,7 +1,7 @@
 # AGENTS.md — PrivacyFold
 
 **Product:** privacyfold.com — client-side file/privacy tools ("file tools that never see your files").
-**Stack:** Next.js 15 static export + vanilla JS runtime (`public/app-runtime.js`) + Git-based JSON CMS.
+**Stack:** Astro 7 static export + Tailwind v4 + vanilla JS runtime (`public/app-runtime.js`) + Sveltia Git CMS.
 **Server:** none, ever. No Workers, no DB, no uploads. Cloudflare Pages static.
 
 Any agent working here — Claude Code, Codex, Cursor, Jules, Hermes, a human new to the repo — starts here.
@@ -30,11 +30,13 @@ If `agent-status` output contradicts `STATE.md`, **the script wins**: fix `STATE
 
 | Path | What it is |
 |---|---|
-| `privacyfold-nextjs/` | The product (Next app + content CMS + standalone `dist/index.html`) |
-| `privacyfold-nextjs/content/` | Git-tracked CMS: 72 tools, 87 presets, 6 blog, templates, site config |
+| `src/` | Astro 7 app (layouts, pages, components, lib, content config) |
+| `content/` | Git-tracked CMS: 72 tools, 87 presets, 6 blog, 9 engine, templates, site config |
+| `public/` | Static assets: `admin/` (Sveltia CMS), `wasm/`, `fonts/`, `app-runtime.js`, legal, manifests |
+| `dist/` | Static build output (167 pages, zero-upload HTML) for Cloudflare Pages deploy |
 | `docs/` | Strategy blueprints; aspirational, **not** verified truth |
 | `docs/agent/` | The operating memory: STATE, TASKS, CLAIMS, DECISIONS, LOG, cheatsheets |
-| `scripts/agent-status.mjs` | Truth probe (content/runtime/claim drift, launch surface) |
+| `scripts/` | Truth probe, smoke tests, CMS drift and content validation scripts |
 | `reference-ui.html` | DESIGN SOURCE OF TRUTH. Do not refactor visually without a decision entry |
 
 ## Session end (5 minutes — this is the memory system)

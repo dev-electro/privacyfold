@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About PrivacyFold — File Tools That Never See Your Files</title>
+  <meta name="description" content="Why PrivacyFold exists: 100% client-side file tools running in your browser via WebAssembly, WebCrypto, and WebGPU. Zero server uploads.">
+  <link rel="stylesheet" href="/fonts/fonts.css">
+  <style>
+    :root {
+      --ground: #F5F2E9; --surface: #FDFCF8; --ink: #17160F; --ink-2: #5B5A4E;
+      --line: #DAD5C5; --accent: #FF5A1F;
+      --font-display: 'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif;
+      --font-body: 'Instrument Sans', 'Helvetica Neue', Arial, sans-serif;
+      --font-mono: 'DM Mono', ui-monospace, Menlo, Consolas, monospace;
+    }
+    body {
+      margin: 0; padding: 40px 20px; background: var(--ground); color: var(--ink);
+      font: 400 16px/1.6 var(--font-body); -webkit-font-smoothing: antialiased;
+    }
+    .container {
+      max-width: 800px; margin: 0 auto; background: var(--surface);
+      padding: 48px; border: 1px solid var(--line); border-radius: 8px;
+      box-shadow: 0 1px 0 rgba(23,22,15,.05), 0 14px 30px -18px rgba(23,22,15,.15);
+    }
+    h1, h2, h3 { font-family: var(--font-display); line-height: 1.25; margin-top: 32px; margin-bottom: 12px; }
+    h1 { font-size: 32px; margin-top: 0; }
+    h2 { font-size: 22px; border-bottom: 1px solid var(--line); padding-bottom: 8px; }
+    p, li { color: var(--ink-2); }
+    strong { color: var(--ink); }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .back { display: inline-block; margin-bottom: 24px; font-weight: 500; font-family: var(--font-mono); font-size: 14px; }
+    .badge { display: inline-block; padding: 4px 10px; background: #E8F5E9; color: #1B5E20; border-radius: 4px; font-size: 13px; font-weight: 600; margin-bottom: 16px; }
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 24px 0; }
+    .stat-card { background: var(--ground); border: 1px solid var(--line); border-radius: 6px; padding: 16px; text-align: center; }
+    .stat-n { font-family: var(--font-display); font-size: 28px; font-weight: 700; color: var(--ink); }
+    .stat-l { font-size: 13px; color: var(--ink-2); margin-top: 4px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/" class="back">← Back to PrivacyFold</a>
+    <div class="badge">MISSION &amp; ARCHITECTURE · 100% CLIENT-SIDE</div>
+    <h1>About PrivacyFold</h1>
+    <p><em>File tools that never see your files.</em></p>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-n">0 Bytes</div>
+        <div class="stat-l">Uploaded to Servers</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-n">72 Tools</div>
+        <div class="stat-l">In-Browser Utilities</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-n">87 Presets</div>
+        <div class="stat-l">Official Standards</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-n">100%</div>
+        <div class="stat-l">Local Device Memory</div>
+      </div>
+    </div>
+
+    <h2>1. The Problem with Cloud Converters</h2>
+    <p>Every day, hundreds of millions of people use free online tools to resize passport photos, compress PDFs, convert images, or redact contracts. What most users do not realize is that traditional online tools require uploading your sensitive files to remote cloud servers.</p>
+    <p>Those servers store copies in cloud storage buckets, write access logs, and expose your confidential tax returns, medical records, passport photos, and business agreements to third-party data breaches, corporate snooping, and AI model scraping.</p>
+
+    <h2>2. The PrivacyFold Technical Guarantee</h2>
+    <p>PrivacyFold was founded on a simple technical principle: <strong>privacy is a technical guarantee, not a marketing slogan</strong>.</p>
+    <p>Modern web browsers are full-fledged operating platforms equipped with high-performance computing standards:</p>
+    <ul>
+      <li><strong>WebAssembly (WASM):</strong> Runs near-native compiled binary engines (MozJPEG, libpng, Google WebP, SQLite) directly in browser memory.</li>
+      <li><strong>W3C Web Cryptography API:</strong> Executes military-grade AES-256-GCM encryption and PBKDF2 key derivation using hardware acceleration on your CPU/GPU.</li>
+      <li><strong>HTML5 Canvas &amp; OffscreenCanvas:</strong> Manipulates, crops, and renders pixels with zero network requests.</li>
+      <li><strong>WebGPU &amp; ONNX Runtime:</strong> Executes on-device AI tasks like background matting and text formatting locally.</li>
+    </ul>
+
+    <h2>3. Zero Server Architecture</h2>
+    <p>PrivacyFold has <strong>zero server-side code</strong>. There are no backend API routes, no processing Workers, no cloud databases, and no file storage buckets. The entire platform consists of static web assets delivered over Cloudflare Pages.</p>
+    <p>When you compress a photo or merge a PDF, your device does the work. When you close the browser tab, your data vanishes from volatile memory. Nothing is retained.</p>
+
+    <h2>4. How to Verify</h2>
+    <p>We do not ask you to take our word for it. You can verify our technical guarantee in under 10 seconds:</p>
+    <ol>
+      <li>Open your browser Developer Tools (<kbd>F12</kbd> or <kbd>Cmd+Option+I</kbd>).</li>
+      <li>Click the <strong>Network</strong> tab.</li>
+      <li>Process any file or document in PrivacyFold.</li>
+      <li>Confirm that <strong>exactly zero HTTP requests</strong> carry your file content or metadata over the wire.</li>
+    </ol>
+
+    <h2>5. Leadership &amp; Open Source</h2>
+    <p>PrivacyFold is created by <a href="https://github.com/dev-electro" target="_blank" rel="noopener noreferrer">Gaurav Suthar</a> and open source contributors. The platform is licensed under the MIT License for software and CC-BY-4.0 for standard presets and specifications.</p>
+  </div>
+</body>
+</html>

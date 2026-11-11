@@ -1,0 +1,262 @@
+---
+interface Props {
+  initialToolSlug?: string;
+}
+
+const { initialToolSlug } = Astro.props;
+---
+
+<div id="pf-desk-root">
+<div class="world" id="world" aria-hidden="true"><i></i><i></i><i></i></div><div class="live" id="liveF" aria-hidden="true"></div>
+<div class="atelier-bar" role="region" aria-label="Zero-upload security telemetry">
+  <div class="wrap">
+    <div class="atelier-r">
+      <button type="button" class="wire-pill" id="wirePill" title="Verify zero outbound network calls">
+        <span class="wdot" aria-hidden="true"></span>
+        <span>Network: <b class="snip">0 uploads</b> · <span id="wireReqN">0</span> requests sent</span>
+      </button>
+      <span class="mono" id="atelierPaperTag">Local browser processing · Files never leave your device</span>
+    </div>
+    <div class="atelier-r">
+      <button type="button" class="at-link" id="openPleatTop">Multi-step workflow <span class="badge" id="pleatCountB">3</span></button>
+      <button type="button" class="at-link" id="openQrTop">Share via QR code</button>
+      <button type="button" class="at-link" id="runAirgapBtn">Privacy check</button>
+    </div>
+  </div>
+</div>
+<header class="nav">
+  <div class="wrap">
+    <button type="button" class="brand" id="brand" aria-label="PrivacyFold home">
+      <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path d="M4 3h16l7 7v17H4z" fill="#FF5A1F" stroke="#17160F" stroke-width="2" stroke-linejoin="round"/><path d="M20 3v7h7z" fill="#B7330A" stroke="#17160F" stroke-width="2" stroke-linejoin="round"/><path d="M4 27L27 10v17z" fill="rgba(0,0,0,.16)"/></svg>
+      PrivacyFold
+    </button>
+    <nav class="links" aria-label="Sections">
+      <button type="button" data-go="tools">Tools</button><button type="button" data-go="how">How it works</button><button type="button" data-go="privacy">Privacy</button><button type="button" data-go="developers">Developers</button><button type="button" data-page="features">Features</button><button type="button" data-page="pipeline">Workflow</button><button type="button" data-page="webgpu">WebGPU &amp; AI</button><button type="button" data-page="blog">Guides &amp; Blog</button><button type="button" data-page="ledger">Ledger</button>
+    </nav>
+    <div class="nav-r">
+      <button type="button" class="nbtn mob-menu-btn" id="mobMenuBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobDrawer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span class="lbl">Menu</span></button>
+      <button type="button" class="nbtn" id="palBtn" aria-label="Search tools"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><span class="lbl">Search tools</span><span class="kbdk" id="kbdHint">Ctrl K</span></button>
+      <button type="button" class="nbtn" id="trayBtn" aria-expanded="false" aria-controls="trayp" aria-label="Your files"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h9l5 5v13H5z"/><path d="M14 3v5h5"/></svg><span class="lbl">Your files</span><span class="badge" id="trayN">0</span></button>
+      <button type="button" class="nbtn" id="playBtn" aria-label="Playfulness: Subtle. Change"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.2 5.6L20 11l-5.8 2.4L12 19l-2.2-5.6L4 11l5.8-2.4z"/></svg><span class="lbl">Play <b id="playV">Subtle</b></span></button>
+      <button type="button" class="nbtn" id="soundBtn" aria-pressed="false" aria-label="Sound off. Turn on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path id="sndWave" d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg></button>
+      <button type="button" class="nbtn" id="themeBtn" aria-haspopup="menu" aria-expanded="false" aria-controls="paperP" aria-label="Paper: Follow my device. Change"></button>
+      <div class="paperp" id="paperP" role="menu" aria-label="Paper stock" hidden></div>
+      <div class="trayp" id="trayp" hidden></div>
+    </div>
+  </div>
+</header>
+
+<div class="mob-drawer-wrap" id="mobDrawer" hidden aria-modal="true" role="dialog" aria-label="Navigation Menu">
+  <div class="mob-backdrop" id="mobBackdrop"></div>
+  <div class="mob-drawer-panel">
+    <div class="mob-d-head">
+      <button type="button" class="brand" id="mobBrand" style="padding:0">
+        <svg width="24" height="24" viewBox="0 0 30 30" aria-hidden="true"><path d="M4 3h16l7 7v17H4z" fill="#FF5A1F" stroke="#17160F" stroke-width="2" stroke-linejoin="round"/><path d="M20 3v7h7z" fill="#B7330A" stroke="#17160F" stroke-width="2" stroke-linejoin="round"/></svg>
+        PrivacyFold
+      </button>
+      <button type="button" class="nbtn" id="mobDrawerClose" aria-label="Close menu" style="min-width:38px;min-height:38px"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+    </div>
+    <div class="mob-d-nav">
+      <button type="button" data-mob-go="tools">All Tools <span>36</span></button>
+      <button type="button" data-mob-page="pipeline">Multi-step Workflow <span class="badge" id="mobPleatBadge">3</span></button>
+      <button type="button" data-mob-page="webgpu">WebGPU &amp; AI Hub <span class="tag">GPU</span></button>
+      <button type="button" data-mob-page="blog">Guides &amp; Blog <span>6 articles</span></button>
+      <button type="button" data-mob-page="ledger">Privacy Ledger <span>0 uploads</span></button>
+      <button type="button" data-mob-page="features">Feature Catalog <span>50+</span></button>
+      
+    </div>
+    <div class="mob-d-sec">
+      <h4>Tool Categories</h4>
+      <div class="mob-cat-grid">
+        <button type="button" class="mob-cat-btn" data-mob-fam="photo">Photo &amp; ID</button>
+        <button type="button" class="mob-cat-btn" data-mob-fam="image">Images</button>
+        <button type="button" class="mob-cat-btn" data-mob-fam="pdf">PDF &amp; Docs</button>
+        <button type="button" class="mob-cat-btn" data-mob-fam="dev">Developer</button>
+        <button type="button" class="mob-cat-btn" data-mob-fam="crypto">Security</button>
+        <button type="button" class="mob-cat-btn" data-mob-fam="forms">Tax &amp; Forms</button>
+      </div>
+    </div>
+    <div class="mob-d-sec">
+      <h4>Quick Privacy Actions</h4>
+      <div style="display:grid;gap:6px">
+        <button type="button" class="btn sm block" id="mobCheckupBtn">File Privacy Checkup</button>
+        <button type="button" class="btn ghost sm block" id="mobQrBtn">Share via QR Code</button>
+        <button type="button" class="btn ghost sm block" id="mobAuditBtn">Run Privacy Audit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<main>
+<div id="home">
+  <section class="hero">
+    <canvas id="bg" aria-hidden="true"></canvas><div class="world inhero" aria-hidden="true"><i></i><i></i><i></i></div><div class="live inhero" id="liveH" aria-hidden="true"></div>
+    <div class="wrap">
+      <div>
+        <div class="eyebrow"><i></i>Free · No sign-up · Runs in your browser</div>
+        <h1>File tools that never <u>see your files</u>.</h1>
+        <p class="lede">Resize passport photos, compress images, format JSON and more. Everything runs on your device, so your files are never uploaded to a server.</p>
+        <div class="row">
+          <button type="button" class="btn primary" id="heroPick">Choose a file</button>
+          <button type="button" class="btn" data-go="tools">Browse all tools</button>
+        </div>
+        <div class="trust">
+          <span><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>No uploads</span>
+          <span><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>No account</span>
+          <span><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>Open to inspection</span>
+        </div>
+      </div>
+      <div class="up" id="up">
+        <div class="crane" aria-hidden="true">
+          <svg viewBox="0 0 160 120"><polygon class="c3" points="70,66 100,12 108,68"/><polygon class="c2" points="52,72 30,32 38,30 66,66"/><polygon class="c6" points="30,32 14,27 36,29"/><polygon class="c1" points="52,72 92,58 118,74 78,88"/><polygon class="c5" points="78,88 118,74 98,94"/><polygon class="c3" points="118,74 152,54 120,66"/><polygon class="c4" points="78,76 132,110 100,70"/></svg>
+        </div>
+        <div id="upEmpty">
+          <div class="drop" id="drop">
+            <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path class="pp" d="M6 4h26l10 10v30H6z" fill="#F5B82E"/><path class="pp" d="M32 4v10h10z" fill="#B88400"/><path d="M6 44L42 14v30z" fill="rgba(0,0,0,.14)"/><path d="M24 36V22M18 28l6-6 6 6" fill="none" stroke="#17160F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <h2>Drop a file here</h2>
+            <p>Photos, PDFs, text or JSON. You can also paste from your clipboard.</p>
+            <button type="button" class="btn primary" id="pickBtn">Choose a file</button>
+            <input type="file" id="file" data-pf="input" multiple hidden>
+          </div>
+          <div class="quick"><span class="qlab">Or try a tool:</span>
+            <button type="button" class="chipb" data-tool="passport_photo">Passport photo</button>
+            <button type="button" class="chipb" data-tool="image_compress">Compress image</button>
+            <button type="button" class="chipb" data-tool="exif_strip">Hidden photo data</button>
+            <button type="button" class="chipb" data-tool="json_format">Format JSON</button>
+            <button type="button" class="chipb" id="heroCheckupBtn">Privacy checkup</button>
+          </div>
+        </div>
+        <div id="upSug" hidden>
+          <div class="sug-h"><h2>Suggested tools for your file</h2><button type="button" class="btn ghost sm" id="upClear">Remove file</button></div>
+          <div class="filechip" id="upFile"></div>
+          <div class="sug" id="sugList"></div>
+        </div>
+      </div>
+    </div>
+    <div class="wrap" style="padding-top:0;padding-bottom:36px;position:relative;z-index:2">
+      <div class="stamp-rack" id="homeStampRack" aria-label="Desk Stamp Rack">
+        <div class="sr-head">
+          <span class="sr-t"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 3h6l1 7H8L9 3z"/><rect x="4" y="10" width="16" height="5" rx="2"/><path d="M6 19h12"/></svg>Quick Presets · One-Click Workflows</span>
+          <span class="sr-sub">Click any preset—or drop a file directly onto it—to process your file immediately. You can save your own presets inside any tool.</span>
+        </div>
+        <div class="sr-list" id="homeStampList"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="tools">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="kick">All tools</div><h2 class="big">Pick a tool. Add a file. Download.</h2></div>
+        <p class="sec-sub">Every tool works the same way, so once you have used one you know them all.</p>
+      </div>
+      <div class="chips" id="chips" role="group" aria-label="Filter by category"></div>
+      <div class="grid" id="grid"></div>
+      <p class="count" id="count"></p>
+    </div>
+  </section>
+
+  <div class="zig" aria-hidden="true"></div>
+  <section class="sec tint" id="how">
+    <div class="wrap">
+      <div class="sec-head"><div><div class="kick">How it works</div><h2 class="big">Three steps, and none of them upload anything.</h2></div></div>
+      <div class="steps">
+        <div class="step"><svg viewBox="0 0 210 110" aria-hidden="true"><path d="M20 90h170" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/><path d="M84 18h40l14 14v40H84z" fill="#F5B82E" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/><path d="M124 18v14h14z" fill="#B88400" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/><path d="M110 78V50m-9 9l9-9 9 9" fill="none" stroke="var(--ink)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="n">STEP 1</div><h3>Add a file</h3><p>Drop it on the page, choose it from your computer, or paste text. It opens inside this browser tab.</p></div>
+        <div class="step"><svg viewBox="0 0 210 110" aria-hidden="true"><g stroke="var(--ink)" stroke-width="2" stroke-linecap="round"><path d="M28 28h154M28 55h154M28 82h154"/></g><g fill="#FF5A1F" stroke="var(--ink)" stroke-width="2"><circle cx="64" cy="28" r="9"/><circle cx="132" cy="55" r="9"/><circle cx="92" cy="82" r="9"/></g></svg><div class="n">STEP 2</div><h3>Adjust the settings</h3><p>See a live preview as you change size, quality or format. Basic settings first, Advanced when you want control.</p></div>
+        <div class="step"><svg viewBox="0 0 210 110" aria-hidden="true"><path d="M84 12h40l14 14v50H84z" fill="#1FAE85" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/><path d="M124 12v14h14z" fill="#0E7355" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/><path d="M110 40v26m-9-9l9 9 9-9" fill="none" stroke="var(--ink)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M60 94h90" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/></svg><div class="n">STEP 3</div><h3>Download the result</h3><p>Check the before and after, then save the file. Delete it from the tab with one click when you are done.</p></div>
+      </div>
+      <div class="why" id="privacy">
+        <div>
+          <h3>Why your files stay private</h3>
+          <p>Each tool runs inside your browser tab, using your own computer. Our servers only send you the page. They never receive your file, because there is nowhere in the page to send it. While a tool works you will see a paper envelope close over your file. That is our way of showing that it stays sealed in your tab.</p>
+        </div>
+        <svg class="diagram" viewBox="0 0 420 170" role="img" aria-label="Your file stays inside your browser. Nothing goes to the internet or our servers.">
+          <rect x="8" y="14" width="200" height="140" rx="12" fill="var(--surface-2)" stroke="var(--ink)" stroke-width="1.8"/>
+          <text x="22" y="36">Your browser tab</text>
+          <path d="M70 62h50l16 16v50H70z" fill="#F5B82E" stroke="var(--ink)" stroke-width="1.8" stroke-linejoin="round"/><path d="M120 62v16h16z" fill="#B88400" stroke="var(--ink)" stroke-width="1.8" stroke-linejoin="round"/>
+          <text x="82" y="112">your file</text>
+          <path d="M214 84h66" stroke="var(--ink)" stroke-width="1.8" stroke-dasharray="5 5"/><circle cx="247" cy="84" r="13" fill="#C8321A"/><path d="M241 78l12 12M253 78l-12 12" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>
+          <rect x="288" y="14" width="124" height="140" rx="12" fill="none" stroke="var(--ink-2)" stroke-width="1.6" stroke-dasharray="6 5"/>
+          <text x="302" y="36" style="fill:var(--ink-2)">Our servers</text><text x="302" y="100" style="fill:var(--ink-2)">never receive</text><text x="302" y="118" style="fill:var(--ink-2)">your files</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec tint">
+    <div class="wrap">
+      <div class="sec-head"><div><div class="kick">Check it yourself</div><h2 class="big">Do not take our word for it.</h2></div><p class="sec-sub">Process something above, then look at these numbers. They are measured in this tab.</p></div>
+      <div class="proof">
+        <div class="note"><div class="num" id="reqN">0</div><h3>Network requests while processing</h3><p>Counted from the browser's own request log around every run. It should stay at zero.</p></div>
+        <div class="note"><div class="num sm" id="codeHash">Hashing…</div><h3>Fingerprint of this page's code</h3><p>A live SHA-256 digest of the runtime code executing in this tab, verified alongside our WebAssembly module hashes.</p></div>
+        <div class="note"><div class="num sm">connect-src 'self'</div><h3>Blocked by the site's own rules</h3><p>Enforced by a strict Content-Security-Policy header that blocks the page from contacting any external server.</p></div>
+      </div>
+      <div class="check"><b>Try it:</b> open your browser's developer tools, switch to the Network tab, then process a file. You will see no upload. You can also switch off your internet connection first. The tool still works.</div>
+    </div>
+  </section>
+
+  <div class="zig flip" aria-hidden="true"></div>
+  <section class="sec" id="developers">
+    <div class="wrap">
+      <div class="sec-head"><div><div class="kick">For developers and AI agents</div><h2 class="big">The same tools, callable by code.</h2></div></div>
+      <div class="dev">
+        <div>
+          <p class="sec-sub" style="max-width:none;margin-bottom:14px">Every tool is described by one manifest. The page builds its settings from it, and AI agents (Claude, ChatGPT, Cursor) call the same tool through the Model Context Protocol. The same input always gives the same output, whether a person clicked or an agent called.</p>
+          <div class="row"><span class="tag">MCP</span><span class="tag">JSON schema</span><span class="tag">Same result as the website</span></div>
+        </div>
+        <pre class="code" id="devCode"></pre>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div id="tool" hidden>
+  <section class="tp" id="tp" data-f="photo">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><button type="button" id="crHome">Home</button><span aria-hidden="true">›</span><span id="crFam"></span><span aria-hidden="true">›</span><span id="crName"></span></nav>
+      <div class="tp-head"><span id="tpIco"></span><div class="tp-t"><h1 id="tpName"></h1><p id="tpDesc"></p></div><div class="perch" id="perch" data-s="idle" aria-hidden="true"><svg viewBox="0 0 130 96"><g class="cr"><g class="cr-in"><path class="t" d="M26 56L8 38l30 14z"/><path class="b1" d="M26 56l30-8 30 8-30 20z"/><path class="b2" d="M26 56l30 20-34-6z"/><g class="hd"><path class="n" d="M86 56l16-26 5 3-12 27z"/><path class="h" d="M102 30l14 6-9-1z"/></g><g class="wf"><path class="w2" d="M58 46l34-30-14 32z"/></g><g class="wn"><path class="w1" d="M56 50L30 12l44 30z"/><path class="w1s" d="M56 50l18-8-6 12z"/></g></g></g><path class="shelf" d="M12 88h106"/></svg></div></div>
+      <div class="ws" id="ws"></div>
+      <div id="seoSection"></div>
+    </div>
+  </section>
+</div>
+<div id="features" hidden><div class="wrap pg" id="featuresIn"></div></div>
+<div id="ledger" hidden><div class="wrap pg" id="ledgerIn"></div></div>
+<div id="pipeline" hidden><div class="wrap pg" id="pipelineIn"></div></div>
+<div id="webgpu" hidden><div class="wrap pg" id="webgpuIn"></div></div>
+<div id="blog" hidden><div class="wrap pg" id="blogIn"></div></div>
+<div id="cms" hidden><div class="wrap pg" id="cmsIn"></div></div>
+</main>
+
+<footer><div class="wrap"><div class="ft"><svg class="seal" viewBox="0 0 28 28" aria-hidden="true"><rect x="1.5" y="1.5" width="25" height="25" rx="5" fill="var(--seal)"/><path d="M7 21V7h5a3.5 3.5 0 0 1 0 7H7M18 21V7h5M18 13.5h4" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>PrivacyFold · 100% Client-Side File &amp; Developer Suite<br>WebAssembly, WebGPU &amp; WebCrypto in your browser · Zero server uploads.</span></div><div class="ftl"><button type="button" data-page="features">Features</button><button type="button" data-page="ledger">Ledger</button><span>/.well-known/mcp.json · /llms.txt</span></div></div></footer>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><filter id="rough" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="4" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -8 6.4" result="holes"/><feComposite in="SourceGraphic" in2="holes" operator="in" result="speck"/><feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="9" result="w"/><feDisplacementMap in="speck" in2="w" scale="1.4"/></filter></defs></svg>
+<div class="acur" id="acur" hidden aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 2l17 8-7.5 2L9 20z" fill="#17160F" stroke="#F5B82E" stroke-width="1.6" stroke-linejoin="round"/></svg><span>Agent</span></div>
+<div class="abar" id="abar" hidden role="status"><span class="dot" aria-hidden="true"></span><span class="at" id="abarT">Agent is working</span><button type="button" class="btn sm" id="abPause">Pause</button><button type="button" class="btn sm primary" id="abTake">Take over</button></div>
+<div class="toast" id="toast"></div>
+<div class="sr" id="live" aria-live="polite"></div>
+<div class="dropveil" id="veil" hidden>Drop to add your files</div>
+<div class="pal" id="pal" hidden>
+  <div class="pal-box" role="dialog" aria-modal="true" aria-label="Search tools">
+    <input id="palq" type="text" autocomplete="off" spellcheck="false" placeholder="Search tools, e.g. passport photo, compress, JSON" aria-label="Search tools">
+    <div class="pal-l" id="pall" role="listbox"></div>
+    <div class="pal-f">Tip: add settings to a search, like “passport us 300dpi”.</div>
+  </div>
+</div>
+<div class="modal-v7" id="v7Modal" hidden>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="v7ModalT">
+    <div class="sug-h" style="margin-bottom:0">
+      <h2 id="v7ModalT" style="font:800 22px var(--font-display)">Share via QR Code</h2>
+      <button type="button" class="btn ghost sm" id="v7ModalClose">Close</button>
+    </div>
+    <div id="v7ModalBody"></div>
+  </div>
+</div>
+</div>
+
+<script is:inline define:vars={{ initialToolSlug }}>
+  if (initialToolSlug && !window.location.hash) {
+    window.location.hash = initialToolSlug;
+  }
+</script>
+<script is:inline src="/app-runtime.js"></script>

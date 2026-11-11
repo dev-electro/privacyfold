@@ -2,7 +2,9 @@
 node_modules/
 privacyfold-nextjs/node_modules/
 
-# Next.js build output
+# Build outputs
+.astro/
+dist/
 .next/
 privacyfold-nextjs/.next/
 out/

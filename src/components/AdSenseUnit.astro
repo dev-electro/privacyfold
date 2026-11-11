@@ -1,0 +1,25 @@
+---
+interface Props {
+  slotId: string;
+  format?: 'leaderboard' | 'rectangle' | 'in-article';
+  className?: string;
+}
+
+const { slotId, format = 'leaderboard', className = '' } = Astro.props;
+
+const heightStyle =
+  format === 'leaderboard'
+    ? 'min-height: 90px;'
+    : format === 'rectangle'
+    ? 'min-height: 250px;'
+    : 'min-height: 120px;';
+---
+
+<div
+  class={`ad-slot-container ${className}`}
+  data-slot-id={slotId}
+  data-format={format}
+  style={`margin: 24px auto; text-align: center; overflow: hidden; ${heightStyle}`}
+>
+  <!-- AdSense Unit (Manual, 0 CLS reserved height) -->
+</div>
