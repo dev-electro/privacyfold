@@ -38,6 +38,7 @@ const jsonLd = generateToolJsonLdGraph(tool, canonicalUrl);
   ogImage={`https://privacyfold.com/og/${lang}-${tool.slug}.svg`}
   pageType="tool"
   alternateLinks={alternateLinks}
+  lang={lang}
 >
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

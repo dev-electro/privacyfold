@@ -11,6 +11,7 @@ interface Props {
   article?: boolean;
   pageType?: 'tool' | 'template' | 'blog' | 'glossary' | 'home';
   alternateLinks?: Array<{ hreflang: string; href: string }>;
+  lang?: string;
 }
 
 const {
@@ -21,13 +22,15 @@ const {
   article = false,
   pageType = 'home',
   alternateLinks = [],
+  lang = 'en',
 } = Astro.props;
 
 const siteTitle = title.includes('PrivacyFold') ? title : `${title} | PrivacyFold`;
+const isRtl = ['ar', 'he'].includes(lang);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang} dir={isRtl ? 'rtl' : 'ltr'}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />

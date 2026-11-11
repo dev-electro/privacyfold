@@ -55,3 +55,35 @@ export function generateToolJsonLdGraph(tool: GitCmsTool, canonicalUrl: string) 
     ],
   };
 }
+
+export function generateHomeJsonLdGraph() {
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Organization',
+        '@id': 'https://privacyfold.com/#organization',
+        name: 'PrivacyFold',
+        url: 'https://privacyfold.com/',
+        logo: 'https://privacyfold.com/icon.svg',
+        description: 'Client-side file and privacy tools running 100% locally in browser RAM. Zero server uploads.',
+        sameAs: [
+          'https://github.com/dev-electro/privacyfold',
+          'https://x.com/privacyfold',
+          'https://www.linkedin.com/company/privacyfold',
+        ],
+      },
+      {
+        '@type': 'WebSite',
+        '@id': 'https://privacyfold.com/#website',
+        name: 'PrivacyFold',
+        url: 'https://privacyfold.com/',
+        description: 'File tools that never see your files. 100% in-browser processing via WebAssembly, WebGPU and WebCrypto.',
+        publisher: {
+          '@id': 'https://privacyfold.com/#organization',
+        },
+      },
+    ],
+  };
+}
+

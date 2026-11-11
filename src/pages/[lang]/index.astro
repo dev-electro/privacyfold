@@ -1,0 +1,42 @@
+---
+import Base from '../../layouts/Base.astro';
+import ToolDesk from '../../components/ToolDesk.astro';
+import { getAvailableLocales } from '../../lib/cms';
+import { generateHomeJsonLdGraph } from '../../lib/schema-generator';
+
+export async function getStaticPaths() {
+  const locales = getAvailableLocales();
+  return locales.map((lang) => ({
+    params: { lang },
+  }));
+}
+
+const { lang } = Astro.params;
+const locales = getAvailableLocales();
+const canonicalUrl = `https://privacyfold.com/${lang}/`;
+const defaultUrl = 'https://privacyfold.com/';
+
+const alternateLinks = [
+  { hreflang: 'x-default', href: defaultUrl },
+  { hreflang: 'en', href: defaultUrl },
+  ...locales.map((l) => ({
+    hreflang: l,
+    href: `https://privacyfold.com/${l}/`,
+  })),
+];
+
+const homeJsonLd = generateHomeJsonLdGraph();
+---
+
+<Base
+  title="PrivacyFold — File Tools That Never See Your Files (100% Client-Side)"
+  description="72 client-side image, PDF, form, developer, and cryptography tools running 100% locally in your browser via WebAssembly, WebGPU & WebCrypto. Zero server uploads."
+  canonicalUrl={canonicalUrl}
+  alternateLinks={alternateLinks}
+  lang={lang}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(homeJsonLd)} />
+  </Fragment>
+  <ToolDesk />
+</Base>
