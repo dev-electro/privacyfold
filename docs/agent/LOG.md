@@ -2,6 +2,19 @@
 
 ---
 
+## 2026-11-11 — PF-025 & PF-019: Per-collection sitemaps with Git dates, OG image generator, and Astro i18n
+
+**Tasks:** PF-025 and PF-019 marked done.
+**Did:**
+1. Built per-collection sitemaps (`/sitemaps/tools.xml`, `/sitemaps/presets.xml`, `/sitemaps/blog.xml`, `/sitemaps/glossary.xml`, `/sitemaps/pages.xml`) and index at `/sitemap.xml` & `/sitemap-index.xml`.
+2. Created `src/lib/git-dates.ts` querying git commit history once in batch to assign real Git ISO commit dates to every `<lastmod>` tag (omitting ignored priority/changefreq per plan §6).
+3. Created `scripts/og-images.mjs` generating 1200x630 SVG open graph social cards in `public/og/` (72 tools + 6 guides) with zero-upload guarantee badges and paper texture; integrated with prebuild.
+4. Configured Astro 7 i18n scaffolding in `astro.config.mjs` (`defaultLocale: en`, `prefixDefaultLocale: false`).
+**Proved by:** `npm test && npm run build` (183 pages exported clean in 2.69s, verified `dist/sitemap.xml` sitemapindex and `dist/sitemaps/tools.xml`).
+**Next:** All TASKS.md tasks (PF-001 through PF-035) complete except PF-021 awaiting owner auth Worker deploy.
+
+---
+
 ## 2026-11-11 — PF-029: i18n architecture, hreflang graph, and Cloudflare 20k-file budget math
 
 **Tasks:** PF-029 marked done.

@@ -107,11 +107,4 @@ const cleanPresets = presets.map((p) => ({
 }));
 fs.writeFileSync(path.join(publicDir, 'presets.json'), JSON.stringify(cleanPresets, null, 2) + '\n');
 
-// Also sync to repo root public/ if it exists
-const repoRootPublic = path.resolve(root, '..', 'public');
-if (fs.existsSync(repoRootPublic)) {
-  fs.writeFileSync(path.join(repoRootPublic, 'tools.json'), JSON.stringify(cleanTools, null, 2) + '\n');
-  fs.writeFileSync(path.join(repoRootPublic, 'presets.json'), JSON.stringify(cleanPresets, null, 2) + '\n');
-}
-
 console.log(`✓ Git-CMS Validated & Compiled: ${tools.length} tools, ${presetFiles.length} presets, ${blogFiles.length} blog guides, ${glossaryFiles.length} glossary terms, ${engineFiles.length} engine assets.`);

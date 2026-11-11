@@ -1,44 +1,32 @@
 import type { APIRoute } from 'astro';
-import { getAllToolsFromGit, getAllPresetsFromGit, getAllBlogsFromGit, getAllGlossaryTermsFromGit } from '../lib/cms';
 
 export const GET: APIRoute = async () => {
-  const tools = getAllToolsFromGit();
-  const presets = getAllPresetsFromGit();
-  const blogs = getAllBlogsFromGit();
-  const glossary = getAllGlossaryTermsFromGit();
+  const today = new Date().toISOString().split('T')[0];
 
-  const staticPages = [
-    '',
-    'about/',
-    'privacy/',
-    'terms/',
-    'contact/',
-    'blog/',
-    'glossary/',
+  const sitemaps = [
+    { loc: 'https://privacyfold.com/sitemaps/tools.xml', lastmod: today },
+    { loc: 'https://privacyfold.com/sitemaps/presets.xml', lastmod: today },
+    { loc: 'https://privacyfold.com/sitemaps/blog.xml', lastmod: today },
+    { loc: 'https://privacyfold.com/sitemaps/glossary.xml', lastmod: today },
+    { loc: 'https://privacyfold.com/sitemaps/pages.xml', lastmod: today },
   ];
 
-  const toolPages = tools.map((t) => `tools/${t.slug}/`);
-  const presetPages = presets.map((p) => `tools/${p.toolSlug}/${p.presetSlug}/`);
-  const blogPages = blogs.map((b) => `blog/${b.slug}/`);
-  const glossaryPages = glossary.map((g) => `glossary/${g.slug}/`);
-
-  const allPages = [...staticPages, ...toolPages, ...presetPages, ...blogPages, ...glossaryPages];
-
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${allPages
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${sitemaps
   .map(
-    (p) => `  <url>
-    <loc>https://privacyfold.com/${p}</loc>
-    <changefreq>weekly</changefreq>
-  </url>`
+    (s) => `  <sitemap>
+    <loc>${s.loc}</loc>
+    <lastmod>${s.lastmod}</lastmod>
+  </sitemap>`
   )
   .join('\n')}
-</urlset>`;
+</sitemapindex>`;
 
   return new Response(xml, {
     headers: {
       'Content-Type': 'application/xml',
+      'Cache-Control': 'public, max-age=3600',
     },
   });
 };

@@ -33,3 +33,4 @@ export const ADS_CONFIG = {
     'glossary-in-article': { id: 'slot-glossary-in-article', name: 'Glossary In-Article Unit', format: 'in-article', minHeightPx: 120 },
   } as Record<string, AdSlotConfig>,
 };
+

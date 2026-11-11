@@ -6,7 +6,7 @@
   "description": "PrivacyFold — Client-side privacy and file tools that never see your files. Built with Astro 7 + Tailwind CSS + Vanilla JS Runtime.",
   "scripts": {
     "dev": "node scripts/validate-git-cms.mjs && astro dev",
-    "prebuild": "node scripts/validate-git-cms.mjs",
+    "prebuild": "node scripts/validate-git-cms.mjs && node scripts/og-images.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",

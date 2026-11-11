@@ -74,3 +74,4 @@ Rules:
 1. No orphan translations: if language `A` links to language `B`, language `B` **must** link back to language `A`.
 2. Self-reference: every page includes its own URL with its exact `hreflang`.
 3. `x-default`: always points to the un-prefixed English canonical route.
+
