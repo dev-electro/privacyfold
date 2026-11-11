@@ -2,6 +2,23 @@
 
 ---
 
+## 2026-11-12 — Fix Mega Menu Alignment & Viewport Horizontal Overflow
+
+**Tasks:** Fixed horizontal layout blowout and misaligned mega menu positioning.
+**Did:**
+1. Root cause:
+   - `.nav-item.mega-static` broke relative positioning and anchored `.mega-panel-tools` to `.nav .wrap` at `left: 50%` without transform preserving, stretching 980px and causing a 400px horizontal overflow blowout that shifted the viewport and pushed the navbar to the right.
+2. Fixes applied:
+   - Added `overflow-x: clip; max-width: 100vw;` to `html` and `body` to permanently prevent horizontal scrolling.
+   - Anchored `.nav-item` with `position: relative`, removed `mega-static`, and aligned `.mega-panel-tools` directly at `left: 0` underneath the `Tools` button.
+   - Constrained tools mega menu width to `min(780px, calc(100vw - 32px))` with a compact 5-column grid.
+   - Grouped `.brand` (logo) and `.nav-menu` tightly on the left, keeping utility controls on the far right.
+   - Rebuilt static site and restarted preview server (PID 21130).
+**Proved by:** `npm test && npm run build && curl -I http://localhost:4321/` (330 pages built clean, HTTP 200).
+**Next:** All tasks in `TASKS.md` done except PF-021 awaiting owner Cloudflare Worker OAuth deployment.
+
+---
+
 ## 2026-11-12 — Fix Stale PWA Service Worker Caching & Double Menu Collision
 
 **Tasks:** Root cause and fix "double type of menu" glitch where stale offline PWA service worker served legacy HTML colliding with new CSS.
