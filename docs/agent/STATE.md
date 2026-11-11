@@ -7,11 +7,11 @@
 | Fact | Value | Verified |
 |---|---|---|
 | Working artifact | `dist/index.html` (22 KB HTML + vanilla runtime, self-contained) | `astro build` 2026-11-11 |
-| Framework today | Astro 7 + Tailwind v4 static export — **builds cleanly** (314/314 static pages exported) | `npm run build` exit 0 (2026-11-11) |
+| Framework today | Astro 7 + Tailwind v4 static export — **builds cleanly** (330/330 static pages exported) | `npm run build` exit 0 (2026-11-12) |
 | Framework decided | Astro 7 + Tailwind v4 on CF Pages (DEC-001) — **MIGRATED & LIVE** | DEC-001 / PF-002 |
 | Content | 72 tools / 87 presets / 6 blog / 15 glossary / 2 compare / 1 authors / 4 pages / 9 engine / 128 i18n / 5 templates | agent-status |
 | Tools actually runnable | **72** live in runtime; **0** unimplemented | smoke-test.mjs (72/72 pass) |
-| Launch gate (PF-020) | **READY** — all P0 blockers cleared; 72 smoke tests green; Astro SSG clean | 2026-11-11 test suite |
+| Launch gate (PF-020) | **READY** — all P0 blockers cleared; 72 smoke tests green; Astro SSG clean | 2026-11-12 test suite |
 
 ## What works (verified 2026-11-10)
 
@@ -29,6 +29,8 @@
 
 | Issue | Resolution |
 |---|---|
+| PF-036 Mega Menu Navigation | Replaced cluttered 15-button navbar with tactile 5-column tools mega menu, Architecture and Resources dropdowns, direct #how scroll, and clean atelier bar |
+| PF-021 Sveltia CMS Config Fix | Resolved CMS validation blockers in config.yml (converted all 6 deprecated `date` widgets to `datetime` with `type: date`, commented out `<SUBDOMAIN>` placeholder for GitHub PAT fallback) |
 | PF-002 Astro 7 Migration | Migrated root to Astro 7 + Tailwind v4; purged `privacyfold-nextjs/` (215 static pages build in 2.3s) |
 | PF-023 Trust & Depth Content | Added 15 technical glossary entries (`DefinedTerm` JSON-LD), about, contact, privacy, and terms |
 | PF-035 Sveltia CMS Sugar | Added `public/admin/admin.js` with slug auto-generator and formative `preSave` quality warning hooks |

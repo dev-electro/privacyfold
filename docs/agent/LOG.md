@@ -2,6 +2,23 @@
 
 ---
 
+## 2026-11-12 — PF-036: Desktop Mega Menu Navigation & Navbar Streamlining
+
+**Tasks:** Replaced cluttered 15-button navbar with an accessible 5-column tools mega menu, Architecture and Resources dropdowns, and clean atelier bar.
+**Did:**
+1. Designed and integrated structured desktop mega menu in `src/components/ToolDesk.astro`:
+   - 5-column Tools panel (Photo & ID, PDF & Docs, Security & Crypto, Image & Media, Dev & Forms) with direct links, tool summaries, and preset pointers.
+   - Architecture dropdown (Client-Side vs Server-Side comparison, Zero-Network Privacy Ledger, WebGPU AI Airlock).
+   - Resources dropdown (Engineering Guides, Technical Glossary, MCP Agent Protocol).
+   - Direct smooth-scroll to `#how`.
+2. Streamlined `.atelier-bar` and removed duplicated flat navbar items while strictly preserving runtime IDs (`#brand`, `#palBtn`, `#trayBtn`, `#soundBtn`, `#themeBtn`, `#playBtn`, `#mobMenuBtn`, `#mobDrawer`).
+3. Added tactile hover/focus-within styling and outside-click toggle handlers in `src/styles/global.css`.
+4. Handled mobile viewports: collapsed cleanly on `<=` 960px to `.mob-menu-btn` and drawer.
+**Proved by:** `npm test && npm run build && node -e '<crawler script>'` (330 pages built clean, 0 broken links across 335 static HTML files).
+**Next:** All tasks in `TASKS.md` done except PF-021 awaiting owner Cloudflare Worker OAuth deployment.
+
+---
+
 ## 2026-11-11 — PF-023: Compare Collection, Author Profile & CMS Markdown Trust Pages
 
 **Tasks:** Scaffolded architectural comparison collection, author profile with Person JSON-LD, and markdown trust pages.

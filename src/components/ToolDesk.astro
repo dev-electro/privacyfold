@@ -15,12 +15,14 @@ const { initialToolSlug } = Astro.props;
         <span class="wdot" aria-hidden="true"></span>
         <span>Network: <b class="snip">0 uploads</b> · <span id="wireReqN">0</span> requests sent</span>
       </button>
-      <span class="mono" id="atelierPaperTag">Local browser processing · Files never leave your device</span>
+      <span class="mono" id="atelierPaperTag">100% In-Browser RAM Sandbox · Zero Server Uploads</span>
     </div>
     <div class="atelier-r">
-      <button type="button" class="at-link" id="openPleatTop">Multi-step workflow <span class="badge" id="pleatCountB">3</span></button>
-      <button type="button" class="at-link" id="openQrTop">Share via QR code</button>
-      <button type="button" class="at-link" id="runAirgapBtn">Privacy check</button>
+      <a href="/compare/" class="at-link">Architecture Compare</a>
+      <a href="/admin/" class="at-link" target="_blank" rel="noopener">Admin CMS ↗</a>
+      <button type="button" class="at-link" id="openPleatTop">Workflow <span class="badge" id="pleatCountB">3</span></button>
+      <button type="button" class="at-link" id="openQrTop" style="display:none">Share via QR code</button>
+      <button type="button" class="at-link" id="runAirgapBtn" style="display:none">Privacy check</button>
     </div>
   </div>
 </div>
@@ -28,18 +30,251 @@ const { initialToolSlug } = Astro.props;
   <div class="wrap">
     <button type="button" class="brand" id="brand" aria-label="PrivacyFold home">
       <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path d="M4 3h16l7 7v17H4z" fill="#FF5A1F" stroke="#17160F" stroke-width="2" stroke-linejoin="round"/><path d="M20 3v7h7z" fill="#B7330A" stroke="#17160F" stroke-width="2" stroke-linejoin="round"/><path d="M4 27L27 10v17z" fill="rgba(0,0,0,.16)"/></svg>
-      PrivacyFold
+      <span>PrivacyFold</span>
     </button>
-    <nav class="links" aria-label="Sections">
-      <button type="button" data-go="tools">Tools</button><button type="button" data-go="how">How it works</button><button type="button" data-go="privacy">Privacy</button><button type="button" data-go="developers">Developers</button><button type="button" data-page="features">Features</button><button type="button" data-page="pipeline">Workflow</button><button type="button" data-page="webgpu">WebGPU &amp; AI</button><button type="button" data-page="blog">Guides &amp; Blog</button><button type="button" data-page="ledger">Ledger</button>
+
+    <!-- MEGA MENU NAVIGATION -->
+    <nav class="nav-menu" aria-label="Main Navigation">
+      <!-- Mega Menu 1: Tools & Catalog -->
+      <div class="nav-item mega-static">
+        <button type="button" class="nav-btn" aria-expanded="false" aria-haspopup="true">
+          <span>Tools</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="mega-panel mega-panel-tools" role="region" aria-label="Tools catalog">
+          <div class="mega-grid-5">
+            <!-- Col 1: Photo & ID -->
+            <div class="mega-col">
+              <div class="mega-col-head">📷 Photo &amp; ID</div>
+              <div class="mega-col-list">
+                <a href="/tools/passport-photo/" class="mega-link">
+                  <span class="mega-link-title">Passport Photo</span>
+                  <span class="mega-link-desc">ICAO 9303 biometric crop</span>
+                </a>
+                <a href="/tools/exif-strip/" class="mega-link">
+                  <span class="mega-link-title">EXIF &amp; GPS Scrub</span>
+                  <span class="mega-link-desc">Wipe camera metadata</span>
+                </a>
+                <a href="/tools/heic-to-jpg/" class="mega-link">
+                  <span class="mega-link-title">HEIC to JPG</span>
+                  <span class="mega-link-desc">Apple photo conversion</span>
+                </a>
+                <a href="/tools/signature-clean/" class="mega-link">
+                  <span class="mega-link-title">Signature Clean</span>
+                  <span class="mega-link-desc">Alpha threshold isolate</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Col 2: PDF & Docs -->
+            <div class="mega-col">
+              <div class="mega-col-head">📄 PDF &amp; Docs</div>
+              <div class="mega-col-list">
+                <a href="/tools/pdf-merge/" class="mega-link">
+                  <span class="mega-link-title">PDF Merge</span>
+                  <span class="mega-link-desc">Combine pages in RAM</span>
+                </a>
+                <a href="/tools/pdf-split/" class="mega-link">
+                  <span class="mega-link-title">PDF Split</span>
+                  <span class="mega-link-desc">Extract single pages</span>
+                </a>
+                <a href="/tools/pdf-redact/" class="mega-link">
+                  <span class="mega-link-title">PDF Redaction</span>
+                  <span class="mega-link-desc">Byte-level irreversible scrub</span>
+                </a>
+                <a href="/tools/pdf-flatten/" class="mega-link">
+                  <span class="mega-link-title">PDF Flatten</span>
+                  <span class="mega-link-desc">Lock form fields</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Col 3: Security & Crypto -->
+            <div class="mega-col">
+              <div class="mega-col-head">🔐 Security &amp; Crypto</div>
+              <div class="mega-col-list">
+                <a href="/tools/file-encrypt/" class="mega-link">
+                  <span class="mega-link-title">AES-256 Encrypt</span>
+                  <span class="mega-link-desc">Self-decrypting HTML</span>
+                </a>
+                <a href="/tools/clean-paste/" class="mega-link">
+                  <span class="mega-link-title">Clean Paste</span>
+                  <span class="mega-link-desc">Strip UTM &amp; hidden tokens</span>
+                </a>
+                <a href="/tools/password-gen/" class="mega-link">
+                  <span class="mega-link-title">Password Gen</span>
+                  <span class="mega-link-desc">High-entropy passphrases</span>
+                </a>
+                <a href="/tools/pgp-crypto/" class="mega-link">
+                  <span class="mega-link-title">PGP Crypto</span>
+                  <span class="mega-link-desc">P-256 WebCrypto signatures</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Col 4: Image & Media -->
+            <div class="mega-col">
+              <div class="mega-col-head">🖼️ Image &amp; Media</div>
+              <div class="mega-col-list">
+                <a href="/tools/image-compress/" class="mega-link">
+                  <span class="mega-link-title">Image Compress</span>
+                  <span class="mega-link-desc">MozJPEG / WebP WASM</span>
+                </a>
+                <a href="/tools/svg-optimize/" class="mega-link">
+                  <span class="mega-link-title">SVG Optimize</span>
+                  <span class="mega-link-desc">Minify vector paths</span>
+                </a>
+                <a href="/tools/bg-remove/" class="mega-link">
+                  <span class="mega-link-title">Remove Background</span>
+                  <span class="mega-link-desc">Client-side segmentation</span>
+                </a>
+                <a href="/tools/magic-eraser/" class="mega-link">
+                  <span class="mega-link-title">Magic Eraser</span>
+                  <span class="mega-link-desc">In-browser inpainting</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Col 5: Dev & Forms -->
+            <div class="mega-col">
+              <div class="mega-col-head">💻 Dev &amp; Forms</div>
+              <div class="mega-col-list">
+                <a href="/tools/json-format/" class="mega-link">
+                  <span class="mega-link-title">JSON Formatter</span>
+                  <span class="mega-link-desc">Parse, validate, beautify</span>
+                </a>
+                <a href="/tools/jwt-decode/" class="mega-link">
+                  <span class="mega-link-title">JWT Decoder</span>
+                  <span class="mega-link-desc">Inspect claims offline</span>
+                </a>
+                <a href="/tools/w9-prep/" class="mega-link">
+                  <span class="mega-link-title">IRS W-9 Prep</span>
+                  <span class="mega-link-desc">Private US tax worksheet</span>
+                </a>
+                <a href="/tools/sa100-prep/" class="mega-link">
+                  <span class="mega-link-title">UK SA100 Tax</span>
+                  <span class="mega-link-desc">HMRC return calculator</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mega Menu Footer -->
+          <div class="mega-footer">
+            <span>🛡️ All 72 tools run 100% in local browser RAM via WebAssembly &amp; WebCrypto</span>
+            <div style="display:flex;gap:14px">
+              <a href="#tools" data-go="tools">Browse All 72 Tools &rarr;</a>
+              <a href="/tools/passport-photo/us-passport-std/">87 Official Presets &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mega Menu 2: Architecture & Privacy -->
+      <div class="nav-item">
+        <button type="button" class="nav-btn" aria-expanded="false" aria-haspopup="true">
+          <span>Architecture</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="mega-panel mega-panel-dropdown" role="region" aria-label="Architecture and privacy">
+          <a href="/compare/client-side-vs-server-side-file-tools/" class="mega-drop-link">
+            <span class="mega-drop-icon">⚖️</span>
+            <div>
+              <span class="mega-drop-title">Client-Side vs Server-Side</span>
+              <span class="mega-drop-sub">Why in-browser execution beats cloud file tools</span>
+            </div>
+          </a>
+          <a href="/compare/privacyfold-vs-cloud-compressors/" class="mega-drop-link">
+            <span class="mega-drop-icon">📊</span>
+            <div>
+              <span class="mega-drop-title">PrivacyFold vs Cloud Compressors</span>
+              <span class="mega-drop-sub">Technical benchmark on compression &amp; privacy</span>
+            </div>
+          </a>
+          <button type="button" class="mega-drop-link" data-page="ledger" style="width:100%;text-align:left;background:none;border:none">
+            <span class="mega-drop-icon">🛡️</span>
+            <div>
+              <span class="mega-drop-title">Zero-Network Privacy Ledger</span>
+              <span class="mega-drop-sub">Real-time audit of zero outbound network calls</span>
+            </div>
+          </button>
+          <button type="button" class="mega-drop-link" data-page="webgpu" style="width:100%;text-align:left;background:none;border:none">
+            <span class="mega-drop-icon">⚡</span>
+            <div>
+              <span class="mega-drop-title">WebGPU &amp; Local AI Airlock</span>
+              <span class="mega-drop-sub">On-device inference with zero server telemetry</span>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mega Menu 3: Resources & Guides -->
+      <div class="nav-item">
+        <button type="button" class="nav-btn" aria-expanded="false" aria-haspopup="true">
+          <span>Resources</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="mega-panel mega-panel-dropdown" role="region" aria-label="Resources and guides">
+          <a href="/blog/" class="mega-drop-link">
+            <span class="mega-drop-icon">📚</span>
+            <div>
+              <span class="mega-drop-title">Engineering Blog &amp; Guides</span>
+              <span class="mega-drop-sub">Deep dives on WASM, EXIF leaks &amp; security</span>
+            </div>
+          </a>
+          <a href="/glossary/" class="mega-drop-link">
+            <span class="mega-drop-icon">📖</span>
+            <div>
+              <span class="mega-drop-title">Technical Glossary</span>
+              <span class="mega-drop-sub">15 architectural definitions (AES, OPFS, ICAO)</span>
+            </div>
+          </a>
+          <a href="/compare/" class="mega-drop-link">
+            <span class="mega-drop-icon">📑</span>
+            <div>
+              <span class="mega-drop-title">Architectural Comparisons</span>
+              <span class="mega-drop-sub">Deep side-by-side analysis of file converters</span>
+            </div>
+          </a>
+          <button type="button" class="mega-drop-link" data-go="developers" style="width:100%;text-align:left;background:none;border:none">
+            <span class="mega-drop-icon">🤖</span>
+            <div>
+              <span class="mega-drop-title">Model Context Protocol (MCP)</span>
+              <span class="mega-drop-sub">JSON-RPC local tooling for AI agents &amp; IDEs</span>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Direct Item: How it works -->
+      <div class="nav-item">
+        <button type="button" class="nav-btn" data-go="how">
+          <span>How It Works</span>
+        </button>
+      </div>
     </nav>
+
+    <!-- RIGHT CONTROLS -->
     <div class="nav-r">
-      <button type="button" class="nbtn mob-menu-btn" id="mobMenuBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobDrawer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span class="lbl">Menu</span></button>
-      <button type="button" class="nbtn" id="palBtn" aria-label="Search tools"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><span class="lbl">Search tools</span><span class="kbdk" id="kbdHint">Ctrl K</span></button>
-      <button type="button" class="nbtn" id="trayBtn" aria-expanded="false" aria-controls="trayp" aria-label="Your files"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h9l5 5v13H5z"/><path d="M14 3v5h5"/></svg><span class="lbl">Your files</span><span class="badge" id="trayN">0</span></button>
-      <button type="button" class="nbtn" id="playBtn" aria-label="Playfulness: Subtle. Change"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.2 5.6L20 11l-5.8 2.4L12 19l-2.2-5.6L4 11l5.8-2.4z"/></svg><span class="lbl">Play <b id="playV">Subtle</b></span></button>
-      <button type="button" class="nbtn" id="soundBtn" aria-pressed="false" aria-label="Sound off. Turn on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path id="sndWave" d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg></button>
+      <button type="button" class="nbtn mob-menu-btn" id="mobMenuBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobDrawer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <span class="lbl">Menu</span>
+      </button>
+      <button type="button" class="nbtn" id="palBtn" aria-label="Search tools">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+        <span class="lbl">Search</span>
+        <span class="kbdk" id="kbdHint">Ctrl K</span>
+      </button>
+      <button type="button" class="nbtn" id="trayBtn" aria-expanded="false" aria-controls="trayp" aria-label="Your files">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h9l5 5v13H5z"/><path d="M14 3v5h5"/></svg>
+        <span class="lbl">Desk</span>
+        <span class="badge" id="trayN">0</span>
+      </button>
+      <button type="button" class="nbtn" id="soundBtn" aria-pressed="false" aria-label="Sound off. Turn on">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path id="sndWave" d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg>
+      </button>
       <button type="button" class="nbtn" id="themeBtn" aria-haspopup="menu" aria-expanded="false" aria-controls="paperP" aria-label="Paper: Follow my device. Change"></button>
+      <button type="button" class="nbtn" id="playBtn" style="display:none" aria-label="Playfulness: Subtle. Change"></button>
       <div class="paperp" id="paperP" role="menu" aria-label="Paper stock" hidden></div>
       <div class="trayp" id="trayp" hidden></div>
     </div>
@@ -57,16 +292,15 @@ const { initialToolSlug } = Astro.props;
       <button type="button" class="nbtn" id="mobDrawerClose" aria-label="Close menu" style="min-width:38px;min-height:38px"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
     </div>
     <div class="mob-d-nav">
-      <button type="button" data-mob-go="tools">All Tools <span>36</span></button>
-      <button type="button" data-mob-page="pipeline">Multi-step Workflow <span class="badge" id="mobPleatBadge">3</span></button>
-      <button type="button" data-mob-page="webgpu">WebGPU &amp; AI Hub <span class="tag">GPU</span></button>
-      <button type="button" data-mob-page="blog">Guides &amp; Blog <span>6 articles</span></button>
+      <button type="button" data-mob-go="tools">All Tools <span>72</span></button>
+      <a href="/compare/" class="mob-d-link" style="padding:10px 12px;font-weight:600;text-decoration:none;color:var(--ink);display:flex;justify-content:space-between">Compare vs Cloud <span>2 articles</span></a>
+      <a href="/blog/" class="mob-d-link" style="padding:10px 12px;font-weight:600;text-decoration:none;color:var(--ink);display:flex;justify-content:space-between">Guides &amp; Blog <span>6 articles</span></a>
+      <a href="/glossary/" class="mob-d-link" style="padding:10px 12px;font-weight:600;text-decoration:none;color:var(--ink);display:flex;justify-content:space-between">Glossary <span>15 terms</span></a>
       <button type="button" data-mob-page="ledger">Privacy Ledger <span>0 uploads</span></button>
-      <button type="button" data-mob-page="features">Feature Catalog <span>50+</span></button>
-      
+      <button type="button" data-mob-page="webgpu">WebGPU &amp; AI Hub <span class="tag">GPU</span></button>
     </div>
     <div class="mob-d-sec">
-      <h4>Tool Categories</h4>
+      <h4>Tool Categories (72 Tools)</h4>
       <div class="mob-cat-grid">
         <button type="button" class="mob-cat-btn" data-mob-fam="photo">Photo &amp; ID</button>
         <button type="button" class="mob-cat-btn" data-mob-fam="image">Images</button>
@@ -86,7 +320,6 @@ const { initialToolSlug } = Astro.props;
     </div>
   </div>
 </div>
-
 
 <main>
 <div id="home">
@@ -260,3 +493,32 @@ const { initialToolSlug } = Astro.props;
   }
 </script>
 <script is:inline src="/app-runtime.js"></script>
+<script is:inline>
+  // Accessible Mega Menu Click and Outside-Click Handler
+  document.querySelectorAll('.nav-item > .nav-btn').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      var item = btn.closest('.nav-item');
+      if (!item.querySelector('.mega-panel')) return; // direct links continue
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.nav-item.open').forEach(function(el) {
+        el.classList.remove('open');
+        var b = el.querySelector('.nav-btn');
+        if (b) b.setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        e.stopPropagation();
+      }
+    });
+  });
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.nav-item')) {
+      document.querySelectorAll('.nav-item.open').forEach(function(el) {
+        el.classList.remove('open');
+        var b = el.querySelector('.nav-btn');
+        if (b) b.setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+</script>
