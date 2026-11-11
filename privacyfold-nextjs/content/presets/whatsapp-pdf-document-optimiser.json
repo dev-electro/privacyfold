@@ -27,5 +27,6 @@
     "dpi": 150,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Privacy-preserving compression preset for WhatsApp Fast Document Share PDF (<2MB) conforming to WhatsApp standards. Optimizes file payload to under 1.95MB without sending documents over any network."
 }

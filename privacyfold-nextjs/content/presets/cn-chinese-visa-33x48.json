@@ -5,7 +5,7 @@
   "toolSlug": "passport-photo",
   "version": "2026.11.1",
   "status": "active",
-  "title": "China COVA Visa Application Photo (33\u00d748mm, 40KB\u2013120KB)",
+  "title": "China COVA Visa Application Photo (33×48mm, 40KB–120KB)",
   "jurisdiction": "COVA MFA China",
   "authority_name": "COVA MFA China",
   "source_url": "https://cova.mfa.gov.cn/",
@@ -27,5 +27,6 @@
     "dpi": 300,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Official COVA MFA China specification preset for China COVA Visa Application Photo (33×48mm, 40KB–120KB). Standardizes biometric portrait photos to 390×567px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads."
 }

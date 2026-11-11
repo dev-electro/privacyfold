@@ -5,7 +5,7 @@
   "toolSlug": "social-resizer",
   "version": "2026.11.1",
   "status": "active",
-  "title": "Apple App Store 6.7-inch iPhone Screenshot (1290\u00d72796px)",
+  "title": "Apple App Store 6.7-inch iPhone Screenshot (1290×2796px)",
   "jurisdiction": "Apple Developer",
   "authority_name": "Apple Developer",
   "source_url": "https://developer.apple.com/help/app-store-connect/reference/screenshot-specifications",
@@ -27,5 +27,6 @@
     "dpi": 150,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Specification-grade preset for Apple App Store 6.7-inch iPhone Screenshot (1290×2796px) conforming to Apple Developer requirements. Crops and resizes assets to 1290×2796px entirely in local browser RAM."
 }

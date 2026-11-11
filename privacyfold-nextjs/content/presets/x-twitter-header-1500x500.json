@@ -5,7 +5,7 @@
   "toolSlug": "social-resizer",
   "version": "2026.11.1",
   "status": "active",
-  "title": "X (Twitter) Profile Header Banner (1500\u00d7500px, EXIF Stripped)",
+  "title": "X (Twitter) Profile Header Banner (1500×500px, EXIF Stripped)",
   "jurisdiction": "X Help Center",
   "authority_name": "X Help Center",
   "source_url": "https://help.x.com/en/managing-your-account/common-issues-when-uploading-profile-photo",
@@ -27,5 +27,6 @@
     "dpi": 150,
     "background_hex": "#000000",
     "strip_exif": true
-  }
+  },
+  "desc": "Specification-grade preset for X (Twitter) Profile Header Banner (1500×500px, EXIF Stripped) conforming to X Help Center requirements. Crops and resizes assets to 1500×500px entirely in local browser RAM."
 }

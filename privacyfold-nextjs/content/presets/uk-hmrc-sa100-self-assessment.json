@@ -27,5 +27,6 @@
     "dpi": 300,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Standardized local preset for UK HMRC SA100 Self Assessment & NI Class 4 Calculator conforming to HMRC GOV.UK specifications. Executes entirely in client browser memory with zero network requests."
 }

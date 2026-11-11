@@ -30,15 +30,18 @@ jobs:
       - name: 3. Tool Runtime Smoke Tests (72 Tools)
         run: node scripts/smoke-test.mjs
 
-      - name: 4. Install Dependencies
+      - name: 4. Sveltia CMS & Drift Check
+        run: node scripts/check-cms-drift.mjs
+
+      - name: 5. Install Dependencies
         working-directory: privacyfold-nextjs
         run: npm ci
 
-      - name: 5. Next.js Static Export Build
+      - name: 6. Next.js Static Export Build
         working-directory: privacyfold-nextjs
         run: npm run build
 
-      - name: 6. Verify Artifacts
+      - name: 7. Verify Artifacts
         run: |
           test -f privacyfold-nextjs/out/index.html
           test -f privacyfold-nextjs/out/sitemap.xml

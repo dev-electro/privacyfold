@@ -5,15 +5,18 @@
   "toolSlug": "image-compress",
   "version": "2026-11-08.1",
   "status": "active",
-  "title": "uk-visa-vfs-docs",
-  "jurisdiction": "Global",
-  "authority_name": "Official Portal",
+  "title": "UK Visa & VFS Global Supporting Documents PDF/Image (Under 5MB)",
+  "jurisdiction": "UKVI / VFS Global",
+  "authority_name": "UK Visas and Immigration",
   "source_url": "https://www.gov.uk/uk-visa-appointment",
   "last_verified": "2026-11-08",
   "stale_after_days": 90,
   "supersedes": null,
   "license": "CC-BY-4.0",
   "constraints": {
+    "max_size_kb": 5000,
     "strip_exif": true
-  }
+  },
+  "max_size_kb": 5000,
+  "desc": "Privacy-preserving compression preset for UK Visa & VFS Global Supporting Documents PDF/Image (Under 5MB) conforming to UK Visas and Immigration standards. Optimizes file payload to under 5MB without sending documents over any network."
 }

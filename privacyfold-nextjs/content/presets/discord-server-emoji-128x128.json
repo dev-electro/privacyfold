@@ -5,7 +5,7 @@
   "toolSlug": "social-resizer",
   "version": "2026.11.1",
   "status": "active",
-  "title": "Discord Custom Emoji & Sticker Under 256KB (128\u00d7128px)",
+  "title": "Discord Custom Emoji & Sticker Under 256KB (128×128px)",
   "jurisdiction": "Discord Support",
   "authority_name": "Discord Support",
   "source_url": "https://support.discord.com/",
@@ -27,5 +27,6 @@
     "dpi": 150,
     "background_hex": "transparent",
     "strip_exif": true
-  }
+  },
+  "desc": "Specification-grade preset for Discord Custom Emoji & Sticker Under 256KB (128×128px) conforming to Discord Support requirements. Crops and resizes assets to 128×128px entirely in local browser RAM."
 }

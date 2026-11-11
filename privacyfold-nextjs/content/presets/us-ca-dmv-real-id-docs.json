@@ -5,7 +5,7 @@
   "toolSlug": "pdf-compress",
   "version": "2026.11.1",
   "status": "active",
-  "title": "CA DMV REAL ID Document Upload (\u22645MB PDF)",
+  "title": "CA DMV REAL ID Document Upload (≤5MB PDF)",
   "jurisdiction": "CA DMV",
   "authority_name": "CA DMV",
   "source_url": "https://www.dmv.ca.gov/portal/driver-licenses-identification-cards/real-id/",
@@ -27,5 +27,6 @@
     "dpi": 150,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Privacy-preserving compression preset for CA DMV REAL ID Document Upload (≤5MB PDF) conforming to CA DMV standards. Optimizes file payload to under 5MB without sending documents over any network."
 }

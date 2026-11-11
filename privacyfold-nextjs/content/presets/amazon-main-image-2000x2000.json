@@ -5,7 +5,7 @@
   "toolSlug": "social-resizer",
   "version": "2026.11.1",
   "status": "active",
-  "title": "Amazon Seller Central Main Product Image (2000\u00d72000px #FFFFFF)",
+  "title": "Amazon Seller Central Main Product Image (2000×2000px #FFFFFF)",
   "jurisdiction": "Amazon Seller Central",
   "authority_name": "Amazon Seller Central",
   "source_url": "https://sellercentral.amazon.com/",
@@ -27,5 +27,6 @@
     "dpi": 300,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Specification-grade preset for Amazon Seller Central Main Product Image (2000×2000px #FFFFFF) conforming to Amazon Seller Central requirements. Crops and resizes assets to 2000×2000px entirely in local browser RAM."
 }

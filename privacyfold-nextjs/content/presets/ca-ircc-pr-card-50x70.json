@@ -5,7 +5,7 @@
   "toolSlug": "passport-photo",
   "version": "2026.11.1",
   "status": "active",
-  "title": "Canada IRCC Permanent Resident Card Photo (50\u00d770mm)",
+  "title": "Canada IRCC Permanent Resident Card Photo (50×70mm)",
   "jurisdiction": "IRCC Canada",
   "authority_name": "IRCC Canada",
   "source_url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-card/apply-renew-replace/photo.html",
@@ -27,5 +27,6 @@
     "dpi": 300,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Official IRCC Canada specification preset for Canada IRCC Permanent Resident Card Photo (50×70mm). Standardizes biometric portrait photos to 591×827px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads."
 }

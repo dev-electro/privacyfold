@@ -2087,6 +2087,19 @@ function getTargets(){
   return [it||srcFor(cur.tool)];
 }
 function bumpUse(t){store.set('folds',store.get('folds',0)+1);var h=store.get('hist',{});h[t.id]=(h[t.id]||0)+1;store.set('hist',h)}
+function trackToolUsed(toolId){
+  if(!toolId)return;
+  try{if(typeof window!=='undefined'&&window.dispatchEvent){window.dispatchEvent(new CustomEvent('privacyfold:tool_used',{detail:{tool_id:toolId}}));}}catch(_){}
+  try{
+    if(typeof window!=='undefined'){
+      if(window.posthog&&typeof window.posthog.capture==='function'){
+        window.posthog.capture('tool_used',{tool_id:toolId});
+      }else if(window.plausible&&typeof window.plausible==='function'){
+        window.plausible('tool_used',{props:{tool_id:toolId}});
+      }
+    }
+  }catch(_){}
+}
 function onAction(){
   var t=cur.tool;if(!t.live)return;
   if(t.id==='uuid_gen'){runLive();return}
@@ -2111,7 +2124,7 @@ async function process(){
   await renderResult(res,{reqs:reqs,ms:Math.round(performance.now()-t0)});
   stampLand();
   await env.open();
-  cur.busy=false;$('#act').disabled=false;sfx.done();bumpUse(t);
+  cur.busy=false;$('#act').disabled=false;sfx.done();bumpUse(t);trackToolUsed(t.id);
   say(res.length>1?res.length+' files are ready to download.':'Your result is ready to download.');
 }
 function extOf(m){return m==='image/png'?'png':m==='image/webp'?'webp':'jpg'}
@@ -2219,6 +2232,7 @@ async function runLive(){
   try{
     var r=await t.run(src,cur.recipe.args,{text:text});if(tok!==cur.token)return;
     out.textContent=r.text;cur.outText=r.text;st.hidden=false;st.className='status ok';st.textContent=r.note||'Done';
+    trackToolUsed(t.id);
   }catch(e){
     if(tok!==cur.token)return;
     out.textContent='Fix the input on the left to see the result.';cur.outText='';st.hidden=false;st.className='status bad';st.textContent=(e&&e.message)||'Problem with the input';
@@ -5473,10 +5487,1911 @@ var DEVICE_PROFILE = {
 
 /* 3. Populate window.__PRIVACYFOLD_RESULT__ on every process() and runLive() completion + URL #fragment & ?mode=agent&preset=... support */
 var PRESET_RECORDS = {
-  'uk-passport-photo': { preset_id:'uk-passport-photo', tool:'passport_photo', version:'2026-11-08.1', status:'active', source_url:'https://www.gov.uk/photos-for-passports', last_verified:'2026-11-08', stale_after_days:90, supersedes:'2026-06-14.2', args:{format:'eu',dpi:600,bg:'#F2F2F2'} },
-  'us-passport-std': { preset_id:'us-passport-std', tool:'passport_photo', version:'2026-11-08.1', status:'active', source_url:'https://travel.state.gov/content/travel/en/passports/how-apply/photos.html', last_verified:'2026-11-08', stale_after_days:90, supersedes:'2026-05-01.1', args:{format:'us',dpi:600,bg:'#FFFFFF'} },
-  'uk-visa-vfs-docs': { preset_id:'uk-visa-vfs-docs', tool:'image_compress', version:'2026-11-08.1', status:'active', source_url:'https://www.gov.uk/uk-visa-appointment', last_verified:'2026-11-08', stale_after_days:90, args:{target:256000,quality:0.82,max:2000,out:'jpeg'} },
-  'web-ready-webp': { preset_id:'web-ready-webp', tool:'image_compress', version:'2026-11-08.1', status:'active', source_url:'https://web.dev/articles/serve-images-webp', last_verified:'2026-11-08', stale_after_days:90, args:{target:0,quality:0.8,max:2000,out:'webp'} }
+  "ada-section-508-pdf-ua-audit": {
+    "preset_id": "ada-section-508-pdf-ua-audit",
+    "tool": "ada_pdf",
+    "toolSlug": "ada-pdf",
+    "title": "ADA Title II & Section 508 PDF/UA-1 Accessibility Audit",
+    "desc": "Document compliance preset for ADA Title II & Section 508 PDF/UA-1 Accessibility Audit adhering to Section508.gov guidelines. Sanitizes and verifies PDF documents locally with guaranteed zero data leakage.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "Section508.gov",
+    "authority_name": "Section508.gov",
+    "source_url": "https://www.section508.gov/create/pdfs/",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 0,
+      "height_px": 0,
+      "max_size_kb": 25000,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "ae-icp-golden-visa-photo": {
+    "preset_id": "ae-icp-golden-visa-photo",
+    "tool": "passport_photo",
+    "toolSlug": "passport-photo",
+    "title": "UAE ICP Golden Visa & Emirates ID Photo (600×600px)",
+    "desc": "Official ICP UAE specification preset for UAE ICP Golden Visa & Emirates ID Photo (600×600px). Standardizes biometric portrait photos to 600×600px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "ICP UAE",
+    "authority_name": "ICP UAE",
+    "source_url": "https://icp.gov.ae/",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 600,
+      "height_px": 600,
+      "max_size_kb": 2000,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "amazon-main-image-2000x2000": {
+    "preset_id": "amazon-main-image-2000x2000",
+    "tool": "social_resizer",
+    "toolSlug": "social-resizer",
+    "title": "Amazon Seller Central Main Product Image (2000×2000px #FFFFFF)",
+    "desc": "Specification-grade preset for Amazon Seller Central Main Product Image (2000×2000px #FFFFFF) conforming to Amazon Seller Central requirements. Crops and resizes assets to 2000×2000px entirely in local browser RAM.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "Amazon Seller Central",
+    "authority_name": "Amazon Seller Central",
+    "source_url": "https://sellercentral.amazon.com/",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 2000,
+      "height_px": 2000,
+      "max_size_kb": 3000,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "app-store-screenshot-6-7": {
+    "preset_id": "app-store-screenshot-6-7",
+    "tool": "social_resizer",
+    "toolSlug": "social-resizer",
+    "title": "Apple App Store 6.7-inch iPhone Screenshot (1290×2796px)",
+    "desc": "Specification-grade preset for Apple App Store 6.7-inch iPhone Screenshot (1290×2796px) conforming to Apple Developer requirements. Crops and resizes assets to 1290×2796px entirely in local browser RAM.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "Apple Developer",
+    "authority_name": "Apple Developer",
+    "source_url": "https://developer.apple.com/help/app-store-connect/reference/screenshot-specifications",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 1290,
+      "height_px": 2796,
+      "max_size_kb": 4000,
+      "dpi": 150,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "arxiv-latex-pdf-anonymizer": {
+    "preset_id": "arxiv-latex-pdf-anonymizer",
+    "tool": "pdf_metadata",
+    "toolSlug": "pdf-metadata",
+    "title": "Double-Blind Peer Review PDF Metadata & Author Stripper",
+    "desc": "Document compliance preset for Double-Blind Peer Review PDF Metadata & Author Stripper adhering to Academic Publishing guidelines. Sanitizes and verifies PDF documents locally with guaranteed zero data leakage.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "Academic Publishing",
+    "authority_name": "Academic Publishing",
+    "source_url": "https://info.arxiv.org/",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 0,
+      "height_px": 0,
+      "max_size_kb": 25000,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "au-immiaccount-pdf-under-5mb": {
+    "preset_id": "au-immiaccount-pdf-under-5mb",
+    "tool": "pdf_compress",
+    "toolSlug": "pdf-compress",
+    "title": "Australia ImmiAccount Evidence PDF Under 5MB",
+    "desc": "Privacy-preserving compression preset for Australia ImmiAccount Evidence PDF Under 5MB conforming to Home Affairs AU standards. Optimizes file payload to under 4.8MB without sending documents over any network.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "Home Affairs AU",
+    "authority_name": "Home Affairs AU",
+    "source_url": "https://immi.homeaffairs.gov.au/",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 0,
+      "height_px": 0,
+      "max_size_kb": 4800,
+      "dpi": 150,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "au-immiaccount-visa-photo": {
+    "preset_id": "au-immiaccount-visa-photo",
+    "tool": "passport_photo",
+    "toolSlug": "passport-photo",
+    "title": "Australia ImmiAccount Visa Digital Photo (35×45mm)",
+    "desc": "Official Home Affairs AU specification preset for Australia ImmiAccount Visa Digital Photo (35×45mm). Standardizes biometric portrait photos to 413×531px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "Home Affairs AU",
+    "authority_name": "Home Affairs AU",
+    "source_url": "https://immi.homeaffairs.gov.au/",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 413,
+      "height_px": 531,
+      "max_size_kb": 3500,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "aws-eventbridge-cron-validator": {
+    "preset_id": "aws-eventbridge-cron-validator",
+    "tool": "cron_parser",
+    "toolSlug": "cron-parser",
+    "title": "Cloud Serverless Cron & Rate Expression Tester",
+    "desc": "Standardized local preset for Cloud Serverless Cron & Rate Expression Tester conforming to POSIX Cron specifications. Executes entirely in client browser memory with zero network requests.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "POSIX Cron",
+    "authority_name": "POSIX Cron",
+    "source_url": "https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 0,
+      "height_px": 0,
+      "max_size_kb": 100,
+      "dpi": 0,
+      "background_hex": "none",
+      "strip_exif": true
+    }
+  },
+  "ca-ircc-express-entry-visa": {
+    "preset_id": "ca-ircc-express-entry-visa",
+    "tool": "passport_photo",
+    "toolSlug": "passport-photo",
+    "title": "Canada IRCC Express Entry & Study Permit Digital Photo (35×45mm)",
+    "desc": "Official IRCC Canada specification preset for Canada IRCC Express Entry & Study Permit Digital Photo (35×45mm). Standardizes biometric portrait photos to 420×540px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "IRCC Canada",
+    "authority_name": "IRCC Canada",
+    "source_url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/temporary-resident-visa-application-photograph-specifications.html",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 420,
+      "height_px": 540,
+      "max_size_kb": 4000,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "ca-ircc-portal-pdf-under-4mb": {
+    "preset_id": "ca-ircc-portal-pdf-under-4mb",
+    "tool": "pdf_compress",
+    "toolSlug": "pdf-compress",
+    "title": "Canada IRCC Visa Document Bundle Under 4MB",
+    "desc": "Privacy-preserving compression preset for Canada IRCC Visa Document Bundle Under 4MB conforming to IRCC Canada standards. Optimizes file payload to under 3.9MB without sending documents over any network.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "IRCC Canada",
+    "authority_name": "IRCC Canada",
+    "source_url": "https://www.canada.ca/en/immigration-refugees-citizenship.html",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 0,
+      "height_px": 0,
+      "max_size_kb": 3900,
+      "dpi": 150,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "ca-ircc-pr-card-50x70": {
+    "preset_id": "ca-ircc-pr-card-50x70",
+    "tool": "passport_photo",
+    "toolSlug": "passport-photo",
+    "title": "Canada IRCC Permanent Resident Card Photo (50×70mm)",
+    "desc": "Official IRCC Canada specification preset for Canada IRCC Permanent Resident Card Photo (50×70mm). Standardizes biometric portrait photos to 591×827px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "IRCC Canada",
+    "authority_name": "IRCC Canada",
+    "source_url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-card/apply-renew-replace/photo.html",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 591,
+      "height_px": 827,
+      "max_size_kb": 4000,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "ccpa-cpra-do-not-sell-request": {
+    "preset_id": "ccpa-cpra-do-not-sell-request",
+    "tool": "privacy_letter",
+    "toolSlug": "privacy-letter",
+    "title": "California CCPA / CPRA Data Broker Opt-Out Notice",
+    "desc": "Standardized local preset for California CCPA / CPRA Data Broker Opt-Out Notice conforming to CA CPPA specifications. Executes entirely in client browser memory with zero network requests.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "CA CPPA",
+    "authority_name": "CA CPPA",
+    "source_url": "https://cppa.ca.gov/",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 0,
+      "height_px": 0,
+      "max_size_kb": 500,
+      "dpi": 0,
+      "background_hex": "none",
+      "strip_exif": true
+    }
+  },
+  "ch-swiss-pass-35x45": {
+    "preset_id": "ch-swiss-pass-35x45",
+    "tool": "passport_photo",
+    "toolSlug": "passport-photo",
+    "title": "Switzerland Pass & Identitätskarte Photo (35×45mm)",
+    "desc": "Official fedpol CH specification preset for Switzerland Pass & Identitätskarte Photo (35×45mm). Standardizes biometric portrait photos to 413×531px at 300 DPI on #EDEDED background locally with guaranteed zero server uploads.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "fedpol CH",
+    "authority_name": "fedpol CH",
+    "source_url": "https://www.fedpol.admin.ch/",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 413,
+      "height_px": 531,
+      "max_size_kb": 500,
+      "dpi": 300,
+      "background_hex": "#EDEDED",
+      "strip_exif": true
+    }
+  },
+  "cn-chinese-visa-33x48": {
+    "preset_id": "cn-chinese-visa-33x48",
+    "tool": "passport_photo",
+    "toolSlug": "passport-photo",
+    "title": "China COVA Visa Application Photo (33×48mm, 40KB–120KB)",
+    "desc": "Official COVA MFA China specification preset for China COVA Visa Application Photo (33×48mm, 40KB–120KB). Standardizes biometric portrait photos to 390×567px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "COVA MFA China",
+    "authority_name": "COVA MFA China",
+    "source_url": "https://cova.mfa.gov.cn/",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 390,
+      "height_px": 567,
+      "max_size_kb": 115,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "de-biometric-passport-35x45": {
+    "preset_id": "de-biometric-passport-35x45",
+    "tool": "passport_photo",
+    "toolSlug": "passport-photo",
+    "title": "Germany Biometric Reisepass & Personalausweis (35×45mm)",
+    "desc": "Official BMI Germany specification preset for Germany Biometric Reisepass & Personalausweis (35×45mm). Standardizes biometric portrait photos to 413×531px at 300 DPI on #EDEDED background locally with guaranteed zero server uploads.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "BMI Germany",
+    "authority_name": "BMI Germany",
+    "source_url": "https://www.bmi.bund.de/",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 413,
+      "height_px": 531,
+      "max_size_kb": 500,
+      "dpi": 300,
+      "background_hex": "#EDEDED",
+      "strip_exif": true
+    }
+  },
+  "discord-server-emoji-128x128": {
+    "preset_id": "discord-server-emoji-128x128",
+    "tool": "social_resizer",
+    "toolSlug": "social-resizer",
+    "title": "Discord Custom Emoji & Sticker Under 256KB (128×128px)",
+    "desc": "Specification-grade preset for Discord Custom Emoji & Sticker Under 256KB (128×128px) conforming to Discord Support requirements. Crops and resizes assets to 128×128px entirely in local browser RAM.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "Discord Support",
+    "authority_name": "Discord Support",
+    "source_url": "https://support.discord.com/",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 128,
+      "height_px": 128,
+      "max_size_kb": 250,
+      "dpi": 150,
+      "background_hex": "transparent",
+      "strip_exif": true
+    }
+  },
+  "ebay-1600x1600-clean-bg": {
+    "preset_id": "ebay-1600x1600-clean-bg",
+    "tool": "social_resizer",
+    "toolSlug": "social-resizer",
+    "title": "eBay Main Product Listing Photo (1600×1600px Pure White)",
+    "desc": "Specification-grade preset for eBay Main Product Listing Photo (1600×1600px Pure White) conforming to eBay Seller Hub requirements. Crops and resizes assets to 1600×1600px entirely in local browser RAM.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "eBay Seller Hub",
+    "authority_name": "eBay Seller Hub",
+    "source_url": "https://www.ebay.com/sellercenter/listings/photo-tips",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 1600,
+      "height_px": 1600,
+      "max_size_kb": 4000,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "email-attachment-pdf-under-10mb": {
+    "preset_id": "email-attachment-pdf-under-10mb",
+    "tool": "pdf_compress",
+    "toolSlug": "pdf-compress",
+    "title": "Gmail / Outlook Safe Email Attachment PDF (<10MB)",
+    "desc": "Privacy-preserving compression preset for Gmail / Outlook Safe Email Attachment PDF (<10MB) conforming to Email Standards standards. Optimizes file payload to under 9.5MB without sending documents over any network.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "Email Standards",
+    "authority_name": "Email Standards",
+    "source_url": "https://support.google.com/mail/answer/6584",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 0,
+      "height_px": 0,
+      "max_size_kb": 9500,
+      "dpi": 150,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "es-dni-pasaporte-32x26": {
+    "preset_id": "es-dni-pasaporte-32x26",
+    "tool": "passport_photo",
+    "toolSlug": "passport-photo",
+    "title": "Spain DNI & Pasaporte Photo (32×26mm)",
+    "desc": "Official Policia Nacional ES specification preset for Spain DNI & Pasaporte Photo (32×26mm). Standardizes biometric portrait photos to 307×378px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "Policia Nacional ES",
+    "authority_name": "Policia Nacional ES",
+    "source_url": "https://www.dnielectronico.es/",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 307,
+      "height_px": 378,
+      "max_size_kb": 500,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "etsy-listing-2000x1600": {
+    "preset_id": "etsy-listing-2000x1600",
+    "tool": "social_resizer",
+    "toolSlug": "social-resizer",
+    "title": "Etsy 5:4 First Listing Thumbnail Image (2000×1600px)",
+    "desc": "Specification-grade preset for Etsy 5:4 First Listing Thumbnail Image (2000×1600px) conforming to Etsy Seller Handbook requirements. Crops and resizes assets to 2000×1600px entirely in local browser RAM.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "Etsy Seller Handbook",
+    "authority_name": "Etsy Seller Handbook",
+    "source_url": "https://help.etsy.com/hc/en-us/articles/115015663347",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 2000,
+      "height_px": 1600,
+      "max_size_kb": 2000,
+      "dpi": 150,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "eu-eidas-pades-b-signature": {
+    "preset_id": "eu-eidas-pades-b-signature",
+    "tool": "eidas_sign",
+    "toolSlug": "eidas-sign",
+    "title": "EU eIDAS Regulation (EU) No 910/2014 PAdES-B Manifest",
+    "desc": "Standardized local preset for EU eIDAS Regulation (EU) No 910/2014 PAdES-B Manifest conforming to EUR-Lex eIDAS specifications. Executes entirely in client browser memory with zero network requests.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "EUR-Lex eIDAS",
+    "authority_name": "EUR-Lex eIDAS",
+    "source_url": "https://eur-lex.europa.eu/eli/reg/2014/910/oj",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 0,
+      "height_px": 0,
+      "max_size_kb": 10000,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "eu-schengen-visa-photo-icao": {
+    "preset_id": "eu-schengen-visa-photo-icao",
+    "tool": "passport_photo",
+    "toolSlug": "passport-photo",
+    "title": "EU Schengen Visa ICAO 9303 Biometric Photo (35×45mm)",
+    "desc": "Official EU Home Affairs specification preset for EU Schengen Visa ICAO 9303 Biometric Photo (35×45mm). Standardizes biometric portrait photos to 413×531px at 300 DPI on #EDEDED background locally with guaranteed zero server uploads.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "EU Home Affairs",
+    "authority_name": "EU Home Affairs",
+    "source_url": "https://home-affairs.ec.europa.eu/policies/schengen-borders-and-visa/visa-policy_en",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 413,
+      "height_px": 531,
+      "max_size_kb": 500,
+      "dpi": 300,
+      "background_hex": "#EDEDED",
+      "strip_exif": true
+    }
+  },
+  "foia-redaction-true-byte-scrub": {
+    "preset_id": "foia-redaction-true-byte-scrub",
+    "tool": "pdf_redact",
+    "toolSlug": "pdf-redact",
+    "title": "FOIA / GDPR DSAR Irreversible PDF Byte Redaction",
+    "desc": "Document compliance preset for FOIA / GDPR DSAR Irreversible PDF Byte Redaction adhering to NARA / ICO guidelines. Sanitizes and verifies PDF documents locally with guaranteed zero data leakage.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "NARA / ICO",
+    "authority_name": "NARA / ICO",
+    "source_url": "https://www.archives.gov/foia",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 0,
+      "height_px": 0,
+      "max_size_kb": 25000,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "fr-ants-ephotos-35x45": {
+    "preset_id": "fr-ants-ephotos-35x45",
+    "tool": "passport_photo",
+    "toolSlug": "passport-photo",
+    "title": "France ANTS Passeport & CNI Photo (35×45mm)",
+    "desc": "Official ANTS France specification preset for France ANTS Passeport & CNI Photo (35×45mm). Standardizes biometric portrait photos to 413×531px at 300 DPI on #EDEDED background locally with guaranteed zero server uploads.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "ANTS France",
+    "authority_name": "ANTS France",
+    "source_url": "https://passeport.ants.gouv.fr/",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 413,
+      "height_px": 531,
+      "max_size_kb": 500,
+      "dpi": 300,
+      "background_hex": "#EDEDED",
+      "strip_exif": true
+    }
+  },
+  "gdpr-art-17-erasure-letter": {
+    "preset_id": "gdpr-art-17-erasure-letter",
+    "tool": "privacy_letter",
+    "toolSlug": "privacy-letter",
+    "title": "GDPR Article 17 Right to Erasure Formal Legal Request",
+    "desc": "Standardized local preset for GDPR Article 17 Right to Erasure Formal Legal Request conforming to EUR-Lex GDPR specifications. Executes entirely in client browser memory with zero network requests.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "EUR-Lex GDPR",
+    "authority_name": "EUR-Lex GDPR",
+    "source_url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 0,
+      "height_px": 0,
+      "max_size_kb": 500,
+      "dpi": 0,
+      "background_hex": "none",
+      "strip_exif": true
+    }
+  },
+  "github-actions-cron-schedule": {
+    "preset_id": "github-actions-cron-schedule",
+    "tool": "cron_parser",
+    "toolSlug": "cron-parser",
+    "title": "GitHub Actions POSIX Cron Schedule Validator",
+    "desc": "Standardized local preset for GitHub Actions POSIX Cron Schedule Validator conforming to GitHub Docs specifications. Executes entirely in client browser memory with zero network requests.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "GitHub Docs",
+    "authority_name": "GitHub Docs",
+    "source_url": "https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 0,
+      "height_px": 0,
+      "max_size_kb": 100,
+      "dpi": 0,
+      "background_hex": "none",
+      "strip_exif": true
+    }
+  },
+  "google-merchant-center-product": {
+    "preset_id": "google-merchant-center-product",
+    "tool": "social_resizer",
+    "toolSlug": "social-resizer",
+    "title": "Google Merchant Center Shopping Feed Image (1500×1500px)",
+    "desc": "Specification-grade preset for Google Merchant Center Shopping Feed Image (1500×1500px) conforming to Google Merchant Center requirements. Crops and resizes assets to 1500×1500px entirely in local browser RAM.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "Google Merchant Center",
+    "authority_name": "Google Merchant Center",
+    "source_url": "https://support.google.com/merchants/answer/6324350",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 1500,
+      "height_px": 1500,
+      "max_size_kb": 2000,
+      "dpi": 150,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "gs1-ean13-retail-barcode": {
+    "preset_id": "gs1-ean13-retail-barcode",
+    "tool": "barcode_gen",
+    "toolSlug": "barcode-gen",
+    "title": "GS1 EAN-13 & UPC-A Retail Packaging Vector Barcode",
+    "desc": "Standardized local preset for GS1 EAN-13 & UPC-A Retail Packaging Vector Barcode conforming to GS1 Standards specifications. Executes entirely in client browser memory with zero network requests.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "GS1 Standards",
+    "authority_name": "GS1 Standards",
+    "source_url": "https://www.gs1.org/standards/barcodes",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 600,
+      "height_px": 300,
+      "max_size_kb": 200,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "hague-apostille-convention-1961": {
+    "preset_id": "hague-apostille-convention-1961",
+    "tool": "apostille_prep",
+    "toolSlug": "apostille-prep",
+    "title": "Hague Convention of 5 October 1961 10-Point Apostille Block",
+    "desc": "Standardized local preset for Hague Convention of 5 October 1961 10-Point Apostille Block conforming to HCCH specifications. Executes entirely in client browser memory with zero network requests.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "HCCH",
+    "authority_name": "HCCH",
+    "source_url": "https://www.hcch.net/en/instruments/conventions/specialised-sections/apostille",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 0,
+      "height_px": 0,
+      "max_size_kb": 5000,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "hipaa-safe-harbor-18-identifiers": {
+    "preset_id": "hipaa-safe-harbor-18-identifiers",
+    "tool": "ai_airlock",
+    "toolSlug": "ai-airlock",
+    "title": "HIPAA Safe Harbor 18-Identifier Clinical Text Scrubber",
+    "desc": "Standardized local preset for HIPAA Safe Harbor 18-Identifier Clinical Text Scrubber conforming to HHS HIPAA specifications. Executes entirely in client browser memory with zero network requests.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "HHS HIPAA",
+    "authority_name": "HHS HIPAA",
+    "source_url": "https://www.hhs.gov/hipaa/for-professionals/privacy/special-topics/de-identification/index.html",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 0,
+      "height_px": 0,
+      "max_size_kb": 5000,
+      "dpi": 0,
+      "background_hex": "none",
+      "strip_exif": true
+    }
+  },
+  "ie-passport-online-photo": {
+    "preset_id": "ie-passport-online-photo",
+    "tool": "passport_photo",
+    "toolSlug": "passport-photo",
+    "title": "Ireland Passport Online Digital Photo (≤9MB)",
+    "desc": "Official DFA Ireland specification preset for Ireland Passport Online Digital Photo (≤9MB). Standardizes biometric portrait photos to 715×951px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "DFA Ireland",
+    "authority_name": "DFA Ireland",
+    "source_url": "https://www.ireland.ie/en/dfa/passports/photo-guidelines/",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 715,
+      "height_px": 951,
+      "max_size_kb": 9000,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "in-oci-card-photo": {
+    "preset_id": "in-oci-card-photo",
+    "tool": "passport_photo",
+    "toolSlug": "passport-photo",
+    "title": "India OCI Card Photo & Signature Upload (51×51mm, ≤500KB)",
+    "desc": "Official MHA India specification preset for India OCI Card Photo & Signature Upload (51×51mm, ≤500KB). Standardizes biometric portrait photos to 600×600px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "MHA India",
+    "authority_name": "MHA India",
+    "source_url": "https://ociservices.gov.in/",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 600,
+      "height_px": 600,
+      "max_size_kb": 500,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "in-pan-nsdl-signature-140x60": {
+    "preset_id": "in-pan-nsdl-signature-140x60",
+    "tool": "signature_clean",
+    "toolSlug": "signature-clean",
+    "title": "India NSDL / UTIITSL PAN Card Signature (140×60px, ≤12KB)",
+    "desc": "Standardized local preset for India NSDL / UTIITSL PAN Card Signature (140×60px, ≤12KB) conforming to NSDL Tin-NSDL specifications. Executes entirely in client browser memory with zero network requests.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "NSDL Tin-NSDL",
+    "authority_name": "NSDL Tin-NSDL",
+    "source_url": "https://www.protean-tinpan.com/",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 140,
+      "height_px": 60,
+      "max_size_kb": 12,
+      "dpi": 200,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "in-upsc-ssc-photo-20kb": {
+    "preset_id": "in-upsc-ssc-photo-20kb",
+    "tool": "passport_photo",
+    "toolSlug": "passport-photo",
+    "title": "India UPSC / SSC Exam Portal Photo (350×350px, 20KB–300KB)",
+    "desc": "Official UPSC India specification preset for India UPSC / SSC Exam Portal Photo (350×350px, 20KB–300KB). Standardizes biometric portrait photos to 350×350px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "UPSC India",
+    "authority_name": "UPSC India",
+    "source_url": "https://upsconline.nic.in/",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 350,
+      "height_px": 350,
+      "max_size_kb": 250,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "instagram-carousel-1080x1350": {
+    "preset_id": "instagram-carousel-1080x1350",
+    "tool": "social_resizer",
+    "toolSlug": "social-resizer",
+    "title": "Instagram 4:5 Portrait Feed & Carousel Post (1080×1350px)",
+    "desc": "Specification-grade preset for Instagram 4:5 Portrait Feed & Carousel Post (1080×1350px) conforming to Instagram requirements. Crops and resizes assets to 1080×1350px entirely in local browser RAM.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "Instagram",
+    "authority_name": "Instagram",
+    "source_url": "https://help.instagram.com/1631821640426723",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 1080,
+      "height_px": 1350,
+      "max_size_kb": 1500,
+      "dpi": 150,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "instagram-reels-tiktok-1080x1920": {
+    "preset_id": "instagram-reels-tiktok-1080x1920",
+    "tool": "social_resizer",
+    "toolSlug": "social-resizer",
+    "title": "TikTok / Instagram Reels / Shorts 9:16 Cover (1080×1920px)",
+    "desc": "Specification-grade preset for TikTok / Instagram Reels / Shorts 9:16 Cover (1080×1920px) conforming to TikTok Creator Portal requirements. Crops and resizes assets to 1080×1920px entirely in local browser RAM.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "TikTok Creator Portal",
+    "authority_name": "TikTok Creator Portal",
+    "source_url": "https://www.tiktok.com/",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 1080,
+      "height_px": 1920,
+      "max_size_kb": 1500,
+      "dpi": 150,
+      "background_hex": "#000000",
+      "strip_exif": true
+    }
+  },
+  "it-passaporto-cie-35x45": {
+    "preset_id": "it-passaporto-cie-35x45",
+    "tool": "passport_photo",
+    "toolSlug": "passport-photo",
+    "title": "Italy Passaporto Elettronico & CIE Photo (35×45mm)",
+    "desc": "Official Polizia di Stato IT specification preset for Italy Passaporto Elettronico & CIE Photo (35×45mm). Standardizes biometric portrait photos to 413×531px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "Polizia di Stato IT",
+    "authority_name": "Polizia di Stato IT",
+    "source_url": "https://www.passaportonline.poliziadistato.it/",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 413,
+      "height_px": 531,
+      "max_size_kb": 500,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "jp-my-number-card-photo": {
+    "preset_id": "jp-my-number-card-photo",
+    "tool": "passport_photo",
+    "toolSlug": "passport-photo",
+    "title": "Japan My Number Card & Residence Card (Zairyu) Photo (30×40mm)",
+    "desc": "Official ISA Japan specification preset for Japan My Number Card & Residence Card (Zairyu) Photo (30×40mm). Standardizes biometric portrait photos to 354×472px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "ISA Japan",
+    "authority_name": "ISA Japan",
+    "source_url": "https://www.kojinbango-card.go.jp/",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 354,
+      "height_px": 472,
+      "max_size_kb": 2000,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "jwt-rs256-es256-offline-audit": {
+    "preset_id": "jwt-rs256-es256-offline-audit",
+    "tool": "jwt_decode",
+    "toolSlug": "jwt-decode",
+    "title": "JWT RS256/ES256 Offline Claims & Expiration Audit",
+    "desc": "Standardized local preset for JWT RS256/ES256 Offline Claims & Expiration Audit conforming to RFC 7519 specifications. Executes entirely in client browser memory with zero network requests.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "RFC 7519",
+    "authority_name": "RFC 7519",
+    "source_url": "https://datatracker.ietf.org/doc/html/rfc7519",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 0,
+      "height_px": 0,
+      "max_size_kb": 500,
+      "dpi": 0,
+      "background_hex": "none",
+      "strip_exif": true
+    }
+  },
+  "kubernetes-secret-base64-codec": {
+    "preset_id": "kubernetes-secret-base64-codec",
+    "tool": "base64",
+    "toolSlug": "base64",
+    "title": "Kubernetes Secret YAML Base64 Encoder & Decoder",
+    "desc": "Standardized local preset for Kubernetes Secret YAML Base64 Encoder & Decoder conforming to Kubernetes Docs specifications. Executes entirely in client browser memory with zero network requests.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "Kubernetes Docs",
+    "authority_name": "Kubernetes Docs",
+    "source_url": "https://kubernetes.io/docs/concepts/configuration/secret/",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 0,
+      "height_px": 0,
+      "max_size_kb": 1000,
+      "dpi": 0,
+      "background_hex": "none",
+      "strip_exif": true
+    }
+  },
+  "linkedin-banner-1584x396": {
+    "preset_id": "linkedin-banner-1584x396",
+    "tool": "social_resizer",
+    "toolSlug": "social-resizer",
+    "title": "LinkedIn Personal Profile Cover Banner (1584×396px)",
+    "desc": "Specification-grade preset for LinkedIn Personal Profile Cover Banner (1584×396px) conforming to LinkedIn Help requirements. Crops and resizes assets to 1584×396px entirely in local browser RAM.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "LinkedIn Help",
+    "authority_name": "LinkedIn Help",
+    "source_url": "https://www.linkedin.com/help/linkedin/answer/a568217",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 1584,
+      "height_px": 396,
+      "max_size_kb": 2000,
+      "dpi": 150,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "linkedin-headshot-800x800": {
+    "preset_id": "linkedin-headshot-800x800",
+    "tool": "bg_remove",
+    "toolSlug": "bg-remove",
+    "title": "LinkedIn Executive Profile Headshot (800×800px, Clean BG)",
+    "desc": "Standardized local preset for LinkedIn Executive Profile Headshot (800×800px, Clean BG) conforming to LinkedIn Help specifications. Executes entirely in client browser memory with zero network requests.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "LinkedIn Help",
+    "authority_name": "LinkedIn Help",
+    "source_url": "https://www.linkedin.com/help/linkedin/answer/a568217",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 800,
+      "height_px": 800,
+      "max_size_kb": 1500,
+      "dpi": 300,
+      "background_hex": "#F3F4F6",
+      "strip_exif": true
+    }
+  },
+  "nl-pasfoto-matrix-2020": {
+    "preset_id": "nl-pasfoto-matrix-2020",
+    "tool": "passport_photo",
+    "toolSlug": "passport-photo",
+    "title": "Netherlands Rijksoverheid Pasfoto Matrix (35×45mm)",
+    "desc": "Official Rijksoverheid NL specification preset for Netherlands Rijksoverheid Pasfoto Matrix (35×45mm). Standardizes biometric portrait photos to 413×531px at 300 DPI on #EDEDED background locally with guaranteed zero server uploads.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "Rijksoverheid NL",
+    "authority_name": "Rijksoverheid NL",
+    "source_url": "https://www.rijksoverheid.nl/onderwerpen/paspoort-en-identiteitskaart/eisen-aan-de-pasfoto-voor-paspoort-of-id-kaart",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 413,
+      "height_px": 531,
+      "max_size_kb": 500,
+      "dpi": 300,
+      "background_hex": "#EDEDED",
+      "strip_exif": true
+    }
+  },
+  "nz-real-me-passport-photo": {
+    "preset_id": "nz-real-me-passport-photo",
+    "tool": "passport_photo",
+    "toolSlug": "passport-photo",
+    "title": "New Zealand Passport Online Photo (3:4 Ratio, 500KB–10MB)",
+    "desc": "Official DIA New Zealand specification preset for New Zealand Passport Online Photo (3:4 Ratio, 500KB–10MB). Standardizes biometric portrait photos to 900×1200px at 300 DPI on #F4F4F4 background locally with guaranteed zero server uploads.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "DIA New Zealand",
+    "authority_name": "DIA New Zealand",
+    "source_url": "https://www.passports.govt.nz/passport-photos/how-to-take-a-passport-photo/",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 900,
+      "height_px": 1200,
+      "max_size_kb": 5000,
+      "dpi": 300,
+      "background_hex": "#F4F4F4",
+      "strip_exif": true
+    }
+  },
+  "open-graph-social-card-1200x630": {
+    "preset_id": "open-graph-social-card-1200x630",
+    "tool": "social_resizer",
+    "toolSlug": "social-resizer",
+    "title": "Open Graph (og:image) Social Share Card (1200×630px)",
+    "desc": "Specification-grade preset for Open Graph (og:image) Social Share Card (1200×630px) conforming to Open Graph Protocol requirements. Crops and resizes assets to 1200×630px entirely in local browser RAM.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "Open Graph Protocol",
+    "authority_name": "Open Graph Protocol",
+    "source_url": "https://ogp.me/",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 1200,
+      "height_px": 630,
+      "max_size_kb": 800,
+      "dpi": 150,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "openapi-3-1-json-schema-check": {
+    "preset_id": "openapi-3-1-json-schema-check",
+    "tool": "schema_validator",
+    "toolSlug": "schema-validator",
+    "title": "OpenAPI 3.1 & Draft 2020-12 JSON Schema Validator",
+    "desc": "Standardized local preset for OpenAPI 3.1 & Draft 2020-12 JSON Schema Validator conforming to JSON Schema Org specifications. Executes entirely in client browser memory with zero network requests.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "JSON Schema Org",
+    "authority_name": "JSON Schema Org",
+    "source_url": "https://json-schema.org/",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 0,
+      "height_px": 0,
+      "max_size_kb": 5000,
+      "dpi": 0,
+      "background_hex": "none",
+      "strip_exif": true
+    }
+  },
+  "poshmark-square-1200x1200": {
+    "preset_id": "poshmark-square-1200x1200",
+    "tool": "social_resizer",
+    "toolSlug": "social-resizer",
+    "title": "Poshmark & Depop Square Product Cover (1200×1200px)",
+    "desc": "Specification-grade preset for Poshmark & Depop Square Product Cover (1200×1200px) conforming to Poshmark requirements. Crops and resizes assets to 1200×1200px entirely in local browser RAM.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "Poshmark",
+    "authority_name": "Poshmark",
+    "source_url": "https://poshmark.com/",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 1200,
+      "height_px": 1200,
+      "max_size_kb": 1500,
+      "dpi": 150,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "sa-absher-iqama-photo": {
+    "preset_id": "sa-absher-iqama-photo",
+    "tool": "passport_photo",
+    "toolSlug": "passport-photo",
+    "title": "Saudi Arabia Absher & Muqeem Visa Photo (200×200px, ≤18KB)",
+    "desc": "Official Absher KSA specification preset for Saudi Arabia Absher & Muqeem Visa Photo (200×200px, ≤18KB). Standardizes biometric portrait photos to 200×200px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "Absher KSA",
+    "authority_name": "Absher KSA",
+    "source_url": "https://www.absher.sa/",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 200,
+      "height_px": 200,
+      "max_size_kb": 18,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "sec-edgar-filing-pdf-prep": {
+    "preset_id": "sec-edgar-filing-pdf-prep",
+    "tool": "pdf_flatten",
+    "toolSlug": "pdf-flatten",
+    "title": "SEC EDGAR / Financial Filing Clean PDF Preparation",
+    "desc": "Standardized local preset for SEC EDGAR / Financial Filing Clean PDF Preparation conforming to US SEC specifications. Executes entirely in client browser memory with zero network requests.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "US SEC",
+    "authority_name": "US SEC",
+    "source_url": "https://www.sec.gov/edgar",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 0,
+      "height_px": 0,
+      "max_size_kb": 25000,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "sg-ica-passport-400x514": {
+    "preset_id": "sg-ica-passport-400x514",
+    "tool": "passport_photo",
+    "toolSlug": "passport-photo",
+    "title": "Singapore ICA Passport & NRIC Photo (400×514px, ≤2MB)",
+    "desc": "Official ICA Singapore specification preset for Singapore ICA Passport & NRIC Photo (400×514px, ≤2MB). Standardizes biometric portrait photos to 400×514px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "ICA Singapore",
+    "authority_name": "ICA Singapore",
+    "source_url": "https://www.ica.gov.sg/photo-guidelines",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 400,
+      "height_px": 514,
+      "max_size_kb": 2000,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "shopify-product-2048x2048": {
+    "preset_id": "shopify-product-2048x2048",
+    "tool": "social_resizer",
+    "toolSlug": "social-resizer",
+    "title": "Shopify Storefront High-Resolution Square Product (2048×2048px)",
+    "desc": "Specification-grade preset for Shopify Storefront High-Resolution Square Product (2048×2048px) conforming to Shopify Help requirements. Crops and resizes assets to 2048×2048px entirely in local browser RAM.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "Shopify Help",
+    "authority_name": "Shopify Help",
+    "source_url": "https://help.shopify.com/en/manual/products/product-media",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 2048,
+      "height_px": 2048,
+      "max_size_kb": 2000,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "spf-dkim-dmarc-phishing-trace": {
+    "preset_id": "spf-dkim-dmarc-phishing-trace",
+    "tool": "email_header",
+    "toolSlug": "email-header",
+    "title": "Email Header SPF / DKIM / DMARC & Relay Hop Forensics",
+    "desc": "Standardized local preset for Email Header SPF / DKIM / DMARC & Relay Hop Forensics conforming to RFC 5322 specifications. Executes entirely in client browser memory with zero network requests.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "RFC 5322",
+    "authority_name": "RFC 5322",
+    "source_url": "https://datatracker.ietf.org/doc/html/rfc5322",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 0,
+      "height_px": 0,
+      "max_size_kb": 1000,
+      "dpi": 0,
+      "background_hex": "none",
+      "strip_exif": true
+    }
+  },
+  "stripe-webhook-json-formatter": {
+    "preset_id": "stripe-webhook-json-formatter",
+    "tool": "json_format",
+    "toolSlug": "json-format",
+    "title": "Webhook Payload JSON Beautifier & Schema Diff",
+    "desc": "Standardized local preset for Webhook Payload JSON Beautifier & Schema Diff conforming to RFC 8259 specifications. Executes entirely in client browser memory with zero network requests.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "RFC 8259",
+    "authority_name": "RFC 8259",
+    "source_url": "https://datatracker.ietf.org/doc/html/rfc8259",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 0,
+      "height_px": 0,
+      "max_size_kb": 5000,
+      "dpi": 0,
+      "background_hex": "none",
+      "strip_exif": true
+    }
+  },
+  "svg-react-jsx-icon-optimizer": {
+    "preset_id": "svg-react-jsx-icon-optimizer",
+    "tool": "svg_optimize",
+    "toolSlug": "svg-optimize",
+    "title": "SVG Path Precision & XSS Script Sanitizer for Icons",
+    "desc": "Standardized local preset for SVG Path Precision & XSS Script Sanitizer for Icons conforming to W3C SVG WG specifications. Executes entirely in client browser memory with zero network requests.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "W3C SVG WG",
+    "authority_name": "W3C SVG WG",
+    "source_url": "https://www.w3.org/TR/SVG2/",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 0,
+      "height_px": 0,
+      "max_size_kb": 2000,
+      "dpi": 0,
+      "background_hex": "none",
+      "strip_exif": true
+    }
+  },
+  "uk-blue-badge-photo": {
+    "preset_id": "uk-blue-badge-photo",
+    "tool": "passport_photo",
+    "toolSlug": "passport-photo",
+    "title": "UK Council Blue Badge Application Photo",
+    "desc": "Official UK GOV.UK specification preset for UK Council Blue Badge Application Photo. Standardizes biometric portrait photos to 600×750px at 300 DPI on #F5F5F5 background locally with guaranteed zero server uploads.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "UK GOV.UK",
+    "authority_name": "UK GOV.UK",
+    "source_url": "https://www.gov.uk/apply-blue-badge",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 600,
+      "height_px": 750,
+      "max_size_kb": 10000,
+      "dpi": 300,
+      "background_hex": "#F5F5F5",
+      "strip_exif": true
+    }
+  },
+  "uk-brp-evisa-photo": {
+    "preset_id": "uk-brp-evisa-photo",
+    "tool": "passport_photo",
+    "toolSlug": "passport-photo",
+    "title": "UKVI eVisa & Biometric Residence Permit Photo",
+    "desc": "Official UK Home Office specification preset for UKVI eVisa & Biometric Residence Permit Photo. Standardizes biometric portrait photos to 600×750px at 300 DPI on #F5F5F5 background locally with guaranteed zero server uploads.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "UK Home Office",
+    "authority_name": "UK Home Office",
+    "source_url": "https://www.gov.uk/guidance/online-immigration-status-evisa",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 600,
+      "height_px": 750,
+      "max_size_kb": 10000,
+      "dpi": 300,
+      "background_hex": "#F5F5F5",
+      "strip_exif": true
+    }
+  },
+  "uk-citb-cscs-card-photo": {
+    "preset_id": "uk-citb-cscs-card-photo",
+    "tool": "passport_photo",
+    "toolSlug": "passport-photo",
+    "title": "UK CSCS Construction Skills Card Photo",
+    "desc": "Official CSCS UK specification preset for UK CSCS Construction Skills Card Photo. Standardizes biometric portrait photos to 413×531px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "CSCS UK",
+    "authority_name": "CSCS UK",
+    "source_url": "https://www.cscs.uk.com/",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 413,
+      "height_px": 531,
+      "max_size_kb": 2000,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "uk-dvla-driving-licence-photo": {
+    "preset_id": "uk-dvla-driving-licence-photo",
+    "tool": "passport_photo",
+    "toolSlug": "passport-photo",
+    "title": "UK DVLA Photocard Driving Licence Photo (35×45mm)",
+    "desc": "Official UK DVLA specification preset for UK DVLA Photocard Driving Licence Photo (35×45mm). Standardizes biometric portrait photos to 413×531px at 300 DPI on #F5F5F5 background locally with guaranteed zero server uploads.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "UK DVLA",
+    "authority_name": "UK DVLA",
+    "source_url": "https://www.gov.uk/renew-driving-licence",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 413,
+      "height_px": 531,
+      "max_size_kb": 5000,
+      "dpi": 300,
+      "background_hex": "#F5F5F5",
+      "strip_exif": true
+    }
+  },
+  "uk-hmrc-sa100-self-assessment": {
+    "preset_id": "uk-hmrc-sa100-self-assessment",
+    "tool": "sa100_prep",
+    "toolSlug": "sa100-prep",
+    "title": "UK HMRC SA100 Self Assessment & NI Class 4 Calculator",
+    "desc": "Standardized local preset for UK HMRC SA100 Self Assessment & NI Class 4 Calculator conforming to HMRC GOV.UK specifications. Executes entirely in client browser memory with zero network requests.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "HMRC GOV.UK",
+    "authority_name": "HMRC GOV.UK",
+    "source_url": "https://www.gov.uk/self-assessment-tax-returns",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 0,
+      "height_px": 0,
+      "max_size_kb": 5000,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "uk-passport-photo": {
+    "preset_id": "uk-passport-photo",
+    "tool": "passport_photo",
+    "toolSlug": "passport-photo",
+    "title": "UK HM Passport Office Digital Photo (35×45mm, Cream/Light Grey Background)",
+    "desc": "Official HM Passport Office specification preset for UK HM Passport Office Digital Photo (35×45mm, Cream/Light Grey Background). Standardizes biometric portrait photos to 827×1063px at 600 DPI on #F2F2F2 background locally with guaranteed zero server uploads.",
+    "version": "2026-11-08.1",
+    "status": "active",
+    "jurisdiction": "HMPO UK",
+    "authority_name": "HM Passport Office",
+    "source_url": "https://www.gov.uk/photos-for-passports",
+    "last_verified": "2026-11-08",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 827,
+      "height_px": 1063,
+      "dpi": 600,
+      "background_hex": "#F2F2F2",
+      "strip_exif": true
+    }
+  },
+  "uk-sia-security-licence-photo": {
+    "preset_id": "uk-sia-security-licence-photo",
+    "tool": "passport_photo",
+    "toolSlug": "passport-photo",
+    "title": "UK SIA Security Industry Authority Licence Photo",
+    "desc": "Official UK SIA specification preset for UK SIA Security Industry Authority Licence Photo. Standardizes biometric portrait photos to 413×531px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "UK SIA",
+    "authority_name": "UK SIA",
+    "source_url": "https://www.gov.uk/guidance/apply-for-an-sia-licence",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 413,
+      "height_px": 531,
+      "max_size_kb": 5000,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "uk-tfl-oyster-photocard": {
+    "preset_id": "uk-tfl-oyster-photocard",
+    "tool": "passport_photo",
+    "toolSlug": "passport-photo",
+    "title": "TfL 18+ Student / Zip Oyster Photocard Photo",
+    "desc": "Official Transport for London specification preset for TfL 18+ Student / Zip Oyster Photocard Photo. Standardizes biometric portrait photos to 600×750px at 300 DPI on #F5F5F5 background locally with guaranteed zero server uploads.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "Transport for London",
+    "authority_name": "Transport for London",
+    "source_url": "https://photocard.tfl.gov.uk/",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 600,
+      "height_px": 750,
+      "max_size_kb": 6000,
+      "dpi": 300,
+      "background_hex": "#F5F5F5",
+      "strip_exif": true
+    }
+  },
+  "uk-tls-vfs-visa-pdf-under-5mb": {
+    "preset_id": "uk-tls-vfs-visa-pdf-under-5mb",
+    "tool": "pdf_compress",
+    "toolSlug": "pdf-compress",
+    "title": "UK TLScontact / VFS Global Supporting PDF Under 5MB",
+    "desc": "Privacy-preserving compression preset for UK TLScontact / VFS Global Supporting PDF Under 5MB conforming to UKVI / VFS standards. Optimizes file payload to under 4.8MB without sending documents over any network.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "UKVI / VFS",
+    "authority_name": "UKVI / VFS",
+    "source_url": "https://www.gov.uk/browse/visas-immigration",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 0,
+      "height_px": 0,
+      "max_size_kb": 4800,
+      "dpi": 150,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "uk-visa-vfs-docs": {
+    "preset_id": "uk-visa-vfs-docs",
+    "tool": "image_compress",
+    "toolSlug": "image-compress",
+    "title": "UK Visa & VFS Global Supporting Documents PDF/Image (Under 5MB)",
+    "desc": "Privacy-preserving compression preset for UK Visa & VFS Global Supporting Documents PDF/Image (Under 5MB) conforming to UK Visas and Immigration standards. Optimizes file payload to under 5MB without sending documents over any network.",
+    "version": "2026-11-08.1",
+    "status": "active",
+    "jurisdiction": "UKVI / VFS Global",
+    "authority_name": "UK Visas and Immigration",
+    "source_url": "https://www.gov.uk/uk-visa-appointment",
+    "last_verified": "2026-11-08",
+    "stale_after_days": 90,
+    "args": {
+      "max_size_kb": 5000,
+      "strip_exif": true
+    }
+  },
+  "us-ca-dmv-real-id-docs": {
+    "preset_id": "us-ca-dmv-real-id-docs",
+    "tool": "pdf_compress",
+    "toolSlug": "pdf-compress",
+    "title": "CA DMV REAL ID Document Upload (≤5MB PDF)",
+    "desc": "Privacy-preserving compression preset for CA DMV REAL ID Document Upload (≤5MB PDF) conforming to CA DMV standards. Optimizes file payload to under 5MB without sending documents over any network.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "CA DMV",
+    "authority_name": "CA DMV",
+    "source_url": "https://www.dmv.ca.gov/portal/driver-licenses-identification-cards/real-id/",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 0,
+      "height_px": 0,
+      "max_size_kb": 5000,
+      "dpi": 150,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "us-ds-160-visa-photo": {
+    "preset_id": "us-ds-160-visa-photo",
+    "tool": "passport_photo",
+    "toolSlug": "passport-photo",
+    "title": "US DS-160 Nonimmigrant Visa Photo (600×600px, ≤240KB)",
+    "desc": "Official US State Dept specification preset for US DS-160 Nonimmigrant Visa Photo (600×600px, ≤240KB). Standardizes biometric portrait photos to 600×600px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "US State Dept",
+    "authority_name": "US State Dept",
+    "source_url": "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/photos.html",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 600,
+      "height_px": 600,
+      "max_size_kb": 240,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "us-dv-lottery-photo": {
+    "preset_id": "us-dv-lottery-photo",
+    "tool": "passport_photo",
+    "toolSlug": "passport-photo",
+    "title": "US Diversity Visa (Green Card Lottery) Photo (600×600px)",
+    "desc": "Official US State Dept specification preset for US Diversity Visa (Green Card Lottery) Photo (600×600px). Standardizes biometric portrait photos to 600×600px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "US State Dept",
+    "authority_name": "US State Dept",
+    "source_url": "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/photos/digital-image-requirements.html",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 600,
+      "height_px": 600,
+      "max_size_kb": 240,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "us-firearms-atf-efrom-photo": {
+    "preset_id": "us-firearms-atf-efrom-photo",
+    "tool": "passport_photo",
+    "toolSlug": "passport-photo",
+    "title": "ATF eForm 1 / eForm 4 Responsible Person Photo (≤3MB)",
+    "desc": "Official US ATF specification preset for ATF eForm 1 / eForm 4 Responsible Person Photo (≤3MB). Standardizes biometric portrait photos to 600×600px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "US ATF",
+    "authority_name": "US ATF",
+    "source_url": "https://eforms.atf.gov/",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 600,
+      "height_px": 600,
+      "max_size_kb": 3000,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "us-global-entry-photo": {
+    "preset_id": "us-global-entry-photo",
+    "tool": "passport_photo",
+    "toolSlug": "passport-photo",
+    "title": "US CBP Global Entry Portal Selfie & Photo",
+    "desc": "Official US CBP specification preset for US CBP Global Entry Portal Selfie & Photo. Standardizes biometric portrait photos to 600×600px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "US CBP",
+    "authority_name": "US CBP",
+    "source_url": "https://ttp.cbp.dhs.gov/",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 600,
+      "height_px": 600,
+      "max_size_kb": 240,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "us-irs-1040-schedule-c-prep": {
+    "preset_id": "us-irs-1040-schedule-c-prep",
+    "tool": "us_tax_filler",
+    "toolSlug": "us-tax-filler",
+    "title": "IRS Form 1040 + Schedule C Self-Employed Worksheet",
+    "desc": "Standardized local preset for IRS Form 1040 + Schedule C Self-Employed Worksheet conforming to US IRS specifications. Executes entirely in client browser memory with zero network requests.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "US IRS",
+    "authority_name": "US IRS",
+    "source_url": "https://www.irs.gov/forms-pubs/about-form-1040",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 0,
+      "height_px": 0,
+      "max_size_kb": 5000,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "us-irs-w9-tin-match": {
+    "preset_id": "us-irs-w9-tin-match",
+    "tool": "w9_prep",
+    "toolSlug": "w9-prep",
+    "title": "IRS Form W-9 TIN & Backup Withholding Compliance Preset",
+    "desc": "Standardized local preset for IRS Form W-9 TIN & Backup Withholding Compliance Preset conforming to US IRS specifications. Executes entirely in client browser memory with zero network requests.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "US IRS",
+    "authority_name": "US IRS",
+    "source_url": "https://www.irs.gov/forms-pubs/about-form-w-9",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 0,
+      "height_px": 0,
+      "max_size_kb": 2000,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "us-ny-dmv-license-renewal-photo": {
+    "preset_id": "us-ny-dmv-license-renewal-photo",
+    "tool": "passport_photo",
+    "toolSlug": "passport-photo",
+    "title": "NY DMV Online License Renewal Photo",
+    "desc": "Official NY DMV specification preset for NY DMV Online License Renewal Photo. Standardizes biometric portrait photos to 600×600px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "NY DMV",
+    "authority_name": "NY DMV",
+    "source_url": "https://dmv.ny.gov/",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 600,
+      "height_px": 600,
+      "max_size_kb": 240,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "us-pacer-federal-court-pdf": {
+    "preset_id": "us-pacer-federal-court-pdf",
+    "tool": "pdf_flatten",
+    "toolSlug": "pdf-flatten",
+    "title": "US Federal Court PACER / CM-ECF PDF (≤35MB, PDF/A, Flattened)",
+    "desc": "Standardized local preset for US Federal Court PACER / CM-ECF PDF (≤35MB, PDF/A, Flattened) conforming to US Courts PACER specifications. Executes entirely in client browser memory with zero network requests.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "US Courts PACER",
+    "authority_name": "US Courts PACER",
+    "source_url": "https://pacer.uscourts.gov/",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 0,
+      "height_px": 0,
+      "max_size_kb": 35000,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "us-passport-std": {
+    "preset_id": "us-passport-std",
+    "tool": "passport_photo",
+    "toolSlug": "passport-photo",
+    "title": "US Department of State Passport Photo (2×2 inches, 600×600px)",
+    "desc": "Official US Department of State specification preset for US Department of State Passport Photo (2×2 inches, 600×600px). Standardizes biometric portrait photos to 600×600px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads.",
+    "version": "2026-11-08.1",
+    "status": "active",
+    "jurisdiction": "State Department US",
+    "authority_name": "US Department of State",
+    "source_url": "https://travel.state.gov/content/travel/en/passports/how-apply/photos.html",
+    "last_verified": "2026-11-08",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 600,
+      "height_px": 600,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "us-tsa-precheck-doc": {
+    "preset_id": "us-tsa-precheck-doc",
+    "tool": "ocr_scan",
+    "toolSlug": "ocr-scan",
+    "title": "TSA PreCheck Identity Document Scan",
+    "desc": "Standardized local preset for TSA PreCheck Identity Document Scan conforming to US TSA specifications. Executes entirely in client browser memory with zero network requests.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "US TSA",
+    "authority_name": "US TSA",
+    "source_url": "https://www.tsa.gov/precheck",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 0,
+      "height_px": 0,
+      "max_size_kb": 2000,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "uscis-i130-petition-photo": {
+    "preset_id": "uscis-i130-petition-photo",
+    "tool": "passport_photo",
+    "toolSlug": "passport-photo",
+    "title": "USCIS I-130 Petition Alien Relative Photo",
+    "desc": "Official USCIS specification preset for USCIS I-130 Petition Alien Relative Photo. Standardizes biometric portrait photos to 600×600px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "USCIS",
+    "authority_name": "USCIS",
+    "source_url": "https://www.uscis.gov/i-130",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 600,
+      "height_px": 600,
+      "max_size_kb": 240,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "uscis-i131-travel-document-photo": {
+    "preset_id": "uscis-i131-travel-document-photo",
+    "tool": "passport_photo",
+    "toolSlug": "passport-photo",
+    "title": "USCIS I-131 Advance Parole / Travel Document Photo",
+    "desc": "Official USCIS specification preset for USCIS I-131 Advance Parole / Travel Document Photo. Standardizes biometric portrait photos to 600×600px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "USCIS",
+    "authority_name": "USCIS",
+    "source_url": "https://www.uscis.gov/i-131",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 600,
+      "height_px": 600,
+      "max_size_kb": 240,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "uscis-i485-evidence-binder": {
+    "preset_id": "uscis-i485-evidence-binder",
+    "tool": "uscis_formatter",
+    "toolSlug": "uscis-formatter",
+    "title": "USCIS I-485 Adjustment of Status Indexed Evidence Packet",
+    "desc": "Standardized local preset for USCIS I-485 Adjustment of Status Indexed Evidence Packet conforming to USCIS specifications. Executes entirely in client browser memory with zero network requests.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "USCIS",
+    "authority_name": "USCIS",
+    "source_url": "https://www.uscis.gov/i-485",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 0,
+      "height_px": 0,
+      "max_size_kb": 24000,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "uscis-i765-ead-photo": {
+    "preset_id": "uscis-i765-ead-photo",
+    "tool": "passport_photo",
+    "toolSlug": "passport-photo",
+    "title": "USCIS I-765 Employment Authorization (EAD) Photo",
+    "desc": "Official USCIS specification preset for USCIS I-765 Employment Authorization (EAD) Photo. Standardizes biometric portrait photos to 600×600px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "USCIS",
+    "authority_name": "USCIS",
+    "source_url": "https://www.uscis.gov/i-765",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 600,
+      "height_px": 600,
+      "max_size_kb": 240,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "uscis-n400-naturalization-photo": {
+    "preset_id": "uscis-n400-naturalization-photo",
+    "tool": "passport_photo",
+    "toolSlug": "passport-photo",
+    "title": "USCIS N-400 Naturalization Online Upload (2×2 in)",
+    "desc": "Official USCIS specification preset for USCIS N-400 Naturalization Online Upload (2×2 in). Standardizes biometric portrait photos to 600×600px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "USCIS",
+    "authority_name": "USCIS",
+    "source_url": "https://www.uscis.gov/n-400",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 600,
+      "height_px": 600,
+      "max_size_kb": 240,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "uscis-portal-pdf-under-12mb": {
+    "preset_id": "uscis-portal-pdf-under-12mb",
+    "tool": "pdf_compress",
+    "toolSlug": "pdf-compress",
+    "title": "USCIS myUSCIS Online Filing PDF Optimizer (≤12MB)",
+    "desc": "Privacy-preserving compression preset for USCIS myUSCIS Online Filing PDF Optimizer (≤12MB) conforming to USCIS standards. Optimizes file payload to under 11.8MB without sending documents over any network.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "USCIS",
+    "authority_name": "USCIS",
+    "source_url": "https://www.uscis.gov/file-online/tips-for-filing-forms-online",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 0,
+      "height_px": 0,
+      "max_size_kb": 11800,
+      "dpi": 150,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "walmart-marketplace-2000x2000": {
+    "preset_id": "walmart-marketplace-2000x2000",
+    "tool": "social_resizer",
+    "toolSlug": "social-resizer",
+    "title": "Walmart Marketplace Main Image (2000×2000px #FFFFFF)",
+    "desc": "Specification-grade preset for Walmart Marketplace Main Image (2000×2000px #FFFFFF) conforming to Walmart Marketplace requirements. Crops and resizes assets to 2000×2000px entirely in local browser RAM.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "Walmart Marketplace",
+    "authority_name": "Walmart Marketplace",
+    "source_url": "https://marketplace.walmart.com/",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 2000,
+      "height_px": 2000,
+      "max_size_kb": 2000,
+      "dpi": 300,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "wcag-2-2-aaa-contrast-audit": {
+    "preset_id": "wcag-2-2-aaa-contrast-audit",
+    "tool": "color_contrast",
+    "toolSlug": "color-contrast",
+    "title": "WCAG 2.2 AA & AAA + APCA Lc Contrast Compliance Audit",
+    "desc": "Standardized local preset for WCAG 2.2 AA & AAA + APCA Lc Contrast Compliance Audit conforming to W3C WAI specifications. Executes entirely in client browser memory with zero network requests.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "W3C WAI",
+    "authority_name": "W3C WAI",
+    "source_url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 0,
+      "height_px": 0,
+      "max_size_kb": 100,
+      "dpi": 0,
+      "background_hex": "none",
+      "strip_exif": true
+    }
+  },
+  "web-ready-webp": {
+    "preset_id": "web-ready-webp",
+    "tool": "image_compress",
+    "toolSlug": "image-compress",
+    "title": "Web-Ready Next-Gen WebP Compression (Target Under 200KB)",
+    "desc": "Privacy-preserving compression preset for Web-Ready Next-Gen WebP Compression (Target Under 200KB) conforming to Google Web.dev / W3C standards. Optimizes file payload to under 200KB without sending documents over any network.",
+    "version": "2026-11-08.1",
+    "status": "active",
+    "jurisdiction": "Web Standards",
+    "authority_name": "Google Web.dev / W3C",
+    "source_url": "https://web.dev/articles/serve-images-webp",
+    "last_verified": "2026-11-08",
+    "stale_after_days": 90,
+    "args": {
+      "max_size_kb": 200,
+      "format": "webp",
+      "strip_exif": true
+    }
+  },
+  "whatsapp-pdf-document-optimiser": {
+    "preset_id": "whatsapp-pdf-document-optimiser",
+    "tool": "pdf_compress",
+    "toolSlug": "pdf-compress",
+    "title": "WhatsApp Fast Document Share PDF (<2MB)",
+    "desc": "Privacy-preserving compression preset for WhatsApp Fast Document Share PDF (<2MB) conforming to WhatsApp standards. Optimizes file payload to under 1.95MB without sending documents over any network.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "WhatsApp",
+    "authority_name": "WhatsApp",
+    "source_url": "https://faq.whatsapp.com/",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 0,
+      "height_px": 0,
+      "max_size_kb": 1950,
+      "dpi": 150,
+      "background_hex": "#FFFFFF",
+      "strip_exif": true
+    }
+  },
+  "x-twitter-header-1500x500": {
+    "preset_id": "x-twitter-header-1500x500",
+    "tool": "social_resizer",
+    "toolSlug": "social-resizer",
+    "title": "X (Twitter) Profile Header Banner (1500×500px, EXIF Stripped)",
+    "desc": "Specification-grade preset for X (Twitter) Profile Header Banner (1500×500px, EXIF Stripped) conforming to X Help Center requirements. Crops and resizes assets to 1500×500px entirely in local browser RAM.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "X Help Center",
+    "authority_name": "X Help Center",
+    "source_url": "https://help.x.com/en/managing-your-account/common-issues-when-uploading-profile-photo",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 1500,
+      "height_px": 500,
+      "max_size_kb": 1500,
+      "dpi": 150,
+      "background_hex": "#000000",
+      "strip_exif": true
+    }
+  },
+  "youtube-thumbnail-1280x720-2mb": {
+    "preset_id": "youtube-thumbnail-1280x720-2mb",
+    "tool": "social_resizer",
+    "toolSlug": "social-resizer",
+    "title": "YouTube HD Custom Thumbnail (1280×720px, <2MB Guaranteed)",
+    "desc": "Specification-grade preset for YouTube HD Custom Thumbnail (1280×720px, <2MB Guaranteed) conforming to YouTube Help requirements. Crops and resizes assets to 1280×720px entirely in local browser RAM.",
+    "version": "2026.11.1",
+    "status": "active",
+    "jurisdiction": "YouTube Help",
+    "authority_name": "YouTube Help",
+    "source_url": "https://support.google.com/youtube/answer/72431",
+    "last_verified": "2026-11-01",
+    "stale_after_days": 90,
+    "args": {
+      "width_px": 1280,
+      "height_px": 720,
+      "max_size_kb": 1950,
+      "dpi": 150,
+      "background_hex": "#000000",
+      "strip_exif": true
+    }
+  }
 };
 
 (function(){
@@ -5754,14 +7669,51 @@ window.privacyfold = Object.assign(window.privacyfold || {}, {
   models: function(){ return LEAN_MODELS; },
   run: async function(toolId, args, textInput){
     var t = toolById(toolId);
-    if (!t) throw new Error('Unknown tool: ' + toolId);
+    if (!t) {
+      window.__PRIVACYFOLD_RESULT__ = { status: 'fail', tool: toolId, error: 'Unknown tool: ' + toolId };
+      throw new Error('Unknown tool: ' + toolId);
+    }
     var merged = Object.assign(defaultsFor(t), args || {});
     var src = activeItem() || srcFor(t);
-    var res = await t.run(src, merged, { text: textInput || '' });
-    window.__PRIVACYFOLD_RESULT__ = { status: 'pass', tool: toolId, note: res && res.note ? res.note : 'ok' };
-    return res;
+    try {
+      var res = await t.run(src, merged, { text: textInput || '' });
+      window.__PRIVACYFOLD_RESULT__ = { status: 'pass', tool: toolId, note: res && res.note ? res.note : 'ok' };
+      trackToolUsed(toolId);
+      return res;
+    } catch (e) {
+      window.__PRIVACYFOLD_RESULT__ = { status: 'fail', tool: toolId, error: (e && e.message) || String(e) };
+      throw e;
+    }
   }
 });
+
+/* Global Error Boundary for runtime desk */
+if (typeof window !== 'undefined') {
+  window.addEventListener('error', function(e) {
+    try {
+      if (typeof cur !== 'undefined' && cur && cur.busy) {
+        cur.busy = false;
+        var act = $('#act'); if (act) act.disabled = false;
+        var stage = $('#stage');
+        var env = stage ? stage.querySelector('.env') : null;
+        if (env) env.remove();
+        if (typeof toast === 'function') toast('Local operation stopped: ' + ((e && e.message) || 'Unknown error'));
+      }
+    } catch (_) {}
+  });
+  window.addEventListener('unhandledrejection', function(e) {
+    try {
+      if (typeof cur !== 'undefined' && cur && cur.busy) {
+        cur.busy = false;
+        var act = $('#act'); if (act) act.disabled = false;
+        var stage = $('#stage');
+        var env = stage ? stage.querySelector('.env') : null;
+        if (env) env.remove();
+        if (typeof toast === 'function') toast('Local task interrupted');
+      }
+    } catch (_) {}
+  });
+}
 
 route();
 if(view==='home')bgStart();

@@ -5,7 +5,7 @@
   "toolSlug": "passport-photo",
   "version": "2026.11.1",
   "status": "active",
-  "title": "Netherlands Rijksoverheid Pasfoto Matrix (35\u00d745mm)",
+  "title": "Netherlands Rijksoverheid Pasfoto Matrix (35×45mm)",
   "jurisdiction": "Rijksoverheid NL",
   "authority_name": "Rijksoverheid NL",
   "source_url": "https://www.rijksoverheid.nl/onderwerpen/paspoort-en-identiteitskaart/eisen-aan-de-pasfoto-voor-paspoort-of-id-kaart",
@@ -27,5 +27,6 @@
     "dpi": 300,
     "background_hex": "#EDEDED",
     "strip_exif": true
-  }
+  },
+  "desc": "Official Rijksoverheid NL specification preset for Netherlands Rijksoverheid Pasfoto Matrix (35×45mm). Standardizes biometric portrait photos to 413×531px at 300 DPI on #EDEDED background locally with guaranteed zero server uploads."
 }

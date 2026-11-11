@@ -27,5 +27,6 @@
     "dpi": 300,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Standardized local preset for IRS Form 1040 + Schedule C Self-Employed Worksheet conforming to US IRS specifications. Executes entirely in client browser memory with zero network requests."
 }

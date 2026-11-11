@@ -27,5 +27,6 @@
     "dpi": 0,
     "background_hex": "none",
     "strip_exif": true
-  }
+  },
+  "desc": "Standardized local preset for Email Header SPF / DKIM / DMARC & Relay Hop Forensics conforming to RFC 5322 specifications. Executes entirely in client browser memory with zero network requests."
 }

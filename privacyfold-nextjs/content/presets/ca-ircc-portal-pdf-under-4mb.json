@@ -27,5 +27,6 @@
     "dpi": 150,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Privacy-preserving compression preset for Canada IRCC Visa Document Bundle Under 4MB conforming to IRCC Canada standards. Optimizes file payload to under 3.9MB without sending documents over any network."
 }

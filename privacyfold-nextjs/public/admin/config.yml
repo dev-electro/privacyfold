@@ -1,0 +1,207 @@
+# PrivacyFold CMS configuration (Sveltia). Mirrors content.config.ts schemas (PF-003).
+# CI must check field drift between this file and the Zod schemas (PF-026).
+backend:
+  name: github
+  repo: dev-electro/privacyfold
+  branch: main
+  # OAuth goes through our own sveltia-cms-auth Worker (DEC-008) — the client secret
+  # never lives in this repo or the browser. REPLACE the placeholder after step 1 of
+  # docs/ops/admin-auth.md and add a Cloudflare Access policy on /admin/*.
+  base_url: https://sveltia-cms-auth.<SUBDOMAIN>.workers.dev
+  auth_endpoint: auth
+  workflow: editorial # Save = new branch + pull request; merge to main publishes
+
+locale: en
+media_folder: public/uploads
+public_path: /uploads
+site_url: https://privacyfold.com
+logo_url: /favicon.svg
+
+collections:
+  - name: tools
+    label: Tools
+    folder: content/tools
+    create: true
+    extension: md
+    slug: '{{slug}}'
+    summary: '{{name}} · {{family}} · {{status}}'
+    sortable_fields: [name, family, status, reviewed]
+    fields:
+      - { label: Slug, name: slug, widget: string, hint: lowercase-hyphen, e.g. exif-strip }
+      - { label: Name, name: name, widget: string }
+      - { label: Family, name: family, widget: select, options: [photo, pdf, forms, image, dev, crypto] }
+      - { label: Task phrase, name: task, widget: string }
+      - { label: Answer (40–60 words, quotable), name: answer, widget: text }
+      - { label: Engine id, name: engine, widget: string }
+      - label: Params
+        name: params
+        widget: list
+        collapsed: false
+        fields:
+          - { label: Key, name: key, widget: string }
+          - { label: Label, name: label, widget: string }
+          - { label: Type, name: type, widget: select, options: [text, number, range, choice, bool, swatch] }
+          - { label: Default, name: default, widget: string }
+          - label: Choices
+            name: opts
+            widget: list
+            required: false
+            fields: [ { label: Value, name: v, widget: string }, { label: Label, name: t, widget: string } ]
+      - { label: Related tools, name: related, widget: list, required: false }
+      - { label: Status, name: status, widget: select, options: [draft, beta, live], default: draft }
+      - { label: Allow indexing, name: index, widget: boolean, default: true }
+      - { label: Reviewed, name: reviewed, widget: date, format: YYYY-MM-DD }
+      - { label: Reviewer, name: reviewer, widget: string, default: gaurav }
+      - label: Social
+        name: social
+        widget: object
+        required: false
+        fields:
+          - { label: Hook, name: hook, widget: string }
+          - { label: Proof, name: proof, widget: string }
+          - { label: Hashtags, name: hashtags, widget: list, required: false }
+      - { label: Body (How it works → FAQ), name: body, widget: markdown }
+
+  - name: presets
+    label: Portal presets
+    folder: content/presets
+    create: true
+    extension: yaml
+    slug: '{{presetSlug}}'
+    summary: '{{title}} · {{toolSlug}} · {{version}}'
+    sortable_fields: [toolSlug, jurisdiction, version]
+    fields:
+      - { label: Preset slug, name: presetSlug, widget: string }
+      - { label: Tool slug, name: toolSlug, widget: string }
+      - { label: Title, name: title, widget: string }
+      - { label: Jurisdiction, name: jurisdiction, widget: string }
+      - { label: Authority, name: authority_name, widget: string }
+      - { label: Source URL, name: source_url, widget: string }
+      - { label: Version, name: version, widget: string, hint: date-based, e.g. 2026-11-08.1 }
+      - { label: Status, name: status, widget: select, options: [active, under_review, deprecated], default: active }
+      - { label: Last verified, name: last_verified, widget: date }
+      - { label: Stale after days, name: stale_after_days, widget: number, default: 90 }
+      - { label: Supersedes, name: supersedes, widget: string, required: false }
+      - label: Constraints
+        name: constraints
+        widget: object
+        fields:
+          - { label: Width px, name: width_px, widget: number, required: false }
+          - { label: Height px, name: height_px, widget: number, required: false }
+          - { label: Max size KB, name: max_size_kb, widget: number, required: false }
+          - { label: DPI, name: dpi, widget: number, required: false }
+          - { label: Background hex, name: background_hex, widget: string, required: false }
+          - { label: Strip EXIF, name: strip_exif, widget: boolean, default: true }
+
+  - name: guides
+    label: Guides
+    folder: content/guides
+    create: true
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - { label: Slug, name: slug, widget: string }
+      - { label: Title, name: title, widget: string }
+      - { label: Answer block, name: answer, widget: text }
+      - { label: Author, name: author, widget: string, default: gaurav }
+      - { label: Reviewed, name: reviewed, widget: date }
+      - { label: Sources, name: sources, widget: list, required: false, fields: [ { label: Name, name: name, widget: string }, { label: URL, name: url, widget: string } ] }
+      - { label: Status, name: status, widget: select, options: [draft, live], default: draft }
+      - { label: Related tool, name: related_tool, widget: string, required: false }
+      - { label: Body, name: body, widget: markdown }
+
+  - name: pages
+    label: Trust pages
+    folder: content/pages
+    create: true
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - { label: Slug, name: slug, widget: string }
+      - { label: Title, name: title, widget: string }
+      - { label: Reviewed, name: reviewed, widget: date }
+      - { label: Body, name: body, widget: markdown }
+
+
+  - name: glossary
+    label: Glossary
+    folder: content/glossary
+    create: true
+    extension: md
+    slug: '{{term}}'
+    summary: '{{term}}'
+    fields:
+      - { label: Term, name: term, widget: string }
+      - { label: Definition (one sentence), name: definition, widget: text }
+      - { label: Aliases, name: aliases, widget: list, required: false }
+      - { label: Related tools, name: related_tools, widget: list, required: false }
+      - { label: Reviewed, name: reviewed, widget: date }
+
+  - name: compare
+    label: Comparisons
+    folder: content/compare
+    create: true
+    extension: md
+    slug: '{{slug}}'
+    summary: '{{title}}'
+    fields:
+      - { label: Slug, name: slug, widget: string }
+      - { label: Title, name: title, widget: string }
+      - { label: Audience, name: audience, widget: string, hint: what the searcher is comparing, e.g. privacyfold vs online compressors }
+      - { label: Reviewed, name: reviewed, widget: date }
+      - { label: Body, name: body, widget: markdown }
+
+  - name: authors
+    label: Authors
+    folder: content/authors
+    create: true
+    extension: yaml
+    slug: '{{name}}'
+    identifier_field: name
+    fields:
+      - { label: Name, name: name, widget: string }
+      - { label: Role, name: role, widget: string }
+      - { label: Bio, name: bio, widget: text }
+      - { label: Links, name: links, widget: list, required: false, fields: [ { label: Label, name: label, widget: string }, { label: URL, name: url, widget: string } ] }
+
+  - name: engines
+    label: Compute engines
+    folder: content/engine
+    create: true
+    extension: yaml
+    slug: '{{id}}'
+    identifier_field: id
+    summary: '{{id}} · {{type}} · {{family}} · {{version}}'
+    sortable_fields: [family, type, id, size_kb]
+    fields:
+      - { label: Engine id, name: id, widget: string, hint: canonical engine name, e.g. mozjpeg_enc, moonshine-tiny-en }
+      - { label: Type, name: type, widget: select, options: [wasm, onnx, js, host] }
+      - { label: Family, name: family, widget: select, options: [image, pdf, forms, dev, crypto, photo, ai] }
+      - { label: Asset path, name: path, widget: string, hint: self-hosted path under /wasm/, /models/ or /js/lib/ }
+      - { label: SHA-256, name: sha256, widget: string, hint: SRI verification hash — published in receipts }
+      - { label: Version, name: version, widget: string }
+      - { label: Source repository, name: source_repository, widget: string, required: false }
+      - { label: License, name: license, widget: string, default: MIT }
+      - { label: Size KB, name: size_kb, widget: number, required: false }
+      - { label: Powers tools, name: tasks, widget: list, hint: tool slugs; drives count-of-live generation }
+      - { label: Status, name: status, widget: select, options: [planned, hosted, live], default: planned, hint: planned=not-on-server-yet; hosted=binary-deployed; live=verified-by-probe }
+  - name: settings
+    label: Site settings
+    files:
+      - name: site
+        label: Site config
+        file: content/config/site.yaml
+        fields:
+          - { label: Site name, name: siteName, widget: string }
+          - { label: Domain, name: domain, widget: string }
+          - { label: Tagline, name: tagline, widget: string }
+          - { label: Description, name: description, widget: string }
+          - label: Ads
+            name: ads
+            widget: object
+            hint: DEC-005/DEC-007 — authorised units, tool pages included, auto ads never
+            fields:
+              - { label: Enable ads, name: enabled, widget: boolean }
+              - { label: Tool pages ads, name: toolPages, widget: boolean, default: false }
+              - { label: Publisher id, name: publisherId, widget: string }
+              - { label: Slots, name: slots, widget: list, fields: [ { label: Position, name: position, widget: select, options: [post-result, mid, below, sidebar, in-article, interstitial, sticky] }, { label: Slot id, name: id, widget: string }, { label: Min height, name: minHeight, widget: string } ] }

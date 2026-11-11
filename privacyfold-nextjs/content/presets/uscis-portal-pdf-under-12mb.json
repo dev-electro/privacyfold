@@ -5,7 +5,7 @@
   "toolSlug": "pdf-compress",
   "version": "2026.11.1",
   "status": "active",
-  "title": "USCIS myUSCIS Online Filing PDF Optimizer (\u226412MB)",
+  "title": "USCIS myUSCIS Online Filing PDF Optimizer (≤12MB)",
   "jurisdiction": "USCIS",
   "authority_name": "USCIS",
   "source_url": "https://www.uscis.gov/file-online/tips-for-filing-forms-online",
@@ -27,5 +27,6 @@
     "dpi": 150,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Privacy-preserving compression preset for USCIS myUSCIS Online Filing PDF Optimizer (≤12MB) conforming to USCIS standards. Optimizes file payload to under 11.8MB without sending documents over any network."
 }

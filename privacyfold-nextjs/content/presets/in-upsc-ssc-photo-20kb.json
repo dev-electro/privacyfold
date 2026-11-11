@@ -5,7 +5,7 @@
   "toolSlug": "passport-photo",
   "version": "2026.11.1",
   "status": "active",
-  "title": "India UPSC / SSC Exam Portal Photo (350\u00d7350px, 20KB\u2013300KB)",
+  "title": "India UPSC / SSC Exam Portal Photo (350×350px, 20KB–300KB)",
   "jurisdiction": "UPSC India",
   "authority_name": "UPSC India",
   "source_url": "https://upsconline.nic.in/",
@@ -27,5 +27,6 @@
     "dpi": 300,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Official UPSC India specification preset for India UPSC / SSC Exam Portal Photo (350×350px, 20KB–300KB). Standardizes biometric portrait photos to 350×350px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads."
 }

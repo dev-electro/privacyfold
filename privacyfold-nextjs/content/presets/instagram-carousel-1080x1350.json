@@ -5,7 +5,7 @@
   "toolSlug": "social-resizer",
   "version": "2026.11.1",
   "status": "active",
-  "title": "Instagram 4:5 Portrait Feed & Carousel Post (1080\u00d71350px)",
+  "title": "Instagram 4:5 Portrait Feed & Carousel Post (1080×1350px)",
   "jurisdiction": "Instagram",
   "authority_name": "Instagram",
   "source_url": "https://help.instagram.com/1631821640426723",
@@ -27,5 +27,6 @@
     "dpi": 150,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Specification-grade preset for Instagram 4:5 Portrait Feed & Carousel Post (1080×1350px) conforming to Instagram requirements. Crops and resizes assets to 1080×1350px entirely in local browser RAM."
 }

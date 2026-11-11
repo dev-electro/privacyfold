@@ -5,7 +5,7 @@
   "toolSlug": "passport-photo",
   "version": "2026.11.1",
   "status": "active",
-  "title": "Saudi Arabia Absher & Muqeem Visa Photo (200\u00d7200px, \u226418KB)",
+  "title": "Saudi Arabia Absher & Muqeem Visa Photo (200×200px, ≤18KB)",
   "jurisdiction": "Absher KSA",
   "authority_name": "Absher KSA",
   "source_url": "https://www.absher.sa/",
@@ -27,5 +27,6 @@
     "dpi": 300,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Official Absher KSA specification preset for Saudi Arabia Absher & Muqeem Visa Photo (200×200px, ≤18KB). Standardizes biometric portrait photos to 200×200px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads."
 }

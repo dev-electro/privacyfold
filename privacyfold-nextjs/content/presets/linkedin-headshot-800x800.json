@@ -5,7 +5,7 @@
   "toolSlug": "bg-remove",
   "version": "2026.11.1",
   "status": "active",
-  "title": "LinkedIn Executive Profile Headshot (800\u00d7800px, Clean BG)",
+  "title": "LinkedIn Executive Profile Headshot (800×800px, Clean BG)",
   "jurisdiction": "LinkedIn Help",
   "authority_name": "LinkedIn Help",
   "source_url": "https://www.linkedin.com/help/linkedin/answer/a568217",
@@ -27,5 +27,6 @@
     "dpi": 300,
     "background_hex": "#F3F4F6",
     "strip_exif": true
-  }
+  },
+  "desc": "Standardized local preset for LinkedIn Executive Profile Headshot (800×800px, Clean BG) conforming to LinkedIn Help specifications. Executes entirely in client browser memory with zero network requests."
 }

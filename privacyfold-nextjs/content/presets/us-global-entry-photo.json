@@ -27,5 +27,6 @@
     "dpi": 300,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Official US CBP specification preset for US CBP Global Entry Portal Selfie & Photo. Standardizes biometric portrait photos to 600×600px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads."
 }

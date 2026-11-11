@@ -5,7 +5,7 @@
   "toolSlug": "pdf-flatten",
   "version": "2026.11.1",
   "status": "active",
-  "title": "US Federal Court PACER / CM-ECF PDF (\u226435MB, PDF/A, Flattened)",
+  "title": "US Federal Court PACER / CM-ECF PDF (≤35MB, PDF/A, Flattened)",
   "jurisdiction": "US Courts PACER",
   "authority_name": "US Courts PACER",
   "source_url": "https://pacer.uscourts.gov/",
@@ -27,5 +27,6 @@
     "dpi": 300,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Standardized local preset for US Federal Court PACER / CM-ECF PDF (≤35MB, PDF/A, Flattened) conforming to US Courts PACER specifications. Executes entirely in client browser memory with zero network requests."
 }

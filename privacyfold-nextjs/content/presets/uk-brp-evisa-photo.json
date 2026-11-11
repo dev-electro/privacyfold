@@ -27,5 +27,6 @@
     "dpi": 300,
     "background_hex": "#F5F5F5",
     "strip_exif": true
-  }
+  },
+  "desc": "Official UK Home Office specification preset for UKVI eVisa & Biometric Residence Permit Photo. Standardizes biometric portrait photos to 600×750px at 300 DPI on #F5F5F5 background locally with guaranteed zero server uploads."
 }

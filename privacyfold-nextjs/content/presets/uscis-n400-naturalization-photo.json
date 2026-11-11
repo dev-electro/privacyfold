@@ -5,7 +5,7 @@
   "toolSlug": "passport-photo",
   "version": "2026.11.1",
   "status": "active",
-  "title": "USCIS N-400 Naturalization Online Upload (2\u00d72 in)",
+  "title": "USCIS N-400 Naturalization Online Upload (2×2 in)",
   "jurisdiction": "USCIS",
   "authority_name": "USCIS",
   "source_url": "https://www.uscis.gov/n-400",
@@ -27,5 +27,6 @@
     "dpi": 300,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Official USCIS specification preset for USCIS N-400 Naturalization Online Upload (2×2 in). Standardizes biometric portrait photos to 600×600px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads."
 }

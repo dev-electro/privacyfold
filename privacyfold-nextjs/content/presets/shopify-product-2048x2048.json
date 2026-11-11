@@ -5,7 +5,7 @@
   "toolSlug": "social-resizer",
   "version": "2026.11.1",
   "status": "active",
-  "title": "Shopify Storefront High-Resolution Square Product (2048\u00d72048px)",
+  "title": "Shopify Storefront High-Resolution Square Product (2048×2048px)",
   "jurisdiction": "Shopify Help",
   "authority_name": "Shopify Help",
   "source_url": "https://help.shopify.com/en/manual/products/product-media",
@@ -27,5 +27,6 @@
     "dpi": 300,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Specification-grade preset for Shopify Storefront High-Resolution Square Product (2048×2048px) conforming to Shopify Help requirements. Crops and resizes assets to 2048×2048px entirely in local browser RAM."
 }

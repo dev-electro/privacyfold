@@ -27,5 +27,6 @@
     "dpi": 300,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Standardized local preset for SEC EDGAR / Financial Filing Clean PDF Preparation conforming to US SEC specifications. Executes entirely in client browser memory with zero network requests."
 }

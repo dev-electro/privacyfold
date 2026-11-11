@@ -27,5 +27,6 @@
     "dpi": 0,
     "background_hex": "none",
     "strip_exif": true
-  }
+  },
+  "desc": "Standardized local preset for Webhook Payload JSON Beautifier & Schema Diff conforming to RFC 8259 specifications. Executes entirely in client browser memory with zero network requests."
 }

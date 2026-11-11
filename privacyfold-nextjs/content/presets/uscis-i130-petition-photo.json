@@ -27,5 +27,6 @@
     "dpi": 300,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Official USCIS specification preset for USCIS I-130 Petition Alien Relative Photo. Standardizes biometric portrait photos to 600×600px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads."
 }

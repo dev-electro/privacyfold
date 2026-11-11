@@ -27,5 +27,6 @@
     "dpi": 300,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Standardized local preset for USCIS I-485 Adjustment of Status Indexed Evidence Packet conforming to USCIS specifications. Executes entirely in client browser memory with zero network requests."
 }

@@ -27,5 +27,6 @@
     "dpi": 300,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Standardized local preset for GS1 EAN-13 & UPC-A Retail Packaging Vector Barcode conforming to GS1 Standards specifications. Executes entirely in client browser memory with zero network requests."
 }

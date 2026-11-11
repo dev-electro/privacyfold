@@ -27,5 +27,6 @@
     "dpi": 0,
     "background_hex": "none",
     "strip_exif": true
-  }
+  },
+  "desc": "Standardized local preset for JWT RS256/ES256 Offline Claims & Expiration Audit conforming to RFC 7519 specifications. Executes entirely in client browser memory with zero network requests."
 }

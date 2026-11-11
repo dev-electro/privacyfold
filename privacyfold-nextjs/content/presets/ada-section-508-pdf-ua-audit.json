@@ -27,5 +27,6 @@
     "dpi": 300,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Document compliance preset for ADA Title II & Section 508 PDF/UA-1 Accessibility Audit adhering to Section508.gov guidelines. Sanitizes and verifies PDF documents locally with guaranteed zero data leakage."
 }

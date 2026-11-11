@@ -27,5 +27,6 @@
     "dpi": 0,
     "background_hex": "none",
     "strip_exif": true
-  }
+  },
+  "desc": "Standardized local preset for OpenAPI 3.1 & Draft 2020-12 JSON Schema Validator conforming to JSON Schema Org specifications. Executes entirely in client browser memory with zero network requests."
 }

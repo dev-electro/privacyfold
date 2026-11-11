@@ -27,5 +27,6 @@
     "dpi": 150,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Privacy-preserving compression preset for Gmail / Outlook Safe Email Attachment PDF (<10MB) conforming to Email Standards standards. Optimizes file payload to under 9.5MB without sending documents over any network."
 }

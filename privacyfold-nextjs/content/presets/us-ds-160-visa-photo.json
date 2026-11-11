@@ -5,7 +5,7 @@
   "toolSlug": "passport-photo",
   "version": "2026.11.1",
   "status": "active",
-  "title": "US DS-160 Nonimmigrant Visa Photo (600\u00d7600px, \u2264240KB)",
+  "title": "US DS-160 Nonimmigrant Visa Photo (600×600px, ≤240KB)",
   "jurisdiction": "US State Dept",
   "authority_name": "US State Dept",
   "source_url": "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/photos.html",
@@ -27,5 +27,6 @@
     "dpi": 300,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Official US State Dept specification preset for US DS-160 Nonimmigrant Visa Photo (600×600px, ≤240KB). Standardizes biometric portrait photos to 600×600px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads."
 }

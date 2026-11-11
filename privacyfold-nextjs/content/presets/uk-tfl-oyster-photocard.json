@@ -27,5 +27,6 @@
     "dpi": 300,
     "background_hex": "#F5F5F5",
     "strip_exif": true
-  }
+  },
+  "desc": "Official Transport for London specification preset for TfL 18+ Student / Zip Oyster Photocard Photo. Standardizes biometric portrait photos to 600×750px at 300 DPI on #F5F5F5 background locally with guaranteed zero server uploads."
 }

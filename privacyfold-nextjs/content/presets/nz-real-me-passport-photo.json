@@ -5,7 +5,7 @@
   "toolSlug": "passport-photo",
   "version": "2026.11.1",
   "status": "active",
-  "title": "New Zealand Passport Online Photo (3:4 Ratio, 500KB\u201310MB)",
+  "title": "New Zealand Passport Online Photo (3:4 Ratio, 500KB–10MB)",
   "jurisdiction": "DIA New Zealand",
   "authority_name": "DIA New Zealand",
   "source_url": "https://www.passports.govt.nz/passport-photos/how-to-take-a-passport-photo/",
@@ -27,5 +27,6 @@
     "dpi": 300,
     "background_hex": "#F4F4F4",
     "strip_exif": true
-  }
+  },
+  "desc": "Official DIA New Zealand specification preset for New Zealand Passport Online Photo (3:4 Ratio, 500KB–10MB). Standardizes biometric portrait photos to 900×1200px at 300 DPI on #F4F4F4 background locally with guaranteed zero server uploads."
 }

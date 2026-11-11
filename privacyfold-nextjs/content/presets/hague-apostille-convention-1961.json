@@ -27,5 +27,6 @@
     "dpi": 300,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Standardized local preset for Hague Convention of 5 October 1961 10-Point Apostille Block conforming to HCCH specifications. Executes entirely in client browser memory with zero network requests."
 }

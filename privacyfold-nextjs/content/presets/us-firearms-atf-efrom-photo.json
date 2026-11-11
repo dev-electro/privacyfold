@@ -5,7 +5,7 @@
   "toolSlug": "passport-photo",
   "version": "2026.11.1",
   "status": "active",
-  "title": "ATF eForm 1 / eForm 4 Responsible Person Photo (\u22643MB)",
+  "title": "ATF eForm 1 / eForm 4 Responsible Person Photo (≤3MB)",
   "jurisdiction": "US ATF",
   "authority_name": "US ATF",
   "source_url": "https://eforms.atf.gov/",
@@ -27,5 +27,6 @@
     "dpi": 300,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Official US ATF specification preset for ATF eForm 1 / eForm 4 Responsible Person Photo (≤3MB). Standardizes biometric portrait photos to 600×600px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads."
 }

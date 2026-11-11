@@ -5,7 +5,7 @@
   "toolSlug": "passport-photo",
   "version": "2026.11.1",
   "status": "active",
-  "title": "France ANTS Passeport & CNI Photo (35\u00d745mm)",
+  "title": "France ANTS Passeport & CNI Photo (35×45mm)",
   "jurisdiction": "ANTS France",
   "authority_name": "ANTS France",
   "source_url": "https://passeport.ants.gouv.fr/",
@@ -27,5 +27,6 @@
     "dpi": 300,
     "background_hex": "#EDEDED",
     "strip_exif": true
-  }
+  },
+  "desc": "Official ANTS France specification preset for France ANTS Passeport & CNI Photo (35×45mm). Standardizes biometric portrait photos to 413×531px at 300 DPI on #EDEDED background locally with guaranteed zero server uploads."
 }

@@ -5,7 +5,7 @@
   "toolSlug": "passport-photo",
   "version": "2026.11.1",
   "status": "active",
-  "title": "Spain DNI & Pasaporte Photo (32\u00d726mm)",
+  "title": "Spain DNI & Pasaporte Photo (32×26mm)",
   "jurisdiction": "Policia Nacional ES",
   "authority_name": "Policia Nacional ES",
   "source_url": "https://www.dnielectronico.es/",
@@ -27,5 +27,6 @@
     "dpi": 300,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Official Policia Nacional ES specification preset for Spain DNI & Pasaporte Photo (32×26mm). Standardizes biometric portrait photos to 307×378px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads."
 }

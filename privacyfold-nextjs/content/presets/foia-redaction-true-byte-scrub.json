@@ -27,5 +27,6 @@
     "dpi": 300,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Document compliance preset for FOIA / GDPR DSAR Irreversible PDF Byte Redaction adhering to NARA / ICO guidelines. Sanitizes and verifies PDF documents locally with guaranteed zero data leakage."
 }

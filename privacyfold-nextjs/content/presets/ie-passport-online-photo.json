@@ -5,7 +5,7 @@
   "toolSlug": "passport-photo",
   "version": "2026.11.1",
   "status": "active",
-  "title": "Ireland Passport Online Digital Photo (\u22649MB)",
+  "title": "Ireland Passport Online Digital Photo (≤9MB)",
   "jurisdiction": "DFA Ireland",
   "authority_name": "DFA Ireland",
   "source_url": "https://www.ireland.ie/en/dfa/passports/photo-guidelines/",
@@ -27,5 +27,6 @@
     "dpi": 300,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Official DFA Ireland specification preset for Ireland Passport Online Digital Photo (≤9MB). Standardizes biometric portrait photos to 715×951px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads."
 }

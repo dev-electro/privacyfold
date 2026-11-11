@@ -5,7 +5,7 @@
   "toolSlug": "social-resizer",
   "version": "2026.11.1",
   "status": "active",
-  "title": "Poshmark & Depop Square Product Cover (1200\u00d71200px)",
+  "title": "Poshmark & Depop Square Product Cover (1200×1200px)",
   "jurisdiction": "Poshmark",
   "authority_name": "Poshmark",
   "source_url": "https://poshmark.com/",
@@ -27,5 +27,6 @@
     "dpi": 150,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Specification-grade preset for Poshmark & Depop Square Product Cover (1200×1200px) conforming to Poshmark requirements. Crops and resizes assets to 1200×1200px entirely in local browser RAM."
 }

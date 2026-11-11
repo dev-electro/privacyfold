@@ -27,5 +27,6 @@
     "dpi": 0,
     "background_hex": "none",
     "strip_exif": true
-  }
+  },
+  "desc": "Standardized local preset for WCAG 2.2 AA & AAA + APCA Lc Contrast Compliance Audit conforming to W3C WAI specifications. Executes entirely in client browser memory with zero network requests."
 }

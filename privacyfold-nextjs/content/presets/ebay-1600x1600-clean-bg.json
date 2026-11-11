@@ -5,7 +5,7 @@
   "toolSlug": "social-resizer",
   "version": "2026.11.1",
   "status": "active",
-  "title": "eBay Main Product Listing Photo (1600\u00d71600px Pure White)",
+  "title": "eBay Main Product Listing Photo (1600×1600px Pure White)",
   "jurisdiction": "eBay Seller Hub",
   "authority_name": "eBay Seller Hub",
   "source_url": "https://www.ebay.com/sellercenter/listings/photo-tips",
@@ -27,5 +27,6 @@
     "dpi": 300,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Specification-grade preset for eBay Main Product Listing Photo (1600×1600px Pure White) conforming to eBay Seller Hub requirements. Crops and resizes assets to 1600×1600px entirely in local browser RAM."
 }

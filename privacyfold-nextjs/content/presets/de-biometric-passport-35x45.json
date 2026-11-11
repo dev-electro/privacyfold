@@ -5,7 +5,7 @@
   "toolSlug": "passport-photo",
   "version": "2026.11.1",
   "status": "active",
-  "title": "Germany Biometric Reisepass & Personalausweis (35\u00d745mm)",
+  "title": "Germany Biometric Reisepass & Personalausweis (35×45mm)",
   "jurisdiction": "BMI Germany",
   "authority_name": "BMI Germany",
   "source_url": "https://www.bmi.bund.de/",
@@ -27,5 +27,6 @@
     "dpi": 300,
     "background_hex": "#EDEDED",
     "strip_exif": true
-  }
+  },
+  "desc": "Official BMI Germany specification preset for Germany Biometric Reisepass & Personalausweis (35×45mm). Standardizes biometric portrait photos to 413×531px at 300 DPI on #EDEDED background locally with guaranteed zero server uploads."
 }

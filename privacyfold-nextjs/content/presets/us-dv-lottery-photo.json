@@ -5,7 +5,7 @@
   "toolSlug": "passport-photo",
   "version": "2026.11.1",
   "status": "active",
-  "title": "US Diversity Visa (Green Card Lottery) Photo (600\u00d7600px)",
+  "title": "US Diversity Visa (Green Card Lottery) Photo (600×600px)",
   "jurisdiction": "US State Dept",
   "authority_name": "US State Dept",
   "source_url": "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/photos/digital-image-requirements.html",
@@ -27,5 +27,6 @@
     "dpi": 300,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Official US State Dept specification preset for US Diversity Visa (Green Card Lottery) Photo (600×600px). Standardizes biometric portrait photos to 600×600px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads."
 }

@@ -27,5 +27,6 @@
     "dpi": 0,
     "background_hex": "none",
     "strip_exif": true
-  }
+  },
+  "desc": "Standardized local preset for HIPAA Safe Harbor 18-Identifier Clinical Text Scrubber conforming to HHS HIPAA specifications. Executes entirely in client browser memory with zero network requests."
 }

@@ -77,6 +77,7 @@ const cleanPresets = presets.map((p) => ({
   presetSlug: p.presetSlug,
   toolSlug: p.toolSlug,
   title: p.title,
+  desc: p.desc,
   jurisdiction: p.jurisdiction || p.authority_name || 'Global',
   authority_name: p.authority_name,
   source_url: p.source_url,

@@ -5,7 +5,7 @@
   "toolSlug": "social-resizer",
   "version": "2026.11.1",
   "status": "active",
-  "title": "YouTube HD Custom Thumbnail (1280\u00d7720px, <2MB Guaranteed)",
+  "title": "YouTube HD Custom Thumbnail (1280×720px, <2MB Guaranteed)",
   "jurisdiction": "YouTube Help",
   "authority_name": "YouTube Help",
   "source_url": "https://support.google.com/youtube/answer/72431",
@@ -27,5 +27,6 @@
     "dpi": 150,
     "background_hex": "#000000",
     "strip_exif": true
-  }
+  },
+  "desc": "Specification-grade preset for YouTube HD Custom Thumbnail (1280×720px, <2MB Guaranteed) conforming to YouTube Help requirements. Crops and resizes assets to 1280×720px entirely in local browser RAM."
 }

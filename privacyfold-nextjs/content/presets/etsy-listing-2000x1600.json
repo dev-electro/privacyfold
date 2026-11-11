@@ -5,7 +5,7 @@
   "toolSlug": "social-resizer",
   "version": "2026.11.1",
   "status": "active",
-  "title": "Etsy 5:4 First Listing Thumbnail Image (2000\u00d71600px)",
+  "title": "Etsy 5:4 First Listing Thumbnail Image (2000×1600px)",
   "jurisdiction": "Etsy Seller Handbook",
   "authority_name": "Etsy Seller Handbook",
   "source_url": "https://help.etsy.com/hc/en-us/articles/115015663347",
@@ -27,5 +27,6 @@
     "dpi": 150,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Specification-grade preset for Etsy 5:4 First Listing Thumbnail Image (2000×1600px) conforming to Etsy Seller Handbook requirements. Crops and resizes assets to 2000×1600px entirely in local browser RAM."
 }

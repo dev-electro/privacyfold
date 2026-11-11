@@ -27,5 +27,6 @@
     "dpi": 0,
     "background_hex": "none",
     "strip_exif": true
-  }
+  },
+  "desc": "Standardized local preset for Cloud Serverless Cron & Rate Expression Tester conforming to POSIX Cron specifications. Executes entirely in client browser memory with zero network requests."
 }

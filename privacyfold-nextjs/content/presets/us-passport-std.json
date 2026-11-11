@@ -5,15 +5,26 @@
   "toolSlug": "passport-photo",
   "version": "2026-11-08.1",
   "status": "active",
-  "title": "us-passport-std",
-  "jurisdiction": "Global",
-  "authority_name": "Official Portal",
+  "title": "US Department of State Passport Photo (2×2 inches, 600×600px)",
+  "jurisdiction": "State Department US",
+  "authority_name": "US Department of State",
   "source_url": "https://travel.state.gov/content/travel/en/passports/how-apply/photos.html",
   "last_verified": "2026-11-08",
   "stale_after_days": 90,
   "supersedes": "2026-05-01.1",
   "license": "CC-BY-4.0",
   "constraints": {
+    "width_px": 600,
+    "height_px": 600,
+    "dpi": 300,
+    "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "dimensions_px": {
+    "width": 600,
+    "height": 600
+  },
+  "dpi": 300,
+  "background": "#FFFFFF",
+  "desc": "Official US Department of State specification preset for US Department of State Passport Photo (2×2 inches, 600×600px). Standardizes biometric portrait photos to 600×600px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads."
 }

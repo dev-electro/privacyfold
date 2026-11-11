@@ -5,7 +5,7 @@
   "toolSlug": "passport-photo",
   "version": "2026.11.1",
   "status": "active",
-  "title": "Singapore ICA Passport & NRIC Photo (400\u00d7514px, \u22642MB)",
+  "title": "Singapore ICA Passport & NRIC Photo (400×514px, ≤2MB)",
   "jurisdiction": "ICA Singapore",
   "authority_name": "ICA Singapore",
   "source_url": "https://www.ica.gov.sg/photo-guidelines",
@@ -27,5 +27,6 @@
     "dpi": 300,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Official ICA Singapore specification preset for Singapore ICA Passport & NRIC Photo (400×514px, ≤2MB). Standardizes biometric portrait photos to 400×514px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads."
 }

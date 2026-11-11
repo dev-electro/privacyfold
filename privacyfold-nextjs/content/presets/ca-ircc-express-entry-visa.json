@@ -5,7 +5,7 @@
   "toolSlug": "passport-photo",
   "version": "2026.11.1",
   "status": "active",
-  "title": "Canada IRCC Express Entry & Study Permit Digital Photo (35\u00d745mm)",
+  "title": "Canada IRCC Express Entry & Study Permit Digital Photo (35×45mm)",
   "jurisdiction": "IRCC Canada",
   "authority_name": "IRCC Canada",
   "source_url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/application/application-forms-guides/temporary-resident-visa-application-photograph-specifications.html",
@@ -27,5 +27,6 @@
     "dpi": 300,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Official IRCC Canada specification preset for Canada IRCC Express Entry & Study Permit Digital Photo (35×45mm). Standardizes biometric portrait photos to 420×540px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads."
 }

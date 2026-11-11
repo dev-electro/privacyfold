@@ -20,6 +20,11 @@ const runtimeCode = fs.readFileSync(path.join(root, 'privacyfold-nextjs/public/a
 // Set up headless browser mock environment
 global.window = global;
 global.self = global;
+let lastDispatchedEvent = null;
+global.window.dispatchEvent = (evt) => {
+  lastDispatchedEvent = evt;
+  return true;
+};
 global.window.addEventListener = () => {};
 global.window.removeEventListener = () => {};
 global.window.innerWidth = 1200;
@@ -176,12 +181,45 @@ for (const tool of allTools) {
       }
     }
 
+    if (window.__PRIVACYFOLD_RESULT__?.status !== 'pass') {
+      throw new Error(`Expected __PRIVACYFOLD_RESULT__.status to be 'pass', got: ${window.__PRIVACYFOLD_RESULT__?.status}`);
+    }
+
     console.log(`  [OK] ${tool.id} (${tool.fam}) -> ${result.note || 'completed'}`);
     passed++;
   } catch (err) {
     console.error(`  [FAIL] ${tool.id}: ${err.message}`);
     failed++;
   }
+}
+
+// Verification of observability & telemetry contract (PF-016)
+console.log('\nTesting observability & error boundary contract (PF-016)...');
+try {
+  const presets = window.privacyfold.listPresets();
+  if (presets.length !== 87) {
+    throw new Error(`Expected 87 presets in runtime, got ${presets.length}`);
+  }
+  console.log(`  [OK] runtime presets: ${presets.length} presets registered in window.privacyfold`);
+
+  await window.privacyfold.run('hash_gen', { algo: 'SHA-256' }, 'test data');
+  if (!lastDispatchedEvent || lastDispatchedEvent.type !== 'privacyfold:tool_used' || lastDispatchedEvent.detail?.tool_id !== 'hash_gen') {
+    throw new Error('privacyfold:tool_used event was not properly dispatched');
+  }
+  console.log('  [OK] telemetry: privacyfold:tool_used event dispatched with tool_id');
+
+  try {
+    await window.privacyfold.run('non_existent_tool', {}, 'test');
+    throw new Error('Unknown tool did not throw');
+  } catch (e) {
+    if (window.__PRIVACYFOLD_RESULT__?.status !== 'fail') {
+      throw new Error(`Expected fail status for unknown tool, got: ${window.__PRIVACYFOLD_RESULT__?.status}`);
+    }
+    console.log('  [OK] error boundary: __PRIVACYFOLD_RESULT__ records fail status on error');
+  }
+} catch (obsErr) {
+  console.error(`  [FAIL] Observability test failed: ${obsErr.message}`);
+  failed++;
 }
 
 console.log(`\n========================================`);

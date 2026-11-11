@@ -27,5 +27,6 @@
     "dpi": 300,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Standardized local preset for TSA PreCheck Identity Document Scan conforming to US TSA specifications. Executes entirely in client browser memory with zero network requests."
 }

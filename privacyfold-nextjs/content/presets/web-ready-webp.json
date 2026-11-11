@@ -5,15 +5,19 @@
   "toolSlug": "image-compress",
   "version": "2026-11-08.1",
   "status": "active",
-  "title": "web-ready-webp",
-  "jurisdiction": "Global",
-  "authority_name": "Official Portal",
+  "title": "Web-Ready Next-Gen WebP Compression (Target Under 200KB)",
+  "jurisdiction": "Web Standards",
+  "authority_name": "Google Web.dev / W3C",
   "source_url": "https://web.dev/articles/serve-images-webp",
   "last_verified": "2026-11-08",
   "stale_after_days": 90,
   "supersedes": null,
   "license": "CC-BY-4.0",
   "constraints": {
+    "max_size_kb": 200,
+    "format": "webp",
     "strip_exif": true
-  }
+  },
+  "max_size_kb": 200,
+  "desc": "Privacy-preserving compression preset for Web-Ready Next-Gen WebP Compression (Target Under 200KB) conforming to Google Web.dev / W3C standards. Optimizes file payload to under 200KB without sending documents over any network."
 }

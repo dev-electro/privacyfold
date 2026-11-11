@@ -5,7 +5,7 @@
   "toolSlug": "social-resizer",
   "version": "2026.11.1",
   "status": "active",
-  "title": "TikTok / Instagram Reels / Shorts 9:16 Cover (1080\u00d71920px)",
+  "title": "TikTok / Instagram Reels / Shorts 9:16 Cover (1080×1920px)",
   "jurisdiction": "TikTok Creator Portal",
   "authority_name": "TikTok Creator Portal",
   "source_url": "https://www.tiktok.com/",
@@ -27,5 +27,6 @@
     "dpi": 150,
     "background_hex": "#000000",
     "strip_exif": true
-  }
+  },
+  "desc": "Specification-grade preset for TikTok / Instagram Reels / Shorts 9:16 Cover (1080×1920px) conforming to TikTok Creator Portal requirements. Crops and resizes assets to 1080×1920px entirely in local browser RAM."
 }

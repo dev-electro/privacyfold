@@ -5,7 +5,7 @@
   "toolSlug": "passport-photo",
   "version": "2026.11.1",
   "status": "active",
-  "title": "EU Schengen Visa ICAO 9303 Biometric Photo (35\u00d745mm)",
+  "title": "EU Schengen Visa ICAO 9303 Biometric Photo (35×45mm)",
   "jurisdiction": "EU Home Affairs",
   "authority_name": "EU Home Affairs",
   "source_url": "https://home-affairs.ec.europa.eu/policies/schengen-borders-and-visa/visa-policy_en",
@@ -27,5 +27,6 @@
     "dpi": 300,
     "background_hex": "#EDEDED",
     "strip_exif": true
-  }
+  },
+  "desc": "Official EU Home Affairs specification preset for EU Schengen Visa ICAO 9303 Biometric Photo (35×45mm). Standardizes biometric portrait photos to 413×531px at 300 DPI on #EDEDED background locally with guaranteed zero server uploads."
 }

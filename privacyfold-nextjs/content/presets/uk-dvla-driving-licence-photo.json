@@ -5,7 +5,7 @@
   "toolSlug": "passport-photo",
   "version": "2026.11.1",
   "status": "active",
-  "title": "UK DVLA Photocard Driving Licence Photo (35\u00d745mm)",
+  "title": "UK DVLA Photocard Driving Licence Photo (35×45mm)",
   "jurisdiction": "UK DVLA",
   "authority_name": "UK DVLA",
   "source_url": "https://www.gov.uk/renew-driving-licence",
@@ -27,5 +27,6 @@
     "dpi": 300,
     "background_hex": "#F5F5F5",
     "strip_exif": true
-  }
+  },
+  "desc": "Official UK DVLA specification preset for UK DVLA Photocard Driving Licence Photo (35×45mm). Standardizes biometric portrait photos to 413×531px at 300 DPI on #F5F5F5 background locally with guaranteed zero server uploads."
 }

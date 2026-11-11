@@ -27,5 +27,6 @@
     "dpi": 0,
     "background_hex": "none",
     "strip_exif": true
-  }
+  },
+  "desc": "Standardized local preset for SVG Path Precision & XSS Script Sanitizer for Icons conforming to W3C SVG WG specifications. Executes entirely in client browser memory with zero network requests."
 }

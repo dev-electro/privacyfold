@@ -5,7 +5,7 @@
   "toolSlug": "signature-clean",
   "version": "2026.11.1",
   "status": "active",
-  "title": "India NSDL / UTIITSL PAN Card Signature (140\u00d760px, \u226412KB)",
+  "title": "India NSDL / UTIITSL PAN Card Signature (140×60px, ≤12KB)",
   "jurisdiction": "NSDL Tin-NSDL",
   "authority_name": "NSDL Tin-NSDL",
   "source_url": "https://www.protean-tinpan.com/",
@@ -27,5 +27,6 @@
     "dpi": 200,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Standardized local preset for India NSDL / UTIITSL PAN Card Signature (140×60px, ≤12KB) conforming to NSDL Tin-NSDL specifications. Executes entirely in client browser memory with zero network requests."
 }

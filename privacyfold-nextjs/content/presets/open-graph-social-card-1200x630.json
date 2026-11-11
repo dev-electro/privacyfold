@@ -5,7 +5,7 @@
   "toolSlug": "social-resizer",
   "version": "2026.11.1",
   "status": "active",
-  "title": "Open Graph (og:image) Social Share Card (1200\u00d7630px)",
+  "title": "Open Graph (og:image) Social Share Card (1200×630px)",
   "jurisdiction": "Open Graph Protocol",
   "authority_name": "Open Graph Protocol",
   "source_url": "https://ogp.me/",
@@ -27,5 +27,6 @@
     "dpi": 150,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Specification-grade preset for Open Graph (og:image) Social Share Card (1200×630px) conforming to Open Graph Protocol requirements. Crops and resizes assets to 1200×630px entirely in local browser RAM."
 }

@@ -5,7 +5,7 @@
   "toolSlug": "passport-photo",
   "version": "2026.11.1",
   "status": "active",
-  "title": "Japan My Number Card & Residence Card (Zairyu) Photo (30\u00d740mm)",
+  "title": "Japan My Number Card & Residence Card (Zairyu) Photo (30×40mm)",
   "jurisdiction": "ISA Japan",
   "authority_name": "ISA Japan",
   "source_url": "https://www.kojinbango-card.go.jp/",
@@ -27,5 +27,6 @@
     "dpi": 300,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Official ISA Japan specification preset for Japan My Number Card & Residence Card (Zairyu) Photo (30×40mm). Standardizes biometric portrait photos to 354×472px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads."
 }

@@ -27,5 +27,6 @@
     "dpi": 300,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Official CSCS UK specification preset for UK CSCS Construction Skills Card Photo. Standardizes biometric portrait photos to 413×531px at 300 DPI on #FFFFFF background locally with guaranteed zero server uploads."
 }

@@ -5,15 +5,26 @@
   "toolSlug": "passport-photo",
   "version": "2026-11-08.1",
   "status": "active",
-  "title": "uk-passport-photo",
-  "jurisdiction": "Global",
-  "authority_name": "Official Portal",
+  "title": "UK HM Passport Office Digital Photo (35×45mm, Cream/Light Grey Background)",
+  "jurisdiction": "HMPO UK",
+  "authority_name": "HM Passport Office",
   "source_url": "https://www.gov.uk/photos-for-passports",
   "last_verified": "2026-11-08",
   "stale_after_days": 90,
   "supersedes": "2026-06-14.2",
   "license": "CC-BY-4.0",
   "constraints": {
+    "width_px": 827,
+    "height_px": 1063,
+    "dpi": 600,
+    "background_hex": "#F2F2F2",
     "strip_exif": true
-  }
+  },
+  "dimensions_px": {
+    "width": 827,
+    "height": 1063
+  },
+  "dpi": 600,
+  "background": "#F2F2F2",
+  "desc": "Official HM Passport Office specification preset for UK HM Passport Office Digital Photo (35×45mm, Cream/Light Grey Background). Standardizes biometric portrait photos to 827×1063px at 600 DPI on #F2F2F2 background locally with guaranteed zero server uploads."
 }

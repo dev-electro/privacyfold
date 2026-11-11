@@ -27,5 +27,6 @@
     "dpi": 0,
     "background_hex": "none",
     "strip_exif": true
-  }
+  },
+  "desc": "Standardized local preset for California CCPA / CPRA Data Broker Opt-Out Notice conforming to CA CPPA specifications. Executes entirely in client browser memory with zero network requests."
 }

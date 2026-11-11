@@ -5,7 +5,7 @@
   "toolSlug": "social-resizer",
   "version": "2026.11.1",
   "status": "active",
-  "title": "LinkedIn Personal Profile Cover Banner (1584\u00d7396px)",
+  "title": "LinkedIn Personal Profile Cover Banner (1584×396px)",
   "jurisdiction": "LinkedIn Help",
   "authority_name": "LinkedIn Help",
   "source_url": "https://www.linkedin.com/help/linkedin/answer/a568217",
@@ -27,5 +27,6 @@
     "dpi": 150,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Specification-grade preset for LinkedIn Personal Profile Cover Banner (1584×396px) conforming to LinkedIn Help requirements. Crops and resizes assets to 1584×396px entirely in local browser RAM."
 }

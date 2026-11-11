@@ -27,5 +27,6 @@
     "dpi": 300,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Standardized local preset for EU eIDAS Regulation (EU) No 910/2014 PAdES-B Manifest conforming to EUR-Lex eIDAS specifications. Executes entirely in client browser memory with zero network requests."
 }

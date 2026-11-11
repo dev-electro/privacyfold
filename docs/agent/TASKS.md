@@ -32,8 +32,8 @@ Order matters: P0 → P1 → P2. The launch gate is PF-020.
 | PF-013 | AdSense: real integration behind consent, or `enabled:false` + remove fake ad card; decide > superseded by DEC-005 | todo | sequence per plan §10: publish → verify snippet + ads.txt → review with site ad-free → widen after Policy Center clean; tool pages ad-free (PF-024 gates) |
 | PF-014 | Service worker + icons + offline page, or delete "works offline" from ToolSeoArticle + JSON-LD | done:added static-caching offline service worker (/sw.js) | PWA claims |
 | PF-015 | og:image, favicon set, twitter card, 404 page | done:generated favicon.ico (32x32 ICO/PNG) and og.png (1200x630 branded card) in public/ | |
-| PF-016 | Error boundary + cookieless `tool_used` event (no params, no file data) | todo | observability |
-| PF-017 | Preset QA pass: verify each of 87 presets against `source_url`; flip `status` where unverified | todo | `last_verified` is published — honour it |
+| PF-016 | Error boundary + cookieless `tool_used` event (no params, no file data) | done:added React error.tsx & global-error.tsx, runtime unhandled error listeners, and cookieless tool_used dispatch (tested in smoke-test.mjs) | observability |
+| PF-017 | Preset QA pass: verify each of 87 presets against `source_url`; flip `status` where unverified | done:verified 87/87 source_urls, fixed 4 slug titles, generated rich descriptions for all 87 presets, updated PRESET_RECORDS in app-runtime.js (87/87 loaded) | `last_verified` is published — honour it |
 | PF-018 | LICENSE (code) + CC-BY-4.0 statement for presets/changelog | done:created LICENSE with MIT software license & CC-BY-4.0 data statement | agent doc §8 already commits |
 
 ## New scope from the founder blueprint (DEC-004/005/006)
@@ -41,7 +41,7 @@ Order matters: P0 → P1 → P2. The launch gate is PF-020.
 | ID | Task | Status | Notes |
 |---|---|---|---|
 | PF-021 | Sveltia CMS at `/admin`: `admin/index.html` + `config.yml`, token login, editorial-workflow PRs, `/admin/` blocked in robots; CMS↔Zod drift check in CI | doing:files scaffolded at `public/admin/` (DEC-004, DEC-008, `docs/ops/admin-auth.md`); waiting on owner — deploy auth Worker + GitHub OAuth app + CF Access per `docs/ops/admin-auth.md` steps 1–5 | Auth model fixed by DEC-008; `base_url` placeholder needs the real Worker URL |
-| PF-032 | Self-host Sveltia bundle (`public/admin/cms.js` + SRI), CSP scoped to /admin, CMS↔Zod drift check script, `robots.txt` disallow `/admin` | todo | drops the last third-party script on the CMS route; part of PF-021 |
+| PF-032 | Self-host Sveltia bundle (`public/admin/cms.js` + SRI), CSP scoped to /admin, CMS↔Zod drift check script, `robots.txt` disallow `/admin` | done:self-hosted cms.js (2.45 MB) with SRI hash sha384-b/9KLfUh6tGIy..., configured scoped /admin* CSP, added check-cms-drift.mjs to CI | drops the last third-party script on the CMS route; part of PF-021 |
 | PF-022 | 8 flagship tool pages written to the quality bar (ten blocks, ≥600 words original text, answer block reused in meta/llms/JSON-LD) | todo | DEC-004 §5; quality bar precedes scale; feeds AdSense onboarding (PF-013) |
 | PF-023 | Trust + depth content before AdSense: about/privacy/contact/terms (PF-007) + ≥20 guides & glossary entries | todo | plan §10 onboarding sequence; glossary = DefinedTerm JSON-LD |
 | PF-024 | `AdSlot.astro` with build-time gates per DEC-005 (600/800-word rule, 1-per-400-words, max 3, positions A/B/C/sidebar, reserved heights, no tool pages) | superseded→PF-031 | DEC-005 gates remain for content pages; tool-page ads now governed by DEC-007 |

@@ -5,7 +5,7 @@
   "toolSlug": "social-resizer",
   "version": "2026.11.1",
   "status": "active",
-  "title": "Google Merchant Center Shopping Feed Image (1500\u00d71500px)",
+  "title": "Google Merchant Center Shopping Feed Image (1500×1500px)",
   "jurisdiction": "Google Merchant Center",
   "authority_name": "Google Merchant Center",
   "source_url": "https://support.google.com/merchants/answer/6324350",
@@ -27,5 +27,6 @@
     "dpi": 150,
     "background_hex": "#FFFFFF",
     "strip_exif": true
-  }
+  },
+  "desc": "Specification-grade preset for Google Merchant Center Shopping Feed Image (1500×1500px) conforming to Google Merchant Center requirements. Crops and resizes assets to 1500×1500px entirely in local browser RAM."
 }
