@@ -2,6 +2,18 @@
 
 ---
 
+## 2026-11-11 — PF-035: Sveltia CMS Editor Sugar (DEC-012)
+
+**Tasks:** PF-035 marked done.
+**Did:**
+1. Created `public/admin/admin.js`: slug auto-generation from tool name input, and `preSave` formative warning hooks alerting editors if a preset lacks an HTTPS `source_url` or if a tool answer block is shorter than 40 words.
+2. Verified DEC-012 compliance: no auto-stamping of verified dates or status flags (provenance remains human and honest).
+3. Connected `/admin/admin.js` to `public/admin/index.html`.
+**Proved by:** `node scripts/check-cms-drift.mjs` (0 errors).
+**Next:** PF-031 (port DocSet ad system).
+
+---
+
 ## 2026-11-11 — PF-023: Trust & depth content (about, contact, and 15 technical glossary entries)
 
 **Tasks:** PF-023 marked done.
