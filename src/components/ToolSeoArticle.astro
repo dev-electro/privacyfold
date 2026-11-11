@@ -1,6 +1,6 @@
 ---
 import type { GitCmsTool } from '../lib/cms';
-import { getAllToolsFromGit, FAMILIES } from '../lib/cms';
+import { getAllToolsFromGit, getToolTranslations, FAMILIES } from '../lib/cms';
 import AdSlot from './AdSlot.astro';
 import ShareRow from './ShareRow.astro';
 
@@ -8,11 +8,33 @@ interface Props {
   tool: GitCmsTool;
   presetTitle?: string;
   presetDesc?: string;
+  currentLocale?: string;
+  translations?: Array<{ locale: string; slug: string }>;
 }
 
-const { tool, presetTitle, presetDesc } = Astro.props;
+const { tool, presetTitle, presetDesc, currentLocale = 'en', translations = [] } = Astro.props;
 const famName = FAMILIES[tool.fam]?.name || 'Utility';
 const related = getAllToolsFromGit().filter((t) => t.fam === tool.fam && t.id !== tool.id).slice(0, 4);
+
+const LOCALE_LABELS: Record<string, string> = {
+  en: 'English',
+  es: 'Español',
+  hi: 'हिन्दी',
+  de: 'Deutsch',
+  fr: 'Français',
+  ja: '日本語',
+  pt: 'Português',
+  it: 'Italiano',
+  zh: '简体中文',
+  ar: 'العربية',
+  ko: '한국어',
+  ru: 'Русский',
+  nl: 'Nederlands',
+  id: 'Bahasa Indonesia',
+  tr: 'Türkçe',
+  pl: 'Polski',
+  vi: 'Tiếng Việt',
+};
 ---
 
 <div class="seo-wrap">
@@ -22,6 +44,29 @@ const related = getAllToolsFromGit().filter((t) => t.fam === tool.fam && t.id !=
     <article class="seo-card">
       <div class="kick">TECHNICAL SPECIFICATION &amp; USER GUIDE · {famName.toUpperCase()}</div>
       <h2>{presetTitle || `How ${tool.name} Works Locally in Your Browser`}</h2>
+
+      {translations && translations.length > 0 && (
+        <div class="lang-strip" style="margin: 16px 0 20px 0; padding: 10px 14px; background: #faf9f5; border: 1px solid var(--line, #dad5c5); border-radius: 6px; font-size: 13px; color: var(--ink-2, #5b5a4e); display: flex; flex-wrap: wrap; align-items: center; gap: 8px;">
+          <span style="font-weight: 600; color: var(--ink, #17160f); display: inline-flex; align-items: center; gap: 5px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            Available in:
+          </span>
+          <a
+            href={`/tools/${tool.slug}/`}
+            style={`padding: 2px 8px; border-radius: 4px; text-decoration: none; font-size: 12px; font-family: var(--font-mono); ${currentLocale === 'en' || !currentLocale ? 'background: var(--ink, #17160f); color: #fff; font-weight: 600;' : 'background: #fff; border: 1px solid var(--line, #dad5c5); color: var(--ink, #17160f);'}`}
+          >
+            English
+          </a>
+          {translations.map((tr) => (
+            <a
+              href={`/${tr.locale}/tools/${tr.slug}/`}
+              style={`padding: 2px 8px; border-radius: 4px; text-decoration: none; font-size: 12px; font-family: var(--font-mono); ${currentLocale === tr.locale ? 'background: var(--ink, #17160f); color: #fff; font-weight: 600;' : 'background: #fff; border: 1px solid var(--line, #dad5c5); color: var(--ink, #17160f);'}`}
+            >
+              {LOCALE_LABELS[tr.locale] || tr.locale.toUpperCase()}
+            </a>
+          ))}
+        </div>
+      )}
 
       <div class="aeo-box">
         <span class="aeo-k">Direct Answer Summary (Optimized for Search &amp; AI Citations)</span>
@@ -34,7 +79,7 @@ const related = getAllToolsFromGit().filter((t) => t.fam === tool.fam && t.id !=
       </div>
 
       <ShareRow
-        url={`https://privacyfold.com/tools/${tool.slug}/`}
+        url={currentLocale && currentLocale !== 'en' ? `https://privacyfold.com/${currentLocale}/tools/${tool.slug}/` : `https://privacyfold.com/tools/${tool.slug}/`}
         title={presetTitle || tool.name}
         summary={tool.seo.aeoSummary}
         hook={tool.social?.hook}
@@ -170,17 +215,21 @@ const related = getAllToolsFromGit().filter((t) => t.fam === tool.fam && t.id !=
     <div class="side-card">
       <div class="side-t">Related {famName} Tools</div>
       <div class="side-list">
-        {related.map((rel) => (
-          <a href={`/tools/${rel.slug}/`} class="side-link">
-            <span class="mono" style="font-size: 11px; opacity: 0.7;">
-              {rel.glyph}
-            </span>
-            <div style="flex: 1; min-width: 0;">
-              <div class="side-link-t">{rel.name}</div>
-              <div class="side-link-d">{rel.tag}</div>
-            </div>
-          </a>
-        ))}
+        {related.map((rel) => {
+          const relHasLocale = currentLocale && currentLocale !== 'en' && getToolTranslations(rel.id).some((t) => t.locale === currentLocale);
+          const relHref = relHasLocale ? `/${currentLocale}/tools/${rel.slug}/` : `/tools/${rel.slug}/`;
+          return (
+            <a href={relHref} class="side-link">
+              <span class="mono" style="font-size: 11px; opacity: 0.7;">
+                {rel.glyph}
+              </span>
+              <div style="flex: 1; min-width: 0;">
+                <div class="side-link-t">{rel.name}</div>
+                <div class="side-link-d">{rel.tag}</div>
+              </div>
+            </a>
+          );
+        })}
       </div>
     </div>
 

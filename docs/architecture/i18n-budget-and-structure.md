@@ -75,3 +75,15 @@ Rules:
 2. Self-reference: every page includes its own URL with its exact `hreflang`.
 3. `x-default`: always points to the un-prefixed English canonical route.
 
+---
+
+## 5. Live Production Inventory (Phase 1 — 16 Top International Locales)
+
+- **Configured Locales (16 + default `en` = 17):**
+  `en`, `hi`, `es`, `de`, `fr`, `ja`, `pt`, `it`, `zh`, `ar`, `ko`, `ru`, `nl`, `id`, `tr`, `pl`, `vi`.
+- **Localized Flagship Tools:** 128 verified JSON records in `content/i18n/*/tools/*.json`.
+- **Open Graph Social Cards:** 128 branded 1200x630 SVGs in `public/og/` (206 total cards).
+- **XML Sitemap:** `/sitemaps/i18n.xml` generated with Git `lastmod` timestamps (514 lines).
+- **UI Language Switcher:** `<ToolSeoArticle />` mounts a visible, tactile language selection pill strip (`.lang-strip`) with native language names (`日本語`, `Español`, `Português`, `हिन्दी`, etc.) and locale-aware related tool navigation.
+
+

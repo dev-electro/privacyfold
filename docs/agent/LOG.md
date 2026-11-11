@@ -2,6 +2,19 @@
 
 ---
 
+## 2026-11-11 — PF-019/PF-029: Tactile UI Language Switcher & Multi-Lingual Internal Navigation
+
+**Tasks:** Adding visible language selector pill strip and locale-aware related tool navigation.
+**Did:**
+1. Added visible, tactile Language Switcher pill strip to `<ToolSeoArticle />` displaying native labels (`日本語`, `Español`, `Português`, `हिन्दी`, etc.) and active language highlighting.
+2. Updated related tools navigation to maintain visitor's active locale across tool transitions.
+3. Updated social `ShareRow` canonical sharing link to match active locale.
+4. Documented live 16-locale production inventory in `docs/architecture/i18n-budget-and-structure.md`.
+**Proved by:** `npm test && npm run build && node scripts/build.mjs --check` (0 broken links across 316 HTML outputs).
+**Next:** All tasks in `TASKS.md` done except PF-021 awaiting owner Cloudflare Worker OAuth deployment.
+
+---
+
 ## 2026-11-11 — PF-019/PF-025/PF-029: Scaled 8 Flagships Across 16 Top International Languages
 
 **Tasks:** Expanding Phase 1 i18n flagship localization from 4 pilot locales to 16 top international languages.
