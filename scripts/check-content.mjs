@@ -119,7 +119,25 @@ if (!fs.existsSync(engineDir)) {
   console.log(`  [OK] ${engineFiles.length} engine records verified in content/engine/`);
 }
 
-// 4. Image Size Budget (< 300 KB)
+// 4. Check Glossary Records (DEC-004/PF-023)
+console.log(`\nChecking content/glossary/ DefinedTerm records...`);
+const glossaryDir = path.join(root, 'content/glossary');
+if (!fs.existsSync(glossaryDir)) {
+  console.error(`[FAIL] content/glossary directory does not exist`);
+  errors++;
+} else {
+  const glossaryFiles = fs.readdirSync(glossaryDir).filter((f) => f.endsWith('.md'));
+  for (const gf of glossaryFiles) {
+    const raw = fs.readFileSync(path.join(glossaryDir, gf), 'utf8');
+    if (!raw.includes('term:') || !raw.includes('definition:')) {
+      console.error(`[FAIL] ${gf}: Missing required glossary fields (term, definition)`);
+      errors++;
+    }
+  }
+  console.log(`  [OK] ${glossaryFiles.length} technical glossary records verified in content/glossary/`);
+}
+
+// 5. Image Size Budget (< 300 KB)
 console.log(`\nChecking static image asset size budget (< 300 KB)...`);
 const checkDirImages = (dirPath) => {
   if (!fs.existsSync(dirPath)) return;

@@ -78,6 +78,16 @@ export interface GitCmsBlogPost {
   body: string;
 }
 
+export interface GitCmsGlossaryTerm {
+  slug: string;
+  term: string;
+  definition: string;
+  aliases: string[];
+  related_tools: string[];
+  reviewed: string;
+  body: string;
+}
+
 const CONTENT_ROOT = path.join(process.cwd(), 'content');
 
 export const FAMILIES: Record<GitCmsTool['fam'], { name: string; color: string }> = {
@@ -162,4 +172,60 @@ export function getAllBlogsFromGit(): GitCmsBlogPost[] {
 
 export function getBlogFromGit(slug: string): GitCmsBlogPost | undefined {
   return getAllBlogsFromGit().find((b) => b.slug === slug);
+}
+
+export function getAllGlossaryTermsFromGit(): GitCmsGlossaryTerm[] {
+  const dir = path.join(CONTENT_ROOT, 'glossary');
+  if (!fs.existsSync(dir)) return [];
+  const files = fs.readdirSync(dir).filter((f) => f.endsWith('.md'));
+  return files.map((file) => {
+    const raw = fs.readFileSync(path.join(dir, file), 'utf8');
+    const slug = file.replace(/\.md$/, '');
+    const meta: Record<string, any> = {};
+    const lines = raw.split('\n');
+    let body = raw;
+
+    if (lines[0]?.trim() === '---') {
+      const end = lines.indexOf('---', 1);
+      if (end !== -1) {
+        let currentArrayKey = '';
+        for (let i = 1; i < end; i++) {
+          const line = lines[i];
+          if (line.trim().startsWith('- ') && currentArrayKey) {
+            const val = line.trim().slice(2).replace(/^['"]|['"]$/g, '');
+            meta[currentArrayKey] = meta[currentArrayKey] || [];
+            meta[currentArrayKey].push(val);
+          } else {
+            const colon = line.indexOf(':');
+            if (colon !== -1) {
+              const k = line.slice(0, colon).trim();
+              const v = line.slice(colon + 1).trim().replace(/^['"]|['"]$/g, '');
+              if (v === '') {
+                currentArrayKey = k;
+                meta[k] = [];
+              } else {
+                currentArrayKey = '';
+                meta[k] = v;
+              }
+            }
+          }
+        }
+        body = lines.slice(end + 1).join('\n').trim();
+      }
+    }
+
+    return {
+      slug,
+      term: meta.term || slug,
+      definition: meta.definition || '',
+      aliases: meta.aliases || [],
+      related_tools: meta.related_tools || [],
+      reviewed: meta.reviewed || '2026-11-10',
+      body,
+    };
+  });
+}
+
+export function getGlossaryTermFromGit(slug: string): GitCmsGlossaryTerm | undefined {
+  return getAllGlossaryTermsFromGit().find((g) => g.slug === slug);
 }

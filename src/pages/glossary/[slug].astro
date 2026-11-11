@@ -1,0 +1,95 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getAllGlossaryTermsFromGit, getToolFromGit } from '../../lib/cms';
+import AdSenseUnit from '../../components/AdSenseUnit.astro';
+
+export async function getStaticPaths() {
+  const terms = getAllGlossaryTermsFromGit();
+  return terms.map((term) => ({
+    params: { slug: term.slug },
+    props: { term },
+  }));
+}
+
+const { term } = Astro.props;
+const canonicalUrl = `https://privacyfold.com/glossary/${term.slug}/`;
+
+const definedTermLd = {
+  '@context': 'https://schema.org',
+  '@type': 'DefinedTerm',
+  name: term.term,
+  description: term.definition,
+  inDefinedTermSet: 'https://privacyfold.com/glossary/',
+  url: canonicalUrl,
+  alternateName: term.aliases,
+};
+
+const relatedTools = (term.related_tools || [])
+  .map((tSlug) => getToolFromGit(tSlug))
+  .filter(Boolean);
+---
+
+<Base
+  title={`${term.term} — Technical Definition & Standards Specification`}
+  description={term.definition}
+  canonicalUrl={canonicalUrl}
+  article={true}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(definedTermLd)} />
+  </Fragment>
+
+  <main class="wrap pg" style="padding-top: 40px; padding-bottom: 80px; max-width: 860px;">
+    <article class="glossary-art">
+      <div class="kick" style="font-family: var(--font-mono); font-size: 13px; color: var(--ink-2); margin-bottom: 12px; text-transform: uppercase;">
+        TECHNICAL GLOSSARY · STANDARDS DEFINITION · VERIFIED {term.reviewed}
+      </div>
+      <h1 style="font-size: 34px; font-weight: 800; line-height: 1.25; margin-bottom: 20px;">
+        {term.term}
+      </h1>
+
+      <div class="aeo-box" style="background: #f0fdf4; border-left: 4px solid #22c55e; padding: 16px 20px; border-radius: 6px; margin-bottom: 28px;">
+        <span class="aeo-k" style="display: block; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; color: #15803d; font-weight: 700; margin-bottom: 6px;">
+          Authoritative Definition
+        </span>
+        <p style="margin: 0; font-size: 15.5px; color: #14532d; line-height: 1.5;">{term.definition}</p>
+      </div>
+
+      {term.aliases && term.aliases.length > 0 && (
+        <div style="margin-bottom: 24px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+          <span style="font-size: 13px; font-family: var(--font-mono); color: var(--ink-2);">Common Aliases:</span>
+          {term.aliases.map((alias) => (
+            <span style="font-size: 12px; font-family: var(--font-mono); background: var(--paper); border: 1px solid var(--line); border-radius: 4px; padding: 2px 8px;">
+              {alias}
+            </span>
+          ))}
+        </div>
+      )}
+
+      <div style="font-family: var(--font-body); font-size: 16px; line-height: 1.75; color: var(--ink); white-space: pre-wrap;">
+        {term.body}
+      </div>
+
+      <div style="margin: 36px 0;">
+        <AdSenseUnit slotId={`pf-glossary-${term.slug}`} format="in-article" />
+      </div>
+
+      {relatedTools.length > 0 && (
+        <div style="margin-top: 40px; padding: 24px; background: var(--paper); border: 2px solid var(--line); border-radius: 12px; box-shadow: 0 4px 0 var(--hard);">
+          <h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 700;">Related Client-Side Privacy Tools</h3>
+          <p style="margin: 0 0 16px 0; font-size: 14px; color: var(--ink-2);">
+            Run the in-browser implementations adhering to {term.term} with zero server uploads.
+          </p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px;">
+            {relatedTools.map((t) => (
+              <a href={`/tools/${t!.slug}/`} class="btn" style="text-decoration: none; display: flex; align-items: center; justify-content: space-between; padding: 12px 16px;">
+                <span>{t!.name}</span>
+                <span class="mono" style="font-size: 11px; opacity: 0.7;">{t!.glyph}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+    </article>
+  </main>
+</Base>

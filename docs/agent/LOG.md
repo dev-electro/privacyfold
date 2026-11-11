@@ -2,6 +2,19 @@
 
 ---
 
+## 2026-11-11 — PF-023: Trust & depth content (about, contact, and 15 technical glossary entries)
+
+**Tasks:** PF-023 marked done.
+**Did:**
+1. Created 15 technical glossary entries (`content/glossary/*.md`) covering EXIF, WebAssembly, WebCrypto, AES-256-GCM, PBKDF2, ICAO 9303, OPFS, Zero-Knowledge, MozJPEG, PDF Content Stream, Zero-Width Characters, UTM Parameters, WCAG, WebGPU, and Model Context Protocol.
+2. Built `src/pages/glossary/index.astro` and `src/pages/glossary/[slug].astro` rendering `DefinedTerm` schema.org JSON-LD graph, common aliases, verified stamps, and bi-directional links to related tools.
+3. Updated `src/content.config.ts`, `src/lib/cms.ts`, `src/pages/sitemap.xml.ts`, `scripts/validate-git-cms.mjs`, `scripts/check-content.mjs`, and `scripts/agent-status.mjs`.
+4. Verified: 183 static pages exported cleanly in 2.48s (72 tools, 87 presets, 6 blog guides, 15 glossary terms, 4 trust/legal pages, desk, and XML sitemap).
+**Proved by:** `npm test && npm run build` (0 errors, 183 pages clean, agent-status P0 clear).
+**Next:** PF-035 (Sveltia JS-API sugar), PF-031 (port DocSet ad system).
+
+---
+
 ## 2026-11-11 — PF-002: Complete Astro 7 + Tailwind v4 Migration & Next.js purged
 
 **Tasks:** PF-002 marked done.

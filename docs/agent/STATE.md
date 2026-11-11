@@ -7,9 +7,9 @@
 | Fact | Value | Verified |
 |---|---|---|
 | Working artifact | `dist/index.html` (22 KB HTML + vanilla runtime, self-contained) | `astro build` 2026-11-11 |
-| Framework today | Astro 7 + Tailwind v4 static export — **builds cleanly in 2.9s** (167/167 static pages exported) | `npm run build` exit 0 (2026-11-11) |
+| Framework today | Astro 7 + Tailwind v4 static export — **builds cleanly in 2.5s** (183/183 static pages exported) | `npm run build` exit 0 (2026-11-11) |
 | Framework decided | Astro 7 + Tailwind v4 on CF Pages (DEC-001) — **MIGRATED & LIVE** | DEC-001 / PF-002 |
-| Content | 72 tools / 87 presets / 6 blog / 9 engine / 5 templates (Git JSON/YAML enriched) | agent-status |
+| Content | 72 tools / 87 presets / 6 blog / 15 glossary / 9 engine / 5 templates (Git JSON/MD/YAML enriched) | agent-status |
 | Tools actually runnable | **72** live in runtime; **0** unimplemented | smoke-test.mjs (72/72 pass) |
 | Launch gate (PF-020) | **READY** — all P0 blockers cleared; 72 smoke tests green; Astro SSG clean | 2026-11-11 test suite |
 

@@ -75,6 +75,17 @@ const blogCollection = defineCollection({
   }).passthrough(),
 });
 
+const glossaryCollection = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './content/glossary' }),
+  schema: z.object({
+    term: z.string(),
+    definition: z.string(),
+    aliases: z.array(z.string()).optional(),
+    related_tools: z.array(z.string()).optional(),
+    reviewed: z.string().optional(),
+  }).passthrough(),
+});
+
 const engineCollection = defineCollection({
   loader: glob({ pattern: '**/*.yaml', base: './content/engine' }),
   schema: z.object({
@@ -87,5 +98,6 @@ export const collections = {
   tools: toolsCollection,
   presets: presetsCollection,
   blog: blogCollection,
+  glossary: glossaryCollection,
   engine: engineCollection,
 };

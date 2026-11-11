@@ -12,12 +12,14 @@ const root = process.cwd();
 const toolsDir = path.join(root, 'content/tools');
 const presetsDir = path.join(root, 'content/presets');
 const blogsDir = path.join(root, 'content/blog');
+const glossaryDir = path.join(root, 'content/glossary');
 const enginesDir = path.join(root, 'content/engine');
 const publicDir = path.join(root, 'public');
 
 const toolFiles = fs.readdirSync(toolsDir).filter((f) => f.endsWith('.json'));
 const presetFiles = fs.readdirSync(presetsDir).filter((f) => f.endsWith('.json'));
 const blogFiles = fs.readdirSync(blogsDir).filter((f) => f.endsWith('.md'));
+const glossaryFiles = fs.existsSync(glossaryDir) ? fs.readdirSync(glossaryDir).filter((f) => f.endsWith('.md')) : [];
 const engineFiles = fs.existsSync(enginesDir) ? fs.readdirSync(enginesDir).filter((f) => f.endsWith('.yaml')) : [];
 
 let errors = 0;
@@ -46,6 +48,14 @@ for (const file of blogFiles) {
   const raw = fs.readFileSync(path.join(blogsDir, file), 'utf8');
   if (!raw.startsWith('---')) {
     console.error(`ERROR in content/blog/${file}: Missing YAML frontmatter`);
+    errors++;
+  }
+}
+
+for (const file of glossaryFiles) {
+  const raw = fs.readFileSync(path.join(glossaryDir, file), 'utf8');
+  if (!raw.startsWith('---') || !raw.includes('term:') || !raw.includes('definition:')) {
+    console.error(`ERROR in content/glossary/${file}: Missing YAML frontmatter or required fields`);
     errors++;
   }
 }
@@ -104,4 +114,4 @@ if (fs.existsSync(repoRootPublic)) {
   fs.writeFileSync(path.join(repoRootPublic, 'presets.json'), JSON.stringify(cleanPresets, null, 2) + '\n');
 }
 
-console.log(`✓ Git-CMS Validated & Compiled: ${tools.length} tools, ${presetFiles.length} presets, ${blogFiles.length} blog guides, ${engineFiles.length} engine assets.`);
+console.log(`✓ Git-CMS Validated & Compiled: ${tools.length} tools, ${presetFiles.length} presets, ${blogFiles.length} blog guides, ${glossaryFiles.length} glossary terms, ${engineFiles.length} engine assets.`);
