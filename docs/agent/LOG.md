@@ -2,6 +2,19 @@
 
 ---
 
+## 2026-11-12 — Header Cleanliness: Remove Redundant Top Bar Above Navigation
+
+**Tasks:** Purged redundant `.atelier-bar` above `<header>` to give PrivacyFold a clean, single, modern sticky header.
+**Did:**
+1. Removed `.atelier-bar` that sat above `<header class="nav">` displaying duplicated links and telemetry.
+2. Moved runtime telemetry elements (`#wirePill`, `#wireReqN`, `#openPleatTop`, `#pleatCountB`, `#runAirgapBtn`, `#openQrTop`) into a hidden compatibility bridge so `app-runtime.js` remains 100% error-free.
+3. Added Admin CMS and Architecture links to the footer (`<footer>`) for convenient access.
+4. Header (`<header class="nav">`) is now the true top of the viewport, matching `reference-ui.html`.
+**Proved by:** `npm test && npm run build && node scripts/build.mjs --check` (330 pages built, 0 broken links across 335 files).
+**Next:** All tasks in `TASKS.md` done except PF-021 awaiting owner Cloudflare Worker OAuth deployment.
+
+---
+
 ## 2026-11-12 — PF-036: Desktop Mega Menu Navigation & Navbar Streamlining
 
 **Tasks:** Replaced cluttered 15-button navbar with an accessible 5-column tools mega menu, Architecture and Resources dropdowns, and clean atelier bar.
