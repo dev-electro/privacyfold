@@ -2,6 +2,14 @@
 
 ---
 
+## 2026-11-10 — reference-parity polish (PF-036 cont.): seg control, dark contrast, crane perch
+
+**Did:** after restoring the runtime (previous entry), verified the full tool flow end-to-end (passport-photo: sample → Create photo → envelope fold → result 51 KB PNG + receipt {engine, sha256, version, determinism D, zero_upload pass} → Download PNG present). Closed the remaining reference-parity defects: `.seg` buttons now stretch to equal heights with centered labels ([40,40,40] measured); dark-theme `--ink-2` #A6A798→#B7B9AA + `--line` lifted for helper text contrast; crane perch offset (right 26px, top −70px, 126px wide) so it sits on the drop-card edge instead of clipping it.
+**Proved by:** local rebuild 330 pages, probes above; screenshots reviewed light+dark.
+**Note:** runtime no longer binds `#slip/#packet/#foldtrack` (Astro port replaced them with the envelope + inline receipt in the result contract) — the reference DOM diff is intentional divergence, not a gap.
+
+---
+
 ## 2026-11-10 — Astro app visual rescue: 2 line-level bugs fixed (PF-036 cont.)
 
 **Did:** visual review of privacyfold.pages.dev at 1440/1024/768/390 + local build. Found two root causes behind the "too many lacunas" report:
