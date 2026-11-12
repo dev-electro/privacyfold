@@ -1,17 +1,19 @@
-# generated 2026-11-11T19:26:36.396Z by scripts/agent-status.mjs
+# generated 2026-11-12T15:35:14.001Z by scripts/agent-status.mjs
 1. BUILD
-  [ok]      last recorded build: PASS 314/314 static pages exported clean (Astro 7 static export, 72 tools, 87 presets, 128 i18n tools, 6 blog, 15 glossary, 2 compare, 1 authors, 4 trust, 8 sitemaps, 206 OG cards) at 2026-11-11T23:58:25+05:30
+  [ok]      last recorded build: PASS astro build 2026-11-10 (330 pages) after removing stray global.css:924 demo stylesheet; runtime boot restored (window.privacyfold defined, 72 grid cards render)
 
 2. CONTENT MODEL
   [ok]      tool JSON matches GitCmsTool
   [ok]      seo.steps present
 
 3. CATALOG ≈ REALITY
-  content tools: 72 · schemas: 72 · presets: 87 · blog: 6 · glossary: 15 · compare: 2 · engines: 9
+  content tools: 72 · schemas: 72 · presets: 87 · blog: 6 · glossary: 15 · compare: 2 · engines: 14
   runtime: 72 defined · 72 live · 0 "coming soon"
 
 4. ENGINE CLAIMS
-  [ok]      5 wasm binaries on disk
+  [ok]      24 wasm binaries on disk (13 paths referenced by copy; unwired paths are planned engines, not blockers)
+  [ok]      hosted engine records: files + sha256 verified
+  [warn]    6 declared deps imported 0 times: @jsquash/avif, @jsquash/jpeg, @jsquash/png, @jsquash/webp, sql.js, tesseract.js-core
 
 5. COUNT DRIFT (agents and humans get misled here)
    72  src/layouts/Base.astro
@@ -26,6 +28,6 @@
 6. LAUNCH SURFACE
 
 7. GIT
-  branch main · commits 40 · uncommitted paths 3
+  branch main · commits 47 · uncommitted paths 23
 
 VERDICT: P0 clear

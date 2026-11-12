@@ -1,0 +1,11 @@
+id: mozjpeg_dec
+type: wasm
+family: image
+path: /wasm/image/mozjpeg_dec.wasm
+sha256: a7c4b12169817e779ff4af137981393ae924944e167ad1bd95747c9199162d3e
+version: "1.6.0"
+source_repository: https://github.com/jamsinclair/jSquash (binary vendored from npm, pinned)
+license: Apache-2.0
+size_kb: 162
+status: hosted
+tasks: [image_compress]

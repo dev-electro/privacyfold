@@ -15,9 +15,16 @@
     "test": "node scripts/agent-status.mjs && node scripts/smoke-test.mjs && node scripts/check-cms-drift.mjs && node scripts/check-content.mjs"
   },
   "dependencies": {
+    "@jsquash/avif": "^2.1.1",
+    "@jsquash/jpeg": "^1.6.0",
+    "@jsquash/png": "^3.1.1",
+    "@jsquash/webp": "^1.5.0",
     "@tailwindcss/vite": "^4.0.0",
     "astro": "^7.4.10",
-    "tailwindcss": "^4.0.0"
+    "pdf-lib": "^1.17.1",
+    "sql.js": "^1.16.0",
+    "tailwindcss": "^4.0.0",
+    "tesseract.js-core": "^6.1.2"
   },
   "devDependencies": {
     "@types/node": "^22.10.0",

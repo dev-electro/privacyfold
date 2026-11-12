@@ -1,0 +1,11 @@
+id: tesseract_simd
+type: wasm
+family: pdf
+path: /wasm/pdf/tesseract-core-simd.wasm
+sha256: ca11ee92a02023e4f5083eefd0966fb83b297416da54e997b9f6ce445f719c9b
+version: "6.1.2"
+source_repository: https://github.com/naptha/tesseract.js-core (binary vendored from npm, pinned)
+license: Apache-2.0
+size_kb: 3387
+status: hosted
+tasks: [ocr_scan]

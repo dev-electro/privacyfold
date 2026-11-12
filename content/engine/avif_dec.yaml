@@ -1,0 +1,11 @@
+id: avif_dec
+type: wasm
+family: image
+path: /wasm/image/avif_dec.wasm
+sha256: 5c35dde23dfd862088a49a6b8a9fe81f9f9a1a46aaa27de7efd7baa7611c4b47
+version: "2.1.1"
+source_repository: https://github.com/jamsinclair/jSquash (binary vendored from npm, pinned)
+license: Apache-2.0
+size_kb: 1143
+status: hosted
+tasks: [image_compress]

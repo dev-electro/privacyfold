@@ -1,0 +1,11 @@
+id: webp_dec
+type: wasm
+family: image
+path: /wasm/image/webp_dec.wasm
+sha256: 30fb52fa2a80166d25ba7debf902218904ba1f05ccce9f959f722beff9e2f344
+version: "1.5.0"
+source_repository: https://github.com/jamsinclair/jSquash (binary vendored from npm, pinned)
+license: Apache-2.0
+size_kb: 134
+status: hosted
+tasks: [heic_to_jpg]

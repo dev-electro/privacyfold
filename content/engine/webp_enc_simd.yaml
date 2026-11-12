@@ -1,0 +1,11 @@
+id: webp_enc_simd
+type: wasm
+family: image
+path: /wasm/image/webp_enc_simd.wasm
+sha256: 39c279269ec1163b987b6d69749458e3d5b03b9585f58b6ca5455b76b504a305
+version: "1.5.0"
+source_repository: https://github.com/jamsinclair/jSquash (binary vendored from npm, pinned)
+license: Apache-2.0
+size_kb: 337
+status: hosted
+tasks: [image_compress]

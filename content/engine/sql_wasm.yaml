@@ -1,12 +1,11 @@
 id: sql_wasm
 type: wasm
 family: dev
-path: /wasm/sql/sql-wasm.wasm
+path: /wasm/dev/sql-wasm.wasm
 sha256: 43bbcdd44287e5a2db3b6b5af34b1a3485a7a441285d247976c1ebe3c61f8dbf
-version: 1.12.0
-source_repository: https://github.com/sql-js/sql.js
+version: "1.13.0"
+source_repository: https://github.com/sql-js/sql.js (binary vendored from npm, pinned)
 license: MIT
 size_kb: 672
-tasks:
-  - sqlite_viewer
-status: live
+status: hosted
+tasks: [sqlite_viewer]

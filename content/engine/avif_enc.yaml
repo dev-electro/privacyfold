@@ -2,11 +2,10 @@ id: avif_enc
 type: wasm
 family: image
 path: /wasm/image/avif_enc.wasm
-sha256: 90d6b7b5dd26d0708ab748e95626627f6910514b4c9b72a23649a97955c64e2e
-version: 1.3.1
-source_repository: https://github.com/jmprdi/jsquash
-license: MIT
-size_kb: 2580
-tasks:
-  - image_compress
-status: live
+sha256: d9f2a95164362af48558d176e619becfd49dd97b50b86c679b47100860522b3d
+version: "2.1.1"
+source_repository: https://github.com/jamsinclair/jSquash (binary vendored from npm, pinned)
+license: Apache-2.0
+size_kb: 3404
+status: hosted
+tasks: [image_compress]

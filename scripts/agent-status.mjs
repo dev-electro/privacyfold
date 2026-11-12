@@ -78,15 +78,37 @@ if (advertisedOnly.length) blocker(`${advertisedOnly.length} tools have a page/s
 const orphanLive = [...liveSlugs].filter((s) => !contentSlugs.has(s));
 if (orphanLive.length) warn(`runnable but undocumented (no SEO page): ${orphanLive.join(', ')}`);
 
-/* ---------- 4. wasm / deps claims ---------- */
+/* ---------- 4. engine claims ---------- */
 out('');
 out('4. ENGINE CLAIMS');
 const wasmFiles = [];
-const walk = (d) => { if (!fs.existsSync(d)) return; for (const e of fs.readdirSync(d, { withFileTypes: true })) { const p = path.join(d, e.name); if (e.isDirectory()) { if (!/node_modules|\.git|\.next|dist/.test(e.name)) walk(p); } else if (e.name.endsWith('.wasm')) wasmFiles.push(p); } };
+const walk = (d) => { if (!fs.existsSync(d)) return; for (const e of fs.readdirSync(d, { withFileTypes: true })) { const p = path.join(d, e.name); if (e.isDirectory()) { if (!/node_modules|\.git|\.next/.test(e.name)) walk(p); } else if (e.name.endsWith('.wasm')) wasmFiles.push(p); } };
 walk(root);
 const wasmRefs = (runtime.match(/\/wasm\/[a-z0-9/._-]+\.wasm/gi) || []).length;
-if (wasmRefs && !wasmFiles.length) blocker(`${wasmRefs} distinct /wasm/*.wasm paths referenced, 0 .wasm files on disk`);
-else if (wasmFiles.length) ok(`${wasmFiles.length} wasm binaries on disk`);
+const hostedOnDisk = wasmFiles.length;
+if (wasmRefs && !hostedOnDisk) blocker(`${wasmRefs} distinct /wasm/*.wasm paths referenced, 0 .wasm files on disk`);
+else if (hostedOnDisk) ok(`${hostedOnDisk} wasm binaries on disk (${wasmRefs} paths referenced by copy; unwired paths are planned engines, not blockers)`);
+// every engine record marked hosted/live MUST have its real file and sha256
+const sri = JSON.parse(read('privacyfold-nextjs/public/config/wasm-sri.json') || read('content/config/wasm-sri.json') || '{}');
+let engineBad = 0;
+for (const f of (exists('content/engine') ? fs.readdirSync(r('content/engine')) : [])) {
+  if (!f.endsWith('.yaml')) continue;
+  const y = read(`content/engine/${f}`);
+  const ty = (y.match(/type:\s*(\w+)/) || [])[1];
+  const st = (y.match(/status:\s*(\w+)/) || [])[1];
+  const p = (y.match(/path:\s*(\S+)/) || [])[1];
+  const h = (y.match(/sha256:\s*(\S+)/) || [])[1];
+  if ((st === 'hosted' || st === 'live') && ty === 'wasm' && p) {
+    const fp = path.join(root, 'public', p);
+    if (!fs.existsSync(fp)) { blocker(`engine ${f}: status=${st} but ${p} not on disk`); engineBad++; }
+    else if (h) {
+      const crypto = await import('node:crypto');
+      const real = crypto.createHash('sha256').update(fs.readFileSync(fp)).digest('hex');
+      if (real !== h) { blocker(`engine ${f}: sha256 mismatch (registry says ${h.slice(0, 12)}…, file is ${real.slice(0, 12)}…)`); engineBad++; }
+    }
+  }
+}
+if (!engineBad && exists('content/engine')) ok('hosted engine records: files + sha256 verified');
 const pkg = JSON.parse(read('package.json') || read('privacyfold-nextjs/package.json'));
 const rootConfigs = ['astro.config.mjs'].filter((f) => fs.existsSync(path.join(root, f))).map((f) => fs.readFileSync(path.join(root, f), 'utf8'));
 const src = ['src', 'scripts', 'packages'].flatMap((d) => walkFiles(path.join(root, d))).map((f) => fs.readFileSync(f, 'utf8')).concat(rootConfigs).join('\n');
