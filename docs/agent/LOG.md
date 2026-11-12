@@ -2,6 +2,13 @@
 
 ---
 
+## 2026-11-10 — mega menu: categorised rail + presets pane; hamburger to left (owner directives)
+
+**Did:** Tools menu rebuilt as two-pane categorised UI: left rail of 6 family categories + **Portal presets (87)**, right pane lists ALL tools of the active family (2 cols) or all 87 presets (3 cols), pane header names the category, full-width footer strip ("all 72 tools · 87 presets included"). Generated from `content/tools` + `content/presets` at build (one-record-drives-everything). Switching via click + hover on rail; all panes server-rendered (SEO/no-JS intact). Hamburger moved before the brand (mobile: burgerX=16 < brandX=56). Presets previously absent from the menu entirely — now first-class. Polish: active rail item = solid accent; desc strings de-duplicated ("ada-pdf preset"); uniform 44px rows; presets pane 3 columns.
+**Proved by:** rail counts 4/11/15/10/20/12/87 = 72 tools + 87 presets; panel 290→1170px in 1440 viewport, h=381, 0 h-overflow; hover-switch to presets pane verified with 87 links; active bg rgb(255,90,31).
+
+---
+
 ## 2026-11-10 — mega menu redesign (PF-036 cont.)
 
 **Did:** owner call: the nav crammed dev surfaces (Architecture: ledger/WebGPU; Resources: glossary/MCP) and a 5-col Tools grid. Redesigned: **Tools** = 6 family columns × 4 curated user-searchable tools (Photo & ID / Images / PDF & Docs / Security / Developer / Forms & Tax) + footer ("all tools · 87 presets"); **Learn** = 4 plain items (How it works, Why files stay private, Guides & blog, Compare). Removed from nav: glossary, MCP, WebGPU hub, Privacy Ledger, "Client-Side vs Server-Side" — all still reachable via footer/pages. Also fixed `.mega-drop-title/.mega-drop-sub` inline rendering (display:block) and tightened 6 desc strings (uniform 42px rows, 0 h-overflow).

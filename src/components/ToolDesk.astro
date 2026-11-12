@@ -1,9 +1,35 @@
 ---
+import { getAllToolsFromGit, getAllPresetsFromGit } from '../lib/cms';
+
 interface Props {
   initialToolSlug?: string;
 }
 
 const { initialToolSlug } = Astro.props;
+
+// Categorised mega menu: grouped straight from the Git CMS (one record drives everything).
+const CAT_ORDER: Array<{ key: string; icon: string; label: string }> = [
+  { key: 'photo',  icon: '📷', label: 'Photo & ID' },
+  { key: 'image',  icon: '🖼️', label: 'Images & Media' },
+  { key: 'pdf',    icon: '📄', label: 'PDF & Documents' },
+  { key: 'crypto', icon: '🔐', label: 'Security & Crypto' },
+  { key: 'dev',    icon: '💻', label: 'Developer & Data' },
+  { key: 'forms',  icon: '🧾', label: 'Tax & Forms' },
+];
+const allTools = getAllToolsFromGit();
+const allPresets = getAllPresetsFromGit();
+const presetsPane = allPresets
+  .map((p: any) => ({ slug: p.presetSlug || p.id, toolSlug: p.toolSlug, title: p.title }))
+  .sort((a: any, b: any) => a.title.localeCompare(b.title));
+const presetCount = presetsPane.length;
+const short = (d: string) => (d.length > 64 ? d.slice(0, 61).replace(/\s+\S*$/, '') + '…' : d);
+const cats = CAT_ORDER.map((c) => ({
+  ...c,
+  tools: allTools
+    .filter((t: any) => (t.category || t.fam) === c.key)
+    .sort((a: any, b: any) => a.name.localeCompare(b.name)),
+})).filter((c) => c.tools.length > 0);
+const totalTools = allTools.length;
 ---
 
 <div id="pf-desk-root">
@@ -20,87 +46,67 @@ const { initialToolSlug } = Astro.props;
 
 <header class="nav">
   <div class="wrap">
+    <button type="button" class="nbtn mob-menu-btn" id="mobMenuBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobDrawer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <span class="lbl">Menu</span>
+      </button>
     <button type="button" class="brand" id="brand" aria-label="PrivacyFold home">
       <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path d="M4 3h16l7 7v17H4z" fill="#FF5A1F" stroke="#17160F" stroke-width="2" stroke-linejoin="round"/><path d="M20 3v7h7z" fill="#B7330A" stroke="#17160F" stroke-width="2" stroke-linejoin="round"/><path d="M4 27L27 10v17z" fill="rgba(0,0,0,.16)"/></svg>
       <span>PrivacyFold</span>
     </button>
 
-<!-- MEGA MENU NAVIGATION (redesigned: user-facing, 6 families + one Learn menu) -->
+<!-- MEGA MENU NAVIGATION (categorised: family rail -> per-family tool panes, generated from content) -->
     <nav class="nav-menu" aria-label="Main Navigation">
-      <!-- Mega Menu: Tools -->
       <div class="nav-item">
         <button type="button" class="nav-btn" aria-expanded="false" aria-haspopup="true">
           <span>Tools</span>
           <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6"/></svg>
         </button>
         <div class="mega-panel mega-panel-tools" role="region" aria-label="Tools catalog">
-          <div class="mega-grid-6">
-            <div class="mega-col">
-              <div class="mega-col-head">📷 Photo &amp; ID</div>
-              <div class="mega-col-list">
-                <a href="/tools/passport-photo/" class="mega-link"><span class="mega-link-title">Passport Photo</span><span class="mega-link-desc">Official sizes &amp; sheets</span></a>
-                <a href="/tools/exif-strip/" class="mega-link"><span class="mega-link-title">Remove Photo Data</span><span class="mega-link-desc">GPS, camera, timestamps</span></a>
-                <a href="/tools/signature-clean/" class="mega-link"><span class="mega-link-title">Signature Cleaner</span><span class="mega-link-desc">Paper scan to crisp PNG</span></a>
-                <a href="/tools/spot-rejection/" class="mega-link"><span class="mega-link-title">Photo Checkup</span><span class="mega-link-desc">Biometric rules pre-check</span></a>
-              </div>
+          <div class="mega-cats-row">
+            <div class="mega-cats" role="tablist" aria-label="Tool categories">
+{cats.map((c, i) => (
+              <button type="button" class={`mega-cat${i === 0 ? ' act' : ''}`} data-cat={c.key} role="tab" aria-selected={i === 0 ? 'true' : 'false'} aria-controls={`megapane-${c.key}`}>
+                <span>{c.icon} {c.label}</span><span class="n">{c.tools.length}</span>
+              </button>
+))}
+              <button type="button" class="mega-cat" data-cat="presets" role="tab" aria-selected="false" aria-controls="megapane-presets">
+                <span>🎯 Portal presets</span><span class="n">{presetCount}</span>
+              </button>
             </div>
-            <div class="mega-col">
-              <div class="mega-col-head">🖼️ Images</div>
-              <div class="mega-col-list">
-                <a href="/tools/image-compress/" class="mega-link"><span class="mega-link-title">Compress Image</span><span class="mega-link-desc">Hit exact size caps</span></a>
-                <a href="/tools/heic-to-jpg/" class="mega-link"><span class="mega-link-title">HEIC to JPG</span><span class="mega-link-desc">iPhone photos anywhere</span></a>
-                <a href="/tools/social-resizer/" class="mega-link"><span class="mega-link-title">Resize for Social</span><span class="mega-link-desc">Instagram, X, LinkedIn sizes</span></a>
-                <a href="/tools/bg-remove/" class="mega-link"><span class="mega-link-title">Remove Background</span><span class="mega-link-desc">Transparent PNG on-device</span></a>
+            <div class="mega-panes">
+{cats.map((c, i) => (
+              <div class={`mega-pane${i === 0 ? ' act' : ''}`} id={`megapane-${c.key}`} data-pane={c.key} role="tabpanel" aria-label={c.label}>
+                <div class="mega-pane-head"><span>{c.icon} {c.label}</span><span>{c.tools.length} tools</span></div>
+{c.tools.map((t: any) => (
+                <a href={`/tools/${t.slug}/`} class="mega-link" title={t.description}>
+                  <span class="mega-link-title">{t.name}</span>
+                  <span class="mega-link-desc">{short(t.description || '')}</span>
+                </a>
+))}
               </div>
-            </div>
-            <div class="mega-col">
-              <div class="mega-col-head">📄 PDF &amp; Docs</div>
-              <div class="mega-col-list">
-                <a href="/tools/pdf-merge/" class="mega-link"><span class="mega-link-title">Merge PDF</span><span class="mega-link-desc">Combine pages in order</span></a>
-                <a href="/tools/pdf-split/" class="mega-link"><span class="mega-link-title">Split PDF</span><span class="mega-link-desc">Extract page ranges</span></a>
-                <a href="/tools/pdf-compress/" class="mega-link"><span class="mega-link-title">Compress PDF</span><span class="mega-link-desc">Meet portal upload limits</span></a>
-                <a href="/tools/pdf-redact/" class="mega-link"><span class="mega-link-title">Redact PDF</span><span class="mega-link-desc">Black out, unrecoverable</span></a>
-              </div>
-            </div>
-            <div class="mega-col">
-              <div class="mega-col-head">🔐 Security</div>
-              <div class="mega-col-list">
-                <a href="/tools/file-encrypt/" class="mega-link"><span class="mega-link-title">Encrypt a File</span><span class="mega-link-desc">AES-256, offline key</span></a>
-                <a href="/tools/password-gen/" class="mega-link"><span class="mega-link-title">Password Generator</span><span class="mega-link-desc">CSPRNG passphrases</span></a>
-                <a href="/tools/clean-paste/" class="mega-link"><span class="mega-link-title">Clean Paste</span><span class="mega-link-desc">Strip tracking links</span></a>
-                <a href="/tools/hash-gen/" class="mega-link"><span class="mega-link-title">File Hash</span><span class="mega-link-desc">SHA-256 fingerprint</span></a>
-              </div>
-            </div>
-            <div class="mega-col">
-              <div class="mega-col-head">💻 Developer</div>
-              <div class="mega-col-list">
-                <a href="/tools/json-format/" class="mega-link"><span class="mega-link-title">JSON Formatter</span><span class="mega-link-desc">Validate, sort, minify</span></a>
-                <a href="/tools/jwt-decode/" class="mega-link"><span class="mega-link-title">JWT Decoder</span><span class="mega-link-desc">Inspect claims offline</span></a>
-                <a href="/tools/base64/" class="mega-link"><span class="mega-link-title">Base64</span><span class="mega-link-desc">Encode &amp; decode any text</span></a>
-                <a href="/tools/qr-tool/" class="mega-link"><span class="mega-link-title">QR Code</span><span class="mega-link-desc">Wi-Fi, vCard, links</span></a>
-              </div>
-            </div>
-            <div class="mega-col">
-              <div class="mega-col-head">🧾 Forms &amp; Tax</div>
-              <div class="mega-col-list">
-                <a href="/tools/w9-prep/" class="mega-link"><span class="mega-link-title">IRS W-9 Prep</span><span class="mega-link-desc">Private US tax worksheet</span></a>
-                <a href="/tools/sa100-prep/" class="mega-link"><span class="mega-link-title">UK SA100 Helper</span><span class="mega-link-desc">Self Assessment figures</span></a>
-                <a href="/tools/invoice-generator/" class="mega-link"><span class="mega-link-title">Invoice Generator</span><span class="mega-link-desc">Private client invoices</span></a>
-                <a href="/tools/resume-builder/" class="mega-link"><span class="mega-link-title">Resume Builder</span><span class="mega-link-desc">ATS-friendly formatting</span></a>
+))}
+              <div class="mega-pane" id="megapane-presets" data-pane="presets" role="tabpanel" aria-label="Portal presets">
+                <div class="mega-pane-head"><span>🎯 Official portal presets</span><span>{presetCount} one-click setups</span></div>
+{presetsPane.map((p: any) => (
+                <a href={`/tools/${p.toolSlug}/${p.slug}/`} class="mega-link" title={p.title}>
+                  <span class="mega-link-title">{p.title}</span>
+                  <span class="mega-link-desc">{p.toolSlug} preset</span>
+                </a>
+))}
               </div>
             </div>
           </div>
-          <div class="mega-footer">
-            <span>🛡️ All 72 tools run 100% in your browser — zero uploads</span>
-            <div style="display:flex;gap:14px">
-              <a href="#tools" data-go="tools">Browse all tools &rarr;</a>
-              <a href="/tools/passport-photo/us-passport-std/">87 official presets &rarr;</a>
+          <div class="mega-panel-foot">
+            <span>🛡️ All {totalTools} tools run 100% in your browser — zero uploads</span>
+            <div class="mega-foot-links">
+              <a href="#tools" data-go="tools">Browse all tools →</a>
+              <span>{presetCount} presets included</span>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Mega Menu: Learn -->
       <div class="nav-item">
         <button type="button" class="nav-btn" aria-expanded="false" aria-haspopup="true">
           <span>Learn</span>
@@ -129,10 +135,6 @@ const { initialToolSlug } = Astro.props;
 
     <!-- RIGHT CONTROLS -->
     <div class="nav-r">
-      <button type="button" class="nbtn mob-menu-btn" id="mobMenuBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobDrawer">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
-        <span class="lbl">Menu</span>
-      </button>
       <button type="button" class="nbtn" id="palBtn" aria-label="Search tools">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
         <span class="lbl">Search</span>
@@ -393,5 +395,35 @@ const { initialToolSlug } = Astro.props;
         if (b) b.setAttribute('aria-expanded', 'false');
       });
     }
+  });
+  // Category switching inside the Tools mega menu (left rail ↔ right pane)
+  document.querySelectorAll('.mega-cat').forEach(function(cat) {
+    cat.addEventListener('click', function() {
+      var key = cat.getAttribute('data-cat');
+      document.querySelectorAll('.mega-cat').forEach(function(c) {
+        var on = c === cat;
+        c.classList.toggle('act', on);
+        c.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      document.querySelectorAll('.mega-pane').forEach(function(p) {
+        p.classList.toggle('act', p.getAttribute('data-pane') === key);
+      });
+    });
+  });
+  // Hover-to-switch on the rail for pointer users (keyboard uses click/Enter)
+  document.querySelectorAll('.mega-cats').forEach(function(rail) {
+    rail.addEventListener('mouseover', function(e) {
+      var cat = e.target.closest('.mega-cat');
+      if (!cat || cat.classList.contains('act')) return;
+      var key = cat.getAttribute('data-cat');
+      document.querySelectorAll('.mega-cat').forEach(function(c) {
+        var on = c === cat;
+        c.classList.toggle('act', on);
+        c.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      document.querySelectorAll('.mega-pane').forEach(function(p) {
+        p.classList.toggle('act', p.getAttribute('data-pane') === key);
+      });
+    });
   });
 </script>
