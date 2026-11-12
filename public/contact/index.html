@@ -34,6 +34,12 @@
     .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 24px 0; }
     .contact-card { background: var(--ground); border: 1px solid var(--line); border-radius: 6px; padding: 20px; }
     .contact-card h3 { margin-top: 0; font-size: 18px; }
+  
+    @media (prefers-color-scheme: dark){
+      :root{--ground:#0E100A;--surface:#171A11;--ink:#F3F1E7;--ink-2:#B7B9AA;--line:#31352A}
+      body{background:var(--ground);color:var(--ink)}
+      .card{background:var(--surface)}
+    }
   </style>
 </head>
 <body>

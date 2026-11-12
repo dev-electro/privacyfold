@@ -2,6 +2,13 @@
 
 ---
 
+## 2026-11-10 — drawer + footer de-dev'ed; trust pages dark mode (PF-036/PF-007 cont.)
+
+**Did:** owner flagged dev-surface leftovers. Mobile drawer: removed Privacy Ledger + WebGPU AI Hub buttons (6 category buttons + guides/compare/glossary remain, runtime-bound handlers intact). Footer: Features/Ledger/Architecture/Admin-CMS/mcp.json line replaced with About/Privacy/Terms/Contact/Compare/Guides/Glossary + Cookie Preferences; footer copy de-jargoned ("File tools that never see your files…"). The 4 standalone trust pages (public/{privacy,terms,about,contact}) got dark-mode token support (prefers-color-scheme block) — verified privacy page renders bg rgb(14,16,10)/ink rgb(243,241,231) in dark.
+**Proved by:** probes (drawer open, ledger/webgpu absent, 6 cats; privacy dark) + build 330 pages.
+
+---
+
 ## 2026-11-10 — nav overhaul round 2 (PF-036 cont.): 6 owner-reported defects closed
 
 **Did:** (1) mega-menu never closed — root cause: the toggle branch was missing (2nd click did nothing, `.open` persisted forever). Rewrote menu JS: real toggle, Escape closes, outside-click closes, mouse-leave closes, link-click closes. Verified open→1, 2nd-click→0, Escape→0. (2) tools no longer share one mega menu: **8 separate dropdowns across the bar** — Photo(4) Images(11) PDF(15) Security(10) Developer(20) Forms(12) Presets(87, 3-col) Learn — each generated from content. (3) **language toggle added** to the bar (globe + EN, 17 locales, locale-aware hrefs). (4) theme button compacted to an icon-only 42px control (label hidden, runtime contract intact). (5) compare/glossary/blog pages now get the menu bar via new `SiteNav.astro` (runtime-free nav with drawer); all hardcoded slate/amber/green/blue hexes tokenised to design tokens (0 raw hex left). (6) **all emojis removed from the nav** — custom SVG stroke icon set (`#i-camera/image/file/shield/code/clipboard/target/book/globe/layers/chev/menu`) rendered via `<use>`, verified 0 emoji in nav.

@@ -36,6 +36,12 @@
     .stat-card { background: var(--ground); border: 1px solid var(--line); border-radius: 6px; padding: 16px; text-align: center; }
     .stat-n { font-family: var(--font-display); font-size: 28px; font-weight: 700; color: var(--ink); }
     .stat-l { font-size: 13px; color: var(--ink-2); margin-top: 4px; }
+  
+    @media (prefers-color-scheme: dark){
+      :root{--ground:#0E100A;--surface:#171A11;--ink:#F3F1E7;--ink-2:#B7B9AA;--line:#31352A}
+      body{background:var(--ground);color:var(--ink)}
+      .card{background:var(--surface)}
+    }
   </style>
 </head>
 <body>

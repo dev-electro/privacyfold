@@ -32,6 +32,12 @@
     a:hover { text-decoration: underline; }
     .back { display: inline-block; margin-bottom: 24px; font-weight: 500; font-family: var(--font-mono); font-size: 14px; }
     .badge { display: inline-block; padding: 4px 10px; background: #E8F5E9; color: #1B5E20; border-radius: 4px; font-size: 13px; font-weight: 600; margin-bottom: 16px; }
+  
+    @media (prefers-color-scheme: dark){
+      :root{--ground:#0E100A;--surface:#171A11;--ink:#F3F1E7;--ink-2:#B7B9AA;--line:#31352A}
+      body{background:var(--ground);color:var(--ink)}
+      .card{background:var(--surface)}
+    }
   </style>
 </head>
 <body>

@@ -31,6 +31,12 @@
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
     .back { display: inline-block; margin-bottom: 24px; font-weight: 500; font-family: var(--font-mono); font-size: 14px; }
+  
+    @media (prefers-color-scheme: dark){
+      :root{--ground:#0E100A;--surface:#171A11;--ink:#F3F1E7;--ink-2:#B7B9AA;--line:#31352A}
+      body{background:var(--ground);color:var(--ink)}
+      .card{background:var(--surface)}
+    }
   </style>
 </head>
 <body>
