@@ -1,4 +1,5 @@
 ---
+import SiteNav from '../../components/SiteNav.astro';
 import Base from '../../layouts/Base.astro';
 import { getAllBlogsFromGit } from '../../lib/cms';
 import AdSlot from '../../components/AdSlot.astro';
@@ -35,6 +36,7 @@ const articleLd = {
   article={true}
   pageType="blog"
 >
+  <SiteNav />
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(articleLd)} />
   </Fragment>
@@ -48,11 +50,11 @@ const articleLd = {
         {post.title}
       </h1>
 
-      <div class="aeo-box" style="background: #eff6ff; border-left: 4px solid #3b82f6; padding: 16px 20px; border-radius: 6px; margin-bottom: 28px;">
-        <span class="aeo-k" style="display: block; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; color: #1e40af; font-weight: 700; margin-bottom: 6px;">
+      <div class="aeo-box" style="background: var(--surface-2); border-left: 4px solid var(--accent); padding: 16px 20px; border-radius: 6px; margin-bottom: 28px;">
+        <span class="aeo-k" style="display: block; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; color: var(--ink); font-weight: 700; margin-bottom: 6px;">
           Key Takeaway
         </span>
-        <p style="margin: 0; font-size: 15px; color: #1e293b; line-height: 1.5;">{post.summary}</p>
+        <p style="margin: 0; font-size: 15px; color: var(--ink); line-height: 1.5;">{post.summary}</p>
       </div>
 
       <ShareRow

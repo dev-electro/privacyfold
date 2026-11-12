@@ -1,5 +1,5 @@
 ---
-import { getAllToolsFromGit, getAllPresetsFromGit } from '../lib/cms';
+import NavMenus from './NavMenus.astro';
 
 interface Props {
   initialToolSlug?: string;
@@ -7,29 +7,7 @@ interface Props {
 
 const { initialToolSlug } = Astro.props;
 
-// Categorised mega menu: grouped straight from the Git CMS (one record drives everything).
-const CAT_ORDER: Array<{ key: string; icon: string; label: string }> = [
-  { key: 'photo',  icon: '📷', label: 'Photo & ID' },
-  { key: 'image',  icon: '🖼️', label: 'Images & Media' },
-  { key: 'pdf',    icon: '📄', label: 'PDF & Documents' },
-  { key: 'crypto', icon: '🔐', label: 'Security & Crypto' },
-  { key: 'dev',    icon: '💻', label: 'Developer & Data' },
-  { key: 'forms',  icon: '🧾', label: 'Tax & Forms' },
-];
-const allTools = getAllToolsFromGit();
-const allPresets = getAllPresetsFromGit();
-const presetsPane = allPresets
-  .map((p: any) => ({ slug: p.presetSlug || p.id, toolSlug: p.toolSlug, title: p.title }))
-  .sort((a: any, b: any) => a.title.localeCompare(b.title));
-const presetCount = presetsPane.length;
-const short = (d: string) => (d.length > 64 ? d.slice(0, 61).replace(/\s+\S*$/, '') + '…' : d);
-const cats = CAT_ORDER.map((c) => ({
-  ...c,
-  tools: allTools
-    .filter((t: any) => (t.category || t.fam) === c.key)
-    .sort((a: any, b: any) => a.name.localeCompare(b.name)),
-})).filter((c) => c.tools.length > 0);
-const totalTools = allTools.length;
+const langProp = 'en';
 ---
 
 <div id="pf-desk-root">
@@ -55,83 +33,7 @@ const totalTools = allTools.length;
       <span>PrivacyFold</span>
     </button>
 
-<!-- MEGA MENU NAVIGATION (categorised: family rail -> per-family tool panes, generated from content) -->
-    <nav class="nav-menu" aria-label="Main Navigation">
-      <div class="nav-item">
-        <button type="button" class="nav-btn" aria-expanded="false" aria-haspopup="true">
-          <span>Tools</span>
-          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="mega-panel mega-panel-tools" role="region" aria-label="Tools catalog">
-          <div class="mega-cats-row">
-            <div class="mega-cats" role="tablist" aria-label="Tool categories">
-{cats.map((c, i) => (
-              <button type="button" class={`mega-cat${i === 0 ? ' act' : ''}`} data-cat={c.key} role="tab" aria-selected={i === 0 ? 'true' : 'false'} aria-controls={`megapane-${c.key}`}>
-                <span>{c.icon} {c.label}</span><span class="n">{c.tools.length}</span>
-              </button>
-))}
-              <button type="button" class="mega-cat" data-cat="presets" role="tab" aria-selected="false" aria-controls="megapane-presets">
-                <span>🎯 Portal presets</span><span class="n">{presetCount}</span>
-              </button>
-            </div>
-            <div class="mega-panes">
-{cats.map((c, i) => (
-              <div class={`mega-pane${i === 0 ? ' act' : ''}`} id={`megapane-${c.key}`} data-pane={c.key} role="tabpanel" aria-label={c.label}>
-                <div class="mega-pane-head"><span>{c.icon} {c.label}</span><span>{c.tools.length} tools</span></div>
-{c.tools.map((t: any) => (
-                <a href={`/tools/${t.slug}/`} class="mega-link" title={t.description}>
-                  <span class="mega-link-title">{t.name}</span>
-                  <span class="mega-link-desc">{short(t.description || '')}</span>
-                </a>
-))}
-              </div>
-))}
-              <div class="mega-pane" id="megapane-presets" data-pane="presets" role="tabpanel" aria-label="Portal presets">
-                <div class="mega-pane-head"><span>🎯 Official portal presets</span><span>{presetCount} one-click setups</span></div>
-{presetsPane.map((p: any) => (
-                <a href={`/tools/${p.toolSlug}/${p.slug}/`} class="mega-link" title={p.title}>
-                  <span class="mega-link-title">{p.title}</span>
-                  <span class="mega-link-desc">{p.toolSlug} preset</span>
-                </a>
-))}
-              </div>
-            </div>
-          </div>
-          <div class="mega-panel-foot">
-            <span>🛡️ All {totalTools} tools run 100% in your browser — zero uploads</span>
-            <div class="mega-foot-links">
-              <a href="#tools" data-go="tools">Browse all tools →</a>
-              <span>{presetCount} presets included</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="nav-item">
-        <button type="button" class="nav-btn" aria-expanded="false" aria-haspopup="true">
-          <span>Learn</span>
-          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="mega-panel mega-panel-dropdown" role="region" aria-label="Learn">
-          <button type="button" class="mega-drop-link" data-go="how" style="width:100%;text-align:left;background:none;border:none">
-            <span class="mega-drop-icon">📐</span>
-            <div><span class="mega-drop-title">How it works</span><span class="mega-drop-sub">Add a file, adjust, download — nothing uploads</span></div>
-          </button>
-          <button type="button" class="mega-drop-link" data-go="privacy" style="width:100%;text-align:left;background:none;border:none">
-            <span class="mega-drop-icon">🛡️</span>
-            <div><span class="mega-drop-title">Why your files stay private</span><span class="mega-drop-sub">See the zero-network proof yourself</span></div>
-          </button>
-          <a href="/blog/" class="mega-drop-link">
-            <span class="mega-drop-icon">📚</span>
-            <div><span class="mega-drop-title">Guides &amp; blog</span><span class="mega-drop-sub">EXIF leaks, photo standards, cryptography</span></div>
-          </a>
-          <a href="/compare/" class="mega-drop-link">
-            <span class="mega-drop-icon">⚖️</span>
-            <div><span class="mega-drop-title">Compare with cloud tools</span><span class="mega-drop-sub">Side-by-side with online converters</span></div>
-          </a>
-        </div>
-      </div>
-    </nav>
+<NavMenus lang={langProp} currentPath={Astro.url.pathname} />
 
     <!-- RIGHT CONTROLS -->
     <div class="nav-r">
@@ -369,61 +271,5 @@ const totalTools = allTools.length;
 </script>
 <script is:inline src="/app-runtime.js"></script>
 <script is:inline>
-  // Accessible Mega Menu Click and Outside-Click Handler
-  document.querySelectorAll('.nav-item > .nav-btn').forEach(function(btn) {
-    btn.addEventListener('click', function(e) {
-      var item = btn.closest('.nav-item');
-      if (!item.querySelector('.mega-panel')) return; // direct links continue
-      var isOpen = item.classList.contains('open');
-      document.querySelectorAll('.nav-item.open').forEach(function(el) {
-        el.classList.remove('open');
-        var b = el.querySelector('.nav-btn');
-        if (b) b.setAttribute('aria-expanded', 'false');
-      });
-      if (!isOpen) {
-        item.classList.add('open');
-        btn.setAttribute('aria-expanded', 'true');
-        e.stopPropagation();
-      }
-    });
-  });
-  document.addEventListener('click', function(e) {
-    if (!e.target.closest('.nav-item')) {
-      document.querySelectorAll('.nav-item.open').forEach(function(el) {
-        el.classList.remove('open');
-        var b = el.querySelector('.nav-btn');
-        if (b) b.setAttribute('aria-expanded', 'false');
-      });
-    }
-  });
-  // Category switching inside the Tools mega menu (left rail ↔ right pane)
-  document.querySelectorAll('.mega-cat').forEach(function(cat) {
-    cat.addEventListener('click', function() {
-      var key = cat.getAttribute('data-cat');
-      document.querySelectorAll('.mega-cat').forEach(function(c) {
-        var on = c === cat;
-        c.classList.toggle('act', on);
-        c.setAttribute('aria-selected', on ? 'true' : 'false');
-      });
-      document.querySelectorAll('.mega-pane').forEach(function(p) {
-        p.classList.toggle('act', p.getAttribute('data-pane') === key);
-      });
-    });
-  });
-  // Hover-to-switch on the rail for pointer users (keyboard uses click/Enter)
-  document.querySelectorAll('.mega-cats').forEach(function(rail) {
-    rail.addEventListener('mouseover', function(e) {
-      var cat = e.target.closest('.mega-cat');
-      if (!cat || cat.classList.contains('act')) return;
-      var key = cat.getAttribute('data-cat');
-      document.querySelectorAll('.mega-cat').forEach(function(c) {
-        var on = c === cat;
-        c.classList.toggle('act', on);
-        c.setAttribute('aria-selected', on ? 'true' : 'false');
-      });
-      document.querySelectorAll('.mega-pane').forEach(function(p) {
-        p.classList.toggle('act', p.getAttribute('data-pane') === key);
-      });
-    });
-  });
+  // (mega-menu open/close + language panel live in NavMenus.astro)
 </script>

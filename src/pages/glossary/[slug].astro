@@ -1,4 +1,5 @@
 ---
+import SiteNav from '../../components/SiteNav.astro';
 import Base from '../../layouts/Base.astro';
 import { getAllGlossaryTermsFromGit, getToolFromGit } from '../../lib/cms';
 import AdSlot from '../../components/AdSlot.astro';
@@ -37,6 +38,7 @@ const relatedTools = (term.related_tools || [])
   article={true}
   pageType="glossary"
 >
+  <SiteNav />
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(definedTermLd)} />
   </Fragment>
@@ -50,11 +52,11 @@ const relatedTools = (term.related_tools || [])
         {term.term}
       </h1>
 
-      <div class="aeo-box" style="background: #f0fdf4; border-left: 4px solid #22c55e; padding: 16px 20px; border-radius: 6px; margin-bottom: 28px;">
-        <span class="aeo-k" style="display: block; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; color: #15803d; font-weight: 700; margin-bottom: 6px;">
+      <div class="aeo-box" style="background: var(--surface-2); border-left: 4px solid var(--ok); padding: 16px 20px; border-radius: 6px; margin-bottom: 28px;">
+        <span class="aeo-k" style="display: block; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; color: var(--ok); font-weight: 700; margin-bottom: 6px;">
           Authoritative Definition
         </span>
-        <p style="margin: 0; font-size: 15.5px; color: #14532d; line-height: 1.5;">{term.definition}</p>
+        <p style="margin: 0; font-size: 15.5px; color: var(--ink); line-height: 1.5;">{term.definition}</p>
       </div>
 
       <ShareRow

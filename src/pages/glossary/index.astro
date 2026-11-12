@@ -1,4 +1,5 @@
 ---
+import SiteNav from '../../components/SiteNav.astro';
 import Base from '../../layouts/Base.astro';
 import { getAllGlossaryTermsFromGit } from '../../lib/cms';
 import AdSlot from '../../components/AdSlot.astro';
@@ -12,6 +13,7 @@ const terms = getAllGlossaryTermsFromGit().sort((a, b) => a.term.localeCompare(b
   canonicalUrl="https://privacyfold.com/glossary/"
   pageType="glossary"
 >
+  <SiteNav />
   <main class="wrap pg" style="padding-top: 40px; padding-bottom: 80px;">
     <div class="pg-h">
       <span class="mono eyebrow">STANDARDS &amp; TECHNICAL GLOSSARY</span>
@@ -30,7 +32,7 @@ const terms = getAllGlossaryTermsFromGit().sort((a, b) => a.term.localeCompare(b
             <h2 style="font-size: 20px; font-weight: 700; color: var(--p-ink); margin: 0; line-height: 1.3;">
               {item.term}
             </h2>
-            <span class="mono" style="font-size: 11px; background: #e0f2fe; color: #0369a1; padding: 2px 8px; border-radius: 99px;">
+            <span class="mono" style="font-size: 11px; background: var(--surface-2); color: var(--ink); padding: 2px 8px; border-radius: 99px;">
               DefinedTerm
             </span>
           </div>

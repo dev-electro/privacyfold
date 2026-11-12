@@ -2,6 +2,13 @@
 
 ---
 
+## 2026-11-10 — nav overhaul round 2 (PF-036 cont.): 6 owner-reported defects closed
+
+**Did:** (1) mega-menu never closed — root cause: the toggle branch was missing (2nd click did nothing, `.open` persisted forever). Rewrote menu JS: real toggle, Escape closes, outside-click closes, mouse-leave closes, link-click closes. Verified open→1, 2nd-click→0, Escape→0. (2) tools no longer share one mega menu: **8 separate dropdowns across the bar** — Photo(4) Images(11) PDF(15) Security(10) Developer(20) Forms(12) Presets(87, 3-col) Learn — each generated from content. (3) **language toggle added** to the bar (globe + EN, 17 locales, locale-aware hrefs). (4) theme button compacted to an icon-only 42px control (label hidden, runtime contract intact). (5) compare/glossary/blog pages now get the menu bar via new `SiteNav.astro` (runtime-free nav with drawer); all hardcoded slate/amber/green/blue hexes tokenised to design tokens (0 raw hex left). (6) **all emojis removed from the nav** — custom SVG stroke icon set (`#i-camera/image/file/shield/code/clipboard/target/book/globe/layers/chev/menu`) rendered via `<use>`, verified 0 emoji in nav.
+**Proved by:** probes above + build 330 pages; independent visual review 7.5/10 → panel widened to 560px, descriptions 2-line clamp.
+
+---
+
 ## 2026-11-10 — mega menu: categorised rail + presets pane; hamburger to left (owner directives)
 
 **Did:** Tools menu rebuilt as two-pane categorised UI: left rail of 6 family categories + **Portal presets (87)**, right pane lists ALL tools of the active family (2 cols) or all 87 presets (3 cols), pane header names the category, full-width footer strip ("all 72 tools · 87 presets included"). Generated from `content/tools` + `content/presets` at build (one-record-drives-everything). Switching via click + hover on rail; all panes server-rendered (SEO/no-JS intact). Hamburger moved before the brand (mobile: burgerX=16 < brandX=56). Presets previously absent from the menu entirely — now first-class. Polish: active rail item = solid accent; desc strings de-duplicated ("ada-pdf preset"); uniform 44px rows; presets pane 3 columns.

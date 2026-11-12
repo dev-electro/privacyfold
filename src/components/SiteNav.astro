@@ -1,0 +1,63 @@
+---
+/**
+ * Lightweight site navigation for content pages (compare / glossary / blog)
+ * that do not mount the desk runtime: same menus, compact right controls.
+ */
+import NavMenus from './NavMenus.astro';
+
+interface Props {
+  lang?: string;
+}
+const { lang = 'en' } = Astro.props;
+---
+<div id="pf-desk-root">
+<header class="nav">
+  <div class="wrap">
+    <button type="button" class="nbtn mob-menu-btn" id="mobMenuBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobDrawer">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+      <span class="lbl">Menu</span>
+    </button>
+    <button type="button" class="brand" id="brand" onclick="location.href='/'" aria-label="PrivacyFold home">
+      <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path d="M4 3h16l7 7v17H4z" fill="#FF5A1F" stroke="#17160F" stroke-width="2" stroke-linejoin="round"/><path d="M20 3v7h7z" fill="#B7330A" stroke="#17160F" stroke-width="2" stroke-linejoin="round"/><path d="M4 27L27 10v17z" fill="rgba(0,0,0,.16)"/></svg>
+      <span>PrivacyFold</span>
+    </button>
+
+    <NavMenus lang={lang} currentPath={Astro.url.pathname} />
+
+    <div class="nav-r">
+      <a href="/" class="nbtn" aria-label="Open a tool">
+        <svg viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8"><path d="M5 3h9l5 5v13H5z"/><path d="M14 3v5h5"/></svg>
+        <span class="lbl">Tools</span>
+      </a>
+    </div>
+  </div>
+</header>
+<div class="mob-drawer-wrap" id="mobDrawer" hidden role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <div class="mob-backdrop" id="mobBackdrop"></div>
+  <div class="mob-drawer-panel">
+    <div class="mob-d-head">
+      <span class="brand"><svg width="24" height="24" viewBox="0 0 30 30" aria-hidden="true"><path d="M4 3h16l7 7v17H4z" fill="#FF5A1F" stroke="#17160F" stroke-width="2" stroke-linejoin="round"/></svg>PrivacyFold</span>
+      <button type="button" class="nbtn" id="mobDrawerClose" aria-label="Close menu" style="min-width:38px;min-height:38px"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+    </div>
+    <div class="mob-d-nav">
+      <a href="/" class="mob-d-link" style="padding:10px 12px;font-weight:600;text-decoration:none;color:var(--ink);display:flex;justify-content:space-between">Open a tool <span>→</span></a>
+      <a href="/blog/" class="mob-d-link" style="padding:10px 12px;font-weight:600;text-decoration:none;color:var(--ink);display:flex;justify-content:space-between">Guides &amp; blog <span>→</span></a>
+      <a href="/compare/" class="mob-d-link" style="padding:10px 12px;font-weight:600;text-decoration:none;color:var(--ink);display:flex;justify-content:space-between">Compare <span>→</span></a>
+      <a href="/glossary/" class="mob-d-link" style="padding:10px 12px;font-weight:600;text-decoration:none;color:var(--ink);display:flex;justify-content:space-between">Glossary <span>→</span></a>
+    </div>
+  </div>
+</div>
+</div>
+<script is:inline>
+  (function () {
+    var btn = document.getElementById('mobMenuBtn');
+    var drawer = document.getElementById('mobDrawer');
+    if (btn && drawer) {
+      btn.addEventListener('click', function () { drawer.hidden = !drawer.hidden; btn.setAttribute('aria-expanded', String(!drawer.hidden)); });
+      var close = document.getElementById('mobDrawerClose');
+      var bd = document.getElementById('mobBackdrop');
+      if (close) close.addEventListener('click', function () { drawer.hidden = true; });
+      if (bd) bd.addEventListener('click', function () { drawer.hidden = true; });
+    }
+  })();
+</script>
