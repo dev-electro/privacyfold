@@ -25,224 +25,105 @@ const { initialToolSlug } = Astro.props;
       <span>PrivacyFold</span>
     </button>
 
-    <!-- MEGA MENU NAVIGATION -->
+<!-- MEGA MENU NAVIGATION (redesigned: user-facing, 6 families + one Learn menu) -->
     <nav class="nav-menu" aria-label="Main Navigation">
-      <!-- Mega Menu 1: Tools & Catalog -->
+      <!-- Mega Menu: Tools -->
       <div class="nav-item">
         <button type="button" class="nav-btn" aria-expanded="false" aria-haspopup="true">
           <span>Tools</span>
           <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6"/></svg>
         </button>
         <div class="mega-panel mega-panel-tools" role="region" aria-label="Tools catalog">
-          <div class="mega-grid-5">
-            <!-- Col 1: Photo & ID -->
+          <div class="mega-grid-6">
             <div class="mega-col">
               <div class="mega-col-head">📷 Photo &amp; ID</div>
               <div class="mega-col-list">
-                <a href="/tools/passport-photo/" class="mega-link">
-                  <span class="mega-link-title">Passport Photo</span>
-                  <span class="mega-link-desc">ICAO 9303 biometric crop</span>
-                </a>
-                <a href="/tools/exif-strip/" class="mega-link">
-                  <span class="mega-link-title">EXIF &amp; GPS Scrub</span>
-                  <span class="mega-link-desc">Wipe camera metadata</span>
-                </a>
-                <a href="/tools/heic-to-jpg/" class="mega-link">
-                  <span class="mega-link-title">HEIC to JPG</span>
-                  <span class="mega-link-desc">Apple photo conversion</span>
-                </a>
-                <a href="/tools/signature-clean/" class="mega-link">
-                  <span class="mega-link-title">Signature Clean</span>
-                  <span class="mega-link-desc">Alpha threshold isolate</span>
-                </a>
+                <a href="/tools/passport-photo/" class="mega-link"><span class="mega-link-title">Passport Photo</span><span class="mega-link-desc">Official sizes &amp; sheets</span></a>
+                <a href="/tools/exif-strip/" class="mega-link"><span class="mega-link-title">Remove Photo Data</span><span class="mega-link-desc">GPS, camera, timestamps</span></a>
+                <a href="/tools/signature-clean/" class="mega-link"><span class="mega-link-title">Signature Cleaner</span><span class="mega-link-desc">Paper scan to crisp PNG</span></a>
+                <a href="/tools/spot-rejection/" class="mega-link"><span class="mega-link-title">Photo Checkup</span><span class="mega-link-desc">Biometric rules pre-check</span></a>
               </div>
             </div>
-
-            <!-- Col 2: PDF & Docs -->
+            <div class="mega-col">
+              <div class="mega-col-head">🖼️ Images</div>
+              <div class="mega-col-list">
+                <a href="/tools/image-compress/" class="mega-link"><span class="mega-link-title">Compress Image</span><span class="mega-link-desc">Hit exact size caps</span></a>
+                <a href="/tools/heic-to-jpg/" class="mega-link"><span class="mega-link-title">HEIC to JPG</span><span class="mega-link-desc">iPhone photos anywhere</span></a>
+                <a href="/tools/social-resizer/" class="mega-link"><span class="mega-link-title">Resize for Social</span><span class="mega-link-desc">Instagram, X, LinkedIn sizes</span></a>
+                <a href="/tools/bg-remove/" class="mega-link"><span class="mega-link-title">Remove Background</span><span class="mega-link-desc">Transparent PNG on-device</span></a>
+              </div>
+            </div>
             <div class="mega-col">
               <div class="mega-col-head">📄 PDF &amp; Docs</div>
               <div class="mega-col-list">
-                <a href="/tools/pdf-merge/" class="mega-link">
-                  <span class="mega-link-title">PDF Merge</span>
-                  <span class="mega-link-desc">Combine pages in RAM</span>
-                </a>
-                <a href="/tools/pdf-split/" class="mega-link">
-                  <span class="mega-link-title">PDF Split</span>
-                  <span class="mega-link-desc">Extract single pages</span>
-                </a>
-                <a href="/tools/pdf-redact/" class="mega-link">
-                  <span class="mega-link-title">PDF Redaction</span>
-                  <span class="mega-link-desc">Byte-level irreversible scrub</span>
-                </a>
-                <a href="/tools/pdf-flatten/" class="mega-link">
-                  <span class="mega-link-title">PDF Flatten</span>
-                  <span class="mega-link-desc">Lock form fields</span>
-                </a>
+                <a href="/tools/pdf-merge/" class="mega-link"><span class="mega-link-title">Merge PDF</span><span class="mega-link-desc">Combine pages in order</span></a>
+                <a href="/tools/pdf-split/" class="mega-link"><span class="mega-link-title">Split PDF</span><span class="mega-link-desc">Extract page ranges</span></a>
+                <a href="/tools/pdf-compress/" class="mega-link"><span class="mega-link-title">Compress PDF</span><span class="mega-link-desc">Meet portal upload limits</span></a>
+                <a href="/tools/pdf-redact/" class="mega-link"><span class="mega-link-title">Redact PDF</span><span class="mega-link-desc">Black out, unrecoverable</span></a>
               </div>
             </div>
-
-            <!-- Col 3: Security & Crypto -->
             <div class="mega-col">
-              <div class="mega-col-head">🔐 Security &amp; Crypto</div>
+              <div class="mega-col-head">🔐 Security</div>
               <div class="mega-col-list">
-                <a href="/tools/file-encrypt/" class="mega-link">
-                  <span class="mega-link-title">AES-256 Encrypt</span>
-                  <span class="mega-link-desc">Self-decrypting HTML</span>
-                </a>
-                <a href="/tools/clean-paste/" class="mega-link">
-                  <span class="mega-link-title">Clean Paste</span>
-                  <span class="mega-link-desc">Strip UTM &amp; hidden tokens</span>
-                </a>
-                <a href="/tools/password-gen/" class="mega-link">
-                  <span class="mega-link-title">Password Gen</span>
-                  <span class="mega-link-desc">High-entropy passphrases</span>
-                </a>
-                <a href="/tools/pgp-crypto/" class="mega-link">
-                  <span class="mega-link-title">PGP Crypto</span>
-                  <span class="mega-link-desc">P-256 WebCrypto signatures</span>
-                </a>
+                <a href="/tools/file-encrypt/" class="mega-link"><span class="mega-link-title">Encrypt a File</span><span class="mega-link-desc">AES-256, offline key</span></a>
+                <a href="/tools/password-gen/" class="mega-link"><span class="mega-link-title">Password Generator</span><span class="mega-link-desc">CSPRNG passphrases</span></a>
+                <a href="/tools/clean-paste/" class="mega-link"><span class="mega-link-title">Clean Paste</span><span class="mega-link-desc">Strip tracking links</span></a>
+                <a href="/tools/hash-gen/" class="mega-link"><span class="mega-link-title">File Hash</span><span class="mega-link-desc">SHA-256 fingerprint</span></a>
               </div>
             </div>
-
-            <!-- Col 4: Image & Media -->
             <div class="mega-col">
-              <div class="mega-col-head">🖼️ Image &amp; Media</div>
+              <div class="mega-col-head">💻 Developer</div>
               <div class="mega-col-list">
-                <a href="/tools/image-compress/" class="mega-link">
-                  <span class="mega-link-title">Image Compress</span>
-                  <span class="mega-link-desc">MozJPEG / WebP WASM</span>
-                </a>
-                <a href="/tools/svg-optimize/" class="mega-link">
-                  <span class="mega-link-title">SVG Optimize</span>
-                  <span class="mega-link-desc">Minify vector paths</span>
-                </a>
-                <a href="/tools/bg-remove/" class="mega-link">
-                  <span class="mega-link-title">Remove Background</span>
-                  <span class="mega-link-desc">Client-side segmentation</span>
-                </a>
-                <a href="/tools/magic-eraser/" class="mega-link">
-                  <span class="mega-link-title">Magic Eraser</span>
-                  <span class="mega-link-desc">In-browser inpainting</span>
-                </a>
+                <a href="/tools/json-format/" class="mega-link"><span class="mega-link-title">JSON Formatter</span><span class="mega-link-desc">Validate, sort, minify</span></a>
+                <a href="/tools/jwt-decode/" class="mega-link"><span class="mega-link-title">JWT Decoder</span><span class="mega-link-desc">Inspect claims offline</span></a>
+                <a href="/tools/base64/" class="mega-link"><span class="mega-link-title">Base64</span><span class="mega-link-desc">Encode &amp; decode any text</span></a>
+                <a href="/tools/qr-tool/" class="mega-link"><span class="mega-link-title">QR Code</span><span class="mega-link-desc">Wi-Fi, vCard, links</span></a>
               </div>
             </div>
-
-            <!-- Col 5: Dev & Forms -->
             <div class="mega-col">
-              <div class="mega-col-head">💻 Dev &amp; Forms</div>
+              <div class="mega-col-head">🧾 Forms &amp; Tax</div>
               <div class="mega-col-list">
-                <a href="/tools/json-format/" class="mega-link">
-                  <span class="mega-link-title">JSON Formatter</span>
-                  <span class="mega-link-desc">Parse, validate, beautify</span>
-                </a>
-                <a href="/tools/jwt-decode/" class="mega-link">
-                  <span class="mega-link-title">JWT Decoder</span>
-                  <span class="mega-link-desc">Inspect claims offline</span>
-                </a>
-                <a href="/tools/w9-prep/" class="mega-link">
-                  <span class="mega-link-title">IRS W-9 Prep</span>
-                  <span class="mega-link-desc">Private US tax worksheet</span>
-                </a>
-                <a href="/tools/sa100-prep/" class="mega-link">
-                  <span class="mega-link-title">UK SA100 Tax</span>
-                  <span class="mega-link-desc">HMRC return calculator</span>
-                </a>
+                <a href="/tools/w9-prep/" class="mega-link"><span class="mega-link-title">IRS W-9 Prep</span><span class="mega-link-desc">Private US tax worksheet</span></a>
+                <a href="/tools/sa100-prep/" class="mega-link"><span class="mega-link-title">UK SA100 Helper</span><span class="mega-link-desc">Self Assessment figures</span></a>
+                <a href="/tools/invoice-generator/" class="mega-link"><span class="mega-link-title">Invoice Generator</span><span class="mega-link-desc">Private client invoices</span></a>
+                <a href="/tools/resume-builder/" class="mega-link"><span class="mega-link-title">Resume Builder</span><span class="mega-link-desc">ATS-friendly formatting</span></a>
               </div>
             </div>
           </div>
-
-          <!-- Mega Menu Footer -->
           <div class="mega-footer">
-            <span>🛡️ All 72 tools run 100% in local browser RAM via WebAssembly &amp; WebCrypto</span>
+            <span>🛡️ All 72 tools run 100% in your browser — zero uploads</span>
             <div style="display:flex;gap:14px">
-              <a href="#tools" data-go="tools">Browse All 72 Tools &rarr;</a>
-              <a href="/tools/passport-photo/us-passport-std/">87 Official Presets &rarr;</a>
+              <a href="#tools" data-go="tools">Browse all tools &rarr;</a>
+              <a href="/tools/passport-photo/us-passport-std/">87 official presets &rarr;</a>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Mega Menu 2: Architecture & Privacy -->
+      <!-- Mega Menu: Learn -->
       <div class="nav-item">
         <button type="button" class="nav-btn" aria-expanded="false" aria-haspopup="true">
-          <span>Architecture</span>
+          <span>Learn</span>
           <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6"/></svg>
         </button>
-        <div class="mega-panel mega-panel-dropdown" role="region" aria-label="Architecture and privacy">
-          <a href="/compare/client-side-vs-server-side-file-tools/" class="mega-drop-link">
-            <span class="mega-drop-icon">⚖️</span>
-            <div>
-              <span class="mega-drop-title">Client-Side vs Server-Side</span>
-              <span class="mega-drop-sub">Why in-browser execution beats cloud file tools</span>
-            </div>
-          </a>
-          <a href="/compare/privacyfold-vs-cloud-compressors/" class="mega-drop-link">
-            <span class="mega-drop-icon">📊</span>
-            <div>
-              <span class="mega-drop-title">PrivacyFold vs Cloud Compressors</span>
-              <span class="mega-drop-sub">Technical benchmark on compression &amp; privacy</span>
-            </div>
-          </a>
-          <button type="button" class="mega-drop-link" data-page="ledger" style="width:100%;text-align:left;background:none;border:none">
+        <div class="mega-panel mega-panel-dropdown" role="region" aria-label="Learn">
+          <button type="button" class="mega-drop-link" data-go="how" style="width:100%;text-align:left;background:none;border:none">
+            <span class="mega-drop-icon">📐</span>
+            <div><span class="mega-drop-title">How it works</span><span class="mega-drop-sub">Add a file, adjust, download — nothing uploads</span></div>
+          </button>
+          <button type="button" class="mega-drop-link" data-go="privacy" style="width:100%;text-align:left;background:none;border:none">
             <span class="mega-drop-icon">🛡️</span>
-            <div>
-              <span class="mega-drop-title">Zero-Network Privacy Ledger</span>
-              <span class="mega-drop-sub">Real-time audit of zero outbound network calls</span>
-            </div>
+            <div><span class="mega-drop-title">Why your files stay private</span><span class="mega-drop-sub">See the zero-network proof yourself</span></div>
           </button>
-          <button type="button" class="mega-drop-link" data-page="webgpu" style="width:100%;text-align:left;background:none;border:none">
-            <span class="mega-drop-icon">⚡</span>
-            <div>
-              <span class="mega-drop-title">WebGPU &amp; Local AI Airlock</span>
-              <span class="mega-drop-sub">On-device inference with zero server telemetry</span>
-            </div>
-          </button>
-        </div>
-      </div>
-
-      <!-- Mega Menu 3: Resources & Guides -->
-      <div class="nav-item">
-        <button type="button" class="nav-btn" aria-expanded="false" aria-haspopup="true">
-          <span>Resources</span>
-          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="mega-panel mega-panel-dropdown" role="region" aria-label="Resources and guides">
           <a href="/blog/" class="mega-drop-link">
             <span class="mega-drop-icon">📚</span>
-            <div>
-              <span class="mega-drop-title">Engineering Blog &amp; Guides</span>
-              <span class="mega-drop-sub">Deep dives on WASM, EXIF leaks &amp; security</span>
-            </div>
-          </a>
-          <a href="/glossary/" class="mega-drop-link">
-            <span class="mega-drop-icon">📖</span>
-            <div>
-              <span class="mega-drop-title">Technical Glossary</span>
-              <span class="mega-drop-sub">15 architectural definitions (AES, OPFS, ICAO)</span>
-            </div>
+            <div><span class="mega-drop-title">Guides &amp; blog</span><span class="mega-drop-sub">EXIF leaks, photo standards, cryptography</span></div>
           </a>
           <a href="/compare/" class="mega-drop-link">
-            <span class="mega-drop-icon">📑</span>
-            <div>
-              <span class="mega-drop-title">Architectural Comparisons</span>
-              <span class="mega-drop-sub">Deep side-by-side analysis of file converters</span>
-            </div>
+            <span class="mega-drop-icon">⚖️</span>
+            <div><span class="mega-drop-title">Compare with cloud tools</span><span class="mega-drop-sub">Side-by-side with online converters</span></div>
           </a>
-          <button type="button" class="mega-drop-link" data-go="developers" style="width:100%;text-align:left;background:none;border:none">
-            <span class="mega-drop-icon">🤖</span>
-            <div>
-              <span class="mega-drop-title">Model Context Protocol (MCP)</span>
-              <span class="mega-drop-sub">JSON-RPC local tooling for AI agents &amp; IDEs</span>
-            </div>
-          </button>
         </div>
-      </div>
-
-      <!-- Direct Item: How it works -->
-      <div class="nav-item">
-        <button type="button" class="nav-btn" data-go="how">
-          <span>How It Works</span>
-        </button>
       </div>
     </nav>
 

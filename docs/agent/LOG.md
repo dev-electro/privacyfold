@@ -2,6 +2,13 @@
 
 ---
 
+## 2026-11-10 — mega menu redesign (PF-036 cont.)
+
+**Did:** owner call: the nav crammed dev surfaces (Architecture: ledger/WebGPU; Resources: glossary/MCP) and a 5-col Tools grid. Redesigned: **Tools** = 6 family columns × 4 curated user-searchable tools (Photo & ID / Images / PDF & Docs / Security / Developer / Forms & Tax) + footer ("all tools · 87 presets"); **Learn** = 4 plain items (How it works, Why files stay private, Guides & blog, Compare). Removed from nav: glossary, MCP, WebGPU hub, Privacy Ledger, "Client-Side vs Server-Side" — all still reachable via footer/pages. Also fixed `.mega-drop-title/.mega-drop-sub` inline rendering (display:block) and tightened 6 desc strings (uniform 42px rows, 0 h-overflow).
+**Proved by:** local build; panel x=290→right=1230 inside 1440 viewport, 6 cols, link heights uniform, Learn title/sub block-display confirmed.
+
+---
+
 ## 2026-11-10 — reference-parity polish (PF-036 cont.): seg control, dark contrast, crane perch
 
 **Did:** after restoring the runtime (previous entry), verified the full tool flow end-to-end (passport-photo: sample → Create photo → envelope fold → result 51 KB PNG + receipt {engine, sha256, version, determinism D, zero_upload pass} → Download PNG present). Closed the remaining reference-parity defects: `.seg` buttons now stretch to equal heights with centered labels ([40,40,40] measured); dark-theme `--ink-2` #A6A798→#B7B9AA + `--line` lifted for helper text contrast; crane perch offset (right 26px, top −70px, 126px wide) so it sits on the drop-card edge instead of clipping it.
