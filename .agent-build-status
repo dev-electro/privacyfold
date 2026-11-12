@@ -1,1 +1,1 @@
-PASS astro build 2026-11-10 (330 pages) after removing stray global.css:924 demo stylesheet; runtime boot restored (window.privacyfold defined, 72 grid cards render)
+PASS astro build 2026-11-12 (330 pages) — P0 clear: engine registry sha256-verified, 10 wasm binaries hosted
