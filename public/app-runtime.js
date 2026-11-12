@@ -1129,6 +1129,7 @@ function playEff(){return reduce?'off':PLAY}
 function applyPlay(){
   root.setAttribute('data-play',playEff());if(typeof worldReset==='function')worldReset();
   var b=$('#playBtn');if(!b)return;
+  var pv=$('#playV');if(!pv)return;
   $('#playV').textContent=reduce?'Off':PLAYN[PLAY];
   b.setAttribute('aria-label','Playfulness: '+(reduce?'Off (your device asks for less motion)':PLAYN[PLAY])+'. Change');
 }

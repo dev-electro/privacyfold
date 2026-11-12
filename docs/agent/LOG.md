@@ -2,6 +2,16 @@
 
 ---
 
+## 2026-11-10 — Astro app visual rescue: 2 line-level bugs fixed (PF-036 cont.)
+
+**Did:** visual review of privacyfold.pages.dev at 1440/1024/768/390 + local build. Found two root causes behind the "too many lacunas" report:
+1. `src/styles/global.css:924` — a pasted-in standalone demo-page stylesheet (`body{display:grid;place-items:center;background:#F5F2E9}` + unscoped `button{width:100%;background:#FF5A1F}`) stretched every button site-wide: `.brand` grew to 1168px and pushed the mega menu 429px outside the nav bar; CTAs forced full-width; body became a centered cream canvas in both themes. DELETED.
+2. `app-runtime.js` crashed at boot (line 1132: `$('#playV').textContent` with no `#playV` element in ToolDesk) → IIFE died before `window.privacyfold`/`__PRIVACYFOLD_READY__` → **tool grid, chips, palette, SDK: all dead on every page**. Fixed by adding `#playV` span to the play button (ToolDesk.astro) + null-guard in runtime.
+**Proved by (local build 330 pages):** navMenuOverflow +429px → −600px; brand 1168→140px; `window.privacyfold` undefined → object; `#grid` 0 → **72 cards**; chips 0 → 7; hero CTA 132px natural; no horizontal overflow at 390/1440; dark mode verified cream-on-dark (h1 rgb(243,241,231) on rgb(14,16,10)).
+**Next:** the site needs these pushed to go live; remaining polish (preset card rhythm, crane overlap, highlight-bar contrast) tracked under PF-036 lane.
+
+---
+
 ## 2026-11-12 — Fix Mega Menu Alignment & Viewport Horizontal Overflow
 
 **Tasks:** Fixed horizontal layout blowout and misaligned mega menu positioning.
