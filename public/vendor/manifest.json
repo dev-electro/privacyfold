@@ -1,0 +1,40 @@
+{
+  "generated": "2026-11-24T18:31:41.764Z",
+  "files": [
+    {
+      "path": "/vendor/pdfjs/pdf.min.mjs",
+      "bytes": 352645,
+      "sha256": "27fc2a057a00f92a4334ad06e17dbd7259912954e9fb7f76400bcca5fd190a9c"
+    },
+    {
+      "path": "/vendor/pdfjs/pdf.worker.min.mjs",
+      "bytes": 1375838,
+      "sha256": "1baa1844c89c80a5b2797c916e75ab29254be46d8e9cb53cb6364d7aad84be36"
+    },
+    {
+      "path": "/vendor/pdf-lib.esm.min.js",
+      "bytes": 523417,
+      "sha256": "72c052d97b4d5d9fa6cdbdcb7ad709f03d4ddb1122390cb3afeba4d88651d969"
+    },
+    {
+      "path": "/vendor/qrcode.js",
+      "bytes": 56694,
+      "sha256": "18ae399f81182bc9de916e9c77b195df20cc58d6f2d55a62b085a299f1bf1780"
+    },
+    {
+      "path": "/vendor/sql-wasm.js",
+      "bytes": 47621,
+      "sha256": "9b96118841c6edfdf53c6f388c1419d1f473cf469df6a6fc2864b386d60bdb5e"
+    },
+    {
+      "path": "/vendor/sql-wasm.wasm",
+      "bytes": 688197,
+      "sha256": "43bbcdd44287e5a2db3b6b5af34b1a3485a7a441285d247976c1ebe3c61f8dbf"
+    },
+    {
+      "path": "/vendor/libheif.js",
+      "bytes": 2044206,
+      "sha256": "074b2b55ef3de477ba9f794ca381f3f0324c1cba8c91b4af07395f39c22d54cc"
+    }
+  ]
+}

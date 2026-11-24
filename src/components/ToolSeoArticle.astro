@@ -43,6 +43,11 @@ const LOCALE_LABELS: Record<string, string> = {
   bn: 'বাংলা',
   he: 'עברית',
 };
+
+const chip = (active: boolean) =>
+  active
+    ? 'padding:3px 9px;border-radius:5px;text-decoration:none;font-size:12px;font-family:var(--font-mono);background:var(--ink);color:var(--ground);font-weight:600;border:1px solid var(--ink)'
+    : 'padding:3px 9px;border-radius:5px;text-decoration:none;font-size:12px;font-family:var(--font-mono);background:var(--surface);color:var(--ink);border:1px solid var(--line)';
 ---
 
 <div class="seo-wrap">
@@ -50,26 +55,18 @@ const LOCALE_LABELS: Record<string, string> = {
     <AdSlot slotKey="tool-top" format="banner" pageType="tool" />
 
     <article class="seo-card">
-      <div class="kick">TECHNICAL SPECIFICATION &amp; USER GUIDE · {famName.toUpperCase()}</div>
-      <h2>{presetTitle || `How ${tool.name} Works Locally in Your Browser`}</h2>
+      <div class="kick">{famName} · user guide</div>
+      <h2>{presetTitle || 'How it works on your device'}</h2>
 
       {translations && translations.length > 0 && (
-        <div class="lang-strip" style="margin: 16px 0 20px 0; padding: 10px 14px; background: #faf9f5; border: 1px solid var(--line, #dad5c5); border-radius: 6px; font-size: 13px; color: var(--ink-2, #5b5a4e); display: flex; flex-wrap: wrap; align-items: center; gap: 8px;">
-          <span style="font-weight: 600; color: var(--ink, #17160f); display: inline-flex; align-items: center; gap: 5px;">
+        <div class="lang-strip">
+          <span class="lang-k">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-            Available in:
+            Available in
           </span>
-          <a
-            href={`/tools/${tool.slug}/`}
-            style={`padding: 2px 8px; border-radius: 4px; text-decoration: none; font-size: 12px; font-family: var(--font-mono); ${currentLocale === 'en' || !currentLocale ? 'background: var(--ink, #17160f); color: #fff; font-weight: 600;' : 'background: #fff; border: 1px solid var(--line, #dad5c5); color: var(--ink, #17160f);'}`}
-          >
-            English
-          </a>
+          <a href={`/tools/${tool.slug}/`} style={chip(currentLocale === 'en' || !currentLocale)}>English</a>
           {translations.map((tr) => (
-            <a
-              href={`/${tr.locale}/tools/${tr.slug}/`}
-              style={`padding: 2px 8px; border-radius: 4px; text-decoration: none; font-size: 12px; font-family: var(--font-mono); ${currentLocale === tr.locale ? 'background: var(--ink, #17160f); color: #fff; font-weight: 600;' : 'background: #fff; border: 1px solid var(--line, #dad5c5); color: var(--ink, #17160f);'}`}
-            >
+            <a href={`/${tr.locale}/tools/${tr.slug}/`} style={chip(currentLocale === tr.locale)}>
               {LOCALE_LABELS[tr.locale] || tr.locale.toUpperCase()}
             </a>
           ))}
@@ -77,13 +74,12 @@ const LOCALE_LABELS: Record<string, string> = {
       )}
 
       <div class="aeo-box">
-        <span class="aeo-k">Direct Answer Summary (Optimized for Search &amp; AI Citations)</span>
+        <span class="aeo-k">In short</span>
         <p>{tool.seo.aeoSummary}</p>
       </div>
 
-      <div class="notice-privacy-ads" style="margin: 16px 0 24px 0; padding: 12px 16px; background: #fdfbf7; border: 1px solid var(--line, #dad5c5); border-left: 4px solid var(--accent, #ff5a1f); border-radius: 4px; font-size: 13.5px; color: var(--ink-2, #5b5a4e); line-height: 1.5;">
-        <strong style="color: var(--ink, #17160f);">Technical Privacy Guarantee:</strong>
-        Your file is processed 100% locally in your browser memory and is never uploaded. This page contains advertisements served by Google AdSense to sustain free operation without accounts or subscriptions.
+      <div class="notice-privacy-ads">
+        <strong>Nothing is uploaded.</strong> Your file is processed in this tab and never leaves the device. This page carries Google AdSense ads, which keep the tools free without accounts or subscriptions.
       </div>
 
       <ShareRow
@@ -95,7 +91,7 @@ const LOCALE_LABELS: Record<string, string> = {
 
       <p>{presetDesc || tool.desc}</p>
 
-      <h3>Step-by-Step Instructions</h3>
+      <h3>Step by step</h3>
       <ol>
         {tool.seo.steps.map((step) => (
           <li>{step}</li>
@@ -104,14 +100,15 @@ const LOCALE_LABELS: Record<string, string> = {
 
       {tool.settingsExplained && tool.settingsExplained.length > 0 && (
         <>
-          <h3>Settings Explained &amp; Safe Configurations</h3>
-          <div class="settings-list" style="display: grid; gap: 14px; margin: 16px 0 24px 0;">
+          <h3>Every setting, explained</h3>
+          <div class="settings-list">
             {tool.settingsExplained.map((s) => (
-              <div style="background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px; padding: 14px 16px;">
-                <div style="font-weight: 600; color: #111827; font-size: 15px;">{s.name}</div>
-                <p style="margin: 6px 0 8px 0; font-size: 14px; color: #4b5563; line-height: 1.5;">{s.description}</p>
-                <div style="font-size: 13px; color: #6b7280;">
-                  <span>Safe Default: <code>{s.safeDefault}</code></span> · <span>Example: <em>{s.example}</em></span>
+              <div class="setting">
+                <div class="setting-t">{s.name}</div>
+                <p class="setting-d">{s.description}</p>
+                <div class="setting-m">
+                  <span>Safe default: <code>{s.safeDefault}</code></span>
+                  <span>Example: <em>{s.example}</em></span>
                 </div>
               </div>
             ))}
@@ -121,69 +118,69 @@ const LOCALE_LABELS: Record<string, string> = {
 
       {tool.whatToExpect && (
         <>
-          <h3>What to Expect &amp; Performance Benchmarks</h3>
-          <p style="font-size: 14.5px; color: #374151; line-height: 1.6;">{tool.whatToExpect.results}</p>
-          <div style="background: #f8fafc; border-left: 4px solid #3b82f6; padding: 12px 16px; margin: 14px 0; font-size: 13.5px; color: #1e293b;">
-            <div><strong>Execution Latency:</strong> {tool.whatToExpect.benchmarks}</div>
-            <div style="margin-top: 4px;"><strong>Supported Limits:</strong> {tool.whatToExpect.limits}</div>
+          <h3>What to expect</h3>
+          <p>{tool.whatToExpect.results}</p>
+          <div class="bench-box">
+            <div><strong>Speed:</strong> {tool.whatToExpect.benchmarks}</div>
+            <div><strong>Limits:</strong> {tool.whatToExpect.limits}</div>
           </div>
         </>
       )}
 
       {tool.privacyProof && (
         <>
-          <h3>Privacy Verification &amp; Technical Guarantee</h3>
-          <p style="font-size: 14.5px; color: #374151; line-height: 1.6;">{tool.privacyProof.howItWorks}</p>
-          <ol style="font-size: 14px; color: #4b5563; line-height: 1.6;">
+          <h3>How to verify it stays local</h3>
+          <p>{tool.privacyProof.howItWorks}</p>
+          <ol>
             {tool.privacyProof.verificationSteps.map((step) => (
-              <li style="margin-bottom: 6px;">{step}</li>
+              <li>{step}</li>
             ))}
           </ol>
-          <p style="font-size: 13px; color: #6b7280; font-style: italic; margin-top: 10px;">
-            {tool.privacyProof.openSourceNotice}
-          </p>
+          <p class="muted-note">{tool.privacyProof.openSourceNotice}</p>
         </>
       )}
 
-      <h3>Architecture &amp; Standards Comparison</h3>
-      <table class="spec-tbl">
-        <thead>
-          <tr>
-            <th>Attribute</th>
-            <th>PrivacyFold Local Engine</th>
-            <th>Traditional Online Converters</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Execution Runtime</strong></td>
-            <td>{tool.wasmModule} (In-Browser RAM)</td>
-            <td>Remote Cloud Server Buckets</td>
-          </tr>
-          <tr>
-            <td><strong>Standard Compliance</strong></td>
-            <td>{tool.std}</td>
-            <td>Opaque Server Scripts</td>
-          </tr>
-          <tr>
-            <td><strong>Network Footprint</strong></td>
-            <td><strong>0 KB uploaded</strong> (Client-Side Only)</td>
-            <td>Full File Upload Over Internet</td>
-          </tr>
-          <tr>
-            <td><strong>Offline Support</strong></td>
-            <td>100% Functional via Service Worker PWA</td>
-            <td>Fails Without Active Server Connection</td>
-          </tr>
-          <tr>
-            <td><strong>Agent Integration</strong></td>
-            <td>Deterministic JSON-RPC / MCP Tool Schema</td>
-            <td>Ad-Hoc REST Upload Form</td>
-          </tr>
-        </tbody>
-      </table>
+      <h3>This tool vs. an online converter</h3>
+      <div class="tbl-wrap">
+        <table class="spec-tbl">
+          <thead>
+            <tr>
+              <th>Attribute</th>
+              <th>PrivacyFold (this tab)</th>
+              <th>Typical online converter</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Runs in</strong></td>
+              <td>{tool.wasmModule} (browser memory)</td>
+              <td>Someone else's server</td>
+            </tr>
+            <tr>
+              <td><strong>Standard</strong></td>
+              <td>{tool.std}</td>
+              <td>Undisclosed scripts</td>
+            </tr>
+            <tr>
+              <td><strong>Data sent</strong></td>
+              <td><strong>0 KB</strong> of your file</td>
+              <td>The whole file</td>
+            </tr>
+            <tr>
+              <td><strong>Offline</strong></td>
+              <td>Works once loaded (PWA)</td>
+              <td>Not at all</td>
+            </tr>
+            <tr>
+              <td><strong>Automation</strong></td>
+              <td>Deterministic JSON-RPC / MCP</td>
+              <td>Upload form only</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-      <h3>Frequently Asked Questions</h3>
+      <h3>Frequently asked questions</h3>
       <div class="faq-list">
         {tool.seo.faqs.map((faq) => (
           <details class="faq-item">
@@ -194,20 +191,18 @@ const LOCALE_LABELS: Record<string, string> = {
       </div>
 
       {tool.byline && (
-        <div class="byline-box" style="margin-top: 32px; padding: 16px 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;">
-          <div style="font-size: 13px; color: #64748b; font-family: var(--font-mono);">
-            <span>Written by: <strong>{tool.byline.author}</strong></span> · 
-            <span>Verified by: <strong>{tool.byline.reviewer}</strong> ({tool.byline.reviewedDate})</span>
+        <div class="byline-box">
+          <div class="byline-meta">
+            <span>Written by <strong>{tool.byline.author}</strong></span>
+            <span>Reviewed by <strong>{tool.byline.reviewer}</strong> · {tool.byline.reviewedDate}</span>
           </div>
           {tool.byline.sources && tool.byline.sources.length > 0 && (
-            <div style="margin-top: 8px; font-size: 12.5px; color: #64748b;">
-              <span>Official Specifications &amp; Standards: </span>
+            <div class="byline-src">
+              <span>Sources: </span>
               {tool.byline.sources.map((s, idx) => (
                 <span>
                   {idx > 0 && ' · '}
-                  <a href={s.url} target="_blank" rel="noopener noreferrer" style="color: #2563eb; text-decoration: underline;">
-                    {s.name}
-                  </a>
+                  <a href={s.url} target="_blank" rel="noopener noreferrer">{s.name}</a>
                 </span>
               ))}
             </div>
@@ -221,36 +216,142 @@ const LOCALE_LABELS: Record<string, string> = {
 
   <aside class="seo-side">
     <div class="side-card">
-      <div class="side-t">Related {famName} Tools</div>
+      <div class="side-t">More {famName} tools</div>
       <div class="side-list">
         {related.map((rel) => {
           const relHasLocale = currentLocale && currentLocale !== 'en' && getToolTranslations(rel.id).some((t) => t.locale === currentLocale);
           const relHref = relHasLocale ? `/${currentLocale}/tools/${rel.slug}/` : `/tools/${rel.slug}/`;
           return (
             <a href={relHref} class="side-link">
-              <span class="mono" style="font-size: 11px; opacity: 0.7;">
-                {rel.glyph}
-              </span>
-              <div style="flex: 1; min-width: 0;">
+              <div class="side-link-body">
                 <div class="side-link-t">{rel.name}</div>
                 <div class="side-link-d">{rel.tag}</div>
               </div>
+              <span class="side-arrow" aria-hidden="true">→</span>
             </a>
           );
         })}
       </div>
     </div>
 
-    <div class="side-card" style="margin-top: 16px;">
-      <div class="side-t">Standards &amp; Citations</div>
-      <p style="font-size: 13px; color: var(--ink-2); line-height: 1.5; margin-bottom: 8px;">
-        Evaluated against <code>{tool.std}</code>. Built strictly for local zero-upload environments.
-      </p>
-      <a href="/about/" class="side-more" style="color: var(--focus);">
-        Read verification guidelines →
-      </a>
+    <div class="side-card side-card-2">
+      <div class="side-t">Standard used</div>
+      <p class="side-p">Checked against <code>{tool.std}</code>. Built for a local, zero-upload workflow.</p>
+      <a href="/about/" class="side-more">How we verify this →</a>
     </div>
 
     <AdSlot slotKey="tool-sidebar" format="sidebar" pageType="tool" />
   </aside>
 </div>
+
+<style>
+  .kick {
+    font: 600 11px/1 var(--font-mono);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .lang-strip {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 7px;
+    margin: 14px 0 18px;
+    padding: 10px 12px;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+  }
+  .lang-strip > * { flex: none; }
+  .lang-k {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font: 600 12px var(--font-mono);
+    color: var(--ink);
+    margin-right: 4px;
+    position: sticky;
+    left: 0;
+    background: var(--surface-2);
+    padding-right: 6px;
+  }
+  .notice-privacy-ads {
+    margin: 16px 0 22px;
+    padding: 12px 15px;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--ink-2);
+  }
+  .notice-privacy-ads strong { color: var(--ink); }
+  .settings-list { display: grid; gap: 12px; margin: 14px 0 22px; }
+  .setting {
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 13px 15px;
+  }
+  .setting-t { font-weight: 650; color: var(--ink); font-size: 15px; }
+  .setting-d { margin: 5px 0 8px; font-size: 14px; color: var(--ink-2); line-height: 1.5; }
+  .setting-m { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 12.5px; color: var(--ink-2); }
+  .setting-m code {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 1px 5px;
+    overflow-wrap: anywhere;
+  }
+  .bench-box {
+    background: var(--surface-2);
+    border-left: 3px solid var(--ok);
+    border-radius: 0 8px 8px 0;
+    padding: 12px 15px;
+    margin: 12px 0 20px;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--ink-2);
+  }
+  .bench-box strong { color: var(--ink); }
+  .bench-box div + div { margin-top: 4px; }
+  .muted-note { font-size: 13px; color: var(--ink-2); font-style: italic; margin-top: 10px; }
+  .tbl-wrap { overflow-x: auto; }
+  .spec-tbl { min-width: 520px; }
+  .faq-list { display: grid; gap: 10px; margin-top: 12px; }
+  .byline-box {
+    margin-top: 30px;
+    padding: 15px 18px;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+  }
+  .byline-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+    font-size: 12.5px;
+    color: var(--ink-2);
+    font-family: var(--font-mono);
+  }
+  .byline-meta strong { color: var(--ink); }
+  .byline-src { margin-top: 8px; font-size: 12.5px; color: var(--ink-2); }
+  .byline-src a { color: var(--focus); text-decoration: underline; text-underline-offset: 2px; }
+  .side-glyph { font-size: 11px; opacity: 0.7; }
+  .side-arrow { color: var(--ink-2); font-size: 13px; opacity: 0; transition: opacity .15s, transform .15s; }
+  .side-link:hover .side-arrow { opacity: 1; transform: translateX(2px); }
+  .side-link-body { flex: 1; min-width: 0; }
+  .side-card-2 { margin-top: 16px; }
+  .side-p { font-size: 13px; color: var(--ink-2); line-height: 1.5; margin-bottom: 8px; }
+  .side-p code, .side-card code { overflow-wrap: anywhere; font-family: var(--font-mono); }
+  .side-more { color: var(--focus); font-size: 13px; text-decoration: none; }
+  .side-more:hover { text-decoration: underline; }
+</style>

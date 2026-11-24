@@ -166,6 +166,17 @@
 
 /* Mobile Navigation Button and Slide-Over Drawer */
 .mob-menu-btn{display:none}
+/* Index cards sit on paper stock in every theme, so they pin their own ink.
+   Without this they inherited the dark-theme ink and rendered white-on-white. */
+.compare-card,.glossary-card,.blog-card{background:var(--paper);color:var(--p-ink)}
+.compare-card p,.glossary-card p,.blog-card p{color:var(--p-ink-2)}
+/* inline styles on the card metadata set the theme ink, so the paper-surface
+   colour has to win explicitly or dark mode renders grey-on-white. */
+.compare-card .mono,.glossary-card .mono,.blog-card .mono{color:var(--p-ink-2) !important}
+/* the card CTA keeps a link colour — --seal is tuned for dark ground and only
+   reaches ~3:1 on white paper, so paper cards use the darker --p-link. */
+.compare-card .card-cta,.glossary-card .card-cta,.blog-card .card-cta{color:var(--p-link) !important}
+.compare-card:hover,.glossary-card:hover,.blog-card:hover{border-color:var(--seal)}
 @media(max-width:860px){
   .mob-menu-btn{display:inline-flex}
 }
@@ -208,7 +219,7 @@
 :root{
   --ground:#F5F2E9; --surface:#FDFCF8; --surface-2:#EDE9DC; --ink:#17160F; --ink-2:#5B5A4E; --line:#DAD5C5; --edge:#17160F;
   --accent:#FF5A1F; --accent-ink:#17160F; --focus:#17160F; --ok:#0E8F68; --bad:#C8321A;
-  --paper:#FFFFFF; --p-ink:#17160F; --cr:rgba(23,22,15,.075);
+  --paper:#FFFFFF; --p-ink:#17160F; --p-ink-2:#57533F; --p-link:#B3351B; --hard:var(--edge); --cr:rgba(23,22,15,.075);
   --shadow:0 1px 0 rgba(23,22,15,.05),0 14px 30px -18px rgba(23,22,15,.35);
   --f-photo:#F5B82E; --f-pdf:#A33B48; --f-forms:#F0662B; --f-image:#1FAE85; --f-dev:#2E3025; --f-crypto:#F27AA3;
   --font-display:'Bricolage Grotesque','Helvetica Neue',Arial,sans-serif;
@@ -302,15 +313,29 @@ h1,h2,h3,h4,p{margin:0}
 .links, .atelier-bar{display:none !important}
 
 .nav-r{margin-left:auto;display:flex;gap:8px;align-items:center;position:relative;flex-shrink:0}
+/* The desk header carries more controls than the site header (Desk tray, sound,
+   paper, playfulness). Below ~1740 px they overran the 1200 px rail and the last
+   three were clipped outside the viewport, so labels drop to icons earlier. */
+@media(max-width:1740px){
+  .nav-r{gap:2px}
+  .nav-r .nbtn .lbl,.nav-r .kbdk{display:none}
+  .nav-r .nbtn{min-width:40px;padding:0 8px}
+  .nav-menu{gap:2px;margin-left:4px}
+  .nav-menu .nbtn{padding:0 6px;font-size:13px}
+  .lang-wrap .nbtn .lbl{display:none}
+  .lang-wrap .nbtn{padding:0 8px}
+}
 .mob-menu-btn{display:none !important}
 .nbtn{min-height:40px;min-width:40px;padding:0 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;font:500 14px var(--font-body)}
 .nbtn:hover{border-color:var(--ink)}
 .nbtn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .kbdk{font:500 11px var(--font-mono);border:1px solid var(--line);border-radius:5px;padding:2px 6px;color:var(--ink-2)}
 .badge{min-width:20px;height:20px;border-radius:99px;background:var(--accent);color:var(--accent-ink);display:inline-grid;place-items:center;font:600 11px/1 var(--font-mono);padding:0 6px}
-@media(max-width:960px){.nav-menu{display:none !important}.mob-menu-btn{display:inline-flex !important}}
+@media(max-width:1380px){.nav-menu{display:none !important}.mob-menu-btn{display:inline-flex !important}}
 @media(max-width:560px){.nbtn .lbl{display:none}.kbdk{display:none}.nav-r{gap:4px}.nbtn{min-width:38px;min-height:38px;padding:0 6px}.nav .wrap{gap:4px}.brand{font-size:18px;gap:6px}}
-@media(max-width:380px){#soundBtn{display:none}}
+@media(max-width:400px){.brand{font-size:16px}.brand svg{width:26px;height:26px}}
+@media(max-width:380px){.nav-r .nbtn{min-width:30px;padding:0 3px}#themeBtn,.nav-r .badge{display:none}}
+@media(max-width:440px){.nav-r{gap:0}.nav-r .nbtn{min-width:34px;padding:0 4px}.nav-r .badge{min-width:16px;padding:0 4px;height:18px}#soundBtn{display:none}}
 
 /* buttons */
 .btn{font:600 15px/1 var(--font-body);min-height:48px;padding:0 20px;border:1.5px solid var(--edge);border-radius:10px;background:var(--surface);color:var(--ink);cursor:pointer;box-shadow:0 3px 0 var(--edge);transition:transform .08s,box-shadow .08s;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none}
@@ -734,6 +759,35 @@ li.info{color:var(--ink-2)}
 .rm s{text-decoration:none;font:500 11.5px var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}
 .rm span{font:500 13px var(--font-mono);overflow-wrap:anywhere;color:var(--ink-2);text-decoration:line-through;text-decoration-color:var(--accent);text-decoration-thickness:2px}
 
+/* ask for a file instead of faking one */
+.askfile{display:grid;gap:6px;place-items:center;text-align:center;padding:34px 22px;border:1.5px dashed var(--line);border-radius:14px;background:var(--surface)}
+.askfile b{font:700 17px var(--font-display)}
+.askfile .help{max-width:34ch;margin:0}
+.askfile.err{border-style:solid;border-color:var(--accent,#C93A1B);background:rgba(201,58,27,.05)}
+.askfile.err b{color:var(--accent,#C93A1B)}
+.askfile.err .help{max-width:46ch}
+
+/* generated artefacts */
+.qrwrap{display:grid;gap:10px;justify-items:start}
+.qrwrap img{display:block;border:1px solid var(--line);border-radius:8px;background:#fff;padding:8px;max-width:100%;height:auto}
+table.inv{width:100%;border-collapse:collapse;font:400 13.5px var(--font-body)}
+table.inv th,table.inv td{border-bottom:1px solid var(--line);padding:7px 8px;text-align:left}
+table.inv th{font:600 11.5px var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}
+table.inv .n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tots{display:grid;gap:4px;margin-top:12px;justify-items:end;font:400 13.5px var(--font-body)}
+.tots>div{display:flex;gap:18px;justify-content:space-between;min-width:220px}
+.tots span{color:var(--ink-2)}
+.tots b{font-variant-numeric:tabular-nums}
+.tots .big{border-top:2px solid var(--ink);padding-top:6px;font:700 15px var(--font-body)}
+.cv{display:grid;gap:14px;font:400 13.5px/1.55 var(--font-body)}
+.cv h1{font:700 22px/1.2 var(--font-display);margin:0}
+.cv .role{font:600 14px var(--font-body);color:var(--accent);margin:0}
+.cv .contact{font:400 12.5px var(--font-mono);color:var(--ink-2);margin:0}
+.cv h2{font:700 12px var(--font-mono);letter-spacing:.09em;text-transform:uppercase;color:var(--ink-2);margin:4px 0 0;border-bottom:1px solid var(--line);padding-bottom:4px}
+.cv ul{margin:0;padding-left:18px;display:grid;gap:3px}
+.cv .job{margin:0;font-weight:600}
+.cv p{margin:0}
+
 /* the agent as a visible co-worker */
 .acur{position:fixed;left:0;top:0;z-index:95;pointer-events:none;transition:transform .72s cubic-bezier(.4,0,.2,1);will-change:transform}
 .acur svg{display:block;width:26px;height:26px;filter:drop-shadow(0 2px 3px rgba(0,0,0,.35))}
@@ -872,6 +926,7 @@ li.info{color:var(--ink-2)}
 .pg-h h1{margin:0 0 12px;font:800 clamp(34px,6vw,58px)/1.02 var(--font-display);letter-spacing:-.02em}
 .pg-sub{margin:0 0 12px;font-size:17px;line-height:1.55;color:var(--ink-2)}
 .ftl{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+footer .ft-legal{padding-block:0 40px;color:var(--ink-2);font:400 12px/1.5 var(--font-mono);opacity:.85}
 .ftl button{background:none;border:0;color:inherit;font:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer;min-height:36px;padding:0}
 
 /* features */

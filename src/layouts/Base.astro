@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import GoogleAdSense from '../components/GoogleAdSense.astro';
 import ConsentBanner from '../components/ConsentBanner.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 
 interface Props {
   title?: string;
@@ -68,6 +69,8 @@ const isRtl = ['ar', 'he'].includes(lang);
   </head>
   <body>
     <slot />
+
+    <SiteFooter />
 
     <ConsentBanner />
 

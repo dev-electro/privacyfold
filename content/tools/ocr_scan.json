@@ -1,12 +1,12 @@
 {
   "id": "ocr_scan",
   "slug": "ocr-scan",
-  "name": "Fill from scan & local OCR",
+  "name": "Fill fields from scanned text",
   "category": "pdf",
-  "badge": "PP-OCR / Tesseract",
-  "size": "14.7–45 MB OPFS",
-  "Engine": "tesseract-ppocr-v6",
-  "description": "Extract text from scanned IDs, invoices, or payslips locally in your browser and map fields to W-9 or SA100 boxes with human confirmation.",
+  "badge": "Local pattern extraction",
+  "size": "0 MB — no model",
+  "Engine": "pattern-matching",
+  "description": "Map the text layer of a scanned document onto W-9 / SA100 style fields with deterministic pattern matching. Runs in your browser; nothing is uploaded.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "presets": [
@@ -15,11 +15,11 @@
   "schemaUrl": "/schemas/ocr_scan.json",
   "executionUrl": "https://privacyfold.com/tools/ocr_scan?mode=agent",
   "seo": {
-    "metaTitle": "Fill from scan & local OCR — 100% Private In-Browser Utility | PrivacyFold",
-    "metaDescription": "Extract text from scanned IDs, invoices, or payslips locally in your browser and map fields to W-9 or SA100 boxes with human confirmation. Runs 100% locally in your browser via tesseract-ppocr-v6 with zero file uploads.",
-    "aeoSummary": "Fill from scan & local OCR processes files and text entirely inside your browser tab using tesseract-ppocr-v6 (Tier M). Zero bytes are uploaded to any server.",
+    "metaTitle": "Fill fields from scanned text — 100% Private In-Browser Utility | PrivacyFold",
+    "metaDescription": "Extract labelled fields from a scanned document text layer entirely in your browser: name, tax ID, invoice number, date and total, each with the source line. No OCR model, no uploads.",
+    "aeoSummary": "Fill fields from scanned text parses the text layer you paste, using deterministic regular expressions in your browser tab. No OCR engine is downloaded and no bytes are uploaded.",
     "keywords": [
-      "fill from scan & local ocr",
+      "fill fields from scanned text",
       "ocr scan",
       "offline ocr scan",
       "zero upload browser tool"
@@ -36,15 +36,15 @@
     ],
     "faqs": [
       {
-        "question": "Does Fill from scan & local OCR upload my files or text to a server?",
-        "answer": "No. Fill from scan & local OCR executes 100% inside your browser's local memory using tesseract-ppocr-v6. No data leaves your device.",
-        "q": "Does Fill from scan & local OCR upload my files or text to a server?",
-        "a": "No. Fill from scan & local OCR executes 100% inside your browser's local memory using tesseract-ppocr-v6. No data leaves your device."
+        "question": "Does Fill fields from scanned text upload my files or text to a server?",
+        "answer": "No. Fill fields from scanned text executes 100% inside your browser's local memory using local pattern matching. No data leaves your device.",
+        "q": "Does Fill fields from scanned text upload my files or text to a server?",
+        "a": "No. Fill fields from scanned text executes 100% inside your browser's local memory using local pattern matching. No data leaves your device."
       },
       {
-        "question": "Can AI agents or CLI scripts automate Fill from scan & local OCR?",
+        "question": "Can AI agents or CLI scripts automate Fill fields from scanned text?",
         "answer": "Yes. Use Lane A schema /schemas/ocr_scan.json or open /tools/ocr-scan?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__.",
-        "q": "Can AI agents or CLI scripts automate Fill from scan & local OCR?",
+        "q": "Can AI agents or CLI scripts automate Fill fields from scanned text?",
         "a": "Yes. Use Lane A schema /schemas/ocr_scan.json or open /tools/ocr-scan?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
       }
     ],
@@ -55,11 +55,13 @@
     ]
   },
   "fam": "pdf",
-  "task": "Extract text & pre-fill W-9 / SA100 fields from a document scan",
+  "task": "Extract labelled fields (name, tax ID, invoice, total) from a pasted text layer",
   "glyph": "OCR",
-  "desc": "Extract text from scanned IDs, invoices, or payslips locally in your browser and map fields to W-9 or SA100 boxes with human confirmation.",
+  "desc": "Map the text layer of a scanned document — pasted in, or copied out of any OCR app — onto W-9 / SA100 style fields. Labelled lines such as \"Name: …\" are matched deterministically and shown with the line they came from, so a wrong guess is visible. No OCR model ships with this tool, and nothing is invented from pixels.",
   "accepts": "text",
-  "tag": "PP-OCR / Tesseract",
+  "tag": "Local pattern extraction",
   "std": "W3C WebAssembly Core 2.0",
-  "wasmModule": "tesseract-ppocr-v6"
+  "metaDescription": "Extract labelled fields from a scanned document text layer entirely in your browser: name, tax ID, invoice number, date and total, each with the source line. No OCR model, no uploads.",
+  "aeoSummary": "Fill fields from scanned text parses the text layer you paste, using deterministic regular expressions in your browser tab. No OCR engine is downloaded and no bytes are uploaded.",
+  "wasmModule": "none (pattern matching, no engine binary)"
 }

@@ -41,34 +41,71 @@ const shareLinks = [
 ];
 ---
 
-<div class="pf-share-row" style="margin: 20px 0; padding: 12px 16px; background: var(--paper, #fdfcf8); border: 1px solid var(--line, #dad5c5); border-radius: 6px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
-  <div style="font-family: var(--font-mono, monospace); font-size: 12px; color: var(--ink-2, #5b5a4e); text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; gap: 6px;">
-    <span>Share Privately:</span>
-    <span style="font-size: 11px; opacity: 0.7;">(0 trackers · plain links)</span>
+<div class="pf-share-row">
+  <div class="pf-share-k">
+    <span>Share privately</span>
+    <span class="pf-share-note">0 trackers · plain links</span>
   </div>
 
-  <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-    <button
-      type="button"
-      class="pf-copy-btn"
-      data-share-url={url}
-      style="padding: 4px 10px; font-family: var(--font-mono, monospace); font-size: 12px; font-weight: 500; background: var(--surface, #ffffff); border: 1px solid var(--line, #dad5c5); border-radius: 4px; color: var(--ink, #17160f); cursor: pointer;"
-    >
-      Copy link
-    </button>
+  <div class="pf-share-links">
+    <button type="button" class="pf-copy-btn" data-share-url={url}>Copy link</button>
 
     {shareLinks.map((link) => (
       <a
         href={link.href}
         target="_blank"
         rel="noopener noreferrer"
-        style="padding: 4px 8px; font-family: var(--font-mono, monospace); font-size: 12px; background: var(--surface, #ffffff); border: 1px solid var(--line, #dad5c5); border-radius: 4px; color: var(--ink, #17160f); text-decoration: none;"
+        class="pf-share-link"
       >
         {link.name}
       </a>
     ))}
   </div>
 </div>
+
+<style>
+  .pf-share-row {
+    margin: 20px 0;
+    padding: 12px 16px;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .pf-share-k {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-2);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .pf-share-note { font-size: 11px; opacity: 0.75; text-transform: none; letter-spacing: 0; }
+  .pf-share-links { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .pf-copy-btn,
+  .pf-share-link {
+    padding: 5px 10px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    color: var(--ink);
+    text-decoration: none;
+    cursor: pointer;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .pf-copy-btn:hover,
+  .pf-share-link:hover { border-color: var(--ink); color: var(--ink); }
+  .pf-share-link:focus-visible,
+  .pf-copy-btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+</style>
 
 <script is:inline>
   (() => {

@@ -27,36 +27,35 @@ const isEnabled = ADS_CONFIG.enabled;
 const uniqueId = `pf-ad-${slotKey.replace(/[^a-zA-Z0-9_-]/g, '-')}-${Math.random().toString(36).slice(2, 7)}`;
 ---
 
-<div
-  id={uniqueId}
-  class={`pf-ad-wrapper ${className}`}
-  data-slot-key={slotKey}
-  data-page-type={pageType}
-  data-format={format}
-  style={`min-height: ${minHeight}; margin: 28px auto; text-align: center; position: relative; overflow: hidden;`}
->
-  {isEnabled ? (
-    <div class="pf-ad-unit" style={`min-height: ${minHeight};`}>
-      <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-2, #5b5a4e); font-family: var(--font-mono, monospace); margin-bottom: 6px;">
-        Advertisement
-      </div>
-      <ins
-        class="adsbygoogle"
-        style="display: block;"
-        data-ad-client={ADS_CONFIG.publisherId}
-        data-ad-slot={slotConfig.id}
-        data-ad-format={format === 'auto' ? 'auto' : undefined}
-        data-full-width-responsive="true"
-      ></ins>
-    </div>
-  ) : (
+{
+  /* With ads switched off there is no unit to reserve space for. The old markup
+     kept the wrapper's min-height (90–600 px) plus margins even when disabled,
+     which left a blank band above the footer on every page. */
+  isEnabled && (
     <div
-      class="pf-ad-placeholder"
-      style={`min-height: ${minHeight}; display: none;`}
-      aria-hidden="true"
-    ></div>
-  )}
-</div>
+      id={uniqueId}
+      class={`pf-ad-wrapper ${className}`}
+      data-slot-key={slotKey}
+      data-page-type={pageType}
+      data-format={format}
+      style={`min-height: ${minHeight}; margin: 28px auto; text-align: center; position: relative; overflow: hidden;`}
+    >
+      <div class="pf-ad-unit" style={`min-height: ${minHeight};`}>
+        <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-2, #5b5a4e); font-family: var(--font-mono, monospace); margin-bottom: 6px;">
+          Advertisement
+        </div>
+        <ins
+          class="adsbygoogle"
+          style="display: block;"
+          data-ad-client={ADS_CONFIG.publisherId}
+          data-ad-slot={slotConfig.id}
+          data-ad-format={format === 'auto' ? 'auto' : undefined}
+          data-full-width-responsive="true"
+        />
+      </div>
+    </div>
+  )
+}
 
 {isEnabled && (
   <script is:inline define:vars={{ uniqueId, slotKey, pageType }}>

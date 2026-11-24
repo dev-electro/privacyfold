@@ -7,7 +7,7 @@
 | Fact | Value | Verified |
 |---|---|---|
 | Working artifact | `dist/index.html` (22 KB HTML + vanilla runtime, self-contained) | `astro build` 2026-11-11 |
-| Framework today | Astro 7 + Tailwind v4 static export — **builds cleanly** (330/330 static pages exported) | `npm run build` exit 0 (2026-11-12) |
+| Framework today | Astro 7 + Tailwind v4 static export — **builds cleanly** (332/332 static pages exported) | `npm run build` exit 0 (2026-11-12) |
 | Framework decided | Astro 7 + Tailwind v4 on CF Pages (DEC-001) — **MIGRATED & LIVE** | DEC-001 / PF-002 |
 | Content | 72 tools / 87 presets / 6 blog / 15 glossary / 2 compare / 1 authors / 4 pages / 9 engine / 128 i18n / 5 templates | agent-status |
 | Tools actually runnable | **72** live in runtime; **0** unimplemented | smoke-test.mjs (72/72 pass) |
@@ -24,6 +24,22 @@
 - Legal & launch surface complete: `/privacy/index.html`, `/terms/index.html`, `/ads.txt`, `/sw.js`, `favicon.ico`, `og.png`, `LICENSE` (MIT + CC-BY-4.0).
 - Tool counts unified to 72 across all 8 surfaces.
 - P0 blockers: **0** (`agent-status.mjs` exits 0 with "VERDICT: P0 clear").
+
+## Resolved in this session (2026-11-25)
+
+| Issue | Resolution |
+|---|---|
+| `/tools/` returned 404 and no nav linked it | `src/pages/tools/index.astro` — 72 tools grouped by `FAMILIES`, live filter, accept labels; nav "Tools" button now points at `/tools/` (it went to `/`) |
+| Desk header overflowed the viewport (Desk/sound/paper controls unreachable at 1600–1440); menu never collapsed ≤960 | compact labels/icon-only ≤1740, burger ≤1380, tight chrome ≤440/≤380 — `scrollWidth == innerWidth` at 1920…320 |
+| Index cards rendered white-on-white in dark mode (1.05:1) | cards pin `--p-ink`/`--p-ink-2`/`--p-link`, `--hard` defined — measured 7.74:1 body, 6.10:1 CTA |
+| `ocr_scan` invented Phone/Date fields from an SSN; refused unlabelled receipts | format+range gated SSN/date, receipt parser fallback, last-resort raw lines |
+| `svg_optimize` rejected valid Sketch/Inkscape/Figma SVGs | prefix strip is `+`-quantified (any number of `<?xml?>`/comment blocks) |
+| `image_to_pdf` preview showed a broken image | only `image/*` blobs bind `#pimg.src`; `#ptag` reports result size |
+| `bg_remove` left halos / stalled on gradients | neighbour-propagating fill, leak guard, 1-px feather |
+| `ocr_scan`/`chat_pdf` advertised Tesseract + bge-micro that nothing loads | copy, registry, fixtures, params, `wasmModule` rewritten to pattern-matching / BM25 (`scripts/fix-engine-claims.mjs`) |
+| CMS SRI table hardcoded binaries + hashes | renders `content/config/wasm-sri.json` (published to `/wasm-sri.json` by `validate-git-cms.mjs`); states "Registered, not wired" — no shipped tool instantiates the 10 binaries (PF-037) |
+| `us_tax_filler` advertised discontinued Form 1040-EZ | `1040` across content, runtime, `llms.txt`, `mcp.json` |
+| Tool pages carried the homepage hero H1 | `ToolDesk` hero gated on `initialToolSlug` — one `<h1 id="tpName">` per tool page |
 
 ## Resolved in this session (2026-11-11)
 

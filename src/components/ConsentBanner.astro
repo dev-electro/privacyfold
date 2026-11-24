@@ -7,6 +7,7 @@
  * - Tactile paper-stock design matching reference-ui.html.
  * - Global window.__pfOpenConsent() allows reopening anytime from footer/privacy page.
  */
+import { ADS_CONFIG } from '../config/ads';
 ---
 
 <div
@@ -231,7 +232,8 @@
   }
 </style>
 
-<script is:inline>
+<script is:inline define:vars={{ adsEnabled: ADS_CONFIG.enabled }}>
+  window.__PF_ADS_ENABLED = adsEnabled;
   (() => {
     const STORAGE_KEY = 'pf_consent';
     const banner = document.getElementById('pf-consent-dialog');
@@ -290,16 +292,20 @@
       }
     });
 
-    // Initial check: if no consent recorded yet, show after brief subtle delay
+    // Initial check: only ask when there is actually something to consent to.
+    // With ADS_CONFIG.enabled === false the page serves no ad scripts at all,
+    // so the banner would cover the tool workspace for no reason — it stays
+    // available from the footer's "Cookie Preferences" button.
     try {
       const existing = localStorage.getItem(STORAGE_KEY);
-      if (!existing && banner) {
+      const adsOn = window.__PF_ADS_ENABLED === true;
+      if (!existing && banner && adsOn) {
         setTimeout(() => {
           banner.style.display = 'block';
         }, 800);
       }
     } catch (e) {
-      if (banner) {
+      if (banner && window.__PF_ADS_ENABLED === true) {
         banner.style.display = 'block';
       }
     }

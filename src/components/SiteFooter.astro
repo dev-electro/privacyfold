@@ -1,0 +1,27 @@
+---
+// Site-wide footer. Lives in Base so every page ends the same way: the desk
+// used to own it, which put the footer above the tool's guide article.
+const year = new Date().getFullYear();
+---
+
+<footer>
+  <div class="wrap">
+    <div class="ft">
+      <svg class="seal" viewBox="0 0 28 28" aria-hidden="true"><rect x="1.5" y="1.5" width="25" height="25" rx="5" fill="var(--seal)"/><path d="M7 21V7h5a3.5 3.5 0 0 1 0 7H7M18 21V7h5M18 13.5h4" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>PrivacyFold · File tools that never see your files.<br>Everything runs in your browser. Zero server uploads.</span>
+    </div>
+    <div class="ftl">
+      <a href="/about/">About</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/contact/">Contact</a>
+      <a href="/compare/">Compare</a>
+      <a href="/blog/">Guides</a>
+      <a href="/glossary/">Glossary</a>
+      <button type="button" data-pf-consent-open="true">Cookie Preferences</button>
+    </div>
+  </div>
+  <div class="wrap ft-legal">
+    <span>© {year} PrivacyFold. No accounts, no uploads, no server-side copy of your files.</span>
+  </div>
+</footer>

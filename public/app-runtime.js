@@ -380,6 +380,7 @@ var TOOLS=[
       return {text:out,note:'SA100 calculation completed (Net profit: £'+net.toFixed(2)+')'};
      }}
 ].forEach(function(t){TOOLS.push(t);});
+if(window.PFPack)window.PFPack.apply(TOOLS);
 TOOLS.forEach(function(t){t.slug=t.id.replace(/_/g,'-')});
 function toolById(id){for(var i=0;i<TOOLS.length;i++)if(TOOLS[i].id===id)return TOOLS[i]}
 function defaultsFor(t){var a={};t.params.forEach(function(p){a[p.k]=typeof p.def==='function'?p.def():p.def});return a}
@@ -405,6 +406,7 @@ function sampleItemImg(){
     getUrl:async function(){if(!sampleUrl)sampleUrl=URL.createObjectURL(await toBlob(sampleCanvas,'image/png'));return sampleUrl}};
 }
 function sampleText(id){
+  var tt=toolById(id);if(tt&&tt.sample)return tt.sample;
   if(id==='json_format')return '{"name":"Sample order","tags":["b","a"],"total":42.5,"meta":{"z":1,"y":null,"x":[3,2,1]}}';
   if(id==='jwt_decode'){var n=Math.floor(Date.now()/1000),e=function(o){return b64enc(new TextEncoder().encode(JSON.stringify(o)),true)};return e({alg:'HS256',typ:'JWT'})+'.'+e({sub:'1234567890',name:'Example User',iat:n-3600,exp:n+3600})+'.c2FtcGxlLXNpZ25hdHVyZQ'}
   if(id==='base64')return 'Hello from PrivacyFold. This text never leaves your tab.';
@@ -713,7 +715,7 @@ function openTool(t,o){
 function fileLineHTML(){
   var it=cur.item;
   if(cur.tool.accepts==='none')return '<div class="fileline">No file needed</div>';
-  return '<div class="fileline"><span class="nm">'+(it?esc(it.name):'Sample '+(cur.tool.accepts==='image'?'photo':'text'))+'</span><span>'+(it?fmtBytes(it.size):'Example')+'</span></div>';
+  return '<div class="fileline"><span class="nm">'+(it?esc(it.name):(cur.tool.accepts==='pdf'?'No file yet':cur.tool.accepts==='text'?'No text yet':'Sample '+(cur.tool.accepts==='image'?'photo':'text')))+'</span><span>'+(it?fmtBytes(it.size):'—')+'</span></div>';
 }
 function settingsPaneHTML(){
   var t=cur.tool,act='';
@@ -725,7 +727,7 @@ function settingsPaneHTML(){
 function buildWorkspace(){
   var t=cur.tool,it=cur.item,ws=$('#ws'),left='',right='';
   if(t.kind==='process'){
-    left='<section class="pane" aria-label="Preview"><div class="pane-h"><h2>Preview</h2><div class="row">'+fileLineHTML()+'<button type="button" class="btn ghost sm" id="repl">Replace file</button></div></div>'
+    left='<section class="pane" aria-label="Preview"><div class="pane-h"><h2>Preview</h2><div class="row">'+fileLineHTML()+'<button type="button" class="btn ghost sm" id="repl">'+(cur.item?'Replace file':'Choose file')+'</button></div></div>'
       +'<div class="pane-b"><div class="stage pat" id="stage"><div id="stageIn" style="width:100%;display:grid;place-items:center"></div></div><div class="meta" id="meta"></div></div></section>';
     right=settingsPaneHTML();
   }else if(t.kind==='live'){
@@ -862,9 +864,28 @@ function buildStage(){
     st.innerHTML='<div class="sheet" style="width:min('+W+'px,100%);aspect-ratio:'+W+' / '+H+'"><canvas id="cv" width="'+W*DPR+'" height="'+H*DPR+'" tabindex="0" aria-label="Photo preview. Drag to move. Arrow keys nudge. Plus and minus zoom."></canvas></div>';
     cur.cv=$('#cv');bindCanvas();paint();
   }else{
+    var s0=srcFor(t);
+    if(!s0){
+      st.innerHTML='<div class="askfile"><b>'+(t.accepts==='pdf'?'Add a PDF':'Add some text')+'</b><p class="help">'+(t.accepts==='pdf'?'Drop a PDF on the desk, or use the button above. Every page is processed in this tab.':'Paste text in the box, or drop a .txt/.md file on the desk.')+'</p></div>';
+      return;
+    }
     var isC=t.id==='image_compress';
+    var kind=s0.kind||'image';
+    if(kind!=='image'){
+      var list=getTargets();
+      st.innerHTML='<div class="askfile"><b>'+list.length+' file'+(list.length>1?'s':'')+' ready</b>'
+        +'<p class="help">'+list.map(function(x){return esc(x.name||'file')+' · '+fmtBytes(x.size||0)}).join('<br>')+'</p>'
+        +'<p class="help">'+(t.accepts==='pdf'?'Pages are parsed in this tab. Nothing is uploaded.':'Processed in this tab. Nothing is uploaded.')+'</p></div>';
+      return;
+    }
     st.innerHTML='<div class="sheetw" id="sheetw" data-thick="2" style="width:min(100%,500px)"><div class="sheet chk" id="sheetc" style="width:100%;aspect-ratio:3/2"><img id="pimg" alt="Preview of your image">'+(isC?'<span class="ptag" id="ptag">Original</span>':'')+'<div id="notesL"></div></div></div>';
-    (async function(){var s=srcFor(t),u=await s.getUrl(),im=$('#pimg');if(im)im.src=u})();
+    (async function(){var s=srcFor(t);if(!s||!s.getUrl)return;var im=$('#pimg');if(!im)return;
+      var n=(s.name||'').toLowerCase();
+      if(/\.(heic|heif)$/.test(n)&&window.PFCore&&PFCore.util.heicToCanvas){
+        try{var cv=await PFCore.util.heicToCanvas(await s.getBytes());im.src=cv.toDataURL('image/jpeg',0.8);return}
+        catch(e){im.replaceWith(Object.assign(document.createElement('div'),{className:'askfile',innerHTML:'<b>HEIC photo</b><p class="help">This file is decoded in the tab when you run the tool. Hit '+esc(t.action||'Run')+' to convert it.</p>'}));return}
+      }
+      var u=await s.getUrl();im.src=u})();
     if(t.scan)scanMeta();
   }
 }
@@ -925,7 +946,10 @@ var scheduleEstimate=debounce(async function(){
   var orig=cur.item?cur.item.size:(await src.getBytes()).byteLength;if(tok!==cur.token)return;
   if(!cur.done){
     if(cur.prevUrl)URL.revokeObjectURL(cur.prevUrl);cur.prevUrl=URL.createObjectURL(r.blob);
-    var im=$('#pimg');if(im)im.src=cur.prevUrl;var tag=$('#ptag');if(tag)tag.textContent='Result preview · '+fmtBytes(r.blob.size);
+    /* Only an image blob can back an <img>. PDF-producing tools were being
+       previewed through #pimg, which left a broken image (naturalWidth 0). */
+    var im=$('#pimg');if(im&&/^image\//.test(r.blob.type))im.src=cur.prevUrl;
+    var tag=$('#ptag');if(tag)tag.textContent='Result preview · '+fmtBytes(r.blob.size);
   }
   var tg=+a.target,key=parKey(src,a),par=tg?parCache[key]:null;
   fitPanelMount(fitPanel(r.blob.size,src,orig,par,tg&&!par?'solving':''));
@@ -962,7 +986,10 @@ function envelope(stage){
 function getTargets(){
   var it=cur.item;
   if(it&&it.kind==='image')return [it].concat(held.filter(function(h){return h.kind==='image'&&h.id!==it.id}));
-  return [it||srcFor(cur.tool)];
+  if(it&&it.kind==='pdf')return [it].concat(held.filter(function(h){return h.kind==='pdf'&&h.id!==it.id}));
+  if(it)return [it];
+  var s=srcFor(cur.tool);
+  return s?[s]:[];
 }
 function bumpUse(t){store.set('folds',store.get('folds',0)+1);var h=store.get('hist',{});h[t.id]=(h[t.id]||0)+1;store.set('hist',h)}
 function trackToolUsed(toolId){
@@ -981,6 +1008,8 @@ function trackToolUsed(toolId){
 function onAction(){
   var t=cur.tool;if(!t.live)return;
   if(t.id==='uuid_gen'){runLive();return}
+  if(!getTargets().length){toast(t.accepts==='pdf'?'Add a PDF first':'Add a file first');$('#file').click();return}
+  if(t.many&&getTargets().length<t.manyMin){toast('Add at least '+t.manyMin+' files to '+(t.action||'process').toLowerCase());return}
   if(cur.done)discardResult();
   process();
 }
@@ -988,16 +1017,40 @@ async function process(){
   var t=cur.tool;if(cur.busy||!t.live)return;
   cur.busy=true;$('#act').disabled=true;crane('work');if(t.id==='exif_strip')peelAllNotes();
   var a=cur.recipe.args,stage=$('#stage'),env=envelope(stage),closed=env.close(),before=netCount(),t0=performance.now(),res=[],err=null,targets=getTargets();
+  var ctx={text:(targets[0]&&targets[0].text)||'',targets:targets};
   var work=(async function(){
-    try{for(var i=0;i<targets.length;i++){
-      var s=targets[i],ts=performance.now(),out=await t.run(s,a,{text:''}),ob=await out.blob.arrayBuffer(),ib=s.getBytes?await s.getBytes():null;
-      res.push({inM:t.id==='exif_strip'&&ib?parseExif(ib):null,outM:t.id==='exif_strip'?parseExif(ob):null,name:s.name,out:out,url:URL.createObjectURL(out.blob),inBytes:ib?ib.byteLength:0,outBytes:ob.byteLength,inHash:ib?await sha(ib):null,outHash:await sha(ob),ms:Math.round(performance.now()-ts)});
-    }}catch(e){err=e}
+    try{
+      if(t.many){
+        var out=await t.run(targets,a,ctx);
+        var list=out.files||[out];
+        for(var k=0;k<list.length;k++){
+          var o=list[k],bb=o.blob?await o.blob.arrayBuffer():new Uint8Array(0);
+          res.push({inM:null,outM:null,name:o.name||(targets.map(function(x){return x.name}).join('+')),out:o,url:URL.createObjectURL(o.blob),inBytes:targets.reduce(function(s,x){return s+(x.size||0)},0),outBytes:bb.byteLength,inHash:null,outHash:await sha(bb),ms:Math.round(performance.now()-t0),card:out.out&&out.out.card,cardAll:out.card});
+        }
+      }else for(var i=0;i<targets.length;i++){
+        var s=targets[i],ts=performance.now(),out2=await t.run(s,a,{text:s.text||'',targets:targets});
+        var files=out2.files||[out2];
+        if(out2.files){
+          for(var fi=0;fi<out2.files.length;fi++){
+            var o=out2.files[fi],ob2=o.blob?await o.blob.arrayBuffer():new Uint8Array(0);
+            res.push({inM:null,outM:null,name:o.name||s.name,out:Object.assign({},o.out||{},{mime:(o.out&&o.out.mime)||o.blob.type,blob:o.blob}),url:URL.createObjectURL(o.blob),inBytes:s.size||0,outBytes:ob2.byteLength,outHash:await sha(ob2),ms:Math.round(performance.now()-ts),card:out2.card});
+          }
+        }
+        else {
+          var ob=await out2.blob.arrayBuffer(),ib=s.getBytes?await s.getBytes():null;
+          res.push({inM:t.id==='exif_strip'&&ib?parseExif(ib):null,outM:t.id==='exif_strip'?parseExif(ob):null,name:s.name,out:Object.assign({mime:out2.blob.type},out2),url:URL.createObjectURL(out2.blob),inBytes:ib?ib.byteLength:0,outBytes:ob.byteLength,inHash:ib?await sha(ib):null,outHash:await sha(ob),ms:Math.round(performance.now()-ts),card:out2.out&&out2.out.card});
+        }
+      }
+    }catch(e){err=e}
   })();
   await Promise.all([closed,work]);
   var reqs=Math.max(0,netCount()-before);reqTotal+=reqs;$('#reqN').textContent=reqTotal;
   if(cur.tool!==t){res.forEach(function(r){URL.revokeObjectURL(r.url)});return}
-  if(err){res.forEach(function(r){URL.revokeObjectURL(r.url)});await env.open();cur.busy=false;$('#act').disabled=false;crane('err',3000);toast("That didn't work: "+(err.message||err));return}
+  if(err){res.forEach(function(r){URL.revokeObjectURL(r.url)});await env.open();cur.busy=false;$('#act').disabled=false;
+    var msg=err&&err.message?err.message:String(err);
+    $('#stage').classList.remove('pat');
+    $('#stageIn').innerHTML='<div class="askfile err"><b>Could not finish</b><p class="help">'+esc(msg)+'</p><p class="help">Your file was not changed. Adjust the settings and run it again.</p></div>';
+    crane('err',3000);toast("That didn't work: "+msg);return}
   res.forEach(function(r){cur.urls.push(r.url)});cur.results=res;cur.done=true;
   await renderResult(res,{reqs:reqs,ms:Math.round(performance.now()-t0)});
   stampLand();
@@ -1005,8 +1058,8 @@ async function process(){
   cur.busy=false;$('#act').disabled=false;sfx.done();bumpUse(t);trackToolUsed(t.id);
   say(res.length>1?res.length+' files are ready to download.':'Your result is ready to download.');
 }
-function extOf(m){return m==='image/png'?'png':m==='image/webp'?'webp':'jpg'}
-function fileNameFor(r){return (r.name||'result').replace(/\.[^.]+$/,'')+'-'+cur.tool.suffix+'.'+extOf(r.out.mime)}
+function extOf(m){return m==='image/png'?'png':m==='image/webp'?'webp':m==='application/pdf'?'pdf':m==='application/msword'?'doc':m==='text/csv'?'csv':m==='text/html'?'html':m==='application/json'?'json':m==='image/svg+xml'?'svg':m==='text/plain'?'txt':'jpg'}
+function fileNameFor(r){var mime=(r.out&&(r.out.mime||(r.out.blob&&r.out.blob.type)))||'';return (r.name||'result').replace(/\.[^.]+$/,'')+'-'+cur.tool.suffix+'.'+extOf(mime)}
 async function renderResult(res,meta){
   var t=cur.tool,a=cur.recipe.args,f=res[0],multi=res.length>1,inT=0,outT=0,h='',body='',stats='';
   res.forEach(function(r){inT+=r.inBytes;outT+=r.outBytes});
@@ -1014,7 +1067,18 @@ async function renderResult(res,meta){
   (function(){var hid=0,loc=false;res.forEach(function(r){if(r.inM){hid+=Math.max(0,r.inM.fields.length-(r.outM?r.outM.fields.length:0));if(r.inM.fields.some(function(x){return x.k==='gps'})&&!(r.outM&&r.outM.fields.some(function(x){return x.k==='gps'})))loc=true}});ledgerAdd({tool:t.id,files:res.length,bytesIn:inT,bytesOut:outT,hid:hid,loc:loc})})();
   var title=multi?res.length+' files are ready':t.id==='passport_photo'?'Your photo is ready':t.id==='image_compress'?'Your image is smaller':t.id==='vellum_diff'?'Document comparison complete':t.id==='stego_seal'?'Watermark applied':t.id==='signature_clean'?'Signature cleaned':t.id==='heic_to_jpg'?'Image converted':t.id==='pdf_redact'?'Redactions applied':'Hidden data removed';
   var saved=inT?Math.round((1-outT/inT)*100):0;
-  if(multi){
+  var card=f.card||f.cardAll||null;
+  if(card){cur._card=card}
+  if(card){
+    body=card.html||'';
+    if(res.length>1&&!card.files){
+      body+='<div class="blist">';res.forEach(function(r,i){body+='<div class="bitem"><div class="tx"><b>'+esc(fileNameFor(r))+'</b><br>'+fmtBytes(r.outBytes)+'</div><button type="button" class="btn sm" data-dl="'+i+'">Download</button></div>'});body+='</div>';
+    }
+    title=card.title||title;
+    stats=(card.stats||[]).map(function(s){return '<div class="stat"><span>'+esc(s.k)+'</span><b>'+esc(s.v)+'</b></div>'}).join('')||stats;
+    checks=(card.checks||[]).concat([['Nothing uploaded: '+meta.reqs+' network requests',meta.reqs===0]]);
+    word=card.word||'DONE';sub=card.sub||'ON DEVICE · 0 UPLOADS';
+  }else if(multi){
     body='<div class="blist">';res.forEach(function(r,i){body+='<div class="bitem"><img src="'+r.url+'" alt=""><div class="tx"><b>'+esc(fileNameFor(r))+'</b><br>'+r.out.w+' × '+r.out.h+' px · '+fmtBytes(r.inBytes)+' → '+fmtBytes(r.outBytes)+'</div><button type="button" class="btn sm" data-dl="'+i+'">Download</button></div>'});body+='</div>';
   }else if(t.id==='exif_strip'){
     var im0=f.inM,rm='';
@@ -1032,11 +1096,12 @@ async function renderResult(res,meta){
     var fm=FORMATS[a.format]||FORMATS.eu;
     body='<div class="single"><img class="big" src="'+f.url+'" alt="Your passport photo" style="aspect-ratio:'+f.out.w+'/'+f.out.h+';height:min(340px,60vw)"><div><p><b>'+fm.mm[0]+' × '+fm.mm[1]+' mm</b> at '+a.dpi+' dpi, ready to print at 100% scale.</p><p class="help" style="margin-top:8px">The face guide helps you line up the photo. This tool does not check that a photo meets your country\'s rules, so compare it with the official requirements before you submit it.</p></div></div>';
   }
-  if(t.id==='passport_photo')stats='<div class="stat"><span>Pixels</span><b>'+f.out.w+' × '+f.out.h+'</b></div><div class="stat"><span>File size</span><b>'+fmtBytes(f.outBytes)+'</b></div><div class="stat"><span>Format</span><b>'+(a.out==='jpeg'?'JPEG':'PNG')+'</b></div>';
-  else stats='<div class="stat"><span>Original</span><b>'+fmtBytes(inT)+'</b></div><div class="stat"><span>New size</span><b>'+fmtBytes(outT)+'</b></div>'+(t.id==='image_compress'?'<div class="stat '+(saved>0?'hi':'')+'"><span>'+(saved>=0?'Saved':'Larger by')+'</span><b>'+Math.abs(saved)+'%</b></div>':'<div class="stat hi"><span>Metadata</span><b>Removed</b></div>');
-  var checks=[],word='DONE',sub='ON DEVICE · 0 UPLOADS',tg=+a.target,cname=t.id;
-  checks.push(['Nothing uploaded: '+meta.reqs+' network requests',meta.reqs===0]);
-  if(t.id==='passport_photo'){
+  if(!card)stats=t.id==='passport_photo'?'<div class="stat"><span>Pixels</span><b>'+f.out.w+' × '+f.out.h+'</b></div><div class="stat"><span>File size</span><b>'+fmtBytes(f.outBytes)+'</b></div><div class="stat"><span>Format</span><b>'+(a.out==='jpeg'?'JPEG':'PNG')+'</b></div>'
+  :'<div class="stat"><span>Original</span><b>'+fmtBytes(inT)+'</b></div><div class="stat"><span>New size</span><b>'+fmtBytes(outT)+'</b></div>'+(t.id==='image_compress'?'<div class="stat '+(saved>0?'hi':'')+'"><span>'+(saved>=0?'Saved':'Larger by')+'</span><b>'+Math.abs(saved)+'%</b></div>':'<div class="stat hi"><span>Metadata</span><b>Removed</b></div>');
+  var checks=checks||[],word=word||'DONE',sub=sub||'ON DEVICE · 0 UPLOADS',tg=+a.target,cname=t.id;
+  checks=checks.slice();
+  if(card){}
+  else if(t.id==='passport_photo'){
     var fm2=FORMATS[a.format]||FORMATS.eu;word='READY';
     checks.unshift(['Print size '+fm2.mm[0]+' × '+fm2.mm[1]+' mm',true],[f.out.w+' × '+f.out.h+' px at '+a.dpi+' dpi',true],['Background '+optLabel(paramByKey('bg'),a.bg).toLowerCase(),true]);
     checks.push(['Compare with the official rules before you submit',null]);
@@ -1063,7 +1128,7 @@ async function renderResult(res,meta){
   var rows=[['Executed by',cur.agent?'AI Agent (MCP)':'Local User'],['Tool ID','privacyfold.'+t.id],['Engine','Client-Side WebAssembly & WebCrypto'],['Input SHA-256',f.inHash?f.inHash.slice(0,16)+'…':'—'],['Output SHA-256',f.outHash?f.outHash.slice(0,16)+'…':'—'],['Network requests while processing',String(meta.reqs)],['Time',meta.ms+' ms']],vr='';
   rows.forEach(function(r){vr+='<div><span>'+esc(r[0])+'</span><b>'+esc(r[1])+'</b></div>'});
   h='<div class="done"><div class="done-h"><span class="okc"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg></span><h2>'+esc(title)+'</h2><span class="pill ok">Processed on your device</span></div>'+body
-    +'<div class="stats">'+stats+'</div>'+rcpt+(t.id==='image_compress'&&saved<0?'<p class="help" style="margin:0 0 12px">This image was already small, so the result is larger. Lower the quality or the maximum size in Change settings, or keep your original.</p>':'')+'<div class="row">'+(multi?'':'<button type="button" class="btn primary" data-dl="0" data-pf="download">Download '+extOf(f.out.mime).toUpperCase()+'</button>')
+    +'<div class="stats">'+stats+'</div>'+rcpt+(t.id==='image_compress'&&saved<0?'<p class="help" style="margin:0 0 12px">This image was already small, so the result is larger. Lower the quality or the maximum size in Change settings, or keep your original.</p>':'')+'<div class="row">'+(multi?'':'<button type="button" class="btn primary" data-dl="0" data-pf="download">Download '+extOf((f.out&&(f.out.mime||(f.out.blob&&f.out.blob.type)))).toUpperCase()+'</button>')
     +'<button type="button" class="btn" data-r="edit">Change settings</button><button type="button" class="btn ghost" data-r="another">Choose another file</button><button type="button" class="btn ghost" data-r="del">Delete my files</button></div>'
     +'<details class="verify"><summary>Verify that nothing was uploaded</summary><div class="vrows">'+vr+'</div></details></div>';
   $('#stage').classList.remove('pat');$('#stageIn').innerHTML=h;
@@ -1090,7 +1155,17 @@ $('#ws').addEventListener('click',function(e){
     return}
   if(e.target.closest('#cpy')&&cur.outText!==undefined){if(cur.outText){copyText(cur.outText,'Result copied');bumpUse(cur.tool)}else toast('Nothing to copy yet')}
   if(e.target.closest('#dl')){if(cur.outText){saveFile('privacyfold-'+cur.tool.slug+'.'+cur.tool.ext,new Blob([cur.outText],{type:'text/plain'}));bumpUse(cur.tool)}else toast('Nothing to download yet')}
-  if(e.target.closest('#smp')){var ti=$('#tin');if(ti){ti.value=sampleText(cur.tool.id);runLive()}}
+  if(e.target.closest('#smp')){
+    var ti=$('#tin');
+    if(ti){ti.value=sampleText(cur.tool.id);runLive();return}
+    if(cur.tool.accepts==='pdf'&&window.PFCore){
+      toast('Building a sample PDF…');
+      window.PFCore.pdf.textToPdf(sampleText(cur.tool.id),{size:12}).then(function(r){
+        addFiles([new File([r.bytes],'sample-document.pdf',{type:'application/pdf'})]);
+      }).catch(function(er){toast(er.message||'Could not build the sample')});
+      return;
+    }
+  }
   if(e.target.closest('#clr')){var tj=$('#tin');if(tj){tj.value='';runLive();tj.focus()}}
 });
 
@@ -1109,7 +1184,9 @@ async function runLive(){
   var before=netCount();
   try{
     var r=await t.run(src,cur.recipe.args,{text:text});if(tok!==cur.token)return;
-    out.textContent=r.text;cur.outText=r.text;st.hidden=false;st.className='status ok';st.textContent=r.note||'Done';
+    if(r&&r.html){out.innerHTML=r.text;cur.outText=out.innerText||''}
+    else{out.textContent=r.text;cur.outText=r.text}
+    st.hidden=false;st.className='status ok';st.textContent=r.note||'Done';
     trackToolUsed(t.id);
   }catch(e){
     if(tok!==cur.token)return;
@@ -1268,6 +1345,7 @@ function photoItem(withMeta){
 }
 function srcFor(t){
   if(cur.item)return cur.item;
+  if(t.accepts==='pdf'||t.accepts==='text')return null;
   if(t.id==='exif_strip')return photoItem(true);
   if(t.id==='image_compress')return photoItem(false);
   return sampleItemImg();
@@ -2406,7 +2484,9 @@ var scheduleV7Preview=debounce(async function(){
     if(tok!==cur.token)return;
     if(cur.prevUrl)URL.revokeObjectURL(cur.prevUrl);
     cur.prevUrl=URL.createObjectURL(r.blob);
-    var im=$('#pimg');if(im)im.src=cur.prevUrl;
+    /* Same guard as the estimate path: a PDF or ZIP result cannot back an
+       <img>, so those tools keep showing their source preview. */
+    var im=$('#pimg');if(im&&/^image\//.test(r.blob.type))im.src=cur.prevUrl;
     var meta=$('#meta');
     if(meta&&cur.tool.id==='vellum_diff'){
       meta.innerHTML='<span class="pill warn">'+(cur._diffPct||'0.42')+'% of pixels differ between files</span><span class="pill ok">2 changed sections highlighted in red</span>';
@@ -2716,15 +2796,13 @@ function renderCmsPage(){
   }else if(cmsTab==='wasmAi'){
     h+='<div class="cms-pane">'
       +'<h3 style="margin:0;font:700 18px var(--font-display)">WASM Binaries &amp; Subresource Integrity (SRI) Hashes</h3>'
-      +'<table class="spec-tbl"><thead><tr><th>Binary</th><th>Integrity Hash (SHA-256)</th><th>Worker Status</th><th>Latency</th></tr></thead><tbody>'
-      +'<tr><td><code>mozjpeg_enc.wasm</code></td><td><code>e3b0c44298fc1c149afbf4c8...</code></td><td><span class="pill ok">Active</span></td><td>~18 ms</td></tr>'
-      +'<tr><td><code>webp_enc.wasm</code></td><td><code>8f434346648f6b96df89dda...</code></td><td><span class="pill ok">Active</span></td><td>~12 ms</td></tr>'
-      +'<tr><td><code>tesseract-core-simd.wasm</code></td><td><code>2c26b46b68ffc68ff99b45...</code></td><td><span class="pill ok">Active</span></td><td>~140 ms</td></tr>'
-      +'<tr><td><code>sql-wasm.wasm</code></td><td><code>496c2a8c28b4f78d8e6f18...</code></td><td><span class="pill ok">Active</span></td><td>~4 ms</td></tr>'
-      +'</tbody></table>'
-      +'<h3 style="margin:16px 0 4px;font:700 18px var(--font-display)">WebGPU &amp; Local AI Models</h3>'
+      +'<p class="help" style="margin:0 0 8px">Inventory from <code>content/config/wasm-sri.json</code>. These binaries ship with the site and are listed for integrity checking. No shipped tool instantiates them: every tool on privacyfold runs on the JavaScript libraries under <code>/vendor/</code>, in memory, with no network calls.</p>'
+      +'<table class="spec-tbl" id="wasmSRI"><thead><tr><th>Binary</th><th>Path</th><th>Size</th><th>Integrity (SHA-256)</th><th>State</th><th>Declared tasks</th></tr></thead>'
+      +'<tbody><tr><td colspan="6" class="help">Reading /wasm-sri.json…</td></tr></tbody></table>'
+      +'<h3 style="margin:16px 0 4px;font:700 18px var(--font-display)">Optional Model Packs</h3>'
+      +'<p class="help" style="margin:0 0 8px">None of these are downloaded by any shipped tool. Every tool runs on the libraries listed above; these packs are what a future opt-in download would fetch, and nothing here loads until you ask for it.</p>'
       +'<div class="gpu-grid">'
-      +MODEL_PACKS.map(function(m){return '<div class="gpu-card"><div class="fc-h"><b>'+esc(m.name)+'</b><span class="stc st-live">Online</span></div><small class="mono">'+esc(m.engine)+'</small><p style="font-size:13px;color:var(--ink-2)">'+esc(m.desc)+'</p></div>'}).join('')
+      +LEAN_MODELS.map(function(m){return '<div class="gpu-card"><div class="fc-h"><b>'+esc(m.name)+'</b><span class="stc st-roadmap">Not shipped</span></div><small class="mono">'+esc(m.size)+' · '+esc(m.license)+'</small><p style="font-size:13px;color:var(--ink-2)">'+esc(m.runtime)+'</p></div>'}).join('')
       +'</div></div>';
   }else if(cmsTab==='adsense'){
     h+='<div class="cms-pane">'
@@ -2751,6 +2829,23 @@ function renderCmsPage(){
   }
 
   el.innerHTML=h;
+
+  /* The integrity table renders the binaries that actually ship. The old version
+     hardcoded four rows (and named two files that did not exist at the time);
+     the build now publishes content/config/wasm-sri.json with real SHA-256s. */
+  if(cmsTab==='wasmAi'){
+    fetch('/wasm-sri.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(m){
+      var t=$('#wasmSRI');if(!t||!m||!m.modules)return;
+      var rows=Object.keys(m.modules).map(function(k){var v=m.modules[k]||{};
+        var tasks=(v.tasks||[]).join(', ');
+        return '<tr><td><code>'+esc(k)+'</code></td><td>'+esc(v.path||'')+'</td><td>'+(v.size_kb?v.size_kb+' kB':'—')+'</td>'
+          +'<td><code>'+esc((v.sha256||'').slice(0,24))+'…</code></td>'
+          +'<td><span class="pill">Registered, not wired</span></td>'
+          +'<td class="help">'+esc(tasks||'—')+'</td></tr>';});
+      t.querySelector('tbody').innerHTML=rows.join('')
+        +'<tr><td colspan="6" class="help">'+Object.keys(m.modules).length+' engine binaries · registry v'+esc(m.version||'')+' · updated '+esc(m.updated||'')+'</td></tr>';
+    }).catch(function(){var t=$('#wasmSRI');if(t)t.querySelector('tbody').innerHTML='<tr><td colspan="6" class="help">Could not read /wasm-sri.json.</td></tr>';});
+  }
 
   var sel=$('#cmsToolSelect');
   if(sel){
@@ -2790,7 +2885,7 @@ document.addEventListener('click',function(e){
     toast('All CMS content synced to live in-browser runtime!');sfx.done();return;
   }
   if(e.target.closest&&e.target.closest('#cmsExportJsonBtn')){
-    var expObj={tools:TOOLS,models:MODEL_PACKS,blogs:BLOG_POSTS,standards:STANDARDS_MAP};
+    var expObj={tools:TOOLS,models:LEAN_MODELS,blogs:BLOG_POSTS,standards:STANDARDS_MAP};
     saveFile('privacyfold-cms-export.json',new Blob([JSON.stringify(expObj,null,2)],{type:'application/json'}));
     return;
   }
@@ -3497,10 +3592,10 @@ var DEVICE_PROFILE = {
       }
       return {text:lines.join('\n'),note:items.length+' exposed item(s) found'};
      }},
-    {id:'ocr_scan',fam:'pdf',glyph:'OCR',name:'Fill from scan & local OCR',task:'Extract text & pre-fill W-9 / SA100 fields from a document scan',tag:'PP-OCR / Tesseract',accepts:'text',live:true,kind:'live',ext:'txt',det:'M',modelId:'tesseract-ppocr-v6',
-     desc:'Extract text from scanned IDs, invoices, or payslips locally in your browser and map fields to W-9 or SA100 boxes with human confirmation.',
+    {id:'ocr_scan',fam:'pdf',glyph:'OCR',name:'Fill fields from scanned text',task:'Extract labelled fields (name, tax ID, invoice, total) from a pasted text layer',tag:'Local pattern extraction',accepts:'text',live:true,kind:'live',ext:'txt',det:'L',modelId:'pattern-matching',
+     desc:'Map the text layer of a scanned document onto W-9 / SA100 style fields with deterministic pattern matching, and show the line each value came from. No OCR model ships with this tool.',
      params:[
-      P('target','Map extracted fields to','select',1,'invoice',{opts:[['invoice','Invoice & Receipt Fields'],['w9','IRS Form W-9 Boxes'],['sa100','UK HMRC SA100 Boxes'],['raw','Plain OCR Text']]})
+      P('target','Map extracted fields to','select',1,'invoice',{opts:[['invoice','Invoice & Receipt Fields'],['w9','IRS Form W-9 Boxes'],['sa100','UK HMRC SA100 Boxes'],['raw','Plain extracted text']]})
      ],
      groups:[['Field mapping (Needs Human Review)',['target']]],
      plain:function(a){return 'Extracts text and maps candidate values to '+a.target.toUpperCase()+' fields. Never auto-submits; user confirms every value.';},
@@ -3533,14 +3628,14 @@ var DEVICE_PROFILE = {
       out+='----------------------------------------------------\nRAW OCR TEXT:\n'+raw;
       return {text:out,note:'Mapped to '+a.target.toUpperCase()+' (Review required)'};
      }},
-    {id:'chat_pdf',fam:'pdf',glyph:'RAG',name:'Chat with PDF & document Q&A',task:'Query & summarize PDF documents using local vector embeddings',tag:'bge-micro 22 MB',accepts:'text',live:true,kind:'live',ext:'txt',det:'M',modelId:'bge-micro-v2-q8',
-     desc:'Chunk document text in a Web Worker, compute local cosine-similarity embeddings (bge-micro ~22 MB + pdfjs-dist), and answer questions or summarize key points with 0 server uploads.',
+    {id:'chat_pdf',fam:'pdf',glyph:'RAG',name:'Chat with a document',task:'Answer questions from document text with local keyword retrieval',tag:'BM25 retrieval, no model',accepts:'text',live:true,kind:'live',ext:'txt',det:'L',modelId:'bm25-retrieval',
+     desc:'Split document text into passages, rank them against your question with BM25 keyword scoring, and quote the best passages with the score that found them.',
      params:[
       P('query','Question or summary focus','text',1,'What are the liability cap, governing law, and payment terms?'),
-      P('engine','Inference path','select',1,'auto',{opts:[['auto','window.ai Summarizer (0 MB) → bge-micro (22 MB)'],['rag','Pure cosine-similarity chunk retrieval']]})
+      P('engine','Retrieval path','select',1,'auto',{opts:[['auto','BM25 keyword scoring, no model'],['rag','Quoted passages with scores']]})
      ],
-     groups:[['In-Memory PDF RAG',['query','engine']]],
-     plain:function(){return 'Chunks document in memory, ranks top passages by cosine similarity, and synthesizes an answer locally.';},
+     groups:[['Retrieval',['query','engine']]],
+     plain:function(){return 'Chunks the document in memory, ranks passages by BM25 keyword score, and quotes the best ones.';},
      run:async function(src,a,ctx){
       var doc=(ctx.text||'').trim(),sents=doc.split(/(?<=[.?!])\s+|\n+/).filter(Boolean);
       var qWords=(a.query||'').toLowerCase().split(/\W+/).filter(function(w){return w.length>2});
@@ -3837,7 +3932,7 @@ var DEVICE_PROFILE = {
       };
       return {text:JSON.stringify(env,null,2),note:'SHA-256 '+digest.slice(0,12)+'… signed'};
      }},
-    {id:'us_tax_filler',fam:'forms',glyph:'IRS',name:'US tax form filler (W-2, 1099-NEC, 1040-EZ)',task:'Prepare W-2, 1099-NEC, and 1040-EZ tax figures privately in your browser',tag:'W-2, 1099, 1040',accepts:'none',live:true,kind:'live',ext:'txt',det:'D',
+    {id:'us_tax_filler',fam:'forms',glyph:'IRS',name:'US tax form filler (W-2, 1099-NEC, 1040)',task:'Prepare W-2, 1099-NEC, and 1040 tax figures privately in your browser',tag:'W-2, 1099, 1040',accepts:'none',live:true,kind:'live',ext:'txt',det:'D',
      desc:'Compute and format IRS Form W-2 wage boxes, Form 1099-NEC nonemployee compensation, and Form 1040 standard deduction estimates without uploading financial data to tax-prep servers.',
      params:[
       P('form','IRS Form','select',1,'1099',{opts:[['1099','Form 1099-NEC (Nonemployee Compensation)'],['w2','Form W-2 (Wage & Tax Statement)'],['1040','Form 1040 Estimate (Single / Joint)']]}),
@@ -4353,8 +4448,8 @@ var DEVICE_PROFILE = {
   sampleText=function(id){
     if(id==='ai_airlock')return 'Hi Claude, please review this contract for Alice Vance (alice.vance@acme-global.com, SSN 123-45-6789, phone +1 415-890-2311, server 192.168.1.42) using API key sk-live99887766554433221100.';
     if(id==='exposure_xray')return 'Confidential memo from reviewer@acme.org with key sk-live99887766554433221100 and tracked link https://example.com/doc?utm_source=newsletter&fbclid=IwAR992';
-    if(id==='ocr_scan')return 'INVOICE #INV-2026-104\nDate: 10 Nov 2026\nPayee: Acme Global Ltd.\nServices: On-Device WebAssembly Audit — $4,200.00\nTotal Due: $4,200.00';
-    if(id==='chat_pdf')return 'Section 1: All file transformations execute inside the user browser tab via WebAssembly and WebGPU.\nSection 2: The aggregate liability cap under this Agreement shall not exceed $50,000 USD.\nSection 3: This Agreement is governed by the laws of the State of Delaware. Payment terms are Net 30 days.';
+    if(id==='ocr_scan')return 'Form W-9\nName: Jane Doe\nBusiness name: Doe Design Ltd\nAddress: 12 Harbour St, London E1 6LT\nSSN: 123-45-6789';
+    if(id==='chat_pdf')return 'Section 1: All file transformations execute inside the user browser tab via WebAssembly and WebGPU.\n\nSection 2: The aggregate liability cap under this Agreement shall not exceed $50,000 USD.\n\nSection 3: This Agreement is governed by the laws of the State of Delaware. Payment terms are Net 30 days.\n\n? What is the liability cap and the governing law?';
     if(id==='ai_writer')return 'our new browser utility lets users resize passport photos, remove backgrounds, and compress files without uploading anything to a cloud server. it costs zero dollars in server bills and works offline.';
     if(id==='voice_transcribe')return 'Welcome to PrivacyFold. Moonshine tiny runs speech to text five times faster than real time directly inside your browser tab using WebGPU and WebAssembly.';
     if(id==='qr_tool')return 'https://privacyfold.com/#passport-photo';
@@ -6445,6 +6540,15 @@ function renderBlogPage(){
 
 function renderToolSeoSection(t){
   var el = $('#seoSection'); if (!el || !t) return;
+  /* Tool pages ship a static, indexable guide (ToolSeoArticle). Rendering the
+     runtime copy on top of it printed the same article twice — two intros, two
+     "related tools" blocks — and pushed the page past 5,000 px. The check is on
+     the URL because this script runs from inside the desk, before the static
+     article further down the document has been parsed. */
+  if (/\/tools\/[^\/]+\/?$/.test(location.pathname) || document.querySelector('.seo-card')) {
+    el.hidden = true;
+    return;
+  }
   var famName = FAMS[t.fam] ? FAMS[t.fam].name : 'Utility';
   var detTier = t.det || 'D';
   var isSensitivePiiTool = (t.id === 'ai_airlock' || t.id === 'exposure_xray' || t.id === 'w9_prep' || t.id === 'sa100_prep');
@@ -6517,6 +6621,9 @@ document.addEventListener('click', function(e){
   var bt = e.target.closest && e.target.closest('[data-blog-tool]');
   if (bt) { openTool(toolById(bt.getAttribute('data-blog-tool')), {}); return; }
 });
+
+/* The production tool layer wins over every legacy implementation defined above. */
+if(window.PFPack)window.PFPack.apply(TOOLS);
 
 renderGrid();
 applyUrlContract();

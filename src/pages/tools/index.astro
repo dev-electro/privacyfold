@@ -1,0 +1,133 @@
+---
+import SiteNav from '../../components/SiteNav.astro';
+import Base from '../../layouts/Base.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import { getAllToolsFromGit, FAMILIES } from '../../lib/cms';
+
+const tools = getAllToolsFromGit().sort((a, b) => a.name.localeCompare(b.name));
+const famOrder = Object.keys(FAMILIES) as Array<keyof typeof FAMILIES>;
+const groups = famOrder
+  .map((fam) => ({ fam, name: FAMILIES[fam].name, color: FAMILIES[fam].color, items: tools.filter((t) => t.fam === fam) }))
+  .filter((g) => g.items.length);
+const total = tools.length;
+const accepts = (a: string) => (a === 'pdf' ? 'PDF' : a === 'image' ? 'Image' : a === 'text' ? 'Text' : a === 'none' ? 'No input' : 'Any file');
+---
+
+<Base
+  title={`All ${total} Tools — Every File Stays On Your Device | PrivacyFold`}
+  description={`Browse all ${total} PrivacyFold tools: passport photos, PDF editing, image compression, JSON and SQL formatting, hashing and redaction. Every one runs in your browser with no uploads.`}
+  canonicalUrl="https://privacyfold.com/tools/"
+  pageType="tools"
+>
+  <SiteNav />
+  <main class="wrap pg" style="padding-top: 40px; padding-bottom: 72px;">
+    <div class="pg-h">
+      <span class="mono eyebrow">ALL TOOLS</span>
+      <h1>Every tool, nothing uploaded</h1>
+      <p class="pg-sub">
+        {total} tools across {groups.length} families. Each one runs entirely in this tab — no uploads, no account, no
+        server that could keep your file.
+      </p>
+    </div>
+
+    <AdSlot slotKey="tools-index-top" format="banner" pageType="tools" />
+
+    <div class="idx-tools">
+      <label class="idx-search">
+        <span class="mono">Filter</span>
+        <input type="search" id="idxQ" placeholder={`Search ${total} tools — try “pdf”, “passport”, “hash”…`} autocomplete="off" aria-controls="idxGrid" />
+      </label>
+      <p class="idx-count mono" id="idxCount" aria-live="polite">{total} tools</p>
+    </div>
+
+    <div id="idxGrid">
+      {groups.map((g) => (
+        <section class="idx-fam" data-fam={g.fam}>
+          <h2 class="idx-fam-h">
+            <span class="idx-dot" style={`background:${g.color}`} aria-hidden="true"></span>
+            {g.name}
+            <span class="mono idx-n">{g.items.length}</span>
+          </h2>
+          <div class="idx-cards">
+            {g.items.map((t) => (
+              <a class="idx-card" href={`/tools/${t.slug}/`} data-search={`${t.name} ${t.task} ${t.tag} ${g.name}`.toLowerCase()}>
+                <span class="idx-glyph mono" aria-hidden="true">{t.glyph}</span>
+                <span class="idx-body">
+                  <b>{t.name}</b>
+                  <span class="idx-task">{t.task}</span>
+                </span>
+                <span class="idx-meta mono">{accepts(t.accepts)}</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      ))}
+      <p class="idx-empty mono" id="idxEmpty" hidden>No tool matches that word — try “compress”, “pdf” or “redact”.</p>
+    </div>
+  </main>
+
+  <script is:inline>
+    (function () {
+      var q = document.getElementById('idxQ');
+      var cards = Array.prototype.slice.call(document.querySelectorAll('.idx-card'));
+      var fams = Array.prototype.slice.call(document.querySelectorAll('.idx-fam'));
+      var count = document.getElementById('idxCount');
+      var empty = document.getElementById('idxEmpty');
+      var total = cards.length;
+      function run() {
+        var term = (q.value || '').trim().toLowerCase();
+        var shown = 0;
+        cards.forEach(function (c) {
+          var hit = !term || c.getAttribute('data-search').indexOf(term) !== -1;
+          c.hidden = !hit;
+          if (hit) shown++;
+        });
+        fams.forEach(function (f) {
+          var any = Array.prototype.some.call(f.querySelectorAll('.idx-card'), function (c) { return !c.hidden; });
+          f.hidden = !any;
+        });
+        count.textContent = shown === total ? total + ' tools' : shown + ' of ' + total + ' tools';
+        empty.hidden = shown !== 0;
+      }
+      q.addEventListener('input', run);
+      q.addEventListener('keydown', function (e) { if (e.key === 'Escape') { q.value = ''; run(); } });
+    })();
+  </script>
+
+  <style>
+    .idx-tools { display: flex; align-items: flex-end; gap: 16px; margin: 28px 0 8px; flex-wrap: wrap; }
+    .idx-search { flex: 1 1 340px; display: flex; flex-direction: column; gap: 6px; }
+    .idx-search span { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); }
+    .idx-search input {
+      width: 100%; padding: 11px 13px; font: 400 14px var(--font-mono); color: var(--ink);
+      background: var(--surface-2); border: 1px solid var(--line); border-radius: 8px;
+    }
+    .idx-search input:focus-visible { outline: 2px solid var(--seal); outline-offset: 2px; }
+    .idx-count { font-size: 12px; color: var(--ink-2); padding-bottom: 12px; }
+    .idx-fam { margin-top: 26px; }
+    .idx-fam-h { display: flex; align-items: center; gap: 10px; font: 700 18px var(--font-display); margin: 0 0 12px; }
+    .idx-dot { width: 9px; height: 9px; border-radius: 99px; flex: none; }
+    .idx-n { font-size: 11px; color: var(--ink-2); }
+    .idx-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; }
+    .idx-card {
+      display: flex; align-items: center; gap: 12px; padding: 12px 14px; text-decoration: none;
+      color: var(--ink); background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px;
+      transition: border-color .12s, transform .12s;
+    }
+    .idx-card:hover { border-color: var(--seal); transform: translateY(-1px); }
+    .idx-card:focus-visible { outline: 2px solid var(--seal); outline-offset: 2px; }
+    .idx-glyph {
+      flex: none; width: 34px; height: 34px; display: grid; place-items: center; font-size: 10px; letter-spacing: .04em;
+      border: 1px solid var(--line); border-radius: 8px; color: var(--ink-2);
+    }
+    .idx-body { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+    .idx-body b { font: 600 14px var(--font-display); }
+    .idx-task { font-size: 12px; line-height: 1.35; color: var(--ink-2); }
+    .idx-meta { margin-left: auto; flex: none; font-size: 10px; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-2); }
+    .idx-empty { margin-top: 24px; font-size: 13px; color: var(--ink-2); }
+    @media (max-width: 560px) {
+      .idx-meta { display: none; }
+      .idx-cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</Base>

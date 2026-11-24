@@ -121,6 +121,13 @@ const cleanTools = tools.map((t) => ({
 }));
 fs.writeFileSync(path.join(publicDir, 'tools.json'), JSON.stringify(cleanTools, null, 2) + '\n');
 
+// 1b. Publish the WASM SRI registry so the in-app integrity table reads the
+//     binaries that actually ship instead of a hardcoded list.
+const sriSrc = path.join(process.cwd(), 'content/config/wasm-sri.json');
+if (fs.existsSync(sriSrc)) {
+  fs.writeFileSync(path.join(publicDir, 'wasm-sri.json'), fs.readFileSync(sriSrc));
+}
+
 // 2. Compile public/presets.json
 const cleanPresets = presets.map((p) => ({
   id: p.id || p.presetSlug,

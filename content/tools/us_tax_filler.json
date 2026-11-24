@@ -1,7 +1,7 @@
 {
   "id": "us_tax_filler",
   "slug": "us-tax-filler",
-  "name": "US tax form filler (W-2, 1099-NEC, 1040-EZ)",
+  "name": "US tax form filler (W-2, 1099-NEC, 1040)",
   "category": "forms",
   "badge": "W-2, 1099, 1040",
   "size": "18–120 KB WASM",
@@ -15,9 +15,9 @@
   "schemaUrl": "/schemas/us_tax_filler.json",
   "executionUrl": "https://privacyfold.com/tools/us_tax_filler?mode=agent",
   "seo": {
-    "metaTitle": "US tax form filler (W-2, 1099-NEC, 1040-EZ) — 100% Private In-Browser Utility | PrivacyFold",
+    "metaTitle": "US tax form filler (W-2, 1099-NEC, 1040) — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Compute and format IRS Form W-2 wage boxes, Form 1099-NEC nonemployee compensation, and Form 1040 standard deduction estimates without uploading financial data to tax-prep servers. Runs 100% locally in your browser via /wasm/forms/us-tax-filler-v1.wasm with zero file uploads.",
-    "aeoSummary": "US tax form filler (W-2, 1099-NEC, 1040-EZ) processes files and text entirely inside your browser tab using /wasm/forms/us-tax-filler-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
+    "aeoSummary": "US tax form filler (W-2, 1099-NEC, 1040) processes files and text entirely inside your browser tab using /wasm/forms/us-tax-filler-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
       "us tax form filler (w-2, 1099-nec, 1040-ez)",
       "us tax filler",
@@ -36,15 +36,15 @@
     ],
     "faqs": [
       {
-        "question": "Does US tax form filler (W-2, 1099-NEC, 1040-EZ) upload my files or text to a server?",
-        "answer": "No. US tax form filler (W-2, 1099-NEC, 1040-EZ) executes 100% inside your browser's local memory using /wasm/forms/us-tax-filler-v1.wasm. No data leaves your device.",
-        "q": "Does US tax form filler (W-2, 1099-NEC, 1040-EZ) upload my files or text to a server?",
-        "a": "No. US tax form filler (W-2, 1099-NEC, 1040-EZ) executes 100% inside your browser's local memory using /wasm/forms/us-tax-filler-v1.wasm. No data leaves your device."
+        "question": "Does US tax form filler (W-2, 1099-NEC, 1040) upload my files or text to a server?",
+        "answer": "No. US tax form filler (W-2, 1099-NEC, 1040) executes 100% inside your browser's local memory using /wasm/forms/us-tax-filler-v1.wasm. No data leaves your device.",
+        "q": "Does US tax form filler (W-2, 1099-NEC, 1040) upload my files or text to a server?",
+        "a": "No. US tax form filler (W-2, 1099-NEC, 1040) executes 100% inside your browser's local memory using /wasm/forms/us-tax-filler-v1.wasm. No data leaves your device."
       },
       {
-        "question": "Can AI agents or CLI scripts automate US tax form filler (W-2, 1099-NEC, 1040-EZ)?",
+        "question": "Can AI agents or CLI scripts automate US tax form filler (W-2, 1099-NEC, 1040)?",
         "answer": "Yes. Use Lane A schema /schemas/us_tax_filler.json or open /tools/us-tax-filler?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__.",
-        "q": "Can AI agents or CLI scripts automate US tax form filler (W-2, 1099-NEC, 1040-EZ)?",
+        "q": "Can AI agents or CLI scripts automate US tax form filler (W-2, 1099-NEC, 1040)?",
         "a": "Yes. Use Lane A schema /schemas/us_tax_filler.json or open /tools/us-tax-filler?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
       }
     ],
@@ -55,7 +55,7 @@
     ]
   },
   "fam": "forms",
-  "task": "Prepare W-2, 1099-NEC, and 1040-EZ tax figures privately in your browser",
+  "task": "Prepare W-2, 1099-NEC, and 1040 tax figures privately in your browser",
   "glyph": "IRS",
   "desc": "Compute and format IRS Form W-2 wage boxes, Form 1099-NEC nonemployee compensation, and Form 1040 standard deduction estimates without uploading financial data to tax-prep servers.",
   "accepts": "none",

@@ -1,0 +1,68 @@
+---
+import Base from '../layouts/Base.astro';
+import { getAllToolsFromGit } from '../lib/cms';
+
+const tools = getAllToolsFromGit().slice(0, 6);
+---
+
+<Base
+  title="Page not found"
+  description="That page does not exist. Every PrivacyFold tool runs in your browser — pick one and keep your files local."
+  canonicalUrl="https://privacyfold.com/404"
+  pageType="home"
+>
+  <main class="wrap nf">
+    <div class="nf-card">
+      <div class="mono kick">404</div>
+      <h1>That page isn't here.</h1>
+      <p class="nf-sub">The link may be old, or the tool may have moved to a shorter address. Nothing you did was lost — no file ever leaves your device, so there is nothing on a server to recover.</p>
+      <div class="nf-actions">
+        <a class="btn primary" href="/">Open the tool desk</a>
+        <a class="btn" href="/blog/">Read the guides</a>
+      </div>
+      <div class="nf-tools">
+        <div class="mono nf-k">Popular right now</div>
+        <div class="nf-grid">
+          {tools.map((t) => (
+            <a href={`/tools/${t.slug}/`} class="nf-tool">
+              <span class="nf-name">{t.name}</span>
+              <span class="nf-tag">{t.tag}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <style>
+    .nf { padding: 72px 0 96px; min-height: 60vh; }
+    .nf-card {
+      max-width: 720px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 36px 34px;
+      box-shadow: var(--shadow);
+    }
+    .kick { color: var(--accent); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; }
+    h1 { font: 800 clamp(26px, 4vw, 38px)/1.1 var(--font-display); margin: 10px 0 12px; letter-spacing: -.02em; }
+    .nf-sub { color: var(--ink-2); font-size: 15.5px; line-height: 1.6; max-width: 56ch; }
+    .nf-actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 22px 0 30px; }
+    .nf-k { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); margin-bottom: 10px; }
+    .nf-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; }
+    .nf-tool {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--surface-2);
+      text-decoration: none;
+      transition: border-color .15s, transform .12s;
+    }
+    .nf-tool:hover { border-color: var(--ink); transform: translateY(-1px); }
+    .nf-name { color: var(--ink); font-weight: 600; font-size: 14.5px; }
+    .nf-tag { color: var(--ink-2); font-size: 12.5px; }
+  </style>
+</Base>

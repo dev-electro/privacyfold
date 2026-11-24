@@ -2,6 +2,24 @@
 
 ---
 
+## 2026-11-25 — ground-truth pass: tool defects, false claims, /tools/ index, paper-card contrast (PF-037/PF-038)
+
+**Did:**
+- 72-tool browser sweep with real fixtures → 5 real tool defects fixed: `ocr_scan` invented Phone/Date by reading an SSN `123-45-6789` twice (now format+range gated, receipt fallback instead of "No text detected"); `svg_optimize` rejected Sketch/Inkscape/Figma exports that lead with `<?xml?>` **and** comments (prefix strip is now `+`-quantified); `image_to_pdf` fed the PDF result blob into `<img>` (broken preview, `naturalWidth` 0 — now only `image/*` binds); `bg_remove` stopped at gradients (neighbour-propagating fill + leak guard + 1-px feather); multi-file tools showed "Replace file" on an empty desk.
+- Removed unbacked engine claims: `ocr_scan`/`chat_pdf` advertised Tesseract/bge-micro but nothing loads them (`grep WebAssembly.instantiate public/*.js` → **0 hits**). Copy, registry entries, fixtures, params, `wasmModule` all rewritten to pattern-matching / BM25 via `scripts/fix-engine-claims.mjs` (idempotent).
+- `/tools/` was a hard 404 — built `src/pages/tools/index.astro` (family groups from `FAMILIES`, live filter, per-tool accept labels) and pointed the nav "Tools" button at it (it went to `/`).
+- Header overflow: at 1600/1440 the desk chrome (Desk tray, sound, paper) sat **outside the viewport** and at ≤960 the menu never collapsed (`@media(max-width:960px)` was the desktop rule). Compacted labels/icon-only ≤1740, collapse to burger ≤1380, tighter chrome ≤440/≤380 — verified `scrollWidth == innerWidth` at 1920/1600/1440/1390/1370/1280/1024/768/430/390/360/320.
+- White-on-white index cards: `.compare-card/.glossary-card/.blog-card` pin `background: var(--paper)` (always #fff) but inherited dark-theme ink → body text measured `rgb(243,241,231)` on `#fff` (**1.05:1**). Cards now pin `--p-ink`/`--p-ink-2`, CTAs use new `--p-link` (#B3351B, tuned for paper instead of the dark-ground `--seal`), `--hard` defined so the 4px offset shadows render. Measured after: body **7.74:1**, CTA **6.10:1**.
+- CMS integrity table: the two "missing binary" names actually exist under `public/wasm/**` — the old table was hardcoded, not fabricated. It now renders `content/config/wasm-sri.json` (published by `validate-git-cms.mjs`) with real path/size/SHA-256, and states the truth: **10 binaries ship, no shipped tool instantiates them** — everything runs on JS libs under `/vendor/`.
+- `us_tax_filler` still advertised discontinued Form 1040-EZ → `1040` across content, runtime, `llms.txt`, `.well-known/mcp.json`.
+
+**Proved by:** `npm run build` → 332 pages; `npm test` clean; `node scripts/check-toolcore.mjs` 12/12; zero `window.__errs` on home, `/tools/`, compare, glossary, blog, about, privacy, contact, 404; measured widths/contrast in-browser; CMS table row builder exercised against `dist/wasm-sri.json` (10 rows, no throw).
+
+**Next:** PF-037 — either wire the 10 engine binaries behind a cache-first loader or delete them; the SEO copy no longer depends on them, so this is cleanup, not a blocker.
+**Blocker:** none.
+
+---
+
 ## 2026-11-10 — drawer + footer de-dev'ed; trust pages dark mode (PF-036/PF-007 cont.)
 
 **Did:** owner flagged dev-surface leftovers. Mobile drawer: removed Privacy Ledger + WebGPU AI Hub buttons (6 category buttons + guides/compare/glossary remain, runtime-bound handlers intact). Footer: Features/Ledger/Architecture/Admin-CMS/mcp.json line replaced with About/Privacy/Terms/Contact/Compare/Guides/Glossary + Cookie Preferences; footer copy de-jargoned ("File tools that never see your files…"). The 4 standalone trust pages (public/{privacy,terms,about,contact}) got dark-mode token support (prefers-color-scheme block) — verified privacy page renders bg rgb(14,16,10)/ink rgb(243,241,231) in dark.
