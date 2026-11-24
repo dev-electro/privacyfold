@@ -2861,16 +2861,16 @@ function renderCmsPage(){
   var h='<div class="cms-head">'
     +'<div><span class="mono eyebrow">INTERNAL CONTENT CONSOLE · ASTRO STATIC BUILD</span>'
     +'<h1>Content &amp; Engine Management Console</h1>'
-    +'<p class="pg-sub">Manage tool copy, AEO answer boxes, FAQ items, WebAssembly binary hashes, WebGPU model packs, and CLS-safe AdSense slots. Live changes update in-memory immediately.</p></div>'
+    +'<p class="pg-sub">Manage tool copy, AEO answer boxes, FAQ items, WebAssembly binary hashes, WebGPU model packs, and CLS-safe AdSense slots. Edits live in this tab only — there is no server to save to; download the JSON and commit it.</p></div>'
     +'<div class="row">'
-    +'<button type="button" class="btn primary sm" id="cmsSaveRuntimeBtn">Apply to Live Runtime</button>'
+    +'<button type="button" class="btn primary sm" id="cmsSaveRuntimeBtn">Apply to This Session</button>'
     +'<button type="button" class="btn ghost sm" id="cmsExportJsonBtn">Export CMS Data (JSON)</button>'
     +'</div></div>';
 
   h+='<div class="cms-stats">'
     +'<div class="cms-stat-c"><span>Published Tools</span><b>'+TOOLS.length+'</b><small style="color:var(--ok)">100% Live &amp; Runnable</small></div>'
     +'<div class="cms-stat-c"><span>WASM engines in use</span><b>'+wasmCount+'</b><small>libheif · sql.js — '+LEAN_MODELS.length+' model packs not shipped</small></div>'
-    +'<div class="cms-stat-c"><span>Editorial Guides</span><b>'+blogCount+'</b><small>SEO / AEO / GEO Indexed</small></div>'
+    +'<div class="cms-stat-c"><span>In-page guides</span><b>'+blogCount+'</b><small>in-app long reads</small></div>'
     +'<div class="cms-stat-c"><span>Network Uploads</span><b style="color:var(--ok)">0</b><small>connect-src \'self\' Enforced</small></div>'
     +'</div>';
 
