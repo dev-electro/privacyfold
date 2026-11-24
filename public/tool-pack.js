@@ -192,8 +192,8 @@
     ],
     groups: [['Typography', ['size', 'mono']], ['Paper', ['paper']]],
     plain: function (a) { return 'Lay out the text as a ' + (a.paper === 'a4' ? 'A4' : 'Letter') + ' PDF at ' + a.size + ' pt, breaking pages automatically.'; },
-    async run(src, a) {
-      var text = src.text || '';
+    async run(src, a, ctx) {
+      var text = (src && src.text) || (ctx && ctx.text) || '';
       if (!text.trim()) throw new Error('There is no text to lay out.');
       var r = await PDF.textToPdf(text, { size: +a.size, mono: a.mono === 'mono', size_paper: a.paper, title: (src.name || 'Document').replace(/\.[^.]+$/, '') });
       return {

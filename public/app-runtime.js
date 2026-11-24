@@ -3206,6 +3206,8 @@ renderStampRacks();
       var u;
       try{ u=new URL(/^[a-z][a-z0-9+.-]*:/i.test(t)?t:'https://'+t); }
       catch(e){ throw new Error('That does not look like a URL. Paste one like https://example.com/page?x=1'); }
+      if(!u.hostname||/\./.test(u.hostname)===false&&u.hostname!=='localhost')
+        throw new Error('That does not look like a URL. Paste one like https://example.com/page?x=1');
       var rows=['PROTOCOL: '+u.protocol,'HOST:     '+u.host,'PATH:     '+u.pathname,'','QUERY PARAMETERS:'];
       u.searchParams.forEach(function(v,k){rows.push('  '+k+' = '+v)});
       return {text:rows.join('\n'),note:Array.from(u.searchParams.keys()).length+' query params'};
@@ -6655,13 +6657,21 @@ window.privacyfold = Object.assign(window.privacyfold || {}, {
     /* Multi-file tools (merge) take an array, not one item. The desk always passed
        an array; the SDK path passed a single file, so pdf_merge died with
        "items.slice is not a function". */
+    /* Text tools read the input in two different places (src.text or ctx.text).
+       Give both the same source so a tool can never meet a null src. */
+    if (textInput && (t.accepts === 'text' || t.accepts === 'any')) {
+      src = Object.assign({ kind: 'text', text: String(textInput), name: 'input.txt' }, src || {});
+    }
+    if (!src && !t.many && (t.accepts === 'pdf' || t.accepts === 'image' || t.accepts === 'heic')) {
+      throw new Error(t.name + ' needs ' + (needsWord[t.accepts] || t.accepts) + ' — add one to the desk first.');
+    }
     if (t.many) {
       var many = (typeof getTargets === 'function' ? getTargets() : []).slice();
       if (many.length < (t.manyMin || 2)) throw new Error(t.name + ' needs at least ' + (t.manyMin || 2) + ' files on the desk (found ' + many.length + ').');
       src = many;
     }
     try {
-      var res = await t.run(src, merged, { text: textInput || '' });
+      var res = await t.run(src, merged, { text: textInput || '', targets: (typeof getTargets === 'function' ? getTargets() : []) });
       window.__PRIVACYFOLD_RESULT__ = {
         status: 'pass',
         tool: toolId,
