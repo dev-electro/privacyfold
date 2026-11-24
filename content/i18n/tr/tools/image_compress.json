@@ -15,7 +15,7 @@
   "size": "18–120 KB WASM",
   "Engine": "JavaScript (no engine binary)",
   "wasmModule": "none (no engine binary)",
-  "desc": "Tarayıcı İçi Güvenli Görüntü Sıkıştırıcı. Görüntü kalitesini koruyarak dosya boyutunu yerel olarak küçültün. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "desc": "Tarayıcı İçi Güvenli Görüntü Sıkıştırıcı. Görüntü kalitesini koruyarak dosya boyutunu yerel olarak küçültün.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "image",

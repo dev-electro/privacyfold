@@ -9,13 +9,26 @@ interface Props {
   presetTitle?: string | null;
   presetAuthority?: string | null;
   presetVerified?: string | null;
+  /** Translated copy for /<lang>/tools/<slug>/ — the EN record is not the page. */
+  initialToolName?: string | null;
+  initialToolDesc?: string | null;
 }
 
-const { initialToolSlug, presetSpec = null, presetTitle = null, presetAuthority = null, presetVerified = null } = Astro.props;
+const {
+  initialToolSlug,
+  presetSpec = null,
+  presetTitle = null,
+  presetAuthority = null,
+  presetVerified = null,
+  initialToolName = null,
+  initialToolDesc = null,
+} = Astro.props;
 /* On a dedicated tool page the heading has to exist in the HTML: app-runtime
    fills #tpName after boot, which left every /tools/<slug>/ page with no <h1>
    at all for crawlers and screen readers. Render it here, from the same record. */
 const initialTool = initialToolSlug ? getAllToolsFromGit().find((t) => t.slug === initialToolSlug) : null;
+const headingName = initialToolName || (initialTool ? initialTool.name : null);
+const headingDesc = initialToolDesc || (initialTool ? initialTool.desc : null);
 
 const langProp = 'en';
 ---
@@ -233,7 +246,7 @@ const langProp = 'en';
   <section class="tp" id="tp" data-f="photo">
     <div class="wrap">
       <nav class="crumbs" aria-label="Breadcrumb"><button type="button" id="crHome">Home</button><span aria-hidden="true">›</span><span id="crFam"></span><span aria-hidden="true">›</span><span id="crName"></span></nav>
-      <div class="tp-head"><span id="tpIco"></span><div class="tp-t">{initialTool ? <h1 id="tpName">{initialTool.name}</h1> : <h2 id="tpName"></h2>}{initialTool ? <p id="tpDesc">{initialTool.desc}</p> : <p id="tpDesc"></p>}
+      <div class="tp-head"><span id="tpIco"></span><div class="tp-t">{headingName ? <h1 id="tpName">{headingName}</h1> : <h2 id="tpName"></h2>}{headingDesc ? <p id="tpDesc">{headingDesc}</p> : <p id="tpDesc"></p>}
         {presetTitle && <p class="pf-preset" id="pfPresetLine"><b>Preset:</b> {presetTitle}{presetAuthority ? <span> · {presetAuthority}</span> : null}{presetVerified ? <span class="dim"> · verified {presetVerified}</span> : null}</p>}
       </div><div class="perch" id="perch" data-s="idle" aria-hidden="true"><svg viewBox="0 0 130 96"><g class="cr"><g class="cr-in"><path class="t" d="M26 56L8 38l30 14z"/><path class="b1" d="M26 56l30-8 30 8-30 20z"/><path class="b2" d="M26 56l30 20-34-6z"/><g class="hd"><path class="n" d="M86 56l16-26 5 3-12 27z"/><path class="h" d="M102 30l14 6-9-1z"/></g><g class="wf"><path class="w2" d="M58 46l34-30-14 32z"/></g><g class="wn"><path class="w1" d="M56 50L30 12l44 30z"/><path class="w1s" d="M56 50l18-8-6 12z"/></g></g></g><path class="shelf" d="M12 88h106"/></svg></div></div>
       <div class="ws" id="ws"></div>
@@ -278,6 +291,10 @@ const langProp = 'en';
      (max size, dimensions, dpi, background) never reached the desk, so the page
      promised settings it did not apply. Hand them to the runtime. */
   if (initialToolSlug) {
+    /* The runtime used to set document.title to "PrivacyFold" on every open,
+       wiping the page's own title. It checks this flag first. */
+    window.__PF_INITIAL_TOOL__ = true;
+    window.__PF_INITIAL_SLUG__ = initialToolSlug;
     window.__PF_PRESET__ = presetSpec ? { slug: initialToolSlug, title: presetTitle, spec: presetSpec } : null;
     if (!window.location.hash) window.location.hash = initialToolSlug;
   }

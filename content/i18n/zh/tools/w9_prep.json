@@ -15,7 +15,7 @@
   "size": "18–120 KB WASM",
   "Engine": "JavaScript (no engine binary)",
   "wasmModule": "none (no engine binary)",
-  "desc": "美国IRS W-9税表填报工作台. 在本地离线安全准备纳税人识别号与证明文件. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "desc": "美国IRS W-9税表填报工作台. 在本地离线安全准备纳税人识别号与证明文件.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "none",

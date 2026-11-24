@@ -15,7 +15,7 @@
   "size": "18–120 KB WASM",
   "Engine": "JavaScript (no engine binary)",
   "wasmModule": "none (no engine binary)",
-  "desc": "Crittografia File Zero-Knowledge AES-256. Proteggere file con password in busta auto-decifrante. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "desc": "Crittografia File Zero-Knowledge AES-256. Proteggere file con password in busta auto-decifrante.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "any",

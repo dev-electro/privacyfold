@@ -15,7 +15,7 @@
   "size": "18–120 KB WASM",
   "Engine": "JavaScript (no engine binary)",
   "wasmModule": "none (no engine binary)",
-  "desc": "Klembord- en trackingparameters in URL's opschonen. UTM-tags en verborgen spioneertevens automatisch verwijderen. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "desc": "Klembord- en trackingparameters in URL's opschonen. UTM-tags en verborgen spioneertevens automatisch verwijderen.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "text",

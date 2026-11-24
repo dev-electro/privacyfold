@@ -15,7 +15,7 @@
   "size": "18–120 KB WASM",
   "Engine": "JavaScript (no engine binary)",
   "wasmModule": "none (no engine binary)",
-  "desc": "Enkripsi Berkas Zero-Knowledge AES-256-GCM. Kunci berkas sensitif dengan kata sandi dalam amplop mandiri. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "desc": "Enkripsi Berkas Zero-Knowledge AES-256-GCM. Kunci berkas sensitif dengan kata sandi dalam amplop mandiri.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "any",

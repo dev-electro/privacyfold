@@ -15,7 +15,7 @@
   "size": "18–120 KB WASM",
   "Engine": "JavaScript (no engine binary)",
   "wasmModule": "none (no engine binary)",
-  "desc": "Afbeeldingen lokaal comprimeren in de browser. Bestandsgrootte van foto's verkleinen zonder kwaliteitsverlies. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "desc": "Afbeeldingen lokaal comprimeren in de browser. Bestandsgrootte van foto's verkleinen zonder kwaliteitsverlies.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "image",

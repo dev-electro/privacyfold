@@ -15,7 +15,7 @@
   "size": "18–120 KB WASM",
   "Engine": "JavaScript (no engine binary)",
   "wasmModule": "none (no engine binary)",
-  "desc": "Dọn dẹp khay nhớ tạm và loại bỏ liên kết theo dõi. Xóa sạch các tham số UTM và ký tự ẩn vô hình khỏi đường dẫn. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "desc": "Dọn dẹp khay nhớ tạm và loại bỏ liên kết theo dõi. Xóa sạch các tham số UTM và ký tự ẩn vô hình khỏi đường dẫn.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "text",

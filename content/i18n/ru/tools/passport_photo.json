@@ -15,7 +15,7 @@
   "size": "18–120 KB WASM",
   "Engine": "JavaScript (no engine binary)",
   "wasmModule": "none (no engine binary)",
-  "desc": "Создание биометрических фото на паспорт и визу. Кадрирование и точная калибровка фотографий под стандарты ICAO. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "desc": "Создание биометрических фото на паспорт и визу. Кадрирование и точная калибровка фотографий под стандарты ICAO.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "image",

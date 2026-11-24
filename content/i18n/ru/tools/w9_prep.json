@@ -15,7 +15,7 @@
   "size": "18–120 KB WASM",
   "Engine": "JavaScript (no engine binary)",
   "wasmModule": "none (no engine binary)",
-  "desc": "Подготовка налоговой формы IRS W-9 без утечек. Безопасное заполнение формы W-9 для работы с зарубежными заказчиками. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "desc": "Подготовка налоговой формы IRS W-9 без утечек. Безопасное заполнение формы W-9 для работы с зарубежными заказчиками.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "none",

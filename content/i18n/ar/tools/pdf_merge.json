@@ -15,7 +15,7 @@
   "size": "18–120 KB WASM",
   "Engine": "JavaScript (no engine binary)",
   "wasmModule": "none (no engine binary)",
-  "desc": "أداة دمج ملفات PDF بأمان وسرية تامة. جمع عدة مستندات PDF في ملف واحد دون رفعها إلى الخادم. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "desc": "أداة دمج ملفات PDF بأمان وسرية تامة. جمع عدة مستندات PDF في ملف واحد دون رفعها إلى الخادم.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "pdf",

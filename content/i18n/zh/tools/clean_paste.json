@@ -15,7 +15,7 @@
   "size": "18–120 KB WASM",
   "Engine": "JavaScript (no engine binary)",
   "wasmModule": "none (no engine binary)",
-  "desc": "剪贴板隐私净化与跟踪链接清除工具. 自动剥离URL中的UTM标记与隐形追踪字符. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "desc": "剪贴板隐私净化与跟踪链接清除工具. 自动剥离URL中的UTM标记与隐形追踪字符.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "text",

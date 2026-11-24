@@ -15,7 +15,7 @@
   "size": "18–120 KB WASM",
   "Engine": "JavaScript (no engine binary)",
   "wasmModule": "none (no engine binary)",
-  "desc": "Sıfır Bilgi AES-256-GCM Dosya Şifreleme Aracı. Dosyalarınızı kendi kendine açılabilen güvenli zarfla şifreleyin. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "desc": "Sıfır Bilgi AES-256-GCM Dosya Şifreleme Aracı. Dosyalarınızı kendi kendine açılabilen güvenli zarfla şifreleyin.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "any",

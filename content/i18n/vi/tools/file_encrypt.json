@@ -15,7 +15,7 @@
   "size": "18–120 KB WASM",
   "Engine": "JavaScript (no engine binary)",
   "wasmModule": "none (no engine binary)",
-  "desc": "Mã hóa tệp tin không qua máy chủ (AES-256-GCM). Bảo vệ tài liệu bằng mật khẩu trong phong bì HTML tự giải mã. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "desc": "Mã hóa tệp tin không qua máy chủ (AES-256-GCM). Bảo vệ tài liệu bằng mật khẩu trong phong bì HTML tự giải mã.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "any",

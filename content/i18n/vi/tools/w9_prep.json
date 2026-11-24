@@ -15,7 +15,7 @@
   "size": "18–120 KB WASM",
   "Engine": "JavaScript (no engine binary)",
   "wasmModule": "none (no engine binary)",
-  "desc": "Bảng tính chuẩn bị biểu mẫu thuế IRS W-9 an toàn. Khai báo mã số thuế bảo mật tuyệt đối ngay trên thiết bị của bạn. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "desc": "Bảng tính chuẩn bị biểu mẫu thuế IRS W-9 an toàn. Khai báo mã số thuế bảo mật tuyệt đối ngay trên thiết bị của bạn.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "none",

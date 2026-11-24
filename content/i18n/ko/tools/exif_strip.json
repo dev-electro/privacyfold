@@ -15,7 +15,7 @@
   "size": "18–120 KB WASM",
   "Engine": "JavaScript (no engine binary)",
   "wasmModule": "none (no engine binary)",
-  "desc": "사진 EXIF 메타데이터 및 GPS 위치 정보 제거 도구. 사진에서 GPS 좌표와 기기 정보를 안전하게 영구 삭제. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "desc": "사진 EXIF 메타데이터 및 GPS 위치 정보 제거 도구. 사진에서 GPS 좌표와 기기 정보를 안전하게 영구 삭제.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "image",

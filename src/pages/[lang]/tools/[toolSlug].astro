@@ -44,7 +44,7 @@ const jsonLd = generateToolJsonLdGraph(tool, canonicalUrl);
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </Fragment>
 
-  <ToolDesk initialToolSlug={tool.slug} />
+  <ToolDesk initialToolSlug={tool.slug} initialToolName={tool.name} initialToolDesc={tool.desc} />
 
   <div class="wrap" style="padding-bottom: 64px;">
     <ToolSeoArticle tool={tool} currentLocale={lang} translations={translations} />

@@ -15,7 +15,7 @@
   "size": "18–120 KB WASM",
   "Engine": "JavaScript (no engine binary)",
   "wasmModule": "none (no engine binary)",
-  "desc": "브라우저 기반 고효율 이미지 압축기. 서버 업로드 없이 로컬에서 선명도를 유지하며 파일 용량 절감. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "desc": "브라우저 기반 고효율 이미지 압축기. 서버 업로드 없이 로컬에서 선명도를 유지하며 파일 용량 절감.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "image",

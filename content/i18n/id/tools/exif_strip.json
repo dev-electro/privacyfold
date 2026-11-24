@@ -15,7 +15,7 @@
   "size": "18–120 KB WASM",
   "Engine": "JavaScript (no engine binary)",
   "wasmModule": "none (no engine binary)",
-  "desc": "Penghapus Metadata EXIF dan Lokasi GPS Foto. Hapus koordinat lokasi dan data kamera dari foto seketika. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "desc": "Penghapus Metadata EXIF dan Lokasi GPS Foto. Hapus koordinat lokasi dan data kamera dari foto seketika.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "image",

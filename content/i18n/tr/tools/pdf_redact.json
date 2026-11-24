@@ -15,7 +15,7 @@
   "size": "18–120 KB WASM",
   "Engine": "JavaScript (no engine binary)",
   "wasmModule": "none (no engine binary)",
-  "desc": "PDF Gizli Bilgi Kalıcı Karartma ve Temizleme. Hassas bilgileri geri getirilemez şekilde dosya baytlarından silin. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "desc": "PDF Gizli Bilgi Kalıcı Karartma ve Temizleme. Hassas bilgileri geri getirilemez şekilde dosya baytlarından silin.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "pdf",

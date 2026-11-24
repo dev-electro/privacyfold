@@ -15,7 +15,7 @@
   "size": "18–120 KB WASM",
   "Engine": "JavaScript (no engine binary)",
   "wasmModule": "none (no engine binary)",
-  "desc": "本地私密PDF合并与拼版工具. 在浏览器内存中将多个PDF文档无痕合并为一. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "desc": "本地私密PDF合并与拼版工具. 在浏览器内存中将多个PDF文档无痕合并为一.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "pdf",

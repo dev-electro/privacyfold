@@ -15,7 +15,7 @@
   "size": "18–120 KB WASM",
   "Engine": "JavaScript (no engine binary)",
   "wasmModule": "none (no engine binary)",
-  "desc": "클립보드 트래킹 및 제로너비 문자 정화 도구. URL 링크의 UTM 태그와 보이지 않는 추적 문자를 자동 제거. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "desc": "클립보드 트래킹 및 제로너비 문자 정화 도구. URL 링크의 UTM 태그와 보이지 않는 추적 문자를 자동 제거.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "text",

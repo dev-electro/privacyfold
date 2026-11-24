@@ -15,7 +15,7 @@
   "size": "18–120 KB WASM",
   "Engine": "JavaScript (no engine binary)",
   "wasmModule": "none (no engine binary)",
-  "desc": "Biometrische pasfoto's en visumfoto's maken. Foto's uitsnijden en kalibreren volgens officiële paspoortnormen. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "desc": "Biometrische pasfoto's en visumfoto's maken. Foto's uitsnijden en kalibreren volgens officiële paspoortnormen.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "image",

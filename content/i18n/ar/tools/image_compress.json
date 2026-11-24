@@ -15,7 +15,7 @@
   "size": "18–120 KB WASM",
   "Engine": "JavaScript (no engine binary)",
   "wasmModule": "none (no engine binary)",
-  "desc": "ضاغط الصور المحلي عالي الكفاءة. تقليل حجم الصور بسرعة فائقة دون فقدان الجودة. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "desc": "ضاغط الصور المحلي عالي الكفاءة. تقليل حجم الصور بسرعة فائقة دون فقدان الجودة.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "image",

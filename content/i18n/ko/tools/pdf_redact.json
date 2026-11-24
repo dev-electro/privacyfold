@@ -15,7 +15,7 @@
   "size": "18–120 KB WASM",
   "Engine": "JavaScript (no engine binary)",
   "wasmModule": "none (no engine binary)",
-  "desc": "비가역적 PDF 기밀 정보 블랙아웃 및 영구 삭제. PDF 내 민감한 텍스트와 객체를 바이트 레벨에서 완전 소멸. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "desc": "비가역적 PDF 기밀 정보 블랙아웃 및 영구 삭제. PDF 내 민감한 텍스트와 객체를 바이트 레벨에서 완전 소멸.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "pdf",

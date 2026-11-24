@@ -15,7 +15,7 @@
   "size": "18–120 KB WASM",
   "Engine": "JavaScript (no engine binary)",
   "wasmModule": "none (no engine binary)",
-  "desc": "أداة إزالة بيانات EXIF ومواقع GPS من الصور. حذف الموقع الجغرافي ومعلومات الكاميرا من الصور نهائياً. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "desc": "أداة إزالة بيانات EXIF ومواقع GPS من الصور. حذف الموقع الجغرافي ومعلومات الكاميرا من الصور نهائياً.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "image",

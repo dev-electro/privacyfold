@@ -752,8 +752,12 @@ function openTool(t,o){
   showView('tool');closePalette();closeTray();
   $('#tp').setAttribute('data-f',t.fam);
   $('#crFam').textContent=FAMS[t.fam].name;$('#crName').textContent=t.name;
-  $('#tpIco').innerHTML=iconSVG(t);$('#tpName').textContent=t.name;$('#tpDesc').textContent=t.desc;
-  document.title='PrivacyFold';
+  $('#tpIco').innerHTML=iconSVG(t);
+  /* A localized or preset page already carries its own heading server-side;
+     overwriting it with the English record turned /ar/tools/<slug>/ English. */
+  var keepCopy=window.__PF_INITIAL_TOOL__&&window.__PF_INITIAL_SLUG__===t.slug;
+  if(!keepCopy){$('#tpName').textContent=t.name;$('#tpDesc').textContent=t.desc}
+  if(!window.__PF_INITIAL_TOOL__)document.title=t.name+' — PrivacyFold';
   buildWorkspace();
   if(!o.noHash)setHash(t.slug);
   if(!o.noScroll)window.scrollTo({top:0,behavior:'auto'});

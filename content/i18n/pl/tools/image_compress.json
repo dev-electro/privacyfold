@@ -15,7 +15,7 @@
   "size": "18–120 KB WASM",
   "Engine": "JavaScript (no engine binary)",
   "wasmModule": "none (no engine binary)",
-  "desc": "Lokalny kompresor obrazów w przeglądarce. Zmniejsz rozmiar zdjęć JPEG, PNG i WebP z zachowaniem jakości. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "desc": "Lokalny kompresor obrazów w przeglądarce. Zmniejsz rozmiar zdjęć JPEG, PNG i WebP z zachowaniem jakości.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "image",

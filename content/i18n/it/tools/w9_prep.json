@@ -15,7 +15,7 @@
   "size": "18–120 KB WASM",
   "Engine": "JavaScript (no engine binary)",
   "wasmModule": "none (no engine binary)",
-  "desc": "Compilazione Modulo Fiscale IRS W-9. Preparare la certificazione fiscale USA in totale sicurezza. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "desc": "Compilazione Modulo Fiscale IRS W-9. Preparare la certificazione fiscale USA in totale sicurezza.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "none",

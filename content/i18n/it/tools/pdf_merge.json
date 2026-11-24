@@ -15,7 +15,7 @@
   "size": "18–120 KB WASM",
   "Engine": "JavaScript (no engine binary)",
   "wasmModule": "none (no engine binary)",
-  "desc": "Unione File PDF Sicura nel Browser. Combinare più documenti PDF in uno solo senza caricarli. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "desc": "Unione File PDF Sicura nel Browser. Combinare più documenti PDF in uno solo senza caricarli.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "pdf",

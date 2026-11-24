@@ -15,7 +15,7 @@
   "size": "18–120 KB WASM",
   "Engine": "JavaScript (no engine binary)",
   "wasmModule": "none (no engine binary)",
-  "desc": "제로 지식 AES-256-GCM 파일 암호화 도구. 비밀번호를 사용하여 자체 복호화 가능한 HTML 봉투로 파일 보호. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "desc": "제로 지식 AES-256-GCM 파일 암호화 도구. 비밀번호를 사용하여 자체 복호화 가능한 HTML 봉투로 파일 보호.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "any",

@@ -15,7 +15,7 @@
   "size": "18–120 KB WASM",
   "Engine": "JavaScript (no engine binary)",
   "wasmModule": "none (no engine binary)",
-  "desc": "Pembuat Foto Paspor dan Visa Biometrik Resmi. Atur ukuran dan posisi wajah sesuai standar paspor internasional. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "desc": "Pembuat Foto Paspor dan Visa Biometrik Resmi. Atur ukuran dan posisi wajah sesuai standar paspor internasional.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "image",

@@ -15,7 +15,7 @@
   "size": "18–120 KB WASM",
   "Engine": "JavaScript (no engine binary)",
   "wasmModule": "none (no engine binary)",
-  "desc": "证件照与护照签证照片在线制作工具. 按照官方生物识别标准裁剪及校准照片. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "desc": "证件照与护照签证照片在线制作工具. 按照官方生物识别标准裁剪及校准照片.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "image",

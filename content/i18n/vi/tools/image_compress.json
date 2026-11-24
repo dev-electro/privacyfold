@@ -15,7 +15,7 @@
   "size": "18–120 KB WASM",
   "Engine": "JavaScript (no engine binary)",
   "wasmModule": "none (no engine binary)",
-  "desc": "Nén ảnh trực tiếp trên trình duyệt web. Giảm dung lượng ảnh nhanh chóng mà không làm suy giảm chất lượng. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "desc": "Nén ảnh trực tiếp trên trình duyệt web. Giảm dung lượng ảnh nhanh chóng mà không làm suy giảm chất lượng.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "image",

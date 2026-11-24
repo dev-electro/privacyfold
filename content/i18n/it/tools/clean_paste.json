@@ -15,7 +15,7 @@
   "size": "18–120 KB WASM",
   "Engine": "JavaScript (no engine binary)",
   "wasmModule": "none (no engine binary)",
-  "desc": "Pulizia Appunti e Rimozione Tracker URL. Rimuovere parametri UTM e caratteri invisibili dai link. PrivacyFold executes this tool 100% inside your local browser memory using WebAssembly, WebCrypto, and Canvas APIs. Zero server uploads.",
+  "desc": "Pulizia Appunti e Rimozione Tracker URL. Rimuovere parametri UTM e caratteri invisibili dai link.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "text",
