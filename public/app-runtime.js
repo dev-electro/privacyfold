@@ -2996,24 +2996,6 @@ renderStampRacks();
     return lines.join('');
   }
 
-    activateTool('pdf_split',{
-    kind:'live',accepts:'text',ext:'pdf',
-    desc:'Extract specific pages or page ranges from a document into a separate clean PDF file.',
-    params:[
-      P('range','Pages to extract','text',1,'1-2'),
-      P('rotate','Rotation','select',1,'0',{opts:[['0','0° (Keep upright)'],['90','90° Clockwise'],['180','180° Flip']]})
-    ],
-    groups:[['Page selection',['range','rotate']]],
-    plain:function(a){return 'Extracts page range '+a.range+(a.rotate!=='0'?', rotated '+a.rotate+'°':'')+'.';},
-    run:async function(src,a,ctx){
-      var parts=(ctx.text||'Page 1: Executive Summary\n---\nPage 2: Financial Schedule\n---\nPage 3: Appendix & Notes').split(/\n---\n?/);
-      var m=/^(\d+)(?:-(\d+))?$/.exec((a.range||'1').trim()),sIdx=m?Math.max(1,+m[1]):1,eIdx=m&&m[2]?+m[2]:sIdx;
-      var picked=parts.slice(sIdx-1,eIdx);if(!picked.length)picked=[parts[0]||'Extracted Page'];
-      var pdfStr=buildSimplePdf('Extracted Pages ('+a.range+')',picked);
-      return {text:pdfStr,note:picked.length+' page(s) extracted'};
-    }
-  });
-
     activateTool('w9_prep',{
     kind:'live',accepts:'none',ext:'txt',action:'Update W-9 summary',
     desc:'Prepare a clean IRS Form W-9 summary worksheet locally in your browser with formatted TIN/EIN and certification block.',
