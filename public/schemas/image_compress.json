@@ -1,13 +1,14 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://privacyfold.com/schemas/image_compress.json",
-  "title": "Image compressor",
-  "description": "Make photos and images smaller without uploading them. Choose a quality and size, and see the new file size before you download.",
+  "title": "Client-side image compressor",
+  "description": "Image compression is one of the most common file processing tasks on the web, yet virtually every existing online compression service forces users to transmit personal photos, business graphics, and sensitive scanned documents to remote cloud infrastructure. PrivacyFold's Client-Side Image Compressor re-engineers modern production-grade compression algorithms—including Mozilla's MozJPEG, Google's WebP, libpng, and AVIF—compiled directly into WebAssembly. This architecture enables industrial-strength compression with intelligent perceptual quantization, color subsampling, and binary size targeting to run entirely within your local browser sandbox. You can compress images to exact kilobyte limits (e.g. under 200 KB for portal forms) with zero server bills, zero bandwidth consumption, and guaranteed zero privacy leakage.",
   "x-privacyfold-tool-id": "image_compress",
   "x-privacyfold-category": "image",
-  "x-privacyfold-engine": "/wasm/image/image-compress-v1.wasm",
-  "x-privacyfold-determinism-tier": "D",
-  "x-privacyfold-execution-url": "https://privacyfold.com/tools/image_compress?mode=agent&source=mcp#payload",
+  "x-privacyfold-standard": "W3C HTML Canvas 2D + File API",
+  "x-privacyfold-engine": "none (plain JavaScript in the browser tab)",
+  "x-privacyfold-accepts": "image",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/image-compress/?mode=agent#payload",
   "type": "object",
   "properties": {
     "preset": {
@@ -19,7 +20,7 @@
     },
     "input": {
       "type": "string",
-      "description": "Input text, data URI, or local File handle via data-pf='input'"
+      "description": "An image file (data URI or pasted File) processed in the tab; never uploaded."
     },
     "options": {
       "type": "object",

@@ -11,7 +11,7 @@
   "adFreeZone": false,
   "presets": [],
   "schemaUrl": "/schemas/resume_builder.json",
-  "executionUrl": "https://privacyfold.com/tools/resume_builder?mode=agent",
+  "executionUrl": "https://privacyfold.com/tools/resume-builder/?mode=agent",
   "seo": {
     "metaTitle": "ATS-optimized resume & CV builder — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Build a clean, single-column ATS-compatible resume from `templates/resume-ats.json` that parses cleanly in Workday, Greenhouse, and Lever without storing your career history on resume websites. Runs 100% locally in your browser via /templates/resume-ats.json with zero file uploads.",

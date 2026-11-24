@@ -11,7 +11,7 @@
   "adFreeZone": false,
   "presets": [],
   "schemaUrl": "/schemas/nda_generator.json",
-  "executionUrl": "https://privacyfold.com/tools/nda_generator?mode=agent",
+  "executionUrl": "https://privacyfold.com/tools/nda-generator/?mode=agent",
   "seo": {
     "metaTitle": "Mutual NDA & contract generator — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Create a clean Mutual or Unilateral Non-Disclosure Agreement (NDA) from our local JSON template (`templates/nda-us.json`) without exposing party names to legal SaaS platforms. Runs 100% locally in your browser via /templates/nda-us.json with zero file uploads.",

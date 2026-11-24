@@ -144,6 +144,71 @@ const cleanTools = tools.map((t) => ({
 }));
 fs.writeFileSync(path.join(publicDir, 'tools.json'), JSON.stringify(cleanTools, null, 2) + '\n');
 
+// 1d. Generate the JSON Schema set from the same records. The committed copies
+//     carried a invented engine path for all 72 tools ("/wasm/photo/<tool>-v1.wasm"),
+//     a "determinism tier" nothing verifies, and execution URLs built from the tool
+//     id instead of its slug, so every one of them 404'd.
+const schemaDir = path.join(publicDir, 'schemas');
+fs.mkdirSync(schemaDir, { recursive: true });
+const realEngine = (t) => {
+  const e = String(t.Engine || '');
+  return /libheif|sql\.js/i.test(e) && !/^none/i.test(e) ? e : 'none (plain JavaScript in the browser tab)';
+};
+const acceptsHint = {
+  image: 'An image file (data URI or pasted File) processed in the tab; never uploaded.',
+  pdf: 'A PDF file (data URI or pasted File) processed in the tab; never uploaded.',
+  text: 'Text to process. Sent to the tool only through the URL fragment / local input.',
+  any: 'A file or text value processed in the tab; never uploaded.',
+  audio: 'An audio file processed in the tab; never uploaded.',
+};
+for (const t of tools) {
+  const toolPresets = presets.filter((pr) => pr.toolSlug === t.slug).map((pr) => pr.presetSlug);
+  const doc = {
+    $schema: 'https://json-schema.org/draft/2020-12/schema',
+    $id: `https://privacyfold.com/schemas/${t.id}.json`,
+    title: t.name,
+    description: String(t.desc || t.description || '').replace(/\s+/g, ' ').trim(),
+    'x-privacyfold-tool-id': t.id,
+    'x-privacyfold-category': t.fam || t.category || 'dev',
+    'x-privacyfold-standard': t.std || 'ECMAScript (any modern browser)',
+    'x-privacyfold-engine': realEngine(t),
+    'x-privacyfold-accepts': t.accepts || 'any',
+    'x-privacyfold-execution-url': `https://privacyfold.com/tools/${t.slug}/?mode=agent#payload`,
+    type: 'object',
+    properties: {
+      preset: { type: 'string', enum: toolPresets.length ? toolPresets : ['default'] },
+      input: {
+        type: 'string',
+        description: acceptsHint[t.accepts] || acceptsHint.any,
+      },
+      options: { type: 'object', additionalProperties: true },
+    },
+    required: ['input'],
+  };
+  fs.writeFileSync(path.join(schemaDir, `${t.id}.json`), JSON.stringify(doc, null, 2) + '\n');
+}
+fs.writeFileSync(
+  path.join(schemaDir, '_index.json'),
+  JSON.stringify({
+    $schema: 'https://privacyfold.com/schemas/index-v1.json',
+    version: '2026.11.2',
+    generated_by: 'scripts/validate-git-cms.mjs',
+    license: 'CC-BY-4.0',
+    tool_count: tools.length,
+    preset_count: presets.length,
+    tools: tools.map((t) => ({
+      id: t.id,
+      slug: t.slug,
+      title: t.name,
+      category: t.fam || t.category || 'dev',
+      standard: t.std || 'ECMAScript (any modern browser)',
+      engine: realEngine(t),
+      schema_url: `https://privacyfold.com/schemas/${t.id}.json`,
+      execution_url: `https://privacyfold.com/tools/${t.slug}/?mode=agent#payload`,
+    })),
+  }, null, 2) + '\n'
+);
+
 // 1a. Publish the MCP manifest from the same records the site uses. It used to
 //     be a hand-written file that advertised a /wasm/<fam>/<tool>-v1.wasm binary
 //     for every tool (none exist), claimed WebAssembly for all 72, and pointed at

@@ -13,7 +13,7 @@
     "uk-hmrc-sa100-self-assessment"
   ],
   "schemaUrl": "/schemas/sa100_prep.json",
-  "executionUrl": "https://privacyfold.com/tools/sa100_prep?mode=agent",
+  "executionUrl": "https://privacyfold.com/tools/sa100-prep/?mode=agent",
   "seo": {
     "metaTitle": "SA100 helper — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Line up UK HMRC Self Assessment (SA100) income, expenses, and Personal Allowance figures before you file online. Runs 100% locally in your browser with zero file uploads.",

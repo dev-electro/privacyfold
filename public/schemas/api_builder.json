@@ -1,13 +1,14 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://privacyfold.com/schemas/api_builder.json",
-  "title": "API request converter (cURL \u2194 fetch \u2194 axios)",
+  "title": "API request converter (cURL ↔ fetch ↔ axios)",
   "description": "Convert `curl` CLI requests (including headers, bearer tokens, and JSON bodies) into clean JavaScript `fetch()` or `axios` snippets without pasting private API keys into online converters.",
   "x-privacyfold-tool-id": "api_builder",
   "x-privacyfold-category": "dev",
-  "x-privacyfold-engine": "/wasm/dev/api-builder-v1.wasm",
-  "x-privacyfold-determinism-tier": "D",
-  "x-privacyfold-execution-url": "https://privacyfold.com/tools/api_builder?mode=agent&source=mcp#payload",
+  "x-privacyfold-standard": "ECMAScript (any modern browser)",
+  "x-privacyfold-engine": "none (plain JavaScript in the browser tab)",
+  "x-privacyfold-accepts": "text",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/api-builder/?mode=agent#payload",
   "type": "object",
   "properties": {
     "preset": {
@@ -18,7 +19,7 @@
     },
     "input": {
       "type": "string",
-      "description": "Input text, data URI, or local File handle via data-pf='input'"
+      "description": "Text to process. Sent to the tool only through the URL fragment / local input."
     },
     "options": {
       "type": "object",

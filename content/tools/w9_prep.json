@@ -13,7 +13,7 @@
     "us-irs-w9-tin-match"
   ],
   "schemaUrl": "/schemas/w9_prep.json",
-  "executionUrl": "https://privacyfold.com/tools/w9_prep?mode=agent",
+  "executionUrl": "https://privacyfold.com/tools/w9-prep/?mode=agent",
   "seo": {
     "metaTitle": "Free IRS Form W-9 Preparation Worksheet (Zero Upload) | PrivacyFold",
     "metaDescription": "Prepare, validate, and map IRS Form W-9 contractor tax details entirely in browser memory. Protect your SSN and EIN with zero server uploads.",

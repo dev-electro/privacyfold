@@ -4,19 +4,19 @@
   "name": "Background remover (flat backgrounds)",
   "category": "photo",
   "badge": "PNG cutout",
-  "size": "14.7\u201345 MB OPFS",
+  "size": "14.7–45 MB OPFS",
   "Engine": "Plain JavaScript in your browser (no engine binary)",
-  "description": "Flood-fill the border colour to transparent with a tolerance slider. A colour-key cutout for studio, product and document shots \u2014 no AI model, no upload.",
+  "description": "Flood-fill the border colour to transparent with a tolerance slider. A colour-key cutout for studio, product and document shots — no AI model, no upload.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "presets": [
     "linkedin-headshot-800x800"
   ],
   "schemaUrl": "/schemas/bg_remove.json",
-  "executionUrl": "https://privacyfold.com/tools/bg_remove?mode=agent",
+  "executionUrl": "https://privacyfold.com/tools/bg-remove/?mode=agent",
   "seo": {
-    "metaTitle": "Background remover (flat backgrounds) \u2014 free in your browser, no upload | PrivacyFold",
-    "metaDescription": "Remove a flat or near-solid image background to transparent PNG in your browser. Edge flood fill with a tolerance slider \u2014 no AI model, no upload, no account.",
+    "metaTitle": "Background remover (flat backgrounds) — free in your browser, no upload | PrivacyFold",
+    "metaDescription": "Remove a flat or near-solid image background to transparent PNG in your browser. Edge flood fill with a tolerance slider — no AI model, no upload, no account.",
     "aeoSummary": "This background remover cuts out a solid or near-solid background with an edge flood fill inside your browser tab. No model is downloaded, no photo is uploaded, and nothing is sent anywhere.",
     "keywords": [
       "ai background remover",
@@ -30,7 +30,7 @@
         "url": "https://www.w3.org/TR/wasm-core-2/"
       },
       {
-        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "standard": "IETF RFC 3986 §3.5 Fragment Privacy",
         "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
       }
     ],
@@ -57,7 +57,7 @@
   "fam": "photo",
   "task": "Remove a flat background",
   "glyph": "BG",
-  "desc": "Flood-fills the border colour from the edges and makes it transparent, with a tolerance slider. Built for studio, product and document shots on a plain background \u2014 it is a colour-key cutout, not an AI matting model, and it will not trace hair.",
+  "desc": "Flood-fills the border colour from the edges and makes it transparent, with a tolerance slider. Built for studio, product and document shots on a plain background — it is a colour-key cutout, not an AI matting model, and it will not trace hair.",
   "accepts": "image",
   "tag": "PNG, Cutout",
   "std": "W3C HTML Canvas 2D",

@@ -11,7 +11,7 @@
   "adFreeZone": false,
   "presets": [],
   "schemaUrl": "/schemas/markdown_prev.json",
-  "executionUrl": "https://privacyfold.com/tools/markdown_prev?mode=agent",
+  "executionUrl": "https://privacyfold.com/tools/markdown-prev/?mode=agent",
   "seo": {
     "metaTitle": "Markdown to HTML converter — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Convert Markdown headings, lists, code blocks, and links into clean, semantic HTML markup. Runs 100% locally in your browser with zero file uploads.",

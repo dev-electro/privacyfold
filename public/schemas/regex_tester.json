@@ -5,9 +5,10 @@
   "description": "Test regular expressions with live match counts, captured groups, and character positions.",
   "x-privacyfold-tool-id": "regex_tester",
   "x-privacyfold-category": "dev",
-  "x-privacyfold-engine": "/wasm/dev/regex-tester-v1.wasm",
-  "x-privacyfold-determinism-tier": "D",
-  "x-privacyfold-execution-url": "https://privacyfold.com/tools/regex_tester?mode=agent&source=mcp#payload",
+  "x-privacyfold-standard": "ECMAScript (any modern browser)",
+  "x-privacyfold-engine": "none (plain JavaScript in the browser tab)",
+  "x-privacyfold-accepts": "text",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/regex-tester/?mode=agent#payload",
   "type": "object",
   "properties": {
     "preset": {
@@ -18,7 +19,7 @@
     },
     "input": {
       "type": "string",
-      "description": "Input text, data URI, or local File handle via data-pf='input'"
+      "description": "Text to process. Sent to the tool only through the URL fragment / local input."
     },
     "options": {
       "type": "object",

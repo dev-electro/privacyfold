@@ -11,7 +11,7 @@
   "adFreeZone": false,
   "presets": [],
   "schemaUrl": "/schemas/pdf_to_word.json",
-  "executionUrl": "https://privacyfold.com/tools/pdf_to_word?mode=agent",
+  "executionUrl": "https://privacyfold.com/tools/pdf-to-word/?mode=agent",
   "seo": {
     "metaTitle": "PDF to Word converter — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Convert PDF document pages and paragraphs into an editable Word-compatible document locally in your browser using pdf.js text extraction and RTF/DOCX structuring. Runs 100% locally in your browser with zero file uploads.",

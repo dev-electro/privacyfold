@@ -14,7 +14,7 @@
     "sec-edgar-filing-pdf-prep"
   ],
   "schemaUrl": "/schemas/pdf_flatten.json",
-  "executionUrl": "https://privacyfold.com/tools/pdf_flatten?mode=agent",
+  "executionUrl": "https://privacyfold.com/tools/pdf-flatten/?mode=agent",
   "seo": {
     "metaTitle": "PDF flattener & form locker — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Flatten interactive AcroForm fields, checkboxes, and signature appearances into static page content for IRS 1099, USCIS, and notary submissions. Runs 100% locally in your browser with zero file uploads.",

@@ -1,13 +1,14 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://privacyfold.com/schemas/image_upscaler.json",
-  "title": "AI image upscaler & restorer",
-  "description": "Upscale small or compressed photos by 2\u00d7 with edge-preserving super-resolution (Real-ESRGAN-compact / OmniSR-nano ~18 MB on WebGPU).",
+  "title": "Image upscaler (resampling)",
+  "description": "Resamples to 2×, 3× or 4× with a high-quality filter plus an adjustable unsharp pass. This is classic resampling — it enlarges what is already there and does not invent detail — and the page says so rather than implying a generative model.",
   "x-privacyfold-tool-id": "image_upscaler",
   "x-privacyfold-category": "image",
-  "x-privacyfold-engine": "omnisr-nano-fp16",
-  "x-privacyfold-determinism-tier": "M",
-  "x-privacyfold-execution-url": "https://privacyfold.com/tools/image_upscaler?mode=agent&source=mcp#payload",
+  "x-privacyfold-standard": "W3C HTML Canvas 2D + File API",
+  "x-privacyfold-engine": "none (plain JavaScript in the browser tab)",
+  "x-privacyfold-accepts": "image",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/image-upscaler/?mode=agent#payload",
   "type": "object",
   "properties": {
     "preset": {
@@ -18,7 +19,7 @@
     },
     "input": {
       "type": "string",
-      "description": "Input text, data URI, or local File handle via data-pf='input'"
+      "description": "An image file (data URI or pasted File) processed in the tab; never uploaded."
     },
     "options": {
       "type": "object",

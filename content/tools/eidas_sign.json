@@ -13,7 +13,7 @@
     "eu-eidas-pades-b-signature"
   ],
   "schemaUrl": "/schemas/eidas_sign.json",
-  "executionUrl": "https://privacyfold.com/tools/eidas_sign?mode=agent",
+  "executionUrl": "https://privacyfold.com/tools/eidas-sign/?mode=agent",
   "seo": {
     "metaTitle": "eIDAS & local document signer — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Create a local electronic signature manifest with SHA-256 document digest, signer statement, and UTC timestamp in alignment with EU eIDAS (Regulation 910/2014) and US ESIGN Act principles. Runs 100% locally in your browser with zero file uploads.",

@@ -11,7 +11,7 @@
   "adFreeZone": false,
   "presets": [],
   "schemaUrl": "/schemas/stego_seal.json",
-  "executionUrl": "https://privacyfold.com/tools/stego_seal?mode=agent",
+  "executionUrl": "https://privacyfold.com/tools/stego-seal/?mode=agent",
   "seo": {
     "metaTitle": "Watermark & document stamp — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Add a visible status stamp (such as Confidential, Approved or Draft) to an image or document page, plus an optional embedded recipient ID. Runs 100% locally in your browser with zero file uploads.",

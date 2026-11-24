@@ -11,7 +11,7 @@
   "adFreeZone": false,
   "presets": [],
   "schemaUrl": "/schemas/pdf_merge.json",
-  "executionUrl": "https://privacyfold.com/tools/pdf_merge?mode=agent",
+  "executionUrl": "https://privacyfold.com/tools/pdf-merge/?mode=agent",
   "seo": {
     "metaTitle": "Merge PDF Files Online Free & Private (Zero Server Upload) | PrivacyFold",
     "metaDescription": "Combine and organize multiple PDF documents locally in your browser. Fast, free, completely private with zero server uploads.",

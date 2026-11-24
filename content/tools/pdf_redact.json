@@ -13,7 +13,7 @@
     "foia-redaction-true-byte-scrub"
   ],
   "schemaUrl": "/schemas/pdf_redact.json",
-  "executionUrl": "https://privacyfold.com/tools/pdf_redact?mode=agent",
+  "executionUrl": "https://privacyfold.com/tools/pdf-redact/?mode=agent",
   "seo": {
     "metaTitle": "Permanent PDF Redaction Tool Online (True Destructive Blackout) | PrivacyFold",
     "metaDescription": "Permanently remove sensitive text, SSNs, and data from PDFs locally in browser memory. Prevents copy-paste leaks. Zero server uploads.",

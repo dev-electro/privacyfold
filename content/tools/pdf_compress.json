@@ -19,7 +19,7 @@
     "whatsapp-pdf-document-optimiser"
   ],
   "schemaUrl": "/schemas/pdf_compress.json",
-  "executionUrl": "https://privacyfold.com/tools/pdf_compress?mode=agent",
+  "executionUrl": "https://privacyfold.com/tools/pdf-compress/?mode=agent",
   "seo": {
     "metaTitle": "PDF compressor (Portal presets) — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Compress PDF documents to meet strict government and email portal limits (USCIS I-130 <2 MB, UK Visa VFS <2 MB, HMRC SA100 <5 MB, Schengen VFS <5 MB, Court E-Filing <5 MB, Gmail <25 MB). Runs 100% locally in your browser with zero file uploads.",

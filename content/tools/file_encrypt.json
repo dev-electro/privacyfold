@@ -11,7 +11,7 @@
   "adFreeZone": false,
   "presets": [],
   "schemaUrl": "/schemas/file_encrypt.json",
-  "executionUrl": "https://privacyfold.com/tools/file_encrypt?mode=agent",
+  "executionUrl": "https://privacyfold.com/tools/file-encrypt/?mode=agent",
   "seo": {
     "metaTitle": "Encrypt Files into Self-Decrypting HTML Envelopes (AES-256-GCM) | PrivacyFold",
     "metaDescription": "Encrypt any file locally using AES-256-GCM and PBKDF2. Generates self-decrypting HTML envelopes that open offline in any browser. 100% zero-knowledge.",

@@ -11,7 +11,7 @@
   "adFreeZone": false,
   "presets": [],
   "schemaUrl": "/schemas/invoice_generator.json",
-  "executionUrl": "https://privacyfold.com/tools/invoice_generator?mode=agent",
+  "executionUrl": "https://privacyfold.com/tools/invoice-generator/?mode=agent",
   "seo": {
     "metaTitle": "Private invoice generator — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Generate itemized freelance or SMB invoices from `templates/invoice-us.json` with automatic line-item totals and tax calculation—zero cloud accounting accounts required. Runs 100% locally in your browser via /templates/invoice-us.json with zero file uploads.",

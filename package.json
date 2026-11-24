@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "type": "module",
   "private": true,
-  "description": "PrivacyFold — Client-side privacy and file tools that never see your files. Built with Astro 7 + Tailwind CSS + Vanilla JS Runtime.",
+  "description": "PrivacyFold \u2014 Client-side privacy and file tools that never see your files. Built with Astro 7 + Tailwind CSS + Vanilla JS Runtime.",
   "scripts": {
     "dev": "node scripts/validate-git-cms.mjs && astro dev",
-    "prebuild": "node scripts/record-build.mjs --start && node scripts/vendor-runtime.mjs && node scripts/validate-git-cms.mjs && node scripts/og-images.mjs && node scripts/fix-wasm-claims.mjs --check",
+    "prebuild": "node scripts/record-build.mjs --start && node scripts/vendor-runtime.mjs && node scripts/validate-git-cms.mjs && node scripts/check-runtime-drift.mjs && node scripts/og-images.mjs && node scripts/fix-wasm-claims.mjs --check",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",

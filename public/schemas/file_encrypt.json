@@ -1,13 +1,14 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://privacyfold.com/schemas/file_encrypt.json",
-  "title": "Password-protect text",
-  "description": "Encrypt sensitive notes, keys or JSON with a password using standard AES-256 encryption. Save as a standalone HTML file that can be unlocked offline in any browser.",
+  "title": "Zero-knowledge file encryptor & self-decrypting envelope",
+  "description": "When sharing sensitive financial statements, tax filings, legal contracts, or confidential identity documents, traditional cloud file-sharing services store your data unencrypted on their servers or hold the master decryption keys. PrivacyFold's Zero-Knowledge File Encryptor implements military-grade AES-256-GCM symmetric encryption combined with PBKDF2 key derivation using 600,000 SHA-256 iterations directly inside your browser via the W3C Web Cryptography API. Rather than requiring recipients to install proprietary decryption software, the tool packages your encrypted payload into a self-decrypting HTML envelope. Any recipient with the correct passphrase can open the HTML file in any modern web browser on Windows, macOS, Linux, iOS, or Android, enter the password, and decrypt the original file with zero software installations and zero network requests.",
   "x-privacyfold-tool-id": "file_encrypt",
   "x-privacyfold-category": "crypto",
-  "x-privacyfold-engine": "/wasm/crypto/file-encrypt-v1.wasm",
-  "x-privacyfold-determinism-tier": "D",
-  "x-privacyfold-execution-url": "https://privacyfold.com/tools/file_encrypt?mode=agent&source=mcp#payload",
+  "x-privacyfold-standard": "ECMAScript (any modern browser)",
+  "x-privacyfold-engine": "none (plain JavaScript in the browser tab)",
+  "x-privacyfold-accepts": "any",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/file-encrypt/?mode=agent#payload",
   "type": "object",
   "properties": {
     "preset": {
@@ -18,7 +19,7 @@
     },
     "input": {
       "type": "string",
-      "description": "Input text, data URI, or local File handle via data-pf='input'"
+      "description": "A file or text value processed in the tab; never uploaded."
     },
     "options": {
       "type": "object",

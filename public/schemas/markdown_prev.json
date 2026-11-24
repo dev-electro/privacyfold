@@ -5,9 +5,10 @@
   "description": "Convert Markdown headings, lists, code blocks, and links into clean, semantic HTML markup.",
   "x-privacyfold-tool-id": "markdown_prev",
   "x-privacyfold-category": "dev",
-  "x-privacyfold-engine": "/wasm/dev/markdown-prev-v1.wasm",
-  "x-privacyfold-determinism-tier": "D",
-  "x-privacyfold-execution-url": "https://privacyfold.com/tools/markdown_prev?mode=agent&source=mcp#payload",
+  "x-privacyfold-standard": "ECMAScript (any modern browser)",
+  "x-privacyfold-engine": "none (plain JavaScript in the browser tab)",
+  "x-privacyfold-accepts": "text",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/markdown-prev/?mode=agent#payload",
   "type": "object",
   "properties": {
     "preset": {
@@ -18,7 +19,7 @@
     },
     "input": {
       "type": "string",
-      "description": "Input text, data URI, or local File handle via data-pf='input'"
+      "description": "Text to process. Sent to the tool only through the URL fragment / local input."
     },
     "options": {
       "type": "object",

@@ -27,7 +27,7 @@
     "discord-server-emoji-128x128"
   ],
   "schemaUrl": "/schemas/social_resizer.json",
-  "executionUrl": "https://privacyfold.com/tools/social_resizer?mode=agent",
+  "executionUrl": "https://privacyfold.com/tools/social-resizer/?mode=agent",
   "seo": {
     "metaTitle": "Social media, e-commerce & app icon resizer — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "One-click image resizer pre-loaded with official platform dimensions from `presets/social-media-sizes.json`, `ecommerce-sizes.json`, and `developer-icons.json` (Amazon 1000×1000, Shopify 2048×2048, LinkedIn 400×400 & 1584×396 Banner, Instagram 1080×1080, YouTube 1280×720, OG Image 1200×630, iOS/Android App Icon 512×512). Runs 100% locally in your browser with zero file uploads.",

@@ -13,7 +13,7 @@
     "us-irs-1040-schedule-c-prep"
   ],
   "schemaUrl": "/schemas/us_tax_filler.json",
-  "executionUrl": "https://privacyfold.com/tools/us_tax_filler?mode=agent",
+  "executionUrl": "https://privacyfold.com/tools/us-tax-filler/?mode=agent",
   "seo": {
     "metaTitle": "US tax form filler (W-2, 1099-NEC, 1040) — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Compute and format IRS Form W-2 wage boxes, Form 1099-NEC nonemployee compensation, and Form 1040 standard deduction estimates without uploading financial data to tax-prep servers. Runs 100% locally in your browser with zero file uploads.",

@@ -11,7 +11,7 @@
   "adFreeZone": false,
   "presets": [],
   "schemaUrl": "/schemas/exif_strip.json",
-  "executionUrl": "https://privacyfold.com/tools/exif_strip?mode=agent",
+  "executionUrl": "https://privacyfold.com/tools/exif-strip/?mode=agent",
   "seo": {
     "metaTitle": "Remove EXIF & GPS Location Metadata from Photos Online (100% Private)",
     "metaDescription": "Strip GPS coordinates, camera serials, timestamps, and EXIF metadata from JPEG, PNG, and WebP photos entirely in your browser. 0 bytes uploaded to any server.",

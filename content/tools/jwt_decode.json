@@ -13,7 +13,7 @@
     "jwt-rs256-es256-offline-audit"
   ],
   "schemaUrl": "/schemas/jwt_decode.json",
-  "executionUrl": "https://privacyfold.com/tools/jwt_decode?mode=agent",
+  "executionUrl": "https://privacyfold.com/tools/jwt-decode/?mode=agent",
   "seo": {
     "metaTitle": "JWT decoder — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Read what is inside a JSON Web Token. The signature is not checked, so do not treat a decoded token as trusted. Runs 100% locally in your browser with zero file uploads.",

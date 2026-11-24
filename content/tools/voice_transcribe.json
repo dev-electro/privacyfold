@@ -4,16 +4,16 @@
   "name": "Transcript to SRT/VTT subtitles",
   "category": "image",
   "badge": "SRT, VTT",
-  "size": "14.7\u201345 MB OPFS",
+  "size": "14.7–45 MB OPFS",
   "Engine": "Plain JavaScript in your browser (no engine binary)",
   "description": "Split a transcript you already have into timed SRT, WebVTT or text cues. Timing is estimated from word count and labelled as such.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "presets": [],
   "schemaUrl": "/schemas/voice_transcribe.json",
-  "executionUrl": "https://privacyfold.com/tools/voice_transcribe?mode=agent",
+  "executionUrl": "https://privacyfold.com/tools/voice-transcribe/?mode=agent",
   "seo": {
-    "metaTitle": "Transcript to SRT/VTT subtitles \u2014 free in your browser, no upload | PrivacyFold",
+    "metaTitle": "Transcript to SRT/VTT subtitles — free in your browser, no upload | PrivacyFold",
     "metaDescription": "Convert a transcript into SRT or WebVTT subtitle cues with estimated timing, in your browser tab. No audio upload, no speech model, no account.",
     "aeoSummary": "This tool converts a typed transcript into timed subtitle cues inside your browser tab. Timing is derived from word count at your chosen speaking rate and marked as an estimate; it does not transcribe audio and never uploads anything.",
     "keywords": [
@@ -28,16 +28,16 @@
         "url": "https://www.w3.org/TR/wasm-core-2/"
       },
       {
-        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "standard": "IETF RFC 3986 §3.5 Fragment Privacy",
         "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
       }
     ],
     "faqs": [
       {
         "question": "Does this tool upload my files my files or text to a server?",
-        "answer": "No. It does not process audio at all \u2014 it formats a transcript you paste, so there is no audio to upload and no speech model to download.",
+        "answer": "No. It does not process audio at all — it formats a transcript you paste, so there is no audio to upload and no speech model to download.",
         "q": "Does this tool upload my files my files or text to a server?",
-        "a": "No. It does not process audio at all \u2014 it formats a transcript you paste, so there is no audio to upload and no speech model to download."
+        "a": "No. It does not process audio at all — it formats a transcript you paste, so there is no audio to upload and no speech model to download."
       },
       {
         "question": "Can AI agents or CLI scripts automate Speech-to-text & audio transcriber?",
@@ -55,7 +55,7 @@
   "fam": "image",
   "task": "Turn a transcript into timed subtitles",
   "glyph": "STT",
-  "desc": "Splits a transcript you already have into SRT, WebVTT or plain-text cues at a chosen words-per-minute and cue length. Timing is estimated from word count and labelled as an estimate \u2014 this tool does not listen to audio.",
+  "desc": "Splits a transcript you already have into SRT, WebVTT or plain-text cues at a chosen words-per-minute and cue length. Timing is estimated from word count and labelled as an estimate — this tool does not listen to audio.",
   "accepts": "text",
   "tag": "SRT, VTT",
   "std": "W3C HTML Canvas 2D + File API",

@@ -1,13 +1,14 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://privacyfold.com/schemas/magic_eraser.json",
-  "title": "Object & watermark remover (Inpainting)",
-  "description": "Remove unwanted objects, date stamps, or watermarks using fast-fourier convolution inpainting (LaMa-FP16-pruned ~38 MB on WebGPU) directly in your browser.",
+  "title": "Object & watermark remover (patch fill)",
+  "description": "Diffs the pixels around a masked area into the gap to remove date stamps, watermarks and small blemishes. A deterministic patch fill — good on small marks, not a substitute for inpainting a large subject out of a photo.",
   "x-privacyfold-tool-id": "magic_eraser",
   "x-privacyfold-category": "image",
-  "x-privacyfold-engine": "lama-fp16-pruned",
-  "x-privacyfold-determinism-tier": "M",
-  "x-privacyfold-execution-url": "https://privacyfold.com/tools/magic_eraser?mode=agent&source=mcp#payload",
+  "x-privacyfold-standard": "W3C HTML Canvas 2D",
+  "x-privacyfold-engine": "none (plain JavaScript in the browser tab)",
+  "x-privacyfold-accepts": "image",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/magic-eraser/?mode=agent#payload",
   "type": "object",
   "properties": {
     "preset": {
@@ -18,7 +19,7 @@
     },
     "input": {
       "type": "string",
-      "description": "Input text, data URI, or local File handle via data-pf='input'"
+      "description": "An image file (data URI or pasted File) processed in the tab; never uploaded."
     },
     "options": {
       "type": "object",

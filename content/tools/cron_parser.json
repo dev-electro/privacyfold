@@ -14,7 +14,7 @@
     "aws-eventbridge-cron-validator"
   ],
   "schemaUrl": "/schemas/cron_parser.json",
-  "executionUrl": "https://privacyfold.com/tools/cron_parser?mode=agent",
+  "executionUrl": "https://privacyfold.com/tools/cron-parser/?mode=agent",
   "seo": {
     "metaTitle": "Cron expression explainer — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Parse cron schedule expressions into a clear, human-readable description and preview the upcoming execution times. Runs 100% locally in your browser with zero file uploads.",

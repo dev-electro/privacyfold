@@ -11,7 +11,7 @@
   "adFreeZone": false,
   "presets": [],
   "schemaUrl": "/schemas/vellum_diff.json",
-  "executionUrl": "https://privacyfold.com/tools/vellum_diff?mode=agent",
+  "executionUrl": "https://privacyfold.com/tools/vellum-diff/?mode=agent",
   "seo": {
     "metaTitle": "Document & image compare — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Overlay two versions of a document, contract or image to spot differences. Changed text, numbers or pixels are highlighted in red. Runs 100% locally in your browser with zero file uploads.",

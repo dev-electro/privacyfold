@@ -13,7 +13,7 @@
     "us-tsa-precheck-doc"
   ],
   "schemaUrl": "/schemas/ocr_scan.json",
-  "executionUrl": "https://privacyfold.com/tools/ocr_scan?mode=agent",
+  "executionUrl": "https://privacyfold.com/tools/ocr-scan/?mode=agent",
   "seo": {
     "metaTitle": "Fill fields from scanned text — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Extract labelled fields from a scanned document text layer entirely in your browser: name, tax ID, invoice number, date and total, each with the source line. No OCR model, no uploads.",

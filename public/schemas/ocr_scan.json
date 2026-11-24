@@ -1,13 +1,14 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://privacyfold.com/schemas/ocr_scan.json",
-  "title": "Fill from scan & local OCR",
-  "description": "Extract text from scanned IDs, invoices, or payslips locally in your browser and map fields to W-9 or SA100 boxes with human confirmation.",
+  "title": "Fill fields from scanned text",
+  "description": "Map the text layer of a scanned document — pasted in, or copied out of any OCR app — onto W-9 / SA100 style fields. Labelled lines such as \"Name: …\" are matched deterministically and shown with the line they came from, so a wrong guess is visible. No OCR model ships with this tool, and nothing is invented from pixels.",
   "x-privacyfold-tool-id": "ocr_scan",
   "x-privacyfold-category": "pdf",
-  "x-privacyfold-engine": "tesseract-ppocr-v6",
-  "x-privacyfold-determinism-tier": "M",
-  "x-privacyfold-execution-url": "https://privacyfold.com/tools/ocr_scan?mode=agent&source=mcp#payload",
+  "x-privacyfold-standard": "ISO 32000-1 (PDF 1.7) via pdf-lib",
+  "x-privacyfold-engine": "none (plain JavaScript in the browser tab)",
+  "x-privacyfold-accepts": "text",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/ocr-scan/?mode=agent#payload",
   "type": "object",
   "properties": {
     "preset": {
@@ -18,7 +19,7 @@
     },
     "input": {
       "type": "string",
-      "description": "Input text, data URI, or local File handle via data-pf='input'"
+      "description": "Text to process. Sent to the tool only through the URL fragment / local input."
     },
     "options": {
       "type": "object",

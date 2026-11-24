@@ -5,9 +5,10 @@
   "description": "Run relational SQL projections and filters over local CSV or JSON datasets in browser memory.",
   "x-privacyfold-tool-id": "sqlite_viewer",
   "x-privacyfold-category": "dev",
-  "x-privacyfold-engine": "/wasm/dev/sqlite-viewer-v1.wasm",
-  "x-privacyfold-determinism-tier": "D",
-  "x-privacyfold-execution-url": "https://privacyfold.com/tools/sqlite_viewer?mode=agent&source=mcp#payload",
+  "x-privacyfold-standard": "SQLite 3 via sql.js",
+  "x-privacyfold-engine": "sql.js WebAssembly (/vendor/sql-wasm.wasm)",
+  "x-privacyfold-accepts": "text",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/sqlite-viewer/?mode=agent#payload",
   "type": "object",
   "properties": {
     "preset": {
@@ -18,7 +19,7 @@
     },
     "input": {
       "type": "string",
-      "description": "Input text, data URI, or local File handle via data-pf='input'"
+      "description": "Text to process. Sent to the tool only through the URL fragment / local input."
     },
     "options": {
       "type": "object",

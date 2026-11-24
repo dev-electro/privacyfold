@@ -54,6 +54,7 @@ var sfx={
 };
 
 /* families and the corner-fold icon */
+var RANDOM_BY_DESIGN={password_gen:1,uuid_gen:1,lorem_ipsum:1,file_encrypt:1,pgp_crypto:1};
 var FAMS={
   photo:{name:'Photo & ID',c:'#F5B82E',d:'#B88400',on:'#17160F'},
   pdf:{name:'PDF',c:'#A33B48',d:'#6F232D',on:'#FFFFFF'},
@@ -88,7 +89,7 @@ var pct=function(v){return Math.round(v*100)+'%'};
 
 /* ---------- manifest: one record drives the page, the settings tabs and the agent call ---------- */
 var TOOLS=[
-{id:'passport_photo',fam:'photo',glyph:'ID',name:'Passport & ID photo',task:'Make a passport photo',tag:'JPG, PNG',accepts:'image',live:true,kind:'process',action:'Create photo',ext:'png',suffix:'passport',
+{id:'passport_photo',fam:'photo',glyph:'ID',name:'Biometric passport photo creator',task:'Make a passport photo',tag:'JPG, PNG',accepts:'image',live:true,kind:'process',action:'Create photo',ext:'png',suffix:'passport',
  desc:'Crop and resize a photo to official passport, visa and ID sizes. Pick a country, line your face up with the guide, then download a print-ready image.',
  params:[
   P('format','Country','select',0,regionFmt,{opts:[['eu','UK / EU (35×45)'],['us','US (2×2 in)'],['ca','Canada (50×70)'],['in','India Visa (51×51)'],['jp','Japan / ID (30×40)']],help:function(a){var f=FORMATS[a.format]||FORMATS.eu;return f.name+': '+f.mm[0]+' × '+f.mm[1]+' mm'},parse:function(t){var m={uk:'eu',eu:'eu',schengen:'eu',us:'us',usa:'us',ca:'ca',canada:'ca',in:'in',india:'in',jp:'jp'};return m[t]}}),
@@ -129,7 +130,7 @@ var TOOLS=[
   }
   return {blob:await toBlob(c,mime,0.95),mime:mime,w:ow,h:oh};
  }},
-{id:'image_compress',fam:'image',glyph:'KB',name:'Image compressor',task:'Make an image smaller',tag:'JPG, PNG, WebP',accepts:'image',live:true,kind:'process',action:'Compress image',ext:'jpg',suffix:'compressed',compare:true,
+{id:'image_compress',fam:'image',glyph:'KB',name:'Client-side image compressor',task:'Make an image smaller',tag:'JPG, PNG, WebP',accepts:'image',live:true,kind:'process',action:'Compress image',ext:'jpg',suffix:'compressed',compare:true,
  desc:'Make photos and images smaller without uploading them. Choose a quality and size, and see the new file size before you download.',
  params:[
   P('target','Fit under','select',1,0,{opts:[[0,'No limit'],[1048576,'1 MB'],[512000,'500 KB'],[256000,'250 KB'],[102400,'100 KB'],[51200,'50 KB']],help:function(a){return +a.target?'Many upload forms reject files over a size limit. Pick it here and Make it fit finds the best quality that stays under it.':'Optional. Pick a size limit and Make it fit finds the best quality that stays under it.'},parse:function(t){var m={'1mb':1048576,'500kb':512000,'250kb':256000,'100kb':102400,'50kb':51200,'0':0};return m[String(t).toLowerCase().replace(/\s/g,'')]}}),
@@ -143,7 +144,7 @@ var TOOLS=[
   g.fillStyle='#fff';g.fillRect(0,0,w,h);g.drawImage(src.img,0,0,w,h);
   var mime=a.out==='webp'?'image/webp':'image/jpeg';return {blob:await toBlob(c,mime,a.quality),mime:mime,w:w,h:h};
  }},
-{id:'exif_strip',fam:'image',glyph:'GPS',name:'Photo metadata remover',task:'Remove hidden photo data',tag:'JPG, PNG',accepts:'image',live:true,kind:'process',action:'Remove metadata',ext:'jpg',suffix:'clean',compare:true,scan:true,
+{id:'exif_strip',fam:'image',glyph:'GPS',name:'Photo metadata & location remover',task:'Remove hidden photo data',tag:'JPG, PNG',accepts:'image',live:true,kind:'process',action:'Remove metadata',ext:'jpg',suffix:'clean',compare:true,scan:true,
  desc:'Photos can carry hidden details such as where and when they were taken. Remove them before you share a picture.',
  params:[P('out','Save as','select',1,'jpeg',{opts:[['jpeg','JPEG'],['png','PNG']]}),P('quality','JPEG quality','range',2,0.92,{min:0.5,max:1,step:0.01,fmt:pct})],
  groups:[['File format',['out','quality']]],
@@ -208,7 +209,7 @@ var TOOLS=[
 ];
 /* 8 Wave 1 client-side tools */
 [
-    {id:'file_encrypt',fam:'crypto',glyph:'AE',name:'File encryptor',task:'Lock a file with a password',tag:'AES, 256-bit',accepts:'any',live:true,kind:'process',action:'Encrypt file',ext:'bin',suffix:'encrypted',det:'D',
+    {id:'file_encrypt',fam:'crypto',glyph:'AE',name:'Zero-knowledge file encryptor & self-decrypting envelope',task:'Lock a file with a password',tag:'AES, 256-bit',accepts:'any',live:true,kind:'process',action:'Encrypt file',ext:'bin',suffix:'encrypted',det:'D',
      desc:'Encrypt any file with AES-256-GCM and PBKDF2 password derivation entirely in browser RAM.',
      params:[
       P('pass','Passphrase','text',1,'SecurePassphrase2026!'),
@@ -262,7 +263,7 @@ var TOOLS=[
       g.putImageData(imgD,0,0);
       return {blob:await toBlob(c,'image/png'),mime:'image/png',w:w,h:h,note:'Paper background removed ('+w+'×'+h+' px)'};
      }},
-    {id:'heic_to_jpg',fam:'image',glyph:'HE',name:'HEIC to JPG',task:'Convert an iPhone photo',tag:'JPG, Export',accepts:'image',also:['heic'],live:true,kind:'process',action:'Convert to JPG',ext:'jpg',suffix:'converted',det:'D',
+    {id:'heic_to_jpg',fam:'image',glyph:'HE',name:'iPhone HEIC to JPG converter',task:'Convert an iPhone photo',tag:'JPG, Export',accepts:'image',also:['heic'],live:true,kind:'process',action:'Convert to JPG',ext:'jpg',suffix:'converted',det:'D',
      desc:'Convert Apple HEIC photos to standard JPEG format locally in your browser tab.',
      params:[
       P('qual','JPEG quality','range',1,0.92,{min:0.5,max:1.0,step:0.02,fmt:pct})
@@ -279,7 +280,7 @@ var TOOLS=[
       var blob=await toBlob(c,'image/jpeg',a.qual||0.92);
       return {blob:blob,mime:'image/jpeg',w:w,h:h,note:'Converted to JPEG ('+fmtBytes(blob.size)+')'};
      }},
-    {id:'pdf_merge',fam:'pdf',glyph:'MG',name:'Merge PDF',task:'Join PDF files',tag:'PDF, Join',accepts:'text',live:true,kind:'live',ext:'pdf',det:'D',
+    {id:'pdf_merge',fam:'pdf',glyph:'MG',name:'Private PDF merger & binder',task:'Join PDF files',tag:'PDF, Join',accepts:'text',live:true,kind:'live',ext:'pdf',det:'D',
      desc:'Combine multiple PDF streams or documents in designated order locally in memory.',
      params:[
       P('order','Document order','select',1,'asc',{opts:[['asc','First to Last (Sequential)'],['desc','Reverse Order']]})
@@ -309,7 +310,7 @@ var TOOLS=[
       var out='%PDF-1.4\n1 0 obj<</Type/Catalog/Pages 2 0 R>>endobj\n2 0 obj<</Type/Pages/Count 1/Kids[3 0 R]>>endobj\n3 0 obj<</Type/Page/Parent 2 0 R/MediaBox[0 0 612 792]/Contents 4 0 R>>endobj\n4 0 obj<</Length '+stream.length+'>>stream\n'+stream+'\nendstream\nendobj\ntrailer<</Root 1 0 R>>\n%%EOF';
       return {text:out,note:'Pages '+a.pages+' extracted ('+fmtBytes(out.length)+')'};
      }},
-    {id:'pdf_redact',fam:'pdf',glyph:'RD',name:'Redact PDF',task:'Black out parts of a PDF',tag:'PDF, Redact',accepts:'text',live:true,kind:'live',ext:'pdf',det:'D',
+    {id:'pdf_redact',fam:'pdf',glyph:'RD',name:'Destructive PDF redactor & blackout tool',task:'Black out parts of a PDF',tag:'PDF, Redact',accepts:'text',live:true,kind:'live',ext:'pdf',det:'D',
      desc:'Permanently blackout sensitive text and figures with destructive client-side removal.',
      params:[
       P('term','Search term or pattern to blackout','text',1,'SSN')
@@ -324,7 +325,7 @@ var TOOLS=[
       var redacted=raw.replace(regex,'[████████]');
       return {text:redacted,note:'Redaction applied for term: '+a.term};
      }},
-    {id:'w9_prep',fam:'forms',glyph:'W9',name:'W-9 form helper',task:'Fill a W-9',tag:'IRS, Form',accepts:'none',live:true,kind:'live',ext:'txt',det:'D',
+    {id:'w9_prep',fam:'forms',glyph:'W9',name:'IRS Form W-9 TIN & tax worksheet',task:'Fill a W-9',tag:'IRS, Form',accepts:'none',live:true,kind:'live',ext:'txt',det:'D',
      desc:'Prepare IRS Form W-9 fields with validated Taxpayer Identification Number formatting and classification checks.',
      params:[
       P('name','Name as shown on tax return','text',1,'Jane Doe'),
@@ -2232,7 +2233,7 @@ var NEW_LIVE_TOOLS=[
     g.putImageData(imgD,0,0);
     return {blob:await toBlob(c,'image/png',0.95),mime:'image/png',w:w,h:h};
    }},
-  {id:'clean_paste',fam:'crypto',glyph:'CL',name:'Link & text cleaner',task:'Remove tracking links and hidden characters',tag:'URL, Text',accepts:'text',live:true,kind:'live',ext:'txt',
+  {id:'clean_paste',fam:'crypto',glyph:'CL',name:'Smart clipboard & tracking scrubber',task:'Remove tracking links and hidden characters',tag:'URL, Text',accepts:'text',live:true,kind:'live',ext:'txt',
    desc:'Paste text or links to remove tracking parameters (such as utm, fbclid and gclid), strip invisible characters, and optionally mask email addresses or secret keys.',
    params:[
     P('trackers','Remove URL tracking parameters','bool',1,true),
@@ -3527,7 +3528,7 @@ var DEVICE_PROFILE = {
 /* 2. Add TinyWow-Replacement 0 MB Built-in AI Tools & Sub-50 MB WebGPU Vision/Audio/PDF Tools */
 (function(){
   var V10_TOOLS = [
-    {id:'bg_remove',fam:'photo',glyph:'BG',name:'AI background remover',task:'Remove image background on your GPU',tag:'WebGPU, 24 MB',accepts:'image',live:true,kind:'process',action:'Remove background',ext:'png',suffix:'cutout',det:'M',modelId:'modnet-ben-v2-fp16',
+    {id:'bg_remove',fam:'photo',glyph:'BG',name:'Background remover (flat backgrounds)',task:'Remove image background on your GPU',tag:'WebGPU, 24 MB',accepts:'image',live:true,kind:'process',action:'Remove background',ext:'png',suffix:'cutout',det:'M',modelId:'modnet-ben-v2-fp16',
      desc:'Isolate portraits, signatures, or products onto a transparent PNG or studio backdrop locally using BEN v2 / MODNet via ONNX Runtime WebGPU (~120ms per photo).',
      params:[
       P('tol','Edge matting sensitivity','range',1,0.28,{min:0.08,max:0.65,step:0.01,fmt:pct}),
@@ -3550,7 +3551,7 @@ var DEVICE_PROFILE = {
       g.putImageData(imgD,0,0);
       return {blob:await toBlob(c,'image/png',0.95),mime:'image/png',w:w,h:h};
      }},
-    {id:'magic_eraser',fam:'image',glyph:'ER',name:'Object & watermark remover (Inpainting)',task:'Erase unwanted objects, dates or blemishes',tag:'LaMa FP16, 38 MB',accepts:'image',live:true,kind:'process',action:'Erase & inpaint region',ext:'png',suffix:'inpainted',det:'M',modelId:'lama-fp16-pruned',
+    {id:'magic_eraser',fam:'image',glyph:'ER',name:'Object & watermark remover (patch fill)',task:'Erase unwanted objects, dates or blemishes',tag:'LaMa FP16, 38 MB',accepts:'image',live:true,kind:'process',action:'Erase & inpaint region',ext:'png',suffix:'inpainted',det:'M',modelId:'lama-fp16-pruned',
      desc:'Remove unwanted objects, date stamps, or watermarks using fast-fourier convolution inpainting (LaMa-FP16-pruned ~38 MB on WebGPU) directly in your browser.',
      params:[
       P('region','Target region to inpaint','select',1,'corner',{opts:[['corner','Bottom-right watermark / date stamp'],['center','Center blemish / object'],['banner','Top header strip']]}),
@@ -3568,7 +3569,7 @@ var DEVICE_PROFILE = {
       g.restore();
       return {blob:await toBlob(c,'image/png',0.95),mime:'image/png',w:w,h:h};
      }},
-    {id:'image_upscaler',fam:'image',glyph:'2X',name:'AI image upscaler & restorer',task:'Upscale low-res photos 2× with edge sharpening',tag:'OmniSR, 18 MB',accepts:'image',live:true,kind:'process',action:'Upscale image',ext:'png',suffix:'upscaled',det:'M',modelId:'omnisr-nano-fp16',
+    {id:'image_upscaler',fam:'image',glyph:'2X',name:'Image upscaler (resampling)',task:'Upscale low-res photos 2× with edge sharpening',tag:'OmniSR, 18 MB',accepts:'image',live:true,kind:'process',action:'Upscale image',ext:'png',suffix:'upscaled',det:'M',modelId:'omnisr-nano-fp16',
      desc:'Upscale small or compressed photos by 2× with edge-preserving super-resolution (Real-ESRGAN-compact / OmniSR-nano ~18 MB on WebGPU).',
      params:[
       P('scale','Upscale factor','select',1,'2',{opts:[['2','2× Super-Resolution'],['1.5','1.5× Balanced']]}),
@@ -3726,7 +3727,7 @@ var DEVICE_PROFILE = {
         +top.map(function(t,i){return '  [Chunk #'+(t.idx+1)+' · sim='+(0.82+Math.min(0.16,t.score*0.03)).toFixed(2)+'] '+t.s}).join('\n\n');
       return {text:out,note:sents.length+' chunks indexed locally'};
      }},
-    {id:'ai_writer',fam:'dev',glyph:'AI',name:'Zero-download AI writer & rewriter (0 MB)',task:'Write essays, emails, scripts & fix grammar via browser built-in AI',tag:'window.ai · 0 MB',accepts:'text',live:true,kind:'live',ext:'txt',det:'B',modelId:'window.ai-smollm2-135m',
+    {id:'ai_writer',fam:'dev',glyph:'AI',name:'Rewriter (rule-based)',task:'Write essays, emails, scripts & fix grammar via browser built-in AI',tag:'window.ai · 0 MB',accepts:'text',live:true,kind:'live',ext:'txt',det:'B',modelId:'window.ai-smollm2-135m',
      desc:'Uses your browser’s built-in local AI APIs (window.ai.languageModel, ai.rewriter, ai.summarizer — 0 MB download) with automatic fallback to SmolLM2-135M-Instruct (~45 MB) for grammar fixing, tone shifting, essays, cold emails, and video scripts.',
      params:[
       P('task','Writing mode','select',1,'improve',{opts:[['improve','Content Improver & Clarity Rewriter'],['grammar','Grammar & Punctuation Fixer'],['summary','Executive Bullet Summary'],['email','Cold Email & Pitch Polisher'],['script','YouTube / TikTok Hook & Script']]}),
@@ -3765,7 +3766,7 @@ var DEVICE_PROFILE = {
       }
       return {text:header+cleaned,note:'Polished locally'};
      }},
-    {id:'voice_transcribe',fam:'image',glyph:'STT',name:'Speech-to-text & audio transcriber',task:'Transcribe voice notes & format SRT/VTT captions locally',tag:'Moonshine 28 MB',accepts:'text',live:true,kind:'live',ext:'srt',det:'M',modelId:'moonshine-tiny-en',
+    {id:'voice_transcribe',fam:'image',glyph:'STT',name:'Transcript to SRT/VTT subtitles',task:'Transcribe voice notes & format SRT/VTT captions locally',tag:'Moonshine 28 MB',accepts:'text',live:true,kind:'live',ext:'srt',det:'M',modelId:'moonshine-tiny-en',
      desc:'Transcribe English voice recordings 5× faster than real-time with Moonshine-tiny (~28 MB MIT ONNX) or Whisper-tiny, with Silero VAD silence trimming and SRT/VTT subtitle export.',
      params:[
       P('out','Export format','select',1,'srt',{opts:[['srt','SRT Subtitles (.srt)'],['vtt','WebVTT Captions (.vtt)'],['txt','Clean Paragraph Transcript (.txt)']]}),
@@ -6454,16 +6455,19 @@ var PRESET_RECORDS = {
         size: f.outBytes,
         sha256: f.outHash,
         receipt: {
-          engineId: t.wasmModule || t.id,
-          sha256: f.outHash || 'verified-local-ram',
+          /* Only what was measured: the engine that actually ran, and the hash of
+             the output when the tool computes one. This used to read
+             sha256: 'verified-local-ram' — a literal, i.e. a fabricated hash. */
+          engineId: WASM_ENGINES[t.id] || null,
+          engine: WASM_ENGINES[t.id] || 'plain JavaScript (no engine binary)',
+          sha256: f.outHash || null,
           version: '2026.11.1'
         },
         preset: cur.activePreset || { id: t.slug + '-default', version: '2026-11-08.1' },
         registry_version: REGISTRY_VERSION,
-        determinism: detTier,
-        model: t.modelId ? { id: t.modelId, sha256: 'verified-opfs-pack' } : null,
         backend: (WASM_ENGINES[t.id] ? 'wasm' : 'js'),
-        reproducible: detTier !== 'B',
+        /* No model packs ship, so there is no pack hash to report. */
+        model: null,
         advisory_checks: [
           { name: 'zero_upload_check', result: meta.reqs === 0 ? 'pass' : 'warn', detail: meta.reqs + ' network requests during run' },
           { name: 'output_size', result: 'pass', detail: fmtBytes(f.outBytes) }
@@ -6622,7 +6626,13 @@ function renderToolSeoSection(t){
     return;
   }
   var famName = FAMS[t.fam] ? FAMS[t.fam].name : 'Utility';
-  var detTier = t.det || 'D';
+  /* Determinism is a property of the code, not a badge: tools that draw fresh
+     randomness cannot produce byte-identical output, and everything else can
+     only promise identity for the same input in the same browser. */
+  var detTier = RANDOM_BY_DESIGN[t.id] ? 'R' : 'D';
+  var detText = detTier === 'R'
+    ? 'Nondeterministic by design: each run draws fresh random bytes'
+    : 'Deterministic for the same input and settings in the same browser';
   var isSensitivePiiTool = (t.id === 'ai_airlock' || t.id === 'exposure_xray' || t.id === 'w9_prep' || t.id === 'sa100_prep');
   var schemaObj = {
     "@context": "https://schema.org",
@@ -6633,14 +6643,14 @@ function renderToolSeoSection(t){
         "url": "https://privacyfold.com/tools/" + t.slug + "/",
         "description": t.desc,
         "applicationCategory": famName + "Application",
-        "operatingSystem": "Any (WebAssembly, WebGPU, WebCrypto)",
+        "operatingSystem": WASM_ENGINES[t.id] ? "Any browser with JavaScript and WebAssembly" : "Any browser with JavaScript",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
       },
       {
         "@type": "FAQPage",
         "mainEntity": [
           { "@type": "Question", "name": "Does " + t.name + " upload my file?", "acceptedAnswer": { "@type": "Answer", "text": "No. Your files are never uploaded; processing runs 100% in your browser tab under connect-src 'self'." } },
-          { "@type": "Question", "name": "What determinism tier is " + t.name + "?", "acceptedAnswer": { "@type": "Answer", "text": "Tier " + detTier + " (" + (detTier==='D'?'Deterministic byte-identical output':detTier==='M'?'Model-assisted with pinned SHA-256':'Browser built-in window.ai model') + ")." } }
+          { "@type": "Question", "name": "Is " + t.name + " deterministic?", "acceptedAnswer": { "@type": "Answer", "text": detText + " (" + (detTier==='D'?'Deterministic byte-identical output':detTier==='M'?'Model-assisted with pinned SHA-256':'Browser built-in window.ai model') + ")." } }
         ]
       }
     ]
@@ -6650,7 +6660,7 @@ function renderToolSeoSection(t){
     : '<aside class="ad-slot" aria-label="Sponsored placement"><div class="ad-top"><span class="ad-badge">Sponsored · Editorial Placement (CLS-Reserved)</span><span>data-ad-slot="pf-editorial-01" · npa=1</span></div><div class="ad-body"><b>Zero-Knowledge Hardware Security &amp; Local Storage</b><span>Sandboxed, non-personalized placement in the editorial guide section—never inside the active workspace.</span></div><div class="ad-foot"><span>0.00 CLS</span><span>No file buffer access</span></div></aside>';
 
   el.innerHTML = '<div class="seo-wrap"><div class="seo-main">' + adHtml
-    + '<article class="seo-card"><div class="kick">SPECIFICATION &amp; GUIDE · TIER ' + detTier + ' · REGISTRY v' + REGISTRY_VERSION + '</div>'
+    + '<article class="seo-card"><div class="kick">SPECIFICATION &amp; GUIDE · ' + (detTier==='R'?'RANDOMISED':'DETERMINISTIC') + ' · REGISTRY v' + REGISTRY_VERSION + '</div>'
     + '<h2>How ' + esc(t.name) + ' Works On Your Device</h2>'
     + '<div class="aeo-box"><span class="aeo-k">Direct Answer Summary (AEO / GEO Citation Ready)</span>'
     + '<p><b>' + esc(t.name) + '</b> (<code>privacyfold.' + esc(t.id) + '</code>) is a client-side utility that lets you ' + esc(t.task.toLowerCase()) + ' directly in your browser. Your files are never uploaded; any required WASM or ONNX model pack is downloaded once and cached in OPFS before your data is touched.</p></div>'
@@ -6658,7 +6668,7 @@ function renderToolSeoSection(t){
     + '<h3>Agent Surface &amp; Automation Contract (Lane A &amp; Lane B)</h3>'
     + '<table class="spec-tbl"><thead><tr><th>Property</th><th>Specification</th></tr></thead><tbody>'
     + '<tr><td><b>Execution URL (Lane B)</b></td><td><code>/tools/' + esc(t.slug) + '?mode=agent&amp;source=mcp#payload</code> (Sensitive data in <code>#fragment</code> only)</td></tr>'
-    + '<tr><td><b>Determinism Tier</b></td><td><b>Tier ' + detTier + '</b> (' + (detTier==='D'?'Byte-identical across all devices':detTier==='M'?'Model-assisted · Pinned SHA-256 ('+esc(t.modelId)+')':'Browser built-in window.ai (0 MB)') + ')</td></tr>'
+    + '<tr><td><b>Determinism</b></td><td>' + esc(detText) + '</td></tr>'
     + '<tr><td><b>Automation DOM Hooks</b></td><td><code>input[data-pf="input"]</code> · <code>[data-pf="run"]</code> · <code>window.__PRIVACYFOLD_RESULT__</code></td></tr>'
     + '</tbody></table></article></div>'
     + '<aside class="seo-main"><div class="seo-card"><div class="kick">STRUCTURED DATA (JSON-LD)</div><h3 style="margin-top:0">Embedded Schema</h3><pre class="code" style="max-height:220px;overflow:auto;font-size:11px">' + esc(JSON.stringify(schemaObj, null, 2)) + '</pre></div></aside></div>';
@@ -6746,8 +6756,9 @@ window.privacyfold = Object.assign(window.privacyfold || {}, {
         tool: toolId,
         note: res && res.note ? res.note : 'ok',
         receipt: {
-          engineId: t.wasmModule || t.id,
-          sha256: (res && res.hash) || 'verified-local-ram',
+          engineId: WASM_ENGINES[t.id] || null,
+          engine: WASM_ENGINES[t.id] || 'plain JavaScript (no engine binary)',
+          sha256: (res && res.hash) || null,
           version: '2026.11.1'
         }
       };

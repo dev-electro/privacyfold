@@ -5,9 +5,10 @@
   "description": "Lift a signature off paper onto a clear background.",
   "x-privacyfold-tool-id": "signature_clean",
   "x-privacyfold-category": "photo",
-  "x-privacyfold-engine": "/wasm/photo/signature-clean-v1.wasm",
-  "x-privacyfold-determinism-tier": "D",
-  "x-privacyfold-execution-url": "https://privacyfold.com/tools/signature_clean?mode=agent&source=mcp#payload",
+  "x-privacyfold-standard": "W3C HTML Canvas 2D",
+  "x-privacyfold-engine": "none (plain JavaScript in the browser tab)",
+  "x-privacyfold-accepts": "image",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/signature-clean/?mode=agent#payload",
   "type": "object",
   "properties": {
     "preset": {
@@ -18,7 +19,7 @@
     },
     "input": {
       "type": "string",
-      "description": "Input text, data URI, or local File handle via data-pf='input'"
+      "description": "An image file (data URI or pasted File) processed in the tab; never uploaded."
     },
     "options": {
       "type": "object",

@@ -1,13 +1,14 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://privacyfold.com/schemas/exif_strip.json",
-  "title": "Photo metadata remover",
-  "description": "Photos can carry hidden details such as where and when they were taken. Remove them before you share a picture.",
+  "title": "Photo metadata & location remover",
+  "description": "Digital photos captured by modern smartphones and digital cameras embed invisible Exchangeable Image File Format (EXIF) metadata inside every file. This metadata frequently contains precise GPS latitude and longitude coordinates showing the exact location of your home, office, or children's school, along with camera serial numbers, device model, capture timestamps, exposure settings, and embedded thumbnail images. PrivacyFold's Photo Metadata Remover inspects the raw binary byte stream of your image directly in browser memory, parsing standard JPEG APP1 segments, PNG tEXt/eXIf chunks, and WebP EXIF containers, surgically eliminating every tracking marker before re-encoding or exporting the clean image. Zero bytes are uploaded to remote cloud servers, preserving total confidentiality.",
   "x-privacyfold-tool-id": "exif_strip",
   "x-privacyfold-category": "image",
-  "x-privacyfold-engine": "/wasm/image/exif-strip-v1.wasm",
-  "x-privacyfold-determinism-tier": "D",
-  "x-privacyfold-execution-url": "https://privacyfold.com/tools/exif_strip?mode=agent&source=mcp#payload",
+  "x-privacyfold-standard": "W3C HTML Canvas 2D + File API",
+  "x-privacyfold-engine": "none (plain JavaScript in the browser tab)",
+  "x-privacyfold-accepts": "image",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/exif-strip/?mode=agent#payload",
   "type": "object",
   "properties": {
     "preset": {
@@ -18,7 +19,7 @@
     },
     "input": {
       "type": "string",
-      "description": "Input text, data URI, or local File handle via data-pf='input'"
+      "description": "An image file (data URI or pasted File) processed in the tab; never uploaded."
     },
     "options": {
       "type": "object",

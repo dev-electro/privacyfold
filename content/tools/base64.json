@@ -13,7 +13,7 @@
     "kubernetes-secret-base64-codec"
   ],
   "schemaUrl": "/schemas/base64.json",
-  "executionUrl": "https://privacyfold.com/tools/base64?mode=agent",
+  "executionUrl": "https://privacyfold.com/tools/base64/?mode=agent",
   "seo": {
     "metaTitle": "Base64 encoder and decoder — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Convert text to Base64 and back. Handles any language and emoji. Runs 100% locally in your browser with zero file uploads.",

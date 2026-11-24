@@ -5,9 +5,10 @@
   "description": "Create a local electronic signature manifest with SHA-256 document digest, signer statement, and UTC timestamp in alignment with EU eIDAS (Regulation 910/2014) and US ESIGN Act principles.",
   "x-privacyfold-tool-id": "eidas_sign",
   "x-privacyfold-category": "pdf",
-  "x-privacyfold-engine": "/wasm/pdf/eidas-sign-v1.wasm",
-  "x-privacyfold-determinism-tier": "D",
-  "x-privacyfold-execution-url": "https://privacyfold.com/tools/eidas_sign?mode=agent&source=mcp#payload",
+  "x-privacyfold-standard": "ISO 32000-1 (PDF 1.7) via pdf-lib",
+  "x-privacyfold-engine": "none (plain JavaScript in the browser tab)",
+  "x-privacyfold-accepts": "text",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/eidas-sign/?mode=agent#payload",
   "type": "object",
   "properties": {
     "preset": {
@@ -18,7 +19,7 @@
     },
     "input": {
       "type": "string",
-      "description": "Input text, data URI, or local File handle via data-pf='input'"
+      "description": "Text to process. Sent to the tool only through the URL fragment / local input."
     },
     "options": {
       "type": "object",

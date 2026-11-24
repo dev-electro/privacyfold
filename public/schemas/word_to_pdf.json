@@ -5,9 +5,10 @@
   "description": "Convert Word document text, contracts, or manuscripts into a clean, print-ready PDF file locally without uploading to cloud servers.",
   "x-privacyfold-tool-id": "word_to_pdf",
   "x-privacyfold-category": "pdf",
-  "x-privacyfold-engine": "/wasm/pdf/word-to-pdf-v1.wasm",
-  "x-privacyfold-determinism-tier": "D",
-  "x-privacyfold-execution-url": "https://privacyfold.com/tools/word_to_pdf?mode=agent&source=mcp#payload",
+  "x-privacyfold-standard": "ISO 32000-1 (PDF 1.7) via pdf-lib",
+  "x-privacyfold-engine": "none (plain JavaScript in the browser tab)",
+  "x-privacyfold-accepts": "text",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/word-to-pdf/?mode=agent#payload",
   "type": "object",
   "properties": {
     "preset": {
@@ -18,7 +19,7 @@
     },
     "input": {
       "type": "string",
-      "description": "Input text, data URI, or local File handle via data-pf='input'"
+      "description": "Text to process. Sent to the tool only through the URL fragment / local input."
     },
     "options": {
       "type": "object",

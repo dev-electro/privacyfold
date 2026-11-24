@@ -11,7 +11,7 @@
   "adFreeZone": false,
   "presets": [],
   "schemaUrl": "/schemas/qr_tool.json",
-  "executionUrl": "https://privacyfold.com/tools/qr_tool?mode=agent",
+  "executionUrl": "https://privacyfold.com/tools/qr-tool/?mode=agent",
   "seo": {
     "metaTitle": "QR code generator & Wi-Fi card — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Generate high-contrast QR codes for website links, Wi-Fi logins, or vCards locally with zero tracking redirects. Runs 100% locally in your browser with zero file uploads.",

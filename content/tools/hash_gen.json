@@ -11,7 +11,7 @@
   "adFreeZone": false,
   "presets": [],
   "schemaUrl": "/schemas/hash_gen.json",
-  "executionUrl": "https://privacyfold.com/tools/hash_gen?mode=agent",
+  "executionUrl": "https://privacyfold.com/tools/hash-gen/?mode=agent",
   "seo": {
     "metaTitle": "Hash generator — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Create a SHA fingerprint of text or any file, to check that it has not changed. Runs 100% locally in your browser with zero file uploads.",

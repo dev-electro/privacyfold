@@ -11,7 +11,7 @@
   "adFreeZone": false,
   "presets": [],
   "schemaUrl": "/schemas/cover_letter.json",
-  "executionUrl": "https://privacyfold.com/tools/cover_letter?mode=agent",
+  "executionUrl": "https://privacyfold.com/tools/cover-letter/?mode=agent",
   "seo": {
     "metaTitle": "Cover letter generator — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Generate a structured, concise cover letter tailored to a company and role without uploading your resume to third-party job portals. Runs 100% locally in your browser with zero file uploads.",

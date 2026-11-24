@@ -11,7 +11,7 @@
   "adFreeZone": false,
   "presets": [],
   "schemaUrl": "/schemas/pgp_crypto.json",
-  "executionUrl": "https://privacyfold.com/tools/pgp_crypto?mode=agent",
+  "executionUrl": "https://privacyfold.com/tools/pgp-crypto/?mode=agent",
   "seo": {
     "metaTitle": "PGP / ECDSA armored message signer — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Sign cleartext messages using NIST P-256 / P-384 elliptic-curve keys in WebCrypto and output an ASCII-armored verification block. Runs 100% locally in your browser with zero file uploads.",

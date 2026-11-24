@@ -11,7 +11,7 @@
   "adFreeZone": false,
   "presets": [],
   "schemaUrl": "/schemas/spot_rejection.json",
-  "executionUrl": "https://privacyfold.com/tools/spot_rejection?mode=agent",
+  "executionUrl": "https://privacyfold.com/tools/spot-rejection/?mode=agent",
   "seo": {
     "metaTitle": "Preset validator & compliance check — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Verify whether an image or document looks consistent with published portal requirements (US State Dept, UK HMPO, EU Schengen, VFS Global) without modifying the file. Runs 100% locally in your browser with zero file uploads.",

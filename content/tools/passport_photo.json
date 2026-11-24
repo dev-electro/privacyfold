@@ -48,7 +48,7 @@
     "cn-chinese-visa-33x48"
   ],
   "schemaUrl": "/schemas/passport_photo.json",
-  "executionUrl": "https://privacyfold.com/tools/passport_photo?mode=agent",
+  "executionUrl": "https://privacyfold.com/tools/passport-photo/?mode=agent",
   "seo": {
     "metaTitle": "Free Passport Photo Maker Online — 100% Client-Side & Biometric Compliant",
     "metaDescription": "Create official passport, visa, and ID photos conforming to US, UK, Schengen, and global government standards locally in your browser. Zero file uploads.",

@@ -2,37 +2,38 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://privacyfold.com/schemas/social_resizer.json",
   "title": "Social media, e-commerce & app icon resizer",
-  "description": "One-click image resizer pre-loaded with official platform dimensions from `presets/social-media-sizes.json`, `ecommerce-sizes.json`, and `developer-icons.json` (Amazon 1000\u00d71000, Shopify 2048\u00d72048, LinkedIn 400\u00d7400 & 1584\u00d7396 Banner, Instagram 1080\u00d71080, YouTube 1280\u00d7720, OG Image 1200\u00d7630, iOS/Android App Icon 512\u00d7512).",
+  "description": "One-click image resizer pre-loaded with official platform dimensions from `presets/social-media-sizes.json`, `ecommerce-sizes.json`, and `developer-icons.json` (Amazon 1000×1000, Shopify 2048×2048, LinkedIn 400×400 & 1584×396 Banner, Instagram 1080×1080, YouTube 1280×720, OG Image 1200×630, iOS/Android App Icon 512×512).",
   "x-privacyfold-tool-id": "social_resizer",
   "x-privacyfold-category": "image",
-  "x-privacyfold-engine": "/wasm/image/image-resize-v1.wasm",
-  "x-privacyfold-determinism-tier": "D",
-  "x-privacyfold-execution-url": "https://privacyfold.com/tools/social_resizer?mode=agent&source=mcp#payload",
+  "x-privacyfold-standard": "W3C HTML Canvas 2D",
+  "x-privacyfold-engine": "none (plain JavaScript in the browser tab)",
+  "x-privacyfold-accepts": "image",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/social-resizer/?mode=agent#payload",
   "type": "object",
   "properties": {
     "preset": {
       "type": "string",
       "enum": [
         "amazon-main-image-2000x2000",
-        "shopify-product-2048x2048",
-        "etsy-listing-2000x1600",
-        "ebay-1600x1600-clean-bg",
-        "walmart-marketplace-2000x2000",
-        "poshmark-square-1200x1200",
-        "google-merchant-center-product",
         "app-store-screenshot-6-7",
-        "linkedin-banner-1584x396",
-        "youtube-thumbnail-1280x720-2mb",
+        "discord-server-emoji-128x128",
+        "ebay-1600x1600-clean-bg",
+        "etsy-listing-2000x1600",
+        "google-merchant-center-product",
         "instagram-carousel-1080x1350",
         "instagram-reels-tiktok-1080x1920",
-        "x-twitter-header-1500x500",
+        "linkedin-banner-1584x396",
         "open-graph-social-card-1200x630",
-        "discord-server-emoji-128x128"
+        "poshmark-square-1200x1200",
+        "shopify-product-2048x2048",
+        "walmart-marketplace-2000x2000",
+        "x-twitter-header-1500x500",
+        "youtube-thumbnail-1280x720-2mb"
       ]
     },
     "input": {
       "type": "string",
-      "description": "Input text, data URI, or local File handle via data-pf='input'"
+      "description": "An image file (data URI or pasted File) processed in the tab; never uploaded."
     },
     "options": {
       "type": "object",

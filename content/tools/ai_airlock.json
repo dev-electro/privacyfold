@@ -13,7 +13,7 @@
     "hipaa-safe-harbor-18-identifiers"
   ],
   "schemaUrl": "/schemas/ai_airlock.json",
-  "executionUrl": "https://privacyfold.com/tools/ai_airlock?mode=agent",
+  "executionUrl": "https://privacyfold.com/tools/ai-airlock/?mode=agent",
   "seo": {
     "metaTitle": "AI Airlock (PII redactor & token restorer) — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Detect personal data (names, emails, SSN/NINO, IBAN, credit cards, phones, API keys) on your device, replace them with tokens ([PERSON_1], [EMAIL_1]) before pasting into ChatGPT/Claude, and restore real values locally afterwards. Runs 100% locally in your browser via rampart-minilm-l6 with zero file uploads.",

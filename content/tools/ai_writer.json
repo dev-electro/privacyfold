@@ -11,11 +11,11 @@
   "adFreeZone": false,
   "presets": [],
   "schemaUrl": "/schemas/ai_writer.json",
-  "executionUrl": "https://privacyfold.com/tools/ai_writer?mode=agent",
+  "executionUrl": "https://privacyfold.com/tools/ai-writer/?mode=agent",
   "seo": {
-    "metaTitle": "Rewriter (rule-based) \u2014 free in your browser, no upload | PrivacyFold",
+    "metaTitle": "Rewriter (rule-based) — free in your browser, no upload | PrivacyFold",
     "metaDescription": "Rewrite wordy text, convert prose to bullets or formalise it with fixed rules in your browser. Deterministic, offline, no AI model and no upload.",
-    "aeoSummary": "This rewriter applies fixed editing rules to your text inside your browser tab \u2014 no language model, no download and no upload. The same input always produces the same output.",
+    "aeoSummary": "This rewriter applies fixed editing rules to your text inside your browser tab — no language model, no download and no upload. The same input always produces the same output.",
     "keywords": [
       "zero-download ai writer & rewriter (0 mb)",
       "ai writer",
@@ -28,7 +28,7 @@
         "url": "https://www.w3.org/TR/wasm-core-2/"
       },
       {
-        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "standard": "IETF RFC 3986 §3.5 Fragment Privacy",
         "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
       }
     ],

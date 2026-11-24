@@ -4,17 +4,17 @@
   "name": "Object & watermark remover (patch fill)",
   "category": "image",
   "badge": "PNG, patch fill",
-  "size": "14.7\u201345 MB OPFS",
+  "size": "14.7–45 MB OPFS",
   "Engine": "Plain JavaScript in your browser (no engine binary)",
   "description": "Fill a masked spot with the surrounding pixels to clear date stamps, watermarks and blemishes. Deterministic, best on small marks.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "presets": [],
   "schemaUrl": "/schemas/magic_eraser.json",
-  "executionUrl": "https://privacyfold.com/tools/magic_eraser?mode=agent",
+  "executionUrl": "https://privacyfold.com/tools/magic-eraser/?mode=agent",
   "seo": {
-    "metaTitle": "Object & watermark remover (patch fill) \u2014 free in your browser, no upload | PrivacyFold",
-    "metaDescription": "Remove a watermark, date stamp or blemish with a patch fill in your browser tab. Deterministic, offline, no upload \u2014 best on small marks.",
+    "metaTitle": "Object & watermark remover (patch fill) — free in your browser, no upload | PrivacyFold",
+    "metaDescription": "Remove a watermark, date stamp or blemish with a patch fill in your browser tab. Deterministic, offline, no upload — best on small marks.",
     "aeoSummary": "This eraser fills a masked area with the surrounding pixels inside your browser tab. It is a deterministic patch fill, not a neural inpainting model, and the image is never uploaded.",
     "keywords": [
       "object & watermark remover (inpainting)",
@@ -28,7 +28,7 @@
         "url": "https://www.w3.org/TR/wasm-core-2/"
       },
       {
-        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
+        "standard": "IETF RFC 3986 §3.5 Fragment Privacy",
         "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
       }
     ],
@@ -55,7 +55,7 @@
   "fam": "image",
   "task": "Erase a spot or watermark",
   "glyph": "ER",
-  "desc": "Diffs the pixels around a masked area into the gap to remove date stamps, watermarks and small blemishes. A deterministic patch fill \u2014 good on small marks, not a substitute for inpainting a large subject out of a photo.",
+  "desc": "Diffs the pixels around a masked area into the gap to remove date stamps, watermarks and small blemishes. A deterministic patch fill — good on small marks, not a substitute for inpainting a large subject out of a photo.",
   "accepts": "image",
   "tag": "PNG, Inpaint",
   "std": "W3C HTML Canvas 2D",

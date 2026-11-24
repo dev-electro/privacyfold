@@ -11,7 +11,7 @@
   "adFreeZone": false,
   "presets": [],
   "schemaUrl": "/schemas/chat_pdf.json",
-  "executionUrl": "https://privacyfold.com/tools/chat_pdf?mode=agent",
+  "executionUrl": "https://privacyfold.com/tools/chat-pdf/?mode=agent",
   "seo": {
     "metaTitle": "Chat with a document — 100% Private In-Browser Utility | PrivacyFold",
     "metaDescription": "Ask a question about a document and get the best-matching passages quoted with their BM25 score. Deterministic keyword retrieval in your browser, no embeddings, no uploads.",

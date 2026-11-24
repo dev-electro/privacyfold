@@ -14,7 +14,7 @@
     "web-ready-webp"
   ],
   "schemaUrl": "/schemas/image_compress.json",
-  "executionUrl": "https://privacyfold.com/tools/image_compress?mode=agent",
+  "executionUrl": "https://privacyfold.com/tools/image-compress/?mode=agent",
   "seo": {
     "metaTitle": "Free Client-Side Image Compressor (Zero Server Upload) | PrivacyFold",
     "metaDescription": "Compress JPEG, PNG, WebP, and AVIF images locally in your browser using real WebAssembly engines. Exact KB limits, zero server uploads, 100% private.",

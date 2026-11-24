@@ -2,12 +2,13 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://privacyfold.com/schemas/sa100_prep.json",
   "title": "SA100 helper",
-  "description": "Line up UK HMRC Self Assessment (SA100) income, expenses, and Personal Allowance figures before you file online.",
+  "description": "Line up Self Assessment figures before you file.",
   "x-privacyfold-tool-id": "sa100_prep",
   "x-privacyfold-category": "forms",
-  "x-privacyfold-engine": "/wasm/forms/sa100-prep-v1.wasm",
-  "x-privacyfold-determinism-tier": "D",
-  "x-privacyfold-execution-url": "https://privacyfold.com/tools/sa100_prep?mode=agent&source=mcp#payload",
+  "x-privacyfold-standard": "ECMAScript (any modern browser)",
+  "x-privacyfold-engine": "none (plain JavaScript in the browser tab)",
+  "x-privacyfold-accepts": "none",
+  "x-privacyfold-execution-url": "https://privacyfold.com/tools/sa100-prep/?mode=agent#payload",
   "type": "object",
   "properties": {
     "preset": {
@@ -18,7 +19,7 @@
     },
     "input": {
       "type": "string",
-      "description": "Input text, data URI, or local File handle via data-pf='input'"
+      "description": "A file or text value processed in the tab; never uploaded."
     },
     "options": {
       "type": "object",

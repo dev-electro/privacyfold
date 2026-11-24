@@ -11,7 +11,7 @@
   "adFreeZone": false,
   "presets": [],
   "schemaUrl": "/schemas/clean_paste.json",
-  "executionUrl": "https://privacyfold.com/tools/clean_paste?mode=agent",
+  "executionUrl": "https://privacyfold.com/tools/clean-paste/?mode=agent",
   "seo": {
     "metaTitle": "Remove Tracking Links & UTM Tokens (Clean Clipboard Tool) | PrivacyFold",
     "metaDescription": "Strip UTM parameters, fbclid, gclid, and invisible zero-width tracking characters from URLs and text locally in your browser. 100% private.",

@@ -11,7 +11,7 @@
   "adFreeZone": false,
   "presets": [],
   "schemaUrl": "/schemas/heic_to_jpg.json",
-  "executionUrl": "https://privacyfold.com/tools/heic_to_jpg?mode=agent",
+  "executionUrl": "https://privacyfold.com/tools/heic-to-jpg/?mode=agent",
   "seo": {
     "metaTitle": "HEIC to JPG Converter — Convert iPhone Photos Free & Private | PrivacyFold",
     "metaDescription": "Convert iPhone HEIC/HEIF photos to standard JPG right in your browser. A self-hosted libheif WebAssembly decoder reads the file in the tab — no upload, no server, no account, and it works in Chrome, Firefox and Safari alike.",
