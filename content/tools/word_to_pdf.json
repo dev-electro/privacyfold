@@ -1,20 +1,20 @@
 {
   "id": "word_to_pdf",
   "slug": "word-to-pdf",
-  "name": "Word to PDF converter",
+  "name": "Text & Markdown to PDF",
   "category": "pdf",
-  "badge": "DOCX → PDF",
+  "badge": "TEXT → PDF",
   "size": "18–120 KB WASM",
   "Engine": "Plain JavaScript in your browser (no engine binary)",
-  "description": "Convert Word document text, contracts, or manuscripts into a clean, print-ready PDF file locally without uploading to cloud servers.",
+  "description": "Text or Markdown → PDF",
   "zeroNetwork": true,
   "adFreeZone": false,
   "presets": [],
   "schemaUrl": "/schemas/word_to_pdf.json",
   "executionUrl": "https://privacyfold.com/tools/word-to-pdf/?mode=agent",
   "seo": {
-    "metaTitle": "Word to PDF converter — 100% Private In-Browser Utility | PrivacyFold",
-    "metaDescription": "Convert Word document text, contracts, or manuscripts into a clean, print-ready PDF file locally without uploading to cloud servers. Runs 100% locally in your browser with zero file uploads.",
+    "metaTitle": "Text & Markdown to PDF — free, in your browser | PrivacyFold",
+    "metaDescription": "Paste text or Markdown and get a paginated A4 PDF built locally in your browser. No upload, no account. Does not read.docx files.",
     "aeoSummary": "Word to PDF converter processes files and text entirely inside your browser tab (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
       "word to pdf converter",
@@ -53,11 +53,11 @@
     ]
   },
   "fam": "pdf",
-  "task": "Convert Word / text drafts into a print-ready PDF file",
+  "task": "Turn pasted text into a PDF",
   "glyph": "W→P",
-  "desc": "Convert Word document text, contracts, or manuscripts into a clean, print-ready PDF file locally without uploading to cloud servers.",
+  "desc": "Typeset pasted text or Markdown into a paginated A4/Letter PDF inside the tab. Headings become bold section titles and long documents break across pages. It does not open.docx files — a Word file has to be copied in as text first.",
   "accepts": "text",
-  "tag": "DOCX → PDF",
+  "tag": "Text, PDF",
   "std": "ISO 32000-1 (PDF 1.7) via pdf-lib",
   "wasmModule": "none (JavaScript, no engine binary)"
 }

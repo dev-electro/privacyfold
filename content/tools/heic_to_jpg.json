@@ -56,7 +56,7 @@
   "task": "Convert an iPhone photo",
   "glyph": "HE",
   "desc": "Open iPhone photos anywhere.",
-  "accepts": "heic",
+  "accepts": "image",
   "tag": "HEIC",
   "std": "ISO/IEC 23008-12 (HEIF) via libheif",
   "wasmModule": "libheif wasm, inlined in /vendor/libheif.js"

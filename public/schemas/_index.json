@@ -719,7 +719,7 @@
     {
       "id": "word_to_pdf",
       "slug": "word-to-pdf",
-      "title": "Word to PDF converter",
+      "title": "Text & Markdown to PDF",
       "category": "pdf",
       "standard": "ISO 32000-1 (PDF 1.7) via pdf-lib",
       "engine": "none (plain JavaScript in the browser tab)",

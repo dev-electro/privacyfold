@@ -794,9 +794,9 @@
       "name": "privacyfold.word_to_pdf",
       "slug": "word-to-pdf",
       "category": "pdf",
-      "title": "Word to PDF converter",
-      "task": "Convert Word / text drafts into a print-ready PDF file",
-      "description": "Convert Word document text, contracts, or manuscripts into a clean, print-ready PDF file locally without uploading to cloud servers.",
+      "title": "Text & Markdown to PDF",
+      "task": "Turn pasted text into a PDF",
+      "description": "Typeset pasted text or Markdown into a paginated A4/Letter PDF inside the tab. Headings become bold section titles and long documents break across pages. It does not open.docx files — a Word file has to be copied in as text first.",
       "standard": "ISO 32000-1 (PDF 1.7) via pdf-lib",
       "engine": null,
       "url": "https://privacyfold.com/tools/word-to-pdf/?mode=agent"

@@ -2973,67 +2973,11 @@ renderStampRacks();
     t.live=true;t.slug=t.id.replace(/_/g,'-');
   }
 
-  activateTool('signature_clean',{
-    kind:'process',accepts:'image',action:'Clean signature',ext:'png',suffix:'signature',
-    params:[
-      P('thresh','Paper brightness cutoff','range',1,0.72,{min:0.3,max:0.95,step:0.01,fmt:pct}),
-      P('ink','Ink colour','select',1,'#111827',{opts:[['#111827','Jet black'],['#1D4ED8','Fountain pen blue'],['#991B1B','Seal red'],['keep','Keep original colour']]}),
-      P('bg','Background','select',1,'transparent',{opts:[['transparent','Transparent PNG'],['#FFFFFF','Solid white']]})
-    ],
-    groups:[['Signature extraction',['thresh','ink','bg']]],
-    plain:function(a){return 'Removes paper background above '+pct(a.thresh)+' brightness and saves as '+(a.bg==='transparent'?'transparent PNG':'white-background PNG')+'.';},
-    run:async function(src,a){
-      var c=mkCanvas(720,320),g=c.getContext('2d');
-      if(src&&!src.sample&&src.img){
-        var iw=src.img.naturalWidth||src.img.width,ih=src.img.naturalHeight||src.img.height;
-        c.width=iw;c.height=ih;g=c.getContext('2d');g.drawImage(src.img,0,0);
-      }else{
-        g.fillStyle='#EAE4D7';g.fillRect(0,0,720,320);
-        g.strokeStyle='#1E293B';g.lineWidth=6;g.lineCap='round';g.lineJoin='round';
-        g.beginPath();g.moveTo(90,210);g.bezierCurveTo(140,90,210,240,260,130);g.bezierCurveTo(290,190,350,180,420,145);g.moveTo(390,195);g.quadraticCurveTo(510,160,630,185);g.stroke();
-      }
-      var imD=g.getImageData(0,0,c.width,c.height),d=imD.data,cut=a.thresh*255;
-      var rgb=a.ink==='#1D4ED8'?[29,78,216]:a.ink==='#991B1B'?[153,27,27]:[17,24,39];
-      for(var i=0;i<d.length;i+=4){
-        var lum=0.299*d[i]+0.587*d[i+1]+0.114*d[i+2];
-        if(lum>cut){
-          if(a.bg==='transparent'){d[i+3]=0}else{d[i]=255;d[i+1]=255;d[i+2]=255;d[i+3]=255}
-        }else{
-          var alpha=clamp((cut-lum)/Math.max(1,cut)*1.6,0.2,1);
-          if(a.ink!=='keep'){d[i]=rgb[0];d[i+1]=rgb[1];d[i+2]=rgb[2]}
-          d[i+3]=a.bg==='transparent'?Math.round(alpha*255):255;
-        }
-      }
-      g.putImageData(imD,0,0);
-      return {blob:await toBlob(c,'image/png',0.95),mime:'image/png',w:c.width,h:c.height};
-    }
-  });
-
-  /* This legacy v8 block used to relabel heic_to_jpg as a generic image converter
+    /* This legacy v8 block used to relabel heic_to_jpg as a generic image converter
      ("Convert between WebP, PNG & JPEG"), so the HEIC tool advertised WebP output
      while the run path produced JPEG. Labels now match what the tool does; the
      generic converter it described is tracked in PF-039. */
-  activateTool('heic_to_jpg',{
-    name:'HEIC to JPG',task:'Convert an iPhone photo',tag:'JPG, Export',
-    kind:'process',accepts:'image',action:'Convert to JPG',ext:'jpg',suffix:'converted',compare:true,
-    params:[
-      P('out','Convert to','select',1,'webp',{opts:[['webp','WebP'],['jpeg','JPEG'],['png','PNG']]}),
-      P('scale','Resize percentage','range',1,1,{min:0.25,max:1,step:0.05,fmt:pct}),
-      P('quality','Quality','range',1,0.88,{min:0.4,max:1,step:0.01,fmt:pct})
-    ],
-    groups:[['Format & dimensions',['out','scale','quality']]],
-    plain:function(a){return 'Converts image to '+a.out.toUpperCase()+' at '+pct(a.scale)+' scale ('+pct(a.quality)+' quality).';},
-    run:async function(src,a){
-      var iw=src.img.naturalWidth||src.img.width,ih=src.img.naturalHeight||src.img.height;
-      var w=Math.max(16,Math.round(iw*a.scale)),h=Math.max(16,Math.round(ih*a.scale)),c=mkCanvas(w,h),g=c.getContext('2d');
-      if(a.out==='jpeg'){g.fillStyle='#FFFFFF';g.fillRect(0,0,w,h)}
-      g.drawImage(src.img,0,0,w,h);
-      var mime=a.out==='png'?'image/png':a.out==='webp'?'image/webp':'image/jpeg';
-      return {blob:await toBlob(c,mime,a.quality),mime:mime,w:w,h:h};
-    }
-  });
-
-  function buildSimplePdf(title,pagesText){
+    function buildSimplePdf(title,pagesText){
     var lines=['%PDF-1.4\n1 0 obj<</Type/Catalog/Pages 2 0 R>>endobj\n'];
     var kids=[],objId=3;
     pagesText.forEach(function(txt,idx){
@@ -3048,25 +2992,7 @@ renderStampRacks();
     return lines.join('');
   }
 
-  activateTool('pdf_merge',{
-    kind:'live',accepts:'text',ext:'pdf',
-    desc:'Combine multiple document sections or pages into a clean, metadata-free PDF file right in your browser.',
-    params:[
-      P('title','Document title','text',1,'Combined Packet'),
-      P('strip','Strip author & producer metadata','bool',1,true),
-      P('order','Page order','select',1,'asc',{opts:[['asc','1 → 2 → 3 (Normal)'],['desc','3 → 2 → 1 (Reverse)']]})
-    ],
-    groups:[['Merge options',['title','strip','order']]],
-    plain:function(a){return 'Combines pages in '+(a.order==='asc'?'normal':'reverse')+' order into a single clean PDF.';},
-    run:async function(src,a,ctx){
-      var parts=(ctx.text||'Page 1: Cover sheet & summary\n---\nPage 2: Invoice breakdown (#INV-204)\n---\nPage 3: Signed authorization').split(/\n---\n?/);
-      if(a.order==='desc')parts.reverse();
-      var pdfStr=buildSimplePdf(a.title||'Merged Document',parts);
-      return {text:pdfStr,note:parts.length+' pages merged ('+fmtBytes(pdfStr.length)+')'};
-    }
-  });
-
-  activateTool('pdf_split',{
+    activateTool('pdf_split',{
     kind:'live',accepts:'text',ext:'pdf',
     desc:'Extract specific pages or page ranges from a document into a separate clean PDF file.',
     params:[
@@ -3084,40 +3010,7 @@ renderStampRacks();
     }
   });
 
-  activateTool('pdf_redact',{
-    name:'Document & image redactor',task:'Black out sensitive text or areas',tag:'PNG, Text',
-    kind:'process',accepts:'image',action:'Apply redactions',ext:'png',suffix:'redacted',
-    desc:'Permanently black out or pixelate sensitive areas on a document scan or screenshot. Nothing can be recovered from the exported image.',
-    params:[
-      P('style','Redaction style','select',1,'black',{opts:[['black','Solid black bar'],['pixel','Heavy pixelation'],['white','Whiteout block']]}),
-      P('zone','Preset redaction region','select',1,'both',{opts:[['both','Account numbers & signature'],['top','Header / ID number'],['bottom','Signature & footer']]})
-    ],
-    groups:[['Redaction settings',['style','zone']]],
-    plain:function(a){return 'Permanently redacts '+a.zone+' using '+(a.style==='black'?'solid black bars':a.style==='pixel'?'heavy pixelation':'whiteout blocks')+'.';},
-    run:async function(src,a){
-      var cs=getContracts(),im=(cur.item&&cur.item.img)?cur.item.img:cs.a;
-      var w=im.naturalWidth||im.width,h=im.naturalHeight||im.height,c=mkCanvas(w,h),g=c.getContext('2d');
-      g.drawImage(im,0,0,w,h);
-      var boxes=[];
-      if(a.zone==='top'||a.zone==='both'){boxes.push([76,120,420,28]);boxes.push([76,478,740,60])}
-      if(a.zone==='bottom'||a.zone==='both'){boxes.push([76,975,380,62]);boxes.push([w-255,942,160,98])}
-      boxes.forEach(function(bx){
-        if(a.style==='white'){g.fillStyle='#FFFFFF';g.fillRect(bx[0],bx[1],bx[2],bx[3]);g.strokeStyle='#CBD5E1';g.strokeRect(bx[0],bx[1],bx[2],bx[3])}
-        else if(a.style==='pixel'){
-          var step=16;
-          for(var py=bx[1];py<bx[1]+bx[3];py+=step)for(var px=bx[0];px<bx[0]+bx[2];px+=step){
-            var p=g.getImageData(clamp(px,0,w-1),clamp(py,0,h-1),1,1).data;
-            g.fillStyle='rgb('+p[0]+','+p[1]+','+p[2]+')';g.fillRect(px,py,step,step);
-          }
-        }else{
-          g.fillStyle='#111111';g.fillRect(bx[0],bx[1],bx[2],bx[3]);
-        }
-      });
-      return {blob:await toBlob(c,'image/png',0.95),mime:'image/png',w:w,h:h};
-    }
-  });
-
-  activateTool('w9_prep',{
+    activateTool('w9_prep',{
     kind:'live',accepts:'none',ext:'txt',action:'Update W-9 summary',
     desc:'Prepare a clean IRS Form W-9 summary worksheet locally in your browser with formatted TIN/EIN and certification block.',
     params:[
@@ -3310,7 +3203,9 @@ renderStampRacks();
       var t=(ctx.text||'').trim();
       if(a.mode==='encode')return {text:encodeURIComponent(t),note:'Encoded'};
       if(a.mode==='decode')return {text:decodeURIComponent(t),note:'Decoded'};
-      var u=new URL(t);
+      var u;
+      try{ u=new URL(/^[a-z][a-z0-9+.-]*:/i.test(t)?t:'https://'+t); }
+      catch(e){ throw new Error('That does not look like a URL. Paste one like https://example.com/page?x=1'); }
       var rows=['PROTOCOL: '+u.protocol,'HOST:     '+u.host,'PATH:     '+u.pathname,'','QUERY PARAMETERS:'];
       u.searchParams.forEach(function(v,k){rows.push('  '+k+' = '+v)});
       return {text:rows.join('\n'),note:Array.from(u.searchParams.keys()).length+' query params'};
@@ -3880,7 +3775,7 @@ var DEVICE_PROFILE = {
       var docHtml='<!DOCTYPE html><html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word"><head><meta charset="utf-8"><title>Converted Document</title></head><body>'+pars+'</body></html>';
       return {text:docHtml,note:'Word (.doc) ready · '+raw.split(/\s+/).length+' words'};
      }},
-    {id:'word_to_pdf',fam:'pdf',glyph:'W→P',name:'Word to PDF converter',task:'Convert Word / text drafts into a print-ready PDF file',tag:'DOCX → PDF',accepts:'text',live:true,kind:'live',ext:'pdf',det:'D',
+    {id:'word_to_pdf',fam:'pdf',glyph:'W→P',name:'Text & Markdown to PDF',task:'Convert Word / text drafts into a print-ready PDF file',tag:'DOCX → PDF',accepts:'text',live:true,kind:'live',ext:'pdf',det:'D',
      desc:'Convert Word document text, contracts, or manuscripts into a clean, print-ready PDF file locally without uploading to cloud servers.',
      params:[
       P('size','Paper size','select',1,'letter',{opts:[['letter','US Letter (8.5 × 11 in)'],['a4','ISO A4 (210 × 297 mm)']]}),
@@ -6748,7 +6643,23 @@ window.privacyfold = Object.assign(window.privacyfold || {}, {
       throw new Error('Unknown tool: ' + toolId);
     }
     var merged = Object.assign(defaultsFor(t), args || {});
-    var src = activeItem() || srcFor(t);
+    /* A tool must never run on the wrong kind of input: image tools used to
+       receive whatever PDF was on the desk and die with "getImageData on null".
+       Say what the tool needs instead. */
+    var needsWord = { image: 'an image (JPG, PNG, WebP)', pdf: 'a PDF', heic: 'a HEIC photo', text: 'text', any: 'a file or text', none: null };
+    var held = activeItem();
+    if (held && t.accepts && t.accepts !== 'none' && accepts(t, held) === 0) {
+      throw new Error(t.name + ' needs ' + (needsWord[t.accepts] || t.accepts) + ', but the desk holds a ' + (held.kind || 'different') + ' item.');
+    }
+    var src = (held && accepts(t, held) > 0) || t.accepts === 'none' ? held : srcFor(t);
+    /* Multi-file tools (merge) take an array, not one item. The desk always passed
+       an array; the SDK path passed a single file, so pdf_merge died with
+       "items.slice is not a function". */
+    if (t.many) {
+      var many = (typeof getTargets === 'function' ? getTargets() : []).slice();
+      if (many.length < (t.manyMin || 2)) throw new Error(t.name + ' needs at least ' + (t.manyMin || 2) + ' files on the desk (found ' + many.length + ').');
+      src = many;
+    }
     try {
       var res = await t.run(src, merged, { text: textInput || '' });
       window.__PRIVACYFOLD_RESULT__ = {

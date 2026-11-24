@@ -58,7 +58,7 @@
   "task": "Audit document heading hierarchy, alt text & reading order for ADA compliance",
   "glyph": "ADA",
   "desc": "Check document structure against US ADA Title II/III, Section 508, and PDF/UA (ISO 14289) accessibility rules: document title, language tag, heading nesting, and image alt attributes.",
-  "accepts": "text",
+  "accepts": "pdf",
   "tag": "ADA, Section 508",
   "std": "ISO 32000-1 (PDF 1.7) via pdf-lib",
   "wasmModule": "none (JavaScript, no engine binary)"

@@ -64,7 +64,7 @@
   "task": "Reduce PDF size for USCIS, UK Visa VFS, HMRC, or Email limits",
   "glyph": "CMP",
   "desc": "Compress PDF documents to meet strict government and email portal limits (USCIS I-130 <2 MB, UK Visa VFS <2 MB, HMRC SA100 <5 MB, Schengen VFS <5 MB, Court E-Filing <5 MB, Gmail <25 MB).",
-  "accepts": "text",
+  "accepts": "pdf",
   "tag": "PDF, <2MB",
   "std": "ISO 32000-1 (PDF 1.7) via pdf-lib",
   "wasmModule": "none (JavaScript, no engine binary)"

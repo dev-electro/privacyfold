@@ -183,7 +183,7 @@
   };
 
   T.word_to_pdf = {
-    accepts: 'text', kind: 'process', compare: false, scan: false, action: 'Make PDF', ext: 'pdf', suffix: 'document',
+    accepts: 'text', kind: 'process', compare: false, scan: false, action: 'Make PDF from text', ext: 'pdf', suffix: 'document',
     desc: 'Turn pasted text or Markdown into a paginated A4 PDF. Headings (#, ##) become bold section titles; long documents break across pages properly.',
     params: [
       P('size', 'Text size', 'select', 1, 11, { opts: [[10, '10 pt'], [11, '11 pt'], [12, '12 pt'], [13, '13 pt']] }),

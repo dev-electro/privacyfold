@@ -7,7 +7,7 @@
   "x-privacyfold-category": "image",
   "x-privacyfold-standard": "ISO/IEC 23008-12 (HEIF) via libheif",
   "x-privacyfold-engine": "libheif WebAssembly (inlined in /vendor/libheif.js)",
-  "x-privacyfold-accepts": "heic",
+  "x-privacyfold-accepts": "image",
   "x-privacyfold-execution-url": "https://privacyfold.com/tools/heic-to-jpg/?mode=agent#payload",
   "type": "object",
   "properties": {
@@ -19,7 +19,7 @@
     },
     "input": {
       "type": "string",
-      "description": "A file or text value processed in the tab; never uploaded."
+      "description": "An image file (data URI or pasted File) processed in the tab; never uploaded."
     },
     "options": {
       "type": "object",

@@ -14,7 +14,7 @@
 ## Tools (72)
 - **ADA & WCAG PDF accessibility checker** (`ada_pdf`): Check document structure against US ADA Title II/III, Section 508, and PDF/UA (ISO 14289) accessibility rules: document title, language tag, heading nesting, and image alt attributes.
   - Task: Audit document heading hierarchy, alt text & reading order for ADA compliance
-  - Accepts: text
+  - Accepts: pdf
   - Standard: ISO 32000-1 (PDF 1.7) via pdf-lib
   - Engine: Plain JavaScript in your browser (no engine binary)
   - URL: https://privacyfold.com/tools/ada-pdf/
@@ -140,7 +140,7 @@
   - URL: https://privacyfold.com/tools/hash-gen/
 - **iPhone HEIC to JPG converter** (`heic_to_jpg`): Open iPhone photos anywhere.
   - Task: Convert an iPhone photo
-  - Accepts: heic
+  - Accepts: image
   - Standard: ISO/IEC 23008-12 (HEIF) via libheif
   - Engine: libheif WebAssembly (inlined in /vendor/libheif.js)
   - URL: https://privacyfold.com/tools/heic-to-jpg/
@@ -236,13 +236,13 @@
   - URL: https://privacyfold.com/tools/password-gen/
 - **PDF compressor (Portal presets)** (`pdf_compress`): Compress PDF documents to meet strict government and email portal limits (USCIS I-130 <2 MB, UK Visa VFS <2 MB, HMRC SA100 <5 MB, Schengen VFS <5 MB, Court E-Filing <5 MB, Gmail <25 MB).
   - Task: Reduce PDF size for USCIS, UK Visa VFS, HMRC, or Email limits
-  - Accepts: text
+  - Accepts: pdf
   - Standard: ISO 32000-1 (PDF 1.7) via pdf-lib
   - Engine: Plain JavaScript in your browser (no engine binary)
   - URL: https://privacyfold.com/tools/pdf-compress/
 - **PDF flattener & form locker** (`pdf_flatten`): Flatten interactive AcroForm fields, checkboxes, and signature appearances into static page content for IRS 1099, USCIS, and notary submissions.
   - Task: Flatten interactive form fields so they cannot be edited
-  - Accepts: text
+  - Accepts: pdf
   - Standard: ISO 32000-1 (PDF 1.7) via pdf-lib
   - Engine: Plain JavaScript in your browser (no engine binary)
   - URL: https://privacyfold.com/tools/pdf-flatten/
@@ -254,7 +254,7 @@
   - URL: https://privacyfold.com/tools/pdf-merge/
 - **PDF metadata stripper** (`pdf_metadata`): Strip hidden /Author, /Creator, /Producer, /CreationDate, /ModDate, and XMP XML packets from PDF files before public release or legal filing.
   - Task: Remove Author, Producer, Creator & revision history from PDFs
-  - Accepts: text
+  - Accepts: pdf
   - Standard: ISO 32000-1 (PDF 1.7) via pdf-lib
   - Engine: Plain JavaScript in your browser (no engine binary)
   - URL: https://privacyfold.com/tools/pdf-metadata/
@@ -272,13 +272,13 @@
   - URL: https://privacyfold.com/tools/pdf-split/
 - **PDF page to image converter** (`pdf_to_image`): Rasterize document pages into high-resolution 300 DPI or 600 DPI PNG/JPEG images locally in your browser.
   - Task: Render document pages to crisp PNG or JPEG images
-  - Accepts: image
+  - Accepts: pdf
   - Standard: ISO 32000-1 (PDF 1.7) via pdf-lib
   - Engine: Plain JavaScript in your browser (no engine binary)
   - URL: https://privacyfold.com/tools/pdf-to-image/
 - **PDF to Word converter** (`pdf_to_word`): Convert PDF document pages and paragraphs into an editable Word-compatible document locally in your browser using pdf.js text extraction and RTF/DOCX structuring.
   - Task: Convert PDF text & layout into an editable Word (.doc / RTF) file
-  - Accepts: text
+  - Accepts: pdf
   - Standard: ISO 32000-1 (PDF 1.7) via pdf-lib
   - Engine: Plain JavaScript in your browser (no engine binary)
   - URL: https://privacyfold.com/tools/pdf-to-word/
@@ -438,8 +438,8 @@
   - Standard: ECMAScript (any modern browser)
   - Engine: Plain JavaScript in your browser (no engine binary)
   - URL: https://privacyfold.com/tools/w9-prep/
-- **Word to PDF converter** (`word_to_pdf`): Convert Word document text, contracts, or manuscripts into a clean, print-ready PDF file locally without uploading to cloud servers.
-  - Task: Convert Word / text drafts into a print-ready PDF file
+- **Text & Markdown to PDF** (`word_to_pdf`): Typeset pasted text or Markdown into a paginated A4/Letter PDF inside the tab. Headings become bold section titles and long documents break across pages. It does not open.docx files — a Word file has to be copied in as text first.
+  - Task: Turn pasted text into a PDF
   - Accepts: text
   - Standard: ISO 32000-1 (PDF 1.7) via pdf-lib
   - Engine: Plain JavaScript in your browser (no engine binary)

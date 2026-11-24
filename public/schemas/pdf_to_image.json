@@ -7,7 +7,7 @@
   "x-privacyfold-category": "pdf",
   "x-privacyfold-standard": "ISO 32000-1 (PDF 1.7) via pdf-lib",
   "x-privacyfold-engine": "none (plain JavaScript in the browser tab)",
-  "x-privacyfold-accepts": "image",
+  "x-privacyfold-accepts": "pdf",
   "x-privacyfold-execution-url": "https://privacyfold.com/tools/pdf-to-image/?mode=agent#payload",
   "type": "object",
   "properties": {
@@ -19,7 +19,7 @@
     },
     "input": {
       "type": "string",
-      "description": "An image file (data URI or pasted File) processed in the tab; never uploaded."
+      "description": "A PDF file (data URI or pasted File) processed in the tab; never uploaded."
     },
     "options": {
       "type": "object",

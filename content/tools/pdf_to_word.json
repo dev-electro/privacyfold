@@ -56,7 +56,7 @@
   "task": "Convert PDF text & layout into an editable Word (.doc / RTF) file",
   "glyph": "DOC",
   "desc": "Convert PDF document pages and paragraphs into an editable Word-compatible document locally in your browser using pdf.js text extraction and RTF/DOCX structuring.",
-  "accepts": "text",
+  "accepts": "pdf",
   "tag": "PDF → DOC",
   "std": "ISO 32000-1 (PDF 1.7) via pdf-lib",
   "wasmModule": "none (JavaScript, no engine binary)"

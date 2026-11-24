@@ -7,7 +7,7 @@
   "x-privacyfold-category": "pdf",
   "x-privacyfold-standard": "ISO 32000-1 (PDF 1.7) via pdf-lib",
   "x-privacyfold-engine": "none (plain JavaScript in the browser tab)",
-  "x-privacyfold-accepts": "text",
+  "x-privacyfold-accepts": "pdf",
   "x-privacyfold-execution-url": "https://privacyfold.com/tools/pdf-metadata/?mode=agent#payload",
   "type": "object",
   "properties": {
@@ -19,7 +19,7 @@
     },
     "input": {
       "type": "string",
-      "description": "Text to process. Sent to the tool only through the URL fragment / local input."
+      "description": "A PDF file (data URI or pasted File) processed in the tab; never uploaded."
     },
     "options": {
       "type": "object",

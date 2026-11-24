@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://privacyfold.com/schemas/word_to_pdf.json",
-  "title": "Word to PDF converter",
-  "description": "Convert Word document text, contracts, or manuscripts into a clean, print-ready PDF file locally without uploading to cloud servers.",
+  "title": "Text & Markdown to PDF",
+  "description": "Typeset pasted text or Markdown into a paginated A4/Letter PDF inside the tab. Headings become bold section titles and long documents break across pages. It does not open.docx files — a Word file has to be copied in as text first.",
   "x-privacyfold-tool-id": "word_to_pdf",
   "x-privacyfold-category": "pdf",
   "x-privacyfold-standard": "ISO 32000-1 (PDF 1.7) via pdf-lib",

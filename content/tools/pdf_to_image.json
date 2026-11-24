@@ -56,7 +56,7 @@
   "task": "Render document pages to crisp PNG or JPEG images",
   "glyph": "P→I",
   "desc": "Rasterize document pages into high-resolution 300 DPI or 600 DPI PNG/JPEG images locally in your browser.",
-  "accepts": "image",
+  "accepts": "pdf",
   "tag": "PDF → PNG",
   "std": "ISO 32000-1 (PDF 1.7) via pdf-lib",
   "wasmModule": "none (JavaScript, no engine binary)"

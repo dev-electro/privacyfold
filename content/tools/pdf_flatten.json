@@ -59,7 +59,7 @@
   "task": "Flatten interactive form fields so they cannot be edited",
   "glyph": "FLT",
   "desc": "Flatten interactive AcroForm fields, checkboxes, and signature appearances into static page content for IRS 1099, USCIS, and notary submissions.",
-  "accepts": "text",
+  "accepts": "pdf",
   "tag": "PDF/A, Lock",
   "std": "ISO 32000-1 (PDF 1.7) via pdf-lib",
   "wasmModule": "none (JavaScript, no engine binary)"

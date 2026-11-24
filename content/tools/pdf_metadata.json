@@ -58,7 +58,7 @@
   "task": "Remove Author, Producer, Creator & revision history from PDFs",
   "glyph": "M-0",
   "desc": "Strip hidden /Author, /Creator, /Producer, /CreationDate, /ModDate, and XMP XML packets from PDF files before public release or legal filing.",
-  "accepts": "text",
+  "accepts": "pdf",
   "tag": "PDF Clean",
   "std": "ISO 32000-1 (PDF 1.7) via pdf-lib",
   "wasmModule": "none (JavaScript, no engine binary)"
