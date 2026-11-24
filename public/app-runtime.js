@@ -259,7 +259,7 @@ var TOOLS=[
       g.putImageData(imgD,0,0);
       return {blob:await toBlob(c,'image/png'),mime:'image/png',w:w,h:h,note:'Paper background removed ('+w+'×'+h+' px)'};
      }},
-    {id:'heic_to_jpg',fam:'image',glyph:'HE',name:'HEIC to JPG',task:'Convert an iPhone photo',tag:'JPG, Export',accepts:'image',live:true,kind:'process',action:'Convert to JPG',ext:'jpg',suffix:'converted',det:'D',
+    {id:'heic_to_jpg',fam:'image',glyph:'HE',name:'HEIC to JPG',task:'Convert an iPhone photo',tag:'JPG, Export',accepts:'image',also:['heic'],live:true,kind:'process',action:'Convert to JPG',ext:'jpg',suffix:'converted',det:'D',
      desc:'Convert Apple HEIC photos to standard JPEG format locally in your browser tab.',
      params:[
       P('qual','JPEG quality','range',1,0.92,{min:0.5,max:1.0,step:0.02,fmt:pct})
@@ -505,6 +505,10 @@ function accepts(t,it){
   var k=it.kind,a=t.accepts;
   if(a==='any')return 3;
   if(a===k)return 10;
+  /* .heic/.heif is its own kind so the preview and icon stay specific, but the
+     only tool that can decode it declares it here — otherwise HEIC uploads were
+     rejected with "That file needs a different tool". */
+  if(t.also&&t.also.indexOf(k)>=0)return 10;
   return 0;
 }
 function rank(it){
