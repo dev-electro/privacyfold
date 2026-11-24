@@ -137,12 +137,49 @@ const cleanTools = tools.map((t) => ({
   tag: t.tag || t.badge,
   accepts: t.accepts || 'any',
   desc: t.desc || t.description,
-  std: t.std || 'W3C WebAssembly Core 2.0',
-  wasmModule: t.wasmModule || t.Engine,
+  std: t.std || 'ECMAScript (any modern browser)',
+  wasmModule: t.wasmModule,
   executionUrl: `https://privacyfold.com/tools/${t.slug}/?mode=agent`,
   presets: t.presets || []
 }));
 fs.writeFileSync(path.join(publicDir, 'tools.json'), JSON.stringify(cleanTools, null, 2) + '\n');
+
+// 1a. Publish the MCP manifest from the same records the site uses. It used to
+//     be a hand-written file that advertised a /wasm/<fam>/<tool>-v1.wasm binary
+//     for every tool (none exist), claimed WebAssembly for all 72, and pointed at
+//     an npm package that was never published.
+const mcpTools = tools.map((t) => {
+  const engine = String(t.Engine || '');
+  const real = /libheif|sql\.js|WebAssembly \(self-hosted\)/i.test(engine) && !/^none/i.test(engine);
+  return {
+    name: `privacyfold.${t.id}`,
+    slug: t.slug,
+    category: t.fam || t.category || 'dev',
+    title: t.name,
+    task: t.task,
+    description: String(t.desc || t.description || '').replace(/\s+/g, ' ').trim(),
+    standard: t.std || 'ECMAScript (any modern browser)',
+    engine: real ? engine : null,
+    url: `https://privacyfold.com/tools/${t.slug}/?mode=agent`,
+  };
+});
+fs.mkdirSync(path.join(publicDir, '.well-known'), { recursive: true });
+fs.writeFileSync(
+  path.join(publicDir, '.well-known', 'mcp.json'),
+  JSON.stringify({
+    schema_version: '1.0',
+    name: 'privacyfold',
+    display_name: 'PrivacyFold',
+    description:
+      '72 client-side document, image, developer and cryptography tools that run inside the browser tab. ' +
+      'Two of them embed a WebAssembly engine (libheif, sql.js); the rest are plain JavaScript. ' +
+      'There is no remote MCP server: this manifest is a descriptive tool schema, and each URL opens the ' +
+      'tool with agent hooks (?mode=agent) so a driving agent can run it locally.',
+    homepage: 'https://privacyfold.com',
+    transport: { type: 'none', note: 'No network transport. Run the tools in a browser; no user data is sent anywhere.' },
+    tools: mcpTools,
+  }, null, 2) + '\n'
+);
 
 // 1b. Publish the WASM SRI registry so the in-app integrity table reads the
 //     binaries that actually ship instead of a hardcoded list.
@@ -150,6 +187,55 @@ const sriSrc = path.join(process.cwd(), 'content/config/wasm-sri.json');
 if (fs.existsSync(sriSrc)) {
   fs.writeFileSync(path.join(publicDir, 'wasm-sri.json'), fs.readFileSync(sriSrc));
 }
+
+// 1c. Generate llms.txt / llms-full.txt from the same records. Both files used
+//     to be hand-maintained: they advertised WebGPU + window.ai execution for all
+//     72 tools, an unpublished `npx @privacyfold/mcp` package, and descriptions
+//     for five tools that no longer matched what those tools do.
+const pad = (n) => String(n);
+const llmsHeader = (full) => [
+  '# PrivacyFold — Client-Side Document & File Tools (no uploads)',
+  '> 72 tools that run inside the browser tab. Two embed a WebAssembly engine (libheif for HEIC, sql.js for SQLite);',
+  '> the other 70 are plain JavaScript using Canvas, Web Crypto and the File API. Files and text never leave the device,',
+  '> there is no account and no server-side processing. There is no remote MCP server — the manifest below is descriptive.',
+  '',
+  '## Agent surface',
+  '- Tool index: https://privacyfold.com/tools.json',
+  '- MCP manifest (descriptive, transport: none): https://privacyfold.com/.well-known/mcp.json',
+  '- JSON-LD schemas: https://privacyfold.com/schemas/_index.json',
+  '- Changelog: https://privacyfold.com/changelog.json',
+  '- Agent URL contract: https://privacyfold.com/tools/{slug}/?mode=agent&preset={presetSlug}#payload',
+  '  (sensitive payloads go in the #fragment, which browsers never send to a server; there is no server)',
+  '',
+  `## Tools (${tools.length})`,
+];
+const toolLine = (t, full) => {
+  const base = `- **${t.name}** (\`${t.id}\`): ${String(t.desc || t.description || t.task || '').replace(/\s+/g, ' ').trim()}`;
+  if (!full) return base;
+  return [
+    base,
+    `  - Task: ${t.task || '-'}`,
+    `  - Accepts: ${t.accepts || 'any'}`,
+    `  - Standard: ${t.std || 'ECMAScript (any modern browser)'}`,
+    `  - Engine: ${t.Engine || 'none (plain JavaScript)'}`,
+    `  - URL: https://privacyfold.com/tools/${t.slug}/`,
+  ].join('\n');
+};
+const presetLines = (full) => {
+  const lines = ['', `## Presets (${presets.length})`];
+  for (const pr of presets.slice(0, full ? presets.length : 24)) {
+    lines.push(`- \`${pr.presetSlug}\` — ${pr.title}${pr.authority_name ? ` (authority: ${pr.authority_name})` : ''} → /presets/${pr.presetSlug}.json`);
+  }
+  if (!full && presets.length > 24) lines.push(`- … ${presets.length - 24} more in https://privacyfold.com/llms-full.txt`);
+  return lines;
+};
+fs.writeFileSync(path.join(publicDir, 'llms.txt'), [
+  ...llmsHeader(false), ...tools.map((t) => toolLine(t, false)), ...presetLines(false),
+  '', 'See https://privacyfold.com/llms-full.txt for the full record of every tool and preset.',
+].join('\n') + '\n');
+fs.writeFileSync(path.join(publicDir, 'llms-full.txt'), [
+  ...llmsHeader(true), ...tools.map((t) => toolLine(t, true)), ...presetLines(true),
+].join('\n') + '\n');
 
 // 2. Compile public/presets.json
 const cleanPresets = presets.map((p) => ({

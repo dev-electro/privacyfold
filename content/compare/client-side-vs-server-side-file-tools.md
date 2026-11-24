@@ -3,7 +3,7 @@ slug: client-side-vs-server-side-file-tools
 title: "Client-Side vs. Server-Side File Tools: Privacy, Speed, and Compliance Trade-offs"
 audience: "Developers, privacy advocates, and security officers deciding between in-browser WASM and server-side processing"
 reviewed: "2026-11-11"
-summary: "A comprehensive breakdown of client-side browser execution (WebAssembly, WebCrypto, WebGPU) versus traditional server-side file utility architectures, analyzing latency, regulatory overhead, and operational risks."
+summary: "A comprehensive breakdown of client-side browser execution (WebAssembly, WebCrypto, Canvas) versus traditional server-side file utility architectures, analyzing latency, regulatory overhead, and operational risks."
 ---
 
 # Client-Side vs. Server-Side File Tools

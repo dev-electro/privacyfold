@@ -68,7 +68,8 @@ const STD_OVERRIDE = {
   barcode_gen: 'ISO/IEC 18004 (QR Code) + Code 128 (ISO/IEC 15417)',
 };
 /* Translated tool files keep the path out but must not get English prose injected */
-const JS_ENGINE_I18N = 'JavaScript';
+const JS_ENGINE_I18N = 'JavaScript (no engine binary)';
+const JS_MODULE_I18N = 'none (no engine binary)';
 const WASM_I18N = {
   heic_to_jpg: 'libheif (WebAssembly)',
   sqlite_viewer: 'sql.js (WebAssembly)',
@@ -103,7 +104,7 @@ function walk(node, id, i18n, isKeyValue) {
       } else if (k === 'wasmModule') {
         // keep hand-written specifics like "none (pattern matching, no engine binary)"
         if (/^none\s*\(/.test(String(v))) { out[k] = v; continue; }
-        out[k] = i18n ? WASM_I18N[id] || JS_ENGINE_I18N : REAL_WASM[id]?.module || 'none (JavaScript, no engine binary)';
+        out[k] = i18n ? WASM_I18N[id] || JS_MODULE_I18N : REAL_WASM[id]?.module || 'none (JavaScript, no engine binary)';
       } else {
         out[k] = walk(v, id, i18n);
       }

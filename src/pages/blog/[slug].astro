@@ -1,7 +1,7 @@
 ---
 import SiteNav from '../../components/SiteNav.astro';
 import Base from '../../layouts/Base.astro';
-import { getAllBlogsFromGit } from '../../lib/cms';
+import { getAllBlogsFromGit, mdToHtml } from '../../lib/cms';
 import AdSlot from '../../components/AdSlot.astro';
 import ShareRow from '../../components/ShareRow.astro';
 
@@ -63,16 +63,14 @@ const articleLd = {
         summary={post.summary}
       />
 
-      <div style="font-family: var(--font-body); font-size: 16px; line-height: 1.75; color: var(--ink); white-space: pre-wrap;">
-        {post.body}
-      </div>
+      <div class="art-body" set:html={mdToHtml(post.body)} />
 
       <div style="margin: 36px 0;">
         <AdSlot slotKey="blog-in-article" format="in-article" pageType="blog" />
       </div>
 
       {post.relatedTool && (
-        <div style="margin-top: 40px; padding: 20px; background: var(--paper); border: 2px solid var(--line); border-radius: 8px;">
+        <div class="paper-card" style="margin-top: 40px; padding: 20px;">
           <h3 style="margin: 0 0 8px 0; font-size: 16px;">Try the Tool Privately</h3>
           <p style="margin: 0 0 12px 0; font-size: 14px; color: var(--ink-2);">
             Run the client-side tool explained in this guide with zero server uploads.

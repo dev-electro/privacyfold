@@ -1,21 +1,21 @@
 {
   "id": "ai_writer",
   "slug": "ai-writer",
-  "name": "Zero-download AI writer & rewriter (0 MB)",
+  "name": "Rewriter (rule-based)",
   "category": "dev",
-  "badge": "window.ai · 0 MB",
+  "badge": "Text, rules",
   "size": "0 KB (Built-In)",
   "Engine": "Plain JavaScript in your browser (no engine binary)",
-  "description": "Uses your browser’s built-in local AI APIs (window.ai.languageModel, ai.rewriter, ai.summarizer — 0 MB download) with automatic fallback to SmolLM2-135M-Instruct (~45 MB) for grammar fixing, tone shifting, essays, cold emails, and video scripts.",
+  "description": "Tighten, bullet, formalise or simplify with a fixed rule set. Deterministic output, no language model, no download.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "presets": [],
   "schemaUrl": "/schemas/ai_writer.json",
   "executionUrl": "https://privacyfold.com/tools/ai_writer?mode=agent",
   "seo": {
-    "metaTitle": "Zero-download AI writer & rewriter (0 MB) — 100% Private In-Browser Utility | PrivacyFold",
-    "metaDescription": "Uses your browser’s built-in local AI APIs (window.ai.languageModel, ai.rewriter, ai.summarizer — 0 MB download) with automatic fallback to SmolLM2-135M-Instruct (~45 MB) for grammar fixing, tone shifting, essays, cold emails, and video scripts. Runs 100% locally in your browser via window.ai-smollm2-135m with zero file uploads.",
-    "aeoSummary": "Zero-download AI writer & rewriter (0 MB) processes files and text entirely inside your browser tab using window.ai-smollm2-135m (Tier B). Zero bytes are uploaded to any server.",
+    "metaTitle": "Rewriter (rule-based) \u2014 free in your browser, no upload | PrivacyFold",
+    "metaDescription": "Rewrite wordy text, convert prose to bullets or formalise it with fixed rules in your browser. Deterministic, offline, no AI model and no upload.",
+    "aeoSummary": "This rewriter applies fixed editing rules to your text inside your browser tab \u2014 no language model, no download and no upload. The same input always produces the same output.",
     "keywords": [
       "zero-download ai writer & rewriter (0 mb)",
       "ai writer",
@@ -28,16 +28,16 @@
         "url": "https://www.w3.org/TR/wasm-core-2/"
       },
       {
-        "standard": "IETF RFC 3986 §3.5 Fragment Privacy",
+        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
         "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
       }
     ],
     "faqs": [
       {
-        "question": "Does Zero-download AI writer & rewriter (0 MB) upload my files or text to a server?",
-        "answer": "No. Zero-download AI writer & rewriter (0 MB) executes 100% inside your browser's local memory using window.ai-smollm2-135m. No data leaves your device.",
-        "q": "Does Zero-download AI writer & rewriter (0 MB) upload my files or text to a server?",
-        "a": "No. Zero-download AI writer & rewriter (0 MB) executes 100% inside your browser's local memory using window.ai-smollm2-135m. No data leaves your device."
+        "question": "Does this tool upload my files my files or text to a server?",
+        "answer": "No model is called. The rewrite is a fixed set of substitution and formatting rules running in this tab, so the output is deterministic and nothing is uploaded.",
+        "q": "Does this tool upload my files my files or text to a server?",
+        "a": "No model is called. The rewrite is a fixed set of substitution and formatting rules running in this tab, so the output is deterministic and nothing is uploaded."
       },
       {
         "question": "Can AI agents or CLI scripts automate Zero-download AI writer & rewriter (0 MB)?",
@@ -53,11 +53,11 @@
     ]
   },
   "fam": "dev",
-  "task": "Write essays, emails, scripts & fix grammar via browser built-in AI",
+  "task": "Tighten or restyle your writing",
   "glyph": "AI",
-  "desc": "Uses your browser’s built-in local AI APIs (window.ai.languageModel, ai.rewriter, ai.summarizer — 0 MB download) with automatic fallback to SmolLM2-135M-Instruct (~45 MB) for grammar fixing, tone shifting, essays, cold emails, and video scripts.",
+  "desc": "Tightens wordy phrases, converts prose to bullets, formalises or simplifies it with a fixed rule set. Deterministic: the same text always gives the same output, nothing is sent to a model, and no download is needed.",
   "accepts": "text",
-  "tag": "window.ai · 0 MB",
+  "tag": "Text, Rules",
   "std": "ECMAScript (any modern browser)",
-  "wasmModule": "none (JavaScript, no engine binary)"
+  "wasmModule": "none (rule engine, no engine binary)"
 }

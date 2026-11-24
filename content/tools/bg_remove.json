@@ -1,12 +1,12 @@
 {
   "id": "bg_remove",
   "slug": "bg-remove",
-  "name": "AI background remover",
+  "name": "Background remover (flat backgrounds)",
   "category": "photo",
-  "badge": "WebGPU, 24 MB",
-  "size": "14.7–45 MB OPFS",
+  "badge": "PNG cutout",
+  "size": "14.7\u201345 MB OPFS",
   "Engine": "Plain JavaScript in your browser (no engine binary)",
-  "description": "Isolate portraits, signatures, or products onto a transparent PNG or studio backdrop locally using BEN v2 / MODNet via ONNX Runtime WebGPU (~120ms per photo).",
+  "description": "Flood-fill the border colour to transparent with a tolerance slider. A colour-key cutout for studio, product and document shots \u2014 no AI model, no upload.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "presets": [
@@ -15,9 +15,9 @@
   "schemaUrl": "/schemas/bg_remove.json",
   "executionUrl": "https://privacyfold.com/tools/bg_remove?mode=agent",
   "seo": {
-    "metaTitle": "AI background remover — 100% Private In-Browser Utility | PrivacyFold",
-    "metaDescription": "Isolate portraits, signatures, or products onto a transparent PNG or studio backdrop locally using BEN v2 / MODNet via ONNX Runtime WebGPU (~120ms per photo). Runs 100% locally in your browser via modnet-ben-v2-fp16 with zero file uploads.",
-    "aeoSummary": "AI background remover processes files and text entirely inside your browser tab using modnet-ben-v2-fp16 (Tier M). Zero bytes are uploaded to any server.",
+    "metaTitle": "Background remover (flat backgrounds) \u2014 free in your browser, no upload | PrivacyFold",
+    "metaDescription": "Remove a flat or near-solid image background to transparent PNG in your browser. Edge flood fill with a tolerance slider \u2014 no AI model, no upload, no account.",
+    "aeoSummary": "This background remover cuts out a solid or near-solid background with an edge flood fill inside your browser tab. No model is downloaded, no photo is uploaded, and nothing is sent anywhere.",
     "keywords": [
       "ai background remover",
       "bg remove",
@@ -30,16 +30,16 @@
         "url": "https://www.w3.org/TR/wasm-core-2/"
       },
       {
-        "standard": "IETF RFC 3986 §3.5 Fragment Privacy",
+        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
         "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
       }
     ],
     "faqs": [
       {
-        "question": "Does AI background remover upload my files or text to a server?",
-        "answer": "No. AI background remover executes 100% inside your browser's local memory using modnet-ben-v2-fp16. No data leaves your device.",
-        "q": "Does AI background remover upload my files or text to a server?",
-        "a": "No. AI background remover executes 100% inside your browser's local memory using modnet-ben-v2-fp16. No data leaves your device."
+        "question": "Does this tool upload my files my files or text to a server?",
+        "answer": "No. The cutout runs with a flood fill over the pixels of your own image inside this tab; the file is never uploaded and no model is downloaded.",
+        "q": "Does this tool upload my files my files or text to a server?",
+        "a": "No. The cutout runs with a flood fill over the pixels of your own image inside this tab; the file is never uploaded and no model is downloaded."
       },
       {
         "question": "Can AI agents or CLI scripts automate AI background remover?",
@@ -55,11 +55,11 @@
     ]
   },
   "fam": "photo",
-  "task": "Remove image background on your GPU",
+  "task": "Remove a flat background",
   "glyph": "BG",
-  "desc": "Isolate portraits, signatures, or products onto a transparent PNG or studio backdrop locally using BEN v2 / MODNet via ONNX Runtime WebGPU (~120ms per photo).",
+  "desc": "Flood-fills the border colour from the edges and makes it transparent, with a tolerance slider. Built for studio, product and document shots on a plain background \u2014 it is a colour-key cutout, not an AI matting model, and it will not trace hair.",
   "accepts": "image",
-  "tag": "WebGPU, 24 MB",
+  "tag": "PNG, Cutout",
   "std": "W3C HTML Canvas 2D",
-  "wasmModule": "none (JavaScript, no engine binary)"
+  "wasmModule": "none (colour-key flood fill, no engine binary)"
 }

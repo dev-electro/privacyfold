@@ -6520,20 +6520,20 @@ var LEAN_MODELS = [
 function renderWebGpuPage(){
   var el = $('#webgpuIn'); if (!el) return;
   var p = DEVICE_PROFILE;
-  var h = '<div class="pg-h"><span class="mono eyebrow">ULTRA-LEAN IN-BROWSER AI STACK (&lt;100 MB TOTAL · 0 MB BUILT-IN LAYER)</span>'
-    + '<h1>AI without an API bill or cloud upload</h1>'
-    + '<p class="pg-sub">PrivacyFold combines 0 MB browser built-in AI (<code>window.ai</code>) with sub-50 MB commercially licensed WebGPU/WASM micro-models cached in OPFS. Your files never leave your device, and every model output that touches personal data includes a human review step.</p>'
+  var h = '<div class="pg-h"><span class="mono eyebrow">ON-DEVICE ENGINES IN THIS BUILD · WHAT SHIPS, WHAT DOES NOT</span>'
+    + '<h1>Two WebAssembly engines. No model downloads.</h1>'
+    + '<p class="pg-sub">Exactly two tools ship a WebAssembly engine: <b>libheif</b> for HEIC decoding (inlined in <code>/vendor/libheif.js</code>) and <b>sql.js</b> for SQLite (<code>/vendor/sql-wasm.wasm</code>). Everything else is plain JavaScript. The model packs listed below are <b>not shipped</b>; no tool calls a WebGPU or ONNX runtime today, and the list is kept here so the gap is visible rather than implied away.</p>'
     + '<div class="row" style="margin-top:12px">'
     + '<span class="pill ok">Device Tier: ' + esc(p.tier.toUpperCase()) + ' (' + p.cores + ' cores, ~' + p.memGB + ' GB RAM)</span>'
     + '<span class="pill ' + (p.webgpu ? 'ok' : '') + '">WebGPU: ' + (p.webgpu ? 'Active' + (p.shaderF16 ? ' (shader-f16)' : '') : 'WASM Fallback') + '</span>'
     + '<span class="pill ' + (p.opfs ? 'ok' : '') + '">OPFS Zero-Copy Cache: ' + (p.opfs ? 'Ready' : 'CacheStorage') + '</span>'
-    + '<span class="pill">window.ai: ' + (p.builtinAI.prompt ? 'Available (0 MB)' : 'Using Sub-50MB Fallback') + '</span>'
+    + '<span class="pill">window.ai: ' + (p.builtinAI.prompt ? 'available in this browser, unused by the tools' : 'not present, nothing falls back to it') + '</span>'
     + '</div></div>';
 
   h += '<div class="gpu-grid">';
   LEAN_MODELS.forEach(function(m){
     h += '<article class="gpu-card">'
-      + '<div class="fc-h"><b>' + esc(m.name) + '</b><span class="stc st-live">' + esc(m.size) + '</span></div>'
+      + '<div class="fc-h"><b>' + esc(m.name) + '</b><span class="stc">' + esc(m.size) + ' · not shipped</span></div>'
       + '<div class="mono" style="font-size:11.5px;color:var(--ink-2)">' + esc(m.runtime) + ' · ' + esc(m.license) + '</div>'
       + '<p style="font-size:14px;color:var(--ink-2);line-height:1.5;flex:1">' + esc(m.desc) + '</p>'
       + '<div class="row"><button type="button" class="btn sm primary" data-gpu-open="' + m.tool + '">Launch Tool</button>'

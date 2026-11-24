@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+import SiteNav from '../components/SiteNav.astro';
+import { getAllPagesFromGit, mdToHtml } from '../lib/cms';
+
+export async function getStaticPaths() {
+  return getAllPagesFromGit().map((page) => ({
+    params: { page: page.slug },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props;
+const canonicalUrl = `https://privacyfold.com/${page.slug}/`;
+---
+<Base title={page.title} description={page.title} canonicalUrl={canonicalUrl} pageType="trust">
+  <SiteNav />
+  <main class="wrap pg" style="padding-top:40px;padding-bottom:80px;max-width:860px;">
+    <article class="art-body" set:html={mdToHtml(page.body)} />
+    {page.reviewed && (
+      <p class="mono" style="margin-top:36px;font-size:12px;color:var(--ink-2);">
+        Last reviewed {page.reviewed}
+      </p>
+    )}
+  </main>
+</Base>

@@ -1,21 +1,21 @@
 {
   "id": "image_upscaler",
   "slug": "image-upscaler",
-  "name": "AI image upscaler & restorer",
+  "name": "Image upscaler (resampling)",
   "category": "image",
-  "badge": "OmniSR, 18 MB",
-  "size": "14.7–45 MB OPFS",
+  "badge": "PNG, 2\u00d7\u20134\u00d7",
+  "size": "14.7\u201345 MB OPFS",
   "Engine": "Plain JavaScript in your browser (no engine binary)",
-  "description": "Upscale small or compressed photos by 2× with edge-preserving super-resolution (Real-ESRGAN-compact / OmniSR-nano ~18 MB on WebGPU).",
+  "description": "Resample 2\u00d7, 3\u00d7 or 4\u00d7 with a quality filter and an unsharp pass. Classic resampling that enlarges what is there rather than inventing detail.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "presets": [],
   "schemaUrl": "/schemas/image_upscaler.json",
   "executionUrl": "https://privacyfold.com/tools/image_upscaler?mode=agent",
   "seo": {
-    "metaTitle": "AI image upscaler & restorer — 100% Private In-Browser Utility | PrivacyFold",
-    "metaDescription": "Upscale small or compressed photos by 2× with edge-preserving super-resolution (Real-ESRGAN-compact / OmniSR-nano ~18 MB on WebGPU). Runs 100% locally in your browser via omnisr-nano-fp16 with zero file uploads.",
-    "aeoSummary": "AI image upscaler & restorer processes files and text entirely inside your browser tab using omnisr-nano-fp16 (Tier M). Zero bytes are uploaded to any server.",
+    "metaTitle": "Image upscaler (resampling) \u2014 free in your browser, no upload | PrivacyFold",
+    "metaDescription": "Upscale an image 2\u00d7\u20134\u00d7 with high-quality resampling and unsharp masking, entirely in your browser tab. No neural model, no upload, no account.",
+    "aeoSummary": "This upscaler resamples your image 2\u00d7\u20134\u00d7 with an unsharp mask inside your browser tab. It is deterministic resampling, not a neural upscaler, and your image is never uploaded.",
     "keywords": [
       "ai image upscaler & restorer",
       "image upscaler",
@@ -28,16 +28,16 @@
         "url": "https://www.w3.org/TR/wasm-core-2/"
       },
       {
-        "standard": "IETF RFC 3986 §3.5 Fragment Privacy",
+        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
         "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
       }
     ],
     "faqs": [
       {
-        "question": "Does AI image upscaler & restorer upload my files or text to a server?",
-        "answer": "No. AI image upscaler & restorer executes 100% inside your browser's local memory using omnisr-nano-fp16. No data leaves your device.",
-        "q": "Does AI image upscaler & restorer upload my files or text to a server?",
-        "a": "No. AI image upscaler & restorer executes 100% inside your browser's local memory using omnisr-nano-fp16. No data leaves your device."
+        "question": "Does this tool upload my files my files or text to a server?",
+        "answer": "No model is involved. The tool resamples your pixels with a quality filter and an unsharp pass; nothing is uploaded and no weights are downloaded.",
+        "q": "Does this tool upload my files my files or text to a server?",
+        "a": "No model is involved. The tool resamples your pixels with a quality filter and an unsharp pass; nothing is uploaded and no weights are downloaded."
       },
       {
         "question": "Can AI agents or CLI scripts automate AI image upscaler & restorer?",
@@ -53,11 +53,11 @@
     ]
   },
   "fam": "image",
-  "task": "Upscale low-res photos 2× with edge sharpening",
+  "task": "Upscale an image 2\u00d7 to 4\u00d7",
   "glyph": "2X",
-  "desc": "Upscale small or compressed photos by 2× with edge-preserving super-resolution (Real-ESRGAN-compact / OmniSR-nano ~18 MB on WebGPU).",
+  "desc": "Resamples to 2\u00d7, 3\u00d7 or 4\u00d7 with a high-quality filter plus an adjustable unsharp pass. This is classic resampling \u2014 it enlarges what is already there and does not invent detail \u2014 and the page says so rather than implying a generative model.",
   "accepts": "image",
-  "tag": "OmniSR, 18 MB",
+  "tag": "PNG, Resample",
   "std": "W3C HTML Canvas 2D + File API",
-  "wasmModule": "none (JavaScript, no engine binary)"
+  "wasmModule": "none (canvas resampling, no engine binary)"
 }

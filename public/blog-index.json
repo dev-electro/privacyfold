@@ -10,7 +10,7 @@
   },
   {
     "slug": "client-side-wasm-webgpu-architecture",
-    "title": "How Client-Side WebAssembly & WebGPU Replace Cloud File Utilities Without Uploading a Single Byte",
+    "title": "How Client-Side WebAssembly Replaces Cloud File Utilities Without Uploading a Single Byte",
     "description": "Why uploading passport photos, tax forms, and production JSON/JWTs to free online converters is a critical privacy leak—and how modern browsers execute the same workloads locally.",
     "date": "2026-11-01",
     "readTime": "7 min read",

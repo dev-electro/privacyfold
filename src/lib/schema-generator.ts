@@ -18,8 +18,10 @@ export function generateToolJsonLdGraph(tool: GitCmsTool, canonicalUrl: string) 
         featureList: [
           '100% client-side execution in browser RAM (0 server uploads)',
           `Standards: ${tool.std}`,
-          tool.wasmModule && !/^none/.test(tool.wasmModule)
-            ? `Powered by ${tool.Engine || tool.wasmModule}`
+          /* Only claim an engine when one actually runs; localised records say
+             "JavaScript", which is not an engine. */
+          /WebAssembly|wasm|libheif|sql\.js/i.test(tool.Engine || '')
+            ? `Powered by ${tool.Engine}`
             : 'Runs as plain JavaScript in the browser tab',
           'Works offline via Progressive Web App Service Worker',
           'Deterministic Model Context Protocol (MCP) JSON-RPC support',
@@ -80,7 +82,7 @@ export function generateHomeJsonLdGraph() {
         '@id': 'https://privacyfold.com/#website',
         name: 'PrivacyFold',
         url: 'https://privacyfold.com/',
-        description: 'File tools that never see your files. 100% in-browser processing via WebAssembly, WebGPU and WebCrypto.',
+        description: 'File tools that never see your files. Every tool runs in your browser tab: plain JavaScript plus two self-hosted WebAssembly engines. No uploads, no accounts, no servers.',
         publisher: {
           '@id': 'https://privacyfold.com/#organization',
         },

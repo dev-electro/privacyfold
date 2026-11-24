@@ -1,5 +1,5 @@
 ---
-title: "How Client-Side WebAssembly & WebGPU Replace Cloud File Utilities Without Uploading a Single Byte"
+title: "How Client-Side WebAssembly Replaces Cloud File Utilities Without Uploading a Single Byte"
 slug: "client-side-wasm-webgpu-architecture"
 category: "Architecture & Privacy"
 readTime: "7 min read"
@@ -15,7 +15,7 @@ Every day, millions of people upload sensitive documents—passport photos, sign
 Modern browsers ship with three hardware-accelerated runtimes that make server-side file utilities unnecessary for everyday document and developer workflows:
 
 - **WebAssembly (WASM) with SIMD:** Compiles C, C++, and Rust codecs (MozJPEG, libwebp, libavif, MuPDF, Tesseract, and SQLite) to execute at near-native CPU speed inside a memory-safe sandbox.
-- **WebGPU & ONNX Runtime Web:** Grants direct access to local GPU compute shaders so background matting (`RMBG-1.4`), document OCR, and PII airlock scanning run in milliseconds on your own graphics card.
+- **Canvas 2D + typed arrays:** Every image, PDF-page and text transformation in this suite runs on these; it is where the pixels actually move. WebGPU and ONNX Runtime are available in browsers, but no tool here ships a neural model today — the AI-shaped tools are documented as the heuristics they are (edge flood fill, patch fill, resampling, rule-based rewriting).
 - **W3C WebCrypto API:** Performs AES-256-GCM encryption, PBKDF2 key derivation, SHA-256/512 hashing, and ECDSA P-256 signing using OS-level cryptographic primitives.
 
 ## 2. Verifying Zero Uploads with Content Security Policy

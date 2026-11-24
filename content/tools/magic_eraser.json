@@ -1,21 +1,21 @@
 {
   "id": "magic_eraser",
   "slug": "magic-eraser",
-  "name": "Object & watermark remover (Inpainting)",
+  "name": "Object & watermark remover (patch fill)",
   "category": "image",
-  "badge": "LaMa FP16, 38 MB",
-  "size": "14.7–45 MB OPFS",
+  "badge": "PNG, patch fill",
+  "size": "14.7\u201345 MB OPFS",
   "Engine": "Plain JavaScript in your browser (no engine binary)",
-  "description": "Remove unwanted objects, date stamps, or watermarks using fast-fourier convolution inpainting (LaMa-FP16-pruned ~38 MB on WebGPU) directly in your browser.",
+  "description": "Fill a masked spot with the surrounding pixels to clear date stamps, watermarks and blemishes. Deterministic, best on small marks.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "presets": [],
   "schemaUrl": "/schemas/magic_eraser.json",
   "executionUrl": "https://privacyfold.com/tools/magic_eraser?mode=agent",
   "seo": {
-    "metaTitle": "Object & watermark remover (Inpainting) — 100% Private In-Browser Utility | PrivacyFold",
-    "metaDescription": "Remove unwanted objects, date stamps, or watermarks using fast-fourier convolution inpainting (LaMa-FP16-pruned ~38 MB on WebGPU) directly in your browser. Runs 100% locally in your browser via lama-fp16-pruned with zero file uploads.",
-    "aeoSummary": "Object & watermark remover (Inpainting) processes files and text entirely inside your browser tab using lama-fp16-pruned (Tier M). Zero bytes are uploaded to any server.",
+    "metaTitle": "Object & watermark remover (patch fill) \u2014 free in your browser, no upload | PrivacyFold",
+    "metaDescription": "Remove a watermark, date stamp or blemish with a patch fill in your browser tab. Deterministic, offline, no upload \u2014 best on small marks.",
+    "aeoSummary": "This eraser fills a masked area with the surrounding pixels inside your browser tab. It is a deterministic patch fill, not a neural inpainting model, and the image is never uploaded.",
     "keywords": [
       "object & watermark remover (inpainting)",
       "magic eraser",
@@ -28,16 +28,16 @@
         "url": "https://www.w3.org/TR/wasm-core-2/"
       },
       {
-        "standard": "IETF RFC 3986 §3.5 Fragment Privacy",
+        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
         "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
       }
     ],
     "faqs": [
       {
-        "question": "Does Object & watermark remover (Inpainting) upload my files or text to a server?",
-        "answer": "No. Object & watermark remover (Inpainting) executes 100% inside your browser's local memory using lama-fp16-pruned. No data leaves your device.",
-        "q": "Does Object & watermark remover (Inpainting) upload my files or text to a server?",
-        "a": "No. Object & watermark remover (Inpainting) executes 100% inside your browser's local memory using lama-fp16-pruned. No data leaves your device."
+        "question": "Does this tool upload my files my files or text to a server?",
+        "answer": "No. The fill is computed from the pixels surrounding the mask inside your tab; the image is never uploaded and no model is downloaded.",
+        "q": "Does this tool upload my files my files or text to a server?",
+        "a": "No. The fill is computed from the pixels surrounding the mask inside your tab; the image is never uploaded and no model is downloaded."
       },
       {
         "question": "Can AI agents or CLI scripts automate Object & watermark remover (Inpainting)?",
@@ -53,11 +53,11 @@
     ]
   },
   "fam": "image",
-  "task": "Erase unwanted objects, dates or blemishes",
+  "task": "Erase a spot or watermark",
   "glyph": "ER",
-  "desc": "Remove unwanted objects, date stamps, or watermarks using fast-fourier convolution inpainting (LaMa-FP16-pruned ~38 MB on WebGPU) directly in your browser.",
+  "desc": "Diffs the pixels around a masked area into the gap to remove date stamps, watermarks and small blemishes. A deterministic patch fill \u2014 good on small marks, not a substitute for inpainting a large subject out of a photo.",
   "accepts": "image",
-  "tag": "LaMa FP16, 38 MB",
+  "tag": "PNG, Inpaint",
   "std": "W3C HTML Canvas 2D",
-  "wasmModule": "none (JavaScript, no engine binary)"
+  "wasmModule": "none (patch fill, no engine binary)"
 }

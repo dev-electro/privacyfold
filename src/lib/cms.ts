@@ -4,6 +4,7 @@
  * directly from the Git-tracked root `/content` directory at build time.
  */
 import fs from 'node:fs';
+import { marked } from 'marked';
 import path from 'node:path';
 
 export interface ToolSeoBlock {
@@ -115,6 +116,16 @@ export const FAMILIES: Record<GitCmsTool['fam'], { name: string; color: string }
   crypto: { name: 'Security & Crypto', color: '#F27AA3' },
 };
 
+/**
+ * Content bodies in content/ are markdown. They used to be printed verbatim, so
+ * readers saw literal "##" and "**" on every article page. Everything that emits
+ * a body goes through this.
+ */
+export function mdToHtml(md: string): string {
+  if (!md) return '';
+  return marked.parse(md, { gfm: true, breaks: false, async: false }) as string;
+}
+
 export function getAllToolsFromGit(): GitCmsTool[] {
   const dir = path.join(CONTENT_ROOT, 'tools');
   if (!fs.existsSync(dir)) return [];
@@ -145,6 +156,40 @@ export function getAllPresetsFromGit(): GitCmsPreset[] {
 
 export function getPresetFromGit(toolSlug: string, presetSlug: string): GitCmsPreset | undefined {
   return getAllPresetsFromGit().find((p) => p.toolSlug === toolSlug && p.presetSlug === presetSlug);
+}
+
+export interface GitCmsPage {
+  slug: string;
+  title: string;
+  reviewed: string;
+  body: string;
+}
+
+/**
+ * Trust pages (about, privacy, terms, contact) live in content/pages/*.md so the
+ * CMS owns them. They used to be hand-written HTML files in public/ that
+ * shadowed the routes, kept their own inline CSS and drifted from the site.
+ */
+export function getAllPagesFromGit(): GitCmsPage[] {
+  const dir = path.join(CONTENT_ROOT, 'pages');
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir).filter((f) => f.endsWith('.md')).map((file) => {
+    const raw = fs.readFileSync(path.join(dir, file), 'utf8');
+    const meta: Record<string, string> = {};
+    let body = raw;
+    const lines = raw.split('\n');
+    if (lines[0]?.trim() === '---') {
+      const end = lines.indexOf('---', 1);
+      if (end !== -1) {
+        for (let i = 1; i < end; i++) {
+          const colon = lines[i].indexOf(':');
+          if (colon !== -1) meta[lines[i].slice(0, colon).trim()] = lines[i].slice(colon + 1).trim().replace(/^['"]|['"]$/g, '');
+        }
+        body = lines.slice(end + 1).join('\n').trim();
+      }
+    }
+    return { slug: meta.slug || file.replace(/\.md$/, ''), title: meta.title || file, reviewed: meta.reviewed || '', body };
+  });
 }
 
 export function getAllBlogsFromGit(): GitCmsBlogPost[] {

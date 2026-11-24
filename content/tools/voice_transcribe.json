@@ -1,21 +1,21 @@
 {
   "id": "voice_transcribe",
   "slug": "voice-transcribe",
-  "name": "Speech-to-text & audio transcriber",
+  "name": "Transcript to SRT/VTT subtitles",
   "category": "image",
-  "badge": "Moonshine 28 MB",
-  "size": "14.7–45 MB OPFS",
+  "badge": "SRT, VTT",
+  "size": "14.7\u201345 MB OPFS",
   "Engine": "Plain JavaScript in your browser (no engine binary)",
-  "description": "Transcribe English voice recordings 5× faster than real-time with Moonshine-tiny (~28 MB MIT ONNX) or Whisper-tiny, with Silero VAD silence trimming and SRT/VTT subtitle export.",
+  "description": "Split a transcript you already have into timed SRT, WebVTT or text cues. Timing is estimated from word count and labelled as such.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "presets": [],
   "schemaUrl": "/schemas/voice_transcribe.json",
   "executionUrl": "https://privacyfold.com/tools/voice_transcribe?mode=agent",
   "seo": {
-    "metaTitle": "Speech-to-text & audio transcriber — 100% Private In-Browser Utility | PrivacyFold",
-    "metaDescription": "Transcribe English voice recordings 5× faster than real-time with Moonshine-tiny (~28 MB MIT ONNX) or Whisper-tiny, with Silero VAD silence trimming and SRT/VTT subtitle export. Runs 100% locally in your browser via moonshine-tiny-en with zero file uploads.",
-    "aeoSummary": "Speech-to-text & audio transcriber processes files and text entirely inside your browser tab using moonshine-tiny-en (Tier M). Zero bytes are uploaded to any server.",
+    "metaTitle": "Transcript to SRT/VTT subtitles \u2014 free in your browser, no upload | PrivacyFold",
+    "metaDescription": "Convert a transcript into SRT or WebVTT subtitle cues with estimated timing, in your browser tab. No audio upload, no speech model, no account.",
+    "aeoSummary": "This tool converts a typed transcript into timed subtitle cues inside your browser tab. Timing is derived from word count at your chosen speaking rate and marked as an estimate; it does not transcribe audio and never uploads anything.",
     "keywords": [
       "speech-to-text & audio transcriber",
       "voice transcribe",
@@ -28,16 +28,16 @@
         "url": "https://www.w3.org/TR/wasm-core-2/"
       },
       {
-        "standard": "IETF RFC 3986 §3.5 Fragment Privacy",
+        "standard": "IETF RFC 3986 \u00a73.5 Fragment Privacy",
         "url": "https://datatracker.ietf.org/doc/html/rfc3986#section-3.5"
       }
     ],
     "faqs": [
       {
-        "question": "Does Speech-to-text & audio transcriber upload my files or text to a server?",
-        "answer": "No. Speech-to-text & audio transcriber executes 100% inside your browser's local memory using moonshine-tiny-en. No data leaves your device.",
-        "q": "Does Speech-to-text & audio transcriber upload my files or text to a server?",
-        "a": "No. Speech-to-text & audio transcriber executes 100% inside your browser's local memory using moonshine-tiny-en. No data leaves your device."
+        "question": "Does this tool upload my files my files or text to a server?",
+        "answer": "No. It does not process audio at all \u2014 it formats a transcript you paste, so there is no audio to upload and no speech model to download.",
+        "q": "Does this tool upload my files my files or text to a server?",
+        "a": "No. It does not process audio at all \u2014 it formats a transcript you paste, so there is no audio to upload and no speech model to download."
       },
       {
         "question": "Can AI agents or CLI scripts automate Speech-to-text & audio transcriber?",
@@ -53,11 +53,11 @@
     ]
   },
   "fam": "image",
-  "task": "Transcribe voice notes & format SRT/VTT captions locally",
+  "task": "Turn a transcript into timed subtitles",
   "glyph": "STT",
-  "desc": "Transcribe English voice recordings 5× faster than real-time with Moonshine-tiny (~28 MB MIT ONNX) or Whisper-tiny, with Silero VAD silence trimming and SRT/VTT subtitle export.",
+  "desc": "Splits a transcript you already have into SRT, WebVTT or plain-text cues at a chosen words-per-minute and cue length. Timing is estimated from word count and labelled as an estimate \u2014 this tool does not listen to audio.",
   "accepts": "text",
-  "tag": "Moonshine 28 MB",
+  "tag": "SRT, VTT",
   "std": "W3C HTML Canvas 2D + File API",
-  "wasmModule": "none (JavaScript, no engine binary)"
+  "wasmModule": "none (word-count timing, no engine binary)"
 }

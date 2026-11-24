@@ -1,7 +1,7 @@
 ---
 import SiteNav from '../../components/SiteNav.astro';
 import Base from '../../layouts/Base.astro';
-import { getAllGlossaryTermsFromGit, getToolFromGit } from '../../lib/cms';
+import { getAllGlossaryTermsFromGit, getToolFromGit, mdToHtml } from '../../lib/cms';
 import AdSlot from '../../components/AdSlot.astro';
 import ShareRow from '../../components/ShareRow.astro';
 
@@ -76,18 +76,16 @@ const relatedTools = (term.related_tools || [])
         </div>
       )}
 
-      <div style="font-family: var(--font-body); font-size: 16px; line-height: 1.75; color: var(--ink); white-space: pre-wrap;">
-        {term.body}
-      </div>
+      <div class="art-body" set:html={mdToHtml(term.body)} />
 
       <div style="margin: 36px 0;">
         <AdSlot slotKey="glossary-in-article" format="in-article" pageType="glossary" />
       </div>
 
       {relatedTools.length > 0 && (
-        <div style="margin-top: 40px; padding: 24px; background: var(--paper); border: 2px solid var(--line); border-radius: 12px; box-shadow: 0 4px 0 var(--hard);">
+        <div class="paper-card" style="margin-top: 40px; padding: 24px; box-shadow: 0 4px 0 var(--hard);">
           <h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 700;">Related Client-Side Privacy Tools</h3>
-          <p style="margin: 0 0 16px 0; font-size: 14px; color: var(--ink-2);">
+          <p style="margin: 0 0 16px 0; font-size: 14px;">
             Run the in-browser implementations adhering to {term.term} with zero server uploads.
           </p>
           <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px;">

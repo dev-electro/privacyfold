@@ -26,5 +26,5 @@ By leveraging standard modern web primitives—including **WebAssembly (WASM)**,
 
 1. **Zero Server Uploads:** Your files are read into local browser RAM using the HTML5 File API and processed by client-side WebAssembly binaries. No cloud buckets, workers, or server databases exist.
 2. **Honest Output:** Our tools never fabricate output or simulate operations. If an engine cannot process an input, it surfaces a transparent error rather than mock results.
-3. **Open Architecture:** We document our standards compliance (ICAO 9303, CIPA DC-008, NIST SP 800-38D, ISO 32000-1) and provide deterministic Model Context Protocol (MCP) tool schemas for developer and AI agent interoperability.
+3. **Open Architecture:** We document our standards compliance (ICAO 9303, CIPA DC-008, NIST SP 800-38D, ISO 32000-1) and publish a descriptive Model Context Protocol (MCP) tool manifest at /.well-known/mcp.json. It is a schema, not a server: there is no remote endpoint and no data channel — an agent runs the tools in a browser, exactly like a person does.
 4. **Zero-Tracking Monetization:** To keep PrivacyFold permanently free and independent without accounts, subscriptions, or paywalls, non-personalized contextual advertisements are served with strict privacy gating and zero third-party telemetry.
