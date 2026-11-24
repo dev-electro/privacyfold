@@ -40,6 +40,13 @@
 | CMS SRI table hardcoded binaries + hashes | renders `content/config/wasm-sri.json` (published to `/wasm-sri.json` by `validate-git-cms.mjs`); states "Registered, not wired" — no shipped tool instantiates the 10 binaries (PF-037) |
 | `us_tax_filler` advertised discontinued Form 1040-EZ | `1040` across content, runtime, `llms.txt`, `mcp.json` |
 | Tool pages carried the homepage hero H1 | `ToolDesk` hero gated on `initialToolSlug` — one `<h1 id="tpName">` per tool page |
+| 87 preset pages opened the plain tool | `ToolDesk` takes `presetSpec`; runtime maps dimensions/max-kb/dpi/background onto the tool's own params and prints "Preset: … verified …" — Amazon preset now yields a real 2000×2000 JPEG (46 KB) |
+| `/ar/tools/<slug>/` rendered English `<h1>` and lost its `<title>` | `openTool()` keeps the server copy when `__PF_INITIAL_SLUG__` matches; localized page passes `initialToolName/Desc`; `document.title` only set during in-app navigation |
+| 80 localized descriptions ended with English AI-boilerplate claiming WebCrypto | stripped from `content/i18n/*/tools/*.json`; Arabic page now reads as one language |
+| Privacy policy said "PrivacyFold displays advertisements" while `ADS_CONFIG.enabled=false` | copy + consent banner state the ad-free-until-review truth; no ad script is requested on any page (verified: 0 third-party requests on a cold blog load) |
+| Live tools had no printable output (invoice = tab-separated blob only) | Print action on every live result writes a standalone doc and calls `print()`; verified on `invoice_generator` (£5,550 + 20% = £6,660) |
+| Content console said "Apply to Live Runtime" though nothing persists | "Apply to This Session" + copy pointing at JSON export/commit |
+| `run()` returned `{out}`/`{text}`/`{blob}`/`{files}` by tool | text results always expose `.out` now; `w9_prep` 631-char worksheet and `sa100_prep` SA100 summary confirmed real |
 
 ## Resolved in this session (2026-11-11)
 

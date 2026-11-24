@@ -423,3 +423,20 @@
 **Proved by:** `node scripts/agent-status.mjs` (exit 1, 5 blockers → `docs/agent/SNAPSHOT.txt`); probe outputs recorded with exact strings in the audit.
 **Next:** PF-001 finish (commit + push + lockfile), then PF-002 Astro scaffold.
 **Blocker:** none technical for PF-001; owner decision still open on 8 dead tools (PF-004) and AdSense (PF-013).
+
+---
+
+## 2026-11-25 — discovery round 2: presets, locales, advertising copy, print
+
+**Tasks:** PF-055 PF-056 PF-057 PF-058 PF-059 PF-060; PF-039 decided.
+**Did:**
+- Deleted the last `activateTool('pdf_split')` override (it built a PDF from hardcoded "Executive Summary / Financial Schedule" text). Real split verified with the tool's own param name `ranges`: `1-2` → one 2,309 B file, `1,3` → two files.
+- Preset pages (`/tools/<tool>/<preset>/`, 87 of them) rendered the plain tool: `presetSpec` now reaches the runtime, which maps `dimensions_px`/`max_size_kb`/`dpi`/`background` onto params the tool actually declares and switches its own preset selector to "custom". Verified: `amazon-main-image-2000x2000` → args `w=2000 h=2000 preset=custom`, output 2000×2000 JPEG (46 KB); `ch-swiss-pass-35x45` → `dpi=300 bg=#EDEDED`, output 413×531 px (35×45 mm at 300 dpi).
+- Localized pages: `openTool()` overwrote `#tpName` with the English record and set `document.title='PrivacyFold'` on every open. Both fixed; 80 localized descriptions had an English boilerplate tail claiming WebCrypto — stripped.
+- Advertising truth: `ADS_CONFIG.enabled=false`, 0 third-party requests on a cold blog load, yet the privacy page read "PrivacyFold displays advertisements via Google AdSense" and consent said "we display ads". Both rewritten; footer "Cookie Preferences" still opens the panel.
+- Live-tool results gained a Print action (standalone printable doc + `print()`), so an invoice can leave the tab as PDF.
+- Content console: "Apply to Live Runtime" → "Apply to This Session" (nothing persists — static site).
+- `run()` normalises text results to `.out`; `w9_prep`/`sa100_prep` confirmed as real implementations (631-char W-9 worksheet, HMRC SA100 summary) and PF-039 marked decided: keep them.
+**Proved by:** `npm test` → VERDICT P0 clear, toolcore 12/0, smoke 72/72, `npm run build` 336 pages, after every commit; browser checks logged above with exact byte/pixel counts.
+**Next:** dark-mode pass over the trust pages + `/tools/` index cards; verify 320 px widths; then the last known gaps (multi-file ordering through the UI).
+**Blocker:** none.

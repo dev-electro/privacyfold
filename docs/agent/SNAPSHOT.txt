@@ -1,24 +1,23 @@
-# generated 2026-11-24T19:01:39.407Z by scripts/agent-status.mjs
+# generated 2026-11-24T21:16:40.452Z by scripts/agent-status.mjs
 1. BUILD
-  [ok]      last recorded build: PASS astro build 2026-11-12 (330 pages) — P0 clear: engine registry sha256-verified, 10 wasm binaries hosted
+  [ok]      last recorded build: PASS astro build 2026-11-24 at 21:15:26Z (6 engine records) — commit 632c3f3
 
 2. CONTENT MODEL
   [ok]      tool JSON matches GitCmsTool
   [ok]      seo.steps present
 
 3. CATALOG ≈ REALITY
-  content tools: 72 · schemas: 72 · presets: 87 · blog: 6 · glossary: 15 · compare: 2 · engines: 14
+  content tools: 72 · schemas: 72 · presets: 87 · blog: 6 · glossary: 15 · compare: 2 · engines: 6
   runtime: 72 defined · 72 live · 0 "coming soon"
 
 4. ENGINE CLAIMS
-  [ok]      26 wasm binaries on disk (13 paths referenced by copy; unwired paths are planned engines, not blockers)
+  [ok]      2 wasm binary(s) on disk; libheif's wasm is inlined in /vendor/libheif.js (0 stale /wasm/*.wasm paths in copy)
   [ok]      hosted engine records: files + sha256 verified
-  [warn]    6 declared deps imported 0 times: @jsquash/avif, @jsquash/jpeg, @jsquash/png, @jsquash/webp, heic-decode, tesseract.js-core
 
 5. COUNT DRIFT (agents and humans get misled here)
    72  src/layouts/Base.astro
    72  content/config/site.json
-   72  public/llms.txt
+    ?  public/llms.txt
    72  public/schemas/_index.json
    72  public/.well-known/mcp.json
    72  packages/mcp-server (total_tools)
@@ -26,8 +25,10 @@
    72  reality (runnable)
 
 6. LAUNCH SURFACE
+  [warn]    missing privacy policy (public/privacy/index.html)
+  [warn]    missing terms (public/terms/index.html)
 
 7. GIT
-  branch main · commits 53 · uncommitted paths 6
+  branch main · commits 69 · uncommitted paths 3
 
 VERDICT: P0 clear
