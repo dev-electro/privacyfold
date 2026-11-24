@@ -782,7 +782,7 @@ function buildWorkspace(){
       +'<div class="pane-b"><div class="stage pat" id="stage"><div id="stageIn" style="width:100%;display:grid;place-items:center"></div></div><div class="meta" id="meta"></div></div></section>';
     right=settingsPaneHTML();
   }else if(t.kind==='live'){
-    var out='<section class="pane" aria-label="Result"><div class="pane-h"><h2>Result</h2><div class="row"><span class="status" id="stat" hidden></span><button type="button" class="btn ghost sm" id="cpy">Copy</button><button type="button" class="btn sm" id="dl" data-pf="download">Download</button></div></div><div class="pane-b"><pre class="out" id="out"></pre></div></section>';
+    var out='<section class="pane" aria-label="Result"><div class="pane-h"><h2>Result</h2><div class="row"><span class="status" id="stat" hidden></span><button type="button" class="btn ghost sm" id="cpy">Copy</button><button type="button" class="btn ghost sm" id="prt" title="Open a clean printable copy">Print</button><button type="button" class="btn sm" id="dl" data-pf="download">Download</button></div></div><div class="pane-b"><pre class="out" id="out"></pre></div></section>';
     if(t.accepts==='none'){left=out;right=settingsPaneHTML()}
     else{
       var inp;
@@ -1208,6 +1208,20 @@ $('#ws').addEventListener('click',function(e){
     if(k==='del'){clearAll();goHome();toast('Your files were deleted from this tab')}
     return}
   if(e.target.closest('#cpy')&&cur.outText!==undefined){if(cur.outText){copyText(cur.outText,'Result copied');bumpUse(cur.tool)}else toast('Nothing to copy yet')}
+  if(e.target.closest('#prt')){
+    if(!cur.outText||!cur.outText.trim())return toast('Nothing to print yet');
+    var pw=window.open('','_blank');
+    if(!pw)return toast('Your browser blocked the print window — allow pop-ups for this site.');
+    pw.document.write('<!doctype html><meta charset="utf-8"><title>'+esc(cur.tool.name)+'</title>'
+      +'<style>@page{margin:16mm}body{font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;color:#111}'
+      +'h1{font:600 15px/1.3 system-ui,-apple-system,sans-serif;margin:0 0 14px}'
+      +'pre{white-space:pre-wrap;margin:0}footer{margin-top:18px;font:11px system-ui;color:#666}'
+      +'</style><h1>'+esc(cur.tool.name)+'</h1><pre>'+esc(cur.outText)+'</pre>'
+      +'<footer>Made with PrivacyFold — processed on this device, nothing uploaded.</footer>');
+    pw.document.close();pw.focus();
+    try{pw.print()}catch(err){}
+    return;
+  }
   if(e.target.closest('#dl')){if(cur.outText){saveFile('privacyfold-'+cur.tool.slug+'.'+cur.tool.ext,new Blob([cur.outText],{type:'text/plain'}));bumpUse(cur.tool)}else toast('Nothing to download yet')}
   if(e.target.closest('#smp')){
     var ti=$('#tin');
