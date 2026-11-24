@@ -438,5 +438,6 @@
 - Content console: "Apply to Live Runtime" → "Apply to This Session" (nothing persists — static site).
 - `run()` normalises text results to `.out`; `w9_prep`/`sa100_prep` confirmed as real implementations (631-char W-9 worksheet, HMRC SA100 summary) and PF-039 marked decided: keep them.
 **Proved by:** `npm test` → VERDICT P0 clear, toolcore 12/0, smoke 72/72, `npm run build` 336 pages, after every commit; browser checks logged above with exact byte/pixel counts.
-**Next:** dark-mode pass over the trust pages + `/tools/` index cards; verify 320 px widths; then the last known gaps (multi-file ordering through the UI).
+- Sweeps after all of the above: 72 tool pages and 87 preset pages loaded with an error collector on board — **0 JS errors, 0 preset pages missing the preset line**; `/tools/` at 375 and 320 px has `scrollWidth == innerWidth` and no element past the viewport; contrast probe on /privacy/, /terms/, /glossary/ (dark) and a blog post (light) found no body text under 4.5:1.
+**Next:** multi-file ordering through the UI; receipts/invoice print layout on paper sizes; light-theme opacity sweep of the `.pat` backgrounds.
 **Blocker:** none.
