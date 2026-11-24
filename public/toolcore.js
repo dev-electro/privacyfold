@@ -430,13 +430,45 @@
 
   U.heicToCanvas = async function (buffer) {
     var lib = await U.ensureHeif();
+    /* The vendored libheif build exports a *factory*, not a ready module:
+       window.libheif() resolves to the emscripten instance that carries
+       HeifDecoder. Calling `new lib.HeifDecoder()` on the factory threw
+       "lib.HeifDecoder is not a constructor" for every HEIC file. */
+    if (typeof lib === 'function') lib = await lib();
+    if (!lib || typeof lib.HeifDecoder !== 'function') throw new Error('The HEIC decoder did not initialise. Reload the page and try again.');
     var bytes = buffer instanceof Uint8Array ? buffer : new Uint8Array(buffer);
     var decoder = new lib.HeifDecoder();
     var images = decoder.decode(bytes);
     if (!images || !images.length) throw new Error('That file could not be read as a HEIC image.');
     var img = images[0];
     var w = img.get_width(), h = img.get_height();
-    var data = await new Promise(function (res) { img.display(res, null); });
+    /* libheif's display() takes the destination ImageData FIRST and the callback
+       second: display(cb, null) never invoked the callback, so every HEIC decode
+       hung with no error. Time-box it so a stall reports instead of spinning. */
+    var target = null;
+    try { target = new ImageData(w, h); } catch (e) { target = null; }
+    var data = await new Promise(function (res, rej) {
+      var settled = false;
+      var timer = setTimeout(function () {
+        if (settled) return;
+        settled = true;
+        rej(new Error('The HEIC decoder stalled on this file. Try a smaller photo, or convert it in Photos first.'));
+      }, 20000);
+      var done = function (px) {
+        if (settled) return;
+        settled = true; clearTimeout(timer);
+        res(px || target);
+      };
+      try {
+        if (target) img.display(target, done);
+        else img.display(done, null);
+      } catch (e) {
+        if (settled) return;
+        settled = true; clearTimeout(timer);
+        rej(e);
+      }
+    });
+    if (!data) throw new Error('That HEIC image could not be rendered on this device.');
     var cv = U.canvasOf(w, h), g = cv.getContext('2d');
     var out = g.createImageData(w, h);
     out.data.set(data.data || data);

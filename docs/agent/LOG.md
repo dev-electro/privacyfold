@@ -15,6 +15,9 @@
 
 **Proved by:** `npm run build` → 332 pages; `npm test` clean; `node scripts/check-toolcore.mjs` 12/12; zero `window.__errs` on home, `/tools/`, compare, glossary, blog, about, privacy, contact, 404; measured widths/contrast in-browser; CMS table row builder exercised against `dist/wasm-sri.json` (10 rows, no throw).
 
+- **HEIC converter was 100% broken, now fixed and verified.** Two independent faults in `U.heicToCanvas`: the vendored `libheif.js` exports a **factory** (`window.libheif() → module`), so `new lib.HeifDecoder()` threw "not a constructor" for every file; and the image callback is `display(imageData, cb)` — calling `display(cb, null)` never fired, so the tool hung with no error and no timeout. Both fixed, plus a 20 s stall guard. Verified end-to-end: real 1,185-byte HEVC `.heic` → `image/jpeg` 14,575 bytes at 900×472 in ~1 s.
+- Closed the six previously-unverified tools with real fixtures (`/tmp/pf-fix/`): `pdf_to_image` → 3 PNGs from a 3-page PDF; `pdf_redact` (`terms`) → 330 KB PDF with "text layer destroyed" check; `pdf_flatten` on a 4-field form → 4,578 B flattened PDF, and on a formless PDF → honest "no form fields to flatten" error; `magic_eraser` → 900×472 PNG; `image_upscaler` at 2× → 1,800×944 PNG.
+
 **Next:** PF-037 — either wire the 10 engine binaries behind a cache-first loader or delete them; the SEO copy no longer depends on them, so this is cleanup, not a blocker.
 **Blocker:** none.
 
