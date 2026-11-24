@@ -29,7 +29,7 @@ PrivacyFold is hosted as a static site on Cloudflare Pages.
 ---
 
 ## 3. Advertising and Cookies
-To sustain our free, account-less tools, PrivacyFold displays advertisements via Google AdSense.
-- By default, PrivacyFold requests **non-personalized ads** for all visitors.
+PrivacyFold currently serves no advertising: every page is ad-free while our AdSense review is pending, and no ad script is loaded or requested.
+- When ads are enabled, they will be served by Google AdSense, and by default PrivacyFold will request **non-personalized ads** for all visitors.
 - We do not share user identity, tool inputs, or document metadata with advertising networks.
 - You can manage or modify your cookie and advertising preferences at any time via the Cookie Preferences link in the footer.
