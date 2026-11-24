@@ -26,7 +26,19 @@ const title = `${preset.title} — Free Client-Side Tool (Zero Upload)`;
   canonicalUrl={canonicalUrl}
   pageType="template"
 >
-  <ToolDesk initialToolSlug={preset.toolSlug} />
+  <ToolDesk
+    initialToolSlug={preset.toolSlug}
+    presetSpec={{
+      dimensions_px: preset.dimensions_px ?? null,
+      max_size_kb: preset.max_size_kb ?? null,
+      dpi: preset.dpi ?? null,
+      background: preset.background ?? null,
+      constraints: preset.constraints ?? null,
+    }}
+    presetTitle={preset.title}
+    presetAuthority={preset.authority_name}
+    presetVerified={preset.last_verified}
+  />
 
   {tool && (
     <div class="wrap" style="padding-bottom: 64px;">

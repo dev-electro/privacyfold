@@ -697,10 +697,41 @@ $$('.chipb[data-tool]').forEach(function(b){b.addEventListener('click',function(
 $('#brand').addEventListener('click',goHome);
 $('#devCode').textContent=JSON.stringify({jsonrpc:'2.0',id:1,method:'tools/call',params:{name:'privacyfold.image_compress',arguments:{quality:0.8,max:2000,out:'jpeg'}}},null,2);
 
+/* A preset page carries the spec fields of its record (max size, dimensions,
+   dpi, background). Map them onto the tool's own parameter names — only keys the
+   tool actually declares are set, so a preset can never invent a control. */
+function presetArgsFor(t){
+  var ps=window.__PF_PRESET__,spec=ps&&ps.spec; if(!spec||!t)return null;
+  var keys={};t.params.forEach(function(p){keys[String(p.k).toLowerCase()]=p});
+  var a={},hit=false;
+  function set(names,v){
+    if(v===null||v===undefined||v==='')return;
+    for(var i=0;i<names.length;i++){var p=keys[names[i]];if(p){a[p.k]=v;hit=true;return}}
+  }
+  var dp=spec.dimensions_px,dims=null;
+  if(dp&&typeof dp==='object'&&(dp.width||dp.height)){if(dp.width)set(['w','width'],+dp.width);if(dp.height)set(['h','height'],+dp.height)}
+  else if((dims=String(dp||'').match(/(\d+)\s*[x×]\s*(\d+)/))){set(['w','width'],+dims[1]);set(['h','height'],+dims[2])}
+  var kb=spec.max_size_kb; if(kb){var n=parseFloat(String(kb));if(isFinite(n))set(['kb','maxkb','max_kb','sizekb','size_kb','limit_kb','target_kb','size'],n)}
+  if(spec.dpi){var d=parseFloat(String(spec.dpi));if(isFinite(d))set(['dpi'],d)}
+  if(spec.background)set(['bg','background','bgcolor','color'],String(spec.background));
+  /* If the tool resolves w/h from a preset selector, the explicit size only wins
+     when that selector says "custom". */
+  if(a.w!==undefined||a.h!==undefined){
+    Object.keys(keys).forEach(function(k){
+      var p=keys[k],opts=(p.opts||[]).map(function(o){return String(o[0])});
+      if(opts.indexOf('custom')>=0&&!a[p.k])a[p.k]='custom';
+    });
+  }
+  window.__PF_PRESET_ARGS__=hit?a:null;
+  return hit?a:null;
+}
 function route(){
   if(suppressHash)return;
   var h=location.hash.replace('#',''),t=TOOLS.filter(function(x){return x.slug===h})[0];
-  if(t&&(view!=='tool'||cur.tool!==t))openTool(t,{noHash:true,noScroll:true});
+  if(t&&(view!=='tool'||cur.tool!==t)){
+    var pa=presetArgsFor(t);
+    openTool(t,pa?{noHash:true,noScroll:true,args:pa}:{noHash:true,noScroll:true});
+  }
   else if(h==='blog'){location.assign('/blog/');return;}   /* legacy view carried four articles that 404 on /blog/<slug>/ */
   else if((h==='features'||h==='ledger'||h==='pipeline'||h==='webgpu'||h==='cms')&&view!==h)openPage(h,true);
   else if(!h&&view!=='home')goHome();

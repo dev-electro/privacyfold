@@ -1021,3 +1021,8 @@ footer .ft-legal{padding-block:0 40px;color:var(--ink-2);font:400 12px/1.5 var(-
 .paper-card h2,.paper-card h3,.paper-card b,.paper-card strong{color:var(--p-ink)}
 .paper-card p,.paper-card li,.paper-card span{color:var(--p-ink-2)}
 .paper-card a{color:var(--p-link)}
+
+/* Preset pages: the spec the record carries, printed under the tool title. */
+.pf-preset{margin:.5rem 0 0;font-size:.84rem;line-height:1.5;color:var(--mute,var(--ink));opacity:.95}
+.pf-preset b{font-weight:700;color:var(--ink)}
+.pf-preset .dim{opacity:.72}
