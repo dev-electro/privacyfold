@@ -752,7 +752,7 @@
       "category": "dev",
       "title": "UUID generator",
       "task": "Generate UUIDs",
-      "description": "Make random unique IDs in bulk, using your browser\\",
+      "description": "Make random unique IDs in bulk, using your browser's own crypto generator. Nothing is sent anywhere and no sequence is predictable.",
       "standard": "W3C Web Crypto API (getRandomValues)",
       "engine": null,
       "url": "https://privacyfold.com/tools/uuid-gen/?mode=agent"

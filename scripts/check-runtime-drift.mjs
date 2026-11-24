@@ -17,15 +17,25 @@ if (!fs.existsSync(runtimeFile)) {
 }
 
 const runtime = fs.readFileSync(runtimeFile, 'utf8');
-const entries = [];
 // Tool entries always carry fam:; paper themes and stamp presets do not.
-const re = /\{id:'([a-z0-9_]+)',fam:'[a-z]+'[^\n]*?name:'((?:[^'\\]|\\.)*)'/g;
-let m;
-while ((m = re.exec(runtime))) entries.push({ id: m[1], name: m[2].replace(/\\'/g, "'") });
+// Both name and desc are compared: the description is what the page prints,
+// and a stale one is how "automatic fallback to SmolLM2" survived in the desk
+// long after the record stopped claiming a model.
+const entries = [];
+const starts = [...runtime.matchAll(/\{id:'([a-z0-9_]+)',fam:'[a-z]+'/g)];
+for (let i = 0; i < starts.length; i++) {
+  const s0 = starts[i].index;
+  const s1 = i + 1 < starts.length ? starts[i + 1].index : runtime.length;
+  const seg = runtime.slice(s0, s1);
+  const nm = seg.match(/name:'((?:[^'\\]|\\.)*)'/);
+  const dm = seg.match(/desc:'((?:[^'\\]|\\.)*)'/);
+  entries.push({ id: starts[i][1], name: (nm ? nm[1] : '').replace(/\\'/g, "'"), desc: (dm ? dm[1] : '').replace(/\\'/g, "'") });
+}
+const norm = (t) => String(t || '').replace(/[\u2018\u2019]/g, "'").replace(/\s+/g, ' ').trim();
 
 const seen = new Set();
 const problems = [];
-for (const { id, name } of entries) {
+for (const { id, name, desc } of entries) {
   if (seen.has(id)) continue;
   seen.add(id);
   const file = path.join(contentDir, `${id}.json`);
@@ -35,6 +45,9 @@ for (const { id, name } of entries) {
   }
   const cms = JSON.parse(fs.readFileSync(file, 'utf8'));
   if (cms.name !== name) problems.push(`${id}: runtime "${name}" ≠ content "${cms.name}"`);
+  if (norm(cms.desc) !== norm(desc)) {
+    problems.push(`${id}: runtime description drifted from content/tools/${id}.json\n      runtime: ${norm(desc).slice(0, 90)}\n      content: ${norm(cms.desc).slice(0, 90)}`);
+  }
 }
 
 // Every CMS tool must be reachable in the desk, too.

@@ -414,7 +414,7 @@
   - Standard: ECMAScript (any modern browser)
   - Engine: Plain JavaScript in your browser (no engine binary)
   - URL: https://privacyfold.com/tools/uscis-formatter/
-- **UUID generator** (`uuid_gen`): Make random unique IDs in bulk, using your browser\
+- **UUID generator** (`uuid_gen`): Make random unique IDs in bulk, using your browser's own crypto generator. Nothing is sent anywhere and no sequence is predictable.
   - Task: Generate UUIDs
   - Accepts: none
   - Standard: W3C Web Crypto API (getRandomValues)

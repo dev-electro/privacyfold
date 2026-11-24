@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://privacyfold.com/schemas/uuid_gen.json",
   "title": "UUID generator",
-  "description": "Make random unique IDs in bulk, using your browser\\",
+  "description": "Make random unique IDs in bulk, using your browser's own crypto generator. Nothing is sent anywhere and no sequence is predictable.",
   "x-privacyfold-tool-id": "uuid_gen",
   "x-privacyfold-category": "dev",
   "x-privacyfold-standard": "W3C Web Crypto API (getRandomValues)",

@@ -55,7 +55,7 @@
   "fam": "dev",
   "task": "Generate UUIDs",
   "glyph": "ID",
-  "desc": "Make random unique IDs in bulk, using your browser\\",
+  "desc": "Make random unique IDs in bulk, using your browser's own crypto generator. Nothing is sent anywhere and no sequence is predictable.",
   "accepts": "none",
   "tag": "UUID",
   "std": "W3C Web Crypto API (getRandomValues)",

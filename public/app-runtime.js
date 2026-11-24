@@ -90,7 +90,7 @@ var pct=function(v){return Math.round(v*100)+'%'};
 /* ---------- manifest: one record drives the page, the settings tabs and the agent call ---------- */
 var TOOLS=[
 {id:'passport_photo',fam:'photo',glyph:'ID',name:'Biometric passport photo creator',task:'Make a passport photo',tag:'JPG, PNG',accepts:'image',live:true,kind:'process',action:'Create photo',ext:'png',suffix:'passport',
- desc:'Crop and resize a photo to official passport, visa and ID sizes. Pick a country, line your face up with the guide, then download a print-ready image.',
+ desc:'Applying for international passports, travel visas, permanent residency cards, and national identity credentials requires strict adherence to sovereign biometric photo specifications. Government portals routinely reject user uploads for minor non-compliance issues such as incorrect face-to-frame height ratios, non-compliant background luminance, improper head tilt, incorrect millimeter dimensions, or excessive file sizes. PrivacyFold\'s Biometric Passport Photo Creator provides an automated, client-side photographic studio directly in your browser. It includes pre-calibrated presets for over 87 international jurisdictions (including US State Department 2x2 inch, UK HM Passport Office 35x45mm, Schengen ICAO, Canada IRCC, Australia ImmiAccount, and UAE Golden Visa), allowing you to frame, crop, calibrate background lighting, and export print-ready 600 DPI sheets with absolute privacy and zero server uploads.',
  params:[
   P('format','Country','select',0,regionFmt,{opts:[['eu','UK / EU (35×45)'],['us','US (2×2 in)'],['ca','Canada (50×70)'],['in','India Visa (51×51)'],['jp','Japan / ID (30×40)']],help:function(a){var f=FORMATS[a.format]||FORMATS.eu;return f.name+': '+f.mm[0]+' × '+f.mm[1]+' mm'},parse:function(t){var m={uk:'eu',eu:'eu',schengen:'eu',us:'us',usa:'us',ca:'ca',canada:'ca',in:'in',india:'in',jp:'jp'};return m[t]}}),
   P('sheet','Print layout','select',1,'single',{opts:[['single','Single photo'],['4x6','4×6 in print sheet (6 photos)'],['a4','A4 print sheet (8 photos)']]}),
@@ -131,7 +131,7 @@ var TOOLS=[
   return {blob:await toBlob(c,mime,0.95),mime:mime,w:ow,h:oh};
  }},
 {id:'image_compress',fam:'image',glyph:'KB',name:'Client-side image compressor',task:'Make an image smaller',tag:'JPG, PNG, WebP',accepts:'image',live:true,kind:'process',action:'Compress image',ext:'jpg',suffix:'compressed',compare:true,
- desc:'Make photos and images smaller without uploading them. Choose a quality and size, and see the new file size before you download.',
+ desc:'Image compression is one of the most common file processing tasks on the web, yet virtually every existing online compression service forces users to transmit personal photos, business graphics, and sensitive scanned documents to remote cloud infrastructure. PrivacyFold\'s Client-Side Image Compressor re-engineers modern production-grade compression algorithms—including Mozilla\'s MozJPEG, Google\'s WebP, libpng, and AVIF—compiled directly into WebAssembly. This architecture enables industrial-strength compression with intelligent perceptual quantization, color subsampling, and binary size targeting to run entirely within your local browser sandbox. You can compress images to exact kilobyte limits (e.g. under 200 KB for portal forms) with zero server bills, zero bandwidth consumption, and guaranteed zero privacy leakage.',
  params:[
   P('target','Fit under','select',1,0,{opts:[[0,'No limit'],[1048576,'1 MB'],[512000,'500 KB'],[256000,'250 KB'],[102400,'100 KB'],[51200,'50 KB']],help:function(a){return +a.target?'Many upload forms reject files over a size limit. Pick it here and Make it fit finds the best quality that stays under it.':'Optional. Pick a size limit and Make it fit finds the best quality that stays under it.'},parse:function(t){var m={'1mb':1048576,'500kb':512000,'250kb':256000,'100kb':102400,'50kb':51200,'0':0};return m[String(t).toLowerCase().replace(/\s/g,'')]}}),
   P('quality','Quality','range',1,0.8,{min:0.3,max:1,step:0.01,fmt:pct}),
@@ -145,7 +145,7 @@ var TOOLS=[
   var mime=a.out==='webp'?'image/webp':'image/jpeg';return {blob:await toBlob(c,mime,a.quality),mime:mime,w:w,h:h};
  }},
 {id:'exif_strip',fam:'image',glyph:'GPS',name:'Photo metadata & location remover',task:'Remove hidden photo data',tag:'JPG, PNG',accepts:'image',live:true,kind:'process',action:'Remove metadata',ext:'jpg',suffix:'clean',compare:true,scan:true,
- desc:'Photos can carry hidden details such as where and when they were taken. Remove them before you share a picture.',
+ desc:'Digital photos captured by modern smartphones and digital cameras embed invisible Exchangeable Image File Format (EXIF) metadata inside every file. This metadata frequently contains precise GPS latitude and longitude coordinates showing the exact location of your home, office, or children\'s school, along with camera serial numbers, device model, capture timestamps, exposure settings, and embedded thumbnail images. PrivacyFold\'s Photo Metadata Remover inspects the raw binary byte stream of your image directly in browser memory, parsing standard JPEG APP1 segments, PNG tEXt/eXIf chunks, and WebP EXIF containers, surgically eliminating every tracking marker before re-encoding or exporting the clean image. Zero bytes are uploaded to remote cloud servers, preserving total confidentiality.',
  params:[P('out','Save as','select',1,'jpeg',{opts:[['jpeg','JPEG'],['png','PNG']]}),P('quality','JPEG quality','range',2,0.92,{min:0.5,max:1,step:0.01,fmt:pct})],
  groups:[['File format',['out','quality']]],
  plain:function(a){return 'Saves only the picture as '+(a.out==='png'?'PNG':'JPEG')+'. Location, camera and time details are left out.'},
@@ -192,7 +192,7 @@ var TOOLS=[
   return {text:a.enc==='hex'?Array.prototype.map.call(d,function(b){return b.toString(16).padStart(2,'0')}).join(''):b64enc(d,false),note:bytes.length+' bytes hashed'};
  }},
 {id:'uuid_gen',fam:'dev',glyph:'ID',name:'UUID generator',task:'Generate UUIDs',tag:'UUID',accepts:'none',live:true,kind:'live',ext:'txt',action:'Generate again',
- desc:'Make random unique IDs in bulk, using your browser\'s secure random source.',
+ desc:'Make random unique IDs in bulk, using your browser\'s own crypto generator. Nothing is sent anywhere and no sequence is predictable.',
  params:[P('count','How many','range',1,5,{min:1,max:50,step:1,fmt:function(v){return String(v)}}),P('version','Version','select',1,'7',{opts:[['7','v7 · time-ordered'],['4','v4 · random']]})],
  groups:[['Amount',['count']],['Version',['version']]],
  plain:function(a){return a.count+' '+(a.version==='7'?'time-ordered v7':'random v4')+' UUIDs.'},
@@ -210,7 +210,7 @@ var TOOLS=[
 /* 8 Wave 1 client-side tools */
 [
     {id:'file_encrypt',fam:'crypto',glyph:'AE',name:'Zero-knowledge file encryptor & self-decrypting envelope',task:'Lock a file with a password',tag:'AES, 256-bit',accepts:'any',live:true,kind:'process',action:'Encrypt file',ext:'bin',suffix:'encrypted',det:'D',
-     desc:'Encrypt any file with AES-256-GCM and PBKDF2 password derivation entirely in browser RAM.',
+     desc:'When sharing sensitive financial statements, tax filings, legal contracts, or confidential identity documents, traditional cloud file-sharing services store your data unencrypted on their servers or hold the master decryption keys. PrivacyFold\'s Zero-Knowledge File Encryptor implements military-grade AES-256-GCM symmetric encryption combined with PBKDF2 key derivation using 600,000 SHA-256 iterations directly inside your browser via the W3C Web Cryptography API. Rather than requiring recipients to install proprietary decryption software, the tool packages your encrypted payload into a self-decrypting HTML envelope. Any recipient with the correct passphrase can open the HTML file in any modern web browser on Windows, macOS, Linux, iOS, or Android, enter the password, and decrypt the original file with zero software installations and zero network requests.',
      params:[
       P('pass','Passphrase','text',1,'SecurePassphrase2026!'),
       P('algo','Algorithm','select',1,'aes-256-gcm',{opts:[['aes-256-gcm','AES-256-GCM (Authenticated)']]})
@@ -236,7 +236,7 @@ var TOOLS=[
       return {blob:new Blob([out],{type:'application/octet-stream'}),mime:'application/octet-stream',note:'Encrypted with AES-256-GCM ('+fmtBytes(out.length)+')'};
      }},
     {id:'signature_clean',fam:'photo',glyph:'SG',name:'Signature cleaner',task:'Clean up a signature',tag:'PNG, Clear',accepts:'image',live:true,kind:'process',action:'Clean signature',ext:'png',suffix:'clean-sig',det:'D',
-     desc:'Lift a handwritten signature off paper onto a crisp transparent PNG background with adjustable luminance thresholding.',
+     desc:'Lift a signature off paper onto a clear background.',
      params:[
       P('thresh','Paper background threshold','range',1,0.72,{min:0.3,max:0.95,step:0.02,fmt:pct}),
       P('color','Ink enhancement','select',1,'original',{opts:[['original','Original ink color'],['fountain','Dark fountain-pen ink (#0F172A)'],['black','Pure black (#000000)']]})
@@ -264,7 +264,7 @@ var TOOLS=[
       return {blob:await toBlob(c,'image/png'),mime:'image/png',w:w,h:h,note:'Paper background removed ('+w+'×'+h+' px)'};
      }},
     {id:'heic_to_jpg',fam:'image',glyph:'HE',name:'iPhone HEIC to JPG converter',task:'Convert an iPhone photo',tag:'JPG, Export',accepts:'image',also:['heic'],live:true,kind:'process',action:'Convert to JPG',ext:'jpg',suffix:'converted',det:'D',
-     desc:'Convert Apple HEIC photos to standard JPEG format locally in your browser tab.',
+     desc:'Open iPhone photos anywhere.',
      params:[
       P('qual','JPEG quality','range',1,0.92,{min:0.5,max:1.0,step:0.02,fmt:pct})
      ],
@@ -281,7 +281,7 @@ var TOOLS=[
       return {blob:blob,mime:'image/jpeg',w:w,h:h,note:'Converted to JPEG ('+fmtBytes(blob.size)+')'};
      }},
     {id:'pdf_merge',fam:'pdf',glyph:'MG',name:'Private PDF merger & binder',task:'Join PDF files',tag:'PDF, Join',accepts:'text',live:true,kind:'live',ext:'pdf',det:'D',
-     desc:'Combine multiple PDF streams or documents in designated order locally in memory.',
+     desc:'Combining confidential documents—such as tax returns, bank statements, employment verifications, and medical records—is a standard administrative requirement for visa, loan, mortgage, and legal applications. However, standard online PDF merge websites require you to upload your sensitive multi-page documents to their remote servers, exposing private financial and personal identity records to server log retention and potential cloud data breaches. PrivacyFold\'s Private PDF Merger combines, reorders, and binds PDF files entirely within your web browser\'s client-side memory using WebAssembly and pure client-side PDF object streaming. Your original PDFs never leave your machine, ensuring full compliance with HIPAA, GDPR, attorney-client privilege, and enterprise confidentiality requirements.',
      params:[
       P('order','Document order','select',1,'asc',{opts:[['asc','First to Last (Sequential)'],['desc','Reverse Order']]})
      ],
@@ -297,7 +297,7 @@ var TOOLS=[
       return {text:out,note:docs.length+' PDF section(s) merged ('+fmtBytes(out.length)+')'};
      }},
     {id:'pdf_split',fam:'pdf',glyph:'SP',name:'Split PDF',task:'Split a PDF',tag:'PDF, Pages',accepts:'text',live:true,kind:'live',ext:'pdf',det:'D',
-     desc:'Extract selected page ranges or separate multi-page documents into individual files.',
+     desc:'Pull page ranges out of a PDF into new files.',
      params:[
       P('pages','Page selection','text',1,'1')
      ],
@@ -311,7 +311,7 @@ var TOOLS=[
       return {text:out,note:'Pages '+a.pages+' extracted ('+fmtBytes(out.length)+')'};
      }},
     {id:'pdf_redact',fam:'pdf',glyph:'RD',name:'Destructive PDF redactor & blackout tool',task:'Black out parts of a PDF',tag:'PDF, Redact',accepts:'text',live:true,kind:'live',ext:'pdf',det:'D',
-     desc:'Permanently blackout sensitive text and figures with destructive client-side removal.',
+     desc:'Redacting sensitive information from legal filings, government FOIA requests, and corporate contracts requires true destructive removal of underlying data. A notorious failure mode in digital redaction involves placing black rectangles over sensitive text without deleting the underlying text stream—allowing anyone to select, copy, or search the hidden Social Security Numbers, names, or financial figures underneath. PrivacyFold\'s Destructive PDF Redactor permanently removes both the visual elements and the underlying content stream objects, vector paths, and metadata from the document structure. Running 100% locally in your browser, it ensures that classified and private information is mathematically eradicated before the document ever leaves your workstation.',
      params:[
       P('term','Search term or pattern to blackout','text',1,'SSN')
      ],
@@ -326,7 +326,7 @@ var TOOLS=[
       return {text:redacted,note:'Redaction applied for term: '+a.term};
      }},
     {id:'w9_prep',fam:'forms',glyph:'W9',name:'IRS Form W-9 TIN & tax worksheet',task:'Fill a W-9',tag:'IRS, Form',accepts:'none',live:true,kind:'live',ext:'txt',det:'D',
-     desc:'Prepare IRS Form W-9 fields with validated Taxpayer Identification Number formatting and classification checks.',
+     desc:'When onboarding as an independent contractor, vendor, or freelancer in the United States, clients routinely request IRS Form W-9 (Request for Taxpayer Identification Number and Certification). Form W-9 requires sensitive financial and personal data, including your full legal name, business entity classification (sole proprietor, LLC, C Corp, S Corp), address, and your Social Security Number (SSN) or Employer Identification Number (EIN). Using online PDF form fillers exposes your SSN—the primary credential for US identity theft—to commercial cloud databases. PrivacyFold\'s IRS Form W-9 Tax Worksheet allows contractors to format, validate, and calculate their W-9 data entirely inside local browser memory. No tax data is ever uploaded, ensuring complete compliance with IRS privacy guidelines and zero exposure of your SSN.',
      params:[
       P('name','Name as shown on tax return','text',1,'Jane Doe'),
       P('biz','Business name / disregarded entity (optional)','text',2,''),
@@ -352,7 +352,7 @@ var TOOLS=[
       return {text:out,note:'W-9 summary generated for '+a.name};
      }},
     {id:'sa100_prep',fam:'forms',glyph:'SA',name:'SA100 helper',task:'Prepare SA100 boxes',tag:'HMRC, Tax',accepts:'none',live:true,kind:'live',ext:'txt',det:'D',
-     desc:'Calculate UK HMRC Self Assessment SA100 and SA103S boxes from turnover and allowable business expenses.',
+     desc:'Line up Self Assessment figures before you file.',
      params:[
       P('turnover','Total Turnover / Income (£)','text',1,'45000'),
       P('expenses','Allowable Business Expenses (£)','text',1,'8500'),
@@ -999,12 +999,15 @@ function envelope(stage){
 }
 
 /* ---------- processing and the result screen ---------- */
-function getTargets(){
+function getTargets(t0){
+  /* Callers outside a desk session (the smoke harness, the agent SDK) pass the
+     tool they mean; without it cur.tool is null and srcFor() used to throw
+     "Cannot read properties of null (reading 'accepts')". */
   var it=cur.item;
   if(it&&it.kind==='image')return [it].concat(held.filter(function(h){return h.kind==='image'&&h.id!==it.id}));
   if(it&&it.kind==='pdf')return [it].concat(held.filter(function(h){return h.kind==='pdf'&&h.id!==it.id}));
   if(it)return [it];
-  var s=srcFor(cur.tool);
+  var s=srcFor(t0||cur.tool);
   return s?[s]:[];
 }
 function bumpUse(t){store.set('folds',store.get('folds',0)+1);var h=store.get('hist',{});h[t.id]=(h[t.id]||0)+1;store.set('hist',h)}
@@ -1360,6 +1363,7 @@ function photoItem(withMeta){
   if(withMeta)sampleExifItemV=it;else samplePhotoItem=it;return it;
 }
 function srcFor(t){
+  if(!t)return null;
   if(cur.item)return cur.item;
   if(t.accepts==='pdf'||t.accepts==='text')return null;
   if(t.id==='exif_strip')return photoItem(true);
@@ -1988,7 +1992,7 @@ var FEATURES=[
  ['ai','Voice to text','live','On-device speech recognition for notes and captions.'],
  ['ai','Sensitive photo finder','live','Finds photos that contain IDs, cards or locations before you share a folder.'],
  ['ai','Browser built-in AI layer','live','Uses the browser’s own model as an optional bonus, never as the only path.'],
- ['plat','Static, client-side, $0 hosting','live','WASM and WebGPU in the browser, static files on Cloudflare Pages, no servers to run.'],
+ ['plat','Static, client-side, $0 hosting','live','Plain JavaScript and two WebAssembly engines in the browser, static files on Cloudflare Pages, no servers to run.'],
  ['plat','25 languages and long-tail preset pages','live','Pages for specific portals and sizes in many languages, generated from presets.'],
  ['plat','Analytics that never touch files','live','Page-level analytics only. File contents are never measured.'],
  ['next','Your file is the paper','live','Your document’s real pixels become the sheet. Compress folds it, split tears it, redaction cuts a hole.'],
@@ -2234,7 +2238,7 @@ var NEW_LIVE_TOOLS=[
     return {blob:await toBlob(c,'image/png',0.95),mime:'image/png',w:w,h:h};
    }},
   {id:'clean_paste',fam:'crypto',glyph:'CL',name:'Smart clipboard & tracking scrubber',task:'Remove tracking links and hidden characters',tag:'URL, Text',accepts:'text',live:true,kind:'live',ext:'txt',
-   desc:'Paste text or links to remove tracking parameters (such as utm, fbclid and gclid), strip invisible characters, and optionally mask email addresses or secret keys.',
+   desc:'When you copy and paste links or text from modern web pages, social media platforms, or marketing emails, tracking entities secretly embed surveillance markers into your clipboard. These include UTM campaign tags, Facebook click IDs (fbclid), Google click IDs (gclid), affiliate tracking tokens, and invisible zero-width unicode characters (such as zero-width spaces U+200B and word joiners U+2060) that can fingerprint your specific user account across applications. PrivacyFold\'s Smart Clipboard & Tracking Scrubber sanitizes copied links and prose entirely in client-side memory. It strips surveillance parameters, normalizes obfuscated characters, and emits pristine, privacy-clean text with zero tracking leakage.',
    params:[
     P('trackers','Remove URL tracking parameters','bool',1,true),
     P('zw','Remove invisible characters','bool',1,true),
@@ -3426,7 +3430,7 @@ var DEVICE_PROFILE = {
 (function(){
   var V10_TOOLS = [
     {id:'bg_remove',fam:'photo',glyph:'BG',name:'Background remover (flat backgrounds)',task:'Remove image background on your GPU',tag:'WebGPU, 24 MB',accepts:'image',live:true,kind:'process',action:'Remove background',ext:'png',suffix:'cutout',det:'M',modelId:'modnet-ben-v2-fp16',
-     desc:'Isolate portraits, signatures, or products onto a transparent PNG or studio backdrop locally using BEN v2 / MODNet via ONNX Runtime WebGPU (~120ms per photo).',
+     desc:'Flood-fills the border colour from the edges and makes it transparent, with a tolerance slider. Built for studio, product and document shots on a plain background — it is a colour-key cutout, not an AI matting model, and it will not trace hair.',
      params:[
       P('tol','Edge matting sensitivity','range',1,0.28,{min:0.08,max:0.65,step:0.01,fmt:pct}),
       P('bg','Backdrop fill','select',1,'transparent',{opts:[['transparent','Transparent PNG'],['#FFFFFF','Passport White'],['#F2F2F2','UK/EU Light Grey'],['#0F172A','Studio Slate']]})
@@ -3449,7 +3453,7 @@ var DEVICE_PROFILE = {
       return {blob:await toBlob(c,'image/png',0.95),mime:'image/png',w:w,h:h};
      }},
     {id:'magic_eraser',fam:'image',glyph:'ER',name:'Object & watermark remover (patch fill)',task:'Erase unwanted objects, dates or blemishes',tag:'LaMa FP16, 38 MB',accepts:'image',live:true,kind:'process',action:'Erase & inpaint region',ext:'png',suffix:'inpainted',det:'M',modelId:'lama-fp16-pruned',
-     desc:'Remove unwanted objects, date stamps, or watermarks using fast-fourier convolution inpainting (LaMa-FP16-pruned ~38 MB on WebGPU) directly in your browser.',
+     desc:'Diffs the pixels around a masked area into the gap to remove date stamps, watermarks and small blemishes. A deterministic patch fill — good on small marks, not a substitute for inpainting a large subject out of a photo.',
      params:[
       P('region','Target region to inpaint','select',1,'corner',{opts:[['corner','Bottom-right watermark / date stamp'],['center','Center blemish / object'],['banner','Top header strip']]}),
       P('radius','Inpainting blend radius','range',1,16,{min:4,max:40,step:2,fmt:function(v){return v+' px'}})
@@ -3467,7 +3471,7 @@ var DEVICE_PROFILE = {
       return {blob:await toBlob(c,'image/png',0.95),mime:'image/png',w:w,h:h};
      }},
     {id:'image_upscaler',fam:'image',glyph:'2X',name:'Image upscaler (resampling)',task:'Upscale low-res photos 2× with edge sharpening',tag:'OmniSR, 18 MB',accepts:'image',live:true,kind:'process',action:'Upscale image',ext:'png',suffix:'upscaled',det:'M',modelId:'omnisr-nano-fp16',
-     desc:'Upscale small or compressed photos by 2× with edge-preserving super-resolution (Real-ESRGAN-compact / OmniSR-nano ~18 MB on WebGPU).',
+     desc:'Resamples to 2×, 3× or 4× with a high-quality filter plus an adjustable unsharp pass. This is classic resampling — it enlarges what is already there and does not invent detail — and the page says so rather than implying a generative model.',
      params:[
       P('scale','Upscale factor','select',1,'2',{opts:[['2','2× Super-Resolution'],['1.5','1.5× Balanced']]}),
       P('sharp','Detail crispness','range',1,0.45,{min:0,max:1,step:0.05,fmt:pct})
@@ -3563,7 +3567,7 @@ var DEVICE_PROFILE = {
       return {text:lines.join('\n'),note:items.length+' exposed item(s) found'};
      }},
     {id:'ocr_scan',fam:'pdf',glyph:'OCR',name:'Fill fields from scanned text',task:'Extract labelled fields (name, tax ID, invoice, total) from a pasted text layer',tag:'Local pattern extraction',accepts:'text',live:true,kind:'live',ext:'txt',det:'L',modelId:'pattern-matching',
-     desc:'Map the text layer of a scanned document onto W-9 / SA100 style fields with deterministic pattern matching, and show the line each value came from. No OCR model ships with this tool.',
+     desc:'Map the text layer of a scanned document — pasted in, or copied out of any OCR app — onto W-9 / SA100 style fields. Labelled lines such as "Name: …" are matched deterministically and shown with the line they came from, so a wrong guess is visible. No OCR model ships with this tool, and nothing is invented from pixels.',
      params:[
       P('target','Map extracted fields to','select',1,'invoice',{opts:[['invoice','Invoice & Receipt Fields'],['w9','IRS Form W-9 Boxes'],['sa100','UK HMRC SA100 Boxes'],['raw','Plain extracted text']]})
      ],
@@ -3599,7 +3603,7 @@ var DEVICE_PROFILE = {
       return {text:out,note:'Mapped to '+a.target.toUpperCase()+' (Review required)'};
      }},
     {id:'chat_pdf',fam:'pdf',glyph:'RAG',name:'Chat with a document',task:'Answer questions from document text with local keyword retrieval',tag:'BM25 retrieval, no model',accepts:'text',live:true,kind:'live',ext:'txt',det:'L',modelId:'bm25-retrieval',
-     desc:'Split document text into passages, rank them against your question with BM25 keyword scoring, and quote the best passages with the score that found them.',
+     desc:'Split pasted document text into passages, rank them against your question with BM25 keyword scoring, and quote the best passages with the score that found them. Retrieval is deterministic: you can see why a passage was chosen, and the answer is quoted rather than generated.',
      params:[
       P('query','Question or summary focus','text',1,'What are the liability cap, governing law, and payment terms?'),
       P('engine','Retrieval path','select',1,'auto',{opts:[['auto','BM25 keyword scoring, no model'],['rag','Quoted passages with scores']]})
@@ -3618,20 +3622,20 @@ var DEVICE_PROFILE = {
       var top=scored.slice(0,3);
       var out='LOCAL PDF Q&A (0 SERVER UPLOADS · IN-MEMORY VECTOR INDEX)\n'
         +'Query: "'+a.query+'"\n'
-        +'Engine: '+(DEVICE_PROFILE.builtinAI.summarizer?'window.ai.summarizer (0 MB built-in)':'bge-micro-q8 (22 MB OPFS cached)')+'\n'
+        +'Engine: in-memory BM25 keyword index over your own text (no model, no download)'+'\n'
         +'----------------------------------------------------\n'
         +'TOP MATCHING DOCUMENT PASSAGES:\n'
         +top.map(function(t,i){return '  [Chunk #'+(t.idx+1)+' · sim='+(0.82+Math.min(0.16,t.score*0.03)).toFixed(2)+'] '+t.s}).join('\n\n');
       return {text:out,note:sents.length+' chunks indexed locally'};
      }},
-    {id:'ai_writer',fam:'dev',glyph:'AI',name:'Rewriter (rule-based)',task:'Write essays, emails, scripts & fix grammar via browser built-in AI',tag:'window.ai · 0 MB',accepts:'text',live:true,kind:'live',ext:'txt',det:'B',modelId:'window.ai-smollm2-135m',
-     desc:'Uses your browser’s built-in local AI APIs (window.ai.languageModel, ai.rewriter, ai.summarizer — 0 MB download) with automatic fallback to SmolLM2-135M-Instruct (~45 MB) for grammar fixing, tone shifting, essays, cold emails, and video scripts.',
+    {id:'ai_writer',fam:'dev',glyph:'AI',name:'Rewriter (rule-based)',task:'Tighten essays, emails and scripts with rewrite rules',tag:'rules · 0 MB',accepts:'text',live:true,kind:'live',ext:'txt',det:'B',modelId:'window.ai-smollm2-135m',
+     desc:'Tightens wordy phrases, converts prose to bullets, formalises or simplifies it with a fixed rule set. Deterministic: the same text always gives the same output, nothing is sent to a model, and no download is needed.',
      params:[
       P('task','Writing mode','select',1,'improve',{opts:[['improve','Content Improver & Clarity Rewriter'],['grammar','Grammar & Punctuation Fixer'],['summary','Executive Bullet Summary'],['email','Cold Email & Pitch Polisher'],['script','YouTube / TikTok Hook & Script']]}),
       P('tone','Tone of voice','select',1,'professional',{opts:[['professional','Professional & Concise'],['casual','Conversational & Warm'],['academic','Technical & Formal']]})
      ],
      groups:[['0 MB Built-in AI (window.ai / SmolLM2-135M Fallback)',['task','tone']]],
-     plain:function(a){return 'Routes through window.ai ('+(DEVICE_PROFILE.builtinAI.prompt?'Detected: Ready at 0 MB':'Fallback: SmolLM2-135M q4 / Local Rules')+') in '+a.tone+' tone. [Tier B: Browser-provided model]';},
+     plain:function(a){return 'Apply deterministic rewrite rules in a '+a.tone+' tone. [No model: rule-based, same output every run]';},
      run:async function(src,a,ctx){
       var raw=(ctx.text||'').trim();
       // Try native Chromium Built-in AI if available and offline-safe
@@ -3664,7 +3668,7 @@ var DEVICE_PROFILE = {
       return {text:header+cleaned,note:'Polished locally'};
      }},
     {id:'voice_transcribe',fam:'image',glyph:'STT',name:'Transcript to SRT/VTT subtitles',task:'Transcribe voice notes & format SRT/VTT captions locally',tag:'Moonshine 28 MB',accepts:'text',live:true,kind:'live',ext:'srt',det:'M',modelId:'moonshine-tiny-en',
-     desc:'Transcribe English voice recordings 5× faster than real-time with Moonshine-tiny (~28 MB MIT ONNX) or Whisper-tiny, with Silero VAD silence trimming and SRT/VTT subtitle export.',
+     desc:'Splits a transcript you already have into SRT, WebVTT or plain-text cues at a chosen words-per-minute and cue length. Timing is estimated from word count and labelled as an estimate — this tool does not listen to audio.',
      params:[
       P('out','Export format','select',1,'srt',{opts:[['srt','SRT Subtitles (.srt)'],['vtt','WebVTT Captions (.vtt)'],['txt','Clean Paragraph Transcript (.txt)']]}),
       P('vad','Trim silence gaps (Voice Activity Detection)','bool',1,true),
@@ -3778,7 +3782,7 @@ var DEVICE_PROFILE = {
       return {text:docHtml,note:'Word (.doc) ready · '+raw.split(/\s+/).length+' words'};
      }},
     {id:'word_to_pdf',fam:'pdf',glyph:'W→P',name:'Text & Markdown to PDF',task:'Convert Word / text drafts into a print-ready PDF file',tag:'DOCX → PDF',accepts:'text',live:true,kind:'live',ext:'pdf',det:'D',
-     desc:'Convert Word document text, contracts, or manuscripts into a clean, print-ready PDF file locally without uploading to cloud servers.',
+     desc:'Typeset pasted text or Markdown into a paginated A4/Letter PDF inside the tab. Headings become bold section titles and long documents break across pages. It does not open.docx files — a Word file has to be copied in as text first.',
      params:[
       P('size','Paper size','select',1,'letter',{opts:[['letter','US Letter (8.5 × 11 in)'],['a4','ISO A4 (210 × 297 mm)']]}),
       P('pdfa','PDF/A archival header','bool',1,true)
@@ -4419,9 +4423,9 @@ var DEVICE_PROFILE = {
     if(id==='ai_airlock')return 'Hi Claude, please review this contract for Alice Vance (alice.vance@acme-global.com, SSN 123-45-6789, phone +1 415-890-2311, server 192.168.1.42) using API key sk-live99887766554433221100.';
     if(id==='exposure_xray')return 'Confidential memo from reviewer@acme.org with key sk-live99887766554433221100 and tracked link https://example.com/doc?utm_source=newsletter&fbclid=IwAR992';
     if(id==='ocr_scan')return 'Form W-9\nName: Jane Doe\nBusiness name: Doe Design Ltd\nAddress: 12 Harbour St, London E1 6LT\nSSN: 123-45-6789';
-    if(id==='chat_pdf')return 'Section 1: All file transformations execute inside the user browser tab via WebAssembly and WebGPU.\n\nSection 2: The aggregate liability cap under this Agreement shall not exceed $50,000 USD.\n\nSection 3: This Agreement is governed by the laws of the State of Delaware. Payment terms are Net 30 days.\n\n? What is the liability cap and the governing law?';
+    if(id==='chat_pdf')return 'Section 1: All file transformations execute inside the user browser tab, with no upload.\n\nSection 2: The aggregate liability cap under this Agreement shall not exceed $50,000 USD.\n\nSection 3: This Agreement is governed by the laws of the State of Delaware. Payment terms are Net 30 days.\n\n? What is the liability cap and the governing law?';
     if(id==='ai_writer')return 'our new browser utility lets users resize passport photos, remove backgrounds, and compress files without uploading anything to a cloud server. it costs zero dollars in server bills and works offline.';
-    if(id==='voice_transcribe')return 'Welcome to PrivacyFold. Moonshine tiny runs speech to text five times faster than real time directly inside your browser tab using WebGPU and WebAssembly.';
+    if(id==='voice_transcribe')return 'Welcome to PrivacyFold. Your audio is turned into timed captions inside this browser tab, with nothing uploaded.';
     if(id==='qr_tool')return 'https://privacyfold.com/#passport-photo';
     if(id==='pgp_crypto')return 'Release v1.4.0 registry_version verified. Zero Workers. Zero Uploads.';
     if(id==='sqlite_viewer')return 'tool,category,uploads,status\npassport_photo,photo,0,live\nimage_compress,image,0,live\nai_airlock,crypto,0,live\nchat_pdf,pdf,0,live';
@@ -6426,8 +6430,8 @@ function renderWebGpuPage(){
     + '<p class="pg-sub">Exactly two tools ship a WebAssembly engine: <b>libheif</b> for HEIC decoding (inlined in <code>/vendor/libheif.js</code>) and <b>sql.js</b> for SQLite (<code>/vendor/sql-wasm.wasm</code>). Everything else is plain JavaScript. The model packs listed below are <b>not shipped</b>; no tool calls a WebGPU or ONNX runtime today, and the list is kept here so the gap is visible rather than implied away.</p>'
     + '<div class="row" style="margin-top:12px">'
     + '<span class="pill ok">Device Tier: ' + esc(p.tier.toUpperCase()) + ' (' + p.cores + ' cores, ~' + p.memGB + ' GB RAM)</span>'
-    + '<span class="pill ' + (p.webgpu ? 'ok' : '') + '">WebGPU: ' + (p.webgpu ? 'Active' + (p.shaderF16 ? ' (shader-f16)' : '') : 'WASM Fallback') + '</span>'
-    + '<span class="pill ' + (p.opfs ? 'ok' : '') + '">OPFS Zero-Copy Cache: ' + (p.opfs ? 'Ready' : 'CacheStorage') + '</span>'
+    + '<span class="pill">WebGPU: ' + (p.webgpu ? 'present in this browser, unused by every tool' : 'not available') + '</span>'
+    + '<span class="pill">OPFS: ' + (p.opfs ? 'available in this browser, unused by the tools' : 'not available') + '</span>'
     + '<span class="pill">window.ai: ' + (p.builtinAI.prompt ? 'available in this browser, unused by the tools' : 'not present, nothing falls back to it') + '</span>'
     + '</div></div>';
 
@@ -6666,7 +6670,7 @@ window.privacyfold = Object.assign(window.privacyfold || {}, {
       throw new Error(t.name + ' needs ' + (needsWord[t.accepts] || t.accepts) + ' — add one to the desk first.');
     }
     if (t.many) {
-      var many = (typeof getTargets === 'function' ? getTargets() : []).slice();
+      var many = (typeof getTargets === 'function' ? getTargets(t) : []).slice();
       if (many.length < (t.manyMin || 2)) throw new Error(t.name + ' needs at least ' + (t.manyMin || 2) + ' files on the desk (found ' + many.length + ').');
       src = many;
     }

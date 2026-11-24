@@ -192,6 +192,7 @@ for (const tool of allTools) {
     passed++;
   } catch (err) {
     console.error(`  [FAIL] ${tool.id}: ${err.message}`);
+    if (process.env.PF_STACK) console.error(err.stack);
     failed++;
   }
 }
