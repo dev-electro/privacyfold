@@ -4,7 +4,7 @@
  * content pages (compare / glossary / blog) that don't mount the desk runtime.
  * Menus are generated from the Git CMS: one tool record drives the nav (DEC-004).
  */
-import { getAllToolsFromGit, getAllPresetsFromGit, getAvailableLocales } from '../lib/cms';
+import { getAllToolsFromGit, getAllPresetsFromGit, getAvailableLocales, getToolTranslations } from '../lib/cms';
 
 interface Props {
   lang?: string;
@@ -40,8 +40,22 @@ const stripLang = (p) => {
   return m && locales.includes(m[1]) ? (p.slice(m[0].length - 1) || '/') : p;
 };
 const basePath = stripLang(currentPath);
-const langLinks = [{ code: 'en', label: 'English' }, ...locales.filter((l) => l !== 'en').map((l) => ({ code: l, label: l.toUpperCase() }))]
-  .map((l) => ({ ...l, href: l.code === 'en' ? basePath : `/${l.code}${basePath === '/' ? '/' : basePath}` }));
+/* Only link to translations that exist. The switcher used to offer all 20
+   locales on every page, so /about/ or /presets/x/ linked to /ar/about/ and
+   friends — 2,912 dead links in the build. Translations exist for tool pages
+   only, and each one has its own slug, so the link has to come from the record. */
+const toolMatch = basePath.match(/^\/tools\/([^/]+)\/?$/);
+const toolRecord = toolMatch ? allTools.find((t: any) => t.slug === toolMatch[1]) : null;
+const translationSlug = new Map<string, string>(
+  (toolRecord ? getToolTranslations(toolRecord.id) : []).map((tr) => [tr.locale, tr.slug] as [string, string])
+);
+const LANG_LABELS: Record<string, string> = { en: 'English', ar: 'العربية', de: 'Deutsch', es: 'Español', fr: 'Français', hi: 'हिन्दी', id: 'Bahasa Indonesia', it: 'Italiano', ja: '日本語', ko: '한국어', nl: 'Nederlands', pl: 'Polski', pt: 'Português', ru: 'Русский', tr: 'Türkçe', vi: 'Tiếng Việt', zh: '简体中文' };
+const langLinks = [
+  { code: 'en', label: LANG_LABELS.en, href: basePath },
+  ...locales
+    .filter((l) => l !== 'en' && translationSlug.has(l))
+    .map((l) => ({ code: l, label: LANG_LABELS[l] || l.toUpperCase(), href: `/${l}/tools/${translationSlug.get(l)}/` })),
+];
 const currentLangLabel = (langLinks.find((l) => l.code === lang) || langLinks[0]).label;
 ---
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -127,6 +141,7 @@ const currentLangLabel = (langLinks.find((l) => l.code === lang) || langLinks[0]
   </div>
 </nav>
 
+{langLinks.length > 1 && (
 <div class="lang-wrap" id="langWrap">
   <button type="button" class="nbtn lang-btn" id="langBtn" aria-haspopup="menu" aria-expanded="false" aria-controls="langP" aria-label="Language">
     <svg class="cat-ico" viewBox="0 0 24 24"><use href="#i-globe"/></svg>
@@ -139,6 +154,7 @@ const currentLangLabel = (langLinks.find((l) => l.code === lang) || langLinks[0]
     ))}
   </div>
 </div>
+)}
 
 <script is:inline>
   // Mega-menu open/close: real toggle (2nd click closes), Escape, outside click,

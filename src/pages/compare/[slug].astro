@@ -74,7 +74,9 @@ const jsonLd = {
       <AdSlot slotKey="blog-mid" format="banner" pageType="blog" />
 
       <div class="prose" style="font-size: 16px; line-height: 1.7; color: var(--p-ink-2); margin-top: 28px;">
-        <div class="art-body" set:html={mdToHtml(comp.body)} />
+        {/* The page template already prints the title as <h1>; a leading "# …" in
+            the markdown body would make two. Demote just the first one. */}
+        <div class="art-body" set:html={mdToHtml(comp.body).replace(/<h1(\s|>)/, '<h2$1').replace('</h1>', '</h2>')} />
       </div>
 
       <div class="byline-box" style="margin-top: 48px; padding: 20px 24px; background: var(--surface-2); border: 1px solid var(--line); border-radius: 8px;">
