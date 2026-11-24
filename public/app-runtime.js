@@ -6707,6 +6707,9 @@ window.privacyfold = Object.assign(window.privacyfold || {}, {
     }
     try {
       var res = await t.run(src, merged, { text: textInput || '', targets: (typeof getTargets === 'function' ? getTargets() : []) });
+      /* Result shape varies by tool ({out}|{text}|{blob}|{files}); automation
+         should not have to guess which one holds the text. */
+      if (res && typeof res.text === 'string' && typeof res.out !== 'string') res.out = res.text;
       window.__PRIVACYFOLD_RESULT__ = {
         status: 'pass',
         tool: toolId,
