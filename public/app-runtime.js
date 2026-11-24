@@ -6422,7 +6422,7 @@ function renderWebGpuPage(){
   var el = $('#webgpuIn'); if (!el) return;
   var p = DEVICE_PROFILE;
   var h = '<div class="pg-h"><span class="mono eyebrow">ON-DEVICE ENGINES IN THIS BUILD · WHAT SHIPS, WHAT DOES NOT</span>'
-    + '<h1>Two WebAssembly engines. No model downloads.</h1>'
+    + '<h2>Two WebAssembly engines. No model downloads.</h2>'
     + '<p class="pg-sub">Exactly two tools ship a WebAssembly engine: <b>libheif</b> for HEIC decoding (inlined in <code>/vendor/libheif.js</code>) and <b>sql.js</b> for SQLite (<code>/vendor/sql-wasm.wasm</code>). Everything else is plain JavaScript. The model packs listed below are <b>not shipped</b>; no tool calls a WebGPU or ONNX runtime today, and the list is kept here so the gap is visible rather than implied away.</p>'
     + '<div class="row" style="margin-top:12px">'
     + '<span class="pill ok">Device Tier: ' + esc(p.tier.toUpperCase()) + ' (' + p.cores + ' cores, ~' + p.memGB + ' GB RAM)</span>'
@@ -6501,7 +6501,7 @@ function renderBlogPage(){
       + '<button type="button" class="btn ghost" id="blogBackBtn2">Back to all guides</button></div></article>';
     return;
   }
-  var h = '<div class="pg-h"><span class="mono eyebrow">ARCHITECTURE, AI &amp; BIOMETRIC GUIDES</span><h1>Documentation &amp; Engineering Guides</h1><p class="pg-sub">In-depth specifications covering our sub-50 MB WebGPU/WASM stack, two-lane MCP agent surface, on-device PII airlock, and sourced biometric standards.</p></div><div class="blog-grid">';
+  var h = '<div class="pg-h"><span class="mono eyebrow">ARCHITECTURE, AI &amp; BIOMETRIC GUIDES</span><h2>Documentation &amp; Engineering Guides</h2><p class="pg-sub">In-depth specifications covering our sub-50 MB WebGPU/WASM stack, two-lane MCP agent surface, on-device PII airlock, and sourced biometric standards.</p></div><div class="blog-grid">';
   BLOG_POSTS.forEach(function(p){
     h += '<button type="button" class="blog-card" data-blog-slug="' + p.slug + '">'
       + '<span class="bk">' + esc(p.cat) + ' · ' + esc(p.read) + '</span>'
