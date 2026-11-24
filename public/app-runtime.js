@@ -2944,9 +2944,13 @@ renderStampRacks();
     }
   });
 
+  /* This legacy v8 block used to relabel heic_to_jpg as a generic image converter
+     ("Convert between WebP, PNG & JPEG"), so the HEIC tool advertised WebP output
+     while the run path produced JPEG. Labels now match what the tool does; the
+     generic converter it described is tracked in PF-039. */
   activateTool('heic_to_jpg',{
-    name:'Image format converter & resizer',task:'Convert between WebP, PNG & JPEG',tag:'WebP, PNG, JPG',
-    kind:'process',accepts:'image',action:'Convert image',ext:'webp',suffix:'converted',compare:true,
+    name:'HEIC to JPG',task:'Convert an iPhone photo',tag:'JPG, Export',
+    kind:'process',accepts:'image',action:'Convert to JPG',ext:'jpg',suffix:'converted',compare:true,
     params:[
       P('out','Convert to','select',1,'webp',{opts:[['webp','WebP'],['jpeg','JPEG'],['png','PNG']]}),
       P('scale','Resize percentage','range',1,1,{min:0.25,max:1,step:0.05,fmt:pct}),

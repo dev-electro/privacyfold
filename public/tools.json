@@ -338,7 +338,7 @@
   {
     "id": "heic_to_jpg",
     "slug": "heic-to-jpg",
-    "name": "Image format converter & resizer",
+    "name": "iPhone HEIC to JPG converter",
     "fam": "image",
     "glyph": "HE",
     "task": "Convert an iPhone photo",

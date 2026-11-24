@@ -1,7 +1,7 @@
 {
   "id": "heic_to_jpg",
   "slug": "heic-to-jpg",
-  "name": "Image format converter & resizer",
+  "name": "iPhone HEIC to JPG converter",
   "category": "image",
   "badge": "WebP, PNG, JPG",
   "size": "18–120 KB WASM",
@@ -13,8 +13,8 @@
   "schemaUrl": "/schemas/heic_to_jpg.json",
   "executionUrl": "https://privacyfold.com/tools/heic_to_jpg?mode=agent",
   "seo": {
-    "metaTitle": "Image format converter & resizer — 100% Private In-Browser Utility | PrivacyFold",
-    "metaDescription": "Open iPhone photos anywhere. Runs 100% locally in your browser via /wasm/image/heic-to-jpg-v1.wasm with zero file uploads.",
+    "metaTitle": "HEIC to JPG Converter — Convert iPhone Photos Free & Private | PrivacyFold",
+    "metaDescription": "Convert iPhone HEIC/HEIF photos to standard JPG right in your browser. A self-hosted libheif WebAssembly decoder reads the file in the tab — no upload, no server, no account, and it works in Chrome, Firefox and Safari alike.",
     "aeoSummary": "Image format converter & resizer processes files and text entirely inside your browser tab using /wasm/image/heic-to-jpg-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
       "image format converter & resizer",
