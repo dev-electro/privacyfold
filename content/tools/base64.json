@@ -5,7 +5,7 @@
   "category": "dev",
   "badge": "Base64",
   "size": "18–120 KB WASM",
-  "Engine": "/wasm/dev/base64-v1.wasm",
+  "Engine": "Plain JavaScript in your browser (no engine binary)",
   "description": "Convert text to Base64 and back. Handles any language and emoji.",
   "zeroNetwork": true,
   "adFreeZone": false,
@@ -16,8 +16,8 @@
   "executionUrl": "https://privacyfold.com/tools/base64?mode=agent",
   "seo": {
     "metaTitle": "Base64 encoder and decoder — 100% Private In-Browser Utility | PrivacyFold",
-    "metaDescription": "Convert text to Base64 and back. Handles any language and emoji. Runs 100% locally in your browser via /wasm/dev/base64-v1.wasm with zero file uploads.",
-    "aeoSummary": "Base64 encoder and decoder processes files and text entirely inside your browser tab using /wasm/dev/base64-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
+    "metaDescription": "Convert text to Base64 and back. Handles any language and emoji. Runs 100% locally in your browser with zero file uploads.",
+    "aeoSummary": "Base64 encoder and decoder processes files and text entirely inside your browser tab (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
       "base64 encoder and decoder",
       "base64",
@@ -37,9 +37,9 @@
     "faqs": [
       {
         "question": "Does Base64 encoder and decoder upload my files or text to a server?",
-        "answer": "No. Base64 encoder and decoder executes 100% inside your browser's local memory using /wasm/dev/base64-v1.wasm. No data leaves your device.",
+        "answer": "No. Base64 encoder and decoder executes 100% inside your browser's local memory. No data leaves your device.",
         "q": "Does Base64 encoder and decoder upload my files or text to a server?",
-        "a": "No. Base64 encoder and decoder executes 100% inside your browser's local memory using /wasm/dev/base64-v1.wasm. No data leaves your device."
+        "a": "No. Base64 encoder and decoder executes 100% inside your browser's local memory. No data leaves your device."
       },
       {
         "question": "Can AI agents or CLI scripts automate Base64 encoder and decoder?",
@@ -60,6 +60,6 @@
   "desc": "Convert text to Base64 and back. Handles any language and emoji.",
   "accepts": "text",
   "tag": "Base64",
-  "std": "W3C WebAssembly Core 2.0",
-  "wasmModule": "/wasm/dev/base64-v1.wasm"
+  "std": "ECMAScript (any modern browser)",
+  "wasmModule": "none (JavaScript, no engine binary)"
 }

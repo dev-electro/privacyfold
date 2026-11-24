@@ -1,0 +1,56 @@
+[
+  {
+    "slug": "ai-airlock-sanitizing-prompts-before-llms",
+    "title": "The AI Airlock Pattern: Stripping PII and Secrets Locally Before Prompting Cloud LLMs",
+    "description": "How to debug production logs and contracts with ChatGPT, Claude, or Gemini without leaking customer emails, IP addresses, or bearer tokens.",
+    "date": "2026-11-09",
+    "readTime": "5 min read",
+    "relatedTool": "ai-airlock",
+    "category": "AI Security"
+  },
+  {
+    "slug": "client-side-wasm-webgpu-architecture",
+    "title": "How Client-Side WebAssembly & WebGPU Replace Cloud File Utilities Without Uploading a Single Byte",
+    "description": "Why uploading passport photos, tax forms, and production JSON/JWTs to free online converters is a critical privacy leak—and how modern browsers execute the same workloads locally.",
+    "date": "2026-11-01",
+    "readTime": "7 min read",
+    "relatedTool": "image-compress",
+    "category": "Architecture & Privacy"
+  },
+  {
+    "slug": "hidden-exif-metadata-gps-privacy-risks",
+    "title": "What Hidden EXIF Metadata Reveals About You—and How Local Binary Scrubbing Works",
+    "description": "How JPEG APP1 segments store exact GPS coordinates, altitude, camera serial numbers, and owner names, and how to strip them before sharing.",
+    "date": "2026-11-05",
+    "readTime": "6 min read",
+    "relatedTool": "exif-strip",
+    "category": "Digital Privacy"
+  },
+  {
+    "slug": "model-context-protocol-mcp-for-local-tools",
+    "title": "Building for Humans and AI Agents: Model Context Protocol (@privacyfold/mcp) & Deterministic Schemas",
+    "description": "How a single JSON tool manifest powers both an accessible human interface and deterministic tool-calling for Claude Desktop, Cursor, and autonomous agents.",
+    "date": "2026-11-06",
+    "readTime": "6 min read",
+    "relatedTool": "json-format",
+    "category": "AI Agents & MCP"
+  },
+  {
+    "slug": "passport-visa-photo-biometric-standards-guide",
+    "title": "Complete Guide to Official Passport & Visa Photo Dimensions (US, UK, EU Schengen, Canada & India)",
+    "description": "Exact millimeter and pixel dimensions, head-height ratios, background colors, and 4x6-inch print-sheet layouts so your application is never rejected.",
+    "date": "2026-11-03",
+    "readTime": "8 min read",
+    "relatedTool": "passport-photo",
+    "category": "Photo & ID Standards"
+  },
+  {
+    "slug": "zero-knowledge-browser-cryptography-aes-gcm",
+    "title": "Zero-Knowledge Browser Cryptography: AES-256-GCM, PBKDF2, and Self-Decrypting HTML Envelopes",
+    "description": "How to encrypt confidential notes and recovery keys in your browser so recipients can unlock them offline in any web browser without installing software.",
+    "date": "2026-11-08",
+    "readTime": "7 min read",
+    "relatedTool": "file-encrypt",
+    "category": "Cryptography"
+  }
+]

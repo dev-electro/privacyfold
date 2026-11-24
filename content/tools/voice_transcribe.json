@@ -5,7 +5,7 @@
   "category": "image",
   "badge": "Moonshine 28 MB",
   "size": "14.7–45 MB OPFS",
-  "Engine": "moonshine-tiny-en",
+  "Engine": "Plain JavaScript in your browser (no engine binary)",
   "description": "Transcribe English voice recordings 5× faster than real-time with Moonshine-tiny (~28 MB MIT ONNX) or Whisper-tiny, with Silero VAD silence trimming and SRT/VTT subtitle export.",
   "zeroNetwork": true,
   "adFreeZone": false,
@@ -58,6 +58,6 @@
   "desc": "Transcribe English voice recordings 5× faster than real-time with Moonshine-tiny (~28 MB MIT ONNX) or Whisper-tiny, with Silero VAD silence trimming and SRT/VTT subtitle export.",
   "accepts": "text",
   "tag": "Moonshine 28 MB",
-  "std": "W3C WebAssembly Core 2.0",
-  "wasmModule": "moonshine-tiny-en"
+  "std": "W3C HTML Canvas 2D + File API",
+  "wasmModule": "none (JavaScript, no engine binary)"
 }

@@ -11,14 +11,14 @@
   "task": "Vertrauliche Passagen und Daten in PDF-Dateien unwiderruflich schwärzen und löschen",
   "badge": "PNG, Text",
   "size": "18–120 KB WASM",
-  "Engine": "/wasm/pdf/pdf-redact-v1.wasm",
-  "wasmModule": "pdf-redact-v1.wasm",
+  "Engine": "JavaScript",
+  "wasmModule": "JavaScript",
   "desc": "Das Schwärzen sensibler Informationen in Gerichtsakten oder Unternehmensverträgen erfordert das echte, unwiderrufliche Löschen der zugrundeliegenden Daten. Ein häufiger Fehler ist das bloße Überdecken mit schwarzen Rechtecken – der Text bleibt darunter kopierbar. Das Werkzeug von PrivacyFold entfernt sowohl die visuelle Darstellung als auch den eigentlichen Text-Stream und die Metadaten vollständig aus der PDF-Struktur, 100% lokal in Ihrem Browser.",
   "zeroNetwork": true,
   "adFreeZone": true,
   "accepts": "application/pdf",
   "tag": "PDF schwärzen",
-  "std": "US Federal Rule of Civil Procedure 5.2 / FOIA Exemption 6",
+  "std": "ISO 32000-1 (PDF 1.7) via pdf-lib",
   "seo": {
     "metaTitle": "PDF sicher schwärzen online — 100% lokal im Browser ohne Upload",
     "metaDescription": "Vertrauliche Texte, Namen und Zahlen in PDF-Dokumenten dauerhaft löschen. Kein Durchscheinen, kein Kopieren. Absolute Datensicherheit.",
@@ -39,7 +39,12 @@
         "answer": "Nein. Alle Berechnungen, Schwärzungen und das Neuerzeugen der PDF-Datei laufen ausschließlich in Ihrem Browser via WebAssembly ab."
       }
     ],
-    "keywords": ["pdf schwärzen online", "text in pdf unkenntlich machen", "pdf redact kostenlos", "datenschutz pdf schwärzen"]
+    "keywords": [
+      "pdf schwärzen online",
+      "text in pdf unkenntlich machen",
+      "pdf redact kostenlos",
+      "datenschutz pdf schwärzen"
+    ]
   },
   "whatToExpect": {
     "results": "Ein rechtssicher bereinigtes PDF-Dokument ohne verborgene Textreste.",
@@ -57,7 +62,9 @@
   },
   "social": {
     "hook": "Verlassen Sie sich nicht auf scheinbare Schwärzungen, die kopierbar bleiben. Tilgen Sie vertrauliche Daten physikalisch und lokal aus Ihren PDFs.",
-    "channels": ["x", "linkedin"]
+    "channels": [
+      "x",
+      "linkedin"
+    ]
   }
 }
-

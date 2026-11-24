@@ -11,14 +11,14 @@
   "task": "Dateien mit AES-256-GCM in tragbare selbstentschlüsselnde HTML-Umschläge verschlüsseln",
   "badge": "AES",
   "size": "18–120 KB WASM",
-  "Engine": "/wasm/crypto/file-encrypt-v1.wasm",
-  "wasmModule": "file-encrypt-v1.wasm",
+  "Engine": "JavaScript",
+  "wasmModule": "JavaScript",
   "desc": "Beim Austausch vertraulicher Dokumente oder Steuerunterlagen über herkömmliche Clouddienste liegen die Daten unverschlüsselt auf fremden Servern. PrivacyFold nutzt militärtaugliche AES-256-GCM-Verschlüsselung und PBKDF2-Schlüsselableitung (600.000 Runden SHA-256) über die native W3C WebCrypto-API direkt im Browser. Das Ergebnis ist ein selbstentschlüsselnder HTML-Umschlag, den jeder Empfänger ohne Softwareinstallation und ohne Internetverbindung in jedem modernen Browser öffnen und entschlüsseln kann.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "*/*",
   "tag": "Dateiverschlüsselung",
-  "std": "NIST SP 800-38D (AES-GCM) / RFC 8018 (PBKDF2)",
+  "std": "ECMAScript (any modern browser)",
   "seo": {
     "metaTitle": "Kostenlose Dateiverschlüsselung — Selbstentschlüsselnde HTML-Umschläge (AES-256)",
     "metaDescription": "Verschlüsseln Sie Dateien lokal mit AES-256-GCM und PBKDF2. Erzeugt offline-fähige HTML-Umschläge für jeden Browser. Echte Zero-Knowledge-Sicherheit.",
@@ -39,7 +39,12 @@
         "answer": "Nein. Dies ist eine strikte Zero-Knowledge-Implementierung. Ihr Passwort verlässt Ihr Gerät zu keinem Zeitpunkt. Ohne das korrekte Passwort ist der Chiffretext mathematisch unlösbar."
       }
     ],
-    "keywords": ["datei verschlüsseln", "aes 256 browser", "selbstentschlüsselnde html", "zero knowledge verschlüsselung"]
+    "keywords": [
+      "datei verschlüsseln",
+      "aes 256 browser",
+      "selbstentschlüsselnde html",
+      "zero knowledge verschlüsselung"
+    ]
   },
   "whatToExpect": {
     "results": "Ein eigenständiger, plattformunabhängiger und selbstentschlüsselnder HTML-Umschlag.",
@@ -57,7 +62,9 @@
   },
   "social": {
     "hook": "Geben Sie die Schlüssel zu Ihren vertraulichen Dokumenten nicht an Cloud-Anbieter ab. Versiegeln Sie Dateien direkt in selbstentschlüsselnden HTML-Umschlägen.",
-    "channels": ["x", "linkedin"]
+    "channels": [
+      "x",
+      "linkedin"
+    ]
   }
 }
-

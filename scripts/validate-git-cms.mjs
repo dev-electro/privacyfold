@@ -58,6 +58,29 @@ for (const file of blogFiles) {
   }
 }
 
+// 0b. Publish the guide index. The in-app console used to count a hardcoded
+//     array of four articles that have no page on disk; this is the real list.
+{
+  const posts = blogFiles.map((file) => {
+    const raw = fs.readFileSync(path.join(blogsDir, file), 'utf8');
+    const fm = (raw.split('---')[1] || '');
+    const pick = (k) => {
+      const m = fm.match(new RegExp('^' + k + ':\\s*"?(.*?)"?\\s*$', 'm'));
+      return m ? m[1].replace(/^['"]|['"]$/g, '') : '';
+    };
+    return {
+      slug: file.replace(/\.md$/, ''),
+      title: pick('title'),
+      description: pick('summary') || pick('description') || pick('desc'),
+      date: pick('publishedAt') || pick('date') || pick('pubDate'),
+      readTime: pick('readTime'),
+      relatedTool: pick('relatedTool'),
+      category: pick('category') || pick('cat') || 'Guide'
+    };
+  }).filter((p) => p.title);
+  fs.writeFileSync(path.join(publicDir, 'blog-index.json'), JSON.stringify(posts, null, 2) + '\n');
+}
+
 for (const file of glossaryFiles) {
   const raw = fs.readFileSync(path.join(glossaryDir, file), 'utf8');
   if (!raw.startsWith('---') || !raw.includes('term:') || !raw.includes('definition:')) {

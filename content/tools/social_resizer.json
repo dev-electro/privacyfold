@@ -5,7 +5,7 @@
   "category": "image",
   "badge": "83 Presets",
   "size": "18–120 KB WASM",
-  "Engine": "/wasm/image/image-resize-v1.wasm",
+  "Engine": "Plain JavaScript in your browser (no engine binary)",
   "description": "One-click image resizer pre-loaded with official platform dimensions from `presets/social-media-sizes.json`, `ecommerce-sizes.json`, and `developer-icons.json` (Amazon 1000×1000, Shopify 2048×2048, LinkedIn 400×400 & 1584×396 Banner, Instagram 1080×1080, YouTube 1280×720, OG Image 1200×630, iOS/Android App Icon 512×512).",
   "zeroNetwork": true,
   "adFreeZone": false,
@@ -30,8 +30,8 @@
   "executionUrl": "https://privacyfold.com/tools/social_resizer?mode=agent",
   "seo": {
     "metaTitle": "Social media, e-commerce & app icon resizer — 100% Private In-Browser Utility | PrivacyFold",
-    "metaDescription": "One-click image resizer pre-loaded with official platform dimensions from `presets/social-media-sizes.json`, `ecommerce-sizes.json`, and `developer-icons.json` (Amazon 1000×1000, Shopify 2048×2048, LinkedIn 400×400 & 1584×396 Banner, Instagram 1080×1080, YouTube 1280×720, OG Image 1200×630, iOS/Android App Icon 512×512). Runs 100% locally in your browser via /wasm/image/image-resize-v1.wasm with zero file uploads.",
-    "aeoSummary": "Social media, e-commerce & app icon resizer processes files and text entirely inside your browser tab using /wasm/image/image-resize-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
+    "metaDescription": "One-click image resizer pre-loaded with official platform dimensions from `presets/social-media-sizes.json`, `ecommerce-sizes.json`, and `developer-icons.json` (Amazon 1000×1000, Shopify 2048×2048, LinkedIn 400×400 & 1584×396 Banner, Instagram 1080×1080, YouTube 1280×720, OG Image 1200×630, iOS/Android App Icon 512×512). Runs 100% locally in your browser with zero file uploads.",
+    "aeoSummary": "Social media, e-commerce & app icon resizer processes files and text entirely inside your browser tab (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
       "social media, e-commerce & app icon resizer",
       "social resizer",
@@ -51,9 +51,9 @@
     "faqs": [
       {
         "question": "Does Social media, e-commerce & app icon resizer upload my files or text to a server?",
-        "answer": "No. Social media, e-commerce & app icon resizer executes 100% inside your browser's local memory using /wasm/image/image-resize-v1.wasm. No data leaves your device.",
+        "answer": "No. Social media, e-commerce & app icon resizer executes 100% inside your browser's local memory. No data leaves your device.",
         "q": "Does Social media, e-commerce & app icon resizer upload my files or text to a server?",
-        "a": "No. Social media, e-commerce & app icon resizer executes 100% inside your browser's local memory using /wasm/image/image-resize-v1.wasm. No data leaves your device."
+        "a": "No. Social media, e-commerce & app icon resizer executes 100% inside your browser's local memory. No data leaves your device."
       },
       {
         "question": "Can AI agents or CLI scripts automate Social media, e-commerce & app icon resizer?",
@@ -74,6 +74,6 @@
   "desc": "One-click image resizer pre-loaded with official platform dimensions from `presets/social-media-sizes.json`, `ecommerce-sizes.json`, and `developer-icons.json` (Amazon 1000×1000, Shopify 2048×2048, LinkedIn 400×400 & 1584×396 Banner, Instagram 1080×1080, YouTube 1280×720, OG Image 1200×630, iOS/Android App Icon 512×512).",
   "accepts": "image",
   "tag": "83 Presets",
-  "std": "W3C WebAssembly Core 2.0",
-  "wasmModule": "/wasm/image/image-resize-v1.wasm"
+  "std": "W3C HTML Canvas 2D",
+  "wasmModule": "none (JavaScript, no engine binary)"
 }

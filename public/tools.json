@@ -9,8 +9,8 @@
     "tag": "ADA, Section 508",
     "accepts": "text",
     "desc": "Check document structure against US ADA Title II/III, Section 508, and PDF/UA (ISO 14289) accessibility rules: document title, language tag, heading nesting, and image alt attributes.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/pdf/ada-check-v1.wasm",
+    "std": "ISO 32000-1 (PDF 1.7) via pdf-lib",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/ada-pdf/?mode=agent",
     "presets": [
       "ada-section-508-pdf-ua-audit"
@@ -26,8 +26,8 @@
     "tag": "Rampart 14.7 MB",
     "accepts": "text",
     "desc": "Detect personal data (names, emails, SSN/NINO, IBAN, credit cards, phones, API keys) on your device, replace them with tokens ([PERSON_1], [EMAIL_1]) before pasting into ChatGPT/Claude, and restore real values locally afterwards.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "rampart-minilm-l6",
+    "std": "ECMAScript (any modern browser)",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/ai-airlock/?mode=agent",
     "presets": [
       "hipaa-safe-harbor-18-identifiers"
@@ -43,8 +43,8 @@
     "tag": "window.ai · 0 MB",
     "accepts": "text",
     "desc": "Uses your browser’s built-in local AI APIs (window.ai.languageModel, ai.rewriter, ai.summarizer — 0 MB download) with automatic fallback to SmolLM2-135M-Instruct (~45 MB) for grammar fixing, tone shifting, essays, cold emails, and video scripts.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "window.ai-smollm2-135m",
+    "std": "ECMAScript (any modern browser)",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/ai-writer/?mode=agent",
     "presets": []
   },
@@ -58,8 +58,8 @@
     "tag": "cURL, fetch",
     "accepts": "text",
     "desc": "Convert `curl` CLI requests (including headers, bearer tokens, and JSON bodies) into clean JavaScript `fetch()` or `axios` snippets without pasting private API keys into online converters.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/dev/api-builder-v1.wasm",
+    "std": "ECMAScript (any modern browser)",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/api-builder/?mode=agent",
     "presets": []
   },
@@ -73,8 +73,8 @@
     "tag": "Hague, EU",
     "accepts": "none",
     "desc": "Generate a Hague Convention (1961) Apostille certificate request sheet and cross-border document authentication checklist for birth, marriage, academic, or corporate filings.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/forms/apostille-prep-v1.wasm",
+    "std": "ECMAScript (any modern browser)",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/apostille-prep/?mode=agent",
     "presets": [
       "hague-apostille-convention-1961"
@@ -90,8 +90,8 @@
     "tag": "SVG, Code128",
     "accepts": "text",
     "desc": "Generate crisp, vector SVG barcodes (Code 128, EAN-13, UPC-A) locally in your browser with zero tracking pixels.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/utility/qr-generate-v1.wasm",
+    "std": "ISO/IEC 18004 (QR Code) + Code 128 (ISO/IEC 15417)",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/barcode-gen/?mode=agent",
     "presets": [
       "gs1-ean13-retail-barcode"
@@ -107,8 +107,8 @@
     "tag": "Base64",
     "accepts": "text",
     "desc": "Convert text to Base64 and back. Handles any language and emoji.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/dev/base64-v1.wasm",
+    "std": "ECMAScript (any modern browser)",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/base64/?mode=agent",
     "presets": [
       "kubernetes-secret-base64-codec"
@@ -124,8 +124,8 @@
     "tag": "WebGPU, 24 MB",
     "accepts": "image",
     "desc": "Isolate portraits, signatures, or products onto a transparent PNG or studio backdrop locally using BEN v2 / MODNet via ONNX Runtime WebGPU (~120ms per photo).",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "modnet-ben-v2-fp16",
+    "std": "W3C HTML Canvas 2D",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/bg-remove/?mode=agent",
     "presets": [
       "linkedin-headshot-800x800"
@@ -141,7 +141,7 @@
     "tag": "BM25 retrieval, no model",
     "accepts": "text",
     "desc": "Split pasted document text into passages, rank them against your question with BM25 keyword scoring, and quote the best passages with the score that found them. Retrieval is deterministic: you can see why a passage was chosen, and the answer is quoted rather than generated.",
-    "std": "W3C WebAssembly Core 2.0",
+    "std": "ISO 32000-1 (PDF 1.7) via pdf-lib",
     "wasmModule": "none (BM25 scoring, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/chat-pdf/?mode=agent",
     "presets": []
@@ -156,8 +156,8 @@
     "tag": "URL, Text",
     "accepts": "text",
     "desc": "When you copy and paste links or text from modern web pages, social media platforms, or marketing emails, tracking entities secretly embed surveillance markers into your clipboard. These include UTM campaign tags, Facebook click IDs (fbclid), Google click IDs (gclid), affiliate tracking tokens, and invisible zero-width unicode characters (such as zero-width spaces U+200B and word joiners U+2060) that can fingerprint your specific user account across applications. PrivacyFold's Smart Clipboard & Tracking Scrubber sanitizes copied links and prose entirely in client-side memory. It strips surveillance parameters, normalizes obfuscated characters, and emits pristine, privacy-clean text with zero tracking leakage.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/crypto/clean-paste-v1.wasm",
+    "std": "ECMAScript (any modern browser)",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/clean-paste/?mode=agent",
     "presets": []
   },
@@ -171,8 +171,8 @@
     "tag": "Minify, HTML",
     "accepts": "text",
     "desc": "Minify CSS, HTML, or JavaScript snippets by stripping comments and collapsing whitespace, or encode/decode HTML entities (`&amp;`, `&lt;`, `&gt;`).",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/dev/code-minifier-v1.wasm",
+    "std": "ECMAScript (any modern browser)",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/code-minifier/?mode=agent",
     "presets": []
   },
@@ -186,8 +186,8 @@
     "tag": "WCAG, Hex",
     "accepts": "text",
     "desc": "Check WCAG 2.1 AA and AAA accessibility contrast ratios between foreground and background colors, and convert between Hex and RGB.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/image/color-contrast-v1.wasm",
+    "std": "W3C HTML Canvas 2D + File API",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/color-contrast/?mode=agent",
     "presets": [
       "wcag-2-2-aaa-contrast-audit"
@@ -203,8 +203,8 @@
     "tag": "Cover Letter",
     "accepts": "text",
     "desc": "Generate a structured, concise cover letter tailored to a company and role without uploading your resume to third-party job portals.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/forms/cover-letter-v1.wasm",
+    "std": "ECMAScript (any modern browser)",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/cover-letter/?mode=agent",
     "presets": []
   },
@@ -218,8 +218,8 @@
     "tag": "Cron",
     "accepts": "text",
     "desc": "Parse cron schedule expressions into a clear, human-readable description and preview the upcoming execution times.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/dev/cron-parser-v1.wasm",
+    "std": "ECMAScript (any modern browser)",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/cron-parser/?mode=agent",
     "presets": [
       "github-actions-cron-schedule",
@@ -236,8 +236,8 @@
     "tag": "CSV, JSON",
     "accepts": "text",
     "desc": "Convert CSV spreadsheets into structured JSON arrays, or convert JSON arrays back into CSV rows.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/dev/csv-json-v1.wasm",
+    "std": "ECMAScript (any modern browser)",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/csv-json/?mode=agent",
     "presets": []
   },
@@ -251,8 +251,8 @@
     "tag": "eIDAS, SHA-256",
     "accepts": "text",
     "desc": "Create a local electronic signature manifest with SHA-256 document digest, signer statement, and UTC timestamp in alignment with EU eIDAS (Regulation 910/2014) and US ESIGN Act principles.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/pdf/eidas-sign-v1.wasm",
+    "std": "ISO 32000-1 (PDF 1.7) via pdf-lib",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/eidas-sign/?mode=agent",
     "presets": [
       "eu-eidas-pades-b-signature"
@@ -268,8 +268,8 @@
     "tag": "SPF, DKIM, IP",
     "accepts": "text",
     "desc": "Paste raw email headers (`Received`, `Authentication-Results`, `Return-Path`) to trace server hops and verify SPF, DKIM, and DMARC status without uploading confidential emails to MXToolbox.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/crypto/email-header-v1.wasm",
+    "std": "ECMAScript (any modern browser)",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/email-header/?mode=agent",
     "presets": [
       "spf-dkim-dmarc-phishing-trace"
@@ -285,8 +285,8 @@
     "tag": "JPG, PNG",
     "accepts": "image",
     "desc": "Digital photos captured by modern smartphones and digital cameras embed invisible Exchangeable Image File Format (EXIF) metadata inside every file. This metadata frequently contains precise GPS latitude and longitude coordinates showing the exact location of your home, office, or children's school, along with camera serial numbers, device model, capture timestamps, exposure settings, and embedded thumbnail images. PrivacyFold's Photo Metadata Remover inspects the raw binary byte stream of your image directly in browser memory, parsing standard JPEG APP1 segments, PNG tEXt/eXIf chunks, and WebP EXIF containers, surgically eliminating every tracking marker before re-encoding or exporting the clean image. Zero bytes are uploaded to remote cloud servers, preserving total confidentiality.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/image/exif-strip-v1.wasm",
+    "std": "W3C HTML Canvas 2D + File API",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/exif-strip/?mode=agent",
     "presets": []
   },
@@ -300,8 +300,8 @@
     "tag": "X-Ray, 0 MB",
     "accepts": "any",
     "desc": "Drop any photo, PDF, or text snippet to see what it gives away: GPS pins, camera serials, timestamps, author history, and hidden PDF text layers—plus a Redaction Self-Test proving 0 hidden words are recoverable.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/crypto/exposure-xray-v1.wasm",
+    "std": "ECMAScript (any modern browser)",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/exposure-xray/?mode=agent",
     "presets": []
   },
@@ -315,8 +315,8 @@
     "tag": "AES",
     "accepts": "any",
     "desc": "When sharing sensitive financial statements, tax filings, legal contracts, or confidential identity documents, traditional cloud file-sharing services store your data unencrypted on their servers or hold the master decryption keys. PrivacyFold's Zero-Knowledge File Encryptor implements military-grade AES-256-GCM symmetric encryption combined with PBKDF2 key derivation using 600,000 SHA-256 iterations directly inside your browser via the W3C Web Cryptography API. Rather than requiring recipients to install proprietary decryption software, the tool packages your encrypted payload into a self-decrypting HTML envelope. Any recipient with the correct passphrase can open the HTML file in any modern web browser on Windows, macOS, Linux, iOS, or Android, enter the password, and decrypt the original file with zero software installations and zero network requests.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/crypto/file-encrypt-v1.wasm",
+    "std": "ECMAScript (any modern browser)",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/file-encrypt/?mode=agent",
     "presets": []
   },
@@ -330,8 +330,8 @@
     "tag": "SHA-256",
     "accepts": "any",
     "desc": "Create a SHA fingerprint of text or any file, to check that it has not changed.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/crypto/hash-gen-v1.wasm",
+    "std": "ECMAScript (any modern browser)",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/hash-gen/?mode=agent",
     "presets": []
   },
@@ -345,8 +345,8 @@
     "tag": "HEIC",
     "accepts": "heic",
     "desc": "Open iPhone photos anywhere.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/image/heic-to-jpg-v1.wasm",
+    "std": "ISO/IEC 23008-12 (HEIF) via libheif",
+    "wasmModule": "libheif wasm, inlined in /vendor/libheif.js",
     "executionUrl": "https://privacyfold.com/tools/heic-to-jpg/?mode=agent",
     "presets": []
   },
@@ -360,8 +360,8 @@
     "tag": "JPG, PNG, WebP",
     "accepts": "image",
     "desc": "Image compression is one of the most common file processing tasks on the web, yet virtually every existing online compression service forces users to transmit personal photos, business graphics, and sensitive scanned documents to remote cloud infrastructure. PrivacyFold's Client-Side Image Compressor re-engineers modern production-grade compression algorithms—including Mozilla's MozJPEG, Google's WebP, libpng, and AVIF—compiled directly into WebAssembly. This architecture enables industrial-strength compression with intelligent perceptual quantization, color subsampling, and binary size targeting to run entirely within your local browser sandbox. You can compress images to exact kilobyte limits (e.g. under 200 KB for portal forms) with zero server bills, zero bandwidth consumption, and guaranteed zero privacy leakage.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/image/image-compress-v1.wasm",
+    "std": "W3C HTML Canvas 2D + File API",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/image-compress/?mode=agent",
     "presets": [
       "uk-visa-vfs-docs",
@@ -378,8 +378,8 @@
     "tag": "JPG → PDF",
     "accepts": "image",
     "desc": "Place one or more photos or scanned receipts onto a standard US Letter or A4 page with clean margins for instant printing or portal upload.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/pdf/image-to-pdf-v1.wasm",
+    "std": "ISO 32000-1 (PDF 1.7) via pdf-lib",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/image-to-pdf/?mode=agent",
     "presets": []
   },
@@ -393,8 +393,8 @@
     "tag": "OmniSR, 18 MB",
     "accepts": "image",
     "desc": "Upscale small or compressed photos by 2× with edge-preserving super-resolution (Real-ESRGAN-compact / OmniSR-nano ~18 MB on WebGPU).",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "omnisr-nano-fp16",
+    "std": "W3C HTML Canvas 2D + File API",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/image-upscaler/?mode=agent",
     "presets": []
   },
@@ -408,8 +408,8 @@
     "tag": "Invoice, Billing",
     "accepts": "text",
     "desc": "Generate itemized freelance or SMB invoices from `templates/invoice-us.json` with automatic line-item totals and tax calculation—zero cloud accounting accounts required.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/templates/invoice-us.json",
+    "std": "ECMAScript (any modern browser)",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/invoice-generator/?mode=agent",
     "presets": []
   },
@@ -423,8 +423,8 @@
     "tag": "JSON",
     "accepts": "text",
     "desc": "Check, tidy and minify JSON. The result updates as you type.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/dev/json-format-v1.wasm",
+    "std": "ECMAScript (any modern browser)",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/json-format/?mode=agent",
     "presets": [
       "stripe-webhook-json-formatter"
@@ -440,8 +440,8 @@
     "tag": "JWT",
     "accepts": "text",
     "desc": "Read what is inside a JSON Web Token. The signature is not checked, so do not treat a decoded token as trusted.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/dev/jwt-decode-v1.wasm",
+    "std": "W3C Web Crypto API (SubtleCrypto)",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/jwt-decode/?mode=agent",
     "presets": [
       "jwt-rs256-es256-offline-audit"
@@ -457,8 +457,8 @@
     "tag": "Lease, Rental",
     "accepts": "none",
     "desc": "Draft a residential lease or room rental agreement with landlord, tenant, premises address, monthly rent, security deposit, and notice period completely offline.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/forms/lease-generator-v1.wasm",
+    "std": "ECMAScript (any modern browser)",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/lease-generator/?mode=agent",
     "presets": []
   },
@@ -472,8 +472,8 @@
     "tag": "Lorem, Copy",
     "accepts": "none",
     "desc": "Generate classic Latin Lorem Ipsum or privacy-themed design system placeholder paragraphs for wireframes and layouts.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/generators/lorem-ipsum-v1.wasm",
+    "std": "W3C Web Crypto API (getRandomValues)",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/lorem-ipsum/?mode=agent",
     "presets": []
   },
@@ -487,8 +487,8 @@
     "tag": "LaMa FP16, 38 MB",
     "accepts": "image",
     "desc": "Remove unwanted objects, date stamps, or watermarks using fast-fourier convolution inpainting (LaMa-FP16-pruned ~38 MB on WebGPU) directly in your browser.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "lama-fp16-pruned",
+    "std": "W3C HTML Canvas 2D",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/magic-eraser/?mode=agent",
     "presets": []
   },
@@ -502,8 +502,8 @@
     "tag": "MD, HTML",
     "accepts": "text",
     "desc": "Convert Markdown headings, lists, code blocks, and links into clean, semantic HTML markup.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/dev/markdown-prev-v1.wasm",
+    "std": "ECMAScript (any modern browser)",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/markdown-prev/?mode=agent",
     "presets": []
   },
@@ -517,8 +517,8 @@
     "tag": "Notes, Action",
     "accepts": "text",
     "desc": "Transform unstructured meeting scratchpads into a clean Markdown summary separating Key Decisions, Action Items (`[ ] Owner`), and Pomodoro focus blocks.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/forms/meeting-notes-v1.wasm",
+    "std": "ECMAScript (any modern browser)",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/meeting-notes/?mode=agent",
     "presets": []
   },
@@ -532,8 +532,8 @@
     "tag": "NDA, Contract",
     "accepts": "none",
     "desc": "Create a clean Mutual or Unilateral Non-Disclosure Agreement (NDA) from our local JSON template (`templates/nda-us.json`) without exposing party names to legal SaaS platforms.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/templates/nda-us.json",
+    "std": "ECMAScript (any modern browser)",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/nda-generator/?mode=agent",
     "presets": []
   },
@@ -547,7 +547,7 @@
     "tag": "Local pattern extraction",
     "accepts": "text",
     "desc": "Map the text layer of a scanned document — pasted in, or copied out of any OCR app — onto W-9 / SA100 style fields. Labelled lines such as \"Name: …\" are matched deterministically and shown with the line they came from, so a wrong guess is visible. No OCR model ships with this tool, and nothing is invented from pixels.",
-    "std": "W3C WebAssembly Core 2.0",
+    "std": "ISO 32000-1 (PDF 1.7) via pdf-lib",
     "wasmModule": "none (pattern matching, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/ocr-scan/?mode=agent",
     "presets": [
@@ -564,8 +564,8 @@
     "tag": "JPG, PNG",
     "accepts": "image",
     "desc": "Applying for international passports, travel visas, permanent residency cards, and national identity credentials requires strict adherence to sovereign biometric photo specifications. Government portals routinely reject user uploads for minor non-compliance issues such as incorrect face-to-frame height ratios, non-compliant background luminance, improper head tilt, incorrect millimeter dimensions, or excessive file sizes. PrivacyFold's Biometric Passport Photo Creator provides an automated, client-side photographic studio directly in your browser. It includes pre-calibrated presets for over 87 international jurisdictions (including US State Department 2x2 inch, UK HM Passport Office 35x45mm, Schengen ICAO, Canada IRCC, Australia ImmiAccount, and UAE Golden Visa), allowing you to frame, crop, calibrate background lighting, and export print-ready 600 DPI sheets with absolute privacy and zero server uploads.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/photo/passport-photo-v1.wasm",
+    "std": "W3C HTML Canvas 2D + EXIF 2.32",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/passport-photo/?mode=agent",
     "presets": [
       "uk-passport-photo",
@@ -616,8 +616,8 @@
     "tag": "Password, XKCD",
     "accepts": "none",
     "desc": "Generate high-entropy random passwords or memorable multi-word XKCD passphrases using your browser’s cryptographic random source.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/crypto/password-gen-v1.wasm",
+    "std": "W3C Web Crypto API (getRandomValues)",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/password-gen/?mode=agent",
     "presets": []
   },
@@ -631,8 +631,8 @@
     "tag": "PDF, <2MB",
     "accepts": "text",
     "desc": "Compress PDF documents to meet strict government and email portal limits (USCIS I-130 <2 MB, UK Visa VFS <2 MB, HMRC SA100 <5 MB, Schengen VFS <5 MB, Court E-Filing <5 MB, Gmail <25 MB).",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/pdf/pdf-compress-v1.wasm",
+    "std": "ISO 32000-1 (PDF 1.7) via pdf-lib",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/pdf-compress/?mode=agent",
     "presets": [
       "us-ca-dmv-real-id-docs",
@@ -654,8 +654,8 @@
     "tag": "PDF/A, Lock",
     "accepts": "text",
     "desc": "Flatten interactive AcroForm fields, checkboxes, and signature appearances into static page content for IRS 1099, USCIS, and notary submissions.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/pdf/pdf-flatten-v1.wasm",
+    "std": "ISO 32000-1 (PDF 1.7) via pdf-lib",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/pdf-flatten/?mode=agent",
     "presets": [
       "us-pacer-federal-court-pdf",
@@ -672,8 +672,8 @@
     "tag": "PDF",
     "accepts": "pdf",
     "desc": "Combining confidential documents—such as tax returns, bank statements, employment verifications, and medical records—is a standard administrative requirement for visa, loan, mortgage, and legal applications. However, standard online PDF merge websites require you to upload your sensitive multi-page documents to their remote servers, exposing private financial and personal identity records to server log retention and potential cloud data breaches. PrivacyFold's Private PDF Merger combines, reorders, and binds PDF files entirely within your web browser's client-side memory using WebAssembly and pure client-side PDF object streaming. Your original PDFs never leave your machine, ensuring full compliance with HIPAA, GDPR, attorney-client privilege, and enterprise confidentiality requirements.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/pdf/pdf-merge-v1.wasm",
+    "std": "ISO 32000-1 (PDF 1.7) via pdf-lib",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/pdf-merge/?mode=agent",
     "presets": []
   },
@@ -687,8 +687,8 @@
     "tag": "PDF Clean",
     "accepts": "text",
     "desc": "Strip hidden /Author, /Creator, /Producer, /CreationDate, /ModDate, and XMP XML packets from PDF files before public release or legal filing.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/pdf/pdf-metadata-v1.wasm",
+    "std": "ISO 32000-1 (PDF 1.7) via pdf-lib",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/pdf-metadata/?mode=agent",
     "presets": [
       "arxiv-latex-pdf-anonymizer"
@@ -704,8 +704,8 @@
     "tag": "PDF",
     "accepts": "pdf",
     "desc": "Redacting sensitive information from legal filings, government FOIA requests, and corporate contracts requires true destructive removal of underlying data. A notorious failure mode in digital redaction involves placing black rectangles over sensitive text without deleting the underlying text stream—allowing anyone to select, copy, or search the hidden Social Security Numbers, names, or financial figures underneath. PrivacyFold's Destructive PDF Redactor permanently removes both the visual elements and the underlying content stream objects, vector paths, and metadata from the document structure. Running 100% locally in your browser, it ensures that classified and private information is mathematically eradicated before the document ever leaves your workstation.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/pdf/pdf-redact-v1.wasm",
+    "std": "ISO 32000-1 (PDF 1.7) via pdf-lib",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/pdf-redact/?mode=agent",
     "presets": [
       "foia-redaction-true-byte-scrub"
@@ -721,8 +721,8 @@
     "tag": "PDF",
     "accepts": "pdf",
     "desc": "Pull page ranges out of a PDF into new files.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/pdf/pdf-split-v1.wasm",
+    "std": "ISO 32000-1 (PDF 1.7) via pdf-lib",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/pdf-split/?mode=agent",
     "presets": []
   },
@@ -736,8 +736,8 @@
     "tag": "PDF → PNG",
     "accepts": "image",
     "desc": "Rasterize document pages into high-resolution 300 DPI or 600 DPI PNG/JPEG images locally in your browser.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/pdf/pdf-to-image-v1.wasm",
+    "std": "ISO 32000-1 (PDF 1.7) via pdf-lib",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/pdf-to-image/?mode=agent",
     "presets": []
   },
@@ -751,8 +751,8 @@
     "tag": "PDF → DOC",
     "accepts": "text",
     "desc": "Convert PDF document pages and paragraphs into an editable Word-compatible document locally in your browser using pdf.js text extraction and RTF/DOCX structuring.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/pdf/pdf-to-word-v1.wasm",
+    "std": "ISO 32000-1 (PDF 1.7) via pdf-lib",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/pdf-to-word/?mode=agent",
     "presets": []
   },
@@ -766,8 +766,8 @@
     "tag": "ECDSA, P-256",
     "accepts": "text",
     "desc": "Sign cleartext messages using NIST P-256 / P-384 elliptic-curve keys in WebCrypto and output an ASCII-armored verification block.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/crypto/pgp-crypto-v1.wasm",
+    "std": "W3C Web Crypto API (SubtleCrypto)",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/pgp-crypto/?mode=agent",
     "presets": []
   },
@@ -781,8 +781,8 @@
     "tag": "GDPR, CCPA",
     "accepts": "none",
     "desc": "Generate legally structured GDPR Data Subject Access/Erasure Requests (EN/DE/FR), California CCPA Do-Not-Sell Opt-Out letters, Privacy Policies, or GDPR Art. 33 72-Hour Breach Notifications from `templates/gdpr-request-eu.json` and `ccpa-optout-ca.json`.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/generators/privacy-letter-v1.wasm",
+    "std": "ECMAScript (any modern browser)",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/privacy-letter/?mode=agent",
     "presets": [
       "gdpr-art-17-erasure-letter",
@@ -799,8 +799,8 @@
     "tag": "QR, 0 MB",
     "accepts": "text",
     "desc": "Generate high-contrast QR codes for website links, Wi-Fi logins, or vCards locally with zero tracking redirects.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/image/qr-tool-v1.wasm",
+    "std": "W3C HTML Canvas 2D + File API",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/qr-tool/?mode=agent",
     "presets": []
   },
@@ -814,8 +814,8 @@
     "tag": "Expense, CRM",
     "accepts": "text",
     "desc": "Parse pasted receipt lines or business card text into structured expense rows (Date, Vendor, Category, Amount, Tax) or vCard contacts locally.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/forms/receipt-scanner-v1.wasm",
+    "std": "ECMAScript (any modern browser)",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/receipt-scanner/?mode=agent",
     "presets": []
   },
@@ -829,8 +829,8 @@
     "tag": "Regex",
     "accepts": "text",
     "desc": "Test regular expressions with live match counts, captured groups, and character positions.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/dev/regex-tester-v1.wasm",
+    "std": "ECMAScript (any modern browser)",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/regex-tester/?mode=agent",
     "presets": []
   },
@@ -844,8 +844,8 @@
     "tag": "ATS, Resume",
     "accepts": "text",
     "desc": "Build a clean, single-column ATS-compatible resume from `templates/resume-ats.json` that parses cleanly in Workday, Greenhouse, and Lever without storing your career history on resume websites.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/templates/resume-ats.json",
+    "std": "ECMAScript (any modern browser)",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/resume-builder/?mode=agent",
     "presets": []
   },
@@ -859,8 +859,8 @@
     "tag": "HMRC",
     "accepts": "none",
     "desc": "Line up Self Assessment figures before you file.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/forms/sa100-prep-v1.wasm",
+    "std": "ECMAScript (any modern browser)",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/sa100-prep/?mode=agent",
     "presets": [
       "uk-hmrc-sa100-self-assessment"
@@ -876,8 +876,8 @@
     "tag": "JSON-LD, AEO",
     "accepts": "text",
     "desc": "Validate Schema.org JSON-LD (`SoftwareApplication`, `FAQPage`, `HowTo`, `Article`) for Google Search and AI citations, or generate a `robots.txt` file with explicit GPTBot, ClaudeBot, and PerplexityBot rules.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/dev/schema-validator-v1.wasm",
+    "std": "ECMAScript (any modern browser)",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/schema-validator/?mode=agent",
     "presets": [
       "openapi-3-1-json-schema-check"
@@ -893,8 +893,8 @@
     "tag": "PNG, Markup",
     "accepts": "image",
     "desc": "Add clean, high-contrast callout borders, step badges, and header captions to bug reports and documentation screenshots without uploading internal UI screens.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/image/screenshot-annotate-v1.wasm",
+    "std": "W3C HTML Canvas 2D",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/screenshot-annotate/?mode=agent",
     "presets": []
   },
@@ -908,8 +908,8 @@
     "tag": "PNG",
     "accepts": "image",
     "desc": "Lift a signature off paper onto a clear background.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/photo/signature-clean-v1.wasm",
+    "std": "W3C HTML Canvas 2D",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/signature-clean/?mode=agent",
     "presets": [
       "in-pan-nsdl-signature-140x60"
@@ -925,8 +925,8 @@
     "tag": "83 Presets",
     "accepts": "image",
     "desc": "One-click image resizer pre-loaded with official platform dimensions from `presets/social-media-sizes.json`, `ecommerce-sizes.json`, and `developer-icons.json` (Amazon 1000×1000, Shopify 2048×2048, LinkedIn 400×400 & 1584×396 Banner, Instagram 1080×1080, YouTube 1280×720, OG Image 1200×630, iOS/Android App Icon 512×512).",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/image/image-resize-v1.wasm",
+    "std": "W3C HTML Canvas 2D",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/social-resizer/?mode=agent",
     "presets": [
       "amazon-main-image-2000x2000",
@@ -956,8 +956,8 @@
     "tag": "Validator, 0 MB",
     "accepts": "image",
     "desc": "Verify whether an image or document looks consistent with published portal requirements (US State Dept, UK HMPO, EU Schengen, VFS Global) without modifying the file.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/photo/spot-rejection-v1.wasm",
+    "std": "W3C HTML Canvas 2D",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/spot-rejection/?mode=agent",
     "presets": []
   },
@@ -971,8 +971,8 @@
     "tag": "sql.js WASM",
     "accepts": "text",
     "desc": "Run relational SQL projections and filters over local CSV or JSON datasets in browser memory.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/dev/sqlite-viewer-v1.wasm",
+    "std": "SQLite 3 via sql.js",
+    "wasmModule": "/vendor/sql-wasm.wasm",
     "executionUrl": "https://privacyfold.com/tools/sqlite-viewer/?mode=agent",
     "presets": []
   },
@@ -986,8 +986,8 @@
     "tag": "PNG, Stamp",
     "accepts": "image",
     "desc": "Add a visible status stamp (such as Confidential, Approved or Draft) to an image or document page, plus an optional embedded recipient ID.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/crypto/stego-seal-v1.wasm",
+    "std": "W3C HTML Canvas 2D",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/stego-seal/?mode=agent",
     "presets": []
   },
@@ -1001,8 +1001,8 @@
     "tag": "SVG",
     "accepts": "text",
     "desc": "Clean and minify SVG vector code by removing XML comments, editor metadata, empty groups, and redundant whitespace.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/image/svg-optimize-v1.wasm",
+    "std": "W3C HTML Canvas 2D + File API",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/svg-optimize/?mode=agent",
     "presets": [
       "svg-react-jsx-icon-optimizer"
@@ -1018,8 +1018,8 @@
     "tag": "Diff",
     "accepts": "text",
     "desc": "Compare two versions of text, configuration or code separated by --- to see added and removed lines.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/dev/text-diff-v1.wasm",
+    "std": "ECMAScript (any modern browser)",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/text-diff/?mode=agent",
     "presets": []
   },
@@ -1033,8 +1033,8 @@
     "tag": "Unix, ISO",
     "accepts": "text",
     "desc": "Convert Unix timestamps (seconds, milliseconds, or nanoseconds) to human-readable ISO-8601, RFC-2822, and major global timezones (US, UK, EU, India, Japan).",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/dev/timestamp-conv-v1.wasm",
+    "std": "ECMAScript (any modern browser)",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/timestamp-conv/?mode=agent",
     "presets": []
   },
@@ -1048,8 +1048,8 @@
     "tag": "UA",
     "accepts": "text",
     "desc": "Inspect any User-Agent string to identify the browser family, rendering engine, operating system, and device type.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/dev/ua-parser-v1.wasm",
+    "std": "ECMAScript (any modern browser)",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/ua-parser/?mode=agent",
     "presets": []
   },
@@ -1063,8 +1063,8 @@
     "tag": "Imperial, Metric",
     "accepts": "text",
     "desc": "Convert between US Imperial and Metric units (inches ↔ mm/cm, lbs ↔ kg, °F ↔ °C, miles ↔ km, and print millimeters ↔ pixels at 300/600 DPI).",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/dev/unit-converter-v1.wasm",
+    "std": "ECMAScript (any modern browser)",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/unit-converter/?mode=agent",
     "presets": []
   },
@@ -1078,8 +1078,8 @@
     "tag": "URL",
     "accepts": "text",
     "desc": "Decode or encode URL strings and break down query parameters, host, path, and protocol.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/dev/url-codec-v1.wasm",
+    "std": "ECMAScript (any modern browser)",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/url-codec/?mode=agent",
     "presets": []
   },
@@ -1093,8 +1093,8 @@
     "tag": "W-2, 1099, 1040",
     "accepts": "none",
     "desc": "Compute and format IRS Form W-2 wage boxes, Form 1099-NEC nonemployee compensation, and Form 1040 standard deduction estimates without uploading financial data to tax-prep servers.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/forms/us-tax-filler-v1.wasm",
+    "std": "ECMAScript (any modern browser)",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/us-tax-filler/?mode=agent",
     "presets": [
       "us-irs-1040-schedule-c-prep"
@@ -1110,8 +1110,8 @@
     "tag": "USCIS, I-130",
     "accepts": "none",
     "desc": "Generate a properly structured USCIS petition cover letter, numbered exhibit table of contents, and myUSCIS portal file-size verification checklist for I-130, I-485, I-765, or N-400 filings.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/forms/uscis-formatter-v1.wasm",
+    "std": "ECMAScript (any modern browser)",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/uscis-formatter/?mode=agent",
     "presets": [
       "uscis-i485-evidence-binder"
@@ -1127,8 +1127,8 @@
     "tag": "UUID",
     "accepts": "none",
     "desc": "Make random unique IDs in bulk, using your browser\\",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/dev/uuid-gen-v1.wasm",
+    "std": "W3C Web Crypto API (getRandomValues)",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/uuid-gen/?mode=agent",
     "presets": []
   },
@@ -1142,8 +1142,8 @@
     "tag": "PNG, JPG, Page",
     "accepts": "image",
     "desc": "Overlay two versions of a document, contract or image to spot differences. Changed text, numbers or pixels are highlighted in red.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/pdf/vellum-diff-v1.wasm",
+    "std": "ISO 32000-1 (PDF 1.7) via pdf-lib",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/vellum-diff/?mode=agent",
     "presets": []
   },
@@ -1157,8 +1157,8 @@
     "tag": "Moonshine 28 MB",
     "accepts": "text",
     "desc": "Transcribe English voice recordings 5× faster than real-time with Moonshine-tiny (~28 MB MIT ONNX) or Whisper-tiny, with Silero VAD silence trimming and SRT/VTT subtitle export.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "moonshine-tiny-en",
+    "std": "W3C HTML Canvas 2D + File API",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/voice-transcribe/?mode=agent",
     "presets": []
   },
@@ -1172,8 +1172,8 @@
     "tag": "IRS",
     "accepts": "none",
     "desc": "When onboarding as an independent contractor, vendor, or freelancer in the United States, clients routinely request IRS Form W-9 (Request for Taxpayer Identification Number and Certification). Form W-9 requires sensitive financial and personal data, including your full legal name, business entity classification (sole proprietor, LLC, C Corp, S Corp), address, and your Social Security Number (SSN) or Employer Identification Number (EIN). Using online PDF form fillers exposes your SSN—the primary credential for US identity theft—to commercial cloud databases. PrivacyFold's IRS Form W-9 Tax Worksheet allows contractors to format, validate, and calculate their W-9 data entirely inside local browser memory. No tax data is ever uploaded, ensuring complete compliance with IRS privacy guidelines and zero exposure of your SSN.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/forms/w9-prep-v1.wasm",
+    "std": "ECMAScript (any modern browser)",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/w9-prep/?mode=agent",
     "presets": [
       "us-irs-w9-tin-match"
@@ -1189,8 +1189,8 @@
     "tag": "DOCX → PDF",
     "accepts": "text",
     "desc": "Convert Word document text, contracts, or manuscripts into a clean, print-ready PDF file locally without uploading to cloud servers.",
-    "std": "W3C WebAssembly Core 2.0",
-    "wasmModule": "/wasm/pdf/word-to-pdf-v1.wasm",
+    "std": "ISO 32000-1 (PDF 1.7) via pdf-lib",
+    "wasmModule": "none (JavaScript, no engine binary)",
     "executionUrl": "https://privacyfold.com/tools/word-to-pdf/?mode=agent",
     "presets": []
   }

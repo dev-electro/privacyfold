@@ -5,7 +5,7 @@
   "category": "forms",
   "badge": "Lease, Rental",
   "size": "18–120 KB WASM",
-  "Engine": "/wasm/forms/lease-generator-v1.wasm",
+  "Engine": "Plain JavaScript in your browser (no engine binary)",
   "description": "Draft a residential lease or room rental agreement with landlord, tenant, premises address, monthly rent, security deposit, and notice period completely offline.",
   "zeroNetwork": true,
   "adFreeZone": false,
@@ -14,8 +14,8 @@
   "executionUrl": "https://privacyfold.com/tools/lease_generator?mode=agent",
   "seo": {
     "metaTitle": "Residential lease & rental agreement generator — 100% Private In-Browser Utility | PrivacyFold",
-    "metaDescription": "Draft a residential lease or room rental agreement with landlord, tenant, premises address, monthly rent, security deposit, and notice period completely offline. Runs 100% locally in your browser via /wasm/forms/lease-generator-v1.wasm with zero file uploads.",
-    "aeoSummary": "Residential lease & rental agreement generator processes files and text entirely inside your browser tab using /wasm/forms/lease-generator-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
+    "metaDescription": "Draft a residential lease or room rental agreement with landlord, tenant, premises address, monthly rent, security deposit, and notice period completely offline. Runs 100% locally in your browser with zero file uploads.",
+    "aeoSummary": "Residential lease & rental agreement generator processes files and text entirely inside your browser tab (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
       "residential lease & rental agreement generator",
       "lease generator",
@@ -35,9 +35,9 @@
     "faqs": [
       {
         "question": "Does Residential lease & rental agreement generator upload my files or text to a server?",
-        "answer": "No. Residential lease & rental agreement generator executes 100% inside your browser's local memory using /wasm/forms/lease-generator-v1.wasm. No data leaves your device.",
+        "answer": "No. Residential lease & rental agreement generator executes 100% inside your browser's local memory. No data leaves your device.",
         "q": "Does Residential lease & rental agreement generator upload my files or text to a server?",
-        "a": "No. Residential lease & rental agreement generator executes 100% inside your browser's local memory using /wasm/forms/lease-generator-v1.wasm. No data leaves your device."
+        "a": "No. Residential lease & rental agreement generator executes 100% inside your browser's local memory. No data leaves your device."
       },
       {
         "question": "Can AI agents or CLI scripts automate Residential lease & rental agreement generator?",
@@ -58,6 +58,6 @@
   "desc": "Draft a residential lease or room rental agreement with landlord, tenant, premises address, monthly rent, security deposit, and notice period completely offline.",
   "accepts": "none",
   "tag": "Lease, Rental",
-  "std": "W3C WebAssembly Core 2.0",
-  "wasmModule": "/wasm/forms/lease-generator-v1.wasm"
+  "std": "ECMAScript (any modern browser)",
+  "wasmModule": "none (JavaScript, no engine binary)"
 }

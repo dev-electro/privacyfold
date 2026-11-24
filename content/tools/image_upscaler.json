@@ -5,7 +5,7 @@
   "category": "image",
   "badge": "OmniSR, 18 MB",
   "size": "14.7–45 MB OPFS",
-  "Engine": "omnisr-nano-fp16",
+  "Engine": "Plain JavaScript in your browser (no engine binary)",
   "description": "Upscale small or compressed photos by 2× with edge-preserving super-resolution (Real-ESRGAN-compact / OmniSR-nano ~18 MB on WebGPU).",
   "zeroNetwork": true,
   "adFreeZone": false,
@@ -58,6 +58,6 @@
   "desc": "Upscale small or compressed photos by 2× with edge-preserving super-resolution (Real-ESRGAN-compact / OmniSR-nano ~18 MB on WebGPU).",
   "accepts": "image",
   "tag": "OmniSR, 18 MB",
-  "std": "W3C WebAssembly Core 2.0",
-  "wasmModule": "omnisr-nano-fp16"
+  "std": "W3C HTML Canvas 2D + File API",
+  "wasmModule": "none (JavaScript, no engine binary)"
 }

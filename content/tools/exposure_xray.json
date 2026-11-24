@@ -5,7 +5,7 @@
   "category": "crypto",
   "badge": "X-Ray, 0 MB",
   "size": "18–120 KB WASM",
-  "Engine": "/wasm/crypto/exposure-xray-v1.wasm",
+  "Engine": "Plain JavaScript in your browser (no engine binary)",
   "description": "Drop any photo, PDF, or text snippet to see what it gives away: GPS pins, camera serials, timestamps, author history, and hidden PDF text layers—plus a Redaction Self-Test proving 0 hidden words are recoverable.",
   "zeroNetwork": true,
   "adFreeZone": false,
@@ -14,8 +14,8 @@
   "executionUrl": "https://privacyfold.com/tools/exposure_xray?mode=agent",
   "seo": {
     "metaTitle": "Exposure X-ray & redaction self-test — 100% Private In-Browser Utility | PrivacyFold",
-    "metaDescription": "Drop any photo, PDF, or text snippet to see what it gives away: GPS pins, camera serials, timestamps, author history, and hidden PDF text layers—plus a Redaction Self-Test proving 0 hidden words are recoverable. Runs 100% locally in your browser via /wasm/crypto/exposure-xray-v1.wasm with zero file uploads.",
-    "aeoSummary": "Exposure X-ray & redaction self-test processes files and text entirely inside your browser tab using /wasm/crypto/exposure-xray-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
+    "metaDescription": "Drop any photo, PDF, or text snippet to see what it gives away: GPS pins, camera serials, timestamps, author history, and hidden PDF text layers—plus a Redaction Self-Test proving 0 hidden words are recoverable. Runs 100% locally in your browser with zero file uploads.",
+    "aeoSummary": "Exposure X-ray & redaction self-test processes files and text entirely inside your browser tab (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
       "exposure x-ray & redaction self-test",
       "exposure xray",
@@ -35,9 +35,9 @@
     "faqs": [
       {
         "question": "Does Exposure X-ray & redaction self-test upload my files or text to a server?",
-        "answer": "No. Exposure X-ray & redaction self-test executes 100% inside your browser's local memory using /wasm/crypto/exposure-xray-v1.wasm. No data leaves your device.",
+        "answer": "No. Exposure X-ray & redaction self-test executes 100% inside your browser's local memory. No data leaves your device.",
         "q": "Does Exposure X-ray & redaction self-test upload my files or text to a server?",
-        "a": "No. Exposure X-ray & redaction self-test executes 100% inside your browser's local memory using /wasm/crypto/exposure-xray-v1.wasm. No data leaves your device."
+        "a": "No. Exposure X-ray & redaction self-test executes 100% inside your browser's local memory. No data leaves your device."
       },
       {
         "question": "Can AI agents or CLI scripts automate Exposure X-ray & redaction self-test?",
@@ -58,6 +58,6 @@
   "desc": "Drop any photo, PDF, or text snippet to see what it gives away: GPS pins, camera serials, timestamps, author history, and hidden PDF text layers—plus a Redaction Self-Test proving 0 hidden words are recoverable.",
   "accepts": "any",
   "tag": "X-Ray, 0 MB",
-  "std": "W3C WebAssembly Core 2.0",
-  "wasmModule": "/wasm/crypto/exposure-xray-v1.wasm"
+  "std": "ECMAScript (any modern browser)",
+  "wasmModule": "none (JavaScript, no engine binary)"
 }

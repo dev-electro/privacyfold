@@ -5,7 +5,7 @@
   "category": "photo",
   "badge": "WebGPU, 24 MB",
   "size": "14.7–45 MB OPFS",
-  "Engine": "modnet-ben-v2-fp16",
+  "Engine": "Plain JavaScript in your browser (no engine binary)",
   "description": "Isolate portraits, signatures, or products onto a transparent PNG or studio backdrop locally using BEN v2 / MODNet via ONNX Runtime WebGPU (~120ms per photo).",
   "zeroNetwork": true,
   "adFreeZone": false,
@@ -60,6 +60,6 @@
   "desc": "Isolate portraits, signatures, or products onto a transparent PNG or studio backdrop locally using BEN v2 / MODNet via ONNX Runtime WebGPU (~120ms per photo).",
   "accepts": "image",
   "tag": "WebGPU, 24 MB",
-  "std": "W3C WebAssembly Core 2.0",
-  "wasmModule": "modnet-ben-v2-fp16"
+  "std": "W3C HTML Canvas 2D",
+  "wasmModule": "none (JavaScript, no engine binary)"
 }

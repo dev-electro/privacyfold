@@ -11,14 +11,14 @@
   "task": "Crear fotos oficiales de pasaporte y visado biométrico",
   "badge": "JPG, PNG",
   "size": "18–120 KB WASM",
-  "Engine": "/wasm/photo/passport-photo-v1.wasm",
-  "wasmModule": "passport-photo-v1.wasm",
+  "Engine": "JavaScript",
+  "wasmModule": "JavaScript",
   "desc": "Las solicitudes de pasaportes internacionales, visados de viaje y documentos de identidad exigen un estricto cumplimiento de las normativas biométricas. PrivacyFold le permite encuadrar, recortar y calibrar sus fotos directamente en su navegador, con calibraciones para más de 87 jurisdicciones (incluyendo España DNI/Pasaporte 32x26mm, Schengen ICAO, EE.UU. y Reino Unido). Sus fotos privadas nunca se suben a ningún servidor.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "image/jpeg,image/png,image/webp",
   "tag": "Foto de Pasaporte",
-  "std": "ICAO 9303 / ISO 19794-5",
+  "std": "W3C HTML Canvas 2D + EXIF 2.32",
   "seo": {
     "metaTitle": "Creador Gratuito de Fotos de Pasaporte Online — 100% Local y Biométrico",
     "metaDescription": "Cree fotos oficiales de pasaporte, DNI y visados directamente en su navegador. Calibración biométrica y cero subida de archivos.",
@@ -39,7 +39,12 @@
         "answer": "Admite España DNI y pasaporte (32x26mm), Visado Schengen ICAO (35x45mm), Estados Unidos (2x2 pulgadas), Reino Unido, Canadá y más de 87 países."
       }
     ],
-    "keywords": ["foto pasaporte online", "foto dni online", "foto visado biometrica", "recortar foto pasaporte gratis"]
+    "keywords": [
+      "foto pasaporte online",
+      "foto dni online",
+      "foto visado biometrica",
+      "recortar foto pasaporte gratis"
+    ]
   },
   "whatToExpect": {
     "results": "Fotografía biométrica de alta resolución calibrada al milímetro para su documento oficial.",
@@ -57,7 +62,10 @@
   },
   "social": {
     "hook": "No regale sus fotos personales a servidores desconocidos. Cree su foto oficial de pasaporte o DNI con 100% de privacidad en su propio navegador.",
-    "channels": ["x", "whatsapp", "linkedin"]
+    "channels": [
+      "x",
+      "whatsapp",
+      "linkedin"
+    ]
   }
 }
-

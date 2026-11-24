@@ -5,7 +5,7 @@
   "category": "forms",
   "badge": "ATS, Resume",
   "size": "18–120 KB WASM",
-  "Engine": "/templates/resume-ats.json",
+  "Engine": "Plain JavaScript in your browser (no engine binary)",
   "description": "Build a clean, single-column ATS-compatible resume from `templates/resume-ats.json` that parses cleanly in Workday, Greenhouse, and Lever without storing your career history on resume websites.",
   "zeroNetwork": true,
   "adFreeZone": false,
@@ -58,6 +58,6 @@
   "desc": "Build a clean, single-column ATS-compatible resume from `templates/resume-ats.json` that parses cleanly in Workday, Greenhouse, and Lever without storing your career history on resume websites.",
   "accepts": "text",
   "tag": "ATS, Resume",
-  "std": "W3C WebAssembly Core 2.0",
-  "wasmModule": "/templates/resume-ats.json"
+  "std": "ECMAScript (any modern browser)",
+  "wasmModule": "none (JavaScript, no engine binary)"
 }

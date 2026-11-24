@@ -5,7 +5,7 @@
   "category": "pdf",
   "badge": "BM25 retrieval, no model",
   "size": "0 MB — no model",
-  "Engine": "bm25-retrieval",
+  "Engine": "Plain JavaScript in your browser (no engine binary)",
   "description": "Search document text with BM25 keyword scoring and get quoted passages plus the score that ranked them. Runs entirely in your browser.",
   "zeroNetwork": true,
   "adFreeZone": false,
@@ -58,7 +58,7 @@
   "desc": "Split pasted document text into passages, rank them against your question with BM25 keyword scoring, and quote the best passages with the score that found them. Retrieval is deterministic: you can see why a passage was chosen, and the answer is quoted rather than generated.",
   "accepts": "text",
   "tag": "BM25 retrieval, no model",
-  "std": "W3C WebAssembly Core 2.0",
+  "std": "ISO 32000-1 (PDF 1.7) via pdf-lib",
   "metaDescription": "Ask a question about a document and get the best-matching passages quoted with their BM25 score. Deterministic keyword retrieval in your browser, no embeddings, no uploads.",
   "aeoSummary": "Chat with a document splits text into passages and ranks them with BM25 scoring inside your browser tab. No embedding model is downloaded, and no text is uploaded.",
   "wasmModule": "none (BM25 scoring, no engine binary)"

@@ -87,7 +87,7 @@ walk(root);
 const wasmRefs = (runtime.match(/\/wasm\/[a-z0-9/._-]+\.wasm/gi) || []).length;
 const hostedOnDisk = wasmFiles.length;
 if (wasmRefs && !hostedOnDisk) blocker(`${wasmRefs} distinct /wasm/*.wasm paths referenced, 0 .wasm files on disk`);
-else if (hostedOnDisk) ok(`${hostedOnDisk} wasm binaries on disk (${wasmRefs} paths referenced by copy; unwired paths are planned engines, not blockers)`);
+else if (hostedOnDisk) ok(`${hostedOnDisk} wasm binary(s) on disk; libheif's wasm is inlined in /vendor/libheif.js (${wasmRefs} stale /wasm/*.wasm paths in copy)`);
 // every engine record marked hosted/live MUST have its real file and sha256
 const sri = JSON.parse(read('privacyfold-nextjs/public/config/wasm-sri.json') || read('content/config/wasm-sri.json') || '{}');
 let engineBad = 0;

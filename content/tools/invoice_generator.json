@@ -5,7 +5,7 @@
   "category": "forms",
   "badge": "Invoice, Billing",
   "size": "18–120 KB WASM",
-  "Engine": "/templates/invoice-us.json",
+  "Engine": "Plain JavaScript in your browser (no engine binary)",
   "description": "Generate itemized freelance or SMB invoices from `templates/invoice-us.json` with automatic line-item totals and tax calculation—zero cloud accounting accounts required.",
   "zeroNetwork": true,
   "adFreeZone": false,
@@ -58,6 +58,6 @@
   "desc": "Generate itemized freelance or SMB invoices from `templates/invoice-us.json` with automatic line-item totals and tax calculation—zero cloud accounting accounts required.",
   "accepts": "text",
   "tag": "Invoice, Billing",
-  "std": "W3C WebAssembly Core 2.0",
-  "wasmModule": "/templates/invoice-us.json"
+  "std": "ECMAScript (any modern browser)",
+  "wasmModule": "none (JavaScript, no engine binary)"
 }

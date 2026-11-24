@@ -11,14 +11,14 @@
   "task": "Cifrar archivos con AES-256-GCM en sobres HTML autodescifrables",
   "badge": "AES",
   "size": "18–120 KB WASM",
-  "Engine": "/wasm/crypto/file-encrypt-v1.wasm",
-  "wasmModule": "file-encrypt-v1.wasm",
+  "Engine": "JavaScript",
+  "wasmModule": "JavaScript",
   "desc": "Al compartir documentos financieros, declaraciones de impuestos o contratos confidenciales, los servicios tradicionales de almacenamiento en la nube guardan sus archivos sin cifrar o conservan las claves maestras. El cifrador de PrivacyFold utiliza cifrado militar AES-256-GCM con derivación de claves PBKDF2 (600.000 iteraciones SHA-256) directamente en el navegador a través de la API WebCrypto. Su archivo se empaqueta en un sobre HTML autodescifrable que cualquier persona con la contraseña puede abrir en cualquier navegador sin instalar aplicaciones ni requerir conexión a internet.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "*/*",
   "tag": "Cifrado de Archivos",
-  "std": "NIST SP 800-38D (AES-GCM) / RFC 8018 (PBKDF2)",
+  "std": "ECMAScript (any modern browser)",
   "seo": {
     "metaTitle": "Cifrador de Archivos Gratuito — Sobres HTML Autodescifrables (AES-256)",
     "metaDescription": "Cifre cualquier archivo localmente con AES-256-GCM y PBKDF2. Genera sobres HTML autodescifrables compatibles con cualquier navegador sin internet.",
@@ -39,7 +39,12 @@
         "answer": "No. Se trata de una arquitectura estricta de conocimiento cero. Su contraseña nunca se envía a ningún servidor. Si la pierde, los datos cifrados son matemáticamente irrecuperables."
       }
     ],
-    "keywords": ["cifrar archivos gratis", "cifrado aes 256 online", "proteger archivo con clave", "sobre html autodescifrable"]
+    "keywords": [
+      "cifrar archivos gratis",
+      "cifrado aes 256 online",
+      "proteger archivo con clave",
+      "sobre html autodescifrable"
+    ]
   },
   "whatToExpect": {
     "results": "Un sobre HTML independiente, portátil y autodescifrable.",
@@ -57,7 +62,10 @@
   },
   "social": {
     "hook": "No confíe sus documentos sensibles a plataformas en la nube. Cífrelos en sobres HTML autodescifrables con AES-256 sin intermediarios.",
-    "channels": ["x", "whatsapp", "linkedin"]
+    "channels": [
+      "x",
+      "whatsapp",
+      "linkedin"
+    ]
   }
 }
-

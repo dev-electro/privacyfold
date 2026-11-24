@@ -11,14 +11,14 @@
   "task": "Comprimir imágenes localmente sin subir datos a servidores",
   "badge": "JPG, PNG, WebP",
   "size": "18–120 KB WASM",
-  "Engine": "/wasm/image/image-compress-v1.wasm",
-  "wasmModule": "image-compress-v1.wasm",
+  "Engine": "JavaScript",
+  "wasmModule": "JavaScript",
   "desc": "La mayoría de los servicios de compresión en línea envían sus fotos personales a servidores remotos. El compresor de imágenes de PrivacyFold ejecuta algoritmos profesionales (MozJPEG, Google WebP y libpng) compilados directamente en WebAssembly en su navegador. Reduzca el peso de sus fotos hasta un 85% con límites exactos en kilobytes y cero fugas de privacidad.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "image/jpeg,image/png,image/webp,image/avif",
   "tag": "Compresión de Imagen",
-  "std": "W3C WebAssembly / MozJPEG",
+  "std": "W3C HTML Canvas 2D + File API",
   "seo": {
     "metaTitle": "Compresor de Imágenes Gratuito y Privado — 100% en el Navegador",
     "metaDescription": "Comprima imágenes JPEG, PNG y WebP localmente con WebAssembly. Límite exacto de KB y cero subida de archivos garantizada.",
@@ -39,7 +39,12 @@
         "answer": "Sí. El optimizador calcula automáticamente el factor de calidad para garantizar que el archivo final quede justo por debajo del límite indicado."
       }
     ],
-    "keywords": ["comprimir imagenes online", "reducir peso fotos", "comprimir jpg gratis", "compresor local"]
+    "keywords": [
+      "comprimir imagenes online",
+      "reducir peso fotos",
+      "comprimir jpg gratis",
+      "compresor local"
+    ]
   },
   "whatToExpect": {
     "results": "Reducción de tamaño de hasta un 85% preservando nitidez visual.",
@@ -57,7 +62,10 @@
   },
   "social": {
     "hook": "No entregue sus fotografías a servidores en la nube para comprimirlas. Hágalo de forma 100% privada e instantánea en su navegador.",
-    "channels": ["x", "whatsapp", "linkedin"]
+    "channels": [
+      "x",
+      "whatsapp",
+      "linkedin"
+    ]
   }
 }
-

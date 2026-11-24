@@ -5,7 +5,7 @@
   "category": "forms",
   "badge": "NDA, Contract",
   "size": "18–120 KB WASM",
-  "Engine": "/templates/nda-us.json",
+  "Engine": "Plain JavaScript in your browser (no engine binary)",
   "description": "Create a clean Mutual or Unilateral Non-Disclosure Agreement (NDA) from our local JSON template (`templates/nda-us.json`) without exposing party names to legal SaaS platforms.",
   "zeroNetwork": true,
   "adFreeZone": false,
@@ -58,6 +58,6 @@
   "desc": "Create a clean Mutual or Unilateral Non-Disclosure Agreement (NDA) from our local JSON template (`templates/nda-us.json`) without exposing party names to legal SaaS platforms.",
   "accepts": "none",
   "tag": "NDA, Contract",
-  "std": "W3C WebAssembly Core 2.0",
-  "wasmModule": "/templates/nda-us.json"
+  "std": "ECMAScript (any modern browser)",
+  "wasmModule": "none (JavaScript, no engine binary)"
 }

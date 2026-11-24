@@ -5,7 +5,7 @@
   "category": "pdf",
   "badge": "PNG, JPG, Page",
   "size": "18–120 KB WASM",
-  "Engine": "/wasm/pdf/vellum-diff-v1.wasm",
+  "Engine": "Plain JavaScript in your browser (no engine binary)",
   "description": "Overlay two versions of a document, contract or image to spot differences. Changed text, numbers or pixels are highlighted in red.",
   "zeroNetwork": true,
   "adFreeZone": false,
@@ -14,8 +14,8 @@
   "executionUrl": "https://privacyfold.com/tools/vellum_diff?mode=agent",
   "seo": {
     "metaTitle": "Document & image compare — 100% Private In-Browser Utility | PrivacyFold",
-    "metaDescription": "Overlay two versions of a document, contract or image to spot differences. Changed text, numbers or pixels are highlighted in red. Runs 100% locally in your browser via /wasm/pdf/vellum-diff-v1.wasm with zero file uploads.",
-    "aeoSummary": "Document & image compare processes files and text entirely inside your browser tab using /wasm/pdf/vellum-diff-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
+    "metaDescription": "Overlay two versions of a document, contract or image to spot differences. Changed text, numbers or pixels are highlighted in red. Runs 100% locally in your browser with zero file uploads.",
+    "aeoSummary": "Document & image compare processes files and text entirely inside your browser tab (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
       "document & image compare",
       "vellum diff",
@@ -35,9 +35,9 @@
     "faqs": [
       {
         "question": "Does Document & image compare upload my files or text to a server?",
-        "answer": "No. Document & image compare executes 100% inside your browser's local memory using /wasm/pdf/vellum-diff-v1.wasm. No data leaves your device.",
+        "answer": "No. Document & image compare executes 100% inside your browser's local memory. No data leaves your device.",
         "q": "Does Document & image compare upload my files or text to a server?",
-        "a": "No. Document & image compare executes 100% inside your browser's local memory using /wasm/pdf/vellum-diff-v1.wasm. No data leaves your device."
+        "a": "No. Document & image compare executes 100% inside your browser's local memory. No data leaves your device."
       },
       {
         "question": "Can AI agents or CLI scripts automate Document & image compare?",
@@ -58,6 +58,6 @@
   "desc": "Overlay two versions of a document, contract or image to spot differences. Changed text, numbers or pixels are highlighted in red.",
   "accepts": "image",
   "tag": "PNG, JPG, Page",
-  "std": "W3C WebAssembly Core 2.0",
-  "wasmModule": "/wasm/pdf/vellum-diff-v1.wasm"
+  "std": "ISO 32000-1 (PDF 1.7) via pdf-lib",
+  "wasmModule": "none (JavaScript, no engine binary)"
 }

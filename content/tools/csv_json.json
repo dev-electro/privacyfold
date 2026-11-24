@@ -5,7 +5,7 @@
   "category": "dev",
   "badge": "CSV, JSON",
   "size": "18–120 KB WASM",
-  "Engine": "/wasm/dev/csv-json-v1.wasm",
+  "Engine": "Plain JavaScript in your browser (no engine binary)",
   "description": "Convert CSV spreadsheets into structured JSON arrays, or convert JSON arrays back into CSV rows.",
   "zeroNetwork": true,
   "adFreeZone": false,
@@ -14,8 +14,8 @@
   "executionUrl": "https://privacyfold.com/tools/csv_json?mode=agent",
   "seo": {
     "metaTitle": "CSV ↔ JSON converter — 100% Private In-Browser Utility | PrivacyFold",
-    "metaDescription": "Convert CSV spreadsheets into structured JSON arrays, or convert JSON arrays back into CSV rows. Runs 100% locally in your browser via /wasm/dev/csv-json-v1.wasm with zero file uploads.",
-    "aeoSummary": "CSV ↔ JSON converter processes files and text entirely inside your browser tab using /wasm/dev/csv-json-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
+    "metaDescription": "Convert CSV spreadsheets into structured JSON arrays, or convert JSON arrays back into CSV rows. Runs 100% locally in your browser with zero file uploads.",
+    "aeoSummary": "CSV ↔ JSON converter processes files and text entirely inside your browser tab (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
       "csv ↔ json converter",
       "csv json",
@@ -35,9 +35,9 @@
     "faqs": [
       {
         "question": "Does CSV ↔ JSON converter upload my files or text to a server?",
-        "answer": "No. CSV ↔ JSON converter executes 100% inside your browser's local memory using /wasm/dev/csv-json-v1.wasm. No data leaves your device.",
+        "answer": "No. CSV ↔ JSON converter executes 100% inside your browser's local memory. No data leaves your device.",
         "q": "Does CSV ↔ JSON converter upload my files or text to a server?",
-        "a": "No. CSV ↔ JSON converter executes 100% inside your browser's local memory using /wasm/dev/csv-json-v1.wasm. No data leaves your device."
+        "a": "No. CSV ↔ JSON converter executes 100% inside your browser's local memory. No data leaves your device."
       },
       {
         "question": "Can AI agents or CLI scripts automate CSV ↔ JSON converter?",
@@ -58,6 +58,6 @@
   "desc": "Convert CSV spreadsheets into structured JSON arrays, or convert JSON arrays back into CSV rows.",
   "accepts": "text",
   "tag": "CSV, JSON",
-  "std": "W3C WebAssembly Core 2.0",
-  "wasmModule": "/wasm/dev/csv-json-v1.wasm"
+  "std": "ECMAScript (any modern browser)",
+  "wasmModule": "none (JavaScript, no engine binary)"
 }

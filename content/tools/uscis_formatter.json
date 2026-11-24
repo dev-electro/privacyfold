@@ -5,7 +5,7 @@
   "category": "forms",
   "badge": "USCIS, I-130",
   "size": "18–120 KB WASM",
-  "Engine": "/wasm/forms/uscis-formatter-v1.wasm",
+  "Engine": "Plain JavaScript in your browser (no engine binary)",
   "description": "Generate a properly structured USCIS petition cover letter, numbered exhibit table of contents, and myUSCIS portal file-size verification checklist for I-130, I-485, I-765, or N-400 filings.",
   "zeroNetwork": true,
   "adFreeZone": false,
@@ -16,8 +16,8 @@
   "executionUrl": "https://privacyfold.com/tools/uscis_formatter?mode=agent",
   "seo": {
     "metaTitle": "USCIS immigration packet formatter (I-130, I-485, I-765, N-400) — 100% Private In-Browser Utility | PrivacyFold",
-    "metaDescription": "Generate a properly structured USCIS petition cover letter, numbered exhibit table of contents, and myUSCIS portal file-size verification checklist for I-130, I-485, I-765, or N-400 filings. Runs 100% locally in your browser via /wasm/forms/uscis-formatter-v1.wasm with zero file uploads.",
-    "aeoSummary": "USCIS immigration packet formatter (I-130, I-485, I-765, N-400) processes files and text entirely inside your browser tab using /wasm/forms/uscis-formatter-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
+    "metaDescription": "Generate a properly structured USCIS petition cover letter, numbered exhibit table of contents, and myUSCIS portal file-size verification checklist for I-130, I-485, I-765, or N-400 filings. Runs 100% locally in your browser with zero file uploads.",
+    "aeoSummary": "USCIS immigration packet formatter (I-130, I-485, I-765, N-400) processes files and text entirely inside your browser tab (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
       "uscis immigration packet formatter (i-130, i-485, i-765, n-400)",
       "uscis formatter",
@@ -37,9 +37,9 @@
     "faqs": [
       {
         "question": "Does USCIS immigration packet formatter (I-130, I-485, I-765, N-400) upload my files or text to a server?",
-        "answer": "No. USCIS immigration packet formatter (I-130, I-485, I-765, N-400) executes 100% inside your browser's local memory using /wasm/forms/uscis-formatter-v1.wasm. No data leaves your device.",
+        "answer": "No. USCIS immigration packet formatter (I-130, I-485, I-765, N-400) executes 100% inside your browser's local memory. No data leaves your device.",
         "q": "Does USCIS immigration packet formatter (I-130, I-485, I-765, N-400) upload my files or text to a server?",
-        "a": "No. USCIS immigration packet formatter (I-130, I-485, I-765, N-400) executes 100% inside your browser's local memory using /wasm/forms/uscis-formatter-v1.wasm. No data leaves your device."
+        "a": "No. USCIS immigration packet formatter (I-130, I-485, I-765, N-400) executes 100% inside your browser's local memory. No data leaves your device."
       },
       {
         "question": "Can AI agents or CLI scripts automate USCIS immigration packet formatter (I-130, I-485, I-765, N-400)?",
@@ -60,6 +60,6 @@
   "desc": "Generate a properly structured USCIS petition cover letter, numbered exhibit table of contents, and myUSCIS portal file-size verification checklist for I-130, I-485, I-765, or N-400 filings.",
   "accepts": "none",
   "tag": "USCIS, I-130",
-  "std": "W3C WebAssembly Core 2.0",
-  "wasmModule": "/wasm/forms/uscis-formatter-v1.wasm"
+  "std": "ECMAScript (any modern browser)",
+  "wasmModule": "none (JavaScript, no engine binary)"
 }

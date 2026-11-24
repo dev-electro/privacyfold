@@ -11,14 +11,14 @@
   "task": "Créer des photos d'identité biométriques officielles",
   "badge": "JPG, PNG",
   "size": "18–120 KB WASM",
-  "Engine": "/wasm/photo/passport-photo-v1.wasm",
-  "wasmModule": "passport-photo-v1.wasm",
+  "Engine": "JavaScript",
+  "wasmModule": "JavaScript",
   "desc": "Les démarches pour passeport français, titre de séjour ou carte nationale d'identité (ANTS) imposent des normes biométriques strictes. PrivacyFold vous permet de cadrer, découper et calibrer vos photos d'identité directement dans votre navigateur selon les critères ICAO 9303 et normes européennes. Vos portraits ne quittent jamais votre terminal et ne sont jamais transférés vers un serveur.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "image/jpeg,image/png,image/webp",
   "tag": "Photo d'Identité",
-  "std": "ICAO 9303 / Norme ANTS ISO/IEC 19794-5",
+  "std": "W3C HTML Canvas 2D + EXIF 2.32",
   "seo": {
     "metaTitle": "Photo d'Identité Biométrique en Ligne Gratuite — 100% Conforme ANTS",
     "metaDescription": "Créez vos photos d'identité pour passeport, permis de conduire et carte d'identité (35x45mm) directement dans votre navigateur. Zéro upload vers un serveur.",
@@ -39,7 +39,12 @@
         "answer": "Oui, les dimensions 35x45mm avec hauteur de visage entre 32 et 36 mm respectent rigoureusement les normes de l'ANTS et du ministère de l'Intérieur."
       }
     ],
-    "keywords": ["photo identite en ligne", "photo passeport ants", "photo visa 35x45", "photo d identite gratuite"]
+    "keywords": [
+      "photo identite en ligne",
+      "photo passeport ants",
+      "photo visa 35x45",
+      "photo d identite gratuite"
+    ]
   },
   "whatToExpect": {
     "results": "Photo d'identité nette et parfaitement calibrée au millimètre près pour vos démarches officielles.",
@@ -57,7 +62,9 @@
   },
   "social": {
     "hook": "Ne confiez pas votre visage à des serveurs tiers. Générez vos photos d'identité officielles en toute confidentialité dans votre propre navigateur.",
-    "channels": ["x", "linkedin"]
+    "channels": [
+      "x",
+      "linkedin"
+    ]
   }
 }
-

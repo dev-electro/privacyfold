@@ -1,0 +1,12 @@
+id: libheif
+type: wasm
+family: image
+path: /vendor/libheif.js
+sha256: 074b2b55ef3de477ba9f794ca381f3f0324c1cba8c91b4af07395f39c22d54cc
+version: "1.19.8"
+source_repository: https://github.com/strukturag/libheif (emscripten build, vendored to /vendor)
+license: LGPL-3.0
+size_kb: 1996
+status: hosted
+note: WebAssembly payload is inlined in the JS bundle; no separate .wasm request
+tasks: [heic_to_jpg]

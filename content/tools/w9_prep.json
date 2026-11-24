@@ -5,7 +5,7 @@
   "category": "forms",
   "badge": "IRS",
   "size": "18–120 KB WASM",
-  "Engine": "/wasm/forms/w9-prep-v1.wasm",
+  "Engine": "Plain JavaScript in your browser (no engine binary)",
   "description": "When onboarding as an independent contractor, vendor, or freelancer in the United States, clients routinely request IRS Form W-9 (Request for Taxpayer Identification Number and Certification). Form W-9 requires sensitive financial and personal data, including your full legal name, business entity classification (sole proprietor, LLC, C Corp, S Corp), address, and your Social Security Number (SSN) or Employer Identification Number (EIN). Using online PDF form fillers exposes your SSN—the primary credential for US identity theft—to commercial cloud databases. PrivacyFold's IRS Form W-9 Tax Worksheet allows contractors to format, validate, and calculate their W-9 data entirely inside local browser memory. No tax data is ever uploaded, ensuring complete compliance with IRS privacy guidelines and zero exposure of your SSN.",
   "zeroNetwork": true,
   "adFreeZone": true,
@@ -74,8 +74,8 @@
   "desc": "When onboarding as an independent contractor, vendor, or freelancer in the United States, clients routinely request IRS Form W-9 (Request for Taxpayer Identification Number and Certification). Form W-9 requires sensitive financial and personal data, including your full legal name, business entity classification (sole proprietor, LLC, C Corp, S Corp), address, and your Social Security Number (SSN) or Employer Identification Number (EIN). Using online PDF form fillers exposes your SSN—the primary credential for US identity theft—to commercial cloud databases. PrivacyFold's IRS Form W-9 Tax Worksheet allows contractors to format, validate, and calculate their W-9 data entirely inside local browser memory. No tax data is ever uploaded, ensuring complete compliance with IRS privacy guidelines and zero exposure of your SSN.",
   "accepts": "none",
   "tag": "IRS",
-  "std": "W3C WebAssembly Core 2.0",
-  "wasmModule": "/wasm/forms/w9-prep-v1.wasm",
+  "std": "ECMAScript (any modern browser)",
+  "wasmModule": "none (JavaScript, no engine binary)",
   "settingsExplained": [
     {
       "name": "Federal Tax Classification",
@@ -128,8 +128,17 @@
   "social": {
     "hook": "Filling tax forms on random online PDF editors exposes your SSN and EIN.",
     "proof": "Prepares and fills your IRS Form W-9 100% locally in your browser memory.",
-    "hashtags": ["taxes", "freelance", "compliance", "privacy"],
+    "hashtags": [
+      "taxes",
+      "freelance",
+      "compliance",
+      "privacy"
+    ],
     "clip": "w9-prep-demo.mp4",
-    "channels": ["x", "linkedin", "reddit"]
+    "channels": [
+      "x",
+      "linkedin",
+      "reddit"
+    ]
   }
 }

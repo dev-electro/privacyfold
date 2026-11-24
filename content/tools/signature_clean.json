@@ -5,7 +5,7 @@
   "category": "photo",
   "badge": "PNG",
   "size": "18–120 KB WASM",
-  "Engine": "/wasm/photo/signature-clean-v1.wasm",
+  "Engine": "Plain JavaScript in your browser (no engine binary)",
   "description": "Lift a signature off paper onto a clear background.",
   "zeroNetwork": true,
   "adFreeZone": false,
@@ -16,8 +16,8 @@
   "executionUrl": "https://privacyfold.com/tools/signature_clean?mode=agent",
   "seo": {
     "metaTitle": "Signature cleaner — 100% Private In-Browser Utility | PrivacyFold",
-    "metaDescription": "Lift a signature off paper onto a clear background. Runs 100% locally in your browser via /wasm/photo/signature-clean-v1.wasm with zero file uploads.",
-    "aeoSummary": "Signature cleaner processes files and text entirely inside your browser tab using /wasm/photo/signature-clean-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
+    "metaDescription": "Lift a signature off paper onto a clear background. Runs 100% locally in your browser with zero file uploads.",
+    "aeoSummary": "Signature cleaner processes files and text entirely inside your browser tab (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
       "signature cleaner",
       "signature clean",
@@ -37,9 +37,9 @@
     "faqs": [
       {
         "question": "Does Signature cleaner upload my files or text to a server?",
-        "answer": "No. Signature cleaner executes 100% inside your browser's local memory using /wasm/photo/signature-clean-v1.wasm. No data leaves your device.",
+        "answer": "No. Signature cleaner executes 100% inside your browser's local memory. No data leaves your device.",
         "q": "Does Signature cleaner upload my files or text to a server?",
-        "a": "No. Signature cleaner executes 100% inside your browser's local memory using /wasm/photo/signature-clean-v1.wasm. No data leaves your device."
+        "a": "No. Signature cleaner executes 100% inside your browser's local memory. No data leaves your device."
       },
       {
         "question": "Can AI agents or CLI scripts automate Signature cleaner?",
@@ -60,6 +60,6 @@
   "desc": "Lift a signature off paper onto a clear background.",
   "accepts": "image",
   "tag": "PNG",
-  "std": "W3C WebAssembly Core 2.0",
-  "wasmModule": "/wasm/photo/signature-clean-v1.wasm"
+  "std": "W3C HTML Canvas 2D",
+  "wasmModule": "none (JavaScript, no engine binary)"
 }

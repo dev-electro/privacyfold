@@ -5,7 +5,7 @@
   "category": "crypto",
   "badge": "Rampart 14.7 MB",
   "size": "14.7–45 MB OPFS",
-  "Engine": "rampart-minilm-l6",
+  "Engine": "Plain JavaScript in your browser (no engine binary)",
   "description": "Detect personal data (names, emails, SSN/NINO, IBAN, credit cards, phones, API keys) on your device, replace them with tokens ([PERSON_1], [EMAIL_1]) before pasting into ChatGPT/Claude, and restore real values locally afterwards.",
   "zeroNetwork": true,
   "adFreeZone": true,
@@ -60,6 +60,6 @@
   "desc": "Detect personal data (names, emails, SSN/NINO, IBAN, credit cards, phones, API keys) on your device, replace them with tokens ([PERSON_1], [EMAIL_1]) before pasting into ChatGPT/Claude, and restore real values locally afterwards.",
   "accepts": "text",
   "tag": "Rampart 14.7 MB",
-  "std": "W3C WebAssembly Core 2.0",
-  "wasmModule": "rampart-minilm-l6"
+  "std": "ECMAScript (any modern browser)",
+  "wasmModule": "none (JavaScript, no engine binary)"
 }

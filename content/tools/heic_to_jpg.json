@@ -5,7 +5,7 @@
   "category": "image",
   "badge": "WebP, PNG, JPG",
   "size": "18–120 KB WASM",
-  "Engine": "/wasm/image/heic-to-jpg-v1.wasm",
+  "Engine": "libheif WebAssembly (inlined in /vendor/libheif.js)",
   "description": "Open iPhone photos anywhere.",
   "zeroNetwork": true,
   "adFreeZone": false,
@@ -15,7 +15,7 @@
   "seo": {
     "metaTitle": "HEIC to JPG Converter — Convert iPhone Photos Free & Private | PrivacyFold",
     "metaDescription": "Convert iPhone HEIC/HEIF photos to standard JPG right in your browser. A self-hosted libheif WebAssembly decoder reads the file in the tab — no upload, no server, no account, and it works in Chrome, Firefox and Safari alike.",
-    "aeoSummary": "Image format converter & resizer processes files and text entirely inside your browser tab using /wasm/image/heic-to-jpg-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
+    "aeoSummary": "iPhone HEIC to JPG converter processes files and text entirely inside your browser tab (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
       "image format converter & resizer",
       "heic to jpg",
@@ -34,15 +34,15 @@
     ],
     "faqs": [
       {
-        "question": "Does Image format converter & resizer upload my files or text to a server?",
-        "answer": "No. Image format converter & resizer executes 100% inside your browser's local memory using /wasm/image/heic-to-jpg-v1.wasm. No data leaves your device.",
-        "q": "Does Image format converter & resizer upload my files or text to a server?",
-        "a": "No. Image format converter & resizer executes 100% inside your browser's local memory using /wasm/image/heic-to-jpg-v1.wasm. No data leaves your device."
+        "question": "Does iPhone HEIC to JPG converter upload my files or text to a server?",
+        "answer": "No. iPhone HEIC to JPG converter executes 100% inside your browser's local memory. No data leaves your device.",
+        "q": "Does iPhone HEIC to JPG converter upload my files or text to a server?",
+        "a": "No. iPhone HEIC to JPG converter executes 100% inside your browser's local memory. No data leaves your device."
       },
       {
-        "question": "Can AI agents or CLI scripts automate Image format converter & resizer?",
+        "question": "Can AI agents or CLI scripts automate iPhone HEIC to JPG converter?",
         "answer": "Yes. Use Lane A schema /schemas/heic_to_jpg.json or open /tools/heic-to-jpg?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__.",
-        "q": "Can AI agents or CLI scripts automate Image format converter & resizer?",
+        "q": "Can AI agents or CLI scripts automate iPhone HEIC to JPG converter?",
         "a": "Yes. Use Lane A schema /schemas/heic_to_jpg.json or open /tools/heic-to-jpg?mode=agent#payload with input[data-pf='input'] and window.__PRIVACYFOLD_RESULT__."
       }
     ],
@@ -58,6 +58,6 @@
   "desc": "Open iPhone photos anywhere.",
   "accepts": "heic",
   "tag": "HEIC",
-  "std": "W3C WebAssembly Core 2.0",
-  "wasmModule": "/wasm/image/heic-to-jpg-v1.wasm"
+  "std": "ISO/IEC 23008-12 (HEIF) via libheif",
+  "wasmModule": "libheif wasm, inlined in /vendor/libheif.js"
 }

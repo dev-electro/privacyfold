@@ -11,15 +11,15 @@
   "category": "image",
   "badge": "JPG, PNG",
   "size": "18–120 KB WASM",
-  "Engine": "/wasm/image/exif-strip-v1.wasm",
+  "Engine": "JavaScript",
   "fam": "photo",
   "task": "Supprimez les coordonnées GPS et métadonnées EXIF des photos",
   "glyph": "EXIF",
   "desc": "Les photos prises par smartphone ou appareil photo numérique contiennent des métadonnées EXIF incluant vos coordonnées GPS précises, votre modèle d'appareil et des horodatages. PrivacyFold supprime ces données directement dans la mémoire de votre navigateur, sans aucun téléversement vers des serveurs distants.",
   "accepts": "image",
   "tag": "JPG, PNG, WebP",
-  "std": "CIPA DC-008 EXIF 2.32",
-  "wasmModule": "/wasm/image/exif-strip-v1.wasm",
+  "std": "W3C HTML Canvas 2D + EXIF 2.32",
+  "wasmModule": "JavaScript",
   "zeroNetwork": true,
   "adFreeZone": false,
   "presets": [],
@@ -81,8 +81,14 @@
   "social": {
     "hook": "Vos photos révèlent où vous habitez. Supprimez le GPS en 1 clic.",
     "proof": "Nettoie 6 marqueurs de métadonnées dans la RAM du navigateur.",
-    "hashtags": ["confidentialite", "securite", "photo"],
-    "channels": ["x", "linkedin"]
+    "hashtags": [
+      "confidentialite",
+      "securite",
+      "photo"
+    ],
+    "channels": [
+      "x",
+      "linkedin"
+    ]
   }
 }
-

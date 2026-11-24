@@ -5,7 +5,7 @@
   "category": "pdf",
   "badge": "eIDAS, SHA-256",
   "size": "18–120 KB WASM",
-  "Engine": "/wasm/pdf/eidas-sign-v1.wasm",
+  "Engine": "Plain JavaScript in your browser (no engine binary)",
   "description": "Create a local electronic signature manifest with SHA-256 document digest, signer statement, and UTC timestamp in alignment with EU eIDAS (Regulation 910/2014) and US ESIGN Act principles.",
   "zeroNetwork": true,
   "adFreeZone": false,
@@ -16,8 +16,8 @@
   "executionUrl": "https://privacyfold.com/tools/eidas_sign?mode=agent",
   "seo": {
     "metaTitle": "eIDAS & local document signer — 100% Private In-Browser Utility | PrivacyFold",
-    "metaDescription": "Create a local electronic signature manifest with SHA-256 document digest, signer statement, and UTC timestamp in alignment with EU eIDAS (Regulation 910/2014) and US ESIGN Act principles. Runs 100% locally in your browser via /wasm/pdf/eidas-sign-v1.wasm with zero file uploads.",
-    "aeoSummary": "eIDAS & local document signer processes files and text entirely inside your browser tab using /wasm/pdf/eidas-sign-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
+    "metaDescription": "Create a local electronic signature manifest with SHA-256 document digest, signer statement, and UTC timestamp in alignment with EU eIDAS (Regulation 910/2014) and US ESIGN Act principles. Runs 100% locally in your browser with zero file uploads.",
+    "aeoSummary": "eIDAS & local document signer processes files and text entirely inside your browser tab (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
       "eidas & local document signer",
       "eidas sign",
@@ -37,9 +37,9 @@
     "faqs": [
       {
         "question": "Does eIDAS & local document signer upload my files or text to a server?",
-        "answer": "No. eIDAS & local document signer executes 100% inside your browser's local memory using /wasm/pdf/eidas-sign-v1.wasm. No data leaves your device.",
+        "answer": "No. eIDAS & local document signer executes 100% inside your browser's local memory. No data leaves your device.",
         "q": "Does eIDAS & local document signer upload my files or text to a server?",
-        "a": "No. eIDAS & local document signer executes 100% inside your browser's local memory using /wasm/pdf/eidas-sign-v1.wasm. No data leaves your device."
+        "a": "No. eIDAS & local document signer executes 100% inside your browser's local memory. No data leaves your device."
       },
       {
         "question": "Can AI agents or CLI scripts automate eIDAS & local document signer?",
@@ -60,6 +60,6 @@
   "desc": "Create a local electronic signature manifest with SHA-256 document digest, signer statement, and UTC timestamp in alignment with EU eIDAS (Regulation 910/2014) and US ESIGN Act principles.",
   "accepts": "text",
   "tag": "eIDAS, SHA-256",
-  "std": "W3C WebAssembly Core 2.0",
-  "wasmModule": "/wasm/pdf/eidas-sign-v1.wasm"
+  "std": "ISO 32000-1 (PDF 1.7) via pdf-lib",
+  "wasmModule": "none (JavaScript, no engine binary)"
 }

@@ -5,7 +5,7 @@
   "category": "dev",
   "badge": "JSON-LD, AEO",
   "size": "18–120 KB WASM",
-  "Engine": "/wasm/dev/schema-validator-v1.wasm",
+  "Engine": "Plain JavaScript in your browser (no engine binary)",
   "description": "Validate Schema.org JSON-LD (`SoftwareApplication`, `FAQPage`, `HowTo`, `Article`) for Google Search and AI citations, or generate a `robots.txt` file with explicit GPTBot, ClaudeBot, and PerplexityBot rules.",
   "zeroNetwork": true,
   "adFreeZone": false,
@@ -16,8 +16,8 @@
   "executionUrl": "https://privacyfold.com/tools/schema_validator?mode=agent",
   "seo": {
     "metaTitle": "Schema.org JSON-LD validator & robots.txt generator — 100% Private In-Browser Utility | PrivacyFold",
-    "metaDescription": "Validate Schema.org JSON-LD (`SoftwareApplication`, `FAQPage`, `HowTo`, `Article`) for Google Search and AI citations, or generate a `robots.txt` file with explicit GPTBot, ClaudeBot, and PerplexityBot rules. Runs 100% locally in your browser via /wasm/dev/schema-validator-v1.wasm with zero file uploads.",
-    "aeoSummary": "Schema.org JSON-LD validator & robots.txt generator processes files and text entirely inside your browser tab using /wasm/dev/schema-validator-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
+    "metaDescription": "Validate Schema.org JSON-LD (`SoftwareApplication`, `FAQPage`, `HowTo`, `Article`) for Google Search and AI citations, or generate a `robots.txt` file with explicit GPTBot, ClaudeBot, and PerplexityBot rules. Runs 100% locally in your browser with zero file uploads.",
+    "aeoSummary": "Schema.org JSON-LD validator & robots.txt generator processes files and text entirely inside your browser tab (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
       "schema.org json-ld validator & robots.txt generator",
       "schema validator",
@@ -37,9 +37,9 @@
     "faqs": [
       {
         "question": "Does Schema.org JSON-LD validator & robots.txt generator upload my files or text to a server?",
-        "answer": "No. Schema.org JSON-LD validator & robots.txt generator executes 100% inside your browser's local memory using /wasm/dev/schema-validator-v1.wasm. No data leaves your device.",
+        "answer": "No. Schema.org JSON-LD validator & robots.txt generator executes 100% inside your browser's local memory. No data leaves your device.",
         "q": "Does Schema.org JSON-LD validator & robots.txt generator upload my files or text to a server?",
-        "a": "No. Schema.org JSON-LD validator & robots.txt generator executes 100% inside your browser's local memory using /wasm/dev/schema-validator-v1.wasm. No data leaves your device."
+        "a": "No. Schema.org JSON-LD validator & robots.txt generator executes 100% inside your browser's local memory. No data leaves your device."
       },
       {
         "question": "Can AI agents or CLI scripts automate Schema.org JSON-LD validator & robots.txt generator?",
@@ -60,6 +60,6 @@
   "desc": "Validate Schema.org JSON-LD (`SoftwareApplication`, `FAQPage`, `HowTo`, `Article`) for Google Search and AI citations, or generate a `robots.txt` file with explicit GPTBot, ClaudeBot, and PerplexityBot rules.",
   "accepts": "text",
   "tag": "JSON-LD, AEO",
-  "std": "W3C WebAssembly Core 2.0",
-  "wasmModule": "/wasm/dev/schema-validator-v1.wasm"
+  "std": "ECMAScript (any modern browser)",
+  "wasmModule": "none (JavaScript, no engine binary)"
 }

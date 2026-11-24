@@ -5,7 +5,7 @@
   "category": "pdf",
   "badge": "PDF",
   "size": "18–120 KB WASM",
-  "Engine": "/wasm/pdf/pdf-merge-v1.wasm",
+  "Engine": "Plain JavaScript in your browser (no engine binary)",
   "description": "Combining confidential documents—such as tax returns, bank statements, employment verifications, and medical records—is a standard administrative requirement for visa, loan, mortgage, and legal applications. However, standard online PDF merge websites require you to upload your sensitive multi-page documents to their remote servers, exposing private financial and personal identity records to server log retention and potential cloud data breaches. PrivacyFold's Private PDF Merger combines, reorders, and binds PDF files entirely within your web browser's client-side memory using WebAssembly and pure client-side PDF object streaming. Your original PDFs never leave your machine, ensuring full compliance with HIPAA, GDPR, attorney-client privilege, and enterprise confidentiality requirements.",
   "zeroNetwork": true,
   "adFreeZone": false,
@@ -76,8 +76,8 @@
   "desc": "Combining confidential documents—such as tax returns, bank statements, employment verifications, and medical records—is a standard administrative requirement for visa, loan, mortgage, and legal applications. However, standard online PDF merge websites require you to upload your sensitive multi-page documents to their remote servers, exposing private financial and personal identity records to server log retention and potential cloud data breaches. PrivacyFold's Private PDF Merger combines, reorders, and binds PDF files entirely within your web browser's client-side memory using WebAssembly and pure client-side PDF object streaming. Your original PDFs never leave your machine, ensuring full compliance with HIPAA, GDPR, attorney-client privilege, and enterprise confidentiality requirements.",
   "accepts": "pdf",
   "tag": "PDF",
-  "std": "W3C WebAssembly Core 2.0",
-  "wasmModule": "/wasm/pdf/pdf-merge-v1.wasm",
+  "std": "ISO 32000-1 (PDF 1.7) via pdf-lib",
+  "wasmModule": "none (JavaScript, no engine binary)",
   "settingsExplained": [
     {
       "name": "Document Ordering",
@@ -126,8 +126,17 @@
   "social": {
     "hook": "Merge confidential legal and financial PDFs without cloud servers reading them.",
     "proof": "Stitches PDF cross-reference tables and page trees directly in client RAM.",
-    "hashtags": ["pdf", "contracts", "privacy", "security"],
+    "hashtags": [
+      "pdf",
+      "contracts",
+      "privacy",
+      "security"
+    ],
     "clip": "pdf-merge-demo.mp4",
-    "channels": ["x", "linkedin", "reddit"]
+    "channels": [
+      "x",
+      "linkedin",
+      "reddit"
+    ]
   }
 }

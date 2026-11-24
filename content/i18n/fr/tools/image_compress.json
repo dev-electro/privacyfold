@@ -11,14 +11,14 @@
   "task": "Compresser des images localement sans transfert vers un serveur",
   "badge": "JPG, PNG, WebP",
   "size": "18–120 KB WASM",
-  "Engine": "/wasm/image/image-compress-v1.wasm",
-  "wasmModule": "image-compress-v1.wasm",
+  "Engine": "JavaScript",
+  "wasmModule": "JavaScript",
   "desc": "La plupart des services de compression en ligne obligent à transmettre vos photographies et documents confidentiels à des serveurs tiers. PrivacyFold embarque directement les encodeurs industriels MozJPEG, Google WebP et libpng compilés en WebAssembly dans votre navigateur. Vous pouvez réduire le poids de vos clichés jusqu'à 85% avec un ciblage précis en kilo-octets, sans aucun envoi vers un serveur.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "image/jpeg,image/png,image/webp,image/avif",
   "tag": "Compression Image",
-  "std": "W3C WebAssembly / MozJPEG",
+  "std": "W3C HTML Canvas 2D + File API",
   "seo": {
     "metaTitle": "Compresseur d'Images en Ligne Gratuit — 100% Local & Zéro Upload",
     "metaDescription": "Compressez vos images JPEG, PNG et WebP directement dans votre navigateur grâce à WebAssembly. Définissez une taille cible en Ko en toute confidentialité.",
@@ -39,7 +39,12 @@
         "answer": "Oui. L'outil calcule automatiquement le meilleur compromis de compression pour respecter rigoureusement le plafond en kilo-octets que vous indiquez."
       }
     ],
-    "keywords": ["compresser image en ligne", "reduire taille photo", "compresseur jpg gratuit", "compresseur sans upload"]
+    "keywords": [
+      "compresser image en ligne",
+      "reduire taille photo",
+      "compresseur jpg gratuit",
+      "compresseur sans upload"
+    ]
   },
   "whatToExpect": {
     "results": "Jusqu'à 85% d'économie d'espace tout en préservant la netteté perçue.",
@@ -57,7 +62,9 @@
   },
   "social": {
     "hook": "Ne confiez pas vos images personnelles à des serveurs inconnus. Compressez-les instantanément et en toute confidentialité dans votre navigateur.",
-    "channels": ["x", "linkedin"]
+    "channels": [
+      "x",
+      "linkedin"
+    ]
   }
 }
-

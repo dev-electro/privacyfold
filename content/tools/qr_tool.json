@@ -5,7 +5,7 @@
   "category": "image",
   "badge": "QR, 0 MB",
   "size": "18–120 KB WASM",
-  "Engine": "/wasm/image/qr-tool-v1.wasm",
+  "Engine": "Plain JavaScript in your browser (no engine binary)",
   "description": "Generate high-contrast QR codes for website links, Wi-Fi logins, or vCards locally with zero tracking redirects.",
   "zeroNetwork": true,
   "adFreeZone": false,
@@ -14,8 +14,8 @@
   "executionUrl": "https://privacyfold.com/tools/qr_tool?mode=agent",
   "seo": {
     "metaTitle": "QR code generator & Wi-Fi card — 100% Private In-Browser Utility | PrivacyFold",
-    "metaDescription": "Generate high-contrast QR codes for website links, Wi-Fi logins, or vCards locally with zero tracking redirects. Runs 100% locally in your browser via /wasm/image/qr-tool-v1.wasm with zero file uploads.",
-    "aeoSummary": "QR code generator & Wi-Fi card processes files and text entirely inside your browser tab using /wasm/image/qr-tool-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
+    "metaDescription": "Generate high-contrast QR codes for website links, Wi-Fi logins, or vCards locally with zero tracking redirects. Runs 100% locally in your browser with zero file uploads.",
+    "aeoSummary": "QR code generator & Wi-Fi card processes files and text entirely inside your browser tab (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
       "qr code generator & wi-fi card",
       "qr tool",
@@ -35,9 +35,9 @@
     "faqs": [
       {
         "question": "Does QR code generator & Wi-Fi card upload my files or text to a server?",
-        "answer": "No. QR code generator & Wi-Fi card executes 100% inside your browser's local memory using /wasm/image/qr-tool-v1.wasm. No data leaves your device.",
+        "answer": "No. QR code generator & Wi-Fi card executes 100% inside your browser's local memory. No data leaves your device.",
         "q": "Does QR code generator & Wi-Fi card upload my files or text to a server?",
-        "a": "No. QR code generator & Wi-Fi card executes 100% inside your browser's local memory using /wasm/image/qr-tool-v1.wasm. No data leaves your device."
+        "a": "No. QR code generator & Wi-Fi card executes 100% inside your browser's local memory. No data leaves your device."
       },
       {
         "question": "Can AI agents or CLI scripts automate QR code generator & Wi-Fi card?",
@@ -58,6 +58,6 @@
   "desc": "Generate high-contrast QR codes for website links, Wi-Fi logins, or vCards locally with zero tracking redirects.",
   "accepts": "text",
   "tag": "QR, 0 MB",
-  "std": "W3C WebAssembly Core 2.0",
-  "wasmModule": "/wasm/image/qr-tool-v1.wasm"
+  "std": "W3C HTML Canvas 2D + File API",
+  "wasmModule": "none (JavaScript, no engine binary)"
 }

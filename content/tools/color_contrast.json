@@ -5,7 +5,7 @@
   "category": "image",
   "badge": "WCAG, Hex",
   "size": "18–120 KB WASM",
-  "Engine": "/wasm/image/color-contrast-v1.wasm",
+  "Engine": "Plain JavaScript in your browser (no engine binary)",
   "description": "Check WCAG 2.1 AA and AAA accessibility contrast ratios between foreground and background colors, and convert between Hex and RGB.",
   "zeroNetwork": true,
   "adFreeZone": false,
@@ -16,8 +16,8 @@
   "executionUrl": "https://privacyfold.com/tools/color_contrast?mode=agent",
   "seo": {
     "metaTitle": "Color palette & contrast checker — 100% Private In-Browser Utility | PrivacyFold",
-    "metaDescription": "Check WCAG 2.1 AA and AAA accessibility contrast ratios between foreground and background colors, and convert between Hex and RGB. Runs 100% locally in your browser via /wasm/image/color-contrast-v1.wasm with zero file uploads.",
-    "aeoSummary": "Color palette & contrast checker processes files and text entirely inside your browser tab using /wasm/image/color-contrast-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
+    "metaDescription": "Check WCAG 2.1 AA and AAA accessibility contrast ratios between foreground and background colors, and convert between Hex and RGB. Runs 100% locally in your browser with zero file uploads.",
+    "aeoSummary": "Color palette & contrast checker processes files and text entirely inside your browser tab (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
       "color palette & contrast checker",
       "color contrast",
@@ -37,9 +37,9 @@
     "faqs": [
       {
         "question": "Does Color palette & contrast checker upload my files or text to a server?",
-        "answer": "No. Color palette & contrast checker executes 100% inside your browser's local memory using /wasm/image/color-contrast-v1.wasm. No data leaves your device.",
+        "answer": "No. Color palette & contrast checker executes 100% inside your browser's local memory. No data leaves your device.",
         "q": "Does Color palette & contrast checker upload my files or text to a server?",
-        "a": "No. Color palette & contrast checker executes 100% inside your browser's local memory using /wasm/image/color-contrast-v1.wasm. No data leaves your device."
+        "a": "No. Color palette & contrast checker executes 100% inside your browser's local memory. No data leaves your device."
       },
       {
         "question": "Can AI agents or CLI scripts automate Color palette & contrast checker?",
@@ -60,6 +60,6 @@
   "desc": "Check WCAG 2.1 AA and AAA accessibility contrast ratios between foreground and background colors, and convert between Hex and RGB.",
   "accepts": "text",
   "tag": "WCAG, Hex",
-  "std": "W3C WebAssembly Core 2.0",
-  "wasmModule": "/wasm/image/color-contrast-v1.wasm"
+  "std": "W3C HTML Canvas 2D + File API",
+  "wasmModule": "none (JavaScript, no engine binary)"
 }

@@ -5,7 +5,7 @@
   "category": "dev",
   "badge": "UA",
   "size": "18–120 KB WASM",
-  "Engine": "/wasm/dev/ua-parser-v1.wasm",
+  "Engine": "Plain JavaScript in your browser (no engine binary)",
   "description": "Inspect any User-Agent string to identify the browser family, rendering engine, operating system, and device type.",
   "zeroNetwork": true,
   "adFreeZone": false,
@@ -14,8 +14,8 @@
   "executionUrl": "https://privacyfold.com/tools/ua_parser?mode=agent",
   "seo": {
     "metaTitle": "User-Agent & browser inspector — 100% Private In-Browser Utility | PrivacyFold",
-    "metaDescription": "Inspect any User-Agent string to identify the browser family, rendering engine, operating system, and device type. Runs 100% locally in your browser via /wasm/dev/ua-parser-v1.wasm with zero file uploads.",
-    "aeoSummary": "User-Agent & browser inspector processes files and text entirely inside your browser tab using /wasm/dev/ua-parser-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
+    "metaDescription": "Inspect any User-Agent string to identify the browser family, rendering engine, operating system, and device type. Runs 100% locally in your browser with zero file uploads.",
+    "aeoSummary": "User-Agent & browser inspector processes files and text entirely inside your browser tab (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
       "user-agent & browser inspector",
       "ua parser",
@@ -35,9 +35,9 @@
     "faqs": [
       {
         "question": "Does User-Agent & browser inspector upload my files or text to a server?",
-        "answer": "No. User-Agent & browser inspector executes 100% inside your browser's local memory using /wasm/dev/ua-parser-v1.wasm. No data leaves your device.",
+        "answer": "No. User-Agent & browser inspector executes 100% inside your browser's local memory. No data leaves your device.",
         "q": "Does User-Agent & browser inspector upload my files or text to a server?",
-        "a": "No. User-Agent & browser inspector executes 100% inside your browser's local memory using /wasm/dev/ua-parser-v1.wasm. No data leaves your device."
+        "a": "No. User-Agent & browser inspector executes 100% inside your browser's local memory. No data leaves your device."
       },
       {
         "question": "Can AI agents or CLI scripts automate User-Agent & browser inspector?",
@@ -58,6 +58,6 @@
   "desc": "Inspect any User-Agent string to identify the browser family, rendering engine, operating system, and device type.",
   "accepts": "text",
   "tag": "UA",
-  "std": "W3C WebAssembly Core 2.0",
-  "wasmModule": "/wasm/dev/ua-parser-v1.wasm"
+  "std": "ECMAScript (any modern browser)",
+  "wasmModule": "none (JavaScript, no engine binary)"
 }

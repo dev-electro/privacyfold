@@ -17,8 +17,10 @@ export function generateToolJsonLdGraph(tool: GitCmsTool, canonicalUrl: string) 
         offers: { '@type': 'Offer', price: '0.00', priceCurrency: 'USD' },
         featureList: [
           '100% client-side execution in browser RAM (0 server uploads)',
-          `Complies with ${tool.std}`,
-          `Powered by ${tool.wasmModule}`,
+          `Standards: ${tool.std}`,
+          tool.wasmModule && !/^none/.test(tool.wasmModule)
+            ? `Powered by ${tool.Engine || tool.wasmModule}`
+            : 'Runs as plain JavaScript in the browser tab',
           'Works offline via Progressive Web App Service Worker',
           'Deterministic Model Context Protocol (MCP) JSON-RPC support',
         ],

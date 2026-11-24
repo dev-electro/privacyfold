@@ -1,10 +1,10 @@
 id: sql_wasm
 type: wasm
 family: dev
-path: /wasm/dev/sql-wasm.wasm
+path: /vendor/sql-wasm.wasm
 sha256: 43bbcdd44287e5a2db3b6b5af34b1a3485a7a441285d247976c1ebe3c61f8dbf
 version: "1.13.0"
-source_repository: https://github.com/sql-js/sql.js (binary vendored from npm, pinned)
+source_repository: https://github.com/sql-js/sql.js (binary vendored to /vendor, pinned)
 license: MIT
 size_kb: 672
 status: hosted

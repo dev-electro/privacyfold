@@ -11,14 +11,14 @@
   "task": "Supprimer les paramètres UTM et caractères invisibles des liens et textes",
   "badge": "URL, Text",
   "size": "18–120 KB WASM",
-  "Engine": "/wasm/crypto/clean-paste-v1.wasm",
-  "wasmModule": "clean-paste-v1.wasm",
+  "Engine": "JavaScript",
+  "wasmModule": "JavaScript",
   "desc": "Lorsque vous copiez des adresses web ou du texte depuis des réseaux sociaux, des identifiants de pistage y sont discrètement attachés : balises UTM, fbclid, gclid et caractères invisibles de largeur nulle (zero-width). PrivacyFold assainit vos liens et textes directement dans la mémoire de votre navigateur, éliminant tout traceur sans aucune fuite de données.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "text/plain",
   "tag": "Nettoyeur de Liens",
-  "std": "IETF RFC 3986 / Unicode Standard Annex #44",
+  "std": "ECMAScript (any modern browser)",
   "seo": {
     "metaTitle": "Supprimer les Liens de Pistage & Balises UTM | PrivacyFold",
     "metaDescription": "Éliminez les balises UTM, fbclid et caractères invisibles de vos URLs et textes directement dans votre navigateur. 100% confidentiel.",
@@ -38,7 +38,12 @@
         "answer": "Non. Tout le filtrage est exécuté dans l'environnement de votre navigateur. Rien n'est envoyé sur nos serveurs ni enregistré."
       }
     ],
-    "keywords": ["supprimer utm", "nettoyer liens traqués", "enlever caracteres invisibles", "nettoyeur presse papier"]
+    "keywords": [
+      "supprimer utm",
+      "nettoyer liens traqués",
+      "enlever caracteres invisibles",
+      "nettoyeur presse papier"
+    ]
   },
   "whatToExpect": {
     "results": "Des adresses web et des textes épurés, débarrassés de tout traceur publicitaire.",
@@ -56,7 +61,9 @@
   },
   "social": {
     "hook": "Ne diffusez pas vos données de navigation en partageant des liens web. Nettoyez les balises UTM en toute confidentialité dans votre navigateur.",
-    "channels": ["x", "linkedin"]
+    "channels": [
+      "x",
+      "linkedin"
+    ]
   }
 }
-

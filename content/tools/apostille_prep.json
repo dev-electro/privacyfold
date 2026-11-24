@@ -5,7 +5,7 @@
   "category": "forms",
   "badge": "Hague, EU",
   "size": "18–120 KB WASM",
-  "Engine": "/wasm/forms/apostille-prep-v1.wasm",
+  "Engine": "Plain JavaScript in your browser (no engine binary)",
   "description": "Generate a Hague Convention (1961) Apostille certificate request sheet and cross-border document authentication checklist for birth, marriage, academic, or corporate filings.",
   "zeroNetwork": true,
   "adFreeZone": false,
@@ -16,8 +16,8 @@
   "executionUrl": "https://privacyfold.com/tools/apostille_prep?mode=agent",
   "seo": {
     "metaTitle": "EU & Hague Apostille document prep — 100% Private In-Browser Utility | PrivacyFold",
-    "metaDescription": "Generate a Hague Convention (1961) Apostille certificate request sheet and cross-border document authentication checklist for birth, marriage, academic, or corporate filings. Runs 100% locally in your browser via /wasm/forms/apostille-prep-v1.wasm with zero file uploads.",
-    "aeoSummary": "EU & Hague Apostille document prep processes files and text entirely inside your browser tab using /wasm/forms/apostille-prep-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
+    "metaDescription": "Generate a Hague Convention (1961) Apostille certificate request sheet and cross-border document authentication checklist for birth, marriage, academic, or corporate filings. Runs 100% locally in your browser with zero file uploads.",
+    "aeoSummary": "EU & Hague Apostille document prep processes files and text entirely inside your browser tab (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
       "eu & hague apostille document prep",
       "apostille prep",
@@ -37,9 +37,9 @@
     "faqs": [
       {
         "question": "Does EU & Hague Apostille document prep upload my files or text to a server?",
-        "answer": "No. EU & Hague Apostille document prep executes 100% inside your browser's local memory using /wasm/forms/apostille-prep-v1.wasm. No data leaves your device.",
+        "answer": "No. EU & Hague Apostille document prep executes 100% inside your browser's local memory. No data leaves your device.",
         "q": "Does EU & Hague Apostille document prep upload my files or text to a server?",
-        "a": "No. EU & Hague Apostille document prep executes 100% inside your browser's local memory using /wasm/forms/apostille-prep-v1.wasm. No data leaves your device."
+        "a": "No. EU & Hague Apostille document prep executes 100% inside your browser's local memory. No data leaves your device."
       },
       {
         "question": "Can AI agents or CLI scripts automate EU & Hague Apostille document prep?",
@@ -60,6 +60,6 @@
   "desc": "Generate a Hague Convention (1961) Apostille certificate request sheet and cross-border document authentication checklist for birth, marriage, academic, or corporate filings.",
   "accepts": "none",
   "tag": "Hague, EU",
-  "std": "W3C WebAssembly Core 2.0",
-  "wasmModule": "/wasm/forms/apostille-prep-v1.wasm"
+  "std": "ECMAScript (any modern browser)",
+  "wasmModule": "none (JavaScript, no engine binary)"
 }

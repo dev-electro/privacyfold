@@ -5,7 +5,7 @@
   "category": "dev",
   "badge": "UUID",
   "size": "18–120 KB WASM",
-  "Engine": "/wasm/dev/uuid-gen-v1.wasm",
+  "Engine": "Plain JavaScript in your browser (no engine binary)",
   "description": "Make random unique IDs in bulk, using your browser's secure random source.",
   "zeroNetwork": true,
   "adFreeZone": false,
@@ -14,8 +14,8 @@
   "executionUrl": "https://privacyfold.com/tools/uuid_gen?mode=agent",
   "seo": {
     "metaTitle": "UUID generator — 100% Private In-Browser Utility | PrivacyFold",
-    "metaDescription": "Make random unique IDs in bulk, using your browser's secure random source. Runs 100% locally in your browser via /wasm/dev/uuid-gen-v1.wasm with zero file uploads.",
-    "aeoSummary": "UUID generator processes files and text entirely inside your browser tab using /wasm/dev/uuid-gen-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
+    "metaDescription": "Make random unique IDs in bulk, using your browser's secure random source. Runs 100% locally in your browser with zero file uploads.",
+    "aeoSummary": "UUID generator processes files and text entirely inside your browser tab (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
       "uuid generator",
       "uuid gen",
@@ -35,9 +35,9 @@
     "faqs": [
       {
         "question": "Does UUID generator upload my files or text to a server?",
-        "answer": "No. UUID generator executes 100% inside your browser's local memory using /wasm/dev/uuid-gen-v1.wasm. No data leaves your device.",
+        "answer": "No. UUID generator executes 100% inside your browser's local memory. No data leaves your device.",
         "q": "Does UUID generator upload my files or text to a server?",
-        "a": "No. UUID generator executes 100% inside your browser's local memory using /wasm/dev/uuid-gen-v1.wasm. No data leaves your device."
+        "a": "No. UUID generator executes 100% inside your browser's local memory. No data leaves your device."
       },
       {
         "question": "Can AI agents or CLI scripts automate UUID generator?",
@@ -58,6 +58,6 @@
   "desc": "Make random unique IDs in bulk, using your browser\\",
   "accepts": "none",
   "tag": "UUID",
-  "std": "W3C WebAssembly Core 2.0",
-  "wasmModule": "/wasm/dev/uuid-gen-v1.wasm"
+  "std": "W3C Web Crypto API (getRandomValues)",
+  "wasmModule": "none (JavaScript, no engine binary)"
 }

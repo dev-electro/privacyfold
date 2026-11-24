@@ -5,7 +5,7 @@
   "category": "crypto",
   "badge": "URL, Text",
   "size": "18–120 KB WASM",
-  "Engine": "/wasm/crypto/clean-paste-v1.wasm",
+  "Engine": "Plain JavaScript in your browser (no engine binary)",
   "description": "When you copy and paste links or text from modern web pages, social media platforms, or marketing emails, tracking entities secretly embed surveillance markers into your clipboard. These include UTM campaign tags, Facebook click IDs (fbclid), Google click IDs (gclid), affiliate tracking tokens, and invisible zero-width unicode characters (such as zero-width spaces U+200B and word joiners U+2060) that can fingerprint your specific user account across applications. PrivacyFold's Smart Clipboard & Tracking Scrubber sanitizes copied links and prose entirely in client-side memory. It strips surveillance parameters, normalizes obfuscated characters, and emits pristine, privacy-clean text with zero tracking leakage.",
   "zeroNetwork": true,
   "adFreeZone": false,
@@ -76,8 +76,8 @@
   "desc": "When you copy and paste links or text from modern web pages, social media platforms, or marketing emails, tracking entities secretly embed surveillance markers into your clipboard. These include UTM campaign tags, Facebook click IDs (fbclid), Google click IDs (gclid), affiliate tracking tokens, and invisible zero-width unicode characters (such as zero-width spaces U+200B and word joiners U+2060) that can fingerprint your specific user account across applications. PrivacyFold's Smart Clipboard & Tracking Scrubber sanitizes copied links and prose entirely in client-side memory. It strips surveillance parameters, normalizes obfuscated characters, and emits pristine, privacy-clean text with zero tracking leakage.",
   "accepts": "text",
   "tag": "URL, Text",
-  "std": "W3C WebAssembly Core 2.0",
-  "wasmModule": "/wasm/crypto/clean-paste-v1.wasm",
+  "std": "ECMAScript (any modern browser)",
+  "wasmModule": "none (JavaScript, no engine binary)",
   "settingsExplained": [
     {
       "name": "URL Parameter Cleaning Aggressiveness",
@@ -126,8 +126,17 @@
   "social": {
     "hook": "Stop leaking tracker tokens and zero-width characters when you copy-paste text.",
     "proof": "Strips UTM campaign tags, affiliate tokens, and hidden steganographic watermarks in 1 ms.",
-    "hashtags": ["privacy", "security", "developer", "adtech"],
+    "hashtags": [
+      "privacy",
+      "security",
+      "developer",
+      "adtech"
+    ],
     "clip": "clean-paste-demo.mp4",
-    "channels": ["x", "linkedin", "reddit"]
+    "channels": [
+      "x",
+      "linkedin",
+      "reddit"
+    ]
   }
 }

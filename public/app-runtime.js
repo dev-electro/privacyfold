@@ -1,5 +1,8 @@
 
-(function(){'use strict';
+(function(){
+/* last uncaught error, readable from the console as window.__lastErr */
+try{window.addEventListener('error',function(e){window.__lastErr=(e.message||'')+' @'+(e.filename||'').split('/').pop()+':'+(e.lineno||'')});}catch(e){}
+'use strict';
 var $=function(s,r){return (r||document).querySelector(s)};
 var $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
 var wait=function(ms){return new Promise(function(r){setTimeout(r,ms)})};
@@ -419,6 +422,13 @@ function textTraits(t){
   if(/^[A-Za-z0-9+/_-]{12,}={0,2}$/.test(s.replace(/\s+/g,''))&&!tr.jwt)tr.b64=1;
   return tr;
 }
+/* The only tools that execute WebAssembly: libheif (its wasm is inlined in
+   /vendor/libheif.js) and sql.js (/vendor/sql-wasm.wasm). Everything else runs
+   plain JavaScript, so receipts and the public API must not claim otherwise. */
+var WASM_ENGINES = {
+  heic_to_jpg: 'libheif (WebAssembly, inlined in /vendor/libheif.js)',
+  sqlite_viewer: 'sql.js (WebAssembly, /vendor/sql-wasm.wasm)'
+};
 function kindOf(f){
   var n=(f.name||'').toLowerCase(),t=f.type||'';
   if(/\.(heic|heif)$/.test(n))return 'heic';
@@ -690,7 +700,8 @@ function route(){
   if(suppressHash)return;
   var h=location.hash.replace('#',''),t=TOOLS.filter(function(x){return x.slug===h})[0];
   if(t&&(view!=='tool'||cur.tool!==t))openTool(t,{noHash:true,noScroll:true});
-  else if((h==='features'||h==='ledger'||h==='pipeline'||h==='webgpu'||h==='blog'||h==='cms')&&view!==h)openPage(h,true);
+  else if(h==='blog'){location.assign('/blog/');return;}   /* legacy view carried four articles that 404 on /blog/<slug>/ */
+  else if((h==='features'||h==='ledger'||h==='pipeline'||h==='webgpu'||h==='cms')&&view!==h)openPage(h,true);
   else if(!h&&view!=='home')goHome();
 }
 window.addEventListener('hashchange',route);
@@ -2039,7 +2050,14 @@ document.addEventListener('click',function(e){
 /* ---------- pages ---------- */
 function openPage(name,noHash){
   closeTool();setWorld('home');showView(name);
-  if(name==='features')renderFeatures();else renderLedger();
+  if(name==='features')renderFeatures();
+  else if(name==='cms'){ /* was never called, and threw on a missing global: never blank the pane */
+    try{renderCmsPage();}catch(e){
+      var ce=$('#cmsIn');if(ce)ce.innerHTML='<div class="wrap pg"><div class="check" style="margin:0"><b>Console error:</b> '+esc(String(e&&e.message||e))+'</div></div>';
+      if(window.console)console.error('[cms]',e);
+    }
+  }
+  else renderLedger();
   if(!noHash)setHash(name);
   window.scrollTo({top:0,behavior:'auto'});
 }
@@ -2740,11 +2758,55 @@ document.addEventListener('keydown',function(e){
   if(e.key==='Escape'&&mobDrawer&&!mobDrawer.hidden){closeMobDrawer()}
 });
 
+/* The CMS editor reads a standard per family. This global was referenced in
+   four places but never defined, so the whole console threw on open and the
+   #cms view rendered blank. Seed it from the tool records, with the same family
+   defaults the content files use. */
+var STANDARDS_MAP = {
+  pdf: 'ISO 32000-1 (PDF 1.7) via pdf-lib',
+  photo: 'W3C HTML Canvas 2D + EXIF 2.32',
+  image: 'W3C HTML Canvas 2D + File API',
+  crypto: 'W3C Web Crypto API',
+  dev: 'ECMAScript (any modern browser)',
+  forms: 'ECMAScript (any modern browser)'
+};
+TOOLS.forEach(function(t){ if(t.fam&&t.std)STANDARDS_MAP[t.fam]=t.std; });
+
 /* =====================================================================
    Internal Thin CMS Dashboard & Visual Editorial Manager (#cms)
-   Manages all 36 tools, 6 blog posts, long-tail presets, AEO summaries,
+   Manages all 72 tools, 6 blog posts, long-tail presets, AEO summaries,
    JSON-LD schemas, and CLS-safe AdSense slots with live in-memory updates!
    ===================================================================== */
+/* Schema preview for the CMS editor. Mirrors the JSON-LD the build emits for a
+   tool page (src/lib/schema-generator.ts) so what an editor previews is what
+   ships; the function this replaced never existed, which threw on open. */
+function buildToolJsonLd(t){
+  var famName=FAMS[t.fam]?FAMS[t.fam].name:'Utility';
+  return {
+    '@context':'https://schema.org',
+    '@type':'SoftwareApplication',
+    name:t.name+' — PrivacyFold',
+    url:'https://privacyfold.com/tools/'+t.slug+'/',
+    applicationCategory:famName+'Application',
+    operatingSystem:'Web Browser (Windows, macOS, Linux, iOS, Android)',
+    description:t.desc,
+    offers:{'@type':'Offer',price:'0.00',priceCurrency:'USD'},
+    featureList:[
+      '100% client-side execution in browser RAM (0 server uploads)',
+      'Standards: '+(t.std||STANDARDS_MAP[t.fam]||'ECMAScript (any modern browser)'),
+      'Powered by '+(t.Engine||WASM_ENGINES[t.id]||'plain JavaScript in your browser')
+    ]
+  };
+}
+/* Real guide list, published by scripts/validate-git-cms.mjs at build time. The
+   hand-written BLOG_POSTS array is kept only as an offline fallback. */
+var BLOG_INDEX=[];
+try{
+  fetch('/blog-index.json',{cache:'force-cache'}).then(function(r){return r.ok?r.json():null}).then(function(a){
+    if(a&&a.length){BLOG_INDEX=a;if(view==='cms')renderCmsPage();}
+  }).catch(function(){});
+}catch(e){}
+
 var cmsSelectedToolId='passport_photo';
 var cmsTab='editor'; // 'editor' | 'wasmAi' | 'adsense' | 'export'
 
@@ -2752,10 +2814,12 @@ function renderCmsPage(){
   var el=$('#cmsIn');if(!el)return;
   var selTool=toolById(cmsSelectedToolId)||TOOLS[0];
   var liveCount=TOOLS.filter(function(t){return t.live}).length;
-  var wasmCount=4,gpuCount=6,blogCount=BLOG_POSTS.length;
+  /* These were the literals 4 and 6 — 10 "packs" total — while only two engines
+     ship and every model pack is marked not-shipped below. Count what exists. */
+  var wasmCount=Object.keys(WASM_ENGINES).length, gpuCount=0, blogCount=(BLOG_INDEX.length||BLOG_POSTS.length);
 
   var h='<div class="cms-head">'
-    +'<div><span class="mono eyebrow">INTERNAL THIN CMS STUDIO · NEXT.JS 16 APPARATUS</span>'
+    +'<div><span class="mono eyebrow">INTERNAL CONTENT CONSOLE · ASTRO STATIC BUILD</span>'
     +'<h1>Content &amp; Engine Management Console</h1>'
     +'<p class="pg-sub">Manage tool copy, AEO answer boxes, FAQ items, WebAssembly binary hashes, WebGPU model packs, and CLS-safe AdSense slots. Live changes update in-memory immediately.</p></div>'
     +'<div class="row">'
@@ -2765,7 +2829,7 @@ function renderCmsPage(){
 
   h+='<div class="cms-stats">'
     +'<div class="cms-stat-c"><span>Published Tools</span><b>'+TOOLS.length+'</b><small style="color:var(--ok)">100% Live &amp; Runnable</small></div>'
-    +'<div class="cms-stat-c"><span>WASM &amp; AI Packs</span><b>'+(wasmCount+gpuCount)+'</b><small>Local WebAssembly + WebGPU</small></div>'
+    +'<div class="cms-stat-c"><span>WASM engines in use</span><b>'+wasmCount+'</b><small>libheif · sql.js — '+LEAN_MODELS.length+' model packs not shipped</small></div>'
     +'<div class="cms-stat-c"><span>Editorial Guides</span><b>'+blogCount+'</b><small>SEO / AEO / GEO Indexed</small></div>'
     +'<div class="cms-stat-c"><span>Network Uploads</span><b style="color:var(--ok)">0</b><small>connect-src \'self\' Enforced</small></div>'
     +'</div>';
@@ -2800,7 +2864,7 @@ function renderCmsPage(){
   }else if(cmsTab==='wasmAi'){
     h+='<div class="cms-pane">'
       +'<h3 style="margin:0;font:700 18px var(--font-display)">WASM Binaries &amp; Subresource Integrity (SRI) Hashes</h3>'
-      +'<p class="help" style="margin:0 0 8px">Inventory from <code>content/config/wasm-sri.json</code>. These binaries ship with the site and are listed for integrity checking. No shipped tool instantiates them: every tool on privacyfold runs on the JavaScript libraries under <code>/vendor/</code>, in memory, with no network calls.</p>'
+      +'<p class="help" style="margin:0 0 8px">Live inventory from <code>content/config/wasm-sri.json</code>, published as <code>/wasm-sri.json</code>. Exactly two engines run WebAssembly: libheif for HEIC decoding (its wasm payload is inlined in <code>/vendor/libheif.js</code>) and sql.js for the SQL runner (<code>/vendor/sql-wasm.wasm</code>). Every other tool runs plain JavaScript under <code>/vendor/</code>, in memory, with no network calls. Nothing else is registered, because nothing else ships.</p>'
       +'<table class="spec-tbl" id="wasmSRI"><thead><tr><th>Binary</th><th>Path</th><th>Size</th><th>Integrity (SHA-256)</th><th>State</th><th>Declared tasks</th></tr></thead>'
       +'<tbody><tr><td colspan="6" class="help">Reading /wasm-sri.json…</td></tr></tbody></table>'
       +'<h3 style="margin:16px 0 4px;font:700 18px var(--font-display)">Optional Model Packs</h3>'
@@ -2823,7 +2887,7 @@ function renderCmsPage(){
     var manifestData={
       toolsCount:TOOLS.length,
       tools:TOOLS.map(function(t){return {id:t.id,name:t.name,task:t.task,category:t.fam,standard:STANDARDS_MAP[t.fam]||'W3C'}}),
-      blogs:BLOG_POSTS.map(function(b){return {slug:b.slug,title:b.title,category:b.cat}}),
+      blogs:(BLOG_INDEX.length?BLOG_INDEX:BLOG_POSTS).map(function(b){return {slug:b.slug,title:b.title,category:b.category||b.cat}}),
       presetsCount:PRESETS_MATRIX?PRESETS_MATRIX.length:12
     };
     h+='<div class="cms-pane">'
@@ -2844,10 +2908,10 @@ function renderCmsPage(){
         var tasks=(v.tasks||[]).join(', ');
         return '<tr><td><code>'+esc(k)+'</code></td><td>'+esc(v.path||'')+'</td><td>'+(v.size_kb?v.size_kb+' kB':'—')+'</td>'
           +'<td><code>'+esc((v.sha256||'').slice(0,24))+'…</code></td>'
-          +'<td><span class="pill">Registered, not wired</span></td>'
+          +'<td><span class="pill ok">'+(tasks?'In use':'Not shipped')+'</span></td>'
           +'<td class="help">'+esc(tasks||'—')+'</td></tr>';});
       t.querySelector('tbody').innerHTML=rows.join('')
-        +'<tr><td colspan="6" class="help">'+Object.keys(m.modules).length+' engine binaries · registry v'+esc(m.version||'')+' · updated '+esc(m.updated||'')+'</td></tr>';
+        +'<tr><td colspan="6" class="help">'+Object.keys(m.modules).length+' engine'+(Object.keys(m.modules).length===1?'':'s')+' · registry v'+esc(m.version||'')+' · updated '+esc(m.updated||'')+' · every row is loaded by the tool it names</td></tr>';
     }).catch(function(){var t=$('#wasmSRI');if(t)t.querySelector('tbody').innerHTML='<tr><td colspan="6" class="help">Could not read /wasm-sri.json.</td></tr>';});
   }
 
@@ -3801,7 +3865,7 @@ var DEVICE_PROFILE = {
 
   var REPO_COMPLETE_TOOLS = [
     /* --- Document, PDF & Western Form Tools --- */
-    {id:'pdf_to_word',fam:'pdf',glyph:'DOC',name:'PDF to Word converter',task:'Convert PDF text & layout into an editable Word (.doc / RTF) file',tag:'PDF → DOC',accepts:'text',live:true,kind:'live',ext:'doc',det:'D',wasmPath:'/wasm/pdf/pdf-to-word-v1.wasm',
+    {id:'pdf_to_word',fam:'pdf',glyph:'DOC',name:'PDF to Word converter',task:'Convert PDF text & layout into an editable Word (.doc / RTF) file',tag:'PDF → DOC',accepts:'text',live:true,kind:'live',ext:'doc',det:'D',
      desc:'Convert PDF document pages and paragraphs into an editable Word-compatible document locally in your browser using pdf.js text extraction and RTF/DOCX structuring.',
      params:[
       P('layout','Formatting mode','select',1,'preserve',{opts:[['preserve','Preserve headings & paragraphs'],['plain','Clean plain-text flow']]}),
@@ -3815,7 +3879,7 @@ var DEVICE_PROFILE = {
       var docHtml='<!DOCTYPE html><html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word"><head><meta charset="utf-8"><title>Converted Document</title></head><body>'+pars+'</body></html>';
       return {text:docHtml,note:'Word (.doc) ready · '+raw.split(/\s+/).length+' words'};
      }},
-    {id:'word_to_pdf',fam:'pdf',glyph:'W→P',name:'Word to PDF converter',task:'Convert Word / text drafts into a print-ready PDF file',tag:'DOCX → PDF',accepts:'text',live:true,kind:'live',ext:'pdf',det:'D',wasmPath:'/wasm/pdf/word-to-pdf-v1.wasm',
+    {id:'word_to_pdf',fam:'pdf',glyph:'W→P',name:'Word to PDF converter',task:'Convert Word / text drafts into a print-ready PDF file',tag:'DOCX → PDF',accepts:'text',live:true,kind:'live',ext:'pdf',det:'D',
      desc:'Convert Word document text, contracts, or manuscripts into a clean, print-ready PDF file locally without uploading to cloud servers.',
      params:[
       P('size','Paper size','select',1,'letter',{opts:[['letter','US Letter (8.5 × 11 in)'],['a4','ISO A4 (210 × 297 mm)']]}),
@@ -3831,7 +3895,7 @@ var DEVICE_PROFILE = {
       var pdf='%PDF-1.4\n1 0 obj<</Type/Catalog/Pages 2 0 R>>endobj\n2 0 obj<</Type/Pages/Count 1/Kids[3 0 R]>>endobj\n3 0 obj<</Type/Page/Parent 2 0 R/MediaBox[0 0 '+w+' '+h+']/Contents 4 0 R/Resources<</Font<</F1<</Type/Font/Subtype/Type1/BaseFont/Helvetica>>>>>>>>endobj\n4 0 obj<</Length '+stream.length+'>>stream\n'+stream+'\nendstream\nendobj\ntrailer<</Root 1 0 R>>\n%%EOF';
       return {text:pdf,note:a.size.toUpperCase()+' PDF ('+fmtBytes(pdf.length)+')'};
      }},
-    {id:'image_to_pdf',fam:'pdf',glyph:'I→P',name:'Image to PDF converter',task:'Combine JPG, PNG or WebP images into a clean PDF document',tag:'JPG → PDF',accepts:'image',live:true,kind:'process',action:'Create PDF sheet',ext:'png',suffix:'pdf-page',det:'D',wasmPath:'/wasm/pdf/image-to-pdf-v1.wasm',
+    {id:'image_to_pdf',fam:'pdf',glyph:'I→P',name:'Image to PDF converter',task:'Combine JPG, PNG or WebP images into a clean PDF document',tag:'JPG → PDF',accepts:'image',live:true,kind:'process',action:'Create PDF sheet',ext:'png',suffix:'pdf-page',det:'D',
      desc:'Place one or more photos or scanned receipts onto a standard US Letter or A4 page with clean margins for instant printing or portal upload.',
      params:[
       P('page','Page size','select',1,'a4',{opts:[['a4','A4 (210 × 297 mm)'],['letter','US Letter (8.5 × 11 in)'],['fit','Fit to image dimensions']]}),
@@ -3849,7 +3913,7 @@ var DEVICE_PROFILE = {
       g.drawImage(im,Math.round((W-dw)/2),Math.round((H-dh)/2),dw,dh);
       return {blob:await toBlob(c,'image/jpeg',0.92),mime:'image/jpeg',w:W,h:H};
      }},
-    {id:'pdf_to_image',fam:'pdf',glyph:'P→I',name:'PDF page to image converter',task:'Render document pages to crisp PNG or JPEG images',tag:'PDF → PNG',accepts:'image',live:true,kind:'process',action:'Render page image',ext:'png',suffix:'page-1',det:'D',wasmPath:'/wasm/pdf/pdf-to-image-v1.wasm',
+    {id:'pdf_to_image',fam:'pdf',glyph:'P→I',name:'PDF page to image converter',task:'Render document pages to crisp PNG or JPEG images',tag:'PDF → PNG',accepts:'image',live:true,kind:'process',action:'Render page image',ext:'png',suffix:'page-1',det:'D',
      desc:'Rasterize document pages into high-resolution 300 DPI or 600 DPI PNG/JPEG images locally in your browser.',
      params:[
       P('dpi','Render resolution','select',1,'300',{opts:[['150','150 DPI (Web / Email)'],['300','300 DPI (Print Quality)'],['600','600 DPI (Archival)']]}),
@@ -3864,7 +3928,7 @@ var DEVICE_PROFILE = {
       var mime=a.out==='jpeg'?'image/jpeg':'image/png';
       return {blob:await toBlob(c,mime,0.92),mime:mime,w:w,h:h};
      }},
-    {id:'pdf_compress',fam:'pdf',glyph:'CMP',name:'PDF compressor (Portal presets)',task:'Reduce PDF size for USCIS, UK Visa VFS, HMRC, or Email limits',tag:'PDF, <2MB',accepts:'text',live:true,kind:'live',ext:'pdf',det:'D',wasmPath:'/wasm/pdf/pdf-compress-v1.wasm',
+    {id:'pdf_compress',fam:'pdf',glyph:'CMP',name:'PDF compressor (Portal presets)',task:'Reduce PDF size for USCIS, UK Visa VFS, HMRC, or Email limits',tag:'PDF, <2MB',accepts:'text',live:true,kind:'live',ext:'pdf',det:'D',
      desc:'Compress PDF documents to meet strict government and email portal limits (USCIS I-130 <2 MB, UK Visa VFS <2 MB, HMRC SA100 <5 MB, Schengen VFS <5 MB, Court E-Filing <5 MB, Gmail <25 MB).',
      params:[
       P('preset','Target portal preset','select',1,'uk-visa-vfs',{opts:[['uk-visa-vfs','UK Visa VFS Global (<2 MB · 150 DPI)'],['uscis-docs-2mb','USCIS I-130 / I-485 (<2 MB · Grayscale OK)'],['hmrc-sa100','UK HMRC Self Assessment (<5 MB)'],['court-efiling-us','US Court E-Filing (<5 MB · PDF/A)'],['gmail-attachment','Gmail / Outlook Attachment (<20 MB)']]}),
@@ -3875,7 +3939,7 @@ var DEVICE_PROFILE = {
      run:async function(src,a,ctx){
        throw new Error('PDF compression engine is not loaded. Real in-browser PDF recompression requires the WebAssembly engine.');
       }},
-    {id:'pdf_flatten',fam:'pdf',glyph:'FLT',name:'PDF flattener & form locker',task:'Flatten interactive form fields so they cannot be edited',tag:'PDF/A, Lock',accepts:'text',live:true,kind:'live',ext:'pdf',det:'D',wasmPath:'/wasm/pdf/pdf-flatten-v1.wasm',
+    {id:'pdf_flatten',fam:'pdf',glyph:'FLT',name:'PDF flattener & form locker',task:'Flatten interactive form fields so they cannot be edited',tag:'PDF/A, Lock',accepts:'text',live:true,kind:'live',ext:'pdf',det:'D',
      desc:'Flatten interactive AcroForm fields, checkboxes, and signature appearances into static page content for IRS 1099, USCIS, and notary submissions.',
      params:[
       P('strip_js','Remove embedded JavaScript & actions','bool',1,true),
@@ -3887,7 +3951,7 @@ var DEVICE_PROFILE = {
       var inp=(ctx.text||'Form W-9 / 1099 Interactive Fields').replace(/\/AcroForm\s*<<[^>]*>>/g,'').replace(/\/JavaScript/g,'');
       return {text:'%PDF-1.4 (Flattened Static Stream — AcroForm Locked)\n'+inp,note:'Form fields flattened & locked'};
      }},
-    {id:'pdf_metadata',fam:'pdf',glyph:'M-0',name:'PDF metadata stripper',task:'Remove Author, Producer, Creator & revision history from PDFs',tag:'PDF Clean',accepts:'text',live:true,kind:'live',ext:'pdf',det:'D',wasmPath:'/wasm/pdf/pdf-metadata-v1.wasm',
+    {id:'pdf_metadata',fam:'pdf',glyph:'M-0',name:'PDF metadata stripper',task:'Remove Author, Producer, Creator & revision history from PDFs',tag:'PDF Clean',accepts:'text',live:true,kind:'live',ext:'pdf',det:'D',
      desc:'Strip hidden /Author, /Creator, /Producer, /CreationDate, /ModDate, and XMP XML packets from PDF files before public release or legal filing.',
      params:[
       P('xmp','Remove XMP XML metadata packet','bool',1,true),
@@ -3900,7 +3964,7 @@ var DEVICE_PROFILE = {
       var cleaned=raw.replace(/\/(Author|Creator|Producer|CreationDate|ModDate|Title|Subject|Keywords)\s*\([^)]*\)/g,'/$1 ()');
       return {text:cleaned,note:'Author, Creator & timestamps scrubbed'};
      }},
-    {id:'ada_pdf',fam:'pdf',glyph:'ADA',name:'ADA & WCAG PDF accessibility checker',task:'Audit document heading hierarchy, alt text & reading order for ADA compliance',tag:'ADA, Section 508',accepts:'text',live:true,kind:'live',ext:'txt',det:'D',wasmPath:'/wasm/pdf/ada-check-v1.wasm',
+    {id:'ada_pdf',fam:'pdf',glyph:'ADA',name:'ADA & WCAG PDF accessibility checker',task:'Audit document heading hierarchy, alt text & reading order for ADA compliance',tag:'ADA, Section 508',accepts:'text',live:true,kind:'live',ext:'txt',det:'D',
      desc:'Check document structure against US ADA Title II/III, Section 508, and PDF/UA (ISO 14289) accessibility rules: document title, language tag, heading nesting, and image alt attributes.',
      params:[
       P('lang','Document language tag','select',1,'en-US',{opts:[['en-US','en-US (English US)'],['en-GB','en-GB (English UK)'],['de-DE','de-DE (German)'],['fr-FR','fr-FR (French)']]})
@@ -4165,7 +4229,7 @@ var DEVICE_PROFILE = {
      }},
 
     /* --- Photo & Image Tools (E-Commerce, Social Media, Screenshot Annotator) --- */
-    {id:'social_resizer',fam:'image',glyph:'SOC',name:'Social media, e-commerce & app icon resizer',task:'Resize images to Amazon, Shopify, LinkedIn, Instagram, YouTube or Favicon specs',tag:'83 Presets',accepts:'image',live:true,kind:'process',action:'Resize to preset',ext:'png',suffix:'preset',det:'D',wasmPath:'/wasm/image/image-resize-v1.wasm',
+    {id:'social_resizer',fam:'image',glyph:'SOC',name:'Social media, e-commerce & app icon resizer',task:'Resize images to Amazon, Shopify, LinkedIn, Instagram, YouTube or Favicon specs',tag:'83 Presets',accepts:'image',live:true,kind:'process',action:'Resize to preset',ext:'png',suffix:'preset',det:'D',
      desc:'One-click image resizer pre-loaded with official platform dimensions from `presets/social-media-sizes.json`, `ecommerce-sizes.json`, and `developer-icons.json` (Amazon 1000×1000, Shopify 2048×2048, LinkedIn 400×400 & 1584×396 Banner, Instagram 1080×1080, YouTube 1280×720, OG Image 1200×630, iOS/Android App Icon 512×512).',
      params:[
       P('preset','Platform preset','select',1,'amazon-product',{opts:[
@@ -4190,7 +4254,7 @@ var DEVICE_PROFILE = {
       g.drawImage(im,Math.round((W-dw)/2),Math.round((H-dh)/2),dw,dh);
       return {blob:await toBlob(c,'image/png',0.94),mime:'image/png',w:W,h:H};
      }},
-    {id:'screenshot_annotate',fam:'image',glyph:'ANN',name:'Screenshot annotator & callout marker',task:'Add numbered callout badges, highlight boxes & status banners to screenshots',tag:'PNG, Markup',accepts:'image',live:true,kind:'process',action:'Apply annotation',ext:'png',suffix:'annotated',det:'D',wasmPath:'/wasm/image/screenshot-annotate-v1.wasm',
+    {id:'screenshot_annotate',fam:'image',glyph:'ANN',name:'Screenshot annotator & callout marker',task:'Add numbered callout badges, highlight boxes & status banners to screenshots',tag:'PNG, Markup',accepts:'image',live:true,kind:'process',action:'Apply annotation',ext:'png',suffix:'annotated',det:'D',
      desc:'Add clean, high-contrast callout borders, step badges, and header captions to bug reports and documentation screenshots without uploading internal UI screens.',
      params:[
       P('caption','Top callout banner text','text',1,'STEP 1: Verify Zero Outbound Network Requests'),
@@ -4215,7 +4279,7 @@ var DEVICE_PROFILE = {
      }},
 
     /* --- Developer, Utility & AI-Native Tools --- */
-    {id:'barcode_gen',fam:'dev',glyph:'BAR',name:'Barcode generator (Code 128, EAN-13, UPC-A)',task:'Generate clean SVG barcodes for inventory, retail & labels',tag:'SVG, Code128',accepts:'text',live:true,kind:'live',ext:'svg',det:'D',wasmPath:'/wasm/utility/qr-generate-v1.wasm',
+    {id:'barcode_gen',fam:'dev',glyph:'BAR',name:'Barcode generator (Code 128, EAN-13, UPC-A)',task:'Generate clean SVG barcodes for inventory, retail & labels',tag:'SVG, Code128',accepts:'text',live:true,kind:'live',ext:'svg',det:'D',
      desc:'Generate crisp, vector SVG barcodes (Code 128, EAN-13, UPC-A) locally in your browser with zero tracking pixels.',
      params:[
       P('sym','Symbology','select',1,'CODE128',{opts:[['CODE128','Code 128 (Alphanumeric)'],['EAN13','EAN-13 (Retail 13-digit)'],['UPCA','UPC-A (US 12-digit)']]}),
@@ -4292,7 +4356,7 @@ var DEVICE_PROFILE = {
       }
       return {text:out,note:a.cat.toUpperCase()+' converted'};
      }},
-    {id:'lorem_ipsum',fam:'dev',glyph:'LRM',name:'Lorem Ipsum & placeholder text generator',task:'Generate paragraphs, sentences or UI copy placeholders',tag:'Lorem, Copy',accepts:'none',live:true,kind:'live',ext:'txt',det:'D',wasmPath:'/wasm/generators/lorem-ipsum-v1.wasm',
+    {id:'lorem_ipsum',fam:'dev',glyph:'LRM',name:'Lorem Ipsum & placeholder text generator',task:'Generate paragraphs, sentences or UI copy placeholders',tag:'Lorem, Copy',accepts:'none',live:true,kind:'live',ext:'txt',det:'D',
      desc:'Generate classic Latin Lorem Ipsum or privacy-themed design system placeholder paragraphs for wireframes and layouts.',
      params:[
       P('style','Vocabulary style','select',1,'classic',{opts:[['classic','Classic Cicero Latin (Lorem ipsum)'],['design','Design System & Privacy UI Copy']]}),
@@ -4363,7 +4427,7 @@ var DEVICE_PROFILE = {
      }},
 
     /* --- Privacy, Compliance & Security Tools --- */
-    {id:'privacy_letter',fam:'crypto',glyph:'GDPR',name:'GDPR, CCPA & privacy policy generator',task:'Generate GDPR Art. 15/17 data requests, CCPA opt-outs & GDPR Art. 33 breach notices',tag:'GDPR, CCPA',accepts:'none',live:true,kind:'live',ext:'txt',det:'D',wasmPath:'/wasm/generators/privacy-letter-v1.wasm',
+    {id:'privacy_letter',fam:'crypto',glyph:'GDPR',name:'GDPR, CCPA & privacy policy generator',task:'Generate GDPR Art. 15/17 data requests, CCPA opt-outs & GDPR Art. 33 breach notices',tag:'GDPR, CCPA',accepts:'none',live:true,kind:'live',ext:'txt',det:'D',
      desc:'Generate legally structured GDPR Data Subject Access/Erasure Requests (EN/DE/FR), California CCPA Do-Not-Sell Opt-Out letters, Privacy Policies, or GDPR Art. 33 72-Hour Breach Notifications from `templates/gdpr-request-eu.json` and `ccpa-optout-ca.json`.',
      params:[
       P('doc','Template type','select',1,'gdpr_erasure',{opts:[
@@ -6398,7 +6462,7 @@ var PRESET_RECORDS = {
         registry_version: REGISTRY_VERSION,
         determinism: detTier,
         model: t.modelId ? { id: t.modelId, sha256: 'verified-opfs-pack' } : null,
-        backend: DEVICE_PROFILE.webgpu && detTier === 'M' ? 'webgpu' : 'wasm',
+        backend: (WASM_ENGINES[t.id] ? 'wasm' : 'js'),
         reproducible: detTier !== 'B',
         advisory_checks: [
           { name: 'zero_upload_check', result: meta.reqs === 0 ? 'pass' : 'warn', detail: meta.reqs + ' network requests during run' },
@@ -6653,7 +6717,8 @@ window.privacyfold = Object.assign(window.privacyfold || {}, {
         accepts: t.accepts,
         live: t.live,
         det: t.det || (t.modelId ? 'M' : 'D'),
-        wasmPath: t.wasmPath || ('/wasm/' + t.fam + '/' + (t.slug || t.id.replace(/_/g, '-')) + '-v1.wasm'),
+        wasmPath: t.wasmPath || null,
+        engine: WASM_ENGINES[t.id] || null,
         modelId: t.modelId || null,
         desc: t.desc || t.task,
         params: (t.params || []).map(function(p){

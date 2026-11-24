@@ -11,14 +11,14 @@
   "task": "Bilder lokal im Browser komprimieren und optimieren",
   "badge": "JPG, PNG, WebP",
   "size": "18–120 KB WASM",
-  "Engine": "/wasm/image/image-compress-v1.wasm",
-  "wasmModule": "image-compress-v1.wasm",
+  "Engine": "JavaScript",
+  "wasmModule": "JavaScript",
   "desc": "Herkömmliche Online-Bildkomprimierer laden Ihre privaten Fotos auf Server Dritter hoch. PrivacyFold verwendet hochmoderne Algorithmen (MozJPEG, Google WebP und libpng), die direkt als WebAssembly in Ihrem Browser laufen. Reduzieren Sie Dateigrößen um bis zu 85% mit präzisen Kilobyte-Zielen – garantiert ohne Server-Uploads und ohne Datenlecks.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "image/jpeg,image/png,image/webp,image/avif",
   "tag": "Bildkomprimierung",
-  "std": "W3C WebAssembly / MozJPEG",
+  "std": "W3C HTML Canvas 2D + File API",
   "seo": {
     "metaTitle": "Kostenloser Bildkomprimierer — 100% lokal im Browser ohne Upload",
     "metaDescription": "Komprimieren Sie JPEG-, PNG- und WebP-Bilder direkt im Browser mit WebAssembly. Exakte KB-Größengrenzen und absolute Privatsphäre.",
@@ -39,7 +39,12 @@
         "answer": "Ja. Das Werkzeug ermittelt automatisch den optimalen Kompressionsgrad, um die von Ihnen festgelegte Maximalgröße exakt einzuhalten."
       }
     ],
-    "keywords": ["bilder komprimieren online", "foto dateigröße verringern", "jpg komprimieren kostenlos", "lokaler komprimierer"]
+    "keywords": [
+      "bilder komprimieren online",
+      "foto dateigröße verringern",
+      "jpg komprimieren kostenlos",
+      "lokaler komprimierer"
+    ]
   },
   "whatToExpect": {
     "results": "Bis zu 85% kleinere Dateigrößen bei gleichbleibender visueller Schärfe.",
@@ -57,7 +62,9 @@
   },
   "social": {
     "hook": "Geben Sie Ihre Fotos für eine Verkleinerung nicht an Cloud-Server weiter. Komprimieren Sie Bilder 100% datenschutzkonform direkt im Browser.",
-    "channels": ["x", "linkedin"]
+    "channels": [
+      "x",
+      "linkedin"
+    ]
   }
 }
-

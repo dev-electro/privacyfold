@@ -5,7 +5,7 @@
   "category": "dev",
   "badge": "window.ai · 0 MB",
   "size": "0 KB (Built-In)",
-  "Engine": "window.ai-smollm2-135m",
+  "Engine": "Plain JavaScript in your browser (no engine binary)",
   "description": "Uses your browser’s built-in local AI APIs (window.ai.languageModel, ai.rewriter, ai.summarizer — 0 MB download) with automatic fallback to SmolLM2-135M-Instruct (~45 MB) for grammar fixing, tone shifting, essays, cold emails, and video scripts.",
   "zeroNetwork": true,
   "adFreeZone": false,
@@ -58,6 +58,6 @@
   "desc": "Uses your browser’s built-in local AI APIs (window.ai.languageModel, ai.rewriter, ai.summarizer — 0 MB download) with automatic fallback to SmolLM2-135M-Instruct (~45 MB) for grammar fixing, tone shifting, essays, cold emails, and video scripts.",
   "accepts": "text",
   "tag": "window.ai · 0 MB",
-  "std": "W3C WebAssembly Core 2.0",
-  "wasmModule": "window.ai-smollm2-135m"
+  "std": "ECMAScript (any modern browser)",
+  "wasmModule": "none (JavaScript, no engine binary)"
 }

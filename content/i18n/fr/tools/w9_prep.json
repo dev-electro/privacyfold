@@ -11,14 +11,14 @@
   "task": "Préparer et valider les données fiscales du formulaire américain W-9 en local",
   "badge": "IRS",
   "size": "18–120 KB WASM",
-  "Engine": "/wasm/forms/w9-prep-v1.wasm",
-  "wasmModule": "w9-prep-v1.wasm",
+  "Engine": "JavaScript",
+  "wasmModule": "JavaScript",
   "desc": "Lorsque vous collaborez avec des clients américains en tant qu'indépendant ou prestataire de services, le formulaire IRS W-9 est exigé avec votre numéro de sécurité sociale (SSN) ou numéro d'employeur (EIN). Transmettre ces identifiants à des éditeurs de formulaires en ligne vous expose aux usurpations d'identité. PrivacyFold formate et valide vos déclarations W-9 intégralement dans la mémoire de votre navigateur, sans aucun téléversement.",
   "zeroNetwork": true,
   "adFreeZone": true,
   "accepts": "application/json,text/plain",
   "tag": "Formulaire W-9",
-  "std": "IRS Form W-9 (Rev. March/Nov 2024)",
+  "std": "ECMAScript (any modern browser)",
   "seo": {
     "metaTitle": "Préparateur de Formulaire IRS W-9 Gratuit — 100% Local & Zéro Upload",
     "metaDescription": "Préparez et validez vos informations fiscales pour le formulaire américain W-9 directement dans votre navigateur. Vos identifiants SSN et EIN restent confidentiels.",
@@ -39,7 +39,12 @@
         "answer": "Non. Le formulaire W-9 n'est pas transmis à l'administration fiscale américaine, il est conservé directement par votre client ou donneur d'ordre."
       }
     ],
-    "keywords": ["formulaire w9 en ligne", "remplir irs w-9", "validation ssn ein", "formulaire fiscal americain w9"]
+    "keywords": [
+      "formulaire w9 en ligne",
+      "remplir irs w-9",
+      "validation ssn ein",
+      "formulaire fiscal americain w9"
+    ]
   },
   "whatToExpect": {
     "results": "Une fiche de préparation rigoureusement conforme aux dernières exigences de l'IRS.",
@@ -57,7 +62,10 @@
   },
   "social": {
     "hook": "Ne confiez pas votre numéro de sécurité sociale (SSN) à des formulaires cloud tiers. Remplissez votre W-9 en toute sécurité dans votre navigateur.",
-    "channels": ["x", "whatsapp", "linkedin"]
+    "channels": [
+      "x",
+      "whatsapp",
+      "linkedin"
+    ]
   }
 }
-

@@ -5,7 +5,7 @@
   "category": "dev",
   "badge": "Cron",
   "size": "18–120 KB WASM",
-  "Engine": "/wasm/dev/cron-parser-v1.wasm",
+  "Engine": "Plain JavaScript in your browser (no engine binary)",
   "description": "Parse cron schedule expressions into a clear, human-readable description and preview the upcoming execution times.",
   "zeroNetwork": true,
   "adFreeZone": false,
@@ -17,8 +17,8 @@
   "executionUrl": "https://privacyfold.com/tools/cron_parser?mode=agent",
   "seo": {
     "metaTitle": "Cron expression explainer — 100% Private In-Browser Utility | PrivacyFold",
-    "metaDescription": "Parse cron schedule expressions into a clear, human-readable description and preview the upcoming execution times. Runs 100% locally in your browser via /wasm/dev/cron-parser-v1.wasm with zero file uploads.",
-    "aeoSummary": "Cron expression explainer processes files and text entirely inside your browser tab using /wasm/dev/cron-parser-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
+    "metaDescription": "Parse cron schedule expressions into a clear, human-readable description and preview the upcoming execution times. Runs 100% locally in your browser with zero file uploads.",
+    "aeoSummary": "Cron expression explainer processes files and text entirely inside your browser tab (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
       "cron expression explainer",
       "cron parser",
@@ -38,9 +38,9 @@
     "faqs": [
       {
         "question": "Does Cron expression explainer upload my files or text to a server?",
-        "answer": "No. Cron expression explainer executes 100% inside your browser's local memory using /wasm/dev/cron-parser-v1.wasm. No data leaves your device.",
+        "answer": "No. Cron expression explainer executes 100% inside your browser's local memory. No data leaves your device.",
         "q": "Does Cron expression explainer upload my files or text to a server?",
-        "a": "No. Cron expression explainer executes 100% inside your browser's local memory using /wasm/dev/cron-parser-v1.wasm. No data leaves your device."
+        "a": "No. Cron expression explainer executes 100% inside your browser's local memory. No data leaves your device."
       },
       {
         "question": "Can AI agents or CLI scripts automate Cron expression explainer?",
@@ -61,6 +61,6 @@
   "desc": "Parse cron schedule expressions into a clear, human-readable description and preview the upcoming execution times.",
   "accepts": "text",
   "tag": "Cron",
-  "std": "W3C WebAssembly Core 2.0",
-  "wasmModule": "/wasm/dev/cron-parser-v1.wasm"
+  "std": "ECMAScript (any modern browser)",
+  "wasmModule": "none (JavaScript, no engine binary)"
 }

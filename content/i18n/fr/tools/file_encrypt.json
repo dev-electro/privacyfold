@@ -11,14 +11,14 @@
   "task": "Chiffrer des fichiers en enveloppes HTML auto-déchiffrables via AES-256-GCM",
   "badge": "AES",
   "size": "18–120 KB WASM",
-  "Engine": "/wasm/crypto/file-encrypt-v1.wasm",
-  "wasmModule": "file-encrypt-v1.wasm",
+  "Engine": "JavaScript",
+  "wasmModule": "JavaScript",
   "desc": "Lorsque vous partagez des documents fiscaux, des contrats ou des relevés bancaires, les plateformes cloud conservent les fichiers ou les clés maîtresses. PrivacyFold utilise le chiffrement militaire AES-256-GCM combiné à la dérivation de clé PBKDF2 (600 000 itérations SHA-256) directement dans votre navigateur via l'API WebCrypto. Vos données sont encapsulées dans une enveloppe HTML auto-déchiffrable : le destinataire muni du mot de passe peut ouvrir le fichier dans n'importe quel navigateur sans installer d'application et sans accès à internet.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "*/*",
   "tag": "Chiffrement Fichier",
-  "std": "NIST SP 800-38D (AES-GCM) / RFC 8018 (PBKDF2)",
+  "std": "ECMAScript (any modern browser)",
   "seo": {
     "metaTitle": "Chiffrement de Fichier Gratuit — Enveloppes HTML Auto-Déchiffrables (AES-256)",
     "metaDescription": "Chiffrez n'importe quel fichier localement avec AES-256-GCM et PBKDF2. Génère des enveloppes HTML auto-déchiffrables compatibles hors-ligne. 100% zéro-connaissance.",
@@ -39,7 +39,12 @@
         "answer": "Non. Il s'agit d'une architecture cryptographique stricte à zéro-connaissance. Votre mot de passe n'est jamais transmis à nos serveurs. En cas d'oubli, le fichier est mathématiquement indéchiffrable."
       }
     ],
-    "keywords": ["chiffrer fichier en ligne", "aes 256 gcm", "enveloppe html auto dechiffrable", "chiffrement zero connaissance"]
+    "keywords": [
+      "chiffrer fichier en ligne",
+      "aes 256 gcm",
+      "enveloppe html auto dechiffrable",
+      "chiffrement zero connaissance"
+    ]
   },
   "whatToExpect": {
     "results": "Une enveloppe HTML autonome, portable et auto-déchiffrable.",
@@ -57,7 +62,9 @@
   },
   "social": {
     "hook": "Ne confiez pas vos données confidentielles à des intermédiaires cloud. Scellez vos fichiers directement dans des enveloppes HTML auto-déchiffrables en AES-256.",
-    "channels": ["x", "linkedin"]
+    "channels": [
+      "x",
+      "linkedin"
+    ]
   }
 }
-

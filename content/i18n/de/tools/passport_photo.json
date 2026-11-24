@@ -11,14 +11,14 @@
   "task": "Offizielle biometrische Pass- und Visafotos erstellen",
   "badge": "JPG, PNG",
   "size": "18–120 KB WASM",
-  "Engine": "/wasm/photo/passport-photo-v1.wasm",
-  "wasmModule": "passport-photo-v1.wasm",
+  "Engine": "JavaScript",
+  "wasmModule": "JavaScript",
   "desc": "Behördliche Anträge für deutsche Reisepässe, Personalausweise und Visa verlangen eine strikte Einhaltung biometrischer Passbildkriterien nach ICAO-Norm. PrivacyFold ermöglicht Ihnen das millimetergenaue Zuschneiden, Ausrichten und Vorbereiten von Passfotos direkt in Ihrem Webbrowser – mit Voreinstellungen für über 87 Staaten. Ihre privaten Aufnahmen werden zu keinem Zeitpunkt auf fremde Server übertragen.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "image/jpeg,image/png,image/webp",
   "tag": "Passfoto Generator",
-  "std": "ICAO 9303 / Bundesdruckerei Passbildschablone",
+  "std": "W3C HTML Canvas 2D + EXIF 2.32",
   "seo": {
     "metaTitle": "Biometrisches Passfoto online erstellen — Kostenlos & 100% lokal im Browser",
     "metaDescription": "Erstellen Sie biometrische Passbilder nach deutscher Schablone (35x45mm) und internationalem Standard. Ohne Server-Upload und vollkommen datenschutzkonform.",
@@ -39,7 +39,12 @@
         "answer": "Ja, die Schablone entspricht exakt den Vorgaben der Bundesdruckerei und ICAO Doc 9303 (35x45mm, 70–80% Gesichtshöhe)."
       }
     ],
-    "keywords": ["passfoto online erstellen", "biometrisches passbild", "passfoto schablone", "ausweisfoto kostenlos"]
+    "keywords": [
+      "passfoto online erstellen",
+      "biometrisches passbild",
+      "passfoto schablone",
+      "ausweisfoto kostenlos"
+    ]
   },
   "whatToExpect": {
     "results": "Druckfähiges, vorschriftsmäßiges biometrisches Passbild mit exakten Abmessungen.",
@@ -57,7 +62,9 @@
   },
   "social": {
     "hook": "Erstellen Sie offizielle biometrische Passbilder direkt auf Ihrem Computer – ohne Registrierung und ohne Upload auf Drittanbieter-Server.",
-    "channels": ["x", "linkedin"]
+    "channels": [
+      "x",
+      "linkedin"
+    ]
   }
 }
-

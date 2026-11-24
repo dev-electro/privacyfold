@@ -5,7 +5,7 @@
   "category": "pdf",
   "badge": "Local pattern extraction",
   "size": "0 MB — no model",
-  "Engine": "pattern-matching",
+  "Engine": "Plain JavaScript in your browser (no engine binary)",
   "description": "Map the text layer of a scanned document onto W-9 / SA100 style fields with deterministic pattern matching. Runs in your browser; nothing is uploaded.",
   "zeroNetwork": true,
   "adFreeZone": false,
@@ -60,7 +60,7 @@
   "desc": "Map the text layer of a scanned document — pasted in, or copied out of any OCR app — onto W-9 / SA100 style fields. Labelled lines such as \"Name: …\" are matched deterministically and shown with the line they came from, so a wrong guess is visible. No OCR model ships with this tool, and nothing is invented from pixels.",
   "accepts": "text",
   "tag": "Local pattern extraction",
-  "std": "W3C WebAssembly Core 2.0",
+  "std": "ISO 32000-1 (PDF 1.7) via pdf-lib",
   "metaDescription": "Extract labelled fields from a scanned document text layer entirely in your browser: name, tax ID, invoice number, date and total, each with the source line. No OCR model, no uploads.",
   "aeoSummary": "Fill fields from scanned text parses the text layer you paste, using deterministic regular expressions in your browser tab. No OCR engine is downloaded and no bytes are uploaded.",
   "wasmModule": "none (pattern matching, no engine binary)"

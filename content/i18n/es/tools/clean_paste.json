@@ -11,14 +11,14 @@
   "task": "Eliminar etiquetas UTM y rastreadores invisibles en enlaces y textos",
   "badge": "URL, Text",
   "size": "18–120 KB WASM",
-  "Engine": "/wasm/crypto/clean-paste-v1.wasm",
-  "wasmModule": "clean-paste-v1.wasm",
+  "Engine": "JavaScript",
+  "wasmModule": "JavaScript",
   "desc": "Al copiar enlaces en redes sociales o correos de marketing, las plataformas insertan parámetros de rastreo como UTM, fbclid, gclid y caracteres invisibles de ancho cero para identificar quién comparte el contenido. PrivacyFold desinfecta enlaces y textos directamente en la memoria de su navegador, eliminando cualquier identificador de vigilancia con total privacidad.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "text/plain",
   "tag": "Limpiador de Enlaces",
-  "std": "IETF RFC 3986 / Unicode Standard Annex #44",
+  "std": "ECMAScript (any modern browser)",
   "seo": {
     "metaTitle": "Eliminar Rastreadores de Enlaces y Etiquetas UTM | PrivacyFold",
     "metaDescription": "Elimine parámetros UTM, fbclid, gclid y caracteres invisibles de URLs y textos localmente en su navegador. 100% privado.",
@@ -38,7 +38,12 @@
         "answer": "No. Toda la limpieza de cadenas de texto se ejecuta en el navegador de su dispositivo sin ninguna petición externa."
       }
     ],
-    "keywords": ["limpiar enlaces de seguimiento", "quitar utm online", "eliminar caracteres invisibles", "limpiador portapapeles"]
+    "keywords": [
+      "limpiar enlaces de seguimiento",
+      "quitar utm online",
+      "eliminar caracteres invisibles",
+      "limpiador portapapeles"
+    ]
   },
   "whatToExpect": {
     "results": "URLs y textos limpios, sin tokens de seguimiento ni marcas de agua invisibles.",
@@ -56,7 +61,10 @@
   },
   "social": {
     "hook": "No comparta identificadores de vigilancia al enviar enlaces a sus amigos. Limpie parámetros UTM y rastreadores en su propio navegador.",
-    "channels": ["x", "whatsapp", "linkedin"]
+    "channels": [
+      "x",
+      "whatsapp",
+      "linkedin"
+    ]
   }
 }
-

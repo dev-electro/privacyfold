@@ -11,14 +11,14 @@
   "task": "Mehrere PDF-Dokumente lokal und datenschutzkonform zusammenfügen",
   "badge": "PDF",
   "size": "18–120 KB WASM",
-  "Engine": "/wasm/pdf/pdf-merge-v1.wasm",
-  "wasmModule": "pdf-merge-v1.wasm",
+  "Engine": "JavaScript",
+  "wasmModule": "JavaScript",
   "desc": "Beim Zusammenfügen sensibler Dokumente wie Verträgen, Steuerbescheiden oder Kontoauszügen speichern viele herkömmliche Webdienste Ihre Dateien in der Cloud. PrivacyFold fügt PDF-Dateien direkt im Arbeitsspeicher Ihres Browsers zusammen – ohne Dateitransfer über das Internet. Ihre Originaldokumente verbleiben auf Ihrem Rechner und genügen strikten DSGVO- und Berufsgeheimnis-Vorgaben.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "application/pdf",
   "tag": "PDF zusammenfügen",
-  "std": "ISO 32000-1 (PDF 1.7)",
+  "std": "ISO 32000-1 (PDF 1.7) via pdf-lib",
   "seo": {
     "metaTitle": "PDF zusammenfügen kostenlos & privat — Ohne Upload im Browser",
     "metaDescription": "Verbinden Sie mehrere PDF-Dateien lokal im Browser. Schnell, kostenlos und ohne Übertragung auf fremde Server.",
@@ -39,7 +39,12 @@
         "answer": "Ja. Das Zusammenführen erfolgt ohne verlustbehaftete Rasterisierung; Vektorgrafiken und eingebettete Schriften bleiben originalgetreu erhalten."
       }
     ],
-    "keywords": ["pdf zusammenfügen kostenlos", "pdf dateien verbinden", "pdf merge offline", "pdf seiten kombinieren"]
+    "keywords": [
+      "pdf zusammenfügen kostenlos",
+      "pdf dateien verbinden",
+      "pdf merge offline",
+      "pdf seiten kombinieren"
+    ]
   },
   "whatToExpect": {
     "results": "Ein einheitliches PDF-Dokument mit voller Erhaltung der ursprünglichen Vektorgrafiken.",
@@ -57,7 +62,9 @@
   },
   "social": {
     "hook": "Laden Sie vertrauliche Verträge und Steuererklärungen zum Zusammenfügen nicht in fremde Clouds. Nutzen Sie 100% lokalen PDF-Merge.",
-    "channels": ["x", "linkedin"]
+    "channels": [
+      "x",
+      "linkedin"
+    ]
   }
 }
-

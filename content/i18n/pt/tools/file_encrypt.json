@@ -13,14 +13,14 @@
   "task": "Proteger qualquer arquivo com senha em envelope autodescriptografável",
   "badge": "AES-256",
   "size": "18–120 KB WASM",
-  "Engine": "WebCrypto",
-  "wasmModule": "WebCrypto",
+  "Engine": "JavaScript",
+  "wasmModule": "JavaScript",
   "desc": "Criptografe documentos confidenciais com padrão militar AES-256-GCM e PBKDF2 com 600.000 iterações. Gera um envelope HTML autônomo que pode ser aberto em qualquer navegador sem instalar programas.",
   "zeroNetwork": true,
   "adFreeZone": false,
   "accepts": "any",
   "tag": "AES-256",
-  "std": "NIST SP 800-38D / PBKDF2",
+  "std": "ECMAScript (any modern browser)",
   "seo": {
     "metaTitle": "Criptografia de Arquivos AES-256-GCM | PrivacyFold",
     "metaDescription": "Proteja arquivos com senha usando AES-256. Envelope HTML com descriptografia integrada no navegador.",
@@ -38,7 +38,7 @@
       },
       {
         "question": "O destinatário precisa de algum aplicativo?",
-        "answer": "Não, basta abrir o arquivo .html em qualquer navegador moderno e inserir a senha."
+        "answer": "Não, basta abrir o arquivo.html em qualquer navegador moderno e inserir a senha."
       }
     ],
     "keywords": [

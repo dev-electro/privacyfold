@@ -11,14 +11,14 @@
   "task": "Supprimer définitivement du texte et des données confidentielles dans un fichier PDF",
   "badge": "PNG, Text",
   "size": "18–120 KB WASM",
-  "Engine": "/wasm/pdf/pdf-redact-v1.wasm",
-  "wasmModule": "pdf-redact-v1.wasm",
+  "Engine": "JavaScript",
+  "wasmModule": "JavaScript",
   "desc": "Biffer des informations confidentielles dans des contrats ou des pièces administratives exige la destruction réelle des données sous-jacentes. Poser un rectangle noir superficiel est un piège classique : le texte caché reste sélectionnable et indexable. L'outil de censure de PrivacyFold détruit définitivement les caractères, les objets vectoriels et les métadonnées dans le flux interne du document, 100% localement dans votre navigateur et sans aucun envoi vers un serveur.",
   "zeroNetwork": true,
   "adFreeZone": true,
   "accepts": "application/pdf",
   "tag": "Censure PDF",
-  "std": "US Federal Rule of Civil Procedure 5.2 / FOIA Exemption 6",
+  "std": "ISO 32000-1 (PDF 1.7) via pdf-lib",
   "seo": {
     "metaTitle": "Biffer un PDF en Ligne Gratuitement — Censure Définitive & 100% Locale",
     "metaDescription": "Supprimez définitivement le texte sensible, les numéros de sécurité sociale et données personnelles dans un PDF. Zéro fuite de données.",
@@ -39,7 +39,12 @@
         "answer": "Non. Tout le traitement d'affichage, d'expurgation et de recréation du fichier s'exécute exclusivement sur votre machine via WebAssembly."
       }
     ],
-    "keywords": ["biffer pdf en ligne", "masquer texte pdf", "censure pdf irreversible", "supprimer donnees confidentielles pdf"]
+    "keywords": [
+      "biffer pdf en ligne",
+      "masquer texte pdf",
+      "censure pdf irreversible",
+      "supprimer donnees confidentielles pdf"
+    ]
   },
   "whatToExpect": {
     "results": "Un document PDF sécurisé sans aucun résidu de texte sous les zones masquées.",
@@ -57,7 +62,9 @@
   },
   "social": {
     "hook": "Ne vous fiez pas aux faux masquages noirs où le texte reste copiable. Détruisez physiquement les données confidentielles dans votre navigateur.",
-    "channels": ["x", "linkedin"]
+    "channels": [
+      "x",
+      "linkedin"
+    ]
   }
 }
-

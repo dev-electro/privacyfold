@@ -5,7 +5,7 @@
   "category": "pdf",
   "badge": "PNG, Text",
   "size": "18–120 KB WASM",
-  "Engine": "/wasm/pdf/pdf-redact-v1.wasm",
+  "Engine": "Plain JavaScript in your browser (no engine binary)",
   "description": "Redacting sensitive information from legal filings, government FOIA requests, and corporate contracts requires true destructive removal of underlying data. A notorious failure mode in digital redaction involves placing black rectangles over sensitive text without deleting the underlying text stream—allowing anyone to select, copy, or search the hidden Social Security Numbers, names, or financial figures underneath. PrivacyFold's Destructive PDF Redactor permanently removes both the visual elements and the underlying content stream objects, vector paths, and metadata from the document structure. Running 100% locally in your browser, it ensures that classified and private information is mathematically eradicated before the document ever leaves your workstation.",
   "zeroNetwork": true,
   "adFreeZone": true,
@@ -74,8 +74,8 @@
   "desc": "Redacting sensitive information from legal filings, government FOIA requests, and corporate contracts requires true destructive removal of underlying data. A notorious failure mode in digital redaction involves placing black rectangles over sensitive text without deleting the underlying text stream—allowing anyone to select, copy, or search the hidden Social Security Numbers, names, or financial figures underneath. PrivacyFold's Destructive PDF Redactor permanently removes both the visual elements and the underlying content stream objects, vector paths, and metadata from the document structure. Running 100% locally in your browser, it ensures that classified and private information is mathematically eradicated before the document ever leaves your workstation.",
   "accepts": "pdf",
   "tag": "PDF",
-  "std": "W3C WebAssembly Core 2.0",
-  "wasmModule": "/wasm/pdf/pdf-redact-v1.wasm",
+  "std": "ISO 32000-1 (PDF 1.7) via pdf-lib",
+  "wasmModule": "none (JavaScript, no engine binary)",
   "settingsExplained": [
     {
       "name": "Redaction Mark Style",
@@ -125,8 +125,17 @@
   "social": {
     "hook": "Drawing black boxes over text in a PDF does NOT redact it. Here is why.",
     "proof": "Surgically scrubs underlying PDF content stream bytes so text cannot be highlighted or extracted.",
-    "hashtags": ["pdf", "infosec", "legaltech", "privacy"],
+    "hashtags": [
+      "pdf",
+      "infosec",
+      "legaltech",
+      "privacy"
+    ],
     "clip": "pdf-redact-demo.mp4",
-    "channels": ["x", "linkedin", "reddit"]
+    "channels": [
+      "x",
+      "linkedin",
+      "reddit"
+    ]
   }
 }

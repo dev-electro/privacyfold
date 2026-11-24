@@ -5,7 +5,7 @@
   "category": "photo",
   "badge": "JPG, PNG",
   "size": "18–120 KB WASM",
-  "Engine": "/wasm/photo/passport-photo-v1.wasm",
+  "Engine": "Plain JavaScript in your browser (no engine binary)",
   "description": "Applying for international passports, travel visas, permanent residency cards, and national identity credentials requires strict adherence to sovereign biometric photo specifications. Government portals routinely reject user uploads for minor non-compliance issues such as incorrect face-to-frame height ratios, non-compliant background luminance, improper head tilt, incorrect millimeter dimensions, or excessive file sizes. PrivacyFold's Biometric Passport Photo Creator provides an automated, client-side photographic studio directly in your browser. It includes pre-calibrated presets for over 87 international jurisdictions (including US State Department 2x2 inch, UK HM Passport Office 35x45mm, Schengen ICAO, Canada IRCC, Australia ImmiAccount, and UAE Golden Visa), allowing you to frame, crop, calibrate background lighting, and export print-ready 600 DPI sheets with absolute privacy and zero server uploads.",
   "zeroNetwork": true,
   "adFreeZone": false,
@@ -109,8 +109,8 @@
   "desc": "Applying for international passports, travel visas, permanent residency cards, and national identity credentials requires strict adherence to sovereign biometric photo specifications. Government portals routinely reject user uploads for minor non-compliance issues such as incorrect face-to-frame height ratios, non-compliant background luminance, improper head tilt, incorrect millimeter dimensions, or excessive file sizes. PrivacyFold's Biometric Passport Photo Creator provides an automated, client-side photographic studio directly in your browser. It includes pre-calibrated presets for over 87 international jurisdictions (including US State Department 2x2 inch, UK HM Passport Office 35x45mm, Schengen ICAO, Canada IRCC, Australia ImmiAccount, and UAE Golden Visa), allowing you to frame, crop, calibrate background lighting, and export print-ready 600 DPI sheets with absolute privacy and zero server uploads.",
   "accepts": "image",
   "tag": "JPG, PNG",
-  "std": "W3C WebAssembly Core 2.0",
-  "wasmModule": "/wasm/photo/passport-photo-v1.wasm",
+  "std": "W3C HTML Canvas 2D + EXIF 2.32",
+  "wasmModule": "none (JavaScript, no engine binary)",
   "settingsExplained": [
     {
       "name": "Jurisdiction Preset",
@@ -164,8 +164,18 @@
   "social": {
     "hook": "Stop paying $15 for drugstore passport photos that get rejected.",
     "proof": "Crop and calibrate official 2x2 inch and 35x45mm ICAO standards with zero upload.",
-    "hashtags": ["passport", "travel", "biometrics", "privacy"],
+    "hashtags": [
+      "passport",
+      "travel",
+      "biometrics",
+      "privacy"
+    ],
     "clip": "passport-photo-demo.mp4",
-    "channels": ["x", "linkedin", "reddit", "whatsapp"]
+    "channels": [
+      "x",
+      "linkedin",
+      "reddit",
+      "whatsapp"
+    ]
   }
 }

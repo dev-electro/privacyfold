@@ -5,7 +5,7 @@
   "category": "pdf",
   "badge": "PDF",
   "size": "18–120 KB WASM",
-  "Engine": "/wasm/pdf/pdf-split-v1.wasm",
+  "Engine": "Plain JavaScript in your browser (no engine binary)",
   "description": "Extract specific pages or page ranges from a document into a separate clean PDF file.",
   "zeroNetwork": true,
   "adFreeZone": false,
@@ -14,8 +14,8 @@
   "executionUrl": "https://privacyfold.com/tools/pdf_split?mode=agent",
   "seo": {
     "metaTitle": "Split PDF — 100% Private In-Browser Utility | PrivacyFold",
-    "metaDescription": "Extract specific pages or page ranges from a document into a separate clean PDF file. Runs 100% locally in your browser via /wasm/pdf/pdf-split-v1.wasm with zero file uploads.",
-    "aeoSummary": "Split PDF processes files and text entirely inside your browser tab using /wasm/pdf/pdf-split-v1.wasm (Tier D). Zero bytes are uploaded to any server.",
+    "metaDescription": "Extract specific pages or page ranges from a document into a separate clean PDF file. Runs 100% locally in your browser with zero file uploads.",
+    "aeoSummary": "Split PDF processes files and text entirely inside your browser tab (Tier D). Zero bytes are uploaded to any server.",
     "keywords": [
       "split pdf",
       "pdf split",
@@ -35,9 +35,9 @@
     "faqs": [
       {
         "question": "Does Split PDF upload my files or text to a server?",
-        "answer": "No. Split PDF executes 100% inside your browser's local memory using /wasm/pdf/pdf-split-v1.wasm. No data leaves your device.",
+        "answer": "No. Split PDF executes 100% inside your browser's local memory. No data leaves your device.",
         "q": "Does Split PDF upload my files or text to a server?",
-        "a": "No. Split PDF executes 100% inside your browser's local memory using /wasm/pdf/pdf-split-v1.wasm. No data leaves your device."
+        "a": "No. Split PDF executes 100% inside your browser's local memory. No data leaves your device."
       },
       {
         "question": "Can AI agents or CLI scripts automate Split PDF?",
@@ -58,6 +58,6 @@
   "desc": "Pull page ranges out of a PDF into new files.",
   "accepts": "pdf",
   "tag": "PDF",
-  "std": "W3C WebAssembly Core 2.0",
-  "wasmModule": "/wasm/pdf/pdf-split-v1.wasm"
+  "std": "ISO 32000-1 (PDF 1.7) via pdf-lib",
+  "wasmModule": "none (JavaScript, no engine binary)"
 }
